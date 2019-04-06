@@ -10,7 +10,7 @@ In order to concurrently run diverse workloads on the same physical hardware wit
 
 The solution is **virtualization**.
 
-![](assets/a96f5139-efb1-4038-a5e4-9128c63cf5f8.png)
+![](../assets/a96f5139-efb1-4038-a5e4-9128c63cf5f8.png)
 
 With virtualization, each of the operating systems that are deployed on the same physical platform has the illusion that it actually owns the underlying hardware resources, all or in part.
 
@@ -52,7 +52,7 @@ Virtualization also provides affordable support for legacy operating systems. Ap
 
 In **bare-metal** virtualization \(also known as **hypervisor-based** or **type 1** virtualization, the VMM manages all the hardware resources and support execution of VMs.
 
-![](assets/a320790e-26bd-4370-8b87-47e08d04fa9c.png)
+![](../assets/a320790e-26bd-4370-8b87-47e08d04fa9c.png)
 
 One issue with this model concerns devices. According to the model, the hypervisor must manage all possible devices. In order words, device manufacturers now have to provide device drivers not just for different operating systems, but also for different hypervisors.
 
@@ -80,7 +80,7 @@ One benefit of this model is that it can leverage all of the services and mechan
 
 In this setup, you can run guest VMs through the VMM module as well as native applications directly on the host OS.
 
-![](assets/2be5a89a-9473-420b-b659-d5f010b2bb8d.png)
+![](../assets/2be5a89a-9473-420b-b659-d5f010b2bb8d.png)
 
 One example of the hosted model is **kernel-based VM** \(KVM\) which is built into Linux. The Linux host provides all aspects of the physical hardware management and can run regular Linux applications directly.
 
@@ -208,7 +208,7 @@ To deal with this diversity, virtualization solutions adapt one of three key mod
 
 In the **passthrough model**, the VMM-level driver is responsible for configuring the access permissions to a device. For example, it will allow a guest VM to have access to the memory registers corresponding to a device.
 
-![](assets/db8b54eb-d3c3-4eb0-a8f4-71163b1426e0.png)
+![](../assets/db8b54eb-d3c3-4eb0-a8f4-71163b1426e0.png)
 
 In this approach, the guest VM has exclusive access to a device. In addition, the VM can directly access the device, without interacting with the VMM. This model is also called the **VMM-bypass model**.
 
@@ -224,7 +224,7 @@ This passthrough model breaks that decoupling as it binds a device to a VM. This
 
 In the **hypervisor-direct model**, the hypervisor intercepts every device access request that is performed by the guest VM.
 
-![](assets/4f00cac7-1c7b-4065-a509-f7b57dd7fbe3.png)
+![](../assets/4f00cac7-1c7b-4065-a509-f7b57dd7fbe3.png)
 
 The hypervisor no longer has the constraint that the requested device and the physical device match.
 
@@ -238,7 +238,7 @@ The downside of the model is that the device emulation step adds latency to devi
 
 In the **split device driver model**, all of the devices accesses are controlled in a way that involves a component that resides in a guest VM and a component that resides in a hypervisor layer.
 
-![](assets/becb3588-afbf-42f2-9a1c-22916449b1b4.png)
+![](../assets/becb3588-afbf-42f2-9a1c-22916449b1b4.png)
 
 The **front-end driver** resides in the guest VM and the actual driver for the physical device - the **back-end driver** - resides in the service VM \(or the host in type 2 virtualization\).
 
@@ -270,4 +270,4 @@ Finally, a number of new instructions were added to x86 in order to implement th
 
 ## x86 VT Revolution
 
-![](assets/57d4d274-194c-4906-8331-48ac6c00f7fe.png)
+![](../assets/57d4d274-194c-4906-8331-48ac6c00f7fe.png)

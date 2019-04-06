@@ -8,7 +8,7 @@ sidebar_label: Thread Performance Considerations
 
 Let’s compare the following two models to see which one is better
 
-![](assets/6599ce4c-f1e1-4aa1-a546-f2667436be59.png)
+![](../assets/6599ce4c-f1e1-4aa1-a546-f2667436be59.png)
 
 Regarding execution time, the boss/workers model took 360ms to complete 11 toy orders with 6 workers, while the pipeline model took 320ms with the same constraints. From the perspective of total execution time, the pipeline model performs better than the boss/workers model.
 
@@ -103,7 +103,7 @@ We will compare the multithreaded approach and the multiprocess approach in the 
 
 Steps in a web server response flow
 
-![](assets/7777bd83-5ab4-4724-8fcc-03acc3e80efd.png)
+![](../assets/7777bd83-5ab4-4724-8fcc-03acc3e80efd.png)
 
 Some of these steps are more computationally expensive, so most of the work will be done by the CPU. The request parsing step and header creation steps are good examples of this.
 
@@ -115,7 +115,7 @@ Still other steps require interaction with disk, such as finding and reading the
 
 One easy way to achieve concurrency is to have multiple instances of the same process.
 
-![](assets/c5da1b45-4114-437c-a96f-94ab7645f449.png)
+![](../assets/c5da1b45-4114-437c-a96f-94ab7645f449.png)
 
 The benefits of this approach is that it is simple. Once we have correctly developed the application, we can just spawn multiple processes and run it in each process.
 
@@ -125,7 +125,7 @@ The downside of running multiple processes in a platform is that there is a high
 
 Instead of taking a multiprocess approach, we can opt for a multithreaded approach, achieving concurrency within a single address space.
 
-![](assets/e9d12ef3-81ca-44e9-a248-4852a709c45d.png)
+![](../assets/e9d12ef3-81ca-44e9-a248-4852a709c45d.png)
 
 In this diagram, every thread is performing all of the steps. Of course, we could have a boss/workers setup where the boss runs the first step and the workers execute the remaining steps. As well, we could have pipeline setup, in which multiple threads execute one step and one step only.
 
@@ -137,7 +137,7 @@ The downside of this approach is that it is not a simple implementation. Multith
 
 An event driven application is implemented in a single address space, with a single thread of control. The main part of the process is an **event dispatcher** which in a loop looks for incoming events and then based on those events invokes one or more of the registered handlers.
 
-![](assets/8070f398-66e2-46ab-9c66-df1727b257c1.png)
+![](../assets/8070f398-66e2-46ab-9c66-df1727b257c1.png)
 
 Events \(in the case of a web server application\) can correspond to:
 
@@ -209,7 +209,7 @@ The communication with the helper can be with sockets or pipes, which both prese
 
 In doing this, the synchronous I/O call is handled by the helper. The helper will block, but the main event loop will not! Although we don’t have asynchronous system calls, we can fake it to an extent by delegating blocking calls to processes.
 
-![](assets/007d0e12-dc9b-4787-91a9-fcea8eb25a4f.png)
+![](../assets/007d0e12-dc9b-4787-91a9-fcea8eb25a4f.png)
 
 If the kernel is not multithreaded - it wasn’t back in the day - the helpers need to be processes. The model was called the **Asymmetric Multi-Process Event-Driven Model** or AMPED. The multithreaded equivalent acronym is AMTED.
 
@@ -229,7 +229,7 @@ The communication from the helpers to the event dispatcher is performed via pipe
 
 Flash performs application level caching at multiple levels.
 
-![](assets/f11d499f-689f-4fc6-9357-06aa8772587e.png)
+![](../assets/f11d499f-689f-4fc6-9357-06aa8772587e.png)
 
 It does this on both data and computation. It common to cache files: this is data caching. Computation can also be cached. For instance, every request has an associated pathname, and we need to look up the file given the pathname. That lookup will compute some result, which we can cache so we do not have to perform the same computation again.
 
@@ -245,7 +245,7 @@ The flow of control is similar to the event driven model in that each request pa
 
 Apache is a combination of a multiprocess and multithreaded model. In apache, each instance is a process, which implements a multithreaded boss/workers configuration with a dynamic thread pool. The total number of processes can also be dynamically adjusted depending on - among other factors - the number of outstanding requests/pending connections.
 
-![](assets/ffde7a00-458b-4f77-aa6d-690930fee146.png)
+![](../assets/ffde7a00-458b-4f77-aa6d-690930fee146.png)
 
 ## Experimental Methodology
 
@@ -295,7 +295,7 @@ For the best case, the authors used the synthetic load. They varied the number o
 
 For the best case experiment, they vary the file size from 0 to 200kb, and they measure the bandwidth is the number of requests times the file size divided by the total time. By varying the file size, they vary the amount of work that the server has to do on a given request.
 
-![](assets/ebc45431-74fc-4d6d-a91e-5e4d368bcb22.png)
+![](../assets/ebc45431-74fc-4d6d-a91e-5e4d368bcb22.png)
 
 All of the implementations had similar results, with bandwidth increasing sharply with file size initially before plateauing.
 
@@ -303,13 +303,13 @@ SPED has the best performance. Flash is similar in performance, but it performs 
 
 ### Owlnet Trace
 
-![](assets/9fa2f6d6-44dc-4ba7-9ef6-fb4d43849b0a.png)
+![](../assets/9fa2f6d6-44dc-4ba7-9ef6-fb4d43849b0a.png)
 
 For the Owlnet trace, the results are mostly similar to the best case. We can see that Flash and SPED are the best, followed by MT/MP and then Apache. The reason for this trend is because the owl trace is very small, so most of the requests can be serviced from the cache. However, not everything can be serviced from cache, so sometime blocking I/O is required. In this case, SPED will block, but Flash will not because it has helpers. This helps explain why Flash’s performance is slightly higher than the SPED implementation.
 
 ### CS Trace
 
-![](assets/7fad964f-52b7-4742-ba6d-07615fbcfe00.png)
+![](../assets/7fad964f-52b7-4742-ba6d-07615fbcfe00.png)
 
 The CS trace is a much larger trace, which means that most requests are not serviced from the cache. Since the SPED implementation does not support asynchronous I/O the performance drops significantly. The multithreaded implementation does better than the multiprocess implementation because the multithreaded implementation has a smaller memory footprint \(more memory available to cache files\) and is able to synchronize more quickly/cheaper.
 
@@ -317,7 +317,7 @@ Flash performs the best. It has the smallest memory footprint, which means it ha
 
 ### Impact of Optimizations
 
-![](assets/2a9a866d-fc1c-49c3-b91b-54e20004e4aa.png)
+![](../assets/2a9a866d-fc1c-49c3-b91b-54e20004e4aa.png)
 
 We can see that in all cases, connection rate decreases with file size. That being said, connection rate increases as the number of optimization increases, with the fully optimized flash having the highest connection rate at a given file size. Optimizations are important!
 

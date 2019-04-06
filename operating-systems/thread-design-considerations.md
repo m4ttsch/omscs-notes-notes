@@ -14,7 +14,7 @@ Supporting threads at the user level means there is a user level library linked 
 
 User level threads can be mapped onto kernel level threads via a 1:1, 1:many and many:many pattern.
 
-![](assets/a1fdfe7b-4f6a-4f6d-a016-a2ac1c7b64aa.png)
+![](../assets/a1fdfe7b-4f6a-4f6d-a016-a2ac1c7b64aa.png)
 
 ## Thread Related Data Structures: Single CPU
 
@@ -36,7 +36,7 @@ If we want there to be multiple kernel level threads associated with this proces
 
 The solution is to split the process control block into smaller structures. Namely, the stack and registers are broken out \(since these will be different for different kernel level threads\) and only these pieces of information are stored in the kernel level thread data structure.
 
-![](assets/a39bc8bc-e8f3-45e4-b417-921f9fa8a420.png)
+![](../assets/a39bc8bc-e8f3-45e4-b417-921f9fa8a420.png)
 
 ## Thread Data Structures: At Scale
 
@@ -48,7 +48,7 @@ If the system has multiple CPUs, we need to have a data structure to represent t
 
 When the kernel itself is multithreaded, there can be multiple threads supporting a single process. When the kernel needs to context switch among kernel level threads, it can easily see if the entire PCB needs to be swapped out, as the kernel level threads point to the process on behalf of whom they are executing.
 
-![](assets/3ed34119-18ef-4b3e-98ab-e2de92fb87df.png)
+![](../assets/3ed34119-18ef-4b3e-98ab-e2de92fb87df.png)
 
 ## Hard and Light Process State
 
@@ -58,7 +58,7 @@ Information relevant to all threads includes the virtual address mapping, while 
 
 We can split up the information in the process control block into **hard process state** which is relevant for all user level threads in a given process, and **light process state** that is only relevant for a subset of user level threads associated with a particular kernel level thread.
 
-![](assets/e1cde711-64d8-47be-8793-9fa50dd7fc30.png)
+![](../assets/e1cde711-64d8-47be-8793-9fa50dd7fc30.png)
 
 ## Rationale For Data Structures
 
@@ -80,7 +80,7 @@ Multiple data structures:
 
 ### SunOS paper
 
-![](assets/0c4d3fa7-a3c9-4469-b87b-050484774183.png)
+![](../assets/0c4d3fa7-a3c9-4469-b87b-050484774183.png)
 
 The OS is intended for multiple CPU platforms and the kernel itself is multithreaded. At the user level, the processes can single or multithreaded, and both many:many and one:one ULT:KLT mappings are supported.
 
@@ -108,7 +108,7 @@ However, the user library does not control stack growth. With this compact memor
 
 The solution is to separate information about each thread by a **red zone**. The red zone is a portion of the address space that is not allocated. If a thread tries to write to a red zone, the operating system causes a fault. Now it is much easier to reason about what happened as the error is associated with the problematic thread.
 
-![](assets/8d7a444b-90d8-451b-9da4-8d2b8d1d1239.png)
+![](../assets/8d7a444b-90d8-451b-9da4-8d2b8d1d1239.png)
 
 ## Kernel Level Structures in Solaris 2.0
 
@@ -145,11 +145,11 @@ The CPU data structure contains:
 
 Given a CPU data structure it is easy to traverse and access all the other linked data structures. In SPARC machines \(what Solaris runs on\), there is a dedicated register that holds the thread that is currently executing. This makes it even easier to identify and understand the current thread.
 
-![](assets/d37a8ecf-b01c-4fec-9b55-8fb7c938b26b.png)
+![](../assets/d37a8ecf-b01c-4fec-9b55-8fb7c938b26b.png)
 
 A process data structure has information about the user and points to the virtual address mapping data structure. It also points to a list of kernel level threads. Each kernel level thread structure points to the light weight process and the stack, which is swappable.
 
-![](assets/69bd0a17-1a53-48b8-940a-9b4b96722d25.png)
+![](../assets/69bd0a17-1a53-48b8-940a-9b4b96722d25.png)
 
 ## Basic Thread Management Interaction
 
@@ -199,7 +199,7 @@ The library scheduler may also gain execution in response to certain signals fro
 
 In a multi CPU system, the kernel level threads that support a process may be running concurrently on multiple CPUs. We may have a situation where the user level library that is operating in the context of one thread on one CPU needs to somehow what is running on **another** CPU.
 
-Scenario ![](assets/8859114f-5fa0-445d-9b5d-9324d73fc541.png)
+Scenario ![](../assets/8859114f-5fa0-445d-9b5d-9324d73fc541.png)
 
 Currently, T2 is holding the mutex and is executing on one CPU. T3 wants the mutex, and is currently blocking. T1 is running on the other CPU.
 
@@ -211,7 +211,7 @@ Once the signal occurs, the library code can block T1 and schedule T3, keeping w
 
 ## Synchronization Related Issues
 
-Scenario ![](assets/ea93a7aa-bde7-492c-8001-b4de63ca8bd4.png)
+Scenario ![](../assets/ea93a7aa-bde7-492c-8001-b4de63ca8bd4.png)
 
 T1 holds the mutex and is executing on one CPU. T2 and T3 are blocked. T4 is executing on the another CPU, and wishes to lock the mutex.
 
@@ -271,7 +271,7 @@ All of this happens within the context of the thread that is interrupted.
 
 Which interrupts can occur depends on the _hardware_ of the platform and how the interrupts are handled depends on the _operating system_ running on the platform.
 
-![](assets/8ccf2340-eedb-42b7-b8ba-ddc9e7bc75be.png)
+![](../assets/8ccf2340-eedb-42b7-b8ba-ddc9e7bc75be.png)
 
 ## Signal Handling
 
@@ -279,7 +279,7 @@ Signals are different from interrupts in that signals originate from the CPU. Fo
 
 For each process, the OS maintains a mapping where the keys correspond the signal number \(SIGSEGV is signal 11, for example\), and the values point to the starting address of handling routines. When a signal is generated, the program counter is adjusted to point to the handling routine for that signal for that process.
 
-![](assets/5f7dbafc-b0f5-422d-b6b3-f29660e99e97.png)
+![](../assets/5f7dbafc-b0f5-422d-b6b3-f29660e99e97.png)
 
 The process may specify how a signal can handled, or the operating system default may be used. Some default signal responses include:
 
@@ -358,7 +358,7 @@ When an interrupt is handled in a different thread, we no longer have to disable
 
 There are two components of signal handling. The **top half** of signal handling occurs in the context of the interrupted thread \(before the handler thread is created\). This half must be fast, non-blocking, and include a minimal amount of processing. Once we have created our thread, this **bottom half** can contain arbitrary complexity, as we have now stepped out of the context of our main program into a separate thread.
 
-![](assets/cb177f61-f635-4014-b166-2c9ddfe51fa3.png)
+![](../assets/cb177f61-f635-4014-b166-2c9ddfe51fa3.png)
 
 ## Performance of Threads as Interrupts
 
@@ -388,7 +388,7 @@ What we would like to do is to be able to stop the thread that cannot handle the
 
 We can achieve this by having the user level threading library \(which has visibility in all threads for a process\) being the entity that installs the signal handler. This way, when the signal occurs, the library can invoke the scheduler to swap in a thread that can handle the signal. Once this thread is executing, the signal is passed to its handler.
 
-![](assets/0f15b3f6-6413-476b-a93e-68701ed3f138.png)
+![](../assets/0f15b3f6-6413-476b-a93e-68701ed3f138.png)
 
 Let’s look at a different scenario, in which there are user level threads executing concurrently atop two kernel level threads. Both kernel level threads have the signal bit enabled, while only one of the user level threads does.
 
@@ -396,13 +396,13 @@ In the case where a signal is generated by a kernel level thread that is executi
 
 What it can do, however, is send a directed signal down to the kernel level thread associated with the user level thread that has the bit enabled. This will cause that kernel level thread to raise the same signal, which will be handled again by the user level library and dispatched to the user level thread that has the bit enabled.
 
-![](assets/e1d06396-5cd0-49b4-8d7f-9bf845406ce3.png)
+![](../assets/e1d06396-5cd0-49b4-8d7f-9bf845406ce3.png)
 
 Let’s consider the final case in which every single user thread has the particular signal disabled. The kernel level masks are still 1, so the kernel still thinks that the process as a whole can handle the signal.
 
 When the signal occurs, the kernel interrupts the execution of whichever thread is currently executing atop it. The library handling routine kicks in and sees that no threads that it manages are able to handle this particular signal.
 
-![](assets/29f3ec50-8f5a-4b22-bec7-ab02e7914399.png)
+![](../assets/29f3ec50-8f5a-4b22-bec7-ab02e7914399.png)
 
 At this point, the thread library will make a system call requesting that the kernel level thread change its signal mask for this particular signal, disabling it.
 
@@ -418,7 +418,7 @@ The main abstraction that linux uses to represent an execution context is called
 
 Key elements in task structure, encapsulated by `struct task_struct`
 
-![](assets/8b519534-0c74-4a8a-841a-1dcce73aeff7.png)
+![](../assets/8b519534-0c74-4a8a-841a-1dcce73aeff7.png)
 
 A task is identified by its `pid_t pid`. If we have a single threaded process the id of the task and the id of the process will be the same. If we have a multithreaded process, each task will have a different `pid` and the process as a whole will be identified by the `pid` of the first task that was created. This information is also captured in the `pid_t tgid` , or task group id, field.
 
@@ -428,7 +428,7 @@ Linux never had one continuous process control block. Instead, the process state
 
 To create a new task, Linux supports an operation called `clone`. It takes a function pointer and an argument \(similar to `pthread_create`\) but it also takes an argument `sharing_flags` which denotes which portion of the state of a task will be shared between the parent and child task.
 
-![](assets/b717e81b-24ea-4742-833b-c35c128e0a0a.png)
+![](../assets/b717e81b-24ea-4742-833b-c35c128e0a0a.png)
 
 When all of the bits are set, we are basically creating a new thread where all of the state is shared with the parent thread. If all of the bits are not set, where are not sharing anything, which is more akin to creating an entirely new process. In fact, `fork` in Linux is basically implemented by `clone` with all sharing flags cleared.
 

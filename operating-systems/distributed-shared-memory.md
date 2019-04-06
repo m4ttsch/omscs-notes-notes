@@ -48,7 +48,7 @@ Hardware-supported DSM relies on some physical interconnect. The OS running on e
 
 Memory accesses that reference remote memory locations are passed to the network interconnect card, which translates remote memory accesses into interconnect messages that are then passed to the correct remote node.
 
-![](assets/a0136738-fc8b-4e44-b4a1-1862adda3938.png)
+![](../assets/a0136738-fc8b-4e44-b4a1-1862adda3938.png)
 
 The NICs are involved in all aspects of the memory management, access and consistency and even support some atomics.
 
@@ -187,7 +187,7 @@ In addition to creating page copies via caching, page replicas can be explicitly
 
 ## Summarizing DSM Architecture
 
-![](assets/17d02718-3116-442e-8010-b82ef5ce2861.png)
+![](../assets/17d02718-3116-442e-8010-b82ef5ce2861.png)
 
 ## Indexing Distributed State
 
@@ -207,7 +207,7 @@ Certain bits from the address are used to identify the manager. There will be a 
 
 In this approach, we can change the manager node by updating the mapping table. We don’t need to change the object identifier.
 
-![](assets/9ea39b5e-9af1-4519-a1c2-d3eb9924491e.png)
+![](../assets/9ea39b5e-9af1-4519-a1c2-d3eb9924491e.png)
 
 ## Implementing DSM
 
@@ -249,11 +249,11 @@ The consistency models states that the memory behaves correctly if and only of t
 
 Our notation for consistency models:
 
-![](assets/f9f33ea4-108f-44fc-bb04-fc92de1cb897.png)
+![](../assets/f9f33ea4-108f-44fc-bb04-fc92de1cb897.png)
 
 ## Strict Consistency
 
-![](assets/0b6fce54-c65d-4d3b-8d80-d3fcf8cf0e4e.png)
+![](../assets/0b6fce54-c65d-4d3b-8d80-d3fcf8cf0e4e.png)
 
 Theoretically, for a perfect consistency model, we would like to achieve absolute ordering and immediate visibility of any state update and access.
 
@@ -271,7 +271,7 @@ Given that strict consistency is next to impossible to achieve, the next best op
 
 With sequential consistency, it’s not important that we see updates immediately. Rather, it’s important that the ordering the way see correspond to a possible ordering that can be achieved by the operations that were applied.
 
-![](assets/2fac54fc-883e-45b2-88d6-94843ac1f9f1.png)
+![](../assets/2fac54fc-883e-45b2-88d6-94843ac1f9f1.png)
 
 In the above, example, it is possible to see X and m1 and then see Y at m2. It is also possible to see 0 at m1 and then Y at m2. It is not illegal to see Y at m2 and then 0 at m1, as the write to m1 happened before the write to m2.
 
@@ -279,7 +279,7 @@ According to sequential consistency, the memory updates from different processor
 
 However, if we let one process see one ordering of the updates, we have to make sure that all other processes see the same ordering of those updates.
 
-![](assets/09f1d347-5c52-4a76-bf50-0229e5b3be2a.png)
+![](../assets/09f1d347-5c52-4a76-bf50-0229e5b3be2a.png)
 
 In the above case, we cannot let P3 observe one value at a m1 while concurrently showing a different value to P4, which is also accessing m1.
 
@@ -287,7 +287,7 @@ In sequential consistency, all processes will see the same interleaving. This in
 
 One constraint of the interleaving is that the updates made by the same process will not be arbitrarily interleaved. Operations from the same process always appear in the order they were issued.
 
-![](assets/6a81fc78-9212-4bf3-81e7-c2207bc06c32.png)
+![](../assets/6a81fc78-9212-4bf3-81e7-c2207bc06c32.png)
 
 For example, it would not be possible for P4 to read Z at m3 and then read X at m3.
 
@@ -295,13 +295,13 @@ For example, it would not be possible for P4 to read Z at m3 and then read X at 
 
 Forcing all processes to see the exact same order on all updates may be an overkill.
 
-![](assets/0a182699-4585-47fd-b1c7-ac089170acd0.png)
+![](../assets/0a182699-4585-47fd-b1c7-ac089170acd0.png)
 
 P3 and P4 may do very different things with the values at m1 and m2, and it may not be necessary that they see the same exact value in a given moment.
 
 Furthermore, the update to m2 was not dependent on the update to m1.
 
-![](assets/a10d07d6-9abf-47bf-92e1-2b408d9cfe0b.png)
+![](../assets/a10d07d6-9abf-47bf-92e1-2b408d9cfe0b.png)
 
 In this example, the value at m2 was written after the value at m1 was read. In this case, there may be a relationship between the update at m2 and the value at m1. The value written to m2 may depend on the value read from m1.
 
@@ -309,7 +309,7 @@ Based on the observation of this potential dependency, it is not okay that P4 se
 
 Causal consistency models guarantee that they will detect the possible causal relationship between updates, and if updates are causally related then the memory will guarantee that those writes will be correctly ordered.
 
-![](assets/af2cd37e-0407-4646-ab4e-d6f3a045a887.png)
+![](../assets/af2cd37e-0407-4646-ab4e-d6f3a045a887.png)
 
 In this situation, a causal consistency model will enforce that a process must read X from m1 before reading Y from m2.
 
@@ -317,7 +317,7 @@ For writes that are not casually-related - concurrent writes - there are no such
 
 Just like before, causal consistency ensures that writes that are performed on the same processor will be visible in the exact same order on other processors.
 
-![](assets/fd6fc037-e098-41d7-8446-a703deb6b344.png)
+![](../assets/fd6fc037-e098-41d7-8446-a703deb6b344.png)
 
 ## Weak Consistency
 
@@ -327,7 +327,7 @@ In the weak consistency models, it’s possible to have additional operations fo
 
 A memory system may introduce **synchronization points**, as operations that are available to the upper layers of the software. In addition to telling the underlying memory system to read or write, you will now be able to tell the system to sync.
 
-![](assets/b7846427-7bd2-4398-b69d-7be7761f0bc6.png)
+![](../assets/b7846427-7bd2-4398-b69d-7be7761f0bc6.png)
 
 A synchronization point makes sure that all of the updates that have happened prior to the synchronization point will become visible at other processors.
 
@@ -337,7 +337,7 @@ If P1 performs a synchronization operation after writing to m1, that doesn’t g
 
 The synchronization point has to be called both by the process that is performing the updates and the process that wishes to see the updates.
 
-![](assets/5fdc8b58-6835-482e-a762-80163bfd2acc.png)
+![](../assets/5fdc8b58-6835-482e-a762-80163bfd2acc.png)
 
 Once a synchronization is performed on P2, P2 will see all of the previous updates that have happened to any memory location in the system. When P2 performs the sync, it is guaranteed to see the value of m1 at the time that P1 performed the sync.
 
