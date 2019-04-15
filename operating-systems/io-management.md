@@ -21,7 +21,7 @@ Examples of I/O devices include
 
 The device space is extremely diverse.
 
-![](assets/95c30a1b-9a9b-4cfd-a7ca-967ef1bd431f.png)
+![](../assets/95c30a1b-9a9b-4cfd-a7ca-967ef1bd431f.png)
 
 Devices come in all shapes and sizes with a lot of variability in their hardware architecture, functionality, and interfaces. Our discussion will focus on the key features of a device that enable its integration into a system.
 
@@ -29,13 +29,13 @@ In general, a device will have a set of control registers which can be accessed 
 
 Internally, the device will incorporate all other device-specific logic. This will include the **microcontroller** - which is basically the device’s CPU - on device memory, as well as any other logic needed by the device. For example, some devices may need chips for converting analog to digital signals. As another example, network devices may need chips to interact with the physical network medium, be it optics or copper wire.
 
-![](assets/da5651b0-8568-45a2-a26e-b5de1f699f9b.png)
+![](../assets/da5651b0-8568-45a2-a26e-b5de1f699f9b.png)
 
 ## CPU Device Interconnect
 
 Devices interface with the rest of the system via a controller that is typically integrated as part of the device packaging that is used to connect the device with the rest of the CPU complex via some CPU/device interconnect.
 
-![](assets/38b48adb-1ec5-4771-a87b-92d9102ada69.png)
+![](../assets/38b48adb-1ec5-4771-a87b-92d9102ada69.png)
 
 In this figure, all of the the controllers are connected to the rest of the system via a **Peripheral Component Interconnect** \(PCI\) bus.
 
@@ -49,7 +49,7 @@ The device controllers determine what type of interconnect a device can attach t
 
 Operating systems support devices via **device drivers**.
 
-![](assets/be7972f7-6118-4819-95d2-efe8a38524fb.png)
+![](../assets/be7972f7-6118-4819-95d2-efe8a38524fb.png)
 
 Device drivers are device-specific software components. The operating systems needs to include a device driver for every type of device that is included in the system.
 
@@ -135,7 +135,7 @@ Finally, once the device is configured, the device will perform the actual reque
 
 Any results/events originating on the device will traverse this chain in reverse: from the device to the driver to the kernel and finally into the user process.
 
-![](assets/1c2567be-17c9-43ae-98c9-a864103cce98.png)
+![](../assets/1c2567be-17c9-43ae-98c9-a864103cce98.png)
 
 ## OS Bypass
 
@@ -159,7 +159,7 @@ For synchronous operations, the calling thread will block. The OS kernel will pl
 
 With asynchronous operations, the thread is allowed to continue as soon as it issues the request. At some later time, the user process can be allowed to check if the response is available. Alternatively, the kernel can notify the process that the operation is complete and that the results are available.
 
-![](assets/791986f3-95fd-400a-b5e2-0b0a27992cc8.png)
+![](../assets/791986f3-95fd-400a-b5e2-0b0a27992cc8.png)
 
 Remember when we talked about Flash, we discussed that the implementation mimicked asynchronous I/O by delegating all I/O calls to special helper threads. Here we are talking about true, OS-supported asynchronous I/O.
 
@@ -187,7 +187,7 @@ What if files are not even local to a machine, and are accessed over the network
 
 To solve the underlying problems that these questions pose, operating systems like Linux include a **virtual filesystem** \(VFS\) layer. This layer hides all details regarding the underlying filesystem\(s\) from the higher level consumers.
 
-![](assets/de9a5b7e-fde3-4c19-9d65-7bffdc72a9b0.png)
+![](../assets/de9a5b7e-fde3-4c19-9d65-7bffdc72a9b0.png)
 
 Applications continue to interact with the VFS using the same POSIX API as before, and the VFS specifies a more detailed set of filesystem-related abstractions that every single underlying filesystem must implement.
 
@@ -221,7 +221,7 @@ The ext2 filesystem was the default filesystem in Linux until it was replaced by
 
 A disk partition that is used as a ext2 Linux filesystem looks as follows.
 
-![](assets/e63dedae-89a8-4a35-b994-24482ec5fe27.png)
+![](../assets/e63dedae-89a8-4a35-b994-24482ec5fe27.png)
 
 The first block is not used by Linux and is often used to boot the system.
 
@@ -251,7 +251,7 @@ Finally, the block group contains the actual data blocks themselves that hold th
 
 Inodes play a key role in organizing how files are stored on disk because they essentially integrate an index of all of the disk blocks that correspond to a particular file.
 
-![](assets/4fc8ecb4-6fb8-40ac-a066-fab96a8cb28e.png)
+![](../assets/4fc8ecb4-6fb8-40ac-a066-fab96a8cb28e.png)
 
 A file is uniquely identified by its inode. The inode contains a list of all of the blocks that correspond to the actual file. In addition to the list of blocks, an inode also contains additional metadata information.
 
@@ -265,7 +265,7 @@ The downside of this approach is that there is a limit on the file size for file
 
 One way to solve the issue of file size limits is to use **indirect pointers**.
 
-![](assets/04e687df-cb15-4c86-a420-625b1288aef9.png)
+![](../assets/04e687df-cb15-4c86-a420-625b1288aef9.png)
 
 The first section of blocks contain blocks that point directly to data. The direct pointers will point to 1kb per entry.
 

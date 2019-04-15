@@ -70,7 +70,7 @@ Linux by default uses a modification of the LRU cache that incorporates a second
 
 ### How does address translation work? What’s the role of the TLB?
 
-![](assets/page_table_actions.svg.png)
+![](../assets/page_table_actions.svg.png)
 
 Virtual address first passed to the translation lookaside buffer \(TLB\), which is a hardware-maintained cache of address translations. If this cache has a present physical address for the virtual address, the access can proceed. Otherwise, the OS has to walk the page table, and find the appropriate translation for the virtual address. Once this mapping is found, it is written to the TLB and access proceeds through the TLB.
 
@@ -317,7 +317,7 @@ In platform as a service \(PaaS\) systems, the provider owns the infrastructure 
 
 In infrastructure as a service \(IaaS\) systems, the providers owns the physical hardware. The developer brings the applications, the data, and is responsible for configuring the infrastructure, such as the middleware and the operating system. Amazon EC2 is an example of an IaaS platform.
 
-![](assets/81dbaa16-6af2-4ceb-9840-665f49f5001b%20%281%29.png)
+![](../assets/81dbaa16-6af2-4ceb-9840-665f49f5001b%20%281%29.png)
 
 There are many different technologies that enable cloud computing. Virtualization technologies help to make physical hardware into fungible resources that can be repurposed for different workloads. Technologies for resource provisioning help to ensure that resources are created quickly and consistently. Big data technologies - both for processing and storage - allow clients to scale very widely. Monitoring technologies are also crucial for enabling cloud computing. These technologies help datacenter operators preside over their data centers, responding quickly and effectively in the event of an incident. In addition, these technologies help clients perform similar sort of investigative tasks with respect to the applications they run in the datacenter.
 

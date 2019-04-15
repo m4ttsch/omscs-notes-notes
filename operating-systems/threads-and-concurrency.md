@@ -26,7 +26,7 @@ Each and every thread has its own data structure to represent information specif
 
 A multithreaded process will have a more complex process control block structure, as these thread specific execution contexts needs to be incorporated.
 
-![](assets/984d3189-6cac-4eda-8c68-d0315ad3bed6.png)
+![](../assets/984d3189-6cac-4eda-8c68-d0315ad3bed6.png)
 
 ## Benefits of Multithreading
 
@@ -54,13 +54,13 @@ Consider the situation where a single thread makes a disk request. The disk need
 
 Now, this is true for both processes and threads. One of the most time consuming parts of context switching for processes is setting up the virtual to physical mappings. Thankfully, when we are context switching with threads, we are using the same mappings because we are within the same process. This brings down the total time to context switch, which brings up the number of opportunities in which switching threads can be useful.
 
-![](assets/4b5064d0-7b6a-4eec-9503-895184ea5707.png)
+![](../assets/4b5064d0-7b6a-4eec-9503-895184ea5707.png)
 
 ## Benefits of Multithreading: Apps and OS Code
 
 By multithreading the operating system kernel, we allow the operating system to support multiple execution contexts, which is particularly useful when we do have multiple CPUs, which allows the execution contexts to operate concurrently. The OS threads may run on behalf of different application or OS-level services like daemons and device drivers.
 
-![](assets/96b2d50d-5518-486f-afa3-9fc1cafb5566.png)
+![](../assets/96b2d50d-5518-486f-afa3-9fc1cafb5566.png)
 
 ## Basic Thread Mechanisms
 
@@ -97,13 +97,13 @@ One mechanism that can handle this is the `join` mechanism. When the parent thre
 
 ## Thread Creation Example
 
-![](assets/f3c7bfc2-f512-478d-a6bc-ecf6cda6eeb5.png)
+![](../assets/f3c7bfc2-f512-478d-a6bc-ecf6cda6eeb5.png)
 
 **NB**: because we do not know which thread will run at which time in this example, we cannot be certain of the ordering of the elements in the list. Perhaps the child thread inserts its element before the parent thread, or perhaps the parent thread inserts first. This is a concrete example of the _data race_ described above.
 
 ## Mutexes
 
-![](assets/e4dbe552-3589-4160-88e0-257ec1b5d20a.png)
+![](../assets/e4dbe552-3589-4160-88e0-257ec1b5d20a.png)
 
 Many steps required to add an element to the list. Think about two threads - A and B - trying to insert elements into the list. Here is a problematic scenario that can occur.
 
@@ -132,18 +132,18 @@ The portion of the code protected by the mutex is called the **critical section*
 
 Threads are mutually exclusive with one another with respect to their execution of the critical section of the code. That is, the critical section will ever only be executed by one thread at a given moment in time.
 
-![](assets/05f6a738-de5b-419a-8bcc-79914da1b6bd.png)
+![](../assets/05f6a738-de5b-419a-8bcc-79914da1b6bd.png)
 
 The mutex can be unlocked in two ways, depending on the implementation:
 
 * the end of a clause following a lock statement is reached
 * an unlock function is explicitly called
 
-![](assets/717286ad-8502-4612-a324-6c832ee627fa.png)
+![](../assets/717286ad-8502-4612-a324-6c832ee627fa.png)
 
 ## Mutex Example
 
-![](assets/596c65a0-dc4b-4e6c-8451-8ba0f2bf0544.png)
+![](../assets/596c65a0-dc4b-4e6c-8451-8ba0f2bf0544.png)
 
 ## Producer and Consumer Example
 
@@ -153,7 +153,7 @@ What if the processing you wish to perform needs to occur with mutual exclusion,
 
 For example, what if we have a number of producer threads adding values to a list, and one consumer thread that needs to wait until, say, the list is full? We want to ensure that the consumer thread executes only when the condition is met.
 
-![](assets/eda4a436-ca50-4ed0-baef-635d8df3cd2a.png)
+![](../assets/eda4a436-ca50-4ed0-baef-635d8df3cd2a.png)
 
 Note that this strategy is kind of wasteful. Ideally we wouldn't want our consumer thread to loop but rather our producers to be able to notify the consumer when the list is full.
 
@@ -161,7 +161,7 @@ Note that this strategy is kind of wasteful. Ideally we wouldn't want our consum
 
 A **condition variable** is a construct that can be used in conjunction with mutexes to control the execution of concurrent threads.
 
-![](assets/d6dfdeb1-9ac5-419b-bb33-9f5f2699aee3.png)
+![](../assets/d6dfdeb1-9ac5-419b-bb33-9f5f2699aee3.png)
 
 When a consumer sees that it must wait, it makes a call to the **wait** function, passing in mutex and the condition variable it must on.
 
@@ -214,13 +214,13 @@ We can condense our two counters into one variable, `resource_counter`. If the `
 
 Our `resource_counter` is a **proxy variable** that reflects the state that the current resource is in. Instead of controlling updates to the shared state, we can instead control access to this proxy variable. As long as any update to the shared state is first reflected in an update to the proxy variable, we can ensure that our state is accessed via the policies we wish to enforce.
 
-![](assets/e04d6e34-cc4a-44ed-a448-11d9b3d023ab.png)
+![](../assets/e04d6e34-cc4a-44ed-a448-11d9b3d023ab.png)
 
 ## Readers/Writer Example
 
 Let’s make our previous discuss concrete with an example.
 
-![](assets/82238159-e5c0-4b01-a887-9946a2cbb3d4.png)
+![](../assets/82238159-e5c0-4b01-a887-9946a2cbb3d4.png)
 
 In this example, we can see that our reading and writing operations exist outside of a locked mutex, but are preceded and followed by a mutex enforced update to the shared variable, `resource_counter`.
 
@@ -253,25 +253,25 @@ Even though we call `broadcast` before `signal` we don’t really have control o
 
 If we consider the reading and writing of the data to be the protected operations of the above application, then those sections of code are really the critical sections of our application, even though the exist outside of a mutex block.
 
-![](assets/cec2c229-0849-48e2-a098-58b3e26f5436.png)
+![](../assets/cec2c229-0849-48e2-a098-58b3e26f5436.png)
 
 The structure of our application is such that even though the critical operations are not governed by a mutex, entering and exiting from those operations is.
 
-![](assets/17c45807-015f-4b4b-8457-3403dc414a21.png)
+![](../assets/17c45807-015f-4b4b-8457-3403dc414a21.png)
 
 For example, before we can read data, we must first lock the mutex and increment `resource_counter`. As well, after we read data, we must again lock the mutex and decrement `resource_counter`. A similar setup exists for writing data.
 
 Each time we acquire the mutex, we must ensure that a condition is met such that we can proceed safely. If the condition is not met, we must wait. Once the condition is met, we can update our proxy variable. If appropriate, we can signal/broadcast to other threads if some condition has changed. Finally we can unlock the mutex.
 
-![](assets/359dcb22-6f78-4ff1-87e6-2ec2e7d1e554.png)
+![](../assets/359dcb22-6f78-4ff1-87e6-2ec2e7d1e554.png)
 
 The “enter critical section” blocks can be seen as a higher level “lock” operation, while the “exit critical section” blocks can be seen as a higher level “unlock” operation, even though a mutex is being locked and unlocked within each of those blocks.
 
-![](assets/e1172921-b522-4812-b54f-5d6106cbb30a.png)
+![](../assets/e1172921-b522-4812-b54f-5d6106cbb30a.png)
 
 ## Critical Section Structure With Proxy
 
-![](assets/fc626433-043f-4f39-88fb-54f5f184c381.png)
+![](../assets/fc626433-043f-4f39-88fb-54f5f184c381.png)
 
 Again, this structure allows up to implement more complex sharing scenarios than the simple mutual exclusion that mutexes allow.
 
@@ -291,7 +291,7 @@ Remember that the order of execution of threads is not related to the order in w
 
 ## Spurious Wake-ups
 
-![](assets/64285c7b-9c4a-4fd6-9631-b740c1d61227.png)
+![](../assets/64285c7b-9c4a-4fd6-9631-b740c1d61227.png)
 
 We have a setup similar to the readers/writer example we saw previously. In this case, the writer is locking the mutex after writing to the shared state. Once the mutex is acquired, the proxy variable is updated, and a broadcast and signal are sent.
 
@@ -305,7 +305,7 @@ Note that spurious wake ups will not affect the correctness of the program, but 
 
 Often we can unlock the mutex before we signal or broadcast. Sometimes we cannot. For example, if we signal/broadcast conditionally depending on some property of the shared state, that property must be accessed from within the mutex, which means the signal or broadcast must also take place within the mutex.
 
-![](assets/db2ec542-93fd-406d-ab18-b041037f0eed.png)
+![](../assets/db2ec542-93fd-406d-ab18-b041037f0eed.png)
 
 ## Deadlocks
 
@@ -383,7 +383,7 @@ If the threads have a process scope, this means that the kernel cannot see them,
 
 If we have a system scope, the user level threads will be visible at the kernel, so the kernel will allocate the CPU relative to the total amount of user threads, as opposed to the total amount of processes. In the case of A and B, if the threads in these processes have a system scope, A will most likely be allocated twice the number of kernel level threads as B.
 
-![](assets/29edc9a1-9608-4cdd-832e-8c268e93f031.png)
+![](../assets/29edc9a1-9608-4cdd-832e-8c268e93f031.png)
 
 ## Multithreading Patterns
 
@@ -441,7 +441,7 @@ The throughput of the pipeline will be dependent on the _weakest link_ in the pi
 
 The best way to pass work between these stages is a shared buffer base communication between stages. That means the thread for stage one will put its completed work on a buffer that the thread from stage two will read from and so on.
 
-![](assets/dedc3ac5-1bdc-4288-8fb0-20ae35a510c6.png)
+![](../assets/dedc3ac5-1bdc-4288-8fb0-20ae35a510c6.png)
 
 In summary, a pipeline is a sequence of stages, where a thread performs a stage in the pipeline, which is equivalent to some subtask within the end to end processing. To keep the pipeline balanced, a stage can be executed by more than one thread. Communication via shared buffers reduces coupling between the components of the system.
 
@@ -457,4 +457,4 @@ A benefit of this approach is that we can have specialization while being less f
 
 Downsides of this approach include that it may not be suitable for all applications and that synchronization may be more complex as each layer must know about the layers above and below it to both receive inputs and pass results.
 
-![](assets/2649776e-95fb-4692-8f9c-ec4574a421ea.png)
+![](../assets/2649776e-95fb-4692-8f9c-ec4574a421ea.png)

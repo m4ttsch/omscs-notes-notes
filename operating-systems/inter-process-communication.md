@@ -18,7 +18,7 @@ Finally, the need for communication and coordination illustrates the necessity o
 
 In messaged-based IPC, processes create messages and then send and receive them. The operating system is responsible for creating and maintaining the channel that is used to send these messages.
 
-![](assets/68065b2a-21f6-4052-bd65-47800eeee360.png)
+![](../assets/68065b2a-21f6-4052-bd65-47800eeee360.png)
 
 The OS provides an interface to the processes so that they can send messages via this channel. The processes send/write messages to a port, and then recv/read messages from a port. The channel is responsible for passing the message from one port to the other.
 
@@ -36,7 +36,7 @@ The are several ways to implement message-based IPC.
 
 Pipes are characterized by two endpoints, so only two processes can communicate via a pipe. There is no notion of a message with pipes; instead, there is just a stream of bytes pushed into the pipe from one process and read from the pipe by the other process.
 
-![](assets/c3abc9f5-3df1-4795-a5ed-0ee0d815a999.png)
+![](../assets/c3abc9f5-3df1-4795-a5ed-0ee0d815a999.png)
 
 One popular use of pipes is to connect the output from one process to the input of another.
 
@@ -51,7 +51,7 @@ cat /some/really/large/file | grep "needle in a haystack"
 
 Messages queues understand the notion of messages that they can deliver. A sending process must submit a properly formatted message to the channel, and then the channel can deliver this message to the receiving process.
 
-![](assets/cc5c29f1-46d7-49f3-a77a-e95eeda3f086.png)
+![](../assets/cc5c29f1-46d7-49f3-a77a-e95eeda3f086.png)
 
 The OS level functionality regarding message queues includes mechanisms for message priority, custom message scheduling and more.
 
@@ -61,7 +61,7 @@ The use of message queues is supported via different APIs in Unix-based systems.
 
 With sockets, processes send and receive messages through the socket interface. The socket API supports `send` and `recv` operations that allow processes to send message buffers in and out of the kernel-level communication buffer.
 
-![](assets/5b515698-b3c8-4aa8-9866-853c236f4a31.png)
+![](../assets/5b515698-b3c8-4aa8-9866-853c236f4a31.png)
 
 The `socket` call itself creates a kernel-level socket buffer. In addition, it will associate any kernel level processing that needs to be associated with the socket along with the actual message movement.
 
@@ -73,7 +73,7 @@ Socket-based communication can happen between processes on different machines! I
 
 In shared memory IPC, processes read and write into a shared memory region. The operating system is involved in establishing the shared memory channel between the processes. What this means is that the OS will map certain physical pages in memory into the virtual address spaces of both processes. The virtual addresses in each process pointing a shared physical location do not have to be the same. In addition, the shared physical memory section does not need to be contiguous.
 
-![](assets/321e7afd-a603-4134-a47c-3a11f6a2cfc9.png)
+![](../assets/321e7afd-a603-4134-a47c-3a11f6a2cfc9.png)
 
 The big benefit of this approach is that once the physical memory is mapped into both address spaces, the operating system is out of the way. System calls are used only in the setup phase.
 
@@ -179,7 +179,7 @@ The keyword for this is `PTHREAD_PROCESS_SHARED`. If we specify this in the attr
 
 One very important thing to remember is that these data structures must also live in shared memory!
 
-![](assets/79bded5a-faa7-4ade-9c0e-2e696a76e998.png)
+![](../assets/79bded5a-faa7-4ade-9c0e-2e696a76e998.png)
 
 To create the shared memory segment, we first need to create our segment identifier. We do this with `ftok`, passing `arg[0]` which is the pathname for the program executable as well as some integer parameter. We pass this id into `shmget`, where we specify a segment size of 1KB and also pass in some flags.
 
@@ -203,7 +203,7 @@ Semaphores are an OS support synchronization construct and a binary semaphore ca
 
 ## IPC Command Line Tools
 
-![](assets/a87134c6-abef-4923-b993-8e3c48a4a8e6.png)
+![](../assets/a87134c6-abef-4923-b993-8e3c48a4a8e6.png)
 
 ## Design Considerations
 

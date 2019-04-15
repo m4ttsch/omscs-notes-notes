@@ -75,21 +75,21 @@ Since parent threads do not need to wait around until child threads complete, th
 
 Example of creating a new thread with custom options:
 
-![](assets/ae046645-2865-4d9e-9bb6-f6d29630925e.png)
+![](../assets/ae046645-2865-4d9e-9bb6-f6d29630925e.png)
 
 ## Compiling PThreads
 
-![](assets/db37467e-c553-47ff-ab93-c9a563e19c37.png)
+![](../assets/db37467e-c553-47ff-ab93-c9a563e19c37.png)
 
 ## PThread Creation Example 1
 
-![](assets/f9c7dd92-0cba-4f3f-a956-447277ad1fcf.png)
+![](../assets/f9c7dd92-0cba-4f3f-a956-447277ad1fcf.png)
 
 We loop and create threads with `pthread_create` passing in `hello` as the start routine. Since this function takes no arguments we pass `NULL` as the fourth argument to the function. Also, since we do not need any custom behavior, we pass `NULL` as the second argument. After we create the threads we must join them all back in.
 
 ## PThread Creation Example 2
 
-![](assets/e7949c2e-e41f-4f6e-89cd-187f515770a0.png)
+![](../assets/e7949c2e-e41f-4f6e-89cd-187f515770a0.png)
 
 In this case, the call to `pthread_create` passes in a value for the final parameter \(the argument to pass to the start routine\). This value is the pointer to current value of `i` the loop counter. In `threadFunc`, the pointer is first cast to an integer pointer, before a local variable is assigned to the value the pointer points to. Finally, the value is printed out.
 
@@ -114,7 +114,7 @@ We call the above situation a **data race** or **race condition**. In summary, t
 
 To correct the problem, we must first initialize an array `tNum` that contains as many elements as we have threads. One each iteration of the `for` loop, we can set the index of `tNum` at `i` to `i`. We can then pass the address of `tNum[i]` to the call to `pthread_create`. This way we can increment `i`, while ensuring that the value of `i` that a thread needs to see does not change. We accomplish by copying the value of `i` over to this private storage that we do not modify.
 
-![](assets/b5db4fd0-c1d8-4180-a2a9-d4e8bfb93f7e.png)
+![](../assets/b5db4fd0-c1d8-4180-a2a9-d4e8bfb93f7e.png)
 
 ## PThread Mutexes
 
@@ -207,7 +207,7 @@ Let’s walk through a real producer/consumer example using PThreads.
 
 ### Global State
 
-![](assets/8ec12822-fd53-44f6-8e53-adc3504dbf41.png)
+![](../assets/8ec12822-fd53-44f6-8e53-adc3504dbf41.png)
 
 Our shared buffer is `buffer`. `add` and `rem` refer to the indices at which we add and remove elements, respectively, while `num` refers to the number of elements in the queue.
 
@@ -217,7 +217,7 @@ Finally, we define our two procedures: `producer` which will be operated by the 
 
 ### Main
 
-![](assets/bab41e1c-b65f-4409-948c-8afbd2203d1c.png)
+![](../assets/bab41e1c-b65f-4409-948c-8afbd2203d1c.png)
 
 The first thread that we create will be created to execute the `producer` function, and the second thread we create will execute the `consumer` function.
 
@@ -225,7 +225,7 @@ We use the default behavior for these threads \(i.e. they are not detachable\), 
 
 ### Producer
 
-![](assets/91ce2bf6-f3dc-4b8a-9f65-bf320c4d2de6.png)
+![](../assets/91ce2bf6-f3dc-4b8a-9f65-bf320c4d2de6.png)
 
 The producer loops twenty times, and tries to produce an element to the share buffer on each iteration.
 
@@ -235,7 +235,7 @@ Once the producer unlocks the mutex, it signals on `c_cons` with `pthread_cond_s
 
 ### Consumer
 
-![](assets/6454827d-99ff-45dd-a6a6-aa55b2f7c647.png)
+![](../assets/6454827d-99ff-45dd-a6a6-aa55b2f7c647.png)
 
 The consumer loops forever, continuously trying to remove elements from the shared buffer.
 

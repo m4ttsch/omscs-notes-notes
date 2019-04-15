@@ -90,15 +90,15 @@ In particular, we’d like to maintain the following invariants
 ### Example of Inconsistent Write
 Consider the following network, which is performing shortest path routing to some destination.
 
-![](assets/4CF54DD1-8543-433E-BB3D-8FB1713545F5.png)
+![](../assets/4CF54DD1-8543-433E-BB3D-8FB1713545F5.png)
 
 Traffic in the network would flow along the following path.
 
-![](assets/0F726FAB-72C2-4CF8-8C5C-C4153B30E8AA.png)
+![](../assets/0F726FAB-72C2-4CF8-8C5C-C4153B30E8AA.png)
 
 Suppose an operator wants to change the network state to shift traffic off of one link. This can be accomplished by adjusting the link weight.
 
-![](assets/1B785664-4604-439F-A4D5-15046068D5E8.png)
+![](../assets/1B785664-4604-439F-A4D5-15046068D5E8.png)
 
 In doing so, the new shortest path is adjusted.
 
@@ -106,7 +106,7 @@ What if the state change in the top switch occurred before the state in the bott
 
 In this case, we would have a potential forwarding loop.
 
-![](assets/EEBB0CBF-F22D-4D75-8738-BC2E875242BC.png)
+![](../assets/EEBB0CBF-F22D-4D75-8738-BC2E875242BC.png)
 
 The top switch - with the new state - would forward to the bottom switch, and that switch - with the old state - would forward back to the top switch.
 
@@ -146,7 +146,7 @@ A packet destined from A to B in the logical topology might be encapsulated in a
 
 ### Analogy to Virtual Machines
 
-![](assets/57CA093C-91A7-4DD5-8DD4-22829F9398E9.png)
+![](../assets/57CA093C-91A7-4DD5-8DD4-22829F9398E9.png)
 
 ## Why Use Network Virtualization?
 One of the main motivations for the rise of virtual networking was the *ossification* of the internet architecture.
@@ -225,7 +225,7 @@ A network namespace is kind of like a VM, but much more lightweight.
 
 The root namespace manages the communication between these distinct virtual nodes as well as the switch that connects these nodes in the topology that you create.
 
-![](assets/AC3EB36B-46E8-40AA-AEBB-E113FEC02BA8.png)
+![](../assets/AC3EB36B-46E8-40AA-AEBB-E113FEC02BA8.png)
 
 Virtual ethernet pairs are assigned to namespaces. For example, S1/Eth1 is assigned to an interface in h2’s network namespace, and S1/Eth2 is assigned to an interface in h3’s network namespace.
 
@@ -260,7 +260,7 @@ Currently, there is no standard for the northbound API like there is for the sou
 ## Frenetic Language
 One example of a programming language that sits on top of the northbound API is [frenetic](http://frenetic-lang.org/), a SQL-like query language.
 
-![](assets/11DC761F-4CB2-43A2-88B5-A1D37437C7F1.png)
+![](../assets/11DC761F-4CB2-43A2-88B5-A1D37437C7F1.png)
 
 In this example, frenetic is being used to count the number of bytes coming in on port 80, grouped by destination MAC address, with the updates to the counters being reported every 60 seconds.
 

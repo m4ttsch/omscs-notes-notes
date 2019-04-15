@@ -28,7 +28,7 @@ Different types of process state in an address space:
   * LIFO
   * Stack frames added and removed as functions are called and return
 
-![](assets/9aa4a864-5e7f-40ab-9e02-a1eab43d34e6.png)
+![](../assets/9aa4a864-5e7f-40ab-9e02-a1eab43d34e6.png)
 
 ## Process Address Space
 
@@ -40,7 +40,7 @@ For example, data may live at `0x03c5` in the virtual address space and this may
 
 The operating system creates a mapping between the virtual address and the physical address so that processes can access their data without knowing its physical location. This mapping is called a **page table**.
 
-![](assets/d3cea64c-2dac-4f2b-bf4b-8f7b6d143842.png)
+![](../assets/d3cea64c-2dac-4f2b-bf4b-8f7b6d143842.png)
 
 ## Address Space and Memory Management
 
@@ -90,7 +90,7 @@ If a process is interrupted by the operating system - perhaps to give another pr
 
 Each time the operating system switches between processes, we call this a **context switch**.
 
-![](assets/fa0c9097-cc39-422b-8281-20c1b8964c27.png)
+![](../assets/fa0c9097-cc39-422b-8281-20c1b8964c27.png)
 
 ## Context Switch
 
@@ -110,7 +110,7 @@ Basically, we want to limit how often we context switch!
 
 When a process is created, it is in the _new_ state. This is when the OS performs admission control, and allocates/initializes the PCB for this process. At this point, the process moves to the _ready_ state, where it is ready to start executing, but isn't currently executing. When the scheduler schedules the process and it moves on to the CPU it is in the _running_ state. The process can be interrupted and a context switch can be performed. This moves the process back to the _ready_ state. Alternatively, the running process may need to perform some I/O operation or wait on an event, at which point the process enters a _waiting_ state. The process can then move back to _ready_ when the I/O operation completes or the event occurs. Finally, a process can exit, with or without error, and at this point the process is _terminated_.
 
-![](assets/e65850cd-7381-48db-a3ab-6e2a386428cd.png)
+![](../assets/e65850cd-7381-48db-a3ab-6e2a386428cd.png)
 
 ## Process Life Cycle: Creation
 
@@ -139,7 +139,7 @@ The operating system must be able **preempt**; that is, interrupt the current pr
 
 Since CPU resources are precious, the operating system needs to make sure that it spends the bulk of its time running processes, NOT making scheduling decisions.
 
-![](assets/daf29ea9-7360-4f5c-9765-8d39e7ffb6ef.png)
+![](../assets/daf29ea9-7360-4f5c-9765-8d39e7ffb6ef.png)
 
 ## Length of Process
 
@@ -151,7 +151,7 @@ For example, if the number of blocks of time spent scheduling equals the number 
 
 On the other hand, if the same number of blocks are spent scheduling as are spent executing, but the process runs for 10 times the length of the scheduling block, the efficiency increases to over 90%!
 
-![](assets/f718d68a-984a-41ad-9efd-09fdf30c2093.png)
+![](../assets/f718d68a-984a-41ad-9efd-09fdf30c2093.png)
 
 The amount of time that has been allocated to a process that is scheduled to run is known as a **timeslice**.
 
@@ -166,7 +166,7 @@ When a process makes an I/O request, the operating system will deliver that requ
 
 Processes can end up on the ready queue in a few ways.
 
-![](assets/80bb70e4-b83b-42c4-9860-760d5ac3ea7c.png)
+![](../assets/80bb70e4-b83b-42c4-9860-760d5ac3ea7c.png)
 
 ## Inter Process Communication
 
@@ -186,7 +186,7 @@ Benefits of this approach is that the operating system will manage this channel,
 
 Downsides are overhead. Every single piece of information to be transmitted needs to be copied from address space of sending process into memory allocated to the kernel, and then finally into the address space of the receiving process.
 
-![](assets/0be38751-7d8f-4dcb-aa5f-d4cf90216eae.png)
+![](../assets/0be38751-7d8f-4dcb-aa5f-d4cf90216eae.png)
 
 ### Shared Memory IPC
 
@@ -196,4 +196,4 @@ The operating system is completely out of the picture in this case, which is the
 
 The disadvantage to this approach is that because the OS is out of the way, a lot of the APIs that were taken for granted in message passing IPC have to be reimplemented.
 
-![](assets/4f0200fd-93b6-4d98-b703-9c4ec18a6b18.png)
+![](../assets/4f0200fd-93b6-4d98-b703-9c4ec18a6b18.png)

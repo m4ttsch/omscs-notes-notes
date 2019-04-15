@@ -30,7 +30,7 @@ Finally, files can be stored on and served from all machines. This blurs the lin
 
 At one extreme, we have the upload/download model. When a client wants to access a file, it downloads the entire file, performs the modifications and then uploads the entire file back to the server.
 
-![](assets/b02657e2-d79b-43ab-87f4-7b75275ca3cb.png)
+![](../assets/b02657e2-d79b-43ab-87f4-7b75275ca3cb.png)
 
 The benefit of this model is that all of the modifications can be done locally, which means they can be done quickly, without incurring any network cost.
 
@@ -38,7 +38,7 @@ One downside of this model is that the client has to download the entire file, e
 
 At the other extreme, we have the true remote file access. In this model, the file remains on the server and every single operation has to pass through the server. The client makes no attempt to leverage any kind of local caching or buffering.
 
-![](assets/4358eb0f-c95f-4106-a8ed-74e92e275263.png)
+![](../assets/4358eb0f-c95f-4106-a8ed-74e92e275263.png)
 
 The benefit of this extreme is that the server now has full control and knowledge of how the clients are accessing and modifying a file. This makes it easier to ensure that the state of the filesystem is consistent.
 
@@ -98,13 +98,13 @@ For client/server systems, these coherence mechanisms may be trigged in differen
 
 Whenever a file is modified by any process, that change is immediately visible to any other process in the system. This will be the case even if the change isn’t pushed out to disk because both processes have access to the same buffer cache.
 
-![](assets/78f61aeb-f700-4cee-8d92-14b7d8e0fc26.png)
+![](../assets/78f61aeb-f700-4cee-8d92-14b7d8e0fc26.png)
 
 ### DFS
 
 Even if a write gets pushed to the file server immediately, it will take some time before that update is actually delivered to the file server. It is possible that another client will not see that update for a while, and every time it performs a read operation it will continue seeing “stale” data. Given that message latencies may vary, we have no way of determining how long to delay any possible read operation in order to make sure that any write from anywhere in the system arrives at the file servers so that we can guarantee no staleness.
 
-![](assets/4559fb2e-50bc-44bb-8a2c-39c2159b9945.png)
+![](../assets/4559fb2e-50bc-44bb-8a2c-39c2159b9945.png)
 
 In order to maintain acceptable performance, a DFS will typically sacrifice some of the consistency, and will accept more relaxed file sharing semantics.
 
@@ -160,7 +160,7 @@ Finally, we can have a solution where the filesystem is partitioned across some 
 
 In a **Networking File System** \(NFS\), clients access files across the network, hence the name.
 
-![](assets/8eb8e1fb-c4ff-427c-a887-cd2b754a4de0.png)
+![](../assets/8eb8e1fb-c4ff-427c-a887-cd2b754a4de0.png)
 
 Clients request and access files via the VFS, using the same types of file descriptors and operations that they use to access files in their local storage. The VFS layer determines if the file belongs to the local filesystem or whether the request needs to be pushed to the NFS client so that it can be passed to the remote filesystem.
 
@@ -186,7 +186,7 @@ NFSv4 also supports a reader/writer lock called “share reservation”. It also
 
 ## Sprite Distributed File System
 
-![](assets/bf2f3d15-e0ce-4dfe-b0df-eff69297e33e.png)
+![](../assets/bf2f3d15-e0ce-4dfe-b0df-eff69297e33e.png)
 
 ## Sprite DFS Access Pattern Analysis
 

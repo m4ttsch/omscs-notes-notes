@@ -29,7 +29,7 @@ Now the local resolver will issue the same A record query to the edu servers. Th
 
 Finally, the local resolver will issue the same query to the authoritative server for the GATech hierarchy, at which point it may receive the actual IP address that corresponds to the domain name in question.
 
-![](assets/FD099829-5459-48C5-978C-04801A6CA9E8.png)
+![](../assets/FD099829-5459-48C5-978C-04801A6CA9E8.png)
 
 ### Caching and TTL
 
