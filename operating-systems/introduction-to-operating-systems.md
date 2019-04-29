@@ -1,5 +1,8 @@
-# Introduction To Operating Systems
-#gios
+---
+id: introduction-to-operating-systems
+title: Introduction To Operating Systems
+sidebar_label: Introduction To Operating Systems
+---
 
 ## What is an operating system?
 Let’s first look at the hardware of a computing system. This computing system consists of:

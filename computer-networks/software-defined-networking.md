@@ -1,5 +1,8 @@
-# Software Defined Networking
-#cn
+---
+id: software-defined-networking
+title: Software Defined Networking
+sidebar_label: Software Defined Networking
+---
 
 ## Network Management Overview
 Network management is the process of configuring the network to achieve a variety of tasks, such as
@@ -39,7 +42,7 @@ Third, SDN provides the network operator direct control. Rather than requiring n
 
 This doesn’t mean that routers are no longer important!
 
-Routers should still forward traffic since router hardware is specialized to forward traffic at very high rates. In addition, routers should still collect measurements such as a traffic statistics and topology information. 
+Routers should still forward traffic since router hardware is specialized to forward traffic at very high rates. In addition, routers should still collect measurements such as a traffic statistics and topology information.
 
 However, there is no inherent reason that a router needs to compute routes. Even though routing has conventionally operated as a distributed computation of forwarding tables, that computation doesn’t need to run on the routers.
 
@@ -57,7 +60,7 @@ In order for the data plane to fulfill its responsibility, the network needs the
 
 These pieces of state are the **routing tables**, and the **control plane** is responsible for their computation.
 
-In conventional networks, the control and data plane both run on the routers that are distributed across the network. 
+In conventional networks, the control and data plane both run on the routers that are distributed across the network.
 
 In an SDN, the control plane runs in a logically centralized controller, and usually controls all of the routers in the network, providing a network-wide view.
 
@@ -105,7 +108,7 @@ SDN has many applications, including
 - backbone networks
 - enterprise networks
 - internet exchange points (IXP)
-- home networks 
+- home networks
 
 ## Control and Data Planes
 The control plane contains the logic that controls forwarding behavior. Control plane functions include
@@ -116,7 +119,7 @@ A routing protocol might compute shortest paths over the topology, but ultimatel
 
 The forwarding table entries themselves and the actions associated with forwarding traffic according to the control plane logic is what constitutes the data plane.
 
-Examples of data plane function include forwarding packets at the IP layer and switching at layer 2. 
+Examples of data plane function include forwarding packets at the IP layer and switching at layer 2.
 
 ### Why separate data and control?
 Separating the data and control planes allows for independent evolution and development. This means that software control of the network can evolve independently of network hardware.
@@ -138,7 +141,7 @@ Data centers typically consist of many racks of servers, and any particular clus
 
 A significant problem faced by data centers is provisioning/migrating these machines in response to variable traffic load.
 
-SDN solves this problem by programming switch state from a central database. 
+SDN solves this problem by programming switch state from a central database.
 
 If two VMs in the datacenter need to communicate, the forwarding state in the switches in the data center ensure that traffic is forwarded correctly.
 
@@ -151,9 +154,9 @@ This type of migration is also made easier by the fact that these servers are ad
 This means that a server can be migrated from one portion of the data center to another without requiring the VM to obtain new addresses.
 
 ### Backbone Security
-In backbone networks, filtering attack traffic is a regular network management task. 
+In backbone networks, filtering attack traffic is a regular network management task.
 
-Suppose that an attacker is sending a lot of traffic towards a victim. 
+Suppose that an attacker is sending a lot of traffic towards a victim.
 
 A measurement system might detect the attack and identify the entry point, at which point the controller might install a null route so that no more traffic reaches the victim from the attacker.
 
@@ -164,13 +167,13 @@ In SDN, a single control element might be responsible for thousands of forwardin
 
 While the controller is logically centralized, there may be many physical replicas for the sake of redundancy/reliability. As a result, we need to ensure that different controller replicas see the same view of the network so that they make consistent decisions when installing state in the data plane.
 
-A final challenge is security/robustness. In particular, we want to make sure that the network continues to function correctly in the event that a controller replica fails or is compromised. 
+A final challenge is security/robustness. In particular, we want to make sure that the network continues to function correctly in the event that a controller replica fails or is compromised.
 
 ## Different SDN Controllers
 ![](../assets/AF8862F8-DC7D-426F-BD84-DF1B02B4E107.png)
 
 ## NOX: Overview
-[NOX](noxrepo.org) is a first-generation OpenFlow controller. It is open-source, stable and widely used. 
+[NOX](noxrepo.org) is a first-generation OpenFlow controller. It is open-source, stable and widely used.
 
 There are two flavors of NOX
 - “classic” NOX (C++/Python, no longer supported)
@@ -179,7 +182,7 @@ There are two flavors of NOX
 ### Architecture
 In a NOX network, there may be a set of switches and various network-attached servers. The controller maintains a network view and may also run several applications that run on top of that network view.
 
-The basic abstraction that NOX supports is the switch control abstraction, whereby OpenFlow is the prevailing protocol. 
+The basic abstraction that NOX supports is the switch control abstraction, whereby OpenFlow is the prevailing protocol.
 
 Control is defined at the granularity of flows, which are defined by a 10-tuple in the original OpenFlow specification.
 
@@ -205,7 +208,7 @@ The controller also keeps track of a network view which includes a view of the u
 ### Characteristics
 NOX is implemented in C++ and supports OpenFlow 1.0. A fork of NOX - known as CPQD - supports OpenFlow 1.1-1.3.
 
-The programming model is event based, and a programmer can write an application by writing event handlers for the NOX controller. 
+The programming model is event based, and a programmer can write an application by writing event handlers for the NOX controller.
 
 NOX provides good performance, but requires you to understand the semantics of low-level OpenFlow commands.
 
@@ -213,7 +216,7 @@ NOX also requires the programmer to write the control application in C++.
 
 To address the shortcomings that are associated with development in C++, **POX** was developed.
 
-POX is widely used, maintained and supported. It is also easy to use and easy to read/write the control programs, as POX is implemented in Python. 
+POX is widely used, maintained and supported. It is also easy to use and easy to read/write the control programs, as POX is implemented in Python.
 
 However, the performance of POX is not as good as the performance of NOX.
 
@@ -228,7 +231,7 @@ It’s possible to develop programming languages on top of these controllers tha
 ### Hubs
 A hub maintains no state about which output port a packet should be forwarded to reach a particular destination. Therefore, when a host sends a packet to a hub, the hub simply floods the input packet on every output port.
 
-In POX, this code is fairly simple. 
+In POX, this code is fairly simple.
 
 ![](../assets/BAE9C00C-2F3F-4591-A43A-B1650F44ABE4.png)
 
@@ -243,11 +246,11 @@ If the packet is a multicast packet, the controller instructs the switch to floo
 
 If there is no destination for that packet, the controller also instructs the switch to forward the packet on all output ports.
 
-If the source and destination address are the same, the controller instructs the switch to drop the packet. 
+If the source and destination address are the same, the controller instructs the switch to drop the packet.
 
 Otherwise the controller installs the flow table entry corresponding to that destination address and output port.
 
-Installing that flow table entry in the switch prevents future packets for that flow from being redirected to the controller. 
+Installing that flow table entry in the switch prevents future packets for that flow from being redirected to the controller.
 
 Instead, all subsequent packets for that flow can be handled directly by the switch, since it knows which output port to use to forward a packet to that particular destination.
 
@@ -261,6 +264,6 @@ If all of the fields are specified for forwarding out a particular output port, 
 If all of the flow specifications are wildcards except for the source MAC address, then we have a firewall. The controller might maintain a table that maps switches and source MAC addresses to a boolean value, forwarding the packet if the value is true and dropping it otherwise.
 
 ### Caching
-Packets only reach the controller if there is no flow table entry at the switch.  If there is an entry at the switch, the switch can just forward the packets directly. 
+Packets only reach the controller if there is no flow table entry at the switch.  If there is an entry at the switch, the switch can just forward the packets directly.
 
 When a controller decides to take an action on a packet, it installs that action in the switch, and the action is then cached until some later expiration time.

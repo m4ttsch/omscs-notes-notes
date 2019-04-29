@@ -1,5 +1,8 @@
-# Network Security
-#cn
+---
+id:  network-security
+title: Network Security
+sidebar_label: Network Security
+---
 
 ## Need for Network Security
 The internet is subject to a wide variety of attacks against various parts of the infrastructure.
@@ -11,7 +14,7 @@ BGP essentially allows any AS to advertise an IP prefix to a neighboring AS and 
 
 The attacks where an AS advertises a route that it does not own are called **route hijacks**.
 
-For example, on April 8, 2010, China advertised about 50,000 IP prefixes from 170 different countries. The attack lasted for about 20 minutes. In this particular case, the hijack appears to have been accidental because the prefixes were long enough such that they didn’t disrupt existing routes. 
+For example, on April 8, 2010, China advertised about 50,000 IP prefixes from 170 different countries. The attack lasted for about 20 minutes. In this particular case, the hijack appears to have been accidental because the prefixes were long enough such that they didn’t disrupt existing routes.
 
 On February 24, 2008, Pakistan hijacked the Youtube prefixes, potentially as a botched attempt to block Youtube in the country following a government order. Unfortunately, the event resulted in disruption of connectivity to Youtube for people all over the world.
 
@@ -42,7 +45,7 @@ In many cases, an attack might just look like normal traffic. For example, in th
 Finally, the internet’s federated design obstructs cooperation, diagnosis, and mitigation. Because the internet is run by tens of thousands of independent networks, it can be very difficult to coordinate a defense against an attack because each network is run by different operators, sometimes in completely different countries.
 
 ## Resource Exhaustion Attacks
-One of the internet’s fundamental design tenets is packet switching. 
+One of the internet’s fundamental design tenets is packet switching.
 
 In a packet-switched network, resources are not reserved, and packets are self-contained: each packet has a destination IP address and travels independently to the destination host.
 
@@ -75,7 +78,7 @@ There are various packet sniffing tools, such as [Wireshark](https://www.wiresha
 
 If Eve has her network card in promiscuous mode, she might be able to hear some of the packets that are flooded on the local area network and, if she is on the same LAN as Alice and Bob, some of those packets may be for their communication.
 
-It’s worth thinking about how different types of traffic might reveal important information about communication. 
+It’s worth thinking about how different types of traffic might reveal important information about communication.
 
 The ability to see DNS lookups would provide the attacker information about what websites you are visiting. The ability to capture packet headers might give the attacker information about what types of applications you are using. The ability to capture a full packet payload would allow an attacker to effectively see everything you are sending on the network.
 
@@ -91,7 +94,7 @@ These attacks can have serious negative effects, including
 - disruption of legitimate services
 
 ## Routing Security
-Our focus on routing security will primarily look at inter-domain routing, and the security of BGP. 
+Our focus on routing security will primarily look at inter-domain routing, and the security of BGP.
 
 We will further focus on control plane security, which typically involves authentication of the messages being advertised by the routing protocol.
 
@@ -113,7 +116,7 @@ To launch a route attack, an attacker might reconfigure the router or tamper wit
 The most common attack is a route hijack attack, which is an attack on origin authentication.
 
 ## Route Hijacking
-Suppose that you would like to visit a particular website. 
+Suppose that you would like to visit a particular website.
 
 To do so, you’d first need to issue a DNS query which traverses the hierarchy of DNS servers to find the authoritative nameserver for the website’s domain name and thus the IP address associated with that domain name.
 
@@ -129,7 +132,7 @@ In order to do this, the attacker needs to somehow disrupt the routes to the res
 
 ### Example
 Suppose the AS 200 originates a prefix and the paths that result from the original BGP routing below.
-  
+
 ![](../assets/C21DD724-5D50-49A9-97B9-E210F2B095CE.png)
 
 Now suppose that AS 100 seeks to become a MITM. If the original prefix being advertised was `P`, AS 100 could also advertise `P`.
@@ -148,9 +151,9 @@ Now all of the traffic en route to AS 200 will traverse AS 100.
 
 A `traceroute` might look funny taking this circuitous route, but the attacker can hide its presence even if the attacker is running `traceroute`.
 
-`traceroute` simply consists of ICMP time-exceeded messages when a packet reaches a TTL of 0. 
+`traceroute` simply consists of ICMP time-exceeded messages when a packet reaches a TTL of 0.
 
-Typically each router along a path will decrement the TTL at each hop. 
+Typically each router along a path will decrement the TTL at each hop.
 
 If the routers in the attacker’s network never decrement the TTL, no time-exceeded messages will be generated by routers in AS 100.
 
@@ -189,11 +192,11 @@ Let’s assume that we have a path with three ASes, and AS 1 wants to advertise 
 
 Each AS also has a private/public key-pair. An AS can sign a route with its own private key, and any other AS can check that signature with the signing AS’s public key.
 
-The BGP announcement from AS 1 to AS 2 will contain the prefix  `P` as well as the AS path, which so far is just `1`. 
+The BGP announcement from AS 1 to AS 2 will contain the prefix  `P` as well as the AS path, which so far is just `1`.
 
-This announcement will also contain the path attestation - the  path `2 1` - which is signed with the private key of AS 1. 
+This announcement will also contain the path attestation - the  path `2 1` - which is signed with the private key of AS 1.
 
-When AS 2 re-advertises the route announcement to AS 3, it advertises the new AS path `2 1`. 
+When AS 2 re-advertises the route announcement to AS 3, it advertises the new AS path `2 1`.
 
 It adds its own route attestation, `3 2 1` signed by its own private key, and it also includes the original path attestation, signed by AS 1.
 
@@ -201,7 +204,7 @@ It adds its own route attestation, `3 2 1` signed by its own private key, and it
 
 A recipient of a route along this path can thus verify every step of the AS path.
 
-For example, AS 3 can use the first part of the path attestation to verify that the path goes from AS 2 to AS 1 and does not contain any other ASes in between. 
+For example, AS 3 can use the first part of the path attestation to verify that the path goes from AS 2 to AS 1 and does not contain any other ASes in between.
 
 AS 3 can use the second part of the path attestation to ensure that the path between it and the next hop is AS 2, and that no other ASes could have inserted themselves between AS 2 and AS 3.
 
@@ -221,9 +224,9 @@ AS 4 cannot create this attestation, because it cannot forge AS 1’s signature 
 
 This is the reason why each AS signs a path attestation with not only its own AS in the path, but also the next AS along the path.
 
-Unfortunately, path attestation does not prevent against all types of attacks. If an AS fails to advertise a route or a route withdrawal, there is no way for the path attestation to prevent that. 
+Unfortunately, path attestation does not prevent against all types of attacks. If an AS fails to advertise a route or a route withdrawal, there is no way for the path attestation to prevent that.
 
-Path attestation can also not defend agains certain types of replay attacks, such as a premature re-advertisement of a withdrawn route. 
+Path attestation can also not defend agains certain types of replay attacks, such as a premature re-advertisement of a withdrawn route.
 
 Finally, there is no way to guarantee that the data traffic actually travels along the advertised AS path, which is a significant weakness of BGP that has yet to be solved by any routing protocol.
 
@@ -243,7 +246,7 @@ In addition, master and replica name servers can be spoofed. [Zone files](https:
 ![](../assets/3036162D-2F1F-4126-8CD8-BF31E0A387A8.png)
 
 ## Why is DNS Vulnerable?
-The fundamental reason for the vulnerability of DNS is that basic DNS protocols have no means of authenticating responses received by resolvers. 
+The fundamental reason for the vulnerability of DNS is that basic DNS protocols have no means of authenticating responses received by resolvers.
 
 Resolvers trust the responses they receive, which means that if an attacker is able to send a reply to a query faster than a legitimate DNS server, the resolver is likely to believe the attacker.
 
@@ -266,7 +269,7 @@ As long as the bogus response reaches the resolver before the legitimate respons
 
 Since DNS has no way to expunge a cached message, the recursive resolver will continue to send bogus responses for any A record query for this domain name until that entry expires from the cache.
 
-There are several defenses against cache poisoning. 
+There are several defenses against cache poisoning.
 
 Using a query ID is a defense, although a rather weak one, because it can be guessed. Naturally, the next defense is to randomize the ID instead of sending queries where the IDs increment in sequence.
 
@@ -276,7 +279,7 @@ To make matters worse, due to the [birthday paradox](https://en.wikipedia.org/wi
 
 The attack does not need to send replies with all 32,000 IDs.
 
-The success of a DNS cache poisoning attack depends not only on the ability to reply to a query with the correct query ID. 
+The success of a DNS cache poisoning attack depends not only on the ability to reply to a query with the correct query ID.
 
 It also depends on “winning the race”; that is, the attacker must reply to the query before the legitimate authoritative nameserver. If the attacker loses the race, then they have to wait for the cached entry to expire before trying again.
 
@@ -284,7 +287,7 @@ However, the attacker could generate their own DNS queries to send to the resolv
 
 Each one of these bogus queries will generate a new race, and eventually the attacker will win one of those races for an A record query.
 
-Of course, the attacker doesn’t actually want to own 1.google.com, they want to own all of google.com. 
+Of course, the attacker doesn’t actually want to own 1.google.com, they want to own all of google.com.
 
 The trick here is that instead of responding with just A records in the bogus replies, the attacker can also respond with NS records, for the entire zone of google.com, essentially making them the SOA for all of Google.
 
@@ -335,6 +338,6 @@ Thus, when the .com nameserver sends the next referral to google.com nameserver,
 
 Since the root nameserver had relayed the public key associated with the .com nameserver, the resolver can verify the referral from the .com nameserver.
 
-Similarly, the .com nameserver will return not only the IP address for google.com nameserver, but also the signed IP address and public key for the google.com authoritative nameserver. 
+Similarly, the .com nameserver will return not only the IP address for google.com nameserver, but also the signed IP address and public key for the google.com authoritative nameserver.
 
 In summary, each authoritative nameserver in the DNS hierarchy returns not only the referral but also a signature containing the IP address for that referral and the public key for the referred authoritative nameserver. This allows the resolver to verify signatures at the next lowest level of the hierarchy until we finally get the answer.

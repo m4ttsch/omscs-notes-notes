@@ -1,5 +1,8 @@
-# Inter-Process Communication
-#gios
+---
+id: inter-process-communication
+title: Inter-Process Communication
+sidebar_label: Inter-Process Communication
+---
 
 ## Inter Process Communication
 **Inter process communication** (IPC) refers to a set of mechanisms that the operating system must support in order to permit multiple processes to interact amongst each other. This include mechanisms related to synchronization, coordination and communication.
@@ -11,7 +14,7 @@ Another mechanism that provides higher level semantics with regards to IPC is **
 Finally, the need for communication and coordination illustrates the necessity of synchronization primitives.
 
 ## Message Based IPC
-In messaged-based IPC, processes create messages and then send and receive them. The operating system is responsible for creating and maintaining the channel that is used to send these messages. 
+In messaged-based IPC, processes create messages and then send and receive them. The operating system is responsible for creating and maintaining the channel that is used to send these messages.
 
 ![](../assets/68065B2A-21F6-4052-BD65-47800EEEE360.png)
 
@@ -34,7 +37,7 @@ Pipes are characterized by two endpoints, so only two processes can communicate 
 One popular use of pipes is to connect the output from one process to the input of another.
 
 ```bash
-# The | is the pipe operator. Here we pipe the output of `cat` 
+# The | is the pipe operator. Here we pipe the output of `cat`
 #  into `grep`.
 
 cat /some/really/large/file | grep "needle in a haystack"
@@ -44,17 +47,17 @@ cat /some/really/large/file | grep "needle in a haystack"
 Messages queues understand the notion of messages that they can deliver. A sending process must submit a properly formatted message to the channel, and then the channel can deliver this message to the receiving process.
 
 ![](../assets/CC5C29F1-46D7-49F3-A77A-E95EEDA3F086.png)
- 
-The OS level functionality regarding message queues includes mechanisms for message priority, custom message scheduling and more. 
+
+The OS level functionality regarding message queues includes mechanisms for message priority, custom message scheduling and more.
 
 The use of message queues is supported via different APIs in Unix-based systems. Two common APIs are SysV and POSIX.
 
 ### Sockets
-With sockets, processes send and receive messages through the socket interface. The socket API supports `send` and `recv` operations that allow processes to send message buffers in and out of the kernel-level communication buffer. 
+With sockets, processes send and receive messages through the socket interface. The socket API supports `send` and `recv` operations that allow processes to send message buffers in and out of the kernel-level communication buffer.
 
 ![](../assets/5B515698-B3C8-4AA8-9866-853C236F4A31.png)
 
-The `socket` call itself creates a kernel-level socket buffer. In addition, it will associate any kernel level processing that needs to be associated with the socket along with the actual message movement. 
+The `socket` call itself creates a kernel-level socket buffer. In addition, it will associate any kernel level processing that needs to be associated with the socket along with the actual message movement.
 
 For instance, the socket may be a TCP/IP socket, which means that the entire TCP/IP protocol stack is associated with the socket buffer.
 
@@ -65,7 +68,7 @@ In shared memory IPC, processes read and write into a shared memory region. The 
 
 ![](../assets/321E7AFD-A603-4134-A47C-3A11F6A2CFC9.png)
 
-The big benefit of this approach is that once the physical memory is mapped into both address spaces, the operating system is out of the way. System calls are used only in the setup phase. 
+The big benefit of this approach is that once the physical memory is mapped into both address spaces, the operating system is out of the way. System calls are used only in the setup phase.
 
 Data copies are reduced, but not necessarily avoided. For data to be available to both process, it needs to explicitly be allocated from the virtual addresses the belong to the shared memory region. If that is not the case, the data within the same address space needs to be copied in and out of the shared memory region.
 
@@ -80,7 +83,7 @@ In message-based IPC, this requires that the CPU is involved in copying the data
 
 In memory-based IPC, CPU cycles are spent to map physical memory into the address spaces of the processes. The CPU may also be involved in copying the data into the shared address space, but note that there is no user/kernel switching in this case.
 
-The memory-mapping operation is costly, but it is a one time cost, and can pay off even if IPC is performed once. In particular, when we need to move large amounts of data from one address space to another address space, the time it takes to copy - via message-based IPC - greatly exceeds the setup cost of the setup mapping performed in memory-based IPC. 
+The memory-mapping operation is costly, but it is a one time cost, and can pay off even if IPC is performed once. In particular, when we need to move large amounts of data from one address space to another address space, the time it takes to copy - via message-based IPC - greatly exceeds the setup cost of the setup mapping performed in memory-based IPC.
 
 Windows systems leverage this difference. If the data that needs to be transferred is smaller than a certain threshold, the data is copied in and out of a communication channel via a port-like interface. Otherwise the data is mapped into the address space of the target process. This mechanism is called **Local Procedure Calls** (LPC).
 
@@ -141,7 +144,7 @@ shmctl(shmid, cmd, buf)
 If we specify `IPC_RMID` as the `cmd`, we can destroy the segment.
 
 ## POSIX Shared Memory API
-The POSIX shared memory standard doesn’t use segments, but rather uses files. 
+The POSIX shared memory standard doesn’t use segments, but rather uses files.
 
 They are not “real” files that live in a filesystem that are used elsewhere by the operating system. Instead they are files that live in the *tmpfs* filesystem.  This filesystem is intended to look and feel like a filesystem, so the operating system can reuse a lot of the mechanisms that it uses for filesystems, but it is really just a bunch of state that is present in physical memory. The OS simply uses the same representation and the same data structures that are used for representing a file to represent a bunch of pages in physical memory that correspond to a share memory region.
 
@@ -162,7 +165,7 @@ One of the attributes that are used to specify the properties of the mutex or th
 The keyword for this is `PTHREAD_PROCESS_SHARED`. If we specify this in the attribute structs that are passed to mutex/condition variable initialization we will ensure that our synchronization variables will be visible across processes.
 
 One very important thing to remember is that these data structures must also live in shared memory!
- 
+
 ![](../assets/79BDED5A-FAA7-4ADE-9C0E-2E696A76E998.png)
 
 To create the shared memory segment, we first need to create our segment identifier. We do this with `ftok`, passing `arg[0]` which is the pathname for the program executable as well as some integer parameter. We pass this id into `shmget`, where we specify a segment size of 1KB and also pass in some flags.
@@ -173,7 +176,7 @@ Then we cast that address to the datatype of the struct we defined -  `shm_data_
 
 To actually create the mutex, we first have to create the mutexattr struct. Once we create this struct, we can set the pshared attribute with `PTHREAD_PROCESS_SHARED`. Then we initialize the mutex with that data structure, using the pointer to the mutex inside the struct that lives in the shared memory region.
 
-This set of operations will properly allocate and initialize a mutex that is shared amongst processes. 
+This set of operations will properly allocate and initialize a mutex that is shared amongst processes.
 
 ## Sync for Other IPC
 In addition, shared memory accesses can be synchronized using operating system provided mechanisms for inter-process interactions. This is particularly important because the `PTHREAD_PROCESS_SHARED` option for pthreads isn’t necessarily always supported on every platform.
@@ -188,13 +191,13 @@ Semaphores are an OS support synchronization construct and a binary semaphore ca
 ![](../assets/A87134C6-ABEF-4923-B993-8E3C48A4A8E6.png)
 
 ## Design Considerations
-Let’s consider two multithreaded processes in which the threads need to communicate via shared memory. 
+Let’s consider two multithreaded processes in which the threads need to communicate via shared memory.
 
-First, consider how many segments the processes will need to communicate. 
+First, consider how many segments the processes will need to communicate.
 
 Will you use one large segment? If so, you will have to implement some kind of management of the shared memory. You will need some manager that will be responsible for allocating and freeing memory in this region.
 
-Alternatively, you can have multiple segments, one for each pairwise communication. If you choose this strategy, it is probably a smart idea to pre-allocate a pool of segments ahead of time, so you don’t need to incur the cost of creating a segment in the middle of execution. With this strategy, you will also need to manage how these segments are picked up for use by the pairs. A queue of segment ids is probably sufficient. 
+Alternatively, you can have multiple segments, one for each pairwise communication. If you choose this strategy, it is probably a smart idea to pre-allocate a pool of segments ahead of time, so you don’t need to incur the cost of creating a segment in the middle of execution. With this strategy, you will also need to manage how these segments are picked up for use by the pairs. A queue of segment ids is probably sufficient.
 
 Second, you will need to think about how large your segments should be.
 

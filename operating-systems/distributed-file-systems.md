@@ -1,8 +1,11 @@
-# Distributed File Systems
-#gios
+---
+id: distributed-file-systems
+title: Distributed File Systems
+sidebar_label: Distributed File Systems
+---
 
 ## Distributed File Systems
-Modern operating systems export a high-level filesystem interface to abstract all of the (potentially) different types of storage devices present on a machine and unify them under a common API. 
+Modern operating systems export a high-level filesystem interface to abstract all of the (potentially) different types of storage devices present on a machine and unify them under a common API.
 
 The OS can hide the fact that there isn’t even local physical storage on a machine; rather, the files are maintained on a remote filesystem that is being accessed over the network.
 
@@ -28,7 +31,7 @@ At one extreme, we have the upload/download model. When a client wants to access
 ![](../assets/B02657E2-D79B-43AB-87F4-7B75275CA3CB.png)
 
 
-The benefit of this model is that all of the modifications can be done locally, which means they can be done quickly, without incurring any network cost. 
+The benefit of this model is that all of the modifications can be done locally, which means they can be done quickly, without incurring any network cost.
 
 One downside of this model is that the client has to download the entire file, even for small modifications. A second downside of this model is that it takes away file access control from the server. Once the server gives the file to the client, it has no idea what the client is doing with the file or when it will give it back.
 
@@ -43,7 +46,7 @@ The downside of this model is that every file operations pays a network cost. In
 ## Remote File Service: A Compromise
 We should allow clients to benefit from using their local memory/disk and to store at least some part of the file they are accessing. This may include downloading blocks of the file they are accessing, as well as prefetching blocks that they may soon be accessing.
 
-When files can be served from a local cache, lower latencies on file operations can be achieved since no additional network cost in incurred. In addition, server scalability is increased as local service decreases server load. 
+When files can be served from a local cache, lower latencies on file operations can be achieved since no additional network cost in incurred. In addition, server scalability is increased as local service decreases server load.
 
 Once we allow clients to cache portions of the file, however, it becomes necessary for the clients to start interacting with the server more frequently. On the one hand, clients need to notify the server of any modifications they make. In addition, they need to query the server at some reasonable frequency to detect if the files the are accessing from their cache have been changed by someone else.
 
@@ -52,12 +55,12 @@ This approach is beneficial because the server continues to have insight into wh
 The downside with this compromise is that the server becomes more complex. The server needs to perform additional tasks and maintain additional state to make sure it can provide consistency guarantees. This also means that the client has to understand file sharing semantics that are different from what they are used to in a normal filesystem.
 
 ## Stateless vs Stateful File Server
-A **stateless** server keeps no state. 
+A **stateless** server keeps no state.
 
-It has no notion of: 
+It has no notion of:
 - which files/blocks are being accessed
 - which operations are being performed
-- how many clients are accessing how many files 
+- how many clients are accessing how many files
 
 As a result, every request has to be completely self-contained. This type of server is suitable for the extreme models, but it cannot be used for any model that relies on caching. Without state, we cannot achieve consistency management. In addition, since every request has to be self-contained, more bits need to be transferred on the wire for each request.
 
@@ -70,14 +73,14 @@ A **stateful** server maintains information about:
 - which clients have a file cached
 - which clients have read/written the file
 
-Because of the state, the server can allow data to be cached and can guarantee consistency. In addition, state management allows for other functionality like locking. Since accesses are known, clients can request relative blocks (“next kB of data”) instead of having to specify absolute offsets. 
+Because of the state, the server can allow data to be cached and can guarantee consistency. In addition, state management allows for other functionality like locking. Since accesses are known, clients can request relative blocks (“next kB of data”) instead of having to specify absolute offsets.
 
 On failure, however, all that state needs to be recovered so that the filesystem remains consistent. This requires that the state must be incrementally check-pointed to prevent too much loss. In addition, there are runtime overheads incurred by the server to maintain state and enforce consistency protocols and by the client to perform caching.
 
 ## Caching State in a DFS
 Caching state in a DFS involves allowing clients to locally maintain a portion of the state - a file block, for example - and also allows them to perform operations on this cached state: `open`/`read`/`write`,etc.
 
-Keeping the cached portions of the file consistent with the server’s representation of the file requires cache coherence mechanisms. 
+Keeping the cached portions of the file consistent with the server’s representation of the file requires cache coherence mechanisms.
 
 For example, two clients may cache the same portion of file. If one client modifies their local portion, and sends the update to the file server, how does the other client become aware of those changes?
 
@@ -109,7 +112,7 @@ In order to avoid long periods of inconsistency, the client may write back chang
 The filesystem can provide explicit operations to let the client `flush` its updates to the server, or `sync` its state with the remote server.
 
 ### Other strategies
-With immutable files, you never modify an old file, but rather create a new file instead. 
+With immutable files, you never modify an old file, but rather create a new file instead.
 
 With transactions, the filesystem exports some API to allow clients to group file updates into a single batch to be applied atomically.
 
@@ -133,7 +136,7 @@ The main benefit of this approach is that it allows for better scalability as th
 
 As well, writes are simple. Since a single file only lives on a single machine, writes to that file are localized to that machine.
 
-A main downside of this approach is that when a partition goes down, the data stored on that partition can no longer be accessed. 
+A main downside of this approach is that when a partition goes down, the data stored on that partition can no longer be accessed.
 
 In addition, balancing the system is more difficult, because we have to take into consideration how the particular files are accessed. If there is a particular file that is more frequently accessed by most clients in the system, we can run into the issue of **hotspots**.
 
@@ -144,7 +147,7 @@ In a **Networking File System** (NFS), clients access files across the network, 
 
 ![](../assets/8EB8E1FB-C4FF-427C-A887-CD2B754A4DE0.png)
 
-Clients request and access files via the VFS, using the same types of file descriptors and operations that they use to access files in their local storage. The VFS layer determines if the file belongs to the local filesystem or whether the request needs to be pushed to the NFS client so that it can be passed to the remote filesystem. 
+Clients request and access files via the VFS, using the same types of file descriptors and operations that they use to access files in their local storage. The VFS layer determines if the file belongs to the local filesystem or whether the request needs to be pushed to the NFS client so that it can be passed to the remote filesystem.
 
 The NFS client interacts with the NFS server via RPC. The NFS server receives the request, forms it into a proper filesystem operation that is delivered to the local VFS. From there, the request is passed to the local file system interface. On the server machine, requests coming from the NFS server look identical to filesystem requests coming from any other application running on the server machine.
 
@@ -180,7 +183,7 @@ They also observed that 20-30% of new data was deleted within 30 seconds, with 5
 Of course, the authors needed to support concurrent access even though they didn’t need to optimize for it.
 
 ## Sprint DFS from Analysis to Design
-The authors decided that Sprite should support caching, and use a write-back policy to send changes to the server. 
+The authors decided that Sprite should support caching, and use a write-back policy to send changes to the server.
 
 Every 30 seconds, a client will write back all of the blocks that have not been modified within the last 30 seconds. Note that a file may be opened and closed multiple times by the client before any data is sent to the server.
 
@@ -188,7 +191,7 @@ The intuition behind this is that blocks that have been more recently modified w
 
 Note that this 30 second threshold is directly related to authors’ observation that 20-30% of new data was deleted within 30 seconds.
 
-When a client comes along and wants to open a file that is being written by another client, the server will contact the writer and collect all of the outstanding dirty blocks. 
+When a client comes along and wants to open a file that is being written by another client, the server will contact the writer and collect all of the outstanding dirty blocks.
 
 Every open operation has to go to the server. This means that directories cannot be cached on the client.
 
@@ -214,7 +217,7 @@ On a per file basis, the server keeps track of:
 - writer
 - version
 
-Let’s assume that a new writer comes along after the first writer has closed the file. This is referred to as a **sequential writer**. 
+Let’s assume that a new writer comes along after the first writer has closed the file. This is referred to as a **sequential writer**.
 
 In this case, the server contacts the old writer to gather all of the dirty blocks, which is convenient given that the client keeps track of all dirty blocks.
 

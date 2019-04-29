@@ -1,8 +1,11 @@
-# Thread Design Considerations
-#gios
+---
+id: thread-design-considerations
+title: Thread Design Considerations
+sidebar_label: Thread Design Considerations
+---
 
 ## Kernel Vs. User Level Threads
-Threads can be supported at the user level, the kernel level or both. 
+Threads can be supported at the user level, the kernel level or both.
 
 Supporting  threads at the kernel level means that the operating system itself is multithreaded. To to this the kernel must maintain some data structure to represent threads, and must also maintain all of the scheduling and syncing mechanisms to make multithreading correct and efficient.
 
@@ -18,14 +21,14 @@ User level threads can be mapped onto kernel level threads via a 1:1, 1:many and
 * stack
 * registers
 
-If the process links in a user level threading library, that library will need some way to represent threads, so that it can track thread resource use and make decisions about thread scheduling a synchronization. 
+If the process links in a user level threading library, that library will need some way to represent threads, so that it can track thread resource use and make decisions about thread scheduling a synchronization.
 
 The library will maintain some user level thread data structure containing:
 * thread ids
 * thread registers
 * thread stacks
 
-If we want there to be multiple kernel level threads associated with this process, we don’t want to have to replicate the entire process control block in each kernel level thread we have access to. 
+If we want there to be multiple kernel level threads associated with this process, we don’t want to have to replicate the entire process control block in each kernel level thread we have access to.
 
 The solution is to split the process control block into smaller structures. Namely, the stack and registers are broken out (since these will be different for different kernel level threads) and only these pieces of information are stored in the kernel level thread data structure.
 
@@ -68,12 +71,12 @@ Multiple data structures:
 ### SunOS paper
 ![](../assets/0C4D3FA7-A3C9-4469-B87B-050484774183.png)
 
-The OS is intended for multiple CPU platforms and the kernel itself is multithreaded. At the user level, the processes can single or multithreaded, and both many:many and one:one ULT:KLT mappings are supported. 
+The OS is intended for multiple CPU platforms and the kernel itself is multithreaded. At the user level, the processes can single or multithreaded, and both many:many and one:one ULT:KLT mappings are supported.
 
 Each kernel level threads that is executing on behalf of a user level thread has a **lightweight process** (LWP) data structure associated with it. From the user level library perspective, these LWPs represent the virtual CPUs onto which the user level threads scheduled. At the kernel level, there will be a kernel level scheduler responsible for scheduling the kernel level threads onto the CPU.
 
 ### Lightweight Threads paper
-When a thread is a created, the library returns a thread id. This id is not a direct pointer to the thread data structure, but is rather an index into an array of thread pointers. 
+When a thread is a created, the library returns a thread id. This id is not a direct pointer to the thread data structure, but is rather an index into an array of thread pointers.
 
 The nice thing about this is that  if there is a problem with the thread, the value at the index can change to say -1 instead of the pointer just pointing to some corrupt memory.
 
@@ -114,7 +117,7 @@ The kernel level thread contains:
 - kernel-level registers
 - stack pointer
 - scheduling info
-- pointers to associated LWPs, and CPU structures 
+- pointers to associated LWPs, and CPU structures
 
 The kernel level thread has information about an execution context that is always needed. There are operating system services (for example, scheduler) that need to access information about a thread even when the thread is not active. As a result, the information in the kernel level thread is **not swappable**. The LWP data does not have be present when a process is not running, so its data can be swapped out.
 
@@ -136,9 +139,9 @@ Consider a process with four user threads. However, the process is such that at 
 
 If the operating system has a limit on the number of kernel threads that it can support, the application might have to request a fixed number of threads to support it. The application might select two kernel level threads, given its concurrency.
 
-When the process starts, maybe the operating system only allocates one kernel level thread to it. The application may specify (through a `set_concurrency`  system call) that it would like two threads, and another thread will be allocated. 
+When the process starts, maybe the operating system only allocates one kernel level thread to it. The application may specify (through a `set_concurrency`  system call) that it would like two threads, and another thread will be allocated.
 
-Consider the scenario where the two user level threads that are scheduled on the kernel level threads happen to be the two that block.  The kernel level threads block as well. This means that the whole process is blocked, even though there are user level threads that are able to make progress. The user threads have no way to know that the kernel threads are about to block, and has no way to make a decision before this event occurs. 
+Consider the scenario where the two user level threads that are scheduled on the kernel level threads happen to be the two that block.  The kernel level threads block as well. This means that the whole process is blocked, even though there are user level threads that are able to make progress. The user threads have no way to know that the kernel threads are about to block, and has no way to make a decision before this event occurs.
 
 What would be helpful is if the kernel was able to signal to the user level library *before* blocking, at which point the user level library could potentially request more kernel level threads. The kernel could allocate another thread to the process temporarily to help complete work, and deallocate the thread it becomes idle.
 
@@ -180,7 +183,7 @@ Currently, T2 is holding the mutex and is executing on one CPU. T3 wants the mut
 
 At some point, T2 releases the mutex and T3 becomes runnable.  T1 needs to be preempted, but we make this realization from the user level thread library as T2 is unlocking the mutex. We need to preempt a thread on a different CPU!
 
-We cannot directly modify the registers of one CPU when executing as another CPU. We need to send a signal from the context of one thread on one CPU to the context of the other thread on the other CPU, to tell the other CPU to execute the library code locally, so that the proper scheduling decisions can be made. 
+We cannot directly modify the registers of one CPU when executing as another CPU. We need to send a signal from the context of one thread on one CPU to the context of the other thread on the other CPU, to tell the other CPU to execute the library code locally, so that the proper scheduling decisions can be made.
 
 Once the signal occurs, the library code can block T1 and schedule T3, keeping with the thread priorities within the application.
 
@@ -215,10 +218,10 @@ Components that may deliver interrupts can include:
 
 Which particular interrupts can occur on a given physical platform depends on the configuration of that platform, the types of devices the platform comes with, and the hardware architecture of the platform itself.
 
-Interrupts appear **asnynchronously**. That is, they do not appear in response to any specific action that is take place on the CPU. 
+Interrupts appear **asnynchronously**. That is, they do not appear in response to any specific action that is take place on the CPU.
 
 ### Signals
-Signals are events that are triggered by the CPU and the software running on it. 
+Signals are events that are triggered by the CPU and the software running on it.
 
 Which signals can occur on a given platform depends very much on the given operating system. Two identical platforms will have the same interrupts, but will have different signals if they are running different operating systems.
 
@@ -239,7 +242,7 @@ Most modern devices use a special message, **MSI** that can be carried on the sa
 
 The interrupt interrupts the execution of the thread that was executing on top of the CPU, so now what? The CPU looks up the interrupt number in a table, and executes the handler routine that the interrupt maps to. The interrupt number maps to the starting address of the handling routine, and the program counter can be set to point to that address in order to start handling the interrupt.
 
-All of this happens within the context of the thread that is interrupted. 
+All of this happens within the context of the thread that is interrupted.
 
 Which interrupts can occur depends on the *hardware* of the platform and how the interrupts are handled depends on the *operating system* running on the platform.
 
@@ -273,21 +276,21 @@ Some asynchronous signals include:
 ## Why Disable Interrupts or Signals?
 Interrupts and signals are handled in the context of the thread being interrupted/signaled. This means that they are handled on the thread’s stack, which can cause certain issues.
 
-When a thread handles a signal, the program counter of the thread will point to the first address of the handler. The stack pointer will remain the same, meaning that whatever the thread was doing prior to being interrupted with still be on the stack. 
+When a thread handles a signal, the program counter of the thread will point to the first address of the handler. The stack pointer will remain the same, meaning that whatever the thread was doing prior to being interrupted with still be on the stack.
 
 If the handling code needs to access some shared state that can be used by other threads in the system, we will have to use mutexes. If the thread which is being interrupted had already locked the mutex prior to be interrupted, we are in a **deadlock**. The thread can’t unlock its mutex until the handler returns, but the handler can’t return until it locks the mutex.
 
 To prevent this situation, we can enforce that the handling code stays simple and make sure it doesn’t do things like try to acquire mutexes. This of course it too restrictive.
 
-A better solution is to use **signal/interrupt masks**. These masks allow us to dynamically make decisions as to whether or not signals/interrupts can actually interrupt the execution of a particular thread. 
+A better solution is to use **signal/interrupt masks**. These masks allow us to dynamically make decisions as to whether or not signals/interrupts can actually interrupt the execution of a particular thread.
 
 The mask is a sequence of bits where each bit corresponds to an interrupt or signal and the value - 0 or 1 - signifies whether or not this particular interrupt or signal is disabled or enabled.
 
 When an event occurs, first the mask is checked to determine whether a given interrupt/signal is enabled. If the event is enabled, we proceed with the actual handling code. If the event is disabled, the interrupt/signal is made pending and will be handled at a later time when the mask changes.
 
-To solve the deadlock situation, described above, we must disable the interrupt/signal before acquiring the mutex, and re-enable interrupt/signal after releasing the mutex. This will ensure that we are never in handler code when the mutex is locked. 
+To solve the deadlock situation, described above, we must disable the interrupt/signal before acquiring the mutex, and re-enable interrupt/signal after releasing the mutex. This will ensure that we are never in handler code when the mutex is locked.
 
-Once the signal is re-enabled, the pending signal is handled by the handler. 
+Once the signal is re-enabled, the pending signal is handled by the handler.
 
 While an interrupt or signal is pending, other interrupts or signal may also become pending. Typically the handling routine will only be executed once, so if we want to ensure a signal handling routine is executed more than once, it is not sufficient to just generate the signal more than once.
 
@@ -327,7 +330,7 @@ The overhead of performing the necessary checks and potentially creating a new t
 
 As a result, it is no longer necessary to disable a signal before locking a mutex and re-enable the signal after releasing the mutex, which saves about 12 instructions per mutex.
 
-Since mutex lock/unlocks occur much more frequently than interrupts, the net instruction count is decreased when using the interrupt as threads strategy. 
+Since mutex lock/unlocks occur much more frequently than interrupts, the net instruction count is decreased when using the interrupt as threads strategy.
 
 In general, it is a solid strategy to optimize for the common case. We could have scenarios in which interrupts occur more than than mutex lock/unlocks, but we have assumed this is rarely the case, and have optimized for the reverse.
 
@@ -342,7 +345,7 @@ If we don’t want to have to make a system call, crossing from user level into 
 
 If both the kernel level thread and the user level thread have the bit enabled, the kernel will send the signal up to the user level thread and we have no problem.
 
-Let’s look at a more complicated scenario, in which the kernel level thread has a particular signal bit enabled, and the currently executing user level thread does not. However, there is a runnable user level thread that does have the bit enabled. 
+Let’s look at a more complicated scenario, in which the kernel level thread has a particular signal bit enabled, and the currently executing user level thread does not. However, there is a runnable user level thread that does have the bit enabled.
 
 What we would like to do is to be able to stop the thread that cannot handle the signal, and start the thread that can.
 
@@ -378,17 +381,17 @@ The main abstraction that linux uses to represent an execution context is called
 Key elements in task structure, encapsulated by `struct task_struct`
 ![](../assets/8B519534-0C74-4A8A-841A-1DCCE73AEFF7.png)
 
-A task is identified by its `pid_t pid`. If we have a single threaded process the id of the task and the id of the process will be the same. If we have a multithreaded process, each task will have a different `pid` and the process as a whole will be identified by the `pid` of the first task that was created. This information is also captured in the `pid_t tgid` , or task group id, field. 
+A task is identified by its `pid_t pid`. If we have a single threaded process the id of the task and the id of the process will be the same. If we have a multithreaded process, each task will have a different `pid` and the process as a whole will be identified by the `pid` of the first task that was created. This information is also captured in the `pid_t tgid` , or task group id, field.
 
-The task structure maintains a list of all of the tasks for a process, whose head is identified by `struct list_head tasks`. 
+The task structure maintains a list of all of the tasks for a process, whose head is identified by `struct list_head tasks`.
 
 Linux never had one continuous process control block. Instead,  the process state was always maintained through a collection of data structures that pointed to each other. We can see some of the references in the task in `struct mm_struct *mm` and `struct files_struct *files`.
- 
+
 To create a new task, Linux supports an operation called `clone`. It takes a function pointer and an argument (similar to `pthread_create`) but it also takes an argument `sharing_flags` which denotes which portion of the state of a task will be shared between the parent and child task.
 
 ![](../assets/B717E81B-24EA-4742-833B-C35C128E0A0A.png)
 
-When all of the bits are set, we are basically creating a new thread where all of the state is shared with the parent thread. If all of the bits are not set, where are not sharing anything, which is more akin to creating an entirely new process. In fact, `fork` in Linux is basically implemented by `clone` with all sharing flags cleared. 
+When all of the bits are set, we are basically creating a new thread where all of the state is shared with the parent thread. If all of the bits are not set, where are not sharing anything, which is more akin to creating an entirely new process. In fact, `fork` in Linux is basically implemented by `clone` with all sharing flags cleared.
 
 The native implementation of threads in Linux is the **Native POSIX Threads Library (NPTL)**. This is a 1:1 model, meaning that there is a kernel level task for each user level  thread. This implementation replaced an earlier implementation **LinuxThreads**, which was a many-to-many model.
 

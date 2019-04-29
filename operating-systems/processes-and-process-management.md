@@ -1,5 +1,8 @@
-# Processes and Process Management
-#gios
+---
+id: processes-and-process-management
+title: Processes and Process Management
+sidebar_label: Processes and Process Management
+---
 
 ## What is a Process?
 One of the roles of the operating system is to manage the hardware on behalf of **applications**. When an application is stored on disk, it is static. Once an application is launched, it is loaded into memory and starts executing; it becomes a **process**. A process is an active entity.

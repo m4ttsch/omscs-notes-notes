@@ -1,5 +1,8 @@
-# Memory Management
-#gios
+---
+id: memory-management
+title: Memory Management
+sidebar_label: Memory Management
+---
 
 ## Memory Management: Goals
 Remember that one of the roles of the operating system is to manage the physical resources - in this case DRAM - on behalf of one or more executing processes.
@@ -19,9 +22,9 @@ Paging is not the only way to decouple the virtual and physical memories. Anothe
 Paging is the dominant memory management mechanism used in modern operating systems.
 
 ## Memory Management: Hardware Support
-Memory management is not done by the operating system alone. Hardware mechanisms help make memory management decisions easier, faster and more reliable. 
+Memory management is not done by the operating system alone. Hardware mechanisms help make memory management decisions easier, faster and more reliable.
 
-Every CPU package contains a **memory management unit** (MMU). The CPU issues virtual addresses to the MMU, and the MMU is responsible for converting these into physical addresses. 
+Every CPU package contains a **memory management unit** (MMU). The CPU issues virtual addresses to the MMU, and the MMU is responsible for converting these into physical addresses.
 
 If there is an issue, the MMU can generate a **fault**. A fault can signal that the memory access is illegal; that is, there is an attempt to access memory that hasn’t been allocated. A fault could also signal that there are insufficient permissions to perform a particular access. A third type of fault can indicate that the requested page is not present in memory and must be fetched from disk.
 
@@ -46,7 +49,7 @@ What this means is that only the first portion of the virtual address is used to
 
 ![](../assets/6C1CB2E4-D8C7-4F2C-BC0C-831E2DF40CCD.png)
 
-Let’s say we want to initialize an array for the very first time. We have already allocated the memory for that array into the virtual address space for the process, we have just never accessed it before. Since this portion of the address space has not been accessed before, the operating system has not yet allocated memory for it. 
+Let’s say we want to initialize an array for the very first time. We have already allocated the memory for that array into the virtual address space for the process, we have just never accessed it before. Since this portion of the address space has not been accessed before, the operating system has not yet allocated memory for it.
 
 What will happen the first time we access this memory is that the operating system will realize that there isn’t physical memory that corresponds to this range of virtual memory addresses, so it will take a free page of physical memory, and create a page table entry linking the two.
 
@@ -58,7 +61,7 @@ If a process hasn’t used some of its memory pages for a long time, it is possi
 
 In order to detect this, page table entries also have a number of bits that give the memory management system some more information about the validity of the access. For instance, if the page is in memory and the mapping is valid, its valid bit will be 1. Otherwise, it will be 0.
 
-If the MMU sees that this bit is 0 when an access is occurring, it will raise a fault and trap to the operating system. The OS has to decide if the access should permitted, and if so, where the page is located and where it should be brought into DRAM. 
+If the MMU sees that this bit is 0 when an access is occurring, it will raise a fault and trap to the operating system. The OS has to decide if the access should permitted, and if so, where the page is located and where it should be brought into DRAM.
 
 Ultimately, if the access is granted, there will be a new page mapping that is reestablished after access is granted. This is because it is unlikely the physical address will exist at the exact same PFN + offset as before.
 
@@ -81,7 +84,7 @@ Pentium x86 Page Table Entry
 
 ![](../assets/761F6331-A7C2-44BF-B516-92A921D1483B.png)
 
-The MMU uses the page table entry not just to perform the address translation, but also to rely on these bits to determine the validity of the access. If the hardware determines that a physical memory access cannot be performed, it causes a page fault. 
+The MMU uses the page table entry not just to perform the address translation, but also to rely on these bits to determine the validity of the access. If the hardware determines that a physical memory access cannot be performed, it causes a page fault.
 
 If this happens, then the CPU will place an error code on the stack of the kernel, and it will generate a trap into the OS kernel, which will in turn invoke the **page fault handler**. This handler determines the action to take based on the error code and the faulting address.
 
@@ -96,7 +99,7 @@ On a 32-bit architecture, where each memory address is represented by 32 bits, e
 
 In a 32-bit architecture we have 2^32 bytes (4GB) of addressable memory. A common page size is 4KB.  In order to represent 4GB of memory in 4KB pages, we need 2^32 / 2^12  = 2^20 entries in our page table. Since each entry is 4 bytes long, we need 2^22 bytes of memory (4MB) to represent our page table.
 
-If we had a 64-bit architecture, we would need to represent 2^64 bytes of physical memory in chunks of 2^12 bytes. Since each entry is now 8 bytes long, we need 2^3 * 2^64 / 2^12 = 32PB! 
+If we had a 64-bit architecture, we would need to represent 2^64 bytes of physical memory in chunks of 2^12 bytes. Since each entry is now 8 bytes long, we need 2^3 * 2^64 / 2^12 = 32PB!
 
 Remember that page tables are a *per-process* allocation.
 
@@ -111,11 +114,11 @@ The outer level is referred to as a **page table directory**. Its elements are n
 
 The inner level has proper page tables that actually to point to page frames in physical memory. Their entries have the page frame number and all the protection bits for the physical addresses that are represented by the corresponding virtual addresses.
 
-The internal page tables exist only for those virtual memory regions that are actually valid. Any holes in the virtual memory space will result in lack of internal page tables. 
+The internal page tables exist only for those virtual memory regions that are actually valid. Any holes in the virtual memory space will result in lack of internal page tables.
 
 If a process requests more memory to be allocated to it via `malloc` the OS will check and potentially create another page table for the process the process, adding a new entry in the page table directory. The new internal page table entry will correspond to some new virtual memory region that the process has requested.
 
-To find the right element in the page table structure, the virtual address is split into more components. 
+To find the right element in the page table structure, the virtual address is split into more components.
 
 ![](../assets/9CB5D47B-9A63-46A9-9117-E147205AD34C.png)
 
@@ -131,7 +134,7 @@ Whenever there is a gap in virtual memory that is 1MB (or greater), we don’t n
 
 The hierarchical page table can be extended to use even more layers. We can have a third level that contains pointers to page table directories. We can add a fourth level, which would be a map of page table directory pointers.
 
-This technique is important on 64-bit architectures. The page table requirements are larger in these architectures (think about how many bits can be allocated to p2 and d), and as a result are often more sparse (processes on 64-bit platforms don’t necessarily need more memory than those on 32-bit platforms). 
+This technique is important on 64-bit architectures. The page table requirements are larger in these architectures (think about how many bits can be allocated to p2 and d), and as a result are often more sparse (processes on 64-bit platforms don’t necessarily need more memory than those on 32-bit platforms).
 
 Because of this, we have larger gaps between page tables that are actually allocated. With four level addressing structures, we may be able to save entire page table directories from being allocated as a result of these gaps.
 
@@ -156,16 +159,16 @@ The standard technique to avoid these accesses to memory is to use a **page tabl
 
 In addition to the proper address translation, the TLB entries will contain all of the necessary protection/validity bits to ensure that the access is correct, and the MMU will generate a fault if needed.
 
-Even a small number of addresses cached in TLB can result in a high TLB hit rate because we usually have a high temporal and spatial locality in memory references. 
+Even a small number of addresses cached in TLB can result in a high TLB hit rate because we usually have a high temporal and spatial locality in memory references.
 
-On modern x86 platforms, there is a 64-entry data TLB and 128-entry instruction TLB per core, as well as a shared 512-entry shared second-level TLB. 
+On modern x86 platforms, there is a 64-entry data TLB and 128-entry instruction TLB per core, as well as a shared 512-entry shared second-level TLB.
 
 ## Inverted Page Tables
-Standard page tables serve to map virtual memory to physical memory on a per process basis. Each process has its own page table, so the total amount of virtual memory “available” in the system is proportional to the amount of physical memory times the number of processes currently in the system. 
+Standard page tables serve to map virtual memory to physical memory on a per process basis. Each process has its own page table, so the total amount of virtual memory “available” in the system is proportional to the amount of physical memory times the number of processes currently in the system.
 
 Perhaps it makes more sense to have a virtual memory representation that is closer to the physical memory layout. Here is where **inverted page tables** come in. Inverted page tables are managed on a system-wide basis, not on a per-process basis, and each entry in the inverted page table points to a frame in main memory.
 
-The representation of a logical memory address when using inverted page tables is slightly different. The memory address contains the **process id** (PID) of the process attempting the memory address, as well as the virtual address and the offset. 
+The representation of a logical memory address when using inverted page tables is slightly different. The memory address contains the **process id** (PID) of the process attempting the memory address, as well as the virtual address and the offset.
 
 A linear scan of the inverted page table is performed when a process attempts to perform a memory access. When the correct entry is found - validated by the combination of the PID and the virtual address - it is the index of that entry that is the frame number in physical memory. That index combined with the offset serves to reference the exact physical address.
 
@@ -201,7 +204,7 @@ One benefit of larger pages is that more bits are used for the offset, so fewer 
 
 Larger pages means fewer page table entries, smaller page tables, and more TLB hits.
 
-The downside of the larger pages is the actual page size. If a large memory page is not densely populated, there will be larger unused gaps within the page itself, which will leads to wasted memory in pages, also known as **internal fragmentation**. 
+The downside of the larger pages is the actual page size. If a large memory page is not densely populated, there will be larger unused gaps within the page itself, which will leads to wasted memory in pages, also known as **internal fragmentation**.
 
 Different system/hardware combinations may support different page sizes. For example, Solaris 10 on SPARC machines supports 8KB, 4MB, and 2GB.
 
@@ -210,7 +213,7 @@ Memory allocation incorporates mechanisms to decide what are the physical pages 
 
 **Kernel level allocators** are responsible for allocating pages for the kernel and also for certain static state of processes when they are created - the code, the stack and so forth. In addition, the kernel level allocators are responsible for keeping track of the free memory that is available in the system.
 
-**User level allocators** are used for dynamic process state - the heap. This is memory this is dynamically allocated during the process’s execution. The basic interface for these allocators includes `malloc`  and `free`. These calls request some amount of memory from kernel’s free pages and then ultimately release it when they are done. 
+**User level allocators** are used for dynamic process state - the heap. This is memory this is dynamically allocated during the process’s execution. The basic interface for these allocators includes `malloc`  and `free`. These calls request some amount of memory from kernel’s free pages and then ultimately release it when they are done.
 
 Once the kernel allocates some memory through a `malloc` call, the kernel is no longer involved in the management of that memory. That memory is now under the purview of the user level allocator.
 
@@ -231,7 +234,7 @@ What do we do when a request for four page frames comes in now? We do have four 
 
 This example illustrates a problem called **external fragmentation**. This occurs when we have noncontiguous holes of free memory, but requests for large contiguous blocks of memory cannot be satisfied.
 
-Perhaps we can do better, using the following allocation strategy. 
+Perhaps we can do better, using the following allocation strategy.
 
 ![](../assets/9E026C20-E04E-4CE6-B31F-F4EB073272EA.png)
 
@@ -248,11 +251,11 @@ Let’s look at the following sequence of requests and frees.
 
 ![](../assets/ABC594B2-8DD5-4767-8E68-E91770CC47D5.png)
 
-First, a request for 8 units comes in. The allocator divides the 64 unit chunk into two chunks of 32. One chunk of 32 becomes 2 chunks of 16, and one of those chunks becomes two chunks of 8. We can fill our first request. Suppose a request for 8 more units comes in. We have another free chunk of 8 units from splitting 16, so we can fill our second request. Suppose a request for 4 units comes in. We now have to subdivide our other chunk of 16 units into two chunks of 8, and we subdivide one of the chunks of 8 into two chunks of 4. At this point we can fill our third request. 
+First, a request for 8 units comes in. The allocator divides the 64 unit chunk into two chunks of 32. One chunk of 32 becomes 2 chunks of 16, and one of those chunks becomes two chunks of 8. We can fill our first request. Suppose a request for 8 more units comes in. We have another free chunk of 8 units from splitting 16, so we can fill our second request. Suppose a request for 4 units comes in. We now have to subdivide our other chunk of 16 units into two chunks of 8, and we subdivide one of the chunks of 8 into two chunks of 4. At this point we can fill our third request.
 
 When we release one chunk of 8 units, we have a little bit of fragmentation, but once we release the other chunk of 8 units, those two chunks are combined to make one free chunk of 16 units.  
 
-Fragmentation definitely still exists in the buddy allocator, but on free, one chunk can check with its “buddy” chunk (of the same size) to see if it is also free, at which point the two will aggregate into a larger chunk. 
+Fragmentation definitely still exists in the buddy allocator, but on free, one chunk can check with its “buddy” chunk (of the same size) to see if it is also free, at which point the two will aggregate into a larger chunk.
 
 This buddy checking step can continue up the tree, aggregating as much as possible. For example, imagine requesting 1 memory unit above, and then freeing it. We would have to subdivide the chunks all the way down to 1, but then could build them all the way back up to 64 on free.
 
@@ -269,13 +272,13 @@ The benefit of the slab allocator is that internal fragmentation is avoided. The
 ## Demand Paging
 Since the physical memory is much smaller than the addressable virtual memory, allocated pages don’t always have to present in physical memory. Instead, the backing physical page frame can be repeatedly saved and stored to and from some secondary storage, like disk.
 
-This process is knowing as **paging** or **demand paging**. In this process, pages are **swapped** from DRAM to a secondary storage device like a disk, where the reside on a special swap partition. 
+This process is knowing as **paging** or **demand paging**. In this process, pages are **swapped** from DRAM to a secondary storage device like a disk, where the reside on a special swap partition.
 
-When a page is not present in memory, it has its present bit in the paging table entry set to 0. When there is a reference to that page, then the MMU will raise an exception - a page fault - and that will cause a trap into the kernel. 
+When a page is not present in memory, it has its present bit in the paging table entry set to 0. When there is a reference to that page, then the MMU will raise an exception - a page fault - and that will cause a trap into the kernel.
 
-At that point, the kernel can establish that the page has been swapped out, and can determine the location of the page on the secondary device. It will issue an I/O operation to retrieve this page. 
+At that point, the kernel can establish that the page has been swapped out, and can determine the location of the page on the secondary device. It will issue an I/O operation to retrieve this page.
 
-Once the page is brought into memory, the OS will determine a free frame where this page can be placed (this will *not* be the same frame where it resided before), and it will use the PFN to appropriately update the page table entry that corresponds to the virtual address for that page. 
+Once the page is brought into memory, the OS will determine a free frame where this page can be placed (this will *not* be the same frame where it resided before), and it will use the PFN to appropriately update the page table entry that corresponds to the virtual address for that page.
 
 At that point, control is handed back to the process that issued this reference, and the program counter of the process will be restarted with the same instruction, so that this reference will now be made again. This time, the reference will succeed.
 
@@ -284,7 +287,7 @@ At that point, control is handed back to the process that issued this reference,
 We may require a page to be constantly present in memory, or maintain its original physical address throughout its lifetime. We will have to **pin** the page. In order words, we disable swapping. This is useful when the CPU is interacting with devices that support direct memory access, and therefore don’t pass through the MMU.
 
 ## Page Replacement
-###### When should pages be swapped out of main memory and on to disk? 
+###### When should pages be swapped out of main memory and on to disk?
 Periodically, when the amount of occupied memory reaches a particular threshold, the operating system will run some **page out daemon** to look for pages that can be freed.
 
 Pages should be swapped when the memory usage in the system exceeds some threshold and the CPU usage is low enough so that this daemon doesn’t cause too much interruption of applications.
@@ -300,9 +303,9 @@ Other candidates for pages that can be freed from physical memory are pages that
 
 In addition, there may be certain pages that are non-swappable. Making sure that these pages are not considered by the currently executing swapping algorithm is important.
 
-In Linux, a number of parameters are available to help configure the swapping nature of the system. This includes the threshold page count that determines when pages start getting swapped out. 
+In Linux, a number of parameters are available to help configure the swapping nature of the system. This includes the threshold page count that determines when pages start getting swapped out.
 
-In addition, we can configure how many pages should be replaced during a given period of time. Linux also categorizes the pages into different types, such as claimable and swappable, which helps inform the swapping algorithm as to which pages can be replaced. 
+In addition, we can configure how many pages should be replaced during a given period of time. Linux also categorizes the pages into different types, such as claimable and swappable, which helps inform the swapping algorithm as to which pages can be replaced.
 
 Finally, the default replacement algorithm in Linux is a variation of the LRU policy, which gives a **second chance**. It performs two scans before determining which pages are the ones that should be swapped out.
 
@@ -315,22 +318,22 @@ In order to avoid unnecessary copying, a new process’s address space, entirely
 
 ![](../assets/1763C799-DD05-4442-95AD-F57F32314875.png)
 
-If the page is only going to be read, we save memory and we also save on the CPU cycles we would waste performing the unnecessary copy. 
+If the page is only going to be read, we save memory and we also save on the CPU cycles we would waste performing the unnecessary copy.
 
-If a write request is issued for the physical address via either one of the virtual addresses, the MMU will detect that the page is write protected and will issue a page fault. 
+If a write request is issued for the physical address via either one of the virtual addresses, the MMU will detect that the page is write protected and will issue a page fault.
 
 At this point, the operating system will finally create the copy of the memory page, and will update the page table of the faulting process to point to the newly allocated physical memory. Note that only the pages that need to be updated - only those pages that the process was attempting to write to - will be copied.
 
 We call this mechanism copy-on-write because the copy cost will only be paid when a write request comes in.
 
 ## Failure Management Checkpointing
-Another useful operating system service that can benefit from the hardware support for memory management is **checkpointing**. 
+Another useful operating system service that can benefit from the hardware support for memory management is **checkpointing**.
 
 Checkpointing is a failure and recovery management technique. The idea behind checkpointing is to periodically save process state. A process failure may be unavoidable, but with checkpointing, we can restart the process from a known, recent state instead of having to reinitialize it.
 
-A simple approach to checkpointing would be to pause the execution of the process and copy its entire state. 
+A simple approach to checkpointing would be to pause the execution of the process and copy its entire state.
 
-A better approach will take advantage of the hardware support for memory management and it will try to optimize the disruption that checkpointing will cause on the execution of the process. We can write-protect the process state and try to copy everything once. 
+A better approach will take advantage of the hardware support for memory management and it will try to optimize the disruption that checkpointing will cause on the execution of the process. We can write-protect the process state and try to copy everything once.
 
 However, since the process continues executing, it will continue dirtying pages. We can track the dirty pages - again using MMU support - and we will copy only the diffs on the pages that have been modified. That will allow us to provide for incremental checkpoints.
 

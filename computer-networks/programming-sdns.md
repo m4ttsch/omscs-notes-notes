@@ -1,5 +1,5 @@
 # Programming SDNs
-#cn
+
 
 ## Updates in Software Defined Networks
 In the last lesson, we looked at how to update switch flow table entries using OpenFlow control commands from the controller.

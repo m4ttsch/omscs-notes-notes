@@ -1,5 +1,8 @@
-# Distributed Shared Memory
-#gios
+---
+id: distributed-shared-memory
+title: Distributed Shared Memory
+sidebar_label: Distributed Shared Memory
+---
 
 ## Reviewing DFS
 Distributed file systems are an example of a distributed service in which the state - the files - are stored on some set of server nodes and are then accessed by some set of client nodes. The servers own and manage the state, and provide a service - the file access operations - which are requested by the clients and operate on the state.
@@ -22,9 +25,9 @@ Distributed shared memory is a service that manages memory across multiple nodes
 
 Each node in the system owns some portion of the physical memory, and provides the operations - reads and writes - on that memory. The reads and writes may originate from any of the nodes in the system.
 
-Each node needs to be involved in some consistency protocols to ensure that shared accesses to the state have meaningful semantics. 
+Each node needs to be involved in some consistency protocols to ensure that shared accesses to the state have meaningful semantics.
 
-For instance, when nodes read and write shared memory locations, these reads and writes must be ordered and observed by the remaining nodes in the system in consistent ways. 
+For instance, when nodes read and write shared memory locations, these reads and writes must be ordered and observed by the remaining nodes in the system in consistent ways.
 
 Distributed shared memory mechanisms are important to study because they permit scaling beyond the limitations of how much memory we can include in a single machine.
 
@@ -32,7 +35,7 @@ Single machines with large amounts of memory can cost hundreds of thousands of d
 
 Naturally, the overall memory access will be slower in a DSM environment as a result of network costs, but this is often affordable, and optimizable. It is possible to hide these network delays by making the right application design choices.
 
-Distributed shared memory is becoming more relevant today because commodity interconnect technologies offer really low latencies between nodes in a system via **Remote Direct Memory Access** (RDMA) interfaces. 
+Distributed shared memory is becoming more relevant today because commodity interconnect technologies offer really low latencies between nodes in a system via **Remote Direct Memory Access** (RDMA) interfaces.
 
 ## Hardware vs Software DSM
 DSM can be supported in hardware or software.
@@ -47,9 +50,9 @@ The NICs are involved in all aspects of the memory management, access and consis
 
 While it’s very convenient to rely on hardware to do everything, this type of hardware is typically very expensive and as a result is reserved for very high-end machines.
 
-Instead, DSM is often realized in software. The software will have to 
+Instead, DSM is often realized in software. The software will have to
 - detect local vs remote memory accesses
-- create and send messages to the appropriate node 
+- create and send messages to the appropriate node
 - accept messages from other nodes and perform the encoded memory operations
 - be involved in memory sharing and consistency support
 
@@ -58,7 +61,7 @@ This can be done at the level of the operating system or with a programming lang
 ## DSM Design: Sharing Granularity
 In SMP systems, the granularity of sharing is the **cache line**. The hardware tracks concurrent memory accesses at the granularity of a single cache line, and triggers the necessary coherence mechanisms if it detects that a shared cache line has been modified.
 
-For DSM, generating coherence traffic at the granularity of the cache line will be too expensive, given that this traffic has to travel over the network and incur network cost. 
+For DSM, generating coherence traffic at the granularity of the cache line will be too expensive, given that this traffic has to travel over the network and incur network cost.
 
 Instead, we can look at larger granularities for sharing:
 - variable granularity
@@ -69,7 +72,7 @@ Variables are a meaningful unit from a programmer’s perspective, so maybe DSM 
 
 Using something larger, like a page or object makes more sense. If the DSM system is to be integrated at the operating system level, page-based granularity makes sense since the OS doesn’t understand objects. Pages are larger than variables, so it’s possible to amortize the cost of remote access across these larger granularities.
 
-With some help from a compiler, application level objects can be laid out on different pages, and then we can rely on the page-based operating system level mechanism. 
+With some help from a compiler, application level objects can be laid out on different pages, and then we can rely on the page-based operating system level mechanism.
 
 Alternatively, we can have a DSM that is supported by the programming language and the runtime, where the runtime understands which objects are local and which are remote. For remote objects, the runtime will generate all of the necessary operations to communicate with the remote nodes.
 
@@ -77,33 +80,33 @@ In the case of object granularity, the OS doesn’t need to know anything about 
 
 Once we start increasing the granularity of sharing, we have to beware of **false sharing**.
 
-Consider a page that internally has two variables, x and y. A process on one node is exclusively accessing and modifying x. Similarly, a process on another node is exclusively accessing and modifying y. When x and y are on the same page, the DSM system will interpret the two write accesses as an indication of concurrent access to a shared page. This will trigger coherence mechanisms which, while logically viable, are functionally superfluous. 
+Consider a page that internally has two variables, x and y. A process on one node is exclusively accessing and modifying x. Similarly, a process on another node is exclusively accessing and modifying y. When x and y are on the same page, the DSM system will interpret the two write accesses as an indication of concurrent access to a shared page. This will trigger coherence mechanisms which, while logically viable, are functionally superfluous.
 
 ## DSM Design: Access Algorithm
 Another important design point when looking at DSM solutions is to understand what types of memory accesses the higher-level applications expect to perform.
 
 The simplest kind of application is the **single reader/single writer**. For these kinds of applications, the main role of the DSM layer is to provide the application with the ability to access additional, remote memory. In this case, there are not any consistency- or sharing-related challenges that need to be supported at the DSM layer.
 
-The more complex case is when the application needs to support **multiple readers/single writer** or **multiple readers/multiple writers**. In these cases, it’s not just about how to read or write the correct physical location of memory. 
+The more complex case is when the application needs to support **multiple readers/single writer** or **multiple readers/multiple writers**. In these cases, it’s not just about how to read or write the correct physical location of memory.
 
 With multiple writers and readers, it’s important that the reads return the most recent value at a memory location. It’s also important that all of the writes that are performed are correctly ordered. This is necessary so as to present a consistent view of the distributed state to all of the nodes in the system.
 
 ## DSM Design: Migration vs Replication
 For a DSM solution to be useful, it most provide good performance to applications. Since the core service provided by DSM solutions is access, the core performance metric to analyze is **access latency**.
 
-Clearly, accessing local memory is faster than remote memory, so it’s important to consider how to maximize the proportion of local memory accesses. 
+Clearly, accessing local memory is faster than remote memory, so it’s important to consider how to maximize the proportion of local memory accesses.
 
 One way to maximize the proportion of local memory accesses is through  **migration**. Whenever a process on another node needs to access remote state, we copy the state over to that node.
 
-Migration makes sense in the single reader/single writer case, since only one node at a time will be accessing the state. However, moving data across nodes does incur overheads. 
+Migration makes sense in the single reader/single writer case, since only one node at a time will be accessing the state. However, moving data across nodes does incur overheads.
 
 We should be careful about this solution, even in the single reader/single writer case. Copying over a large chunk of state just for a single read or write is a cost that cannot be amortized.
 
-With multiple readers and multiple writers, migrating the state all over the place doesn’t make any sense since the state needs to be accessed by multiple nodes at the same time. 
+With multiple readers and multiple writers, migrating the state all over the place doesn’t make any sense since the state needs to be accessed by multiple nodes at the same time.
 
 In this case, we use **replication** to copy the state on multiple nodes. While this solution is more general, it requires the consistency management. We have to make sure that writes are correctly ordered and that the most recent copies of the state are propagated across nodes for up-to-date reads.
 
-One way to control the consistency overhead is to limit the number of replicas that can exist in the system at any time, since the overhead is proportional to the number of replicas. 
+One way to control the consistency overhead is to limit the number of replicas that can exist in the system at any time, since the overhead is proportional to the number of replicas.
 
 ## DSM Design: Consistency Management
 Once we permit multiple copies of the same data page to be stored in multiple locations, it becomes important to think about maintaining consistency.
@@ -145,7 +148,7 @@ The node where a page is located is typically referred to as the **home node** f
 
 Let’s assume that the system needs to support the case of multiple readers and multiple writers.
 
-In order for this system to be performant and achieve low latency, the DSM layer needs to incorporate caching. Pages will be cached on the nodes where they are accessed. 
+In order for this system to be performant and achieve low latency, the DSM layer needs to incorporate caching. Pages will be cached on the nodes where they are accessed.
 
 The home node for a page will be responsible for driving all of the coherence operations related to that page. As a result, all of the nodes in the system are responsible for some part of the management of the overall distributed memory.
 
@@ -179,11 +182,11 @@ The address directly identifies the manager/home node that knows everything abou
 
 This can be captured via a global map - which takes in a page id and returns a manager id - and is replicated on each node.
 
-Each manager will maintain the per-page metadata that is necessary to perform the specific access to that page or force its consistency. 
+Each manager will maintain the per-page metadata that is necessary to perform the specific access to that page or force its consistency.
 
 This means that the metadata for local pages is partitioned across the system, while the manager information for every page is replicated.
 
-Certain bits from the address are used to identify the manager. There will be a fixed manager identified from that mapping function. If we want some additional flexibility we can take the object id and use it as an index into a global mapping table that will give a manager node. 
+Certain bits from the address are used to identify the manager. There will be a fixed manager identified from that mapping function. If we want some additional flexibility we can take the object id and use it as an index into a global mapping table that will give a manager node.
 
 In this approach, we can change the manager node by updating the mapping table. We don’t need to change the object identifier.
 
@@ -202,7 +205,7 @@ These overheads should be avoided when accessing local, non-shared state; thus, 
 
 To achieve these goals, we can leverage the hardware support at the **memory management unit** (MMU).
 
-If the MMU doesn’t find a valid mapping for a particular virtual address in a page table or if it detects a write attempt to protected memory, it will trap into the OS. 
+If the MMU doesn’t find a valid mapping for a particular virtual address in a page table or if it detects a write attempt to protected memory, it will trap into the OS.
 
 Whenever we need to perform an access to a remote address, there will not be a valid local mapping. The hardware will generate a trap, and the OS will pass the access information to the DSM layer to send out the appropriate remote message.
 
@@ -219,13 +222,13 @@ Consistency models exists in the context of the implementations of applications 
 
 The consistency model is a guarantee that the state changes will behave in a certain way as long as the upper software layers follow a certain set of rules.
 
-For memory to behave correctly, the way that the operations access memory will somehow be representative of how the operations were issued in the first place. 
+For memory to behave correctly, the way that the operations access memory will somehow be representative of how the operations were issued in the first place.
 
 In addition, for memory to behavior correctly, we will need to make some guarantees that when someone is trying to read a memory location, the value that they see will be representative of what was written to that location recently.
 
 The consistency models states that the memory behaves correctly if and only of the software follows certain rules. This implies that the softwares needs to use certain APIs for memory access, or that the software needs to set certain expectations based on the memory guarantees or lack thereof.
 
-Our notation for consistency models: 
+Our notation for consistency models:
 
 ![](../assets/F9F33EA4-108F-44FC-BB04-FC92DE1CB897.png)
 
@@ -241,7 +244,7 @@ In practice, even on a single SMP system, there are no guarantees on the orderin
 In distributed systems, additional latency and the possibility of message loss or reordering make strict consistency impossible to guarantee.
 
 While strict consistency is a nice theoretical model, it is not sustainable in practice. Other consistency models are used instead.
- 
+
 ## Sequential Consistency
 Given that strict consistency is next to impossible to achieve, the next best option with reasonable cost is sequential consistency.
 
@@ -266,13 +269,13 @@ One constraint of the interleaving is that the updates made by the same process 
 ![](../assets/6A81FC78-9212-4BF3-81E7-C2207BC06C32.png)
 
 For example, it would not be possible for P4 to read Z at m3 and then read X at m3.
- 
+
 ## Causal Consistency
 Forcing all processes to see the exact same order on all updates may be an overkill.
 
 ![](../assets/0A182699-4585-47FD-B1C7-AC089170ACD0.png)
 
-P3 and P4 may do very different things with the values at m1 and m2, and it may not be necessary that they see the same exact value in a given moment. 
+P3 and P4 may do very different things with the values at m1 and m2, and it may not be necessary that they see the same exact value in a given moment.
 
 Furthermore, the update to m2 was not dependent on the update to m1.
 
@@ -280,7 +283,7 @@ Furthermore, the update to m2 was not dependent on the update to m1.
 
 In this example, the value at m2 was written after the value at m1 was read. In this case, there may be a relationship between the update at m2 and the value at m1. The value written to m2 may depend on the value read from m1.
 
-Based on the observation of this potential dependency, it is not okay that P4 sees that value of m2 updated to Y before seeing the value of m1 updated to X. 
+Based on the observation of this potential dependency, it is not okay that P4 sees that value of m2 updated to Y before seeing the value of m1 updated to X.
 
 Causal consistency models guarantee that they will detect the possible causal relationship between updates, and if updates are causally related then the memory will guarantee that those writes will be correctly ordered.
 
@@ -295,7 +298,7 @@ Just like before, causal consistency ensures that writes that are performed on t
 ![](../assets/FD6FC037-E098-41D7-8446-A703DEB6B344.png)
 
 ## Weak Consistency
-In the consistency models that we discussed so far, the memory was accessed only by read and write operations. 
+In the consistency models that we discussed so far, the memory was accessed only by read and write operations.
 
 In the weak consistency models, it’s possible to have additional operations for accessing memory.
 
@@ -303,7 +306,7 @@ A memory system may introduce **synchronization points**, as operations that are
 
 ![](../assets/B7846427-7BD2-4398-B69D-7BE7761F0BC6.png)
 
-A synchronization point makes sure that all of the updates that have happened prior to the synchronization point will become visible at other processors. 
+A synchronization point makes sure that all of the updates that have happened prior to the synchronization point will become visible at other processors.
 
 Also, the synchronization point makes sure that all of the updates that have happened on other processors will become visible subsequently at the synchronizing processor in the future.
 

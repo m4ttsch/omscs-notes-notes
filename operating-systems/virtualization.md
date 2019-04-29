@@ -1,5 +1,8 @@
-# Virtualization
-#gios
+---
+id: virtualization
+title: Virtualization
+sidebar_label: Virtualization
+---
 
 ## What is Virtualization?
 In order to concurrently run diverse workloads on the same physical hardware without requiring that a single operating system be used for all of the applications, it was necessary to come up with a model where multiple operating systems can concurrently be deployed on the same hardware platform.

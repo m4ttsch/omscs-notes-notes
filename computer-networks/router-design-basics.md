@@ -1,5 +1,8 @@
-# Router Design Basics
-#cn
+---
+id: router-design-basics
+title: Router Design Basics
+sidebar_label: Router Design Basics
+---
 
 ## Router Design
 Here are two modern router chassis.
@@ -31,7 +34,7 @@ One important decision in the design of modern routers was to place a copy of th
 
 While this introduces some complications in making copies of the forwarding table, doing so prevents a central table from becoming a bottleneck at high speeds.
 
-Early router architectures did not place a copy of the lookup table on each line card. As a result, when packets arrived at an individual line card, it would induce a lookup in a shared buffer memory which could be accessed over a shared bus. 
+Early router architectures did not place a copy of the lookup table on each line card. As a result, when packets arrived at an individual line card, it would induce a lookup in a shared buffer memory which could be accessed over a shared bus.
 
 ![](../assets/6A0B05D8-8AF8-4DC3-81F0-BD1036602D30.png)
 
@@ -58,7 +61,7 @@ The advantage of this design is that it exploits parallelism: it allows multiple
 For this solution to work, though, we need proper scheduling algorithms to ensure fair use of the crossbar switch.
 
 ## Switching Algorithm: Maximal Matching
-In a particular time slot, we may have a certain set of traffic demands; that is, we have traffic at certain input ports destined for certain output ports. 
+In a particular time slot, we may have a certain set of traffic demands; that is, we have traffic at certain input ports destined for certain output ports.
 
 Given these demands, our goal is to produce a mapping that is maximal and fair. By maximal, we mean that the largest number of inputs are connected to the largest number of outputs.
 
@@ -71,9 +74,9 @@ If the line cards are running at 10Gbps, for example, running the interconnect t
 It is common practice to run the interconnect at higher speeds than the input/output ports.
 
 ## Head of Line Blocking
-Just speeding up the interconnect does not solve all problems. 
+Just speeding up the interconnect does not solve all problems.
 
-For example, if our input port is currently matched to output port `A`, and the head of the queue contains a packet destined for output port `B`, the entire queue will not be able to move until the packet for `B` is cleared. 
+For example, if our input port is currently matched to output port `A`, and the head of the queue contains a packet destined for output port `B`, the entire queue will not be able to move until the packet for `B` is cleared.
 
 This is referred to as **head of line blocking**.
 
@@ -91,7 +94,7 @@ Defining fairness is tricky, and there are multiple possible definitions of fair
 ## Max-Min Fairness
 One type of fairness is **max-min fairness**.
 
-To define max-min fairness, let’s first assume that we have some allocation of rates `{x1, x2 … xn }` across flows. We say that this allocation is “max-min fair” if increasing any rate `xi` implies that some other rate `xj`, where `xj < xi`, must be decreased to accommodate for the increase in `xi`. 
+To define max-min fairness, let’s first assume that we have some allocation of rates `{x1, x2 … xn }` across flows. We say that this allocation is “max-min fair” if increasing any rate `xi` implies that some other rate `xj`, where `xj < xi`, must be decreased to accommodate for the increase in `xi`.
 
 Put another way, the allocation is max-min fair if we can’t make any rate better off without making an already worse off rate even worse.
 
@@ -105,7 +108,7 @@ Let’s consider the following example.
 
 Obviously, the demands exceed the capacity, so we need to figure a way of allocating rates to each of these demands that is max-min fair.
 
-To start, let’s divide the capacity by the number of demands to achieve a completely fair allocation of rates. 
+To start, let’s divide the capacity by the number of demands to achieve a completely fair allocation of rates.
 
 Our initial distribution is `{2.5, 2.5, 2.5, 2.5}`.
 
@@ -122,11 +125,11 @@ Our final distribution will be `{2, 2.6, 2.7, 2.7}`.
 ## How to Achieve Max-Min Fairness
 One approach to achieve max-min fairness is via **round robin scheduling** where, given a set of queues, the router simply services them in order.
 
-The problem with round robin scheduling is that packets may have different sizes. 
+The problem with round robin scheduling is that packets may have different sizes.
 
 If the first queue has a large packet and the second queue has a small packet, the first queue will essentially get more of its fair share just because its packet happened to be bigger.
 
-Alternatively, we can use **bit-by-bit scheduling** where, during each time slot, each queue only has one bit serviced. 
+Alternatively, we can use **bit-by-bit scheduling** where, during each time slot, each queue only has one bit serviced.
 
 While this is perfectly fair, this is difficult from a feasibility standpoint. How do we service one bit from a queue?
 

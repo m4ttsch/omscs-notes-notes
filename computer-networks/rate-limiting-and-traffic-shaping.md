@@ -1,5 +1,8 @@
-# Rate Limiting and Traffic Shaping
-#cn
+---
+id:  rate-limiting-traffic-shaping
+title: Rate Limiting & Traffic Shaping
+sidebar_label: Rate Limiting & Traffic Shaping
+---
 
 ## Traffic Classification and Shaping
 This lesson focuses on ways to classify traffic as well as several traffic shaping strategies, including
@@ -15,16 +18,16 @@ Traffic sources can be classified in many different ways.
 
 Data traffic may be bursty, and may be periodic or regular. Audio traffic is usually continuous and strongly periodic. Video traffic is continuous, but often bursty due to the nature of how video is often compressed.
 
-We usually classify traffic sources according to two kinds of traffic. 
+We usually classify traffic sources according to two kinds of traffic.
 
 One is **constant bit rate** (CBR) source. In a constant bit rate traffic source, traffic arrives at regular intervals, and packets are typically the same size, resulting in a constant bit rate of arrival. Audio is an example of a constant bit rate source.
 
-Many other sources of traffic are **variable bit rate** (VBR).  Video and data traffic are often variable bit rate. 
+Many other sources of traffic are **variable bit rate** (VBR).  Video and data traffic are often variable bit rate.
 
 When we shape CBR traffic, we tend to shape according to the peak rate. VBR traffic is often shaped according to an average rate and a peak rate.
 
 ## Leaky Bucket Traffic Shaping
-In a **leaky bucket** traffic shaper, traffic arrives in a bucket of size β and drains from the bucket at rate ρ. Each traffic flow has its own bucket. 
+In a **leaky bucket** traffic shaper, traffic arrives in a bucket of size β and drains from the bucket at rate ρ. Each traffic flow has its own bucket.
 
 ![](../assets/C15197CB-DE6B-48A5-A8CA-2218F942D846.png)
 
@@ -34,7 +37,7 @@ The size β of the bucket controls the maximum burst size that a sender can send
 
 Setting a larger bucket size can accommodate a larger burst rate. Setting a larger value of ρ can enable a faster packet rate.
 
-In short, the leaky bucket allows flows to periodically burst while maintaining a constant drain rate. 
+In short, the leaky bucket allows flows to periodically burst while maintaining a constant drain rate.
 
 ### Audio Example
 
@@ -47,17 +50,17 @@ In **(r, T) traffic shaping** traffic is divided in T-bit frames, and a flow can
 
 If the sender wants to send more than one packet of r bits, it simply has to wait until the next T-bit frame.
 
-A flow that obeys this rule has an *(r, T) smooth traffic shape*. 
+A flow that obeys this rule has an *(r, T) smooth traffic shape*.
 
 In (r, T) traffic shaping a sender can’t send a packet that is larger than r bits long. Unless T is very large, the maximum packet size may be very small, so this type of traffic shaping is typically limited to fixed-rate flows.
 
-Variable flows have to request data rates that are equal to the peak rate. It would be incredibly wasteful to configure the shaper such that the average rate must support whatever peak rate the variable rate flow must send. 
+Variable flows have to request data rates that are equal to the peak rate. It would be incredibly wasteful to configure the shaper such that the average rate must support whatever peak rate the variable rate flow must send.
 
 The (r, T) traffic shaper is slightly relaxed from a simple leaky bucket. Rather than sending one packet per every time unit, the flow can send a certain number of bits every time unit.
 
 If a flow exceeds a particular rate, the excess packets in the flow are typically given a lower priority. If the network is heavily congested, the packets from a flow that exceeds its rate may be preferentially dropped.
 
-Priorities might be assigned at the sender or at the network. 
+Priorities might be assigned at the sender or at the network.
 
 At the sender, the application might mark its own packets, since the application knows best which packets may be more important. In the network, the routers may mark packets with a lower priority, a feature known as **policing**.
 
@@ -72,9 +75,9 @@ In a token bucket, tokens arrive in a bucket at a rate ρ. Again, β is the capa
 
 Traffic can be sent by the regulator as long as there are sufficient tokens in the bucket.
 
-To consider the difference between a token bucket and a leaky bucket, consider sending a packet of size `b` < β. 
+To consider the difference between a token bucket and a leaky bucket, consider sending a packet of size `b` < β.
 
-If the token bucket is full, the packet is sent, and `b` tokens are removed. 
+If the token bucket is full, the packet is sent, and `b` tokens are removed.
 
 If the token bucket is empty, the packet must wait until `b` tokens drip into the bucket.
 
@@ -83,7 +86,7 @@ If the bucket is partially full, the packet may or may not be sent. If the numbe
 ## Token Bucket vs Leaky Bucket
 A token bucket permits traffic to be bursty but bounds it by the rate ρ. A leaky bucket forces the bursty traffic to be smooth.
 
-If our bucket size in a token bucket is β, we know that for any interval T, our rate must be less than β plus the rate that which tokens accumulate (ρ) times T. 
+If our bucket size in a token bucket is β, we know that for any interval T, our rate must be less than β plus the rate that which tokens accumulate (ρ) times T.
 
 Intuitively, this makes sense. We can completely drain the bucket and also consume the tokens that are added to the bucket over the interval T, which ρ*T.
 
@@ -123,7 +126,7 @@ For example, if you subscribed at a rate of 10Mbps, power boost might allow you 
 
 Power boost targets the spare capacity in the network for use by subscribers who don’t put sustained load on the network.
 
-There are two types of power boost. 
+There are two types of power boost.
 
 If the rate at which the user can achieve during the burst window is set to not exceed a particular rate, the power boost is **capped**. Otherwise, the power boost is **uncapped**.
 
@@ -138,9 +141,9 @@ That token bucket limits the peak sending rate for power boost eligible packets 
 Since ρ plays a role in how quickly tokens can refill in the bucket, so it also plays a role in the maximum rate that can be sustained in a power boost window.
 
 ## Calculating Power Boost Rates
-Suppose that a sender is sending at some rate `R` which is greater than their subscribed rate `r`. Suppose as well that the power boost bucket size is β. 
+Suppose that a sender is sending at some rate `R` which is greater than their subscribed rate `r`. Suppose as well that the power boost bucket size is β.
 
-How long can a sender send at rate `R`? 
+How long can a sender send at rate `R`?
 
 ![](../assets/FFA084B1-B165-4D45-A23B-6EAC4122FB24.png)
 
@@ -181,7 +184,7 @@ Buffer bloat occurs when a sender is allowed to send at some rate `r`  that is g
 
 A buffer in the network that can support this higher rate will start filling up with packets. Since the buffer can only drain at `R`, all of the packets that the sender is sending at `r` are just being queued up in the buffer.
 
-As a result, the packets will see higher delay than they would if they simply arrived at the front of the queue and could be sent immediately. 
+As a result, the packets will see higher delay than they would if they simply arrived at the front of the queue and could be sent immediately.
 
 The delay that a packet arriving in a buffer will see is the amount of data ahead of it in the buffer divided by the sustained rate `R`.
 
@@ -219,7 +222,7 @@ This type of shaping can be done on many [OpenWRT](https://www.makeuseof.com/tag
 ## Network Measurement
 There are two types of network measurement.
 
-In **passive measurement**, we collect packets and flow statistics from traffic that is already being sent on the network. 
+In **passive measurement**, we collect packets and flow statistics from traffic that is already being sent on the network.
 
 This might include
 - packet traces
@@ -240,7 +243,7 @@ Why do we want to measure traffic on the network?
 ### Billing
 We might want to charge a customer based on how much traffic they have sent on the network. In order to do so, we need to passively measure how much traffic that customer is sending.
 
-A customer commonly pays for a **committed information rate** (CIR). Their network throughput will be measured every five minutes, and they will be billed on the 95th percentile of these five minute samples. This mode of billing is called *95th percentile billing*. 
+A customer commonly pays for a **committed information rate** (CIR). Their network throughput will be measured every five minutes, and they will be billed on the 95th percentile of these five minute samples. This mode of billing is called *95th percentile billing*.
 
 This means that the customer might be able to occasionally burst at higher rates without incurring higher cost.
 
@@ -265,7 +268,7 @@ The advantage of SNMP is that is fairly ubiquitous: it’s supported on basicall
 
 On the other hand, the data is fairly course. Since SNMP only allows for polling byte/packet counts on the interface, we can’t ask really analyze specific hosts or flows.
 
-Two other ways to measure passively are by monitoring at a packet-level granularity or flow-level granularity. At the packet level, monitors can see full packet contents (or at least headers). At the flow level, a monitor may see specific statistics about individual flows in the network. 
+Two other ways to measure passively are by monitoring at a packet-level granularity or flow-level granularity. At the packet level, monitors can see full packet contents (or at least headers). At the flow level, a monitor may see specific statistics about individual flows in the network.
 
 ## Packet Monitoring
 In **packet monitoring**, the monitor may see the full packet contents - or at least the packet headers - for packets that traverse a particular link.
@@ -275,7 +278,7 @@ Common packet monitoring tools include
 - [ethereal](https://www.itprotoday.com/security/ethereal-packet-sniffer)
 - [wireshark](https://www.wireshark.org/)
 
-Sometimes, packet monitoring is performed using expensive hardware that can be mounted in servers alongside routers that forward traffic through the network. 
+Sometimes, packet monitoring is performed using expensive hardware that can be mounted in servers alongside routers that forward traffic through the network.
 
 In these cases, an optical link in the network is sometimes split, so that traffic can be both sent along the network and sent to the monitor.
 
@@ -290,13 +293,13 @@ The advantages of packet monitoring is that it provides lots of detail, like tim
 The disadvantage of packet monitoring is that there is relatively high overhead. It’s very hard to keep up with high speed links, and often requires a separate monitoring hardware device.
 
 ## Flow Monitoring
-A flow consists of packets that share a common 
+A flow consists of packets that share a common
 - source/destination IP address
 - source/destination port
 - protocol type
 - TOS byte
 - interface
- 
+
 A **flow monitor** can record statistics for a flow that is defined by the group of packets that share these features.
 
 Flow records may also contain additional information, often related to routing, such as
@@ -317,5 +320,3 @@ Sometimes, to reduce monitoring overhead, flow level monitoring may also be acco
 Sampling builds flow statistics based only on samples of the packets. For example, flows may be created based on one out of every ten or 100 packets, or a packet might be sampled with a particular probability.
 
 Flow statistics may be based on the packets that are sampled randomly from the total set of packets.
-
-

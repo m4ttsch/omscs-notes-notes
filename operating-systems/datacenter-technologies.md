@@ -1,3 +1,8 @@
+---
+id: datacenter-technologies
+title: Datacenter Technologies
+sidebar_label: Datacenter Technologies
+---
 
 ## Internet Services
 An **internet service** is any type of service that is accessible via a web interface.
@@ -31,7 +36,7 @@ This design doesn’t mean that every node has all of the data. Instead, data ma
 One downside of this approach is that there is little opportunity to benefit from caching. A simple front-end will not keep enough to understand the locality of each task on a node by node basis.
 
 ## Heterogenous Architectures
-In a functionality heterogenous setup, different nodes are designated to perform certain functions or handle certain types of requests. 
+In a functionality heterogenous setup, different nodes are designated to perform certain functions or handle certain types of requests.
 
 For instance, requests may be divided among the servers based on request content. In the case of eBay, servers may be specialized for browsing requests vs. bidding/buying requests.
 
@@ -54,7 +59,7 @@ This was the birth of **Amazon Web Services** (AWS) and **Amazon Elastic Cloud C
 
 Around the same time, a company called Animoto was created. This company stitched together photos into a movie, which is a fairly resource-intensive task. As a result, they chose to rent EC2 instances instead of building out their own datacenter.
 
-Originally, Animoto required about 50 EC2 instances. 
+Originally, Animoto required about 50 EC2 instances.
 
 In 2008, Animoto became available to Facebook users. Within three days, Animoto signed up 750,000 new users, and scaled up to 3,400 EC2 instances.
 
@@ -69,7 +74,7 @@ If the demand exceeded the expected capacity, the business would into a situatio
 
 ![](../assets/57336766-5450-410E-A7EA-44AD6A68CEEC.png)
 
-Ideally, we would like the capacity of the available resources to scale elastically with the demand. 
+Ideally, we would like the capacity of the available resources to scale elastically with the demand.
 
 The scaling should be instantaneous: as soon as the demand increases, so does the capacity, and vice versa. This means that the cost to support this service should be directly proportional to the demand.
 
@@ -106,7 +111,7 @@ The second is **economies of scale**.  A cloud provider is able to leverage a la
 ## Cloud Computing Vision
 > If computers of the kind I have advocated become the computers of the future, then computing may some day be organized as a public utility, just saw the telephone system is a public utility … The computer utility could become the basis of a new and important industry.   
 
-Based on this vision, cloud computing should turn the IT resource into a fungible utility. 
+Based on this vision, cloud computing should turn the IT resource into a fungible utility.
 
 We shouldn’t need to care about which hardware resources are used, or where they are. Virtualization technology is definitely an enabler in this process.
 
@@ -134,10 +139,10 @@ A **Platform as a Service** (PaaS) provides you with certain APIs to allow you t
 
 At the lowest level, clouds can provide infrastructure instances, like compute instances that consist of the CPUs with accompanying memory, storage and network infrastructure. Amazon EC2 is a such a model of this **Infrastructure as a Service** (IaaS).
 
-These types of clouds still don’t provide access to the physical resources directly, rather only the virtualized resources. It is often the case that you are sharing the physical resources with other tenants. That being said, Amazon does provide high-performance instances that are single tenant. 
+These types of clouds still don’t provide access to the physical resources directly, rather only the virtualized resources. It is often the case that you are sharing the physical resources with other tenants. That being said, Amazon does provide high-performance instances that are single tenant.
 
 ## Requirements for the Cloud
-Clouds must provide **fungible** resources. This means that the resources can easily be repurposed to support different customers with different types of requirements. Without fungibility, the economic opportunity for cloud providers disappears. 
+Clouds must provide **fungible** resources. This means that the resources can easily be repurposed to support different customers with different types of requirements. Without fungibility, the economic opportunity for cloud providers disappears.
 
 Clouds must integrate resource management methods that support the premise of cloud computing. They must be able to dynamically adjust the resources that are allocated to cloud users depending on need.
 
@@ -163,11 +168,11 @@ Regarding data storage, cloud computing platforms incorporate distributed filesy
 Cloud users need to be isolated from one another. Cloud computing technologies need software that can enable and configure these defined slices of resources.
 
 Finally, cloud computing platforms must incorporate efficient monitoring technologies in order to regulate cloud resources. This is useful for the cloud provider to preside over the data center as a whole, but also as a service made available to cloud customers who may wish to interact with their application logs in an efficient way. **Flume**, **CloudWatch**, **Log Insight** are all monitoring technologies.
- 
+
 ## The Cloud as a Big Data Engine
 One benefit of cloud computing is that it empowers anyone to have potentially infinite resources. As long as you can pay, you can have the resources that are required to work on hard, data- and resource-intensive problems.
 
-Cloud platforms that offer big data processing as a service need - at a minimum - a data storage layer and a data processing layer. 
+Cloud platforms that offer big data processing as a service need - at a minimum - a data storage layer and a data processing layer.
 
 Often, these services incorporate a caching layer as well. Remember that cache access is quick, and repeated cache access can definitely speed up the execution of an application.
 
@@ -175,7 +180,7 @@ Commonly, big data stacks incorporate some language front-end that allows develo
 
 People are often interested in analytics and mining when it comes to big data. As a result, big data platforms often incorporate a machine learning suite of commonly used algorithms, applications, and visualizations.
 
-Finally, the data being analyzed with these platforms is often continuously being generated, which means that these platforms needs to have support for ingesting and staging data that is continuously being streamed into the platform. 
+Finally, the data being analyzed with these platforms is often continuously being generated, which means that these platforms needs to have support for ingesting and staging data that is continuously being streamed into the platform.
 
 ## Example Big Data Stacks
 ### Hadoop
@@ -183,5 +188,5 @@ Finally, the data being analyzed with these platforms is often continuously bein
 ![](../assets/690C46E9-31A8-4841-BA34-660234AE758A.png)
 
 ### Berkeley Data Analytics Stack (BDAS)
- 
+
 ![](../assets/686C631F-E544-4048-AF40-A21BB31E7427.png)

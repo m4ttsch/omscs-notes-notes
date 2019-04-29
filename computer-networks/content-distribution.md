@@ -1,5 +1,8 @@
-# Content Distribution
-#cn
+---
+id: content-distribution
+title: Content Distribution
+sidebar_label: Content Distribution
+---
 
 ## The Web and Caching
 In this lesson we’ll talk about the web and how web caches can improve web performance.
@@ -19,12 +22,12 @@ An HTTP request consists of multiple components, such as
 - request body (not described in this video)
 
 ### Request Line
-The request line contains 
+The request line contains
 - request method
 - request path
 - HTTP version
 
-The request method indicates which type of request is to be performed. 
+The request method indicates which type of request is to be performed.
 
 Typical request methods include
 - GET (fetch data from server)
@@ -38,7 +41,7 @@ The HTTP version specifies the version of the HTTP protocol being used. Common v
 ### Headers
 The request may also contain additional headers, many of which are optional.
 
-These include the [referer](https://en.wikipedia.org/wiki/HTTP_referer#Etymology), which indicates the URL from which the request originated. 
+These include the [referer](https://en.wikipedia.org/wiki/HTTP_referer#Etymology), which indicates the URL from which the request originated.
 
 Another common header is the user agent, which identifies the client software being used to request the page - such as a particular version of chrome or firefox.
 
@@ -67,26 +70,26 @@ An HTTP response includes
 ### Status Line
 The status line includes the HTTP version and a [response code](https://www.restapitutorial.com/httpstatuscodes.html#), where the response code is a number used to indicate a number of possible outcomes.
 
-Codes in the 100s are typically informational. 
+Codes in the 100s are typically informational.
 
-Codes in the 200s are typically success, with `200 OK` being common. 
+Codes in the 200s are typically success, with `200 OK` being common.
 
-Codes in the 300s indicate redirection, such as `301 Moved Permanently`. 
+Codes in the 300s indicate redirection, such as `301 Moved Permanently`.
 
-Codes in the 400s indicate errors originating from the client, such as the `404 Not Found` that is returned when a client requests a page that does not exist. 
+Codes in the 400s indicate errors originating from the client, such as the `404 Not Found` that is returned when a client requests a page that does not exist.
 
 Codes in the 500s describe server errors, which include the dreaded `500 Internal Server Error`.
 
 ### Headers
 The `Location` header may be used for redirection.
 
-The `Server` header provides server information. 
+The `Server` header provides server information.
 
-The `Allow` header indicates which HTTP methods are allowed. 
+The `Allow` header indicates which HTTP methods are allowed.
 
 The `Content-Encoding` header describes how the content is encoded.
 
-The `Content-Length` header indicates how long the content is in terms of bytes. 
+The `Content-Length` header indicates how long the content is in terms of bytes.
 
 The `Expires` header indicates how long the content can be cached.
 
@@ -116,7 +119,7 @@ Persistent connections allow multiple HTTP requests and responses to be multiple
 
 Delimiters at the end of an HTTP request indicate the end of the request, and the `Content-Length` header allows the receiver to determine the length of a response.
 
-Persistent connections can be combined with **pipelining**, a technique whereby a client sends the next request as soon as it encounters a referenced object. 
+Persistent connections can be combined with **pipelining**, a technique whereby a client sends the next request as soon as it encounters a referenced object.
 
 As a result, there is as little as one RTT for all referenced objects before they begin to be fetched.
 
@@ -125,19 +128,19 @@ Persistent connections with pipelining is the default behavior for HTTP/1.1.
 ## Caching
 To improve performance, clients often cache parts of a webpage.
 
-Caching can occur in multiple places. 
+Caching can occur in multiple places.
 
-For example, your browser can cache some objects locally on your machine. 
+For example, your browser can cache some objects locally on your machine.
 
 In addition, caches can also be deployed in the network. Sometimes the local ISP may have a cache. Content distribution networks are a special type of web cache that can be used to improve performance.
 
-Consider the case where an origin web server - that hosts the content for a given website - is particularly far away. 
+Consider the case where an origin web server - that hosts the content for a given website - is particularly far away.
 
 Since TCP throughput is inversely proportional to RTT, the further away that this web content is, the slower the web page will load. This slow down is the result of both increased latency and decreased throughput.
 
 If instead the client could fetch content from the local cache, performance could be drastically improved as latency would be decreased and throughput increased.
 
-Caching can also improve the performance when multiple clients are requesting the same content. 
+Caching can also improve the performance when multiple clients are requesting the same content.
 
 Not only do all of the clients benefit from the content being cached locally, but the ISP saves cost on transit, since it doesn’t have to pay for transferring the same content over expensive backbone links.
 
@@ -151,7 +154,7 @@ We can see the effects of caching through a quick experiment with google.com.
 
 ![](../assets/F82D54D7-1DCA-4F20-A88B-61DAA9B01702.png)
 
- We first use `dig` to retrieve the IP addresses for google.com, and when we `ping` one of the addresses, we see that the RTT is only 1ms. 
+ We first use `dig` to retrieve the IP addresses for google.com, and when we `ping` one of the addresses, we see that the RTT is only 1ms.
 
 This indicates that the content at that IP address is probably cached on the local network.
 
@@ -168,7 +171,7 @@ Some CDNs are owned by content providers, such as Google. Others are owned and o
 
 Non-network CDNs, such as Google and Akamai, can typically place their servers in other autonomous systems or ISPs.
 
-The number of cache nodes in a large CDN can vary. 
+The number of cache nodes in a large CDN can vary.
 
 In the Google network, researchers surfaced about 30,000 unique nodes. In the case of Akamai, there are about 85,000 nodes in nearly 1,000 unique networks spread out amongst 72 countries.
 
@@ -180,7 +183,7 @@ This goal presents a number of questions.
 - How should content be replicated?
 - Where should content be replicated?
 - How should clients find the replicated content?
-- How should the CDN choose the appropriate server replica for a particular client? 
+- How should the CDN choose the appropriate server replica for a particular client?
 - How should the CDN direct clients toward the appropriate replica once it has been selected?
 
 ## Server Selection
@@ -193,24 +196,24 @@ CDNs typically aim to direct clients towards servers that provide the lowest lat
 ## Content Routing
 Content routing concerns how to direct clients to a particular server.
 
-One strategy is to use the existing routing system. 
+One strategy is to use the existing routing system.
 
 A CDN operator could number all of the replicas with the same IP address and then rely on routing to take the client to closest replica based on the routes the internet routers choose.
 
 Routing based redirection is simple, but it provides the service providers with very little control over which servers the clients ultimately get redirected to, since routing is dictated by the routers.
 
-Another strategy for content routing is to use an application-based approach, such as an HTTP redirect. 
+Another strategy for content routing is to use an application-based approach, such as an HTTP redirect.
 
 This is effective but requires the client to first go to the origin server to get the redirect, which may introduce significant latency.
 
-The most common way that server selection is performed is through the naming system, using DNS. 
+The most common way that server selection is performed is through the naming system, using DNS.
 
 In this approach, the client looks up a particular domain name, such as google.com and the response contains an IP address of a nearby cache.
 
 Naming-based redirection provides significant flexibility in directing different clients to different server replicas, without introducing any additional latency.
 
 ## Naming Based Redirection
-### Symantec 
+### Symantec
 
 ![](../assets/C01D089F-608B-4A15-A587-5D6E84D556EC.png)
 
@@ -222,7 +225,7 @@ When we perform the same lookup from Boston, we still encounter the same CNAME r
 
 ![](../assets/8FF74067-35FC-45F2-80F9-18700FC128C7.png)
 
-When we `ping` youtube.com, we can see that we get very low latency: on the order of 1ms. 
+When we `ping` youtube.com, we can see that we get very low latency: on the order of 1ms.
 
 A `dig` request for the PTR record associated with the IP address that was responding to our ping shows `yh-in-f190.1e100.net` which is an address from Google’s CDN.
 
@@ -237,7 +240,7 @@ Having more vectors to deliver content increases reliability.
 
 During large request events, having direct connectivity to multiple networks where the content is hosted allows the ISP to spread its traffic across multiple transit links, thereby potentially reducing the 95th percentile and lowering its transit costs.
 
-On the other hand, it is advantageous for ISPs to peer with CDNs. 
+On the other hand, it is advantageous for ISPs to peer with CDNs.
 
 Providing content closer to the ISP’s customers allows the ISP to provide its customers with good performance for a particular service.
 
@@ -267,13 +270,13 @@ BitTorrent has several steps for publishing.
 
 First a peer creates a *torrent*, which contains metadata about a *tracker*, and all of the pieces for the file in question, as well as a checksum for each piece of the file at the time the torrent was created.
 
-Some peers in the network need to maintain a complete initial copy of the file. Those peers are called *seeders*. 
+Some peers in the network need to maintain a complete initial copy of the file. Those peers are called *seeders*.
 
 To download a file, the client first contacts the tracker, which contains the metadata about the file, including a list of seeders that contain an initial copy of the file.
 
 Next, a client starts to download parts of the file from the seeder. Once a client starts to accumulate some initial chunks, it can begin to swap chunks with other clients.
 
-Clients that contain incomplete copies of the file are called *leechers*. 
+Clients that contain incomplete copies of the file are called *leechers*.
 
 The tracker allows peers to find each other, and also returns a random list of peers that any particular leecher can use to swap chunks of the file.
 
@@ -282,9 +285,9 @@ Previous peer-to-peer file sharing systems used similar swapping techniques, but
 BitTorrent solved the problem of freeloading.
 
 ## Solution to Freeriding
-BitTorrent’s solution to freeriding is called **choking**, which is type of game theoretic strategy called [tit-for-tat](https://www.investopedia.com/terms/t/tit-for-tat.asp). 
+BitTorrent’s solution to freeriding is called **choking**, which is type of game theoretic strategy called [tit-for-tat](https://www.investopedia.com/terms/t/tit-for-tat.asp).
 
-In choking, if a node is unable to download from any particular peer - for example, if that peer has left the network - it simply refuses to upload to that peer. 
+In choking, if a node is unable to download from any particular peer - for example, if that peer has left the network - it simply refuses to upload to that peer.
 
 This ensures that nodes cooperate, and eliminates the free rider problem.
 
@@ -303,7 +306,7 @@ However, since rare pieces are typically available at fewer peers initially, dow
 
 As a result, clients may start by selecting a random piece of the file to download from the seeder.
 
-In the end, the client actively requests any missing pieces from all peers, and redundant requests are cancelled when the missing piece arrives. 
+In the end, the client actively requests any missing pieces from all peers, and redundant requests are cancelled when the missing piece arrives.
 
 This is ensures that a single peer with a slow transfer rate doesn’t prevent the download from completing.
 
@@ -321,7 +324,7 @@ A publisher might want to publish the location of a particular piece of data wit
 
 The publisher needs to figure out where to publish this data such that a client can find it, so that when the client performs a lookup for ‘Annie Hall’ it’s directed to the location of the mp4.
 
-The problem that needs to be solved is the problem of lookup, which requires a simple hash function. 
+The problem that needs to be solved is the problem of lookup, which requires a simple hash function.
 
 What makes this problem interesting, though, is that the hash table isn’t located in one place, but rather it is distributed across the network.
 
@@ -384,9 +387,9 @@ Due to the structure of the finger table, these lookups require O(log(n)) hops. 
 
 ### Adding Nodes
 
-When a node joins, we must first initiate the fingers of the new node and then update the fingers of existing nodes so that they know that they can point to the node with the new ID. 
+When a node joins, we must first initiate the fingers of the new node and then update the fingers of existing nodes so that they know that they can point to the node with the new ID.
 
-In addition we must transfer the keys from the successor to the new node. 
+In addition we must transfer the keys from the successor to the new node.
 
 ![](../assets/FBF68057-F611-4208-9689-38C96E64D4D5.png)
 
@@ -394,6 +397,6 @@ For example, when we add node with ID 59, we must transfer the ownership of key 
 
 ### Removing Nodes
 
-A fall back for handling leaves is to ensure that any particular node not only keeps track of its own finger table, but also of the fingers of any successor. 
+A fall back for handling leaves is to ensure that any particular node not only keeps track of its own finger table, but also of the fingers of any successor.
 
 This way, if a node should fail at any time, then the predecessor node in the ring also knows how to reach the nodes corresponding to the entries in the failed node’s finger table.

@@ -1,5 +1,8 @@
-# Threads And Concurrency
-#gios 
+---
+id: threads-and-concurrency
+title: Threads And Concurrency
+sidebar_label: Threads And Concurrency
+---
 
 ## Process vs. Thread
 A single-threaded process is represented by two components:
@@ -166,9 +169,9 @@ Basic implementation of wait procedure:
 ```c
 Wait(mutex, cond){
   // atomically release mutex and place thread on wait queue
-  
+
   // wait wait wait
-  
+
   // remove thread from wait queue
   // reacquire mutex
   // exit wait
@@ -207,17 +210,17 @@ Our program will require four things:
 - `read_phase`  - a condition variable signifying that the resource is ready for reading
 - `write_phase` - a condition variable signifying that the resource is ready for writing
 
-Readers can begin reading by first locking the mutex and incrementing the value of the `resource_counter`. If multiple readers try to lock the mutex at once, all but one will block and each will unblock as the mutex becomes available. 
+Readers can begin reading by first locking the mutex and incrementing the value of the `resource_counter`. If multiple readers try to lock the mutex at once, all but one will block and each will unblock as the mutex becomes available.
 
 If a writer tries to enter the fray while multiple readers are accessing the state, the writer will have to `wait`, since our application is such that writes cannot proceed while reads are ongoing. The writer will wait on the condition variable `write_phase`.
 
 Once the reader decrements `resource_counter`, it will check to see if `resource_counter` is zero. If so, that means our application is in a state where writes can proceed, so this final reader will `signal` on the `write_phase` variable to wake up a waiting writer. Given that only one writer can proceed at a time, it does not make sense to use a `broadcast` here.
 
-The pending writer will be removed from the wait queue that is associated with the `write_phase` variable, and the counter mutex will be reacquired before coming out of the wait operation. We recheck that our predicate (`resource_counter != 0`) is still true before we adjust `resource_counter`. We can then proceed with our write. 
+The pending writer will be removed from the wait queue that is associated with the `write_phase` variable, and the counter mutex will be reacquired before coming out of the wait operation. We recheck that our predicate (`resource_counter != 0`) is still true before we adjust `resource_counter`. We can then proceed with our write.
 
 **NB**: We need to recheck our condition in our while loop because the act of removing the thread from the wait queue and the act of reacquiring the mutex occur as two separate procedures. This means that the mutex could be reacquired in between these two steps by a *different thread*, with `resource_counter` being updated by that thread. Thus, we must check that our condition holds one last time after we acquire the mutex.
 
-If a new thread wants to write while another thread is currently writing, this new thread will have to `wait` on `write_phase`. If a new thread wants to read while another thread is currently writing, this new thread will also have to `wait`, but on `read_phase` instead. 
+If a new thread wants to write while another thread is currently writing, this new thread will have to `wait` on `write_phase`. If a new thread wants to read while another thread is currently writing, this new thread will also have to `wait`, but on `read_phase` instead.
 
 Once the current writer completes, it resets `resource_counter` to 0, and then `broadcast`s to the `read_phase` and `signals` to `write_phase`. We `signal` to `write_phase` because only one writer can access the shared state at a given time, and we `broadcast` to `read_phase` because multiple threads are allowed to read from the shared state at a given time.
 
@@ -247,7 +250,7 @@ The “enter critical section” blocks can be seen as a higher level “lock”
 ## Critical Section Structure With Proxy
 ![](../assets/FC626433-043F-4F39-88FB-54F5F184C381.png)
 
-Again, this structure allows up to implement more complex sharing scenarios than the simple mutual exclusion that mutexes allow. 
+Again, this structure allows up to implement more complex sharing scenarios than the simple mutual exclusion that mutexes allow.
 
 ## Common Pitfalls
 Make sure to keep track of the mutex/condition variables that are used with a given shared resource. Comments help!
@@ -271,7 +274,7 @@ When the broadcast is issued, the thread library can start removing reader threa
 
 What will happen, as the readers are removed from this queue is that they will try to acquire the mutex. Since the writer has not yet released the mutex, none of the readers will be able to acquire the mutex. They will have been woken up from one queue (associated with the condition variable) only to be placed on another queue (associated with acquiring the mutex) .
 
-This situation in which we unnecessarily wake up a thread when there is no possible way for it proceed is called a **spurious wake up**. 
+This situation in which we unnecessarily wake up a thread when there is no possible way for it proceed is called a **spurious wake up**.
 
 Note that spurious wake ups will not affect the correctness of the program, but rather the performance, as cycles will be wasted context switching to threads that will just be placed back on another queue.
 
@@ -280,7 +283,7 @@ Often we can unlock the mutex before we signal or broadcast. Sometimes we cannot
 ![](../assets/DB2EC542-93FD-406D-AB18-B041037F0EED.png)
 
 ## Deadlocks
-A **deadlock** occurs when two or more competing threads are waiting on each other to complete, but none of them ever do. 
+A **deadlock** occurs when two or more competing threads are waiting on each other to complete, but none of them ever do.
 
 Let’s consider two threads, T1 and T2, that need to perform operations on some shared variables A and B. Before performing these operations, each thread must lock the mutex associated with those variables, because they are part of shared state.
 
@@ -317,7 +320,7 @@ We will consider three multithreading models.
 ### One-to-One Model
 In this model, each user level thread has a kernel level thread associated with it. When a user process creates a new user level thread, either a new kernel level thread is created or an existing kernel level thread is associated with this new user level thread.
 
-This means that the operating system can see the user level threads. It understands that the process is multithreaded, and it also understands what those threads need. Since the operating system already supports threading mechanisms to manage its thread, the user libraries can benefit directly from the multithreading support available in the kernel. 
+This means that the operating system can see the user level threads. It understands that the process is multithreaded, and it also understands what those threads need. Since the operating system already supports threading mechanisms to manage its thread, the user libraries can benefit directly from the multithreading support available in the kernel.
 
 One downside of this approach is that is it expensive: for every operation we must go to the kernel and pay the cost of a system call. Another downside is that since we are relying on the mechanisms and policies supported by the kernel, we are limited to only those policies and mechanisms. As well, execution of our applications on different operating systems may give different results.
 
@@ -326,7 +329,7 @@ In this model, all of the user level threads for a process are mapped onto a sin
 
 The benefit of this approach is that it is portable. Everything is done at the user level, which frees us from being reliant on the OS limits and policies. As well, we don’t have make system calls for any thread-related decisions.
 
-However, the operating system loses its insight into application needs. It doesn’t even know that the process is multithreaded. All it sees is one kernel level thread. If the user level library schedules a thread that performs some blocking operation, the OS will place the associated kernel level thread onto some request queue, which will end up blocking the entire process, even though more work can potentially be done. 
+However, the operating system loses its insight into application needs. It doesn’t even know that the process is multithreaded. All it sees is one kernel level thread. If the user level library schedules a thread that performs some blocking operation, the OS will place the associated kernel level thread onto some request queue, which will end up blocking the entire process, even though more work can potentially be done.
 
 ### Many-to-Many Model
 This model allows for some user threads to have a one-to-many relationship with a kernel thread, while allowing other user threads to have a one-to-one relationship with a kernel thread.
@@ -338,11 +341,11 @@ We can have a situation where a user level thread can be scheduled on any alloca
 One of the downsides of this model is that is requires extra coordination between the user- and kernel-level thread managers.
 
 ## Scope of Multithreading
-At the kernel level, there is system wide thread management, supported by the operating system level thread managers. These managers will look at the entire platform before making decision on how to run its threads.  This is the **system scope**. 
+At the kernel level, there is system wide thread management, supported by the operating system level thread managers. These managers will look at the entire platform before making decision on how to run its threads.  This is the **system scope**.
 
 On the other hand,  at the user level, the user level library that manages all of the threads for the given process it is linked to. The user level library thread managers cannot see threads outside of their process, so we say these managers have **process scope**.
 
-To understand the consequences of having different scope, let’s consider the scenario where we have two processes, A and B. A has twice as many user level threads as B. 
+To understand the consequences of having different scope, let’s consider the scenario where we have two processes, A and B. A has twice as many user level threads as B.
 
 If the threads have a process scope, this means that the kernel cannot see them, and will probably allocate equal kernel resources to A and B. This means that a given thread in A will be allocated half of the CPU cycles as will be allocated to a thread in B.
 
@@ -370,9 +373,9 @@ The positive of this approach is that the boss doesn’t need to know any of the
 The downside of this approach is that further synchronization is required, both for the boss producing to the queue, and the workers competing amongst one another to consume from the queue. Despite this downside, this approach still results in decreased work for the boss for each task, which increases the throughput for the whole system.
 
 #### How many workers?
-If the work queue fills up, the boss cannot add items to the queue, and the amount of time that the boss has to spend per task increases. The likelihood of the queue filling up is dependent primarily on the number of workers. 
+If the work queue fills up, the boss cannot add items to the queue, and the amount of time that the boss has to spend per task increases. The likelihood of the queue filling up is dependent primarily on the number of workers.
 
-Adding more threads may help to increase/stabilize the throughput, but adding an arbitrary number of threads can introduce complexities. 
+Adding more threads may help to increase/stabilize the throughput, but adding an arbitrary number of threads can introduce complexities.
 
 We can create workers on demand; that is, in response to a new task coming into our system. This may be inefficient, though if the cost of creating a worker (thread) is significant.
 
@@ -380,11 +383,11 @@ A more common model is to create a pool of workers that are initialized up front
 
 A common technique is to use a pool of workers that can be increased in response to high demand on the system. This is not quite like the on demand approach in that new threads will not be created one at a time when the demand passes a threshold, but rather the pool may be doubled or increased by some other multiple.
 
-The benefit of the boss/workers model is the overall simplicity. One thread assigns the work, and the rest of the threads complete it. 
+The benefit of the boss/workers model is the overall simplicity. One thread assigns the work, and the rest of the threads complete it.
 
 One downside of this approach is the thread pool management overhead. Another downside is that this system lacks **locality**. The boss doesn’t keep track of what any of the workers were doing last. It is possible that a thread is just finishing a task that is very similar to an incoming task, and therefore may be best suited to complete that task. The boss has no insight into this fact.
 
-#### Worker Variants 
+#### Worker Variants
 An alternative to having all the workers in the system perform the same task is to have different workers specialized for different tasks. One added stipulation to this setup is that the boss has to do a little bit more work in determining which set of workers should handle a given task, but this extra work is usually offset by the fact that workers are now more efficient at completing their tasks.
 
 This approach exploits locality. By performing only a subset of the work, it is likely only a subset of the state will need to be accessed, and it is more likely this part of the state will already be present in CPU cache.
@@ -401,7 +404,7 @@ At any given point in time, we may have multiple tasks being worked on concurren
 The throughput of the pipeline will be dependent on the *weakest link* in the pipeline; that is, the task that takes the longest amount of time to complete. In this case, we can allocate more threads to that given step. For example, if a step takes three times as long as every other step, we can allocate three times the number of threads to that step.
 
 The best way to pass work between these stages is a shared buffer base communication between stages. That means the thread for stage one will put its completed work on a buffer that the thread from stage two will read from and so on.
- 
+
 ![](../assets/DEDC3AC5-1BDC-4288-8FB0-20AE35A510C6.png)
 
 In summary, a pipeline is a sequence of stages, where a thread performs a stage in the pipeline, which is equivalent to some subtask within the end to end processing. To keep the pipeline balanced, a stage can be executed by more than one thread. Communication via shared buffers reduces coupling between the components of the system.
@@ -414,9 +417,8 @@ A downside of this approach is that it is difficult to keep the pipeline balance
 ### Layered Pattern
 A layered model of multithreading is one in which similar subtasks are grouped together into a “layer” and the threads that are assigned to a layer can perform any of the subtasks in that layer. The end-to-end task must pass through all the layers.
 
-A benefit of this approach is that we can have specialization while being less fine-grained than the pipeline pattern. 
+A benefit of this approach is that we can have specialization while being less fine-grained than the pipeline pattern.
 
 Downsides of this approach include that it may not be suitable for all applications and that synchronization may be more complex as each layer must know about the layers above and below it to both receive inputs and pass results.
 
 ![](../assets/2649776E-95FB-4692-8F9C-EC4574A421EA.png)
-

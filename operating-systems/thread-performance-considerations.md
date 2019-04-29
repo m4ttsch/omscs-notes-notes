@@ -1,5 +1,8 @@
-# Thread Performance Considerations
-#gios 
+---
+id: thread-performance-considerations
+title: Thread Performance Considerations
+sidebar_label: Thread Performance Considerations
+---
 
 ## Which Threading Model Is Better?
 Let’s compare the following two models to see which one is better
@@ -17,7 +20,7 @@ total_orders = 11
 total_time = (120 * 5) + (2 * 120 * 5) + (3 * 120)
 
 average_time_per_order =  total_time / total_orders
-# average_time_per_order approx 196ms 
+# average_time_per_order approx 196ms
 ```
 
 For the pipeline model, the first order took 120ms to complete. The second order waited 20ms for the first order to leave the first stage, and then took 120ms to complete. The third order waited 20ms on the first order, and 20ms on the second order, and then took 120ms to complete. Thus, the average time per order is
@@ -34,10 +37,10 @@ average_time_per_order =  total_time / total_orders
 
 If execution time is important, pick the pipeline model. Rather, if we care about the average time to complete the order, the boss/workers model is better.  
 
-It’s usually not possible to decree that one model is better than the other. Performance of a model is relative to the metric being measured, and different metrics may be important in different contexts. 
+It’s usually not possible to decree that one model is better than the other. Performance of a model is relative to the metric being measured, and different metrics may be important in different contexts.
 
 ## Are Threads Useful?
-Threads are useful for a few reasons. They allow us to have speed up because we can parallelize problems. We get to benefit from a hot cache because we can specialize what a particular thread is doing. Using threads leads to implementations that have lower memory requirements and are cheaper to synchronize than implementations that are multiprocess. Threads are useful even on a single CPU because they allow us to hide latency of I/O operations. 
+Threads are useful for a few reasons. They allow us to have speed up because we can parallelize problems. We get to benefit from a hot cache because we can specialize what a particular thread is doing. Using threads leads to implementations that have lower memory requirements and are cheaper to synchronize than implementations that are multiprocess. Threads are useful even on a single CPU because they allow us to hide latency of I/O operations.
 
 What *is* useful?
 
@@ -70,11 +73,11 @@ Many instead I am more concerned about energy requirements. I might look at **pe
 
 When looking to incorporate enterprise software into the system, another useful metric may be the **percentage of SLA violations**. It may not make sense to create a contract with a software company if the SLA violations on their products are very high.
 
-Some metrics are not super useful to maximize. For example, “smooth” video requires ~30fps. It doesn’t make sense to maximize the fps, but rather the goal should be to stay above or around 30fps for some high percentage of the time. In this case **client-perceived performance** is the goal, not raw performance. 
+Some metrics are not super useful to maximize. For example, “smooth” video requires ~30fps. It doesn’t make sense to maximize the fps, but rather the goal should be to stay above or around 30fps for some high percentage of the time. In this case **client-perceived performance** is the goal, not raw performance.
 
 You may be interested in just one metric before making decisions, or you may need to aggregate metrics or even derive new metrics in order to accurately understand the system that you are evaluating.
 
-In summary, a metric is some measurable quantity we can use to reason about the behavior of a system. 
+In summary, a metric is some measurable quantity we can use to reason about the behavior of a system.
 
 Ideally, we will obtain these measurements running real software on real machines with real workloads. Often, this is not feasible for many different reasons. In these cases, we may have to settle on “toy” experiments that are *representative* of realistic situations that we may encounter.
 
@@ -130,9 +133,9 @@ An event driven application is implemented in a single address space, with a sin
 Events (in the case of a web server application)  can correspond to:
 - receipt of request
 - completion of send
-- completion a disk read 
+- completion a disk read
 
-The event dispatcher has the ability to accept any of these types of notifications and based on the notification type invoke the right handler. Since we are taking about a single threaded process invoking a handler is just calling a function, so we just jump our execution to that instruction within the process’s address space. 
+The event dispatcher has the ability to accept any of these types of notifications and based on the notification type invoke the right handler. Since we are taking about a single threaded process invoking a handler is just calling a function, so we just jump our execution to that instruction within the process’s address space.
 
 The handlers run to completion. If the handler needs to block (by making an I/O request for instance), the handler will initiate the blocking operation and immediately pass control back to the dispatch loop.
 
@@ -196,7 +199,7 @@ In doing this, the synchronous I/O call is handled by the helper. The helper wil
 
 If the kernel is not multithreaded - it wasn’t back in the day - the helpers need to be processes. The model was called the **Asymmetric Multi-Process Event-Driven Model** or AMPED. The multithreaded equivalent acronym is AMTED.
 
-The key benefits of this model are that  it resolves some of the portability issues of the basic event-driven model. That is, it fakes asynchronous I/O operations instead of relying on native support for them. 
+The key benefits of this model are that  it resolves some of the portability issues of the basic event-driven model. That is, it fakes asynchronous I/O operations instead of relying on native support for them.
 
 In addition, this model allows us to have a smaller footprint than a pure multiprocess or multithreaded model. Since a thread or a process in the pure multiprocess/threaded model needs to perform all of the steps for processing the request, the memory footprint will be higher than that of a help that just needs to do a very isolated task.
 
@@ -209,7 +212,7 @@ The blocking I/O operations that are happening in this scenario are basically ju
 
 The communication from the helpers to the event dispatcher is performed via pipes. The helper reads the file in memory via `mmap` and then the dispatcher checks via `mincore` to see if the pages are in memory, and uses this information to determine if it should call a local handler or a helper. As long as the file is memory, reading it will not result in the blocking I/O operation, which means that the local handler can be used.
 
-Flash performs application level caching at multiple levels. 
+Flash performs application level caching at multiple levels.
 
 ![](../assets/F11D499F-689F-4FC6-9357-06AA8772587E.png)
 
@@ -231,7 +234,7 @@ Apache is a combination of a multiprocess and multithreaded model. In apache, ea
 ## Experimental Methodology
 The experiments outlined in the flash paper are designed such that the results can help the authors of their paper back up the claims they made about flash.
 
-To achieve a good experimental design you need to answer a few questions. 
+To achieve a good experimental design you need to answer a few questions.
 
 What systems are you comparing? Are you comparing two software implementations? If so, keep the hardware the same. Are you comparing two hardware platforms? Make sure the software is consistent.
 
@@ -251,7 +254,7 @@ The authors compared their implementation against
 ### What workloads will be used?
 
 They wanted workloads that represented a realistic sequence of requests, because that is what will capture a distribution of web page accesses, but they wanted to be able to reproduce the experiment with the same pattern of accesses. To accomplish this, they gathered traces from real web servers, and replayed those traces to their systems.
- 
+
 They used two real-world traces. The first trace was the CS WebServer trace, which represents the Rice University web server for the computer science department, which includes a large number of files and doesn’t really fit in memory. The second trace was the Owlnet trace, which was from a web server that hosted a number of student run websites and it was much smaller so it would typically fit in the memory of a common server.
 
 In addition to these real traces, they also used a synthetic workload generator. Since they couldn’t replay synthetic workloads, they instead performed some best/worst analysis when looking at performance with these workloads.
@@ -272,9 +275,9 @@ For the best case, the authors used the synthetic load. They varied the number o
 
 For the best case experiment, they vary the file size from 0 to 200kb, and they measure the bandwidth is the number of requests times the file size divided by the total time. By varying the file size, they vary the amount of work that the server has to do on a given request.  
 
-![](../assets/EBC45431-74FC-4D6D-A91E-5E4D368BCB22.png) 
+![](../assets/EBC45431-74FC-4D6D-A91E-5E4D368BCB22.png)
 
-All of the implementations had similar results, with bandwidth increasing sharply with file size initially before plateauing. 
+All of the implementations had similar results, with bandwidth increasing sharply with file size initially before plateauing.
 
 SPED has the best performance. Flash is similar in performance, but it performs the extra check for memory presence. Zeus has an anomaly, where it drops in performance after a threshold of around 125Kb. The performance of the multithreaded/multiprocess implementation are lower because of the extra synchronization requirements and the cost of context switching. Apache has the lowest performance because it has no optimizations.
 
@@ -288,7 +291,7 @@ SPED has the best performance. Flash is similar in performance, but it performs 
 
 ![](../assets/7FAD964F-52B7-4742-BA6D-07615FBCFE00.png)
 
-The CS trace is a much larger trace, which means that most requests are not serviced from the cache. Since the SPED implementation does not support asynchronous I/O the performance drops significantly. The multithreaded implementation does better than the multiprocess implementation because the multithreaded implementation has a smaller memory footprint   (more memory available to cache files) and is able to synchronize more quickly/cheaper. 
+The CS trace is a much larger trace, which means that most requests are not serviced from the cache. Since the SPED implementation does not support asynchronous I/O the performance drops significantly. The multithreaded implementation does better than the multiprocess implementation because the multithreaded implementation has a smaller memory footprint   (more memory available to cache files) and is able to synchronize more quickly/cheaper.
 
 Flash performs the best. It has the smallest memory footprint, which means it has the most memory available for caching files. As a result, fewer requests will require blocking I/O requests, which further speeds everything up. In addition, since everything occurs in the same address space, there is no need for explicit synchronization.
 
