@@ -1,8 +1,5 @@
----
-id: dns
-title: DNS
-sidebar_label: DNS
----
+# DNS
+#cn
 
 ## Domain Name System
 The purpose of the **domain name system** (DNS) is to map human-readable names - such as www.gatech.edu - to IP addresses - such as 130.207.160.173.
@@ -17,9 +14,9 @@ The client typically has a *stub resolver*. This resolver takes the domain name 
 
 The client query is typically sent *recursively*. This means that the client doesn’t want to receive intermediate referrals from DNS servers trying to resolve the query. The client only cares about the final answer.
 
-The local resolver, on the other hand, will perform iterative queries.
+The local resolver, on the other hand, will perform iterative queries. 
 
-Each fully qualified domain name is expected to end with a “dot” (.), indicating the root of the DNS hierarchy.
+Each fully qualified domain name is expected to end with a “dot” (.), indicating the root of the DNS hierarchy. 
 
 The IP addresses for the root servers - those that are authoritative for the root - may already be configured in the local DNS resolver.
 
@@ -33,22 +30,22 @@ Finally, the local resolver will issue the same query to the authoritative serve
 
 ### Caching and TTL
 
-This process of referrals can be pretty slow. A typical DNS query may require round trips to multiple servers that are authoritative for different parts of the hierarchy.
+This process of referrals can be pretty slow. A typical DNS query may require round trips to multiple servers that are authoritative for different parts of the hierarchy. 
 
 We can reduce the number of round trips we must take to respond to any query by introducing a cache at the local resolver.
 
-This cache would store the NS records for each level of the hierarchy as well as the A records.
+This cache would store the NS records for each level of the hierarchy as well as the A records. 
 
 Each of the records would be cached for a particular amount of time. Each reply from a DNS server has a **time to live** (TTL) attribute that indicates how long each requested record can be saved before they need to be looked up again.
 
 Caching allows for quick responses from the local DNS resolver, especially for repeated mappings. For example, if multiple hosts are connected to the same resolver, and one of them requests a popular site - like facebook.com - the DNS server can then cache that record, which will speed up the (inevitable) lookup requests for all of the other hosts.
 
-Some queries can reuse parts of the lookup. For example, it is unlikely that the authoritative name server for the root is going to change very often. That record might be cached for hours, days or even weeks.
+Some queries can reuse parts of the lookup. For example, it is unlikely that the authoritative name server for the root is going to change very often. That record might be cached for hours, days or even weeks. 
 
 The mapping for a local name - like www.gatech.edu - might change more frequently, so those TTLs might be smaller.
 
 ## Record Types
-**A records** map names to IP addresses.
+**A records** map names to IP addresses. 
 
 **NS records**, or name server records, map domain names to the authoritative name server for that domain. This can be helpful when a particular DNS server doesn’t know the answer to a query, but can refer the caller to the authoritative server for that space of the domain system.
 
@@ -96,7 +93,7 @@ tlweb.gtm.gatech.edu.	30	IN	A	130.207.160.173
 
 In the “QUESTION SECTION”, you can see our query. We are looking for an A record for www.gatech.edu.
 
-In the “ANSWER SECTION”, you can see the response to our query. Our initial query response is a CNAME record, which maps www.gatech.edu to tlweb.gtm.gatech.edu. We then issue an A record query for tlweb.gtm.gatech.edu, the response to which is `130.207.160.173`.
+In the “ANSWER SECTION”, you can see the response to our query. Our initial query response is a CNAME record, which maps www.gatech.edu to tlweb.gtm.gatech.edu. We then issue an A record query for tlweb.gtm.gatech.edu, the response to which is `130.207.160.173`. 
 
 The numbers “60” and “30” for the CNAME and A record entries, respectively, indicate the TTL in seconds that the entry can be stored in the cache.
 

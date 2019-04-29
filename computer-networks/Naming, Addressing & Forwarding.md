@@ -1,8 +1,5 @@
----
-id:  naming-addressing-forwarding
-title: Naming, Addressing & Forwarding
-sidebar_label: Naming, Addressing & Forwarding
----
+# Naming, Addressing & Forwarding
+#cn
 
 ## IP Addressing
 In this lesson, we will be covering IPv4 address structure and allocation.
@@ -48,7 +45,7 @@ IANA has the authority to allocate address space to **regional routing registrie
 - [APNIC](https://www.apnic.net/) for Asia and Australia
 - [ARIN](https://www.arin.net/) for North America
 - [LACNIC](https://www.lacnic.net/) for Latin America
-- [RIPE](https://www.ripe.net/) for Europe
+- [RIPE](https://www.ripe.net/) for Europe 
 
 Regional routing registries in turn allocate address space to individual networks, like GATech.
 
@@ -77,7 +74,7 @@ For example, consider the IP address `65.14.248.0/22`. In this case, the `/22` s
 
 This allows those allocating IP address ranges to both allocate a range that is more fitting to the size of the network and also not have to be constrained about how big the network ID should be depending on where in the address space the prefix is being allocated from.
 
-One complication is that we can now have overlapping address prefixes. For example, `65.14.248.0/24` overlaps with `65.14.248.0/22` . The `/24`  address is actually a subnet of the `/22`.
+One complication is that we can now have overlapping address prefixes. For example, `65.14.248.0/24` overlaps with `65.14.248.0/22` . The `/24`  address is actually a subnet of the `/22`. 
 
 What should we do if both of these entries show up in an internet routing table? The solution is to forward on the *longest prefix match*. Intuitively this makes sense: the prefix with the longer mask length is more specific than the prefix with the shorter mask.
 
@@ -88,7 +85,7 @@ This forwarding table will have a number of prefixes in it, and many of those pr
 
 ![](../assets/5A19E703-D229-4940-8D01-D0B7BB3115CC.png)
 
-When we see an IP address that may match on the one or more prefixes in this table, we simply match that IP address to the entry in the forwarding table with the longest matching prefix.
+When we see an IP address that may match on the one or more prefixes in this table, we simply match that IP address to the entry in the forwarding table with the longest matching prefix. 
 
 One benefit of CIDR and **longest prefix matching** is efficiency, since prefix blocks can be allocated on a much finer granularity than with classful interdomain routing.
 
@@ -119,7 +116,7 @@ The problem occurs when AT&T and Verizon want to advertise that prefix to the re
 
 AT&T can’t aggregate this `/24` prefix into `12.0.0.0/8`, because then Verizon would be advertising the longer `12.20.249.0/24`. This would mean that all traffic for AS 30308 would be routed through Verizon.
 
-As a result, AT&T and Verizon must both advertise the `/24` to the rest of the Internet.
+As a result, AT&T and Verizon must both advertise the `/24` to the rest of the Internet. 
 
 The desire to multi-home by small ASes with masks led to an explosion of `/24` entries in the global routing table, with many missed opportunities for aggregation that would have otherwise been present.
 
@@ -138,11 +135,11 @@ If either link fails, the shorter `/16` will ensure that the prefix remains reac
 
 While load balancing is a perfectly good reason for an AS to de-aggregate its prefixes, de-aggregation is often done unnecessarily.
 
-The [CIDR report](https://www.cidr-report.org/as2.0/), released weekly, shows top offending ASes who are advertising IP prefixes that are contiguous and could be aggregated.
+The [CIDR report](https://www.cidr-report.org/as2.0/), released weekly, shows top offending ASes who are advertising IP prefixes that are contiguous and could be aggregated. 
 
 The report shows basically shows how many unique prefixes an AS is advertising as well as how many unique prefixes could be advertised with maximum aggregation.
 
-The CIDR report might be overly optimistic, as we have just seen that fine reasons for de-aggregation do exist.
+The CIDR report might be overly optimistic, as we have just seen that fine reasons for de-aggregation do exist. 
 
 Nonetheless, the report shows that there are probably many more IP prefixes in the global internet routing table than there could be if ASes took full advantage of aggregation.
 
@@ -155,16 +152,16 @@ The lookup algorithm that a router uses depends on the protocol that it’s usin
 ![](../assets/BC9D1329-9DD4-4EBA-B06B-130DE4E0D649.png)
 
 ### Ethernet
-Ethernet forwarding is based on an exact match of a layer 2 address, which is usually 48 bits long. The address is global and the size of the address is not negotiable. It is not possible to hold 2^48 addresses in a table and use direct lookup.
+Ethernet forwarding is based on an exact match of a layer 2 address, which is usually 48 bits long. The address is global and the size of the address is not negotiable. It is not possible to hold 2^48 addresses in a table and use direct lookup. 
 
 The advantages of exact matches in Ethernet switches is that exact match is simple, and the *expected* lookup time is O(1). The disadvantages include inefficient use of memory, which potentially results in non-deterministic look up time if a lookup requires multiple memory accesses.
 
 ## IP Lookups Find Long Prefixes
-Suppose that we want to represent an IP address as one point in the space from 0 to 2^32-1 - the range of all 32-bit IP addresses.
+Suppose that we want to represent an IP address as one point in the space from 0 to 2^32-1 - the range of all 32-bit IP addresses. 
 
 Each prefix represents a smaller range inside the larger range of 32 bit numbers and, of course, these ranges may be overlapping.
 
-The idea with longest prefix match is to find the prefix covering the smallest range of IP addresses which includes the specified IP address.
+The idea with longest prefix match is to find the prefix covering the smallest range of IP addresses which includes the specified IP address. 
 
 The smaller the range, the larger the prefix.
 
@@ -196,17 +193,17 @@ In a trie, spelling out the bit 1 always adds a node to the right, and spelling 
 
 ![](../assets/3F356D3E-6C34-4CA1-80D8-7737CF451F74.png)
 
-Let’s suppose we want to look up 10111. All we have to do is spell this out in the trie.
+Let’s suppose we want to look up 10111. All we have to do is spell this out in the trie. 
 
 ![](../assets/4256A2BF-5C90-4EED-8D75-4D057BF9C50C.png)
-
+ 
 We can see that there is no entry for 1011. So we use the last node in the trie that we have traversed that has an entry. In this case, that entry is P2.
 
 This type of trie is actually called a **single-bit trie**. Single-bit tries are very efficient. Every node in this trie exists as a result of the forwarding table entries that have been inserted. Put another way,  this trie requires no more memory than the amount needed for all lookups. Updates are also very simple.
 
 The main drawback of single-bit tries is the number of memory accesses that are required to perform a lookup. For a 32-bit address, looking up an address in a single bit trie may require 32 memory references in the worst case.
 
-To put this in perspective, the [OC48](https://en.wikipedia.org/wiki/Optical_Carrier_transmission_rates) spec requires no more than 4 memory accesses!
+To put this in perspective, the [OC48](https://en.wikipedia.org/wiki/Optical_Carrier_transmission_rates) spec requires no more than 4 memory accesses! 
 
 32 accesses is far too many, especially for high speed links.
 
@@ -217,16 +214,16 @@ We might have a two-level trie, where the first memory access is dictated by the
 
 ![](../assets/73A8D974-8FA4-4FCB-BA8C-541B3666A7E2.png)
 
-The benefit of this approach is that we can look up an entry in the forwarding table with just two accesses.
+The benefit of this approach is that we can look up an entry in the forwarding table with just two accesses. 
 
 The problem with this approach is that this structure results in a very inefficient use of memory, unlike the single bit trie.
 
-Suppose that we want to represent a `/16` prefix. We have no way of encoding a lookup that is just 16 bits. We have to encode 2^8 (24 - 16) identical entries corresponding to the 2^8 `/24` prefixes that are contained in the `/16`.
+Suppose that we want to represent a `/16` prefix. We have no way of encoding a lookup that is just 16 bits. We have to encode 2^8 (24 - 16) identical entries corresponding to the 2^8 `/24` prefixes that are contained in the `/16`. 
 
 ## Memory Efficiency and Fast Lookup
 To achieve the memory efficiency of the single-bit trie with the fast lookup properties of the direct trie, a comprise is to use a **multi-bit trie**, or **multi-ary trie**.
 
-In a binary trie (single-bit trie), the *depth* is `W`, the *degree* is 2, and the *stride* is 1 bit.
+In a binary trie (single-bit trie), the *depth* is `W`, the *degree* is 2, and the *stride* is 1 bit. 
 
 We can generalize this in a multi-ary trie, with the depth being `W/k`, the degree being `2^k` and the stride being `k` bits.
 
@@ -255,7 +252,7 @@ A CAM only supports an exact match, and completes lookups in O(1).
 A ternary CAM can hold three values: 0, 1 or * (wildcard). The support for a wildcard permits an implementation of LPM. One can have multiple matching entries, but prioritize the matches according to the longest non-wildcard prefix in the ternary CAM.
 
 ## NAT and IPv6
-The main problem that we are seeing is that IPv4 addresses only have 32 bits. This means that there can only be a total of 2^32 unique IP addresses.
+The main problem that we are seeing is that IPv4 addresses only have 32 bits. This means that there can only be a total of 2^32 unique IP addresses. 
 
 Not only that, IP addresses are allocated in blocks and fragmentation of the space can mean that IPv4 address can  be quickly exhausted. We have already seen the last `/8` from the IPv4 address space allocated by IANA.
 
@@ -264,7 +261,7 @@ Two solutions to deal with this problem are *network address translation* and IP
 ## Network Address Translation
 **Network Address Translation** (NAT) allows multiple networks to reuse the same private IP address space.
 
-A particular private IP address space that can be reused by multiple networks is `192.168.0.0/16`.
+A particular private IP address space that can be reused by multiple networks is `192.168.0.0/16`. 
 
 Other private IP address spaces are specified in [RFC 1918](https://tools.ietf.org/html/rfc1918) (Section 3).
 
@@ -276,17 +273,17 @@ A NAT takes a group of private IP addresses and translates it to a single, globa
 
 To the rest of the Internet, network 1 seems to be reachable by `203.17.1.1` and network 2 seems to be reachable by `133.4.1.5`, even though both networks may use the multiple, overlapping IP addresses internally.
 
-Say a host from network 2, such as `192.168.1.10`, sends a packet destined for a global internet destination.
+Say a host from network 2, such as `192.168.1.10`, sends a packet destined for a global internet destination. 
 
 This packet will have source port, and the NAT will take the source IP and port and translate it to a public reachably source IP and port. The destination will remain unchanged.
 
 For example, the packet may originally have source `192.168.1.10:1234` and the NAT may re-write this source as `133.4.1.5:5678`.
 
-The packet will make its way to the destination, and the response will re-enter the NAT at port `5678`. The NAT maintains a table that maps the public IP address/port combination to a private IP address/port combination.
+The packet will make its way to the destination, and the response will re-enter the NAT at port `5678`. The NAT maintains a table that maps the public IP address/port combination to a private IP address/port combination. 
 
 Thus, the NAT will rewrite the destination IP address of the packet from `133.4.1.5:5678` to `192.168.1.10:1234` and forward the packet to the originating host.
 
-NATs are popular on broadband access networks, small/home offices, and VPNs.
+NATs are popular on broadband access networks, small/home offices, and VPNs. 
 
 There is clear savings in IPv4 address space since there can many many devices in a private network, but all of those devices “use up” only one public IP address.
 
@@ -331,14 +328,14 @@ We have yet to see a significant deployment of IPv6.
 
 As of 2013, we have just about 16,000 IPv6 address in the global routing table, which is just a small fraction when compared to the ~500,000 IPv4 addresses present.
 
-The problem is that IPv6 is very hard to deploy incrementally.
+The problem is that IPv6 is very hard to deploy incrementally. 
 
 Remember the narrow waist. Because everything depends on the narrow waist of IPv4, and because IPv4 is built on top of so many other types of infrastructure, changing it becomes extremely tricky.
 
 Incremental deployment, where part of the internet is running IPv4, and other parts are running IPv6, results in significant incompatibility.
 
 ## IPv6 Incremental Deployment
-One strategy for IPv6 incremental deployment is a **dual stack deployment**.
+One strategy for IPv6 incremental deployment is a **dual stack deployment**. 
 
 In a dual stack deployment, a host can speak both IPv4 and IPv6. It communicates with an IPv4 host using IPv4 and an IPv6 host using IPv6.
 
@@ -348,12 +345,15 @@ One possible way of ensuring compatibility of an IPv6 address with IPv4 is simpl
 
 A dual stack host configuration solves the problem of host IP address assignment, but it doesn’t solve the problem of “island” IPv6 deployments.
 
-For example, multiple independent portions of the internet might deploy IPv6. What if the middle of the network only speaks and routes IPv4?
+For example, multiple independent portions of the internet might deploy IPv6. What if the middle of the network only speaks and routes IPv4? 
 
 ![](../assets/844E05EA-360C-4337-9034-1E53CFEBC5C5.png)
 
-The solution is to use **6 to 4 tunneling**.  With this strategy, a v6 packet is encapsulated in a v4 packet.
+The solution is to use **6 to 4 tunneling**.  With this strategy, a v6 packet is encapsulated in a v4 packet. 
 
 The v4 packet is then routed to a particular v4-to-v6 gateway corresponding to the v6 address that lies behind the gateway. At this point, the outer layer of encapsulation can be stripped, and the v6 packet can be sent to its destination.
 
 This requires the gateways at the boundaries between the v4 and v6 networks to perform encapsulation as the packet enters the v4-only part of the network, and decapsulation as the packet enters the v6 island where the destination host resides.
+
+
+ 

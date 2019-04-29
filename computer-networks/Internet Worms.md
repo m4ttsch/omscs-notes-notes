@@ -1,8 +1,5 @@
----
-id: internet-worms
-title: Internet Worms
-sidebar_label: Internet Worms
----
+# Internet Worms
+#cn
 
 ## Types of Viruses and Worm Overview
 A **virus** is an “infection” of an existing program that results in the modification of the original program’s behavior.
@@ -37,7 +34,7 @@ At the time it was released, it infected 10% of all internet hosts.
 
 It spread through three different propagation vectors.
 
-First, the worm tried to crack passwords using a small dictionary and publicly readable password file. In addition, it also targeted hosts that were already listed in a trusted host file on the infected machine.
+First, the worm tried to crack passwords using a small dictionary and a publicly readable password file. In addition, it also targeted hosts that were already listed in a trusted hosts file on the infected machine.
 
 The second way that it spread was through a [buffer overflow](https://en.wikipedia.org/wiki/Buffer_overflow) vulnerability in the [finger](https://en.wikipedia.org/wiki/Finger_protocol) daemon.
 
@@ -47,7 +44,7 @@ A common theme along the design of worms is the idea of multiple propagation vec
 
 The Morris Worm highlights the general approach to worm infection and propagation.
 
-First, the worm has to scan other machines on the network to find more potential vulnerable hosts. Second, the worm has to spread by infecting other vulnerable hosts. Finally, the worm should remain undiscoverable so that it can continue to operate and spread without being removed from systems.
+First, the worm has to scan other machines on the network to find more potential vulnerable hosts. Next, the worm has to spread by infecting other vulnerable hosts. Finally, the worm should remain undiscoverable so that it can continue to operate and spread without being removed from systems.
 
 ## Worm Outbreak in Detail
 The summer of 2001 saw three major worm outbreaks: Code Red 1 v2,  Code Red 2, and Nimda.
@@ -107,7 +104,7 @@ We can use these parameters to express the number of hosts infected in a particu
 
 For a given timeslice `dt`, the number of hosts infected `da * N` is equal to the current number of hosts infected `N * a`, times the new fraction of infected hosts in that timeslice:  `K * (1-a) * dt`.
 
-Thus: `Nda = Na * k(1-a)dt`
+Thus: `Nda = Na * K(1-a)dt`
 
 Solving for `a` yields an exponential expression that depends only on `K`, the initial compromise rate.
 
@@ -116,7 +113,7 @@ This tells us that if we want to design a very fast spreading worm, then we shou
 ## Increasing Compromise Rate
 One possible way to increase the initial compromise rate is to create a **hit list**, or list of vulnerable hosts ahead of time.
 
-![](Lesson%2011.1%20-%20Internet%20Worms/F1B2CB50-9BCA-466B-8C81-D59B9D58FCE7%202.png)
+![](../assets/F1B2CB50-9BCA-466B-8C81-D59B9D58FCE7.png)
 
 From this infection curve, we can see that the time to infect the first ten thousand hosts dominates the total infection time.
 

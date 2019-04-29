@@ -1,8 +1,5 @@
----
-id: routing
-title: Routing
-sidebar_label: Routing
----
+# Routing
+#cn
 
 ## Internet Routing
 The internet is not a single network, but rather a collection of tens of thousands of independently operated networks, or **autonomous systems**.
@@ -16,11 +13,11 @@ An autonomous system might be an internet service provider, a content provider, 
 Computing a path between a node in an ISP like Comcast and another node in a network like Georgia Tech’s involves computation of both interdomain and intradomain paths.
 
 ## Intra-AS Topology
-The topology inside a single autonomous system consists of nodes and edges.
+The topology inside a single autonomous system consists of nodes and edges. 
 
-The nodes are sometimes called **points of presence** (PoPs).
+The nodes are sometimes called **points of presence** (PoPs). 
 
-A PoP is typically located in a dense population center so that it can be close to the PoPs of other providers for easier interconnection.
+A PoP is typically located in a dense population center so that it can be close to the PoPs of other providers for easier interconnection. 
 
 The edges between PoPs are typically constrained by the location of fiber paths which, for the sake of convenience, often parallel major transportation routes like highways and railroads.
 
@@ -36,14 +33,14 @@ There are two types of intradomain routing:
 - distance vector routing
 - link state routing
 
-## Distance Vector Routing
-In **distance vector routing**, each node sends multiple distance vectors - essentially a copy of the node’s routing table - to each of its neighbors.
+## Distance Vector Routing 
+In **distance vector routing**, each node sends multiple distance vectors - essentially a copy of the node’s routing table - to each of its neighbors. 
 
 Routers then compute costs to each destination in the topology based on the shortest available path.
 
-Distance vector routing protocols are based on the [Bellman–Ford algorithm](https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm#Algorithm).
+Distance vector routing protocols are based on the [Bellman–Ford algorithm](https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm#Algorithm). 
 
-Formally,
+Formally, 
 
 ```
 d_x(y) = min_v{cost(x, v) + d_v(y)}
@@ -69,7 +66,7 @@ In distance vector routing, every node sends its vector to every other adjacent 
 
 When `x` receives the distance vectors from `y`, the new distance from `x` to `z` will be computed as the minimum of the sums of all distances to `z` through any intermediate node.
 
-The cost between `x` and `y` is 1, and the cost between `y` and `z` is 2. Therefore, the least-cost path from `x` to `z` is the path through `y` with cost 3, not the direct path from `x` to `z` with cost 5.
+The cost between `x` and `y` is 1, and the cost between `y` and `z` is 2. Therefore, the least-cost path from `x` to `z` is the path through `y` with cost 3, not the direct path from `x` to `z` with cost 5. 
 
 This process - comparing distance vectors and potentially updating routing tables - will occur at each node in the topology.
 
@@ -78,7 +75,7 @@ Suppose that we have the following three node network, with nodes `x`, `y`, and 
 
 ![](../assets/84BF45E8-239B-4F34-8C5F-E335E5072833.png)
 
-Eventually, after running the distance vector protocol, the tables would converge.
+Eventually, after running the distance vector protocol, the tables would converge. 
 
 ![](../assets/7DE3551E-F064-42F8-B833-E3D0DCC9A9EB.png)
 
@@ -90,7 +87,7 @@ In this case, `y` would need to update its view of the shortest path between `y`
 
 `y` knows it can get to `z` with cost 2, and `z` thinks it can get to `x` with cost 3 (using the old route through `y`).
 
-`y` will update its entry for `x` to 5, and send its vector to `z`, who will now have to update its route to `x`.
+`y` will update its entry for `x` to 5, and send its vector to `z`, who will now have to update its route to `x`. 
 
 `z` knows it can get to `y` with a cost of 2, but it thinks that `y` can get to `x` with a cost of 5. Therefore, it updates it entry to 7.
 
@@ -105,7 +102,7 @@ This would thus prevent `z` from routing back through `y`, allowing `z` to immed
 ## Routing Information	 Protocol
 An example of a distance vector routing protocol is the **routing information protocol** (RIP).
 
-In RIP
+In RIP 
 - edges have unit cost
 - ‘infinity’ is 16
 - table refreshes occur every thirty seconds
@@ -121,7 +118,7 @@ When a router or link fails in RIP, things can often take minutes to stabilize.
 Because of issues like slow converge and the count to infinity problem, protocol designers looked to other alternatives.
 
 ## Link State Routing
-The prevailing alternative to distance-vector routing is **link state routing**, which is most commonly used in operational networks today.
+The prevailing alternative to distance-vector routing is **link state routing**, which is most commonly used in operational networks today. 
 
 In link state routing, each node distributes a network map to every other node in the network, and then each node performs a shortest-path computation between itself and all other nodes in the network.
 
@@ -134,7 +131,7 @@ Two common link state routing protocols are **open shortest paths first** (OSPF)
 In recent years, IS-IS has gained increasing use in large ISPs and is the more commonly used link state routing protocol in large transit networks today.
 
 One problem with link state routing is scale. The complexity of a link state routing protocol grows as `N^3` where `N` is the number of nodes in the network.
-
+ 
 ## Coping With Scale Hierarchy
 One way of coping with scale is to introduce hierarchy. OSPF has the notion of *areas* and IS-IS has an analogous notion of *levels*.
 
@@ -147,12 +144,12 @@ In OSPF, the backbone area is called area 0, and each area in the backbone that 
 
 In each area, the nodes in that area perform the shortest-path computation to all other nodes within that area.
 
-Intra-area paths are calculated using the simple shortest-path computation, as before.
+Intra-area paths are calculated using the simple shortest-path computation, as before. 
 
 Paths that must leave an area are now computed by stitching together (1) the shortest path from the origin to the area 0 router in the origin’s area, (2) the shortest path across area 0, and (3) the shortest path from the area 0 router in the destination area to the destination.
 
 ## Interdomain Routing
-Internet routing consists out routing between tens of thousands of independently operated autonomous systems.
+Internet routing consists out routing between tens of thousands of independently operated autonomous systems. 
 
 Each of these networks operate in their own self-interest and have their own economic and performance objectives, and yet they must cooperate to provide global connectivity.
 
@@ -162,7 +159,7 @@ A router in one AS will receive a route advertisement from a neighboring AS.
 
 A route advertisement may contain many attributes.
 
-A route advertisement might contain a *destination prefix* - like 130.207.0.0/16.
+A route advertisement might contain a *destination prefix* - like 130.207.0.0/16. 
 
 It might also contain a *next hop*, which is the IP address of the router that the AS must send traffic to to send traffic along that route. Typically, the next hop IP address is the IP address for the first router in the neighboring AS.
 
@@ -176,7 +173,7 @@ The routers inside an AS also need to learn routes to external destinations. The
 
 To recap:
 
-External BGP (eBGP) is responsible for transmitting routing information between border routers of adjacent ASes.
+External BGP (eBGP) is responsible for transmitting routing information between border routers of adjacent ASes. 
 
 Internal BGP (iBGP) is responsible for disseminating BGP route advertisements about external destinations to routers inside any particular AS.
 
@@ -185,7 +182,7 @@ IGP - an intradomain protocol - disseminates routes inside an AS to internal des
 
 iBGP - an interdomain protocol - disseminates routes inside an AS to external destinations.
 
-Suppose a router in AS `A` is trying to reach a router in AS `B`.  A border router in `A`  learns the route via eBGP, and learns that the next hop to the destination is a border router in `B`.  The router inside `A`  learns the route to `B` via iBGP, and would learn that the next hop is the border router of `A`.
+Suppose a router in AS `A` is trying to reach a router in AS `B`.  A border router in `A`  learns the route via eBGP, and learns that the next hop to the destination is a border router in `B`.  The router inside `A`  learns the route to `B` via iBGP, and would learn that the next hop is the border router of `A`. 
 The router in `A` will need to utilize IGP to reach its iBGP next hop.
 
 ![](../assets/02714684-9E46-4F9E-9F58-F2551DEEB50D.png)
@@ -236,13 +233,13 @@ The default local preference value is 100, with higher values indicating that a 
 
 ![](../assets/5DB63856-880C-4AD3-904D-2F224E23BC0A.png)
 
-An operator can adjust local preference values on incoming routes to control outbound traffic.
+An operator can adjust local preference values on incoming routes to control outbound traffic. 
 
 This can be extremely useful for configuring primary/backup routes.
 
 While local preference is often used to control outbound traffic, ASes can attach a BGP **community** (a fancy name for a tag) to a route to affect how a neighboring AS sets local preference, thereby influencing their own incoming traffic.
 
-Let’s suppose that AS `A` wanted to control inbound traffic by affecting how neighboring AS `B` and AS `C` set local preference.
+Let’s suppose that AS `A` wanted to control inbound traffic by affecting how neighboring AS `B` and AS `C` set local preference. 
 
 If `A` wants traffic to arrive via `B` instead of `C`, `A` might advertise its BGP routes with “primary” and “backup” communities to `B` and `C`, respectively. The “backup” community value might cause a router in `C` to adjust its local preference value, thus affecting how its outbound traffic choices are made.
 
@@ -253,9 +250,9 @@ Suppose that two ASes connect in two different cities: San Francisco and New Yor
 
 ![](../assets/2346524C-FE0D-4F77-8C05-8B119B148B4A.png)
 
-Also suppose that AS 1 wants traffic to destination `d` to enter via NYC rather than via the link in SF.
+Also suppose that AS 1 wants traffic to destination `d` to enter via NYC rather than via the link in SF. 
 
-Recall that, all things being equal, a router in AS 2 will select the BGP route with the shortest IGP route to the next hop.
+Recall that, all things being equal, a router in AS 2 will select the BGP route with the shortest IGP route to the next hop. 
 
 This means that some routers in AS 2 might select the SF egress, and others might select the NYC egress.
 
@@ -277,7 +274,7 @@ In the absence of MED, a router inside AS 2 will learn multiple routes to destin
 
 It is very common to set IGP costs in accordance with distance/propagation delay, which results in routers inside the AS picking shorter paths based on distance.
 
-One problem with hot potato routing is that a small change in IGP path cost  can result in a lot of BGP route changes.
+One problem with hot potato routing is that a small change in IGP path cost  can result in a lot of BGP route changes. 
 
 There has been effort to improve the stability of the BGP routing by decoupling BGP and IGP in this part of the route selection process.
 
@@ -290,7 +287,7 @@ In a peering relationship, an AS can exchange traffic with another AS free of ch
 
 Thus, the basic rule of preference in interdomain routing: *Customer routes are preferred over peer routes, which are preferred over provider routes.*
 
-In addition to preferences decisions, an AS also needs to make filtering/export decisions. That is, when an AS learns a route from its neighbor, to whom should it re-advertise that route?
+In addition to preferences decisions, an AS also needs to make filtering/export decisions. That is, when an AS learns a route from its neighbor, to whom should it re-advertise that route? 
 
 Let’s suppose that an AS learns routes to its destination from its customer, peer and provider.
 
@@ -300,7 +297,7 @@ On the other hand, for the route that is learned from a provider, the AS will on
 
 Likewise, routes from peers would also only be advertised to customers, not to other peers or providers.
 
-If every AS followed these rules exactly, then routing stability is guaranteed. Isn’t routing stability guaranteed already?
+If every AS followed these rules exactly, then routing stability is guaranteed. Isn’t routing stability guaranteed already? 
 
 Nope!
 
@@ -314,7 +311,7 @@ Each AS prefers the AS in the clock-wise direction, instead of the shorter, dire
 Suppose that we start off with everyone selecting the direct path.
 
 ![](../assets/7106D861-CE32-4AE3-BDA9-91CA9DA4B966.png)
-
+ 
 In this case, any one of these ASes would notice that it had a more preferred path.
 
 For example, AS 1 would see that since AS 3 has chosen the direct path, it can choose its preferred path, 1->3->0.
@@ -333,12 +330,12 @@ Now AS 2 sees that its preferred path is available, which now breaks the path fr
 
 ![](../assets/B2F32D94-6AFA-45E0-A7EE-ABAB107D9B95.png)
 
-These oscillations continue ad infinitum.
+These oscillations continue ad infinitum. 
 
 This pathology has been formalized and conditions for routing stability - known as **safety** - have been derived.
 
 If ASes follow the ranking and export rules described in the previous section, safety is guaranteed.
 
-However, there are various times when those rules are violated.
+However, there are various times when those rules are violated. 
 
 To this day, BGP is not guaranteed to be stable in practice, and many common practices result in the potential for this type of oscillation to occur.

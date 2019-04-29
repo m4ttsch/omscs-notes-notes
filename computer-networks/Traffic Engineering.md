@@ -1,8 +1,5 @@
----
-id: traffic-engineering
-title: Traffic Engineering
-sidebar_label: Traffic Engineering
----
+# Traffic Engineering
+#cn
 
 ## Traffic Engineering Overview
 Traffic engineering is the process of reconfiguring the network in response to changing traffic loads in order to achieve some operational goal.
@@ -12,9 +9,9 @@ A network operator may want to reconfigure the network in order to
 - relieve congestion on certain links
 - balance load more evenly
 
-In some sense, IP networks manage themselves. For example, TCP senders send less traffic in response to congestion and routing protocols will adapt to topology changes.
+In some sense, IP networks manage themselves. For example, TCP senders send less traffic in response to congestion and routing protocols will adapt to topology changes. 
 
-The problem is that even though these protocols are designed to adapt to various changes, the network may still not run efficiently.
+The problem is that even though these protocols are designed to adapt to various changes, the network may still not run efficiently. 
 
 For instance, there may be congested links when idle paths exists or there might be a high delay path that some packet is taking when a low delay path exists.
 
@@ -29,19 +26,19 @@ IMAGE
 
 An operator can affect the shortest path between two nodes in the graph by configuring the link weights, thus affecting the way that traffic flows through network.
 
-Suppose that the operator of this network above would like to shift traffic off of a congested link in the middle of the network.
+Suppose that the operator of this network above would like to shift traffic off of a congested link in the middle of the network. 
 
 IMAGE
 
 By changing the link weight from 1 to 3, the shortest path between the two nodes now takes an alternate route.
 
 In practice, link weights can be set in a variety of ways:
-- inversely proportional to capacity
+- inversely proportional to capacity 
 - proportional to propagation delay
 - according to some network-wide traffic optimization goal
 
 ## Measuring, Modeling and Controlling Traffic
-Traffic engineering has three main steps.
+Traffic engineering has three main steps. 
 
 First, we must measure the network to figure out the current traffic loads. Next, we need to form a model of how configuration affects the underlying paths in the network. Finally, we reconfigure the network to exert control over how traffic flows through the network.
 
@@ -49,7 +46,7 @@ An operator might measure the topology and traffic of a network, feed that topol
 
 Intradomain traffic engineering attempts to solve an optimization problem, where the input is a graph `G`, parameterized by nodes `R` - the set of routers - and edges `L` - the set of unidirectional links.
 
-Each link `l` has a fixed capacity `c_l`.
+Each link `l` has a fixed capacity `c_l`. 
 
 Another input to the optimization problem is the traffic matrix, where `M_ij` represents the traffic load from router `i` to router `j`.
 
@@ -66,7 +63,7 @@ Solving the optimization problem is much easier if we approximate the “true”
 
 IMAGE
 
-Our objective might be to minimize the sum of this piecewise linear cost function over all the links in the network.
+Our objective might be to minimize the sum of this piecewise linear cost function over all the links in the network. 
 
 Unfortunately, this optimization problem [NP-complete](https://en.wikipedia.org/wiki/NP-completeness), which means that there is currently no efficient algorithm to find the optimal setting of link weights even for simple objective functions.
 
@@ -77,13 +74,13 @@ In practice, we also have other operational realities to worry about. For exampl
 In addition, whatever solution we come up with must be resistant to failure and it should be robust to measurement noise.
 
 ## BGP in Interdomain Traffic Engineering
-Interdomain routing concerns routing between autonomous systems and involves the reconfiguration of BGP policies running on individual routers in the network.
+Interdomain routing concerns routing between autonomous systems and involves the reconfiguration of BGP policies running on individual routers in the network. 
 
-Changing BGP policies at the edge routers can cause routers inside an AS to direct traffic towards or away from certain edge links.
+Changing BGP policies at the edge routers can cause routers inside an AS to direct traffic towards or away from certain edge links. 
 
 An operator might with wish to use interdomain traffic engineering if
 - a link is congested
-- a link is upgraded
+- a link is upgraded 
 - a peering agreement is violated
 
 For example, AS 1 and AS 2 might have an agreement where they only send a certain amount of traffic to one another during a particular time window.
@@ -96,7 +93,7 @@ Interdomain traffic engineering has three main goals.
 ### Predictability
 It should be possible to predict how traffic flows will change in response to changes in the network configuration.
 
-Suppose that a downstream AS `D` is trying to reach is trying to reach upstream neighbor `U`, and is currently routing traffic through neighbor AS `N`.
+Suppose that a downstream AS `D` is trying to reach is trying to reach upstream neighbor `U`, and is currently routing traffic through neighbor AS `N`. 
 
 `N` may wish to relieve congestion on the particular link that it is using currently to forward the traffic from `D` to `U` . To so do, it might forward that traffic out a different egress, likely through a different set of ASes.
 
@@ -111,7 +108,7 @@ In particular, this change made a change in the AS path length of the advertisem
 Thus other neighbors - like `D` - might decide to use another path as a result of that globally visible routing change.
 
 ### Limit influence of neighbors
-Another goal of interdomain traffic engineering is to limit the influence of neighboring ASes.
+Another goal of interdomain traffic engineering is to limit the influence of neighboring ASes. 
 
 Specifically, we’d like to use BGP policies and changes to those policies that limit how neighboring ASes might change their behavior in response to changes to the BGP configuration that we make in our own network.
 
@@ -128,7 +125,7 @@ A third goal of interdomain traffic engineering is to reduce the overhead of rou
 
 To achieve this, we can group related prefixes. Rather than exploring all combinations of prefixes in order to move a particular volume of traffic, we can identify routing choices that group routes that have the same AS paths, and we can move groups of prefixes according to the groups of prefixes that share an AS path.
 
-We can move this groups easily by making tweaks to local preference values using regular expressions on AS path.
+We can move these groups easily by making tweaks to local preference values using regular expressions on AS path.
 
 We can also choose to focus only on the small fraction of prefixes that carry the majority of the traffic.
 
@@ -155,7 +152,7 @@ Data center networks have three main characteristics:
 
 Multi-tenancy allows a data center provider to amortize the cost of shared infrastructure. Multi-tenant infrastructure also requires some level of security and resource isolation since multiple users are sharing resources.
 
-Data center network resources are also elastic. As demand for a service fluctuates, an operator can expand or contract the resources powering the service.
+Data center network resources are also elastic. As demand for a service fluctuates, an operator can expand or contract the resources powering the service. 
 
 Another characteristic of data center networking is flexible service management, or the ability to move workloads to other locations inside the data center.
 
@@ -183,11 +180,11 @@ Using a layer two topology makes it easier to perform migration of services from
 
 This approach also makes it easier to load balance traffic.
 
-On the other hand, a monolithic layer two topology makes scaling difficult, since now we have tens of thousands of servers on a single flat topology.
+On the other hand, a monolithic layer two topology makes scaling difficult, since now we have tens of thousands of servers on a single flat topology. 
 
 Layer two addresses are not hierarchical, so the forwarding tables in these network switches can’t scale as easily because they can’t take advantage of the natural hierarchy that exists in the topology.
 
-This hierarchy can potentially create single points of failure and links at the top of the topology in the core layer can become oversubscribed.
+This hierarchy can potentially create single points of failure and links at the top of the topology in the core layer can become oversubscribed. 
 
 Modern data center network operators have observed that core links can carry as much as 200x the traffic carried by links towards the bottom of the hierarchy.
 
@@ -216,7 +213,7 @@ The querying host then sends the frame with destination pseudo MAC address, and 
 
 Once the frame reaches the destination pod, the switch at the top of the pod can then map the pseudo MAC address back to the real MAC address, and the destination server receives a frame with its “real” MAC address as the destination.
 
-## Data Center (Intradomain) Traffic Engineering
+## Data Center (Intradomain) Traffic Engineering 
 Existing data center topologies provide extremely limited server-to-server capacity because of the oversubscription of the links at the top of the hierarchy.
 
 In addition, as services continue to be migrated to different parts of the data center, resources can become fragmented, which can significantly lower utilization.
@@ -236,7 +233,7 @@ The goals of valiant load balancing in the VL2 network are to spread traffic eve
 
 VL2 achieves this by inserting an **indirection level** into the switching hierarchy.
 
-When a switch at the access layer wants to send traffic to a destination, it first selects a switch at the indirection level to send the traffic at random.
+When a switch at the access layer wants to send traffic to a destination, it first selects a switch at the indirection level to send the traffic at random. 
 
 This intermediate switch then forwards the traffic to the ultimate destination depending on the destination MAC address of the traffic.
 
@@ -256,14 +253,14 @@ However, it is hard to change the network topology in response to changing traff
 For example, a hypercube configuration requires 2^k switches where k is the number of servers. Even more efficient topologies, such as a [fat tree](https://en.wikipedia.org/wiki/Fat_tree), requires switch counts that are quadratic in the number of servers.
 
 ## Jellyfish Random Regular Graph
-Jellyfish’s topology is a **random, regular graph**.
+Jellyfish’s topology is a **random, regular graph**. 
 
 A regular graph is a graph where each node has the same degree, and a random, regular graph is uniformly sampled from the space of all regular graphs.
 
 In Jellyfish, the graph nodes are switches.
 
 Here is a visualization of a jellyfish random graph parameterized by 432 servers, 180 switches, and a fixed degree of 12.
-
+ 
 ![](../assets/F3902EA4-D8E3-415B-9F3F-CD382D9A60CF.png)
 
 Jellyfish’s approach is to construct a random graph at the Top of Rack (ToR) switch layer.
@@ -293,12 +290,12 @@ Consider the following topology with 16 server, 20 switches and a degree of 4.
 
 In the fat tree topology, only four out of sixteen servers are reachable by five hops. In the jellyfish random graph, twelve out of sixteen servers are reachable in five hops.
 
-While jellyfish shows some promise, there are still some open questions.
+While jellyfish shows some promise, there are still some open questions. 
 
 For example, how close are random graphs to optimal in terms of the optimal throughput that could be achieved with a given set of equipment?
 
 Second, how do we connect topologies where switches are heterogenous, with different numbers of ports or different link speeds?
 
-From a system design perspective, the random topology model can create problems with physically cabling the data center network.
+From a system design perspective, the random topology model can create problems with physically cabling the data center network. 
 
 There are also questions about how to perform routing and congestion control without the structure of a conventional data center network.

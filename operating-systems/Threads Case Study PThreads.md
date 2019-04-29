@@ -1,16 +1,12 @@
----
-id: threads-case-study-pthreads
-title: Threads Case Study: PThreads
-sidebar_label: Threads Case Study: PThreads
----
+# Threads Case Study: PThreads
+#gios
 
 ## PThread Creation
-
 To represent threads, pthreads supports a `pthread_t` data type. Variables of this type will by uniquely identified by an identifier and will describe a thread.
 
 Threads are created by the following function
 
-```c
+```c 
 int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void * (*start_routine)(void *), void *arg);
 ```
 
@@ -30,14 +26,13 @@ This function takes the thread to be joined as well as a status variable. The st
 
 `pthread_join` returns an `int` which indicates whether the join was a success or a failure.
 
-The `pthread_attr_t` data structure allows us to define features of the new thread we are creating, such as:
-
-* stack size
-* scheduling policy
-* priority
-* system/process scope
-* inheritance
-* joinable
+ The `pthread_attr_t` data structure allows us to define features of the new thread we are creating, such as:
+- stack size
+- scheduling policy
+- priority
+- system/process scope
+- inheritance
+- joinable
 
 If `NULL` is passed in the place of a `pthread_attr_t`, pthreads falls back to default behavior for the new thread.
 
@@ -50,8 +45,8 @@ pthread_attr_{set/get}{attribute};
 ```
 
 These functions can be used, respectively, to allocate space for a `pthread_attr_t`, to deallocate space for that `pthread_attr_t` and to set/get various attributes of that structure.
-
-One mechanism not considered by Birrell is **detachable threads**. In pthreads, the default behavior for thread creation is joinable threads. For a joinable \(child\) thread, the parent will not terminate until the child has completed their execution. If the parent thread exits early, the child threads may turn into zombies.
+- - - -
+One mechanism not considered by Birrell is **detachable threads**.  In pthreads, the default behavior for thread creation is joinable threads. For a joinable (child) thread, the parent will not terminate until the child has completed their execution. If the parent thread exits early, the child threads may turn into zombies. 
 
 In pthreads, it is possible to allow child threads to become detached. Detached threads cannot be joined back into the parent, allowing the parent to exit early and the child threads to continue their execution.
 
@@ -75,29 +70,25 @@ Since parent threads do not need to wait around until child threads complete, th
 
 Example of creating a new thread with custom options:
 
-![](../assets/ae046645-2865-4d9e-9bb6-f6d29630925e.png)
+![](../assets/AE046645-2865-4D9E-9BB6-F6D29630925E.png)
 
 ## Compiling PThreads
-
-![](../assets/db37467e-c553-47ff-ab93-c9a563e19c37.png)
+![](../assets/DB37467E-C553-47FF-AB93-C9A563E19C37.png)
 
 ## PThread Creation Example 1
-
-![](../assets/f9c7dd92-0cba-4f3f-a956-447277ad1fcf.png)
+![](../assets/F9C7DD92-0CBA-4F3F-A956-447277AD1FCF.png)
 
 We loop and create threads with `pthread_create` passing in `hello` as the start routine. Since this function takes no arguments we pass `NULL` as the fourth argument to the function. Also, since we do not need any custom behavior, we pass `NULL` as the second argument. After we create the threads we must join them all back in.
 
 ## PThread Creation Example 2
+![](../assets/E7949C2E-E41F-4F6E-89CD-187F515770A0.png)  
 
-![](../assets/e7949c2e-e41f-4f6e-89cd-187f515770a0.png)
-
-In this case, the call to `pthread_create` passes in a value for the final parameter \(the argument to pass to the start routine\). This value is the pointer to current value of `i` the loop counter. In `threadFunc`, the pointer is first cast to an integer pointer, before a local variable is assigned to the value the pointer points to. Finally, the value is printed out.
+In this case, the call to `pthread_create` passes in a value for the final parameter (the argument to pass to the start routine). This value is the pointer to current value of `i` the loop counter. In `threadFunc`, the pointer is first cast to an integer pointer, before a local variable is assigned to the value the pointer points to. Finally, the value is printed out.
 
 ## PThread Creation Example 3
-
 This section explains how this is a valid input for the example above
 
-```text
+```
 Thread Number 0
 Thread Number 2
 Thread Number 2
@@ -106,18 +97,17 @@ Thread Number 3
 
 The variable `i` that is used in thread creation in the example above is a globally visible variable that is defined in `main`. When its value changes in one thread, all the other threads will see the new value.
 
-In this particular case, the second thread that is created with `pthread_create` is created when `i == 1`. In the thread function, `p` will become equivalent to the address of `i` and `myNum` will take on the value of `i`, which is presumably 1.
+In this particular case, the second thread that is created with `pthread_create` is created when `i == 1`. In the thread function, `p` will become equivalent to the address of `i` and `myNum` will take on the value of `i`, which is presumably 1. 
 
-However, it is possible that before this thread had the chance to cast the pointer and define a local variable pointing to the pointer’s value, the main thread went into the next iteration of the `for` loop and incremented `i`, making `i` now 2. Since we pass the address of `i` to the start routine, `p` will still point to the address of `i`, but `myNum` will point to the \(new\) value of `i`, which is 2.
+However, it is possible that before this thread had the chance to cast the pointer and define a local variable pointing to the pointer’s value, the main thread went into the next iteration of the `for` loop and incremented `i`, making `i` now 2. Since we pass the address of `i` to the start routine, `p` will still point to the address of `i`, but `myNum` will point to the (new) value of `i`, which is 2.
 
 We call the above situation a **data race** or **race condition**. In summary, these terms refers to situations in which one thread tries to read a value that another thread is modifying.
 
 To correct the problem, we must first initialize an array `tNum` that contains as many elements as we have threads. One each iteration of the `for` loop, we can set the index of `tNum` at `i` to `i`. We can then pass the address of `tNum[i]` to the call to `pthread_create`. This way we can increment `i`, while ensuring that the value of `i` that a thread needs to see does not change. We accomplish by copying the value of `i` over to this private storage that we do not modify.
 
-![](../assets/b5db4fd0-c1d8-4180-a2a9-d4e8bfb93f7e.png)
+![](../assets/B5DB4FD0-C1D8-4180-A2A9-D4E8BFB93F7E.png)
 
 ## PThread Mutexes
-
 To deal with the mutual exclusion problem, pthreads supports mutexes. Mutual exclusion ensures that threads access shared state in a controlled manner, such that only thread at a time can apply modifications or otherwise access that shared variable.
 
 In pthreads, the mutex data structure is represented via a `pthread_mutex_t` type.
@@ -129,7 +119,7 @@ int pthread_mutex_lock(pthread_mutex_t *mutex);
 int pthread_mutex_unlock(pthread_mutex_t *mutex);
 ```
 
-Whatever code appears between these two statements will correspond to the _critical section_.
+Whatever code appears between these two statements will correspond to the *critical section*.
 
 Mutexes must be explicitly initialized, as with the following function
 
@@ -137,7 +127,7 @@ Mutexes must be explicitly initialized, as with the following function
 int pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutexattr_t *attr);
 ```
 
-The `pthread_mutexattr_t *attr` argument allows us to specify the behavior that we want the mutex to have. Passing `NULL` gives us the default behavior \(similar to the case with `pthread_create` and `pthread_attr_t`\).
+ The `pthread_mutexattr_t *attr` argument allows us to specify the behavior that we want the mutex to have. Passing `NULL` gives us the default behavior (similar to the case with `pthread_create` and `pthread_attr_t`).
 
 Another interesting operation that can used on mutexes is
 
@@ -147,22 +137,20 @@ int pthread_mutex_trylock(pthread_mutex_t *mutex);
 
 Unlike `pthread_mutex_lock` which will cause the calling thread to block, this function will return immediately if the mutex cannot be acquired.
 
-Mutexes can be destroyed \(freed\) with
+Mutexes can be destroyed (freed) with
 
 ```c
 int pthread_mutex_destroy(pthread_mutex_t *mutex);
 ```
 
 ### Mutex Safety Tips
-
-* shared data should always be accessed through single mutex
-* mutex scope must be global
-* globally order locks
-  * lock mutexes in order \(to prevent deadlocks\)
-* always unlock the \(correct\) mutex
+- shared data should always be accessed through single mutex
+- mutex scope must be global
+- globally order locks
+	- lock mutexes in order (to prevent deadlocks)
+- always unlock the (correct) mutex
 
 ## PThread Condition Variables
-
 Condition variables are synchronization mechanisms that allow blocked threads to be notified when a certain condition occurs.
 
 In pthreads, condition variables are represented by the `pthread_cond_t` data type.
@@ -190,24 +178,22 @@ int pthread_cond_init(pthread_cond_t *cond, const pthread_condattr_t *attr);
 int pthread_cond_destroy(pthread_cond_t *cond);
 ```
 
-`pthread_cond_init` takes some attributes that can further specify the behavior of the condition variable \(much like we saw with `pthread_create` and `pthread_mutex_init`\). As before, setting this value to `NULL` gives us the default behavior.
+`pthread_cond_init` takes some attributes that can further specify the behavior of the condition variable (much like we saw with `pthread_create` and `pthread_mutex_init`). As before, setting this value to `NULL` gives us the default behavior.
 
 ### Condition Variable Safety Tips
-
-* Don’t forget to notify waiting threads!
-  * When a condition changes, make sure to signal/broadcast the correct condition variable
-* When in doubt use broadcast!
-  * Using broadcast incorrectly can incur a performance loss, but using signal incorrectly make cause your program to execute incorrectly.
-* You don’t need a mutex to signal/broadcast
-  * May be best to notify after unlocking mutex to prevent spurious wake ups.
-
+- Don’t forget to notify waiting threads!
+	- When a condition changes, make sure to signal/broadcast the correct condition variable
+- When in doubt use broadcast!
+	- Using broadcast incorrectly can incur a performance loss, but using signal incorrectly make cause your program to execute incorrectly.
+- You don’t need a mutex to signal/broadcast
+	- May be best to notify after unlocking mutex to prevent spurious wake ups.
+	
 ## Producer and Consumer Example
-
 Let’s walk through a real producer/consumer example using PThreads.
 
 ### Global State
 
-![](../assets/8ec12822-fd53-44f6-8e53-adc3504dbf41.png)
+![](../assets/8EC12822-FD53-44F6-8E53-ADC3504DBF41.png)
 
 Our shared buffer is `buffer`. `add` and `rem` refer to the indices at which we add and remove elements, respectively, while `num` refers to the number of elements in the queue.
 
@@ -215,30 +201,30 @@ These shared variables are used in conjunction with our mutex `m` and our condit
 
 Finally, we define our two procedures: `producer` which will be operated by the producer thread and `consumer` which will be executed by the consume threads.
 
-### Main
+### Main 
 
-![](../assets/bab41e1c-b65f-4409-948c-8afbd2203d1c.png)
+![](../assets/BAB41E1C-B65F-4409-948C-8AFBD2203D1C.png)
 
-The first thread that we create will be created to execute the `producer` function, and the second thread we create will execute the `consumer` function.
+The first thread that we create will be created to execute the `producer` function, and the second thread we create will execute the `consumer` function. 
 
-We use the default behavior for these threads \(i.e. they are not detachable\), so we must make sure to `pthread_join` them before `main` returns.
+We use the default behavior for these threads (i.e. they are not detachable), so we must make sure to `pthread_join` them before `main` returns.
 
 ### Producer
 
-![](../assets/91ce2bf6-f3dc-4b8a-9f65-bf320c4d2de6.png)
+![](../assets/91CE2BF6-F3DC-4B8A-9F65-BF320C4D2DE6.png)
 
-The producer loops twenty times, and tries to produce an element to the share buffer on each iteration.
+The producer loops twenty times, and tries to produce an element to the share buffer on each iteration. 
 
-It tries to accomplish this by first acquiring `m` with `pthread_mutex_lock`. Once `m` is acquired, the producer will potentially wait on `c_prod` with `pthread_cond_wait` if the shared buffer is full \(`num == BUFSIZE`\). Otherwise, the producer will add its element to the buffer, and update the three shared variables to reflect this addition.
+It tries to accomplish this by first acquiring `m` with `pthread_mutex_lock`. Once `m` is acquired, the producer will potentially wait on `c_prod` with `pthread_cond_wait` if the shared buffer is full (`num == BUFSIZE`).  Otherwise, the producer will add its element to the buffer, and update the three shared variables to reflect this addition. 
 
-Once the producer unlocks the mutex, it signals on `c_cons` with `pthread_cond_signal` to let the consumers know that there is data to consume.
+Once the producer unlocks the mutex, it signals on `c_cons`  with `pthread_cond_signal` to let the consumers know that there is data to consume. 
 
 ### Consumer
 
-![](../assets/6454827d-99ff-45dd-a6a6-aa55b2f7c647.png)
+![](../assets/6454827D-99FF-45DD-A6A6-AA55B2F7C647.png)
 
 The consumer loops forever, continuously trying to remove elements from the shared buffer.
 
-It tries to accomplish this by first acquiring `m` with `pthread_mutex_lock`. Once `m` is acquired, the consumer will potentially wait on `c_cons` with `pthread_cond_wait` if the shared buffer is empty \(`num == 0`\). Otherwise, the consumer will remove an element from the buffer, and update the three shared variables to reflect this removal.
+It tries to accomplish this by first acquiring `m` with `pthread_mutex_lock`. Once `m` is acquired, the consumer will potentially wait on `c_cons` with `pthread_cond_wait` if the shared buffer is empty (`num == 0`).  Otherwise, the consumer will remove an element from the buffer, and update the three shared variables to reflect this removal. 
 
-Once the consumer unlocks the mutex, it signals on `c_prod` with `pthread_cond_signal` to let the producer know that there is space in the buffer to add more data.
+Once the consumer unlocks the mutex, it signals on `c_prod`  with `pthread_cond_signal` to let the producer know that there is space in the buffer to add more data.
