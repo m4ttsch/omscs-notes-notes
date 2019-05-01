@@ -5,6 +5,8 @@ This repository contains lecture notes for the classes I am taking or have taken
 Each set of notes for a particular class will live in a subdirectory of the repository root. In each subdirectory,
 the notes are presented in [Markdown](https://en.wikipedia.org/wiki/Markdown) format.
 
+If you prefer, you can also view the notes on [OMSCS Notes](https://www.omscs-notes.com).
+
 ### Upcoming Courses
 
 - IIS (Fall 2019)
