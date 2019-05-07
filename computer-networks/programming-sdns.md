@@ -1,5 +1,8 @@
-# Programming SDNs
-
+---
+id:  programming-sdns
+title: Programming SDNs
+sidebar_label: Programming SDNs
+---
 
 ## Updates in Software Defined Networks
 In the last lesson, we looked at how to update switch flow table entries using OpenFlow control commands from the controller.
@@ -20,7 +23,7 @@ These events may include
 - topology changes
 - security events
 
-The second step is to compute the policy based on the state that the controller sees from the network. 
+The second step is to compute the policy based on the state that the controller sees from the network.
 
 The third step is to write policy back to the switches by installing the appropriate flow table state into the switches.
 
@@ -54,7 +57,7 @@ For example, if we’d like to count the number of bytes for every source IP add
 
 The solution is to have the runtime system dynamically unfold rules as traffic arrives.
 
-The programmer would specify something like a `GroupBy(scrip)` and the runtime system would dynamically add OpenFlow rules to the switch as traffic arrives. 
+The programmer would specify something like a `GroupBy(scrip)` and the runtime system would dynamically add OpenFlow rules to the switch as traffic arrives.
 
 This guarantees that there are only rules in the switch that correspond to active traffic.
 
@@ -67,7 +70,7 @@ Subsequent packets should not be sent to the controller, but what if more packet
 
 Multiple packets may reach the controller, but the application that is running on top of the controller may not need or want to see these packets.
 
-The solution is to have the programmer specify via a high-level language something like `Limit(1)`. 
+The solution is to have the programmer specify via a high-level language something like `Limit(1)`.
 
 This could be used to indicate that the application should only see the first packet of the flow, and that the subsequent packets should be suppressed by the runtime system.
 
@@ -97,7 +100,7 @@ Suppose an operator wants to change the network state to shift traffic off of on
 
 ![](../assets/1B785664-4604-439F-A4D5-15046068D5E8.png)
 
-In doing so, the new shortest path is adjusted. 
+In doing so, the new shortest path is adjusted.
 
 What if the state change in the top switch occurred before the state in the bottom switch could be updated?
 
@@ -110,17 +113,17 @@ The top switch - with the new state - would forward to the bottom switch, and th
 If rules are installed along a path out of order, packets may reach a switch before the new rules arrive. Therefore, we need atomic updates for the entire configuration.
 
 ### Two-Phase Commit
-The solution to this problem is to use a **two-phase commit**, such that packets are either subjected to the old configuration on all switches or the new configuration on all switches. 
+The solution to this problem is to use a **two-phase commit**, such that packets are either subjected to the old configuration on all switches or the new configuration on all switches.
 
 For this to work, packets must not subjected to the new policy on some switches and the old policy on other switches.
 
 Assume we are trying to update from policy `p1` to policy `p2`.
 
-While the controller is updating the policy across switches, the incoming packets will be tagged with `p1`, which will signify that incoming packets will be using `p1`. 
+While the controller is updating the policy across switches, the incoming packets will be tagged with `p1`, which will signify that incoming packets will be using `p1`.
 
-When all switches have received rules corresponding to  `p2`, incoming packets can start being tagged with `p2`. 
+When all switches have received rules corresponding to  `p2`, incoming packets can start being tagged with `p2`.
 
-After some time, when we are sure that no more packets tagged with `p1` are being forward through the network, we can then remove the rules corresponding to `p1`. 
+After some time, when we are sure that no more packets tagged with `p1` are being forward through the network, we can then remove the rules corresponding to `p1`.
 
 The naive version of two-phase commit requires maintaining both policies on all switches at once, essentially doubling the rule space requirements.
 
@@ -137,7 +140,7 @@ The nodes in the physical network need to be shared. The nodes in the physical t
 
 Similarly, a single link in the logical topology might map to multiple links in the physical topology.
 
-The mechanism to achieve these virtual links is typically via **tunneling**. 
+The mechanism to achieve these virtual links is typically via **tunneling**.
 
 A packet destined from A to B in the logical topology might be encapsulated in a packet that is destined for some intermediate physical node X first before the packet is decapsulated and ultimately sent to B.
 
@@ -174,7 +177,7 @@ Network Virtualization is one of the first killer applications for SDN and SDN c
 
 The defining tenet of SDN is the separation of the data and control planes, whereas the defining tenet of network virtualization to separate the underlying physical network from the logical networks that lie on top of it.
 
-SDN can be used to simplify many aspects of network virtualization, but it does not inherently abstract the details of the underlying physical network. 
+SDN can be used to simplify many aspects of network virtualization, but it does not inherently abstract the details of the underlying physical network.
 
 ## Design Goals for Network Virtualization
 Virtual networks should be *flexible*. They should be able to support different topologies, routing and forwarding architectures, and independent configurations.
@@ -214,9 +217,9 @@ This virtual switch provides the function of networking virtual machines togethe
 The [Linux bridge](https://wiki.aalto.fi/download/attachments/70789083/linux_bridging_final.pdf)  and [Open vSwitch](https://www.openvswitch.org/) are examples of software switches that can provide this functionality.
 
 ## Virtualization in Mininet
-Mininet is an example of network virtualization, and allows us to run an entire virtual network on our laptop. 
+Mininet is an example of network virtualization, and allows us to run an entire virtual network on our laptop.
 
-When we start Mininet with the `mn` command, each host in the virtual network is instantiated in a bash process with its own network namespace. 
+When we start Mininet with the `mn` command, each host in the virtual network is instantiated in a bash process with its own network namespace.
 
 A network namespace is kind of like a VM, but much more lightweight.
 
@@ -233,8 +236,8 @@ When we make modifications to the OpenFlow switch via the controller, we are mak
 ## SDN Programming Difficulty
 Programming OpenFlow is not easy!
 
-- very low level of abstraction in the form of match-action rules. 
-- controller only sees events that switches don’t know how to handle. 
+- very low level of abstraction in the form of match-action rules.
+- controller only sees events that switches don’t know how to handle.
 - race conditions if switch-level rules are not installed properly.
 
 ## SDN Programming Interface
@@ -269,7 +272,7 @@ Ultimately, all of the modules need to be combined into a single set of OpenFlow
 In order to do this, we need composition operators; that is, ways to specify how individual modules should be combined into a single coherent application.
 
 ## Composing Network Policies with Pyretic
-One way of composing policies is to perform both operations simultaneously. 
+One way of composing policies is to perform both operations simultaneously.
 
 For example, we might want to forward traffic and also count how much traffic is being forwarded. Those operations can be performed in parallel.
 
@@ -279,7 +282,7 @@ For example, we may want to implement a firewall and then switch any traffic tha
 
 One example of sequential composition might be load balancer routing.
 
-A policy might take some traffic coming from half of the source IP address and rewrite the destination IP address to point to one server replica, and take the other half of the traffic and rewrite the destination IP address to point to the other server replica. 
+A policy might take some traffic coming from half of the source IP address and rewrite the destination IP address to point to one server replica, and take the other half of the traffic and rewrite the destination IP address to point to the other server replica.
 
 After the load balancer rewrites the destination IP addresses, we need a routing module to forward the traffic out the appropriate port on the switch.
 
@@ -287,7 +290,7 @@ In this case we have a sequential composition of a destination IP address rewrit
 
 The ability to compose policies in this fashion allows each module to partially specify functionality without having to write the policy for the entire network.
 
-This leaves some flexibility so one module can implement a small bit of the network function, leaving some functions for other modules. 
+This leaves some flexibility so one module can implement a small bit of the network function, leaving some functions for other modules.
 
 This also leads to module reuse, since a module need not be tied to a particular network setting.
 
@@ -298,7 +301,7 @@ For example, the load balancer described above spreads traffic across the replic
 
 One key abstraction in pyretic is **located packets**. With located packets, we can apply a policy based on a packet and its location in the network, such as the switch on which that packet is located or the port on which that packet arrives.
 
-Pyretic supports the implementation of network policy as a function: receiving a packet as input and returning zero, one, or multiple - potentially modified - packets as output. 
+Pyretic supports the implementation of network policy as a function: receiving a packet as input and returning zero, one, or multiple - potentially modified - packets as output.
 
 Another feature of pyretic is the notion of boolean predicates. Unlike OpenFlow rules, which do not permit the use of simple conjunctions, like `and` or `or`, or negations, like `not`, Pyretic allows the expression of policies in terms of these predicates.
 
@@ -314,11 +317,11 @@ The *identity* function returns the original packet. The *drop* function returns
 
 In Pyretic, the packet is nothing more than a dictionary that maps a field name, such as the destination IP address, to a value, such as `1.0.0.3`.
 
-The field names can correspond to fields in an actual packet header, but they can also be virtual. 
+The field names can correspond to fields in an actual packet header, but they can also be virtual.
 
-Using a dictionary to represent the packet allows for easy injection of virtual header header fields and presents a unified format for representing packet metadata. 
+Using a dictionary to represent the packet allows for easy injection of virtual header header fields and presents a unified format for representing packet metadata.
 
-## Composing Network Policies with Pyretic II 
+## Composing Network Policies with Pyretic II
 Pyretic enables the notion of both parallel and sequential composition.
 
 ```
@@ -341,7 +344,7 @@ Pyretic also allows an operator to construct queries that allow the program to s
 self.query = packets(1, ['srcmac', 'switch'])
 ```
 
-In this example, the operator uses the `packets` function to see packets arriving at a particular switch with a particular source MAC address. 
+In this example, the operator uses the `packets` function to see packets arriving at a particular switch with a particular source MAC address.
 
 The argument `1` indicates that we only want to see the first packet that arrives with a unique source MAC address and switch.
 
