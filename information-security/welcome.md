@@ -1,14 +1,14 @@
 ---
 id: welcome
-title: Computer Networking (CN)
-sidebar_label: Welcome to CN
+title: Introduction to Information Security (IIS)
+sidebar_label: Welcome to IIS
 ---
 
 ### Howdy Friends
 
-Here are my notes from when I took CN in OMSCS during Spring 2019.
+Here are my notes from when I took IIS in OMSCS during Fall 2019.
 
-Each document in "Lecture Notes" corresponds to a lesson in [Udacity](https://classroom.udacity.com/courses/ud436). Within each document, the headings correspond to the videos within that lesson. Usually, I omit the lesson intro videos.
+Each document in "Lecture Notes" corresponds to a lesson in [Udacity](https://classroom.udacity.com/courses/ud459). Within each document, the headings correspond to the videos within that lesson. Usually, I omit any intro/summary lessons.
 
 There is a lot of information in these documents. I hope you find it helpful!
 
