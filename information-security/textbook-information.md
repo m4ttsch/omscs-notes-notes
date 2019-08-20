@@ -6,4 +6,5 @@ sidebar_label: Textbook Information
 
 ### Course textbook
 
-The textbook used for this course - at the time of this writing - is the 4th edition of [Computer Security: Principles and Practice](https://amzn.to/2HfmrOh).
+The official textbook for this course is:
+- <a target="_blank" href="https://amzn.to/2KUCBxA">Computer Security: Principles and Practice (4th Edition)</a>
