@@ -107,3 +107,72 @@ Stack canaries do prevent return-to-libc buffer overflow attacks, because stack 
 ASLR does not protect against read-only buffer overflow exploits. ASLR only makes it harder to supply key addresses in write-based buffer overflow exploits.
 
 Heartbleed cannot be avoided by using a non-executable stack. Heartbleed is a read-based buffer overflow exploit, and the attack did not involve injecting any machine instructions onto the stack.
+
+## Operating System Security
+### Secure OS Quiz 1
+![](../assets/3E4E1A33-04F6-49C8-A8BE-5C9B97CD9F46.png)
+
+[Mac vs PC Security](https://usa.kaspersky.com/resource-center/threats/mac-vs-pc#.VRLACxDF-Hw)
+
+### Secure OS Quiz 1 Solution
+![](../assets/A47F089A-E76B-45FB-8EAB-67A1410CD42A.png)
+
+### Secure OS Quiz 2
+![](../assets/8FB30729-124D-4073-9C7B-E9B8BE6B98AE.png)
+
+### Secure OS Quiz 2 Solution
+![](../assets/14FB0734-2CED-4A50-97FE-789C608E61C3.png)
+
+A system call requires control transfer from the calling process into the OS, which then must perform authentication/authorization checks before granting access and transferring control back.
+
+This is more costly than a regular call, which incurs none of this overhead.
+
+### Secure OS Quiz 3
+![](../assets/B1E759C2-2BDC-4F1D-87CC-D0FF65033E40.png)
+
+### Secure OS Quiz 3 Solution
+![](../assets/9F2E641A-BA27-4DEB-8754-E4C12B164432.png)
+
+Processes run on behalf of users. Users must login to the system to run applications/processes.
+
+### User Isolation Quiz
+![](../assets/65EE949F-30AB-462D-ABAF-766E03061E1B.png)
+
+### User Isolation Quiz Solution
+![](../assets/2CF867D1-BB5E-4D7F-A303-4A6F0A5CC1AD.png)
+
+### Revisiting Stack Overflow Quiz
+![](../assets/5D690072-1177-4D13-9415-4E98EDD4BC2A.png)
+
+### Revisiting Stack Overflow Quiz Solution
+![](../assets/D1ECF899-825E-4B79-89D3-4B6B2A5A64FC.png)
+
+### Execution Privilege Level Quiz
+![](../assets/71D72E8A-2857-48A2-8D0C-0B88F2A66C77.png)
+
+### Execution Privilege Level Quiz Solution
+![](../assets/3716BF8E-4D50-43B3-936E-318EABBFDDB4.png)
+
+### TCB Requirements Quiz
+![](../assets/B91C6769-2EB6-41EC-884C-9BECF16EAA16.png)
+
+### TCB Requirements Quiz Solution
+![](../assets/449C3685-5396-4F92-A070-F09425449193.png)
+
+In this case, we have tampered with the TCB by turning off the check. The access still proceeds through the operating system, and is still technically correct (i.e. the access wasn’t permitted because of a bug).
+
+## Size of Security Code
+![](../assets/D40FCB93-786B-464E-B73E-ED5EAE001FE2.png)
+
+## Size of Security Code Solution
+![](../assets/A944CF7D-097D-4359-B600-BAB6F6E3BB8F.png)
+
+I think the point being made here is that the increase in complexity may be accompanied by an increase in vulnerability.
+
+## Hypervisor Code Size Quiz
+![](../assets/8AE1A120-4AD3-44D6-9A06-C19DB78BC670.png)
+
+## Hypervisor Code Size Quiz Solution
+![](../assets/32D8E299-1B81-442E-8468-5834F515C381.png)
+
+Again, the argument being made here is that using a hypervisor as a TCB, with fewer lines of code than a full-fledged operating system, might be a more secure choice.
