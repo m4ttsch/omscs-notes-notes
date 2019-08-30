@@ -161,18 +161,18 @@ Processes run on behalf of users. Users must login to the system to run applicat
 
 In this case, we have tampered with the TCB by turning off the check. The access still proceeds through the operating system, and is still technically correct (i.e. the access wasn’t permitted because of a bug).
 
-## Size of Security Code
+### Size of Security Code
 ![](../assets/D40FCB93-786B-464E-B73E-ED5EAE001FE2.png)
 
-## Size of Security Code Solution
+### Size of Security Code Solution
 ![](../assets/A944CF7D-097D-4359-B600-BAB6F6E3BB8F.png)
 
 I think the point being made here is that the increase in complexity may be accompanied by an increase in vulnerability.
 
-## Hypervisor Code Size Quiz
+### Hypervisor Code Size Quiz
 ![](../assets/8AE1A120-4AD3-44D6-9A06-C19DB78BC670.png)
 
-## Hypervisor Code Size Quiz Solution
+### Hypervisor Code Size Quiz Solution
 ![](../assets/32D8E299-1B81-442E-8468-5834F515C381.png)
 
 Again, the argument being made here is that using a hypervisor as a TCB, with fewer lines of code than a full-fledged operating system, might be a more secure choice.
