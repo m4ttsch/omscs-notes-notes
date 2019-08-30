@@ -1,5 +1,5 @@
 ---
-id: operating_system_security
+id: operating-system-security
 title: Operating System Security
 sidebar_label: Operating System Security
 ---
