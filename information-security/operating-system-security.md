@@ -9,11 +9,11 @@ Operating systems play a really important role in computer systems. When we talk
 
 Operating systems play a critical role when it comes to protecting and securing resources present in our computer systems.
 
-When we are looking at a the arrangement of a computer system, we first start at the level of hardware. At this layer, we have the CPU, physical memory, and other I/O devices.
+When we are looking at the arrangement of a computer system, we first start at the level of hardware. At this layer, we have the CPU, physical memory, and other I/O devices.
 
 Direct use of hardware is really difficult. Instead of managing the hardware explicitly, we run a “program” called an **operating system** - such as Linux, Windows, or macOS - that handles the access and management of the low-level hardware resources.
 
-The applications the we as users directly deal with - browsers, word processors and the like - sit on top of the operating system and interact with the physical resources through this intermediary.
+The applications that we as users directly deal with - browsers, word processors and the like - sit on top of the operating system and interact with the physical resources through this intermediary.
 
 ![](../assets/EC421F6A-25C4-4DDC-B5FE-F0654D08DDAB.png)
 
