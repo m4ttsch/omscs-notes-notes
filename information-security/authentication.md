@@ -1,7 +1,7 @@
 ---
 id: authentication
-title: authentication
-sidebar_label: authentication
+title: Authentication
+sidebar_label: Authentication
 ---
 
 ## What is Authentication?
