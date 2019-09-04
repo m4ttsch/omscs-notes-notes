@@ -275,3 +275,90 @@ Read more [here](http://www.darkreading.com/vulnerabilities---threats/flaws-in-e
 ![](../assets/62C0DA99-A728-42B8-867F-D0FB6CEB9DA2.png)
 
 As a basic example, consider someone recording your voice and playing it back to a voice-based authentication system.
+
+## Access Control
+### Data Confidentiality Quiz
+![](../assets/AD434002-43B3-41CC-A837-4B2BBFA18017.png)
+
+### Data Confidentiality Quiz Solution
+![](../assets/C9D0D775-0D1F-4695-9F4F-8EBA71914E34.png)
+
+Controlling read access is connected to data confidentiality, while controlling write access is connected to data integrity.
+
+### Determining Access Quiz
+![](../assets/104BA89A-BC90-4875-A0BD-48765D8DD073.png)
+
+### Determining Access Quiz Solution
+![](../assets/0E90ADD5-3CCB-4A69-9C9E-55E06E88A8E8.png)
+
+Access control conflicts can be securely resolved by denying access.
+
+### Discretionary Access Control Quiz
+![](../assets/8C822B06-A689-4ABC-BC3C-69517F39029D.png)
+
+### Discretionary Access Control Quiz Solution
+![](../assets/69519ED2-526D-47DB-8CFF-B3A922D2DBDF.png)
+
+Bob can write the contents of the file to a new file that he owns, and share that file with Charlie.
+
+### ACE Quiz
+![](../assets/38DA4583-E908-4834-A4A8-A30FB65A2754.png)
+
+### ACE Quiz Solution
+![](../assets/89BFDAE7-ED13-41D6-BB4C-01D5948DD108.png)
+
+The presentation of the ticket is sufficient to gain access to the theater. No other access checks are required. This is closest in functionality to a capability.
+
+### ACE Access Quiz
+![](../assets/790A92B9-8315-4A52-8B83-9F7CF9F33947.png)
+
+### ACE Access Quiz Solution
+![](../assets/0D94E256-D8D9-4BCE-9E83-F7BFD18F7E20.png)
+
+Negative access rights supersede positive access rights, so you can’t terminate as soon as you find a positive access right. You can terminate as soon as you find a negative access right, though.
+
+NB: The third option can’t be true if the second option is true.
+
+### Revocation of Rights Quiz
+![](../assets/99C6BB65-DB67-42A9-A133-484EAEC0498C.png)
+
+### Revocation of Rights Quiz Solution
+![](../assets/06734230-A91A-4DCB-BBC0-35AF61DC9A09.png)
+
+### Time to Check vs Time to Use Quiz
+![](../assets/252D27FB-9B58-4DCD-AE9C-6D6B7C3143E9.png)
+
+### Time to Check vs Time to Use Quiz Solution
+![](../assets/B464C794-6718-40DB-BDAB-EAA956AD1C13.png)
+
+As long as you had the permissions when you called `open`, you can access the file using the file descriptor.
+
+### Unix File Sharing Quiz
+![](../assets/88897E9D-9338-459B-B582-7A87A6EB74E6.png)
+
+### Unix File Sharing Quiz Solution
+![](../assets/8E7ED659-B2F6-4823-A54F-C312F6110482.png)
+
+You would need to somehow add the descriptor to the per-process descriptor table for the process with which you wish to share the descriptor. Since the OS owns this table, mutating it is impossible.
+
+### SetUID Bit Quiz
+![](../assets/71AAA4B5-5DD3-414A-8317-8BB17007E533.png)
+
+### SetUID Bit Quiz Solution
+![](../assets/E2739829-4308-4DBE-8C7D-0AAF1025E54E.png)
+
+The effective UID of a process executing a file with the setuid bit set is the owner of the file, not the user who created the process.
+
+### RBAC Benefits Quiz
+![](../assets/D1B82974-ED31-4162-B636-012F375BCE35.png)
+
+### RBAC Benefits Quiz Solution
+![](../assets/01A48AF0-F1FD-4085-A588-4BA0C746FE0C.png)
+
+### Access Control Policy Quiz
+![](../assets/7221A53F-3B6C-4CA2-9738-3A63FCA7CEFA.png)
+
+### Access Control Policy Quiz Solution
+![](../assets/5DEE9998-897C-4B46-8565-A383DD6FC069.png)
+
+From a security standpoint, denying access is a fail-safe default. It never fails to keep your system secure.
