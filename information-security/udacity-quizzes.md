@@ -529,3 +529,135 @@ Testing can’t show the absence of problems.
 
 ### Cost Benefit Certification Tradeoffs Quiz Solution
 ![](../assets/FC3F201F-6A8B-4E3B-9725-E8128B9719E5.png)
+
+## Database Security
+### Database Threats Quiz
+![](../assets/DF4376DB-23F1-4197-A713-0D67A365E539.png)
+
+### Database Threats Quiz Solution
+![](../assets/EEA0ABC9-F002-4A9D-8654-81E456D1921D.png)
+
+[Source](http://www.oracle.com/us/products/database/2014-ioug-dba-security-superhero-2338955.pdf)
+
+### Database Hacking Quiz
+![](../assets/BC720089-2712-4976-B060-FF39DC587337.png)
+
+### Database Hacking Quiz Solution
+![](../assets/027DCEF8-3F17-4FD1-8D27-191328C18040.png)
+
+### Key Value Quiz
+![](../assets/83E4EFF2-3CED-4058-AD08-39D3DEFC3A62.png)
+
+### Key Value Quiz Solution
+![](../assets/66B99FB2-D304-43C2-979E-BDA1CAD672A8.png)
+
+A primary key uniquely identifies a row.
+
+### Database Views Quiz
+![](../assets/12C1B7B6-9B61-4C2A-B9CB-55D63FB07E0A.png)
+
+### Database Views Quiz Solution
+![](../assets/8046AD01-9F33-468B-9F3E-2A1D04087814.png)
+
+### Database Access Control Quiz
+![](../assets/7D499BB8-5C13-4A36-8CF3-0C3E8F301532.png)
+
+### Database Access Control Quiz Solution
+![](../assets/11C78BAE-41F8-42FC-8AFE-F234639D2D20.png)
+
+### Cascading Authorizations Quiz
+![](../assets/31AD71A2-E008-405D-8F49-8C4A9CA746D9.png)
+
+### Cascading Authorizations Quiz Solution
+![](../assets/4A856303-A0BB-473A-8E98-41306F1E2AE4.png)
+
+### DAC or MAC Quiz
+![](../assets/5947BE2E-48E7-4792-A77C-432EBC939BF2.png)
+
+### DAC or MAC Quiz Solution
+![](../assets/6AED63B6-5A43-4EF8-BDCF-3624B7789381.png)
+
+### SQL Login Quiz
+![](../assets/29ADEB96-538D-470A-85E1-28D2D25B40AC.png)
+
+### SQL Login Quiz Solution
+![](../assets/6FF291D3-98CE-4AD1-93D7-9A93431D5335.png)
+
+### SQL Login Quiz 2
+![](../assets/7BA1E896-52B9-43EB-A710-2EB5C7170141.png)
+
+### SQL Login Quiz 2 Solution
+![](../assets/87FB43B8-EEE7-4BB8-A3CE-10DFA9911FAE.png)
+
+### SQL Inference Attack Quiz
+![](../assets/972B9CAC-ECD3-40CF-9187-8CA4B3F1E280.png)
+
+### SQL Inference Attack Quiz Solution
+![](../assets/379AB37B-1684-45F6-AD8D-54C00A35629B.png)
+
+### SQL Inference Attack Quiz 2
+![](../assets/0C1BADC4-C735-4958-9274-F9F2DB3E9411.png)
+
+### SQL Inference Attack Quiz 2 Solution
+![](../assets/13759837-A50F-4319-9A86-FDD985C5EE27.png)
+
+Consider the case where one student from a region containing two students retrieves the grade information about that region.
+
+## Malicious Code
+### What is Malware Quiz
+![](../assets/40637903-CAAE-402C-9F8D-DC289CB7EC62.png)
+
+### What is Malware Quiz Solution
+![](../assets/07625575-7DE3-4F7F-AEF7-5E0B1178E7A7.png)
+
+### Host Required Malware Quiz 1
+![](../assets/A4EDCDB2-1BCA-44CE-82D9-F9F87A38CED2.png)
+
+### Host Required Malware Quiz 1 Solution
+![](../assets/5FECA411-7C95-4E9C-B485-2FB274E512F5.png)
+
+### Host Required Malware Quiz 2
+![](../assets/21C54A27-F1F6-4A37-969F-A29DE164F9F5.png)
+
+### Host Required Malware Quiz 2 Solution
+![](../assets/049C97B7-000C-4F42-8755-89BDE3A06DB9.png)
+
+### Types of Viruses Quiz
+![](../assets/133BBEDD-CE14-4ED3-A8ED-48F539E3E52B.png)
+
+### Types of Viruses Quiz Solution
+![](../assets/6294734B-447D-4C84-9F5E-C80BD8923832.png)
+
+Macro viruses run when an infected document is opened with a given application. Boot sector viruses run before the operating system is loaded.
+
+### Rootkit Quiz
+![](../assets/F9D17F35-7B72-4538-9425-77C62F298C1D.png)
+
+### Rootkit Quiz Solution
+![](../assets/F4D927F4-F0EF-4056-9F9C-3979A28E1375.png)
+
+### Truth and Misconceptions Quiz
+![](../assets/C55A0FCE-82C4-4243-83F9-9FE14B9B1982.png)
+
+### Truth and Misconceptions Quiz Solution
+![](../assets/FE1571D1-8225-4963-ABEA-379773BD8D9A.png)
+
+### Worm Quiz
+![](../assets/63C5BA47-1177-48B3-8C53-AB4B8BD90395.png)
+
+### Worm Quiz Solution
+![](../assets/60DAF027-9368-40B6-AE36-FC6EA78B32B8.png)
+
+### Malware Prevention & Detection Quiz
+![](../assets/36682CCE-48D2-43A0-B174-A5558BA230E6.png)
+
+### Malware Prevention & Detection Quiz Solution
+![](../assets/919A3EB0-92AE-4221-BFC5-D339E835C7E6.png)
+
+### Most Expensive Worm Quiz
+![](../assets/8C469D3D-9061-45F2-8B2F-53D35CBD5A30.png)
+
+### Most Expensive Worm Quiz Solution
+![](../assets/38A65997-26BC-4D80-A560-169AF0930940.png)
+
+[Source](https://encyclopedia2.thefreedictionary.com/Top+10+Worst+Computer+Worms+of+All+Time)
