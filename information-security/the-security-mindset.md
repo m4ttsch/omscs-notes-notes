@@ -5,17 +5,17 @@ sidebar_label: The Security Mindset
 ---
 
 ## Why Cyber Security?
-Before considering why we care about cyber security, it’s important understand why we would care about security in general.
+Before considering why we care about cyber security, it’s important to understand why we would care about security in general.
 
 Essentially, we worry about security when we have something of value which is at risk of being harmed.
 
 In order to understand the importance of cyber security, we need to consider the digital assets that we maintain and the threats those assets face.
 
-For example, individuals store a lot of sensitive date online, such as financial information and medical information. If criminals get their hands on this data, they can monetize it and profit from it.
+For example, individuals store a lot of sensitive data online, such as financial information and medical information. If criminals get their hands on this data, they can monetize it and profit from it.
 
 More broadly, communities rely on the internet for critical resources, making them attractive targets for adversaries.
 
-Smart grids, which controls the electrical power generation and distribution, are one such community asset. If computers control the smart grid, then whoever controls those computer controls an extremely important resource.
+Smart grids, which control the electrical power generation and distribution, are one such community asset. If computers control the smart grid, then whoever controls those computer controls an extremely important resource.
 
 At a more general level, businesses and governments use the internet to carry out their daily activities, many of which involve storing proprietary and/or classified information. If hackers or adversaries gain access to this information, the consequences could be economically or politically disastrous.
 
@@ -105,7 +105,7 @@ The following diagram succinctly illustrates the relationship between assets,  v
 ## What Should We Do in Cyber Security?
 There are different things that we can hope to achieve in the field of cyber security.
 
-First, we can try to make threats go away. While this is not an easy feat to achieve, but we can try to discourage criminal activity by introducing computer abuse laws.
+First, we can try to make threats go away. This is not an easy feat to achieve, but we can try to discourage criminal activity by introducing computer abuse laws.
 
 We can reduce vulnerabilities, but we are never going to have zero vulnerabilities. Complex systems are error-prone, and some of those errors will expose vulnerabilities that can be exploited.
 

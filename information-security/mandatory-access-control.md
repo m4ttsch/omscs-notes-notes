@@ -178,7 +178,7 @@ For example, a user with secret clearance may read a classified document.
 This rule is the *read-down rule*, also known as the **simple security property**. A user can read documents that are classified at their clearance level or lower.
 
 ### Write-Up Rule
-The write rule says that a user with label `L1` can read a document with label `L2` only if `L2` dominates `L1`.
+The write rule says that a user with label `L1` can write a document with label `L2` only if `L2` dominates `L1`.
 
 For example, a user with secret clearance may write a top secret document.
 

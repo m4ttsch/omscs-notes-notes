@@ -295,7 +295,7 @@ A user can have more than one role. The employees described above might take on 
 
 [Security-Enhanced Linux](https://en.wikipedia.org/wiki/Security-Enhanced_Linux) (SELinux) supports RBAC.
 
-### RBCA Benefits
+### RBAC Benefits
 Since the policy defines which roles have access to which resources, the policy doesn’t need to change when any one user leaves the organization.
 
 In addition, a new employee can easily be set up. Instead of having to assign them individual privileges one by one, a system administrator can assign them to one or more roles and instantly grant the appropriate amount of access.

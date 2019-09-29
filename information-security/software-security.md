@@ -89,7 +89,7 @@ If the user enters a password longer than 12 bytes, the remaining bytes will ove
 Since login will succeed if `allow_login` is anything but 0 (i.e. not a fail-safe default), this overflow will almost certainly lead to access being granted.
 
 ## Attacker Code Execution Part 1
-If the attacker guess the correct password and types that as input to the program, login will be allowed.
+If the attacker guesses the correct password and types that as input to the program, login will be allowed.
 
 If the attacker guesses the wrong password - which fits into the allocated buffer - there will be no overflow and login will be rejected.
 

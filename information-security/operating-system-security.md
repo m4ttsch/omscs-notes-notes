@@ -210,7 +210,7 @@ Protecting processes from each other and protecting the operating system from un
 
 Page table lookups prevent a process from accessing any physical pages that belong to the operating system, since the operating system has not explicitly mapped those locations into the process’s address space.
 
-This translation process is so important that we typically have a piece of hardware called a **memory management unit** (MMU), that helps the OS perform this translation efficiently,  using memory caches such as [translation look -aside buffers](https://en.wikipedia.org/wiki/Translation_lookaside_buffer)
+This translation process is so important that we typically have a piece of hardware called a **memory management unit** (MMU), that helps the OS perform this translation efficiently, using memory caches such as [translation look-aside buffers](https://en.wikipedia.org/wiki/Translation_lookaside_buffer).
 
 In addition to resolving a physical address from a virtual address, a page table entry can provide information about different types of memory access available for that page.
 
@@ -238,7 +238,7 @@ Protecting processes from each other and protecting the operating system from un
 
 The operating system (kernel) resides in a portion of each process’s address space.
 
-The address space in which a process executes now has two section: the user code/data and the kernel code/data. This partitioning exists for every process that we have in the system.
+The address space in which a process executes now has two sections: the user code/data and the kernel code/data. This partitioning exists for every process that we have in the system.
 
 Whenever a process wants to access a portion of the address space that contains kernel data or code, the process must make a system call to traverse that boundary.
 
@@ -311,7 +311,7 @@ Remember that if an operating system is compromised, all applications running on
 
 Virtualization can help limit the damage caused by a compromised/hacked operating system.
 
-In virtualized systems, we introduce a **hypervisor** between the hardware and the operating systems. On top of the hypervisor, we support virtual machines, which have their own operating system - called the guest operating system -which itself can support a number of applications.
+In virtualized systems, we introduce a **hypervisor** between the hardware and the operating systems. On top of the hypervisor, we support virtual machines, which have their own operating system - called the guest operating system - which itself can support a number of applications.
 
 Compromise of an OS within one virtual machine only impacts the applications running inside of that virtual machine. The applications that are running in an adjacent virtual machine atop the same hypervisor are unaffected.
 
