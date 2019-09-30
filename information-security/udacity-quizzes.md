@@ -661,3 +661,52 @@ Macro viruses run when an infected document is opened with a given application. 
 ![](../assets/38A65997-26BC-4D80-A560-169AF0930940.png)
 
 [Source](https://encyclopedia2.thefreedictionary.com/Top+10+Worst+Computer+Worms+of+All+Time)
+
+## Modern Malware
+### Bot Quiz
+![](../assets/133D2EE2-25A2-4657-A7B4-78A70EDC2E60.png)
+
+### Bot Quiz Solution
+![](../assets/FF650996-73FA-4E4C-B893-FA0A8F302E79.png)
+
+### DDoS Quiz
+![](../assets/B4B116A3-24D3-40AB-86DE-DF49D439D91E.png)
+
+### DDoS Quiz Solution
+![](../assets/3F23779C-7FEB-4551-A120-ED3B7046EFF2.png)
+
+Remember, the characteristics of DNS servers can be used to amplify the effects of DDoS attacks, not mitigate them.
+
+### C&C Design Quiz
+![](../assets/185071EA-CDCF-47EC-8D44-9F63D543C5DD.png)
+
+### C&C Design Quiz Solution
+![](../assets/FE123C3D-C49F-4AA5-80F0-0DF1EF468A48.png)
+
+The second answer is false. Bot code can have logic bombs or other triggers that enable bot to attack without contacting a C&C server.
+
+The third answer is also false. A botnet is more likely to be found using custom communication protocols, as admins observing the network are more likely to detect strange types of traffic flowing from their system.
+
+### Botnet C&C Quiz
+![](../assets/B94A4FF5-8F9D-4252-9849-4DFAFCAA5640.png)
+
+### Botnet C&C Quiz Solution
+![](../assets/F388379F-0461-46F3-9211-1ADA9775FEE1.png)
+
+A single gmail account, hardcoded in bot code, is both easy to detect and easy to disrupt.
+
+P2P traffic will easily stand out in an enterprise network where peer-to-peer communications are not typically allowed.
+
+A news site can be hard to detect, because traffic to news websites is common. However, if the site is identified as being malicious, it can easily be blocked.
+
+### APT Quiz
+![](../assets/31C8957F-328A-463B-98E6-8D5FA5481366.png)
+
+### APT Quiz Solution
+![](../assets/012DC084-0287-4D85-9D3B-0C2003FB716A.png)
+
+### Malware Analysis Quiz
+![](../assets/A14989C9-C5D0-4F0D-B937-F9F9E8B01079.png)
+
+### Malware Analysis Quiz Solution
+![](../assets/C371FC26-E6A5-42D1-870F-5C4914E47789.png)
