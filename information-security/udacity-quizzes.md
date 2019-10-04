@@ -710,3 +710,56 @@ A news site can be hard to detect, because traffic to news websites is common. H
 
 ### Malware Analysis Quiz Solution
 ![](../assets/C371FC26-E6A5-42D1-870F-5C4914E47789.png)
+
+## Firewalls
+### Firewalls Quiz
+![](../assets/F9F12971-51F9-4D97-8CDD-ABD6DE61A09F.png)
+
+### Firewalls Quiz Solution
+![](../assets/CD0D727F-C0F6-4B52-9B85-95B0D5540FED.png)
+
+### Firewall Features Quiz
+![](../assets/C58A7F53-1221-4BCD-9F63-3DD25ED340E1.png)
+
+### Firewall Features Quiz Solution
+![](../assets/08146EF7-844E-4DF4-AF9B-46A4EFE810B9.png)
+
+### Firewall Filtering Quiz
+![](../assets/948B9D27-D7EE-499D-945D-B272DEF09A1C.png)
+
+### Firewall Filtering Quiz Solution
+![](../assets/448612E5-28F9-422A-ADBA-7661F4D4F1EF.png)
+
+The first example follows the “default drop” rule, which is high security but requires new services to be expressly allowed. The second example follows the “default forward” rule, which is easier to use at the expense of security. The final approach sits in between the two in terms of security and ease of use.
+
+### Packet Filtering Quiz
+![](../assets/97AF2EAE-DC71-4E99-AF2D-49520F5D1BD1.png)
+
+### Packet Filtering Quiz Solution
+![](../assets/6C72F7E1-2A20-4826-8080-A48DEC8CEDB5.png)
+
+### Filtering Quiz
+![](../assets/5BE501CE-84FD-4BC6-A5A8-1334384E7466.png)
+
+### Filtering Quiz Solution
+![](../assets/1F34A051-C027-4F76-BEA7-4BF6151DE243.png)
+
+### Personal Firewalls Quiz
+![](../assets/318AE0E6-A077-413E-9B08-A6E3263B8E08.png)
+
+### Personal Firewalls Quiz Solution
+![](../assets/AE45FA72-0C13-4F06-A89A-620E2894EBFC.png)
+
+If the device is not always protected by the corporate network, as is the case in scenarios 1 and 3, then the personal firewall is needed for additional security.
+
+### Firewall Deployment Quiz
+![](../assets/EFDA0A4D-B9D3-417D-9025-2E23F564DDE1.png)
+
+### Firewall Deployment Quiz Solution
+![](../assets/A765E6A6-3A0E-4F47-86B5-F56A9C0E3BFA.png)
+
+### Stand Alone Firewall Quiz
+![](../assets/DCDD7C22-F6A1-449E-A7B5-013C5D1324A4.png)
+
+### Stand Alone Firewall Quiz Solution
+![](../assets/F83D170A-A182-4CD1-A70E-A816AB4D8FD7.png)
