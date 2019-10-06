@@ -763,3 +763,58 @@ If the device is not always protected by the corporate network, as is the case i
 
 ### Stand Alone Firewall Quiz Solution
 ![](../assets/F83D170A-A182-4CD1-A70E-A816AB4D8FD7.png)
+
+## Introduction to Cryptography
+### Encryption Attack Quiz
+![](../assets/DAF48208-84E4-496E-B228-B4C8B0B841CA.png)
+
+### Encryption Attack Quiz Solution
+![](../assets/462EA39F-5754-47D1-B624-335F35CF3647.png)
+
+In a brute-force attack, the attacker must try all potential keys. The only way to make this task more difficult is to increase the length of the key, thus increasing the size of the keyspace.
+
+### Simple Ciphers Quiz
+![](../assets/88162C87-3BE8-476A-BC36-E9B325A11A04.png)
+
+### Simple Ciphers Quiz Solution
+![](../assets/B6279774-5618-4B04-8081-1499BCF75299.png)
+
+Since “A” maps to “D”, “B” maps to “E”, and so forth, we can just “rewind” each letter in the ciphertext by three to obtain the plaintext.
+
+### Monoalphabetic Cipher Quiz
+![](../assets/693FC6D9-96D7-4E8D-8736-0D2D2CD8165D.png)
+
+### Monoalphabetic Cipher Quiz Solution
+![](../assets/43C05969-AD5E-4A44-A49D-590BD32B62FD.png)
+
+### Vigenere Cipher Quiz
+![](../assets/C188A430-4FD1-41CB-B6F3-1991645DB0E1.png)
+
+### Vigenere Cipher Quiz Solution
+![](../assets/4F4575D2-8431-473F-9F1B-AF4BC57359C6.png)
+
+### Hash Function Quiz
+![](../assets/333D362C-324B-4AE9-9256-66111A0EAA3B.png)
+
+### Hash Function Quiz Solution
+![](../assets/9FCFF378-D376-46B5-8734-E5DB63549DCA.png)
+
+The **avalanche effect** states that a small change in the input to a hash function causes a large change to the output. We want this in place as a way to obscure similar passwords. Without the avalanche effect, an attacker may be able to deduce password `A` from its hash value if he knows that the hash of a string `B` is similar to `A`’s hash.
+
+### Symmetric Encryption Quiz
+![](../assets/1E31561D-622A-48AB-8B4B-D46F37A11AD1.png)
+
+### Symmetric Encryption Quiz Solution
+![](../assets/5F18ADCF-329B-4A37-9876-305990D371B2.png)
+
+### Asymmetric Encryption Quiz
+![](../assets/2CAA6C73-F6D0-4797-B4A7-FABFA269EFF6.png)
+
+### Asymmetric Encryption Quiz Solution
+![](../assets/1374D8F4-378E-4CD8-9B80-511E87EA2F3C.png)
+
+### Encryption Quiz
+![](../assets/623ADEEA-F8E3-4CC7-A61B-51EC26C8F93B.png)
+
+### Encryption Quiz Solution
+![](../assets/CB248B54-A4DA-49D9-A9DC-477AE73A38B3.png)
