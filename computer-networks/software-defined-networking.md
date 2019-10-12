@@ -170,7 +170,7 @@ While the controller is logically centralized, there may be many physical replic
 A final challenge is security/robustness. In particular, we want to make sure that the network continues to function correctly in the event that a controller replica fails or is compromised.
 
 ## Different SDN Controllers
-![](../assets/AF8862F8-DC7D-426F-BD84-DF1B02B4E107.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/AF8862F8-DC7D-426F-BD84-DF1B02B4E107.png)
 
 ## NOX: Overview
 [NOX](noxrepo.org) is a first-generation OpenFlow controller. It is open-source, stable and widely used.
@@ -221,7 +221,7 @@ POX is widely used, maintained and supported. It is also easy to use and easy to
 However, the performance of POX is not as good as the performance of NOX.
 
 ## Ryu, Floodlight, Nox and Pox
-![](../assets/C162771F-CBF2-4DC4-90CF-F0B2B4F722A9.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/C162771F-CBF2-4DC4-90CF-F0B2B4F722A9.png)
 
 All of the controllers are still relatively hard to use because they involve interacting directly with OpenFlow flow table modifications, which operate on a very low level.
 
@@ -233,7 +233,7 @@ A hub maintains no state about which output port a packet should be forwarded to
 
 In POX, this code is fairly simple.
 
-![](../assets/BAE9C00C-2F3F-4591-A43A-B1650F44ABE4.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/BAE9C00C-2F3F-4591-A43A-B1650F44ABE4.png)
 
 When the controller starts, it adds a listener that listens for a `ConnectionUp` event which is a connection from a switch. When the switch connects, it sends an OpenFlow flow modification back to the switch that says flood all packets out every output port.
 

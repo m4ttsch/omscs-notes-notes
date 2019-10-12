@@ -28,7 +28,7 @@ Finally, files can be stored on and served from all machines. This blurs the lin
 ## Remote File Service: Extremes
 At one extreme, we have the upload/download model. When a client wants to access a file, it downloads the entire file, performs the modifications and then uploads the entire file back to the server.
 
-![](../assets/B02657E2-D79B-43AB-87F4-7B75275CA3CB.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/B02657E2-D79B-43AB-87F4-7B75275CA3CB.png)
 
 
 The benefit of this model is that all of the modifications can be done locally, which means they can be done quickly, without incurring any network cost.
@@ -37,7 +37,7 @@ One downside of this model is that the client has to download the entire file, e
 
 At the other extreme, we have the true remote file access. In this model, the file remains on the server and every single operation has to pass through the server. The client makes no attempt to leverage any kind of local caching or buffering.
 
-![](../assets/4358EB0F-C95F-4106-A8ED-74E92E275263.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/4358EB0F-C95F-4106-A8ED-74E92E275263.png)
 
 The benefit of this extreme is that the server now has full control and knowledge of how the clients are accessing and modifying a file. This makes it easier to ensure that the state of the filesystem is consistent.
 
@@ -90,12 +90,12 @@ For client/server systems, these coherence mechanisms may be trigged in differen
 ### Single Node, UNIX
 Whenever a file is modified by any process, that change is immediately visible to any other process in the system. This will be the case even if the change isn’t pushed out to disk because both processes have access to the same buffer cache.
 
-![](../assets/78F61AEB-F700-4CEE-8D92-14B7D8E0FC26.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/78F61AEB-F700-4CEE-8D92-14B7D8E0FC26.png)
 
 ### DFS
 Even if a write gets pushed to the file server immediately, it will take some time before that update is actually delivered to the file server. It is possible that another client will not see that update for a while, and every time it performs a read operation it will continue seeing “stale” data. Given that message latencies may vary, we have no way of determining how long to delay any possible read operation in order to make sure that any write from anywhere in the system arrives at the file servers so that we can guarantee no staleness.
 
-![](../assets/4559FB2E-50BC-44BB-8A2C-39C2159B9945.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/4559FB2E-50BC-44BB-8A2C-39C2159B9945.png)
 
 In order to maintain acceptable performance, a DFS will typically sacrifice some of the consistency, and will accept more relaxed file sharing semantics.
 
@@ -145,7 +145,7 @@ Finally, we can have a solution where the filesystem is partitioned across some 
 ## Networking File System (NFS) Design
 In a **Networking File System** (NFS), clients access files across the network, hence the name.
 
-![](../assets/8EB8E1FB-C4FF-427C-A887-CD2B754A4DE0.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/8EB8E1FB-C4FF-427C-A887-CD2B754A4DE0.png)
 
 Clients request and access files via the VFS, using the same types of file descriptors and operations that they use to access files in their local storage. The VFS layer determines if the file belongs to the local filesystem or whether the request needs to be pushed to the NFS client so that it can be passed to the remote filesystem.
 
@@ -169,7 +169,7 @@ With server-side state, NFS can support locking. NFS uses a lease-based mechanis
 NFSv4 also supports a reader/writer lock called “share reservation”. It also support mechanisms for upgrading from being a reader to a writer, and vice versa.
 
 ## Sprite Distributed File System
-![](../assets/BF2F3D15-E0CE-4DFE-B0DF-EFF69297E33E.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/BF2F3D15-E0CE-4DFE-B0DF-EFF69297E33E.png)
 
 ## Sprite DFS Access Pattern Analysis
 In the paper on caching in the sprite system, the authors performed a study to see how files are accessed in the production filesystem used by their department.

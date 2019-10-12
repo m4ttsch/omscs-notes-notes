@@ -44,7 +44,7 @@ Hardware-supported DSM relies on some physical interconnect. The OS running on e
 
 Memory accesses that reference remote memory locations are passed to the network interconnect card, which translates remote memory accesses into interconnect messages that are then passed to the correct remote node.
 
-![](../assets/A0136738-FC8B-4E44-B4A1-1862ADDA3938.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/A0136738-FC8B-4E44-B4A1-1862ADDA3938.png)
 
 The NICs are involved in all aspects of the memory management, access and consistency and even support some atomics.
 
@@ -171,7 +171,7 @@ The role of the home node then becomes to keep track of who is the current owner
 In addition to creating page copies via caching, page replicas can be explicitly created for load balancing, performance or reliability reasons. In datacenter environments, it makes sense to triplicate shared state: on the main machine, on a nearby machine in the same building, and on a remote machine in another datacenter. The consistency of these nodes is either managed by the home node or some manager node.
 
 ## Summarizing DSM Architecture
-![](../assets/17D02718-3116-442E-8010-B82EF5CE2861.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/17D02718-3116-442E-8010-B82EF5CE2861.png)
 
 ## Indexing Distributed State
 When creating distributed memory systems, it’s important to understand how we can determine where a particular page is physically located within the system.
@@ -190,7 +190,7 @@ Certain bits from the address are used to identify the manager. There will be a 
 
 In this approach, we can change the manager node by updating the mapping table. We don’t need to change the object identifier.
 
-![](../assets/9EA39B5E-9AF1-4519-A1C2-D3EB9924491E.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/9EA39B5E-9AF1-4519-A1C2-D3EB9924491E.png)
 
 ## Implementing DSM
 One thing to consider when implementing a DSM is that the DSM layer must intercept every single access to the shared state.
@@ -230,10 +230,10 @@ The consistency models states that the memory behaves correctly if and only of t
 
 Our notation for consistency models:
 
-![](../assets/F9F33EA4-108F-44FC-BB04-FC92DE1CB897.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/F9F33EA4-108F-44FC-BB04-FC92DE1CB897.png)
 
 ## Strict Consistency
-![](../assets/0B6FCE54-C65D-4D3B-8D80-D3FCF8CF0E4E.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/0B6FCE54-C65D-4D3B-8D80-D3FCF8CF0E4E.png)
 
 Theoretically, for a perfect consistency model, we would like to achieve absolute ordering and immediate visibility of any state update and access.
 
@@ -250,7 +250,7 @@ Given that strict consistency is next to impossible to achieve, the next best op
 
 With sequential consistency, it’s not important that we see updates immediately. Rather, it’s important that the ordering the way see correspond to a possible ordering that can be achieved by the operations that were applied.
 
-![](../assets/2FAC54FC-883E-45B2-88D6-94843AC1F9F1.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/2FAC54FC-883E-45B2-88D6-94843AC1F9F1.png)
 
 In the above, example, it is possible to see X and m1 and then see Y at m2. It is also possible to see 0 at m1 and then Y at m2. It is not illegal to see Y at m2 and then 0 at m1, as the write to m1 happened before the write to m2.
 
@@ -258,7 +258,7 @@ According to sequential consistency, the memory updates from different processor
 
 However, if we let one process see one ordering of the updates, we have to make sure that all other processes see the same ordering of those updates.
 
-![](../assets/09F1D347-5C52-4A76-BF50-0229E5B3BE2A.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/09F1D347-5C52-4A76-BF50-0229E5B3BE2A.png)
 
 In the above case, we cannot let P3 observe one value at a m1 while concurrently showing a different value to P4, which is also accessing m1.
 
@@ -266,20 +266,20 @@ In sequential consistency, all processes will see the same interleaving. This in
 
 One constraint of the interleaving is that the updates made by the same process will not be arbitrarily interleaved. Operations from the same process always appear in the order they were issued.
 
-![](../assets/6A81FC78-9212-4BF3-81E7-C2207BC06C32.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/6A81FC78-9212-4BF3-81E7-C2207BC06C32.png)
 
 For example, it would not be possible for P4 to read Z at m3 and then read X at m3.
 
 ## Causal Consistency
 Forcing all processes to see the exact same order on all updates may be an overkill.
 
-![](../assets/0A182699-4585-47FD-B1C7-AC089170ACD0.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/0A182699-4585-47FD-B1C7-AC089170ACD0.png)
 
 P3 and P4 may do very different things with the values at m1 and m2, and it may not be necessary that they see the same exact value in a given moment.
 
 Furthermore, the update to m2 was not dependent on the update to m1.
 
-![](../assets/A10D07D6-9ABF-47BF-92E1-2B408D9CFE0B.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/A10D07D6-9ABF-47BF-92E1-2B408D9CFE0B.png)
 
 In this example, the value at m2 was written after the value at m1 was read. In this case, there may be a relationship between the update at m2 and the value at m1. The value written to m2 may depend on the value read from m1.
 
@@ -287,7 +287,7 @@ Based on the observation of this potential dependency, it is not okay that P4 se
 
 Causal consistency models guarantee that they will detect the possible causal relationship between updates, and if updates are causally related then the memory will guarantee that those writes will be correctly ordered.
 
-![](../assets/AF2CD37E-0407-4646-AB4E-D6F3A045A887.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/AF2CD37E-0407-4646-AB4E-D6F3A045A887.png)
 
 In this situation, a causal consistency model will enforce that a process must read X from m1 before reading Y from m2.
 
@@ -295,7 +295,7 @@ For writes that are not casually-related - concurrent writes - there are no such
 
 Just like before, causal consistency ensures that writes that are performed on the same processor will be visible in the exact same order on other processors.
 
-![](../assets/FD6FC037-E098-41D7-8446-A703DEB6B344.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/FD6FC037-E098-41D7-8446-A703DEB6B344.png)
 
 ## Weak Consistency
 In the consistency models that we discussed so far, the memory was accessed only by read and write operations.
@@ -304,7 +304,7 @@ In the weak consistency models, it’s possible to have additional operations fo
 
 A memory system may introduce **synchronization points**, as operations that are available to the upper layers of the software. In addition to telling the underlying memory system to read or write, you will now be able to tell the system to sync.
 
-![](../assets/B7846427-7BD2-4398-B69D-7BE7761F0BC6.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/B7846427-7BD2-4398-B69D-7BE7761F0BC6.png)
 
 A synchronization point makes sure that all of the updates that have happened prior to the synchronization point will become visible at other processors.
 
@@ -314,7 +314,7 @@ If P1 performs a synchronization operation after writing to m1, that doesn’t g
 
 The synchronization point has to be called both by the process that is performing the updates and the process that wishes to see the updates.
 
-![](../assets/5FDC8B58-6835-482E-A762-80163BFD2ACC.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/5FDC8B58-6835-482E-A762-80163BFD2ACC.png)
 
 Once a synchronization is performed on P2, P2 will see all of the previous updates that have happened to any memory location in the system. When P2 performs the sync, it is guaranteed to see the value of m1 at the time that P1 performed the sync.
 

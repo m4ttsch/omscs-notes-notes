@@ -9,7 +9,7 @@ In order to concurrently run diverse workloads on the same physical hardware wit
 
 The solution is **virtualization**.
 
-![](../assets/A96F5139-EFB1-4038-A5E4-9128C63CF5F8.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/A96F5139-EFB1-4038-A5E4-9128C63CF5F8.png)
 
 
 With virtualization, each of the operating systems that are deployed on the same physical platform has the illusion that it actually owns the underlying hardware resources, all or in part.
@@ -49,7 +49,7 @@ Virtualization also provides affordable support for legacy operating systems. Ap
 ## Virtualization Models: Bare Metal
 In **bare-metal** virtualization (also known as **hypervisor-based** or **type 1** virtualization, the VMM manages all the hardware resources and support execution of VMs.
 
-![](../assets/A320790E-26BD-4370-8B87-47E08D04FA9C.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/A320790E-26BD-4370-8B87-47E08D04FA9C.png)
 
 One issue with this model concerns devices. According to the model, the hypervisor must manage all possible devices. In order words, device manufacturers now have to provide device drivers not just for different operating systems, but also for different hypervisors.
 
@@ -76,7 +76,7 @@ One benefit of this model is that it can leverage all of the services and mechan
 
 In this setup, you can run guest VMs through the VMM module as well as native applications directly on the host OS.
 
-![](../assets/2BE5A89A-9473-420B-B659-D5F010B2BB8D.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/2BE5A89A-9473-420B-B659-D5F010B2BB8D.png)
 
 One example of the hosted model is **kernel-based VM** (KVM) which is built into Linux. The Linux host provides all aspects of the physical hardware management and can run regular Linux applications directly.
 
@@ -195,7 +195,7 @@ To deal with this diversity, virtualization solutions adapt one of three key mod
 ## Passthrough Model
 In the **passthrough model**, the VMM-level driver is responsible for  configuring the access permissions to a device. For example, it will allow a guest VM to have access to the memory registers corresponding to a device.
 
-![](../assets/DB8B54EB-D3C3-4EB0-A8F4-71163B1426E0.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/DB8B54EB-D3C3-4EB0-A8F4-71163B1426E0.png)
 
 In this approach, the guest VM has exclusive access to a device. In addition, the VM can directly access the device, without interacting with the VMM. This model is also called the **VMM-bypass model**.
 
@@ -210,7 +210,7 @@ This passthrough model breaks that decoupling as it binds a device to a VM. This
 ## Hypervisor Direct Model
 In the **hypervisor-direct model**, the hypervisor intercepts every device access request that is performed by the guest VM.
 
-![](../assets/4F00CAC7-1C7B-4065-A509-F7B57DD7FBE3.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/4F00CAC7-1C7B-4065-A509-F7B57DD7FBE3.png)
 
 The hypervisor no longer has the constraint that the requested device and the physical device match.
 
@@ -223,7 +223,7 @@ The downside of the model is that the device emulation step adds latency to devi
 ## Split Device Driver Model
 In the **split device driver model**, all of the devices accesses are controlled in a way that involves a component that resides in a guest VM and a component that resides in a hypervisor layer.
 
-![](../assets/BECB3588-AFBF-42F2-9A1C-22916449B1B4.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/BECB3588-AFBF-42F2-9A1C-22916449B1B4.png)
 
 The **front-end driver** resides in the guest VM and the actual driver for the physical device - the **back-end driver** - resides in the service VM (or the host in type 2 virtualization).
 
@@ -253,4 +253,4 @@ Other features were added for better security and management support.
 Finally, a number of new instructions were added to x86 in order to implement these new features. For example, a new instruction was added to allow switching into new protection mode.
 
 ## x86 VT Revolution
-![](../assets/57D4D274-194C-4906-8331-48AC6C00F7FE.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/57D4D274-194C-4906-8331-48AC6C00F7FE.png)

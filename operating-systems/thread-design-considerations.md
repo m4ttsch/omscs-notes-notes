@@ -13,7 +13,7 @@ Supporting threads at the user level means there is a user level library linked 
 
 User level threads can be mapped onto kernel level threads via a 1:1, 1:many and many:many pattern.
 
-![](../assets/A1FDFE7B-4F6A-4F6D-A016-A2AC1C7B64AA.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/A1FDFE7B-4F6A-4F6D-A016-A2AC1C7B64AA.png)
 
 ## Thread Related Data Structures: Single CPU
  A process is described by its process control block, which contains:
@@ -32,7 +32,7 @@ If we want there to be multiple kernel level threads associated with this proces
 
 The solution is to split the process control block into smaller structures. Namely, the stack and registers are broken out (since these will be different for different kernel level threads) and only these pieces of information are stored in the kernel level thread data structure.
 
-![](../assets/A39BC8BC-E8F3-45E4-B417-921F9FA8A420.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/A39BC8BC-E8F3-45E4-B417-921F9FA8A420.png)
 
 ## Thread Data Structures: At Scale
 If we have multiple processes, we will need copies of the user level thread structures, process control blocks, and kernel level thread structures to represent every aspect of every process.
@@ -43,7 +43,7 @@ If the system has multiple CPUs, we need to have a data structure to represent t
 
 When the kernel itself is multithreaded, there can be multiple threads supporting a single process. When the kernel needs to context switch among kernel level threads, it can easily see if the entire PCB needs to be swapped out, as the kernel level threads point to the process on behalf of whom they are executing.
 
-![](../assets/3ED34119-18EF-4B3E-98AB-E2DE92FB87DF.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/3ED34119-18EF-4B3E-98AB-E2DE92FB87DF.png)
 
 ## Hard and Light Process State
  When the operating system context switches between two kernel level threads that belong to process, there is information relevant to both threads in the process control block, and also information that is only relevant to each thread.
@@ -52,7 +52,7 @@ Information relevant to all threads includes the virtual address mapping, while 
 
 We can split up the information in the process control block into **hard process state** which is relevant for all user level threads in a given process, and **light process state** that is only relevant for a subset of user level threads associated with a particular kernel level thread.
 
-![](../assets/E1CDE711-64D8-47BE-8793-9FA50DD7FC30.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/E1CDE711-64D8-47BE-8793-9FA50DD7FC30.png)
 
 ## Rationale For Data Structures
 Single control block:
@@ -69,7 +69,7 @@ Multiple data structures:
 
 ## User Level Structures in Solaris 2.0
 ### SunOS paper
-![](../assets/0C4D3FA7-A3C9-4469-B87B-050484774183.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/0C4D3FA7-A3C9-4469-B87B-050484774183.png)
 
 The OS is intended for multiple CPU platforms and the kernel itself is multithreaded. At the user level, the processes can single or multithreaded, and both many:many and one:one ULT:KLT mappings are supported.
 
@@ -96,7 +96,7 @@ However, the user library does not control stack growth. With this compact memor
 The solution is to separate information about each thread by a **red zone**. The red zone is a portion of the address space that is not allocated. If a thread tries to write to a red zone, the operating system causes a fault. Now it is much easier to reason about what happened as the error is associated with the problematic thread.
 
 
-![](../assets/8D7A444B-90D8-451B-9DA4-8D2B8D1D1239.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/8D7A444B-90D8-451B-9DA4-8D2B8D1D1239.png)
 
 ## Kernel Level Structures in Solaris 2.0
 For each process, the kernel maintains a bunch of information, such as:
@@ -128,11 +128,11 @@ The CPU data structure contains:
 
 Given a CPU data structure it is easy to traverse and access all the other linked data structures. In SPARC machines (what Solaris runs on), there is a dedicated register that holds the thread that is currently executing. This makes it even easier to identify and understand the current thread.
 
-![](../assets/D37A8ECF-B01C-4FEC-9B55-8FB7C938B26B.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/D37A8ECF-B01C-4FEC-9B55-8FB7C938B26B.png)
 
 A process data structure has information about the user and points to the virtual address mapping data structure. It also points to a list of kernel level threads. Each kernel level thread structure points to the light weight process and the stack, which is swappable.
 
-![](../assets/69BD0A17-1A53-48B8-940A-9B4B96722D25.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/69BD0A17-1A53-48B8-940A-9B4B96722D25.png)
 
 ## Basic Thread Management Interaction
 Consider a process with four user threads. However, the process is such that at any given point in time the actual level of concurrency is two. It always happens that two of its threads are blocking on, say, IO and the other two threads are actually executing.
@@ -177,7 +177,7 @@ The library scheduler may also gain execution in response to certain signals fro
 In a multi CPU system, the kernel level threads that support a process may be running concurrently on multiple CPUs. We may have a situation where the user level library that is operating in the context of one thread on one CPU needs to somehow what is running on **another** CPU.
 
 Scenario
-![](../assets/8859114F-5FA0-445D-9B5D-9324D73FC541.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/8859114F-5FA0-445D-9B5D-9324D73FC541.png)
 
 Currently, T2 is holding the mutex and is executing on one CPU. T3 wants the mutex, and is currently blocking. T1 is running on the other CPU.
 
@@ -190,7 +190,7 @@ Once the signal occurs, the library code can block T1 and schedule T3, keeping w
 
 ## Synchronization Related Issues
 Scenario
-![](../assets/EA93A7AA-BDE7-492C-8001-B4DE63CA8BD4.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/EA93A7AA-BDE7-492C-8001-B4DE63CA8BD4.png)
 
 T1 holds the mutex and is executing on one CPU. T2 and T3 are blocked. T4 is executing on the another CPU, and wishes to lock the mutex.
 
@@ -246,14 +246,14 @@ All of this happens within the context of the thread that is interrupted.
 
 Which interrupts can occur depends on the *hardware* of the platform and how the interrupts are handled depends on the *operating system* running on the platform.
 
-![](../assets/8CCF2340-EEDB-42B7-B8BA-DDC9E7BC75BE.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/8CCF2340-EEDB-42B7-B8BA-DDC9E7BC75BE.png)
 
 ## Signal Handling
 Signals are different from interrupts in that signals originate from the CPU. For example, if a process tries to access memory that has not been allocated, the operating system will generate a signal called SIGSEGV.
 
 For each process, the OS maintains a mapping where the keys correspond the signal number (SIGSEGV is signal 11, for example), and the values point to the starting address of handling routines. When a signal is generated, the program counter is adjusted to point to the handling routine for that signal for that process.
 
-![](../assets/5F7DBAFC-B0F5-422D-B6B3-F29660E99E97.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/5F7DBAFC-B0F5-422D-B6B3-F29660E99E97.png)
 
 The process may specify how a signal can handled, or the operating system default may be used. Some default signal responses include:
 - Terminate
@@ -323,7 +323,7 @@ When an interrupt is handled in a different thread, we no longer have to disable
 
  There are two components of signal handling. The **top half** of signal handling occurs in the context of the interrupted thread (before the handler thread is created). This half must be fast, non-blocking, and include a minimal amount of processing. Once we have created our thread, this **bottom half** can contain arbitrary complexity, as we have now stepped out of the context of our main program into a separate thread.
 
-![](../assets/CB177F61-F635-4014-B166-2C9DDFE51FA3.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/CB177F61-F635-4014-B166-2C9DDFE51FA3.png)
 
 ## Performance of Threads as Interrupts
 The overhead of performing the necessary checks and potentially creating a new thread in the case of an interrupt adds about 40 SPARC instructions to each interrupt handling operation.
@@ -351,7 +351,7 @@ What we would like to do is to be able to stop the thread that cannot handle the
 
 We can achieve this by having the user level threading library (which has visibility in all threads for a process) being the entity that installs the signal handler. This way, when the signal occurs, the library can invoke the scheduler to swap in a thread that can handle the signal. Once this thread is executing, the signal is passed to its handler.
 
-![](../assets/0F15B3F6-6413-476B-A93E-68701ED3F138.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/0F15B3F6-6413-476B-A93E-68701ED3F138.png)
 
 Let’s look at a different scenario, in which there are user level threads executing concurrently atop two kernel level threads. Both kernel level threads have the signal bit enabled, while only one of the user level threads does.
 
@@ -359,13 +359,13 @@ In the case where a signal is generated by a kernel level thread that is executi
 
 What it can do, however, is send a directed signal down to the kernel level thread associated with the user level thread that has the bit enabled. This will cause that kernel level thread to raise the same signal, which will be handled again by the user level library and dispatched to the user level thread that has the bit enabled.
 
-![](../assets/E1D06396-5CD0-49B4-8D7F-9BF845406CE3.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/E1D06396-5CD0-49B4-8D7F-9BF845406CE3.png)
 
 Let’s consider the final case in which every single user thread has the particular signal disabled. The kernel level masks are still 1, so the kernel still thinks that the process as a whole can handle the signal.
 
 When the signal occurs, the kernel interrupts the execution of whichever thread is currently executing atop it. The library handling routine kicks in and sees that no threads that it manages are able to handle this particular signal.
 
-![](../assets/29F3EC50-8F5A-4B22-BEC7-AB02E7914399.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/29F3EC50-8F5A-4B22-BEC7-AB02E7914399.png)
 
 At this point, the thread library will make a system call requesting that the kernel level thread change its signal mask for this particular signal, disabling it.
 
@@ -379,7 +379,7 @@ Here we optimize for the common case again. Signals themselves occur much less f
 The main abstraction that linux uses to represent an execution context is called a **task**. A  task is essentially the execution context of a kernel level thread. A single-threaded process will have one task, and a multithreaded process will have many tasks.
 
 Key elements in task structure, encapsulated by `struct task_struct`
-![](../assets/8B519534-0C74-4A8A-841A-1DCCE73AEFF7.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/8B519534-0C74-4A8A-841A-1DCCE73AEFF7.png)
 
 A task is identified by its `pid_t pid`. If we have a single threaded process the id of the task and the id of the process will be the same. If we have a multithreaded process, each task will have a different `pid` and the process as a whole will be identified by the `pid` of the first task that was created. This information is also captured in the `pid_t tgid` , or task group id, field.
 
@@ -389,7 +389,7 @@ Linux never had one continuous process control block. Instead,  the process stat
 
 To create a new task, Linux supports an operation called `clone`. It takes a function pointer and an argument (similar to `pthread_create`) but it also takes an argument `sharing_flags` which denotes which portion of the state of a task will be shared between the parent and child task.
 
-![](../assets/B717E81B-24EA-4742-833B-C35C128E0A0A.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/B717E81B-24EA-4742-833B-C35C128E0A0A.png)
 
 When all of the bits are set, we are basically creating a new thread where all of the state is shared with the parent thread. If all of the bits are not set, where are not sharing anything, which is more akin to creating an entirely new process. In fact, `fork` in Linux is basically implemented by `clone` with all sharing flags cleared.
 

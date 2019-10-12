@@ -16,7 +16,7 @@ Finally, the need for communication and coordination illustrates the necessity o
 ## Message Based IPC
 In messaged-based IPC, processes create messages and then send and receive them. The operating system is responsible for creating and maintaining the channel that is used to send these messages.
 
-![](../assets/68065B2A-21F6-4052-BD65-47800EEEE360.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/68065B2A-21F6-4052-BD65-47800EEEE360.png)
 
 The OS provides an interface to the processes so that they can send messages via this channel. The processes send/write messages to a port, and then recv/read messages from a port. The channel is responsible for passing the message from one port to the other.
 
@@ -32,7 +32,7 @@ The are several ways to implement message-based IPC.
 ### Pipes
 Pipes are characterized by two endpoints, so only two processes can communicate via a pipe. There is no notion of a message with pipes; instead, there is just a stream of bytes pushed into the pipe from one process and read from the pipe by the other process.
 
-![](../assets/C3ABC9F5-3DF1-4795-A5ED-0EE0D815A999.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/C3ABC9F5-3DF1-4795-A5ED-0EE0D815A999.png)
 
 One popular use of pipes is to connect the output from one process to the input of another.
 
@@ -46,7 +46,7 @@ cat /some/really/large/file | grep "needle in a haystack"
 ### Message Queues
 Messages queues understand the notion of messages that they can deliver. A sending process must submit a properly formatted message to the channel, and then the channel can deliver this message to the receiving process.
 
-![](../assets/CC5C29F1-46D7-49F3-A77A-E95EEDA3F086.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/CC5C29F1-46D7-49F3-A77A-E95EEDA3F086.png)
 
 The OS level functionality regarding message queues includes mechanisms for message priority, custom message scheduling and more.
 
@@ -55,7 +55,7 @@ The use of message queues is supported via different APIs in Unix-based systems.
 ### Sockets
 With sockets, processes send and receive messages through the socket interface. The socket API supports `send` and `recv` operations that allow processes to send message buffers in and out of the kernel-level communication buffer.
 
-![](../assets/5B515698-B3C8-4AA8-9866-853C236F4A31.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/5B515698-B3C8-4AA8-9866-853C236F4A31.png)
 
 The `socket` call itself creates a kernel-level socket buffer. In addition, it will associate any kernel level processing that needs to be associated with the socket along with the actual message movement.
 
@@ -66,7 +66,7 @@ Socket-based communication can happen between processes on different machines! I
 ## Shared Memory IPC
 In shared memory IPC, processes read and write into a shared memory region. The operating system is involved in establishing the shared memory channel between the processes. What this means is that the OS will map certain physical pages in memory into the virtual address spaces of both processes. The virtual addresses in each process pointing a shared physical location do not have to be the same. In addition, the shared physical memory section does not need to be contiguous.
 
-![](../assets/321E7AFD-A603-4134-A47C-3A11F6A2CFC9.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/321E7AFD-A603-4134-A47C-3A11F6A2CFC9.png)
 
 The big benefit of this approach is that once the physical memory is mapped into both address spaces, the operating system is out of the way. System calls are used only in the setup phase.
 
@@ -166,7 +166,7 @@ The keyword for this is `PTHREAD_PROCESS_SHARED`. If we specify this in the attr
 
 One very important thing to remember is that these data structures must also live in shared memory!
 
-![](../assets/79BDED5A-FAA7-4ADE-9C0E-2E696A76E998.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/79BDED5A-FAA7-4ADE-9C0E-2E696A76E998.png)
 
 To create the shared memory segment, we first need to create our segment identifier. We do this with `ftok`, passing `arg[0]` which is the pathname for the program executable as well as some integer parameter. We pass this id into `shmget`, where we specify a segment size of 1KB and also pass in some flags.
 
@@ -188,7 +188,7 @@ With message queues, we can implement mutual exclusion via send/recv operations.
 Semaphores are an OS support synchronization construct and a binary semaphore can have two states, 0 or 1. When a semaphore has a value of 0, the process will be blocked. If the semaphore has a value of 1, the process will decrement the value (to 0) and will proceed.
 
 ## IPC Command Line Tools
-![](../assets/A87134C6-ABEF-4923-B993-8E3C48A4A8E6.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/A87134C6-ABEF-4923-B993-8E3C48A4A8E6.png)
 
 ## Design Considerations
 Let’s consider two multithreaded processes in which the threads need to communicate via shared memory.

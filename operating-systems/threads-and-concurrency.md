@@ -24,7 +24,7 @@ Each and every thread has its own data structure to represent information specif
 
 A multithreaded process will have a more complex process control block structure, as these thread specific execution contexts needs to be incorporated.
 
-![](../assets/984D3189-6CAC-4EDA-8C68-D0315AD3BED6.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/984D3189-6CAC-4EDA-8C68-D0315AD3BED6.png)
 
 ## Benefits of Multithreading
 At any given time when running a multithreaded process on a multiprocessor machine, there may be multiple threads belonging to that process, each running on a given processor. While each thread is executing the *same code* (in the sense of same source code), each thread may be executing a *different instruction* (in the sense of different line or function) at any given time.
@@ -49,12 +49,12 @@ Consider the situation where a single thread makes a disk request. The disk need
 
 Now, this is true for both processes and threads. One of the most time consuming parts of context switching for processes is setting up the virtual to physical mappings. Thankfully, when we are context switching with threads, we are using the same mappings because we are within the same process. This brings down the total time to context switch, which brings up the number of opportunities in which switching threads can be useful.
 
-![](../assets/4B5064D0-7B6A-4EEC-9503-895184EA5707.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/4B5064D0-7B6A-4EEC-9503-895184EA5707.png)
 
 ## Benefits of Multithreading: Apps and OS Code
 By multithreading the operating system kernel, we allow the operating system to support multiple execution contexts, which is particularly useful when we do have multiple CPUs, which allows the execution contexts to operate concurrently. The OS threads may run on behalf of different application or OS-level services like daemons and device drivers.
 
-![](../assets/96B2D50D-5518-486F-AFA3-9FC1CAFB5566.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/96B2D50D-5518-486F-AFA3-9FC1CAFB5566.png)
 
 ## Basic Thread Mechanisms
 When processes run concurrently, they operate within their own address space. The operating system ensures that physical access from one address space never touch memory mapped to by another process's address space.
@@ -87,12 +87,12 @@ When the forked thread completes, we need some mechanism by which it can return 
 One mechanism that can handle this is the `join` mechanism. When the parent thread calls `join` with the thread id of the child it will be blocked until the child thread is finished processing. `join` returns the result of the child's computation. When `join` returns, the child thread exits the system and all resources associated with it are deallocated.
 
 ## Thread Creation Example
-![](../assets/F3C7BFC2-F512-478D-A6BC-ECF6CDA6EEB5.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/F3C7BFC2-F512-478D-A6BC-ECF6CDA6EEB5.png)
 
 **NB**: because we do not know which thread will run at which time in this example, we cannot be certain of the ordering of the elements in the list. Perhaps the child thread inserts its element before the parent thread, or perhaps the parent thread inserts first. This is a concrete example of the *data race* described above.
 
 ## Mutexes
-![](../assets/E4DBE552-3589-4160-88E0-257EC1B5D20A.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/E4DBE552-3589-4160-88E0-257EC1B5D20A.png)
 
 Many steps required to add an element to the list. Think about two threads - A and B - trying to insert elements into the list. Here is a problematic scenario that can occur.
 
@@ -119,16 +119,16 @@ The portion of the code protected by the mutex is called the **critical section*
 
 Threads are mutually exclusive with one another with respect to their execution of the critical section of the code. That is, the critical section will ever only be executed by one thread at a given moment in time.
 
-![](../assets/05F6A738-DE5B-419A-8BCC-79914DA1B6BD.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/05F6A738-DE5B-419A-8BCC-79914DA1B6BD.png)
 
 The mutex can be unlocked in two ways, depending on the implementation:
 * the end of a clause following a lock statement is reached
 * an unlock function is explicitly called
 
-![](../assets/717286AD-8502-4612-A324-6C832EE627FA.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/717286AD-8502-4612-A324-6C832EE627FA.png)
 
 ## Mutex Example
-![](../assets/596C65A0-DC4B-4E6C-8451-8BA0F2BF0544.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/596C65A0-DC4B-4E6C-8451-8BA0F2BF0544.png)
 
 ## Producer and Consumer Example
 Mutual exclusion is a binary operation: either the lock is free and the resource can be accessed, or the lock is not free and the resource cannot be accessed.
@@ -137,7 +137,7 @@ What if the processing you wish to perform needs to occur with mutual exclusion,
 
 For example, what if we have a number of producer threads adding values to a list, and one consumer thread that needs to wait until, say, the list is full? We want to ensure that the consumer thread executes only when the condition is met.
 
-![](../assets/EDA4A436-CA50-4ED0-BAEF-635D8DF3CD2A.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/EDA4A436-CA50-4ED0-BAEF-635D8DF3CD2A.png)
 
 Note that this strategy is kind of wasteful. Ideally we wouldn't want our consumer thread to loop but
 rather our producers to be able to notify the consumer when the list is full.
@@ -145,7 +145,7 @@ rather our producers to be able to notify the consumer when the list is full.
 ## Condition Variables
 A **condition variable** is a construct that can be used in conjunction with mutexes to control the execution of concurrent threads.
 
-![](../assets/D6DFDEB1-9AC5-419B-BB33-9F5F2699AEE3.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/D6DFDEB1-9AC5-419B-BB33-9F5F2699AEE3.png)
 
 When a consumer sees that it must wait, it makes a call to the **wait** function, passing in a mutex and the condition variable it must wait on.
 
@@ -195,12 +195,12 @@ We can condense our two counters into one variable, `resource_counter`. If the `
 
 Our `resource_counter` is a **proxy variable** that reflects the state that the current resource is in. Instead of controlling updates to the shared state, we can instead control access to this proxy variable. As long as any update to the shared state is first reflected in an update to the proxy variable, we can ensure that our state is accessed via the policies we wish to enforce.
 
-![](../assets/E04D6E34-CC4A-44ED-A448-11D9B3D023AB.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/E04D6E34-CC4A-44ED-A448-11D9B3D023AB.png)
 
 ## Readers/Writer Example
 Let’s make our previous discussion concrete with an example.
 
-![](../assets/82238159-E5C0-4B01-A887-9946A2CBB3D4.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/82238159-E5C0-4B01-A887-9946A2CBB3D4.png)
 
 In this example, we can see that our reading and writing operations exist outside of a locked mutex, but are preceded and followed by a mutex enforced update to the shared variable, `resource_counter`.
 
@@ -231,24 +231,24 @@ Even though we call `broadcast` before `signal` we don’t really have control o
 ## Critical Section Structure
 If we consider the reading and writing of the data to be the protected operations of the above application, then those sections of code are really the critical sections of our application, even though the exist outside of a mutex block.
 
-![](../assets/CEC2C229-0849-48E2-A098-58B3E26F5436.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/CEC2C229-0849-48E2-A098-58B3E26F5436.png)
 
 The structure of our application is such that even though the critical operations are not governed by a mutex, entering and exiting from those operations is.
 
-![](../assets/17C45807-015F-4B4B-8457-3403DC414A21.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/17C45807-015F-4B4B-8457-3403DC414A21.png)
 
 For example, before we can read data, we must first lock the mutex and increment `resource_counter`. As well, after we read data, we must again lock the mutex and decrement `resource_counter`. A similar setup exists for writing data.
 
 Each time we acquire the mutex, we must ensure that a condition is met such that we can proceed safely. If the condition is not met, we must wait. Once the condition is met, we can update our proxy variable. If appropriate, we can signal/broadcast to other threads if some condition has changed. Finally we can unlock the mutex.
 
-![](../assets/359DCB22-6F78-4FF1-87E6-2EC2E7D1E554.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/359DCB22-6F78-4FF1-87E6-2EC2E7D1E554.png)
 
 The “enter critical section” blocks can be seen as a higher level “lock” operation, while the “exit critical section” blocks can be seen as a higher level “unlock” operation, even though a mutex is being locked and unlocked within each of those blocks.
 
-![](../assets/E1172921-B522-4812-B54F-5D6106CBB30A.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/E1172921-B522-4812-B54F-5D6106CBB30A.png)
 
 ## Critical Section Structure With Proxy
-![](../assets/FC626433-043F-4F39-88FB-54F5F184C381.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/FC626433-043F-4F39-88FB-54F5F184C381.png)
 
 Again, this structure allows up to implement more complex sharing scenarios than the simple mutual exclusion that mutexes allow.
 
@@ -266,7 +266,7 @@ Make sure to not use signal when broadcast needs to be used. Note that the oppos
 Remember that the order of execution of threads is not related to the order in which we call signals or broadcasts. If priority/ordering guarantees are needed, other strategies must be devised.
 
 ## Spurious Wake-ups
-![](../assets/64285C7B-9C4A-4FD6-9631-B740C1D61227.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/64285C7B-9C4A-4FD6-9631-B740C1D61227.png)
 
 We have a setup similar to the readers/writer example we saw previously. In this case, the writer is locking the mutex after writing to the shared state. Once the mutex is acquired, the proxy variable is updated, and a broadcast and signal are sent.
 
@@ -280,7 +280,7 @@ Note that spurious wake ups will not affect the correctness of the program, but 
 
 Often we can unlock the mutex before we signal or broadcast. Sometimes we cannot. For example, if we signal/broadcast conditionally depending on some property of the shared state, that property must be accessed from within the mutex, which means the signal or broadcast must also take place within the mutex.
 
-![](../assets/DB2EC542-93FD-406D-AB18-B041037F0EED.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/DB2EC542-93FD-406D-AB18-B041037F0EED.png)
 
 ## Deadlocks
 A **deadlock** occurs when two or more competing threads are waiting on each other to complete, but none of them ever do.
@@ -351,7 +351,7 @@ If the threads have a process scope, this means that the kernel cannot see them,
 
 If we have a system scope, the user level threads will be visible at the kernel, so the kernel will allocate the CPU relative to the total amount of user threads, as opposed to the total amount of processes. In the case of A and B, if the threads in these processes have a system scope, A will most likely be allocated twice the number of kernel level threads as B.
 
-![](../assets/29EDC9A1-9608-4CDD-832E-8C268E93F031.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/29EDC9A1-9608-4CDD-832E-8C268E93F031.png)
 
 ## Multithreading Patterns
 Let’s discuss three different patterns.
@@ -405,7 +405,7 @@ The throughput of the pipeline will be dependent on the *weakest link* in the pi
 
 The best way to pass work between these stages is a shared buffer base communication between stages. That means the thread for stage one will put its completed work on a buffer that the thread from stage two will read from and so on.
 
-![](../assets/DEDC3AC5-1BDC-4288-8FB0-20AE35A510C6.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/DEDC3AC5-1BDC-4288-8FB0-20AE35A510C6.png)
 
 In summary, a pipeline is a sequence of stages, where a thread performs a stage in the pipeline, which is equivalent to some subtask within the end to end processing. To keep the pipeline balanced, a stage can be executed by more than one thread. Communication via shared buffers reduces coupling between the components of the system.
 
@@ -421,4 +421,4 @@ A benefit of this approach is that we can have specialization while being less f
 
 Downsides of this approach include that it may not be suitable for all applications and that synchronization may be more complex as each layer must know about the layers above and below it to both receive inputs and pass results.
 
-![](../assets/2649776E-95FB-4692-8F9C-EC4574A421EA.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/2649776E-95FB-4692-8F9C-EC4574A421EA.png)

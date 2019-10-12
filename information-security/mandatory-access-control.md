@@ -21,10 +21,10 @@ Another problem with DAC is that it doesn’t reflect how most organizations tre
 To address these problems, we will explore another model for access control: **mandatory access control** (MAC). In mandatory access control, decisions about sharing information are not made at the discretion of the user.
 
 ## DAC Quiz
-![](../assets/FFAA8FAE-B0AC-421F-A71A-2B59F7D76D87.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/FFAA8FAE-B0AC-421F-A71A-2B59F7D76D87.png)
 
 ## DAC Quiz Solution
-![](../assets/CC4FCC5B-CC40-4ADC-8AC7-B14CEA595009.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/CC4FCC5B-CC40-4ADC-8AC7-B14CEA595009.png)
 
 DAC can’t control information flow, so we must use MAC.
 
@@ -76,18 +76,18 @@ A document may pertain to multiple topics, so the compartment can have multiple 
 The [Bell-LaPadula Model](https://en.wikipedia.org/wiki/Bell%E2%80%93LaPadula_model) (BLP) makes use of labels and provides a set of rules that determines when a document can be read or written.
 
 ## Health Data Quiz
-![](../assets/B190798D-AB66-4B7B-938B-ED38D21FBB4C.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/B190798D-AB66-4B7B-938B-ED38D21FBB4C.png)
 
 ## Health Data Quiz Solution
-![](../assets/9EF783B9-6360-427A-918C-CDF9773C4034.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/9EF783B9-6360-427A-918C-CDF9773C4034.png)
 
 BLP is concerned with military/governmental intelligence. HIPAA is concerned with health information.
 
 ## Security Clearance Quiz
-![](../assets/4492690A-933D-4088-BCCC-51031EA9A047.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/4492690A-933D-4088-BCCC-51031EA9A047.png)
 
 ## Security Clearance Quiz Solution
-![](../assets/D0C61525-5A43-4B43-8C64-4CCBC4715B41.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/D0C61525-5A43-4B43-8C64-4CCBC4715B41.png)
 
 Source: [Washington Post](https://www.washingtonpost.com/news/the-switch/wp/2014/03/24/5-1-million-americans-have-security-clearances-thats-more-than-the-entire-population-of-norway/?noredirect=on)
 
@@ -119,7 +119,7 @@ Based on the comparison rules just described, the following chart depicts the ci
 - two labels are equal
 - two labels are not comparable
 
-![](../assets/5A925057-513C-4F06-B342-E5D00A71AD2C.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/5A925057-513C-4F06-B342-E5D00A71AD2C.png)
 
 ## Ordering Among Labels
 Let’s try to compare the following labels.
@@ -136,26 +136,26 @@ L3 = (S, {B, C, D})
 Similarly, `L1` and `L3` cannot be compared. While `TS > S`, `{A, B, C}` cannot be compared with `{B, C, D}`.
 
 ## Order Quiz
-![](../assets/2F90AB65-3E72-4760-BB6B-28DB02993748.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/2F90AB65-3E72-4760-BB6B-28DB02993748.png)
 
 ## Order Quiz Solution
-![](../assets/37633CE2-16DD-45D5-B67D-52318AF4DD6E.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/37633CE2-16DD-45D5-B67D-52318AF4DD6E.png)
 
 Given any two real numbers, one number is always greater than the other.
 
 ## Label Domination Quiz
-![](../assets/11C6E389-14C8-4928-B128-A743249D4F2A.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/11C6E389-14C8-4928-B128-A743249D4F2A.png)
 
 ## Label Domination Quiz Solution
-![](../assets/89DAADB0-D668-480D-8B6D-38C0037CCE42.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/89DAADB0-D668-480D-8B6D-38C0037CCE42.png)
 
 While `secret < top-secret` , `{Asia, Europe}` cannot be compared with `{Europe, South-America}`.
 
 ## Sensitive Data Quiz
-![](../assets/65E58104-8D29-4E6C-AE31-FCB742D1C233.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/65E58104-8D29-4E6C-AE31-FCB742D1C233.png)
 
 ## Sensitive Data Quiz Solution
-![](../assets/34881303-A27C-4BB1-807C-03DE3A0016D9.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/34881303-A27C-4BB1-807C-03DE3A0016D9.png)
 
 In order for `D1` to dominate `D2`, `D1` must have a higher sensitivity level than `D2`.
 
@@ -195,7 +195,7 @@ For this reason, users are only allowed to write documents at their clearance le
 ## Preventing Information Flow with BLP
 Information flow is a problem that cannot be addressed with discretionary access control. Mandatory access control - in particular, the BLP model - solves the information flow problem.
 
-![](../assets/4FE897A0-C072-4EA6-8500-C9D672BA0036.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/4FE897A0-C072-4EA6-8500-C9D672BA0036.png)
 
 Basically, we want to ensure that top secret information never ends up in the hands of individuals with less than top secret clearance.
 
@@ -208,26 +208,26 @@ On the other hand, users with top secret clearance are not allowed to write secr
 A user with secret clearance is thus unable to access top secret information because: one, they are explicitly prohibited from reading top secret documents, and; two, users with top secret information are prohibited from writing that information into secret documents.
 
 ## Unclassified Documents Quiz
-![](../assets/EA4A6F50-B773-4345-BD3C-28CFB3AEA7D4.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/EA4A6F50-B773-4345-BD3C-28CFB3AEA7D4.png)
 
 ## Unclassified Documents Quiz Solution
-![](../assets/3D70CF4F-3BC7-40D2-B75C-FB84BB1CE0D8.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/3D70CF4F-3BC7-40D2-B75C-FB84BB1CE0D8.png)
 
 Write-down says that individuals cannot write documents with a classification that is less than their security clearance. Therefore, unclassified documents cannot be written by individuals holding a security clearance of classified, secret, or top secret.
 
 ## Classified Data Quiz
-![](../assets/2BE2011C-6B0A-4D48-BF24-575316A8F447.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/2BE2011C-6B0A-4D48-BF24-575316A8F447.png)
 
 ## Classified Data Quiz Solution
-![](../assets/A699ECFA-0934-4CCD-9C63-056FD1E46428.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/A699ECFA-0934-4CCD-9C63-056FD1E46428.png)
 
 Because of the write-up rule, individuals are allowed to write documents at a classification level that is greater than their clearance level. Individuals with unclassified security clearance are thus allowed to write top secret documents.
 
 ## BLP Model Quiz
-![](../assets/C4229ADC-2062-4802-BD5C-8BA008F90F29.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/C4229ADC-2062-4802-BD5C-8BA008F90F29.png)
 
 ## BLP Model Quiz Solution
-![](../assets/3D182BB1-66B8-4F82-8795-E5BEEA1C6F11.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/3D182BB1-66B8-4F82-8795-E5BEEA1C6F11.png)
 
 For example, if a user is writing to a top secret document, and the classification level suddenly changes to secret, the write-up rule is violated and information is flowing in the wrong direction.
 
@@ -280,7 +280,7 @@ If the documents you have accessed so far have no conflict with the document you
 
 Let’s assume we have the following documents in our system.
 
-![](../assets/FF68C6DD-8AB9-4A4C-B4A5-EFCB0EB09B02.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/FF68C6DD-8AB9-4A4C-B4A5-EFCB0EB09B02.png)
 
 The group of documents in the “Banks” box are referred to as a **conflict class**. Since Wells Fargo, Chase, and Bank of America are all competitors, access to documents about more than one of these banks can present an individual with a conflict of interest.
 
@@ -291,34 +291,34 @@ The Chinese wall policy basically says that a user can access any object as long
 For example, once a user accesses a document pertaining to Exxon, they can access a document pertaining to Chase, but cannot access a document pertaining to Shell.
 
 ## Clark Wilson Quiz
-![](../assets/A286764A-C66E-4C60-9CE7-106440934312.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/A286764A-C66E-4C60-9CE7-106440934312.png)
 
 ## Clark Wilson Quiz Solution
-![](../assets/A4317935-9B6A-4DB8-869A-1644B8A403F0.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/A4317935-9B6A-4DB8-869A-1644B8A403F0.png)
 
 In mandatory access control, sharing decisions are not made at the discretion of the user.
 
 ## COI Quiz
-![](../assets/FD528D21-BCC6-48D4-A1F4-179CB9A9470B.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/FD528D21-BCC6-48D4-A1F4-179CB9A9470B.png)
 
 ## COI Quiz Solution
-![](../assets/2A693A0B-93E6-4AE5-B6AB-3869601B5800.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/2A693A0B-93E6-4AE5-B6AB-3869601B5800.png)
 
 Competition implies that there is a possibility for a conflict of interest. Chinese Wall is best at preventing these situations.
 
 ## RBAC Quiz
-![](../assets/18AF82C6-AE0E-4A04-BE46-24C199FAC8DF.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/18AF82C6-AE0E-4A04-BE46-24C199FAC8DF.png)
 
 ## RBAC Quiz Solution
-![](../assets/E32A017C-052D-4DF1-94CA-ABBD02770338.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/E32A017C-052D-4DF1-94CA-ABBD02770338.png)
 
 In mandatory access control, the company decides who can share what.
 
 ## MAC Support Quiz
-![](../assets/1F3AB8F6-7244-44E3-91BD-833C137AC8FD.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/1F3AB8F6-7244-44E3-91BD-833C137AC8FD.png)
 
 ## MAC Support Quiz Solution
-![](../assets/B94746DE-2747-401F-B607-68799681137C.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/B94746DE-2747-401F-B607-68799681137C.png)
 
 ## Revisiting TCB
 How do we know that a certain system that claims to be a trusted computing base can actually be trusted?
@@ -368,26 +368,26 @@ Finally, a trusted system should be psychologically acceptable. We have to make 
 Trust comes from building a system with these principles in mind.
 
 ## Least Privilege Quiz
-![](../assets/125DFCBE-E30F-4B38-AE98-DB12FA30C0DC.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/125DFCBE-E30F-4B38-AE98-DB12FA30C0DC.png)
 
 ## Least Privilege Quiz Solution
-![](../assets/FC19D98D-46EB-46BE-8AE3-7C75BF6E482B.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/FC19D98D-46EB-46BE-8AE3-7C75BF6E482B.png)
 
 The TCB provides high assurance, not certainty.
 
 ## TCB High Assurance Quiz
-![](../assets/F33DDE22-EF71-4878-9A86-1153AE4C938B.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/F33DDE22-EF71-4878-9A86-1153AE4C938B.png)
 
 ## TCB High Assurance Quiz Solution
-![](../assets/47F700ED-F1EE-4693-B99C-5117AEEF93A2.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/47F700ED-F1EE-4693-B99C-5117AEEF93A2.png)
 
 Security by obscurity violates open design.
 
 ## Design Principle Quiz
-![](../assets/130DA7AD-F9EE-498B-807C-C00F7111C79B.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/130DA7AD-F9EE-498B-807C-C00F7111C79B.png)
 
 ## Design Principle Quiz Solution
-![](../assets/D70011C5-D8EA-404D-82A6-7A6C4A77DDDB.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/D70011C5-D8EA-404D-82A6-7A6C4A77DDDB.png)
 
 A fail-safe default is one that provides security unless otherwise specified. In this case, the default should be traffic encryption.
 
@@ -501,24 +501,24 @@ The problem with model checking is the same that we had with testing. The state 
 Model checking pioneers won the Turing Award in 2007 and this field remains an area of active research.
 
 ## Reducing TCB Size Quiz
-![](../assets/11F63B01-9D9D-4070-B054-C4DE0A004584.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/11F63B01-9D9D-4070-B054-C4DE0A004584.png)
 
 ## Reducing TCB Size Quiz Solution
-![](../assets/B9687C3C-5D80-45A9-9112-224E955CDF88.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/B9687C3C-5D80-45A9-9112-224E955CDF88.png)
 
 ## Testing TCB Quiz
-![](../assets/DFED8BC1-EB62-44EB-A00D-06864E69B0AE.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/DFED8BC1-EB62-44EB-A00D-06864E69B0AE.png)
 
 ## Testing TCB Quiz Solution
-![](../assets/5F87B5BC-DB54-413C-8348-BF6973C787F5.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/5F87B5BC-DB54-413C-8348-BF6973C787F5.png)
 
 Testing can’t show the absence of problems.
 
 ## Model Checking Quiz
-![](../assets/1DD38815-AC14-4050-8BE4-CD4B6545DE3B.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/1DD38815-AC14-4050-8BE4-CD4B6545DE3B.png)
 
 ## Model Checking Quiz Solution
-![](../assets/B90F59EF-3CF9-42B6-BC7C-6237B4AB68B2.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/B90F59EF-3CF9-42B6-BC7C-6237B4AB68B2.png)
 
 ## Security Evaluations: The Orange Book
 Many people are faced with the problem of trying to evaluate the level of security present in a system.
@@ -549,19 +549,19 @@ The idea is that as a consumer of a system, users specify what security they wan
 The **evaluation assurance level** (EAL) rates the trustworthiness of the system. EAL1 is the most basic rating and EAL7 is the most rigorous.
 
 ## TCSEC Divisions Quiz
-![](../assets/812B3058-CB14-4745-9085-7D918AD2AE0F.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/812B3058-CB14-4745-9085-7D918AD2AE0F.png)
 
 ## TCSEC Divisions Quiz Solution
-![](../assets/472F8C5A-752D-4F31-B25E-1AB70F353DDF.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/472F8C5A-752D-4F31-B25E-1AB70F353DDF.png)
 
 ## Earning an EAL4 Certification Quiz
-![](../assets/1BD7FA8D-A4A3-420D-B034-5DE4ACFF0305.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/1BD7FA8D-A4A3-420D-B034-5DE4ACFF0305.png)
 
 ## Earning an EAL4 Certification Quiz Solution
-![](../assets/54D03A5C-FF37-40C9-A359-3F2B765910B4.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/54D03A5C-FF37-40C9-A359-3F2B765910B4.png)
 
 ## Cost Benefit Certification Tradeoffs Quiz
-![](../assets/0DB30C2E-0FDD-438F-8532-4B6CC06E7977.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/0DB30C2E-0FDD-438F-8532-4B6CC06E7977.png)
 
 ## Cost Benefit Certification Tradeoffs Quiz Solution
-![](../assets/FC3F201F-6A8B-4E3B-9725-E8128B9719E5.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/FC3F201F-6A8B-4E3B-9725-E8128B9719E5.png)

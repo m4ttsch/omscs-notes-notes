@@ -29,10 +29,10 @@ While routers can send this traffic, the network needs to decide whether it shou
 A **firewall** is a device that provides secure connectivity between networks. It is used to implement and enforce a security policy for communication between the networks.
 
 ## Firewalls Quiz
-![](../assets/F9F12971-51F9-4D97-8CDD-ABD6DE61A09F.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/F9F12971-51F9-4D97-8CDD-ABD6DE61A09F.png)
 
 ## Firewalls Quiz Solution
-![](../assets/CD0D727F-C0F6-4B52-9B85-95B0D5540FED.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/CD0D727F-C0F6-4B52-9B85-95B0D5540FED.png)
 
 ## Firewall Design Goals
 A firewall is designed to enforce security policies on inbound and outbound network traffic. All traffic must be checked at the firewall, and only traffic that has been authorized by the security policy is allowed to pass through.
@@ -55,10 +55,10 @@ Firewalls can also provide **network address translation**. This is useful when 
 A firewall can also provide encryption services. Two trusted networks may choose to send encrypted traffic to one another as a way to ensure that their communication cannot be eavesdropped on by other untrusted networks on the Internet.
 
 ## Firewall Features Quiz
-![](../assets/C58A7F53-1221-4BCD-9F63-3DD25ED340E1.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/C58A7F53-1221-4BCD-9F63-3DD25ED340E1.png)
 
 ## Firewall Features Quiz Solution
-![](../assets/08146EF7-844E-4DF4-AF9B-46A4EFE810B9.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/08146EF7-844E-4DF4-AF9B-46A4EFE810B9.png)
 
 ## Firewalls and Filtering
 The main mechanism in firewalls is traffic filtering. The firewall stops each packet - whether inbound or outbound - and checks it against the security policy. After performing the check, the firewall will decide whether to allow or discard the packet.
@@ -83,10 +83,10 @@ The **default discard policy** says that if no rule matches the packet, then the
 The **default forward policy** says that if no rule matches the packet, the packet should be forwarded. Compared with the default discard policy, this policy is more user-friendly, albeit less secure. The security admin must react to each new security threat and add the appropriate rules to the firewall if they choose to use this policy.
 
 ## Firewall Filtering Quiz
-![](../assets/948B9D27-D7EE-499D-945D-B272DEF09A1C.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/948B9D27-D7EE-499D-945D-B272DEF09A1C.png)
 
 ## Firewall Filtering Quiz Solution
-![](../assets/448612E5-28F9-422A-ADBA-7661F4D4F1EF.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/448612E5-28F9-422A-ADBA-7661F4D4F1EF.png)
 
 The first example follows the “default drop” rule, which is high security but requires new services to be expressly allowed. The second example follows the “default forward” rule, which is easier to use at the expense of security. The final approach sits in between the two in terms of security and ease of use.
 
@@ -102,7 +102,7 @@ A packet-filtering firewall that wants to support clients of well-known services
 ## Packet Filtering Examples
 Let’s look at a simplified rule set for SMTP traffic where the goal is to allow only inbound and outbound email traffic while denying all other traffic.
 
-![](../assets/756F8FCF-2E3E-4D64-8D5C-C114B81B6610.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/756F8FCF-2E3E-4D64-8D5C-C114B81B6610.png)
 
 The rules described here are applied top to bottom for each packet until there is a match.
 
@@ -115,13 +115,13 @@ The final rule is an explicit statement of the default policy, which is to deny 
 ## Modifying the Rules on Source Ports
 There are several problems with the ruleset shown above. For example, rule four allows inbound traffic to any destination port above 1023, whereas the original intent is to only allow inbound traffic that is part of an established SMTP connection. We can make our forwarding rules less permissive by looking at the source port in addition to the destination port.
 
-![](../assets/ABCE8E65-91D6-45D5-99B0-8F4737FD6E60.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/ABCE8E65-91D6-45D5-99B0-8F4737FD6E60.png)
 
 Now rule four only allows incoming traffic to high-numbered ports if that source port for that traffic is 25; that is, incoming connections are only allowed from mail servers.
 
 We can make these rules even more precise. When a TCP connection is established, the ACK bit is set on the packet header. Because the intent of rule four is to allow inbound SMTP traffic that is part of an established connection, we can check that this bit is set before forwarding the packet.  
 
-![](../assets/B1EDE336-DD95-4415-8FC5-38D4AECA2DD3.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/B1EDE336-DD95-4415-8FC5-38D4AECA2DD3.png)
 
 
 ## Packet Filtering Advantages
@@ -152,10 +152,10 @@ Typically, a packet filter will make decisions based on the first fragment of a 
 This attack can be defeated by forcing the first fragment of a packet to contain a predefined minimum amount of transport header information. If the first fragment is rejected, all of the subsequent fragments should also be rejected.
 
 ## Packet Filtering Quiz
-![](../assets/97AF2EAE-DC71-4E99-AF2D-49520F5D1BD1.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/97AF2EAE-DC71-4E99-AF2D-49520F5D1BD1.png)
 
 ## Packet Filtering Quiz Solution
-![](../assets/6C72F7E1-2A20-4826-8080-A48DEC8CEDB5.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/6C72F7E1-2A20-4826-8080-A48DEC8CEDB5.png)
 
 ## Stateful Inspection Firewall
 In a **stateful inspection firewall**, a packet is analyzed within a larger context. This context often consists of the other packets present in the TCP connection through which the packet is transmitted.
@@ -167,7 +167,7 @@ A stateful firewall can have a much higher-level view of traffic than a packet-f
 ## Connection State Table
 Here is an example of a connection table.
 
-![](../assets/9087DB7C-BBD3-4E41-A3B4-006F1A814AC0.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/9087DB7C-BBD3-4E41-A3B4-006F1A814AC0.png)
 
 The firewall may maintain internal data structures that are linked to the connection table. For example, the HTTP response of a web server serving a page can span multiple packets, so the firewall might maintain a data structure that keeps track of the HTML that it has already delivered. This data structure will allow the firewall to perform a more specific analysis of the connection.
 
@@ -178,17 +178,17 @@ To use an application proxy, a user first contacts the gateway using an applicat
 
 The gateway must implement the correct application logic to correctly analyze the server response. For example, if the gateway is proxying web traffic, it must be able to process HTTP responses just like a web browser.
 
-![](../assets/0F2BC2EA-9483-4F84-A55F-752DEA103A60.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/0F2BC2EA-9483-4F84-A55F-752DEA103A60.png)
 
 The advantage of using an application proxy is that we can restrict certain application features. For example, a web proxy can prevent active scripts in web pages by removing them from the HTML returned by the remote server. Since application proxies have more application-specific context than packet filters, they tend to be more secure.
 
 The main disadvantage of proxies is that they incur additional overhead since they must examine and forward all traffic in both directions between the client and server. Additionally, we must install or write proxying code for each application we want to protect.
 
 ## Filtering Quiz
-![](../assets/5BE501CE-84FD-4BC6-A5A8-1334384E7466.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/5BE501CE-84FD-4BC6-A5A8-1334384E7466.png)
 
 ## Filtering Quiz Solution
-![](../assets/1F34A051-C027-4F76-BEA7-4BF6151DE243.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/1F34A051-C027-4F76-BEA7-4BF6151DE243.png)
 
 ## Bastion Hosts
 Application-level gateways typically reside on a dedicated machine called a **bastion host**. These machines are made to be very secure.
@@ -218,7 +218,7 @@ The main goal of the personal firewall is to protect the computers in the home n
 
 Here are some of the common network services that are typically blocked by a personal firewall. A user may configure the firewall to allow one or more of these services if desired.
 
-![](../assets/90CE711E-FEEB-437B-AFD5-491E31E617CB.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/90CE711E-FEEB-437B-AFD5-491E31E617CB.png)
 
 ## Advanced Firewall Protection
 Besides disabling and enabling certain services, personal firewalls can also provide advanced features.
@@ -232,17 +232,17 @@ Additionally, most firewalls have logging capabilities and they can record all u
 Finally, a user might be able to configure the firewall to only allow certain applications - such as those signed by public keys issued by a valid certificate authority - to accept connections from the Internet.
 
 ## Personal Firewalls Quiz
-![](../assets/318AE0E6-A077-413E-9B08-A6E3263B8E08.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/318AE0E6-A077-413E-9B08-A6E3263B8E08.png)
 
 ## Personal Firewalls Quiz Solution
-![](../assets/AE45FA72-0C13-4F06-A89A-620E2894EBFC.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/AE45FA72-0C13-4F06-A89A-620E2894EBFC.png)
 
 If the device is not always protected by the corporate network, as is the case in scenarios 1 and 3, then the personal firewall is needed for additional security.
 
 ## Deploying Firewalls
 The figure below illustrates a common firewall configuration used by enterprise networks.
 
-![](../assets/C7E026AC-ADFE-4493-B4CA-20AAFABB1090.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/C7E026AC-ADFE-4493-B4CA-20AAFABB1090.png)
 
 An external firewall is placed at the edge of the local area network, just inside of the boundary router that connects the corporate network to the Internet. Additionally, one or more internal firewalls protect the bulk of the enterprise network.
 
@@ -267,16 +267,16 @@ The standalone network firewalls protect the internal network from attacks from 
 Security administrators may aggregate and analyze logs from all of the firewalls in the network to get a high-level view of network traffic and compromise. For example, if admins see that multiple host-based firewalls are logging the same attack, they may conclude that a worm is spreading inside the internal network.
 
 ## Firewall Deployment Quiz
-![](../assets/EFDA0A4D-B9D3-417D-9025-2E23F564DDE1.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/EFDA0A4D-B9D3-417D-9025-2E23F564DDE1.png)
 
 ## Firewall Deployment Quiz Solution
-![](../assets/A765E6A6-3A0E-4F47-86B5-F56A9C0E3BFA.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/A765E6A6-3A0E-4F47-86B5-F56A9C0E3BFA.png)
 
 ## Stand Alone Firewall Quiz
-![](../assets/DCDD7C22-F6A1-449E-A7B5-013C5D1324A4.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/DCDD7C22-F6A1-449E-A7B5-013C5D1324A4.png)
 
 ## Stand Alone Firewall Quiz Solution
-![](../assets/F83D170A-A182-4CD1-A70E-A816AB4D8FD7.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/F83D170A-A182-4CD1-A70E-A816AB4D8FD7.png)
 
 ## Firewall Topologies
-![](../assets/31FA6A2A-41A1-40DA-8B28-9C99B912A953.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/31FA6A2A-41A1-40DA-8B28-9C99B912A953.png)

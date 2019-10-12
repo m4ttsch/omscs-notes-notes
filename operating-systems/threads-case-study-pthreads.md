@@ -73,18 +73,18 @@ Since parent threads do not need to wait around until child threads complete, th
 
 Example of creating a new thread with custom options:
 
-![](../assets/AE046645-2865-4D9E-9BB6-F6D29630925E.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/AE046645-2865-4D9E-9BB6-F6D29630925E.png)
 
 ## Compiling PThreads
-![](../assets/DB37467E-C553-47FF-AB93-C9A563E19C37.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/DB37467E-C553-47FF-AB93-C9A563E19C37.png)
 
 ## PThread Creation Example 1
-![](../assets/F9C7DD92-0CBA-4F3F-A956-447277AD1FCF.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/F9C7DD92-0CBA-4F3F-A956-447277AD1FCF.png)
 
 We loop and create threads with `pthread_create` passing in `hello` as the start routine. Since this function takes no arguments we pass `NULL` as the fourth argument to the function. Also, since we do not need any custom behavior, we pass `NULL` as the second argument. After we create the threads we must join them all back in.
 
 ## PThread Creation Example 2
-![](../assets/E7949C2E-E41F-4F6E-89CD-187F515770A0.png)  
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/E7949C2E-E41F-4F6E-89CD-187F515770A0.png)  
 
 In this case, the call to `pthread_create` passes in a value for the final parameter (the argument to pass to the start routine). This value is the pointer to current value of `i` the loop counter. In `threadFunc`, the pointer is first cast to an integer pointer, before a local variable is assigned to the value the pointer points to. Finally, the value is printed out.
 
@@ -108,7 +108,7 @@ We call the above situation a **data race** or **race condition**. In summary, t
 
 To correct the problem, we must first initialize an array `tNum` that contains as many elements as we have threads. One each iteration of the `for` loop, we can set the index of `tNum` at `i` to `i`. We can then pass the address of `tNum[i]` to the call to `pthread_create`. This way we can increment `i`, while ensuring that the value of `i` that a thread needs to see does not change. We accomplish by copying the value of `i` over to this private storage that we do not modify.
 
-![](../assets/B5DB4FD0-C1D8-4180-A2A9-D4E8BFB93F7E.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/B5DB4FD0-C1D8-4180-A2A9-D4E8BFB93F7E.png)
 
 ## PThread Mutexes
 To deal with the mutual exclusion problem, pthreads supports mutexes. Mutual exclusion ensures that threads access shared state in a controlled manner, such that only thread at a time can apply modifications or otherwise access that shared variable.
@@ -196,7 +196,7 @@ Let’s walk through a real producer/consumer example using PThreads.
 
 ### Global State
 
-![](../assets/8EC12822-FD53-44F6-8E53-ADC3504DBF41.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/8EC12822-FD53-44F6-8E53-ADC3504DBF41.png)
 
 Our shared buffer is `buffer`. `add` and `rem` refer to the indices at which we add and remove elements, respectively, while `num` refers to the number of elements in the queue.
 
@@ -206,7 +206,7 @@ Finally, we define our two procedures: `producer` which will be operated by the 
 
 ### Main
 
-![](../assets/BAB41E1C-B65F-4409-948C-8AFBD2203D1C.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/BAB41E1C-B65F-4409-948C-8AFBD2203D1C.png)
 
 The first thread that we create will be created to execute the `producer` function, and the second thread we create will execute the `consumer` function.
 
@@ -214,7 +214,7 @@ We use the default behavior for these threads (i.e. they are not detachable), so
 
 ### Producer
 
-![](../assets/91CE2BF6-F3DC-4B8A-9F65-BF320C4D2DE6.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/91CE2BF6-F3DC-4B8A-9F65-BF320C4D2DE6.png)
 
 The producer loops twenty times, and tries to produce an element to the share buffer on each iteration.
 
@@ -224,7 +224,7 @@ Once the producer unlocks the mutex, it signals on `c_cons`  with `pthread_cond_
 
 ### Consumer
 
-![](../assets/6454827D-99FF-45DD-A6A6-AA55B2F7C647.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/6454827D-99FF-45DD-A6A6-AA55B2F7C647.png)
 
 The consumer loops forever, continuously trying to remove elements from the shared buffer.
 

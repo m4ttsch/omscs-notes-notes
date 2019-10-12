@@ -25,7 +25,7 @@ Different types of process state in an address space:
 	* LIFO
 	* Stack frames added and removed as functions are called and return
 
-![](../assets/9AA4A864-5E7F-40AB-9E02-A1EAB43D34E6.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/9AA4A864-5E7F-40AB-9E02-A1EAB43D34E6.png)
 
 ## Process Address Space
 Potential range of addresses in process address space go from V_0 to V_max. These addresses are called **virtual addresses**. They are virtual because they don't have to correspond to actual locations in the physical memory.
@@ -36,7 +36,7 @@ For example, data may live at `0x03c5` in the virtual address space and this may
 
 The operating system creates a mapping between the virtual address and the physical address so that processes can access their data without knowing its physical location. This mapping is called a **page table**.
 
-![](../assets/D3CEA64C-2DAC-4F2B-BF4B-8F7B6D143842.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/D3CEA64C-2DAC-4F2B-BF4B-8F7B6D143842.png)
 
 ## Address Space and Memory Management
 We may not have enough physical memory to store all a process’s state even if we do need it. To deal with this overflow, the operating system decides dynamically which portion of the process's address space will live in physical memory and which portion will be swapped temporarily to disk.
@@ -81,7 +81,7 @@ If a process is interrupted by the operating system - perhaps to give another pr
 
 Each time the operating system switches between processes, we call this a **context switch**.
 
-![](../assets/FA0C9097-CC39-422B-8281-20C1B8964C27.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/FA0C9097-CC39-422B-8281-20C1B8964C27.png)
 
 ## Context Switch
 PCB blocks corresponding to each process will reside in memory until the operating system loads that data into the CPU registers, at which point the process can begin executing instructions.
@@ -99,7 +99,7 @@ Basically, we want to limit how often we context switch!
 ## Process Life Cycle: States
 When a process is created, it is in the *new* state. This is when the OS performs admission control, and allocates/initializes the PCB for this process. At this point, the process moves to the *ready* state, where it is ready to start executing, but isn't currently executing. When the scheduler schedules the process and it moves on to the CPU it is in the *running* state. The process can be interrupted and a context switch can be performed. This moves the process back to the *ready* state. Alternatively, the running process may need to perform some I/O operation or wait on an event, at which point the process enters a *waiting* state. The process can then move back to *ready* when the I/O operation completes or the event occurs. Finally, a process can exit, with or without error, and at this point the process is *terminated*.
 
-![](../assets/E65850CD-7381-48DB-A3AB-6E2A386428CD.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/E65850CD-7381-48DB-A3AB-6E2A386428CD.png)
 
 ## Process Life Cycle: Creation
 In operation systems, a process can create one or more *child processes*. The creating process is the parent and the created process is the child. All of the processes that are currently loaded will exist in a tree-like hierarchy.
@@ -125,7 +125,7 @@ The operating system must be able **preempt**; that is, interrupt the current pr
 
 Since CPU resources are precious, the operating system needs to make sure that it spends the bulk of its time running processes, NOT making scheduling decisions.
 
-![](../assets/DAF29EA9-7360-4F5C-9765-8D39E7FFB6EF.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/DAF29EA9-7360-4F5C-9765-8D39E7FFB6EF.png)
 
 ## Length of Process
 One issue to consider is how often we run the scheduler. Put another way, the operating system has to make smart decisions about how long a process can run.
@@ -136,7 +136,7 @@ For example, if the number of blocks of time spent scheduling equals the number 
 
 On the other hand, if the same number of blocks are spent scheduling as are spent executing, but the process runs for 10 times the length of the scheduling block, the efficiency increases to over 90%!
 
-![](../assets/F718D68A-984A-41AD-9EFD-09FDF30C2093.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/F718D68A-984A-41AD-9EFD-09FDF30C2093.png)
 
 The amount of time that has been allocated to a process that is scheduled to run is known as a **timeslice**.
 
@@ -149,7 +149,7 @@ When a process makes an I/O request, the operating system will deliver that requ
 
 Processes can end up on the ready queue in a few ways.
 
-![](../assets/80BB70E4-B83B-42C4-9860-760D5AC3EA7C.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/80BB70E4-B83B-42C4-9860-760D5AC3EA7C.png)
 
 ## Inter Process Communication
 Can processes interact? YES! It is common today that an application consists of multiple processes, so it is important that one process can talk to another.
@@ -167,7 +167,7 @@ Benefits of this approach is that the operating system will manage this channel,
 
 Downsides are overhead. Every single piece of information to be transmitted needs to be copied from address space of sending process into memory allocated to the kernel, and then finally into the address space of the receiving process.
 
-![](../assets/0BE38751-7D8F-4DCB-AA5F-D4CF90216EAE.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/0BE38751-7D8F-4DCB-AA5F-D4CF90216EAE.png)
 
 ### Shared Memory IPC
 The operating system establishes a shared memory channel, and then maps it into the address space of both processes. The processes are then allowed to directly read/write to this memory the same way they can read/write from any memory allocated  them in their address space.
@@ -176,4 +176,4 @@ The operating system is completely out of the picture in this case, which is the
 
 The disadvantage to this approach is that because the OS is out of the way, a lot of the APIs that were taken for granted in message passing IPC have to be reimplemented.
 
-![](../assets/4F0200FD-93B6-4D98-B703-9C4EC18A6B18.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/4F0200FD-93B6-4D98-B703-9C4EC18A6B18.png)
