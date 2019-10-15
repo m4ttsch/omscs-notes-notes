@@ -818,3 +818,115 @@ The **avalanche effect** states that a small change in the input to a hash funct
 
 ### Encryption Quiz Solution
 ![](https://omscs-notes.s3.us-east-2.amazonaws.com/CB248B54-A4DA-49D9-A9DC-477AE73A38B3.png)
+
+## Symmetric Encryption
+### Block Cipher Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/F77DC130-7DC8-46BD-A0EF-6A05F934BF23.png)
+
+### Block Cipher Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/5A22576A-05B2-48C1-AE69-874601220654.png)
+
+### XOR Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/E6D8649E-9459-4BE3-8091-6B4FB8C456FF.png)
+
+### XOR Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/9E317675-DB11-4A1E-AAC8-D59F6667ABB9.png)
+
+“H” has an ASCII code of 72, which maps to `0b01001000`, and “i” has an ASCII code of 105, which maps to `0b01101001`. “F” maps to 15 (`0b1111`) and “A” maps to 11 (`0b1001`), so “FA” maps to `0b11111001` and “F2” maps to `0b11111001`.
+
+We XOR two numbers bit-by-bit, and we return 0 when the bits match and 1 otherwise. Therefore `0b0100100001101001` XOR `0b1111100111110010` is `0b1011000110011011`.
+
+### S Box Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/47A34B5B-85A1-45EE-BB2F-07EC4B1A59AB.png)
+
+### S Box Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/0C60D9C2-1E8B-45D3-8410-8C63C9F1FDE8.png)
+
+### DES Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/FCF98268-BDC4-48AA-8E11-39B427244D6B.png)
+
+### DES Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/3233B23D-A5CA-4E0E-9818-C9FC4773221C.png)
+
+### AES Encryption Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/194759AE-0DA0-4C26-87D6-66A9E764598A.png)
+
+### AES Encryption Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/A427A006-090C-4F5B-AA31-32FBA20D10C3.png)
+
+### CBC Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/DBF9FA91-292C-4847-ABFB-2C1166D0D5CA.png)
+
+### CBC Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/5146C532-57F6-4F41-9D3E-2512206871DE.png)
+
+## Public-Key Cryptography
+### Additive Inverse Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/90F567FE-9F15-4966-A205-678D05E4DF66.png)
+
+### Additive Inverse Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/E00E3BB9-A148-4AFA-8A9E-DAFA95C4DC80.png)
+
+In modular addition, a number `k`  has an inverse `k'` such that `k + k' mod M = 0`. In this case, `M = 20` and `k = 8`. Therefore, `k' = 12` because `8 + 12 mod 20 = 0`.
+
+### Modular Multiplication Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/89D8C09E-CF46-4E8F-8F14-B9F075C0302C.png)
+
+### Modular Multiplication Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/252A1D26-CED8-446B-B012-40592D172D03.png)
+
+In modular multiplication, a number `k`  has an inverse `k'` such that `k * k' mod M = 1`. In this case, `M = 17` and `k = 3`. Therefore, `k' = 6` because `3 * 6 mod 17 =  18 mod 17 = 1`.
+
+### Totient Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/E9CACF9B-A69C-4D35-8FF1-1B8D1AC252ED.png)
+
+### Totient Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/4A80521F-0882-4BAC-A178-7A72A29A1531.png)
+
+If `n = p * q` and `p` and `q` are prime, then `T(n) = (p - 1) * (q - 1)`. For `n = 21`, `p = 3` and `q = 7`, `T(n) = (3 - 1) * (7 - 1) = 2 * 6 = 12`.
+
+### Modular Exponentiation Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/DBABA778-3D5F-46BA-BF46-4AA6CBF87024.png)
+
+### Modular Exponentiation Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/7396A649-2E25-4636-9B04-532FA86DC8C6.png)
+
+We know that `x^y mod n = x^(y mod T(n)) mod n`. For `x = 7`, `y = 27` and `n = 30`, `7^27 mod 30 = 7^(27 mod T(30)) mod 30`. We can calculate `T(30)` as follows:  `T(30) = T(3) * T(10) = T(3) * T(2) * T(5) = 2 * 1 * 4 = 8`. Thus, `7^27 mod 30 = 7^(27 mod 8) mod 30`. If we divide 27 by 8, we are left with a remainder of 3, so `7^27 mod 30 = 7^3 mod 30`. `7^3 = 343`, which yields a remainder of 13 when divided by 30.
+
+### RSA Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/0BDF0664-4A30-41C8-9EFC-CA0FEC5B9BAF.png)
+
+### RSA Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/9B9F10D9-B82B-4F16-8A44-B25CCADF7491.png)
+
+`n = p * q`, so `n = 11 * 3 = 33`. The totient of `n`, `t`, is equal to `(p - 1) * (q - 1)`. Therefore, `t = 2 * 10 = 20`. `e` and `d` must be multiplicative inverses `mod t`, so for `e = 7`, `d = 3`, since `21 mod 20 = 1`. Finally, public key `{e, n}` is equal to `{7, 33}`, and private key, `{d, n}` is equal to `{3, 33}`.
+
+### RSA Encryption Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/FC5100D0-A94A-46DB-8DAB-F12DF35B30E1.png)
+
+### RSA Encryption Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/A38846E8-2C2B-4683-B7FF-6D847E9F23CE.png)
+
+Encrypting message `m` involves computing  `m^e mod n`, which is equivalent to `2^7 mod 33 = 128 mod 33 = 29`.  Decrypting ciphertext `C` involves computing `C^d mod n`, which is equivalent to `29^3 mod 33 = 24389 mod 33 = 3`
+
+### RSA in Practice Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/63B9D9AB-3440-4F75-8417-FAF749B460D8.png)
+
+### RSA in Practice Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/3D62323C-0309-4B49-BEBB-E17D8C79A0BD.png)
+
+Always use standard libraries, as they have been reviewed and tested by experts in the field.
+
+### Diffie-Hellman Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/0ADA9333-D62C-4A27-8DA7-799BDBAF6512.png)
+
+### Diffie-Hellman Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/AA61E589-45F8-4F17-87B5-0FCE0DD5A99D.png)
+
+Alice sends `α^a mod q` to Bob, which is equivalent to `5^6 mod 23 = 8`. Bob sends `α^b mod q` to Alice, which is equivalent to `5^15 mod 23 = 19`.
+
+### RSA, Diffie-Hellman Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/0DE9D182-0375-4A0C-BE6C-B6ECF5D66E4A.png)
+
+### RSA, Diffie-Hellman Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/BCAE9911-0D01-456E-837C-B92CB34B8BE0.png)
