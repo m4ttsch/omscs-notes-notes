@@ -930,3 +930,18 @@ Alice sends `α^a mod q` to Bob, which is equivalent to `5^6 mod 23 = 8`. Bob se
 
 ### RSA, Diffie-Hellman Quiz Solution
 ![](https://omscs-notes.s3.us-east-2.amazonaws.com/BCAE9911-0D01-456E-837C-B92CB34B8BE0.png)
+
+## Hashes
+### Hash Size Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/4782A47E-5391-43F5-A80C-CA9F02FDBD71.png)
+
+### Hash Size Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/EC0A4B95-7A5E-4C5B-87AD-6D39D17FA04C.png)
+
+Given a hash length `n`, an attacker needs to hash `2^(n / 2)` messages to find a collision. For `n = 128`, an attacker needs to compute `2^64` hashes.
+
+### Hash Function Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/AD311597-0FE3-4399-B9A1-11A70E568C55.png)
+
+### Hash Function Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/137488B0-4ADC-4B1E-AD86-DFA5067E6565.png)
