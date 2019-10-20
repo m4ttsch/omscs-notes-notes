@@ -1,7 +1,7 @@
 ---
 id: threads-case-study-pthreads
-title: Threads Case Study: PThreads
-sidebar_label: Threads Case Study: PThreads
+title: Threads Case Study - PThreads
+sidebar_label: Threads Case Study - PThreads
 ---
 
 ## PThread Creation
