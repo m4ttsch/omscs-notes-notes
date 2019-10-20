@@ -1,3 +1,6 @@
+---
+home: true
+---
 # OMSCS Lecture Notes
 
 This repository contains lecture notes for the classes I am taking or have taken in OMSCS.
