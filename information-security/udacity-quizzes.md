@@ -945,3 +945,28 @@ Given a hash length `n`, an attacker needs to hash `2^(n / 2)` messages to find 
 
 ### Hash Function Quiz Solution
 ![](https://omscs-notes.s3.us-east-2.amazonaws.com/137488B0-4ADC-4B1E-AD86-DFA5067E6565.png)
+
+## Security Protocols
+### Mutual Authentication Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/80FD51E1-A56A-41ED-A67C-73513A08A815.png)
+
+### Mutual Authentication Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/6F5B4FC5-A864-4ABF-A723-74B86A03E032.png)
+
+### Security Protocols Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/55902D91-0F5A-4553-829E-34C88755CFFD.png)
+
+### Security Protocols Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/183F382E-5822-4207-AAB9-BA9CEC7B898B.png)
+
+### Session Key Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/0A70D994-363F-4512-8333-3D30F130D0C3.png)
+
+### Session Key Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/F44F5C79-3691-440B-B5E9-72181E40A834.png)
+
+### Kerberos Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/0327A697-D433-41EE-B0E4-54A3F830AFC7.png)
+
+### Kerberos Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/358A47CC-D72F-4BAB-BCCD-590496B92FBF.png)
