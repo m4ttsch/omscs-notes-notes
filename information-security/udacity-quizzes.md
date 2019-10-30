@@ -970,3 +970,56 @@ Given a hash length `n`, an attacker needs to hash `2^(n / 2)` messages to find 
 
 ### Kerberos Quiz Solution
 ![](https://omscs-notes.s3.us-east-2.amazonaws.com/358A47CC-D72F-4BAB-BCCD-590496B92FBF.png)
+
+## IPSec and TLS
+### Spoofing Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/1DD688E5-257A-4BD1-A26F-EA39E51D9B39.png)
+
+### Spoofing Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/D5A3CBE4-FC07-4B05-9A8E-58657B7FB1DB.png)
+
+If you spoof your IP address, responses to your packets will not reach you. Therefore, IP spoofing is only useful for unidirectional communication.
+
+### IPSec Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/71C27E26-B59A-479C-B58D-E5DE2CB8C25C.png)
+
+### IPSec Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/ED223658-281B-41DC-B9FB-C1A4C7947B46.png)
+
+### ESP Modes Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/3008B283-1683-4743-A65C-803E545D9BE3.png)
+
+### ESP Modes Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/FE6C0D73-4AD5-4227-ABC2-90E2C64533BD.png)
+
+### ESP and AH Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/FD580F5D-A007-460F-B7C0-878B746040A9.png)
+
+### ESP and AH Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/5F059246-E05A-48FE-89DA-01D8F01B2249.png)
+
+### IPSec Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/E4D8DF00-E68F-47D6-AEBD-1B28A0557F04.png)
+
+### IPSec Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/2A1B6B61-7F65-43B9-84D8-6B281D0FD29C.png)
+
+### Diffie Hellman Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/0914FC25-D4BF-4506-A396-5CE9A634DE1D.png)
+
+### Diffie Hellman Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/70D29C1C-2681-4AD3-9215-1608F8762907.png)
+
+### IKE Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/62A969AA-6E08-43A4-88D5-465C92149EE4.png)
+
+### IKE Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/8F57DD12-F29F-4F16-9039-41BC4E1A0509.png)
+
+### TLS and SSL Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/BE0FFF58-FFF7-4072-8B4C-77297F71EFFD.png)
+
+### TLS and SSL Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/34823FD7-F6DD-46F3-A29D-2FEE62D8D7FA.png)
+
+While transport layer protocols do rely on the IP layer, TLS does not specifically rely on IPSec.
