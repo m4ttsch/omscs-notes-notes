@@ -1023,3 +1023,59 @@ If you spoof your IP address, responses to your packets will not reach you. Ther
 ![](https://omscs-notes.s3.us-east-2.amazonaws.com/34823FD7-F6DD-46F3-A29D-2FEE62D8D7FA.png)
 
 While transport layer protocols do rely on the IP layer, TLS does not specifically rely on IPSec.
+
+## Wireless and Mobile Security
+### Wifi Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/A1605EE1-CD3B-44F8-B316-087EB5CCDEBD.png)
+
+### Wifi Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/3FB90460-9F73-461D-AF2F-9A572F610D1D.png)
+
+### Wifi Security Standards Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/9F9DCFAA-4E6E-4100-8875-AEBB630F432D.png)
+
+### Wifi Security Standards Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/7C57D6D4-3AB3-401F-8291-4762198BCC1E.png)
+
+### Operating System Vulnerabilities Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/0BF73658-68A7-45E7-B8FF-6117B810C8B2.png)
+
+### Operating System Vulnerabilities Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/3BB6C671-DF45-44C8-A21D-620C92AF45ED.png)
+
+Betcha thought it was gonna be all Microsoft, didn’t you? Read more [here](https://techtalk.gfi.com/most-vulnerable-operating-systems-and-applications-in-2014/).
+
+### Security Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/4AA42396-DE28-4F4E-A5E9-19038D09F56B.png)
+
+### Security Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/B9B9D6E5-BE56-49FF-A59F-C47ADFC8A716.png)
+
+### App Store Security Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/F70A9C5D-E64F-4BBA-A8AC-4B827080A4AA.png)
+
+### App Store Security Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/F55BD9F8-0B42-44EE-ABC9-2653B6FE11E0.png)
+
+Read more [here](https://www.computerworld.com/article/2483867/researchers-outwit-apple--plant-malware-in-the-app-store.html).
+
+### iOS Security Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/CF5A41AA-2B88-4025-9A26-9C5386660D66.png)
+
+### iOS Security Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/9B84187A-9DAC-4F61-8E87-9EACE74CD93D.png)
+
+Read more [here](https://drive.google.com/file/d/0BxxXk1d3yyuZOFlsdkNMSGswSGs/view).
+
+### iOS Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/3A910142-A483-4840-B86C-17202FB1F483.png)
+
+### iOS Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/46D2028E-7DD1-4982-861E-7D31F2574142.png)
+
+
+### Android Apps Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/FB9C919C-FAF9-467C-A2C8-C080760A7C84.png)
+
+### Android Apps Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/D4C6F94A-5A0A-4014-8D94-982837DEE5DB.png)
