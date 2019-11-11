@@ -1,5 +1,5 @@
 ---
-id: udacity-quizzes
+id: https://omscs-notes.s3.us-east-2.amazonaws.com
 title: Udacity Quizzes
 sidebar_label: Udacity Quizzes
 ---
@@ -1073,9 +1073,41 @@ Read more [here](https://drive.google.com/file/d/0BxxXk1d3yyuZOFlsdkNMSGswSGs/vi
 ### iOS Quiz Solution
 ![](https://omscs-notes.s3.us-east-2.amazonaws.com/46D2028E-7DD1-4982-861E-7D31F2574142.png)
 
-
 ### Android Apps Quiz
 ![](https://omscs-notes.s3.us-east-2.amazonaws.com/FB9C919C-FAF9-467C-A2C8-C080760A7C84.png)
 
 ### Android Apps Quiz Solution
 ![](https://omscs-notes.s3.us-east-2.amazonaws.com/D4C6F94A-5A0A-4014-8D94-982837DEE5DB.png)
+
+## Web Security
+### Cookie Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/F6BDEF06-29AB-4349-832F-56EBC69D1D49.png)
+
+### Cookie Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/2CE3FD4D-3E64-4591-A9F3-D19A90B9C151.png)
+
+Cookies are just strings of text. They are not compiled code, and therefore cannot infect a system the way a virus can.
+
+### Web Security Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/532467B0-2F02-40A1-BEF9-C9B7E418FBB9.png)
+
+### Web Security Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/BD31DC8E-4CA2-49A9-8C52-AA394F2DCEF6.png)
+
+### XSS Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/8DBE2B0F-CC6F-4437-9A92-1C3FB2F37165.png)
+
+### XSS Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/E9AC9C05-8E76-4DBF-B342-F55A1A723FA8.png)
+
+### XSRF Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/01278C58-9179-459C-9DD1-A25AA8951AE0.png)
+
+### XSRF Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/9EC2B8EE-1317-434A-A103-89F4C1FE68DE.png)
+
+### SQL Injection Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/669AD069-005A-400C-A12A-5E0F9C200658.png)
+
+### SQL Injection Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/A22C245A-EF36-478E-A72F-2F986CA67513.png)
