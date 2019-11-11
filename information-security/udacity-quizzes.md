@@ -1,5 +1,5 @@
 ---
-id: https://omscs-notes.s3.us-east-2.amazonaws.com
+id: udacity-quizzes
 title: Udacity Quizzes
 sidebar_label: Udacity Quizzes
 ---
