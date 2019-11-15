@@ -1177,10 +1177,10 @@ Read more [here](http://blogs.wsj.com/riskandcompliance/2015/03/02/crisis-of-the
 ### Cyber Insurance Quiz Solution
 ![](https://omscs-notes.s3.us-east-2.amazonaws.com/A2F22984-714E-452C-8801-507291A5711A.png)
 
-## Cyber Security Budgets Quiz
+### Cyber Security Budgets Quiz
 ![](https://omscs-notes.s3.us-east-2.amazonaws.com/1C6C0BDF-579C-4B4A-89B2-5AE53DE6E845.png)
 
-## Cyber Security Budgets Quiz Solution
+### Cyber Security Budgets Quiz Solution
 ![](https://omscs-notes.s3.us-east-2.amazonaws.com/5F82F572-BDB4-46BD-BC15-382A67CD15C8.png)
 
 Read more [here](https://www.partnerre.com/assets/uploads/docs/cyber-survey-results.pdf).
