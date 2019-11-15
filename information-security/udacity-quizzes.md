@@ -1111,3 +1111,82 @@ Cookies are just strings of text. They are not compiled code, and therefore cann
 
 ### SQL Injection Quiz Solution
 ![](https://omscs-notes.s3.us-east-2.amazonaws.com/A22C245A-EF36-478E-A72F-2F986CA67513.png)
+
+## Cyber Security
+### Network Use Policy Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/C4EF0BE1-E7EB-4EF2-95C7-6C350AE5378A.png)
+
+### Network Use Policy Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/66481383-5E3B-41E1-8872-16C2F922D983.png)
+
+### Botnet Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/87796EC7-942D-4C51-A88A-D795E1D08008.png)
+
+### Botnet Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/BDBF525E-38FC-4589-B8F9-5D60D9BFC8ED.png)
+
+### Security Audit Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/A0ACD1BC-3257-4E9D-B658-A38F2341B6D9.png)
+
+### Security Audit Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/955B7AA6-8925-4060-90FD-B15F77C7640A.png)
+
+NOTE: answers 1 and 3 are correct.
+
+### CISO Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/44C4B128-D47A-4F43-AEFB-8AC2A7DF7355.png)
+
+### CISO Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/6739A49C-41D1-4773-AB37-B79A90468145.png)
+
+### Computer Use Policy Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/9771E45D-9638-4E05-82F6-A1C10CB72D05.png)
+
+### Computer Use Policy Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/6CEB54B3-7C84-476C-A25E-048670C9DFE2.png)
+
+### Student Privacy Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/0AB2ABF9-9651-4AB1-A084-C5A26D7833A4.png)
+
+### Student Privacy Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/44B358FC-1EB0-42D2-AC0E-9129A51A793C.png)
+
+### Anthem Breach Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/D3870811-2400-4AAC-80EC-F6DF688E235F.png)
+
+### Anthem Breach Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/8785FC32-D688-48B9-935A-B03C867CF522.png)
+
+Read more [here](http://blogs.wsj.com/riskandcompliance/2015/03/02/crisis-of-the-week-anthems-breach-response/) and [here](http://www.latimes.com/business/hiltzik/la-fi-mh-anthem-is-warning-consumers-20150306-column.html).
+
+### Security Breach Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/9978A76B-E7AB-47DE-892A-639CCA8A15ED.png)
+
+### Security Breach Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/CF8998BF-BD44-4ADC-9DCC-4C71DF43014B.png)
+
+### Reducing Exposure Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/3F8AD3EE-7E5F-46F3-8662-D86A7381C385.png)
+
+### Reducing Exposure Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/6EEC39B8-9C40-473C-B2ED-6547F696CFAF.png)
+
+### Cyber Insurance Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/E2BF4801-6F74-4CD9-8E2A-142E405723DE.png)
+
+### Cyber Insurance Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/A2F22984-714E-452C-8801-507291A5711A.png)
+
+## Cyber Security Budgets Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/1C6C0BDF-579C-4B4A-89B2-5AE53DE6E845.png)
+
+## Cyber Security Budgets Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/5F82F572-BDB4-46BD-BC15-382A67CD15C8.png)
+
+Read more [here](https://www.partnerre.com/assets/uploads/docs/cyber-survey-results.pdf).
+
+### Proactive Security Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/4BEB9B1D-801B-4C94-BDA2-7547458C7620.png)
+
+### Proactive Security Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/C3D071BA-435F-43EA-ABC8-A3D3D8C417E7.png)
