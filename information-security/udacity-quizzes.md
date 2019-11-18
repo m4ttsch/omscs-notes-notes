@@ -764,6 +764,117 @@ If the device is not always protected by the corporate network, as is the case i
 ### Stand Alone Firewall Quiz Solution
 ![](https://omscs-notes.s3.us-east-2.amazonaws.com/F83D170A-A182-4CD1-A70E-A816AB4D8FD7.png)
 
+## Intrusion Detection
+### Intrusion Detection Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/6FCC8EA1-D76B-4CD2-A7B2-C959F599631A.png)
+
+### Intrusion Detection Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/D8BA0592-C705-4DEA-8677-C198872DAD54.png)
+
+### Intruder Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/62299D09-AF06-4DCC-8C70-37251796390A.png)
+
+### Intruder Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/BE79FB0F-8998-4A34-9B1D-89C3DF2DFA2E.png)
+
+### Types of Backdoors Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/7BB48E4A-080C-41DF-BDFF-981789BA55DC.png)
+
+### Types of Backdoors Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/72F9A46A-F7C2-43E0-84F0-BC956FF413A6.png)
+
+Read more [here](http://www.infoworld.com/article/2606776/hacking/155947-Biggest-baddest-boldest-software-backdoors-of-all-time.html#slide3), [here](https://www.gnu.org/philosophy/proprietary-back-doors.html), and [here](https://www.eecs.berkeley.edu/~daw/teaching/cs261-f07/scribenotes/1025-brian.pdf).
+
+### Analysis Detection Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/F83D983E-10A9-4BFC-9007-006DA276551C.png)
+
+### Analysis Detection Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/3804546D-535E-4812-99F9-68C4039BA79A.png)
+
+### Signature Detection Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/54F22B6A-68FA-478A-9A18-6697555EE8C2.png)
+
+### Signature Detection Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/45F0F4C2-AE2D-4F2E-9598-779B6D797F58.png)
+
+### Anomaly Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/B557672F-381D-4AA9-B3E0-79D35CA0CA65.png)
+
+### Anomaly Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/EFCDDFD7-05BB-4564-8CD3-6CA8FBF651E7.png)
+
+### Statistical & Knowledge Based Approaches Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/FD8DAA8E-9BDA-49E7-B155-99D4ED73C602.png)
+
+### Statistical & Knowledge Based Approaches Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/795F294B-48FC-4667-89FB-BEFB856FF9B3.png)
+
+### Machine Learning Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/F832A03B-6CE6-465D-87EB-1766FA05D423.png)
+
+### Machine Learning Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/B66DFC3A-5CAF-4FBF-ACCC-B2EE1F2F0F1E.png)
+
+### Anomalous Behavior Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/73D531B9-DAB0-4B29-93CE-057BE5A1F4B0.png)
+
+### Anomalous Behavior Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/9E4397E7-D80E-4A34-8B6F-5F22F297369E.png)
+
+### Zero Day Market Place Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/60C770A8-12A9-4FA4-A475-CECF25987C9D.png)
+
+### Zero Day Market Place Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/2AE76DB1-1D8B-448A-8256-C61796C19DE4.png)
+
+### Attacks Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/F5CFF1A9-853F-4258-9A6A-C5ACDD8C643A.png)
+
+### Attacks Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/4D15090A-E7EB-4230-BD11-E816124BDA06.png)
+
+### NIDS Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/6B45119B-AA0A-47F6-822D-A5FC37269B12.png)
+
+### NIDS Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/05B818DD-0EA3-4203-B87D-3DE4FD93663C.png)
+
+### IDS Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/30738940-A839-4656-B153-027BD6CF97A0.png)
+
+### IDS Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/18C9006C-D420-4E6F-8705-27DA565C09A0.png)
+
+### NIDS Sensor Deployed Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/599591ED-6BDC-4FCF-BA83-BBC590E815E7.png)
+
+### NIDS Sensor Deployed Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/63258409-141A-434F-B9CD-8DF34C46C864.png)
+
+### Snort Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/73F79545-4C3F-44B2-A4EC-DA4D4E300729.png)
+
+### Snort Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/207F97E0-2041-461C-864F-27A2D73B4924.png)
+
+### Honeypot Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/6BBDB4A2-6E49-4DD1-B761-1BED24EB3322.png)
+
+### Honeypot Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/C6889A78-B3F7-4738-B4CF-B81149D61644.png)
+
+### IDS Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/EE0009BB-048C-4192-8372-0752194F9C8F.png)
+
+### IDS Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/67B4C307-4630-470A-9E6E-EDB4C4FDC0D8.png)
+
+### IDS Attack Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/85CA9C14-3D97-4B61-BCCE-F2C703BCDC0D.png)
+
+### IDS Attack Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/B0C3AD98-1CF0-4438-9A0E-81511D82D085.png)
+
 ## Introduction to Cryptography
 ### Encryption Attack Quiz
 ![](https://omscs-notes.s3.us-east-2.amazonaws.com/DAF48208-84E4-496E-B228-B4C8B0B841CA.png)
