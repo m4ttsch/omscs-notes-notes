@@ -74,15 +74,15 @@ Generally, for `k` possible birthdays and `n` individuals in the room, we can ca
 p = (1 / k)^n * (k! / (k - n)!)
 ```
 
-We can steadily increase `n` to determine when `p` dips below 0.5. For `k = 365` and `n = 19`, we see that:
+We can steadily increase `n` to determine when `p` dips below 0.5. For `k = 365` and `n = 23`, we see that:
 
 ```
-p = (1 / 365)^19 * (365! / (365 - 19)!) = 0.492703
+p = (1 / 365)^23 * (365! / (365 - 23)!) = 0.492703
 ```
 
 Since `p` is the probability that no birthdays overlap, the probability that one or more birthdays overlap is `1 - p = 0.507297`.
 
-Analytically, the probability of repetition given `k` possible events and `n` selected events, is approximately `n^2/2k`. This probability is 0.5 when `n = √k`. For example, if `k =  365`, then `√k = 19` approximately.
+Analytically, the probability of repetition given `k` possible events and `n` selected events, is approximately `n^2/2k`. This probability is 0.5 when `n = √k`. For example, if `k =  365`, then `√k = 19` approximately, which is close to the correct answer of 23.
 
 ### Back to Hash Functions
 Once we understand the pigeonhole principle and the birthday paradox, we see that some of the properties of hash functions seem to contradict each other.
