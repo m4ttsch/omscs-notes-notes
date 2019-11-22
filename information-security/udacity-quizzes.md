@@ -1301,3 +1301,92 @@ Read more [here](https://www.partnerre.com/assets/uploads/docs/cyber-survey-resu
 
 ### Proactive Security Quiz Solution
 ![](https://omscs-notes.s3.us-east-2.amazonaws.com/C3D071BA-435F-43EA-ABC8-A3D3D8C417E7.png)
+
+## Law, Ethics, and Privacy
+### Legal Deterrents Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/2762F482-BE0A-4124-B408-52E8CF242DA8.png)
+
+### Legal Deterrents Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/C646AE0D-9888-4239-97C1-3A1146256E8E.png)
+
+### Cost of Cybercrime Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/057806B3-A791-476B-86A5-038EE90E5789.png)
+
+### Cost of Cybercrime Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/6D22EA68-A8BE-4C7B-A409-DE34882F3328.png)
+
+### Melissa Virus Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/1E28C362-6E6A-4677-A362-568C16915225.png)
+
+### Melissa Virus Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/12204048-15EC-4A75-89EE-83966EC45C6D.png)
+
+### Unauthorized Access Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/0E4D483F-7A30-44CE-BF76-1BFC3C06BB0B.png)
+
+### Unauthorized Access Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/56C7B39C-4F63-4C1A-A02A-863642EC8401.png)
+
+### DMCA Exclusions Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/C3F16DFB-FD7A-4E37-8D5C-B49D85D292A9.png)
+
+### DMCA Exclusions Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/BACA7BA9-90D0-4402-81DF-724AB70FEB5A.png)
+
+### Computer Ethics Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/2D3BCFF6-7747-4664-B3BD-037CB1DAA9D2.png)
+
+### Computer Ethics Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/7C9A2833-34E5-4F26-8E01-E81F4ECC0B0F.png)
+
+### Responsible Disclosure Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/DD897D09-0FCE-487F-9E2A-AE7B1BED3CD0.png)
+
+### Responsible Disclosure Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/63AB025B-A11C-43E2-80B2-74825F271520.png)
+
+### Privacy Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/6222EA4E-3B0D-472F-991C-FBEEFACF61A5.png)
+
+### Privacy Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/1F9A054B-54D7-423A-979A-609AFF05841F.png)
+
+Read more [here](https://www.pewresearch.org/internet/2015/05/20/americans-attitudes-about-privacy-security-and-surveillance/).
+
+### Right to Be Forgotten Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/CCE71B10-21D1-492A-A2E5-7EDF4CAD7CC4.png)
+
+### Right to Be Forgotten Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/B5ADC3E6-8457-4465-93F3-56D856A5E848.png)
+
+### EFF Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/D70E4126-197A-493A-BA09-CC58D8168CEF.png)
+
+### EFF Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/348B6806-8887-4721-BE27-1A1404BAA50A.png)
+
+Read more [here](https://www.eff.org/who-has-your-back-government-data-requests-2015)
+
+### Google Privacy Policy Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/64E48411-D40C-4D92-83B3-38F2EFA1B704.png)
+
+### Google Privacy Policy Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/4C61BFC4-01BA-4D4F-B9D0-BE25ED2BCEC5.png)
+
+### Legal Deterrents Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/432B96FF-19C1-405F-A90E-302E9828A709.png)
+
+### Legal Deterrents Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/27460EF1-8AF8-4584-A28B-017A21AF6522.png)
+
+### Fandango Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/F0D3B2E7-12CD-439C-AE8A-5A181E96F01C.png)
+
+### Fandango Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/2DF69546-F0D9-44EC-9646-6C087EFF93F9.png)
+
+### Tracking Quiz
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/AA9789FF-1BD5-42A4-91C5-7894D1E4F442.png)
+
+### Tracking Quiz Solution
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/C431A102-4377-4BB8-9C40-BA2D6CA46F6B.png)
