@@ -13,7 +13,7 @@ Additionally, consider creators of digital objects, such as software or digital 
 
 It’s important to think about how these laws should be applicable in the context of digital objects. For example, a digital object may be copied and transmitted much more easily than a physical object.
 
-A third are we can think about is our privacy as Internet users. We spend a lot of time online, visiting different websites, using different services, and searching for different things. It’s very easy for entities that we interact with digitally to collect a lot information about us. A lot of people worry about the concept of Big Brother watching everything they do, and would like some protection.
+A third area we can think about is our privacy as Internet users. We spend a lot of time online, visiting different websites, using different services, and searching for different things. It’s very easy for entities that we interact with digitally to collect a lot information about us. A lot of people worry about the concept of Big Brother watching everything they do, and would like some protection.
 
 ## Legal Deterrents Quiz
 ![](https://omscs-notes.s3.us-east-2.amazonaws.com/2762F482-BE0A-4124-B408-52E8CF242DA8.png)

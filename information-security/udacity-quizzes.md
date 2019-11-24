@@ -843,7 +843,7 @@ Read more [here](http://www.infoworld.com/article/2606776/hacking/155947-Biggest
 ![](https://omscs-notes.s3.us-east-2.amazonaws.com/30738940-A839-4656-B153-027BD6CF97A0.png)
 
 ### IDS Quiz Solution
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/18C9006C-D420-4E6F-8705-27DA565C09A0.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/8FB406A3-4B50-49BB-AA37-C33F19784845.png)
 
 ### NIDS Sensor Deployed Quiz
 ![](https://omscs-notes.s3.us-east-2.amazonaws.com/599591ED-6BDC-4FCF-BA83-BBC590E815E7.png)

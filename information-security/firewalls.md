@@ -121,8 +121,7 @@ Now rule four only allows incoming traffic to high-numbered ports if that source
 
 We can make these rules even more precise. When a TCP connection is established, the ACK bit is set on the packet header. Because the intent of rule four is to allow inbound SMTP traffic that is part of an established connection, we can check that this bit is set before forwarding the packet.  
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/B1EDE336-DD95-4415-8FC5-38D4AECA2DD3.png)
-
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/8BD6C2F2-39BC-4795-B4E8-B469D9C1286B.png)
 
 ## Packet Filtering Advantages
 The main advantage of packet-filtering firewalls is their simplicity and ease of implementation. Packet-filtering firewalls are also very efficient and impose very little overhead. Finally, the rules for packet-filtering firewalls can be very general, since they don’t have to take higher-level applications into account.

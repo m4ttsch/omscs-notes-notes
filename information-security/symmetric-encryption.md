@@ -67,7 +67,7 @@ After 16 rounds of decryption, the algorithm has recovered the right and left ha
 We XOR two numbers bit-by-bit, and we return 0 when the bits match and 1 otherwise. Therefore `0b0100100001101001` XOR `0b1111100111110010` is `0b1011000110011011`.
 
 ## Mangler Function
-The **mangler function** performs the bulk of the processing in a DES round. It expands the right half of the input from 32 bits to 48 bits and XORs it with the per-round key. The result is substituted back into a 32-bit value, which the function the permutates.
+The **mangler function** performs the bulk of the processing in a DES round. It expands the right half of the input from 32 bits to 48 bits and XORs it with the per-round key. The result is substituted back into a 32-bit value, which the function then permutates.
 
 ![](https://omscs-notes.s3.us-east-2.amazonaws.com/5DC76BA7-E969-4935-8B3D-2F4400C34696.png)
 
@@ -96,7 +96,7 @@ To encrypt plaintext using triple DES, we first run the encryption process with 
 
 ![](https://omscs-notes.s3.us-east-2.amazonaws.com/94B5C99F-3DE9-4735-B910-C7F33289CCF0.png)
 
-This order of operations is advantageous because it supports multiple key lengths. For example, if `k1` and `k3` are equal, the result is 112-bit DES. If all three keys are different, the effective key length is168 bits.
+This order of operations is advantageous because it supports multiple key lengths. For example, if `k1` and `k3` are equal, the result is 112-bit DES. If all three keys are different, the effective key length is 168 bits.
 
 Additionally, if we set `k2` equal to `k1`, then triple DES has essentially become single DES using `k3`. Using this configuration, we can allow DES and triple DES to communicate with one another.
 

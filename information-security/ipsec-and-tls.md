@@ -216,7 +216,7 @@ Finally, they exchange hash values to authenticate the newly established key usi
 ## Diffie-Hellman and Pre-shared Secret
 In our example, the initiator and the responder have a pre-shared secret key, and, using this key as well as the information exchanged between them, they can both compute shared keys using a pseudorandom function.
 
-Each party can build a ** pseudorandom function** using HMAC and SHA-1 to generate a pseudorandom bitstream. SHA-1 has a property whereby the change in a single bit of input produces a new hash value with no apparent connection to the preceding hash value. This property forms the basis for * pseudorandom number generation*.
+Each party can build a **pseudorandom function** using HMAC and SHA-1 to generate a pseudorandom bitstream. SHA-1 has a property whereby the change in a single bit of input produces a new hash value with no apparent connection to the preceding hash value. This property forms the basis for *pseudorandom number generation*.
 
 The pseudorandom function `PRF` receives two pieces of data as input - a key and a data block - both of which are passed down to HMAC.
 

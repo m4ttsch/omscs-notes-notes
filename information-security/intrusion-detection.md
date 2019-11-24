@@ -215,7 +215,7 @@ Signatures are typically straightforward to understand, and signature matching i
 ## Rule Based Detection
 In addition to signature-based strategies, a misuse detection system can also use a more sophisticated, rule-based approach. This approach uses rules to represent known intrusions, which typically match multiple signatures.
 
-These rules are not only specific to known intrusions but can also be tweaked to fit the network, as the same intrusion may leave different evidence in different networks depending on the network setup. [Snort](https://snort-org-site.s3.amazonaws.com/production/document_files/files/000/000/116/original/Snort_rule_infographic.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIXACIED2SPMSC7GA%2F20191115%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20191115T224749Z&X-Amz-Expires=172800&X-Amz-SignedHeaders=host&X-Amz-Signature=df2b578847f1738536de1f1ec9652a060a0fec2da1f6c4b2d8aad470def9b31a) is a widely-known example of a rule-based network intrusion detection system.
+These rules are not only specific to known intrusions but can also be tweaked to fit the network, as the same intrusion may leave different evidence in different networks depending on the network setup. [Snort](https://www.snort.org/) is a widely-known example of a rule-based network intrusion detection system.
 
 ## Misuse Signature Intruder Detection
 The IDS matches the observed activities using a set of attack signatures or patterns. If there is a match, the IDS outputs an alert.
@@ -291,7 +291,8 @@ A large volume of traffic can overload a firewall as well. When this happens, it
 ![](https://omscs-notes.s3.us-east-2.amazonaws.com/30738940-A839-4656-B153-027BD6CF97A0.png)
 
 ## IDS Quiz Solution
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/18C9006C-D420-4E6F-8705-27DA565C09A0.png)
+![](https://omscs-notes.s3.us-east-2.amazonaws.com/8FB406A3-4B50-49BB-AA37-C33F19784845.png)
+
 
 ## NIDS Sensor Deployment
 Here is an example of an enterprise network configuration. The internal network has multiple subnets, and the enterprise has public-facing services, such as a public web server.
