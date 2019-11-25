@@ -5,9 +5,8 @@ sidebar_label: Midterm 2 Study Guide
 ---
 
 First of all, I'd like to give a big shout out to all the folks that helped to create this document.
-You can find the original issue threads, where all of the contributers added their questions, [here](https://github.gatech.edu/mschlenker3/iis-midterm-2-study-guide/issues?q=is%3Aissue+is%3Aclosed).
 
-Below is the study guide they've built. Happy studying!
+You can find the original issue threads, where all of the contributers added their questions, [here](https://github.gatech.edu/mschlenker3/iis-midterm-1-study-guide/issues?q=is%3Aissue+is%3Aclosed).
 
 ## Chapter 7: Denial-of-Service Attacks
 
@@ -579,7 +578,7 @@ Packet filtering firewall countermeasures are A,B,C
 
 IP Address Spoofing countermeasures: Discard packets with an inside source address if the packet arrives on an external interface
 
-**Source** Routing Attacks: Discards all packets in which the source destinations specifies to the route
+Source Routing Attacks: Discards all packets in which the source destinations specifies to the route
 
 Tiny Fragment Attack: Enforcing a rule that the first fragment of a packet must contain a predefined minimum amount of the transport header.
 
@@ -587,7 +586,7 @@ In textbook
 
 IP address spoofing: The intruder transmits packets from the outside with a source IP address field containing an address of an internal host. The attacker hopes that the use of a spoofed address will allow penetration of systems that employ simple source address security, in which packets from specific trusted internal hosts are accepted. The countermeasure is to discard packets with an inside source address if the packet arrives on an external interface. In fact, this countermeasure is often implemented at the router external to the firewall.
 
-**Source** routing attacks: The source station specifies the route that a packet should take as it crosses the Internet, in the hopes that this will bypass security measures that do not analyze the source routing information. A countermeasure is to discard all packets that use this option.
+Source routing attacks: The source station specifies the route that a packet should take as it crosses the Internet, in the hopes that this will bypass security measures that do not analyze the source routing information. A countermeasure is to discard all packets that use this option.
 
 Tiny fragment attacks: The intruder uses the IP fragmentation option to create extremely small fragments and force the TCP header information into a separate packet fragment. This attack is designed to circumvent filtering rules that depend on TCP header information. Typically, a packet filter will make a filtering decision on the first fragment of a packet. All subsequent fragments of that packet are filtered out solely on the basis that they are part of the packet whose first fragment was rejected. The attacker hopes the filtering firewall examines only the first fragment and the remaining fragments are passed through. A tiny fragment attack can be defeated by enforcing a rule that the first fragment of a packet must contain a predefined minimum amount of the transport header. If the first fragment is rejected, the filter can remember the packet and discard all subsequent fragments.
 </details>
@@ -2284,11 +2283,17 @@ What is an authenticator, as used by Kerberos?
 - D. A server which contains the IP, user ID, and user password, used for authentication.
 - E. None of the above.
 
-**B**
+
+<details>
+<summary>Answer</summary>
+
+B
 
 **Source**
 
 Text pg 686
+
+</details>
 
 **True of False?**
 
@@ -2519,13 +2524,15 @@ III. The key has been duplicated.
 - D. I and III only
 - E  I only
 
-**Asnwer**
+<details>
+<summary>Answer</summary>
 
 B
 
 **Source**
 
 Text pg 692
+</details>
 
 **True or False?**
 
