@@ -2,8 +2,7 @@
 
 This repository contains lecture notes for the classes I am taking or have taken in OMSCS.
 
-Each set of notes for a particular class will live in a subdirectory of the repository root. In each subdirectory,
-the notes are presented in [Markdown](https://en.wikipedia.org/wiki/Markdown) format.
+Each set of notes for a particular class will live in a subdirectory of the repository root. In each subdirectory, the notes are presented in Markdown format.
 
 If you prefer, you can also view the notes on [OMSCS Notes](https://www.omscs-notes.com).
 
