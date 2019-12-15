@@ -9,12 +9,13 @@ If you prefer, you can also view the notes on [OMSCS Notes](https://www.omscs-no
 
 ### Upcoming Courses
 
-- IIS (Fall 2019)
+- ML4T (Spring 2020)
 
 ### Completed Courses
 
 - GIOS
 - CN
+- IIS
 
 If you notice any grammatical errors or flagrantly confusing sentences, please open a PR and point them out. I proofread my notes after taking them, but mistakes do slip through.
 
