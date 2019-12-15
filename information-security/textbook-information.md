@@ -1,7 +1,8 @@
 ---
-id: textbook-information
+id: information-security-textbook-information
 title: Textbook Information
-sidebar_label: Textbook Information
+course: information-security
+lecture: textbook-information
 ---
 
 ### Course textbook

@@ -1,7 +1,8 @@
 ---
-id: textbook-information
+id: operating-systems-textbook-information
 title: Textbook Information
-sidebar_label: Textbook Information
+course: operating-systems
+lecture: textbook-information
 ---
 
 ### Course textbooks

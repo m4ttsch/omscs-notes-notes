@@ -1,7 +1,8 @@
 ---
-id: introduction-to-operating-systems
+id: operating-systems-introduction-to-operating-systems
 title: Introduction To Operating Systems
-sidebar_label: Introduction To Operating Systems
+course: operating-systems
+lecture: introduction-to-operating-systems
 ---
 
 ## What is an operating system?

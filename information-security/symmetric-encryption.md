@@ -1,7 +1,8 @@
 ---
-id: symmetric-encryption
+id: information-security-symmetric-encryption
 title: Symmetric Encryption
-sidebar_label: Symmetric Encryption
+course: information-security
+lecture: symmetric-encryption
 ---
 
 ## Block Cipher Scheme

@@ -1,7 +1,8 @@
 ---
-id: denial-of-service-attacks
+id: computer-networks-denial-of-service-attacks
 title: Denial of Service Attacks
-sidebar_label: Denial of Service Attacks
+course: computer-networks
+lecture: denial-of-service-attacks
 ---
 
 ## Denial of Service Attacks Overview

@@ -1,7 +1,8 @@
 ---
-id: law-ethics-and-privacy
+id: information-security-law-ethics-and-privacy
 title: Law, Ethics, and Privacy
-sidebar_label: Law, Ethics, and Privacy
+course: information-security
+lecture: law-ethics-and-privacy
 ---
 
 ## US Laws Related to Online Abuse

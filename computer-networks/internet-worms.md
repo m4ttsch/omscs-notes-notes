@@ -1,7 +1,8 @@
 ---
-id: internet-worms
+id: computer-networks-internet-worms
 title: Internet Worms
-sidebar_label: Internet Worms
+course: computer-networks
+lecture: internet-worms
 ---
 
 ## Types of Viruses and Worm Overview

@@ -1,7 +1,8 @@
 ---
-id: switching
+id: computer-networks-switching
 title: Switching
-sidebar_label: Switching
+course: computer-networks
+lecture: switching
 ---
 
 ## Switching and Bridging

@@ -1,7 +1,8 @@
 ---
-id: threads-case-study-pthreads
+id: operating-systems-threads-case-study-pthreads
 title: Threads Case Study - PThreads
-sidebar_label: Threads Case Study - PThreads
+course: operating-systems
+lecture: threads-case-study-pthreads
 ---
 
 ## PThread Creation

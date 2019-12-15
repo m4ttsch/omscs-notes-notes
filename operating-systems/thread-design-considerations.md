@@ -1,7 +1,8 @@
 ---
-id: thread-design-considerations
+id: operating-systems-thread-design-considerations
 title: Thread Design Considerations
-sidebar_label: Thread Design Considerations
+course: operating-systems
+lecture: thread-design-considerations
 ---
 
 ## Kernel Vs. User Level Threads

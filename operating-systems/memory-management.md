@@ -1,7 +1,8 @@
 ---
-id: memory-management
+id: operating-systems-memory-management
 title: Memory Management
-sidebar_label: Memory Management
+course: operating-systems
+lecture: memory-management
 ---
 
 ## Memory Management: Goals

@@ -1,7 +1,8 @@
 ---
-id: midterm-exam-review-questions
+id: operating-systems-midterm-exam-review-questions
 title: Midterm Exam Review Questions
-sidebar_label: Midterm Exam Review Questions
+course: operating-systems
+lecture: midterm-exam-review-questions
 ---
 
 ## What are the key roles of an operating system?

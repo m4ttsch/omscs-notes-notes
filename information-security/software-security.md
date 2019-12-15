@@ -1,7 +1,8 @@
 ---
-id: software-security
+id: information-security-software-security
 title: Software Security
-sidebar_label: Software Security
+course: information-security
+lecture: software-security
 ---
 
 ## Software Vulnerabilities

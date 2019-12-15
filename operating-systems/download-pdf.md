@@ -1,7 +1,8 @@
 ---
-id: download-pdf
+id: operating-systems-download-pdf
 title: Download to PDF
-sidebar_label: Download to PDF
+course: operating-systems
+lecture: download-pdf
 ---
 
 Some students have expressed interest in downloading PDF copies of the notes for

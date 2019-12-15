@@ -1,7 +1,8 @@
 ---
-id: welcome
+id: operating-systems-welcome
 title: Graduate Introduction to Operating Systems (GIOS)
-sidebar_label: Welcome to GIOS
+course: operating-systems
+lecture: welcome
 ---
 
 ### Howdy Friends

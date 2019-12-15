@@ -1,7 +1,8 @@
 ---
-id: routing
+id: computer-networks-routing
 title: Routing
-sidebar_label: Routing
+course: computer-networks
+lecture: routing
 ---
 
 ## Internet Routing

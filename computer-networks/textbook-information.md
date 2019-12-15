@@ -1,7 +1,8 @@
 ---
-id: textbook-information
+id: computer-networks-textbook-information
 title: Textbook Information
-sidebar_label: Textbook Information
+course: computer-networks
+lecture: textbook-information
 ---
 
 ### Course textbook

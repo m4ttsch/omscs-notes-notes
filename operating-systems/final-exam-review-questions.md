@@ -1,7 +1,8 @@
 ---
-id: final-exam-review-questions
+id: operating-systems-final-exam-review-questions
 title: Final Exam Review Questions
-sidebar_label: Final Exam Review Questions
+course: operating-systems
+lecture: final-exam-review-questions
 ---
 
 ## P3L1

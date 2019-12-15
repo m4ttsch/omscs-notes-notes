@@ -1,7 +1,8 @@
 ---
-id: database-security
+id: information-security-database-security
 title: Database Security
-sidebar_label: Database Security
+course: information-security
+lecture: database-security
 ---
 
 ## Importance of Database Security

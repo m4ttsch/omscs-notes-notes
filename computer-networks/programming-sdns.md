@@ -1,7 +1,8 @@
 ---
-id:  programming-sdns
+id: computer-networks-programming-sdns
 title: Programming SDNs
-sidebar_label: Programming SDNs
+course: computer-networks
+lecture: programming-sdns
 ---
 
 ## Updates in Software Defined Networks

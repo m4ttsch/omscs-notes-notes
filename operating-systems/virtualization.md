@@ -1,7 +1,8 @@
 ---
-id: virtualization
+id: operating-systems-virtualization
 title: Virtualization
-sidebar_label: Virtualization
+course: operating-systems
+lecture: virtualization
 ---
 
 ## What is Virtualization?

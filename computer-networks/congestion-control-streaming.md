@@ -1,7 +1,8 @@
 ---
-id: congestion-control-streaming
+id: computer-networks-congestion-control-streaming
 title: Congestion Control & Streaming
-sidebar_label: Congestion Control & Streaming
+course: computer-networks
+lecture: congestion-control-streaming
 ---
 
 ## Congestion Control

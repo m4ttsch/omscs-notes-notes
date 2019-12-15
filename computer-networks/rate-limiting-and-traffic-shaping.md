@@ -1,7 +1,8 @@
 ---
-id:  rate-limiting-traffic-shaping
+id: computer-networks-rate-limiting-and-traffic-shaping
 title: Rate Limiting & Traffic Shaping
-sidebar_label: Rate Limiting & Traffic Shaping
+course: computer-networks
+lecture: rate-limiting-and-traffic-shaping
 ---
 
 ## Traffic Classification and Shaping

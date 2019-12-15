@@ -1,7 +1,8 @@
 ---
-id: mandatory-access-control
+id: information-security-mandatory-access-control
 title: Mandatory Access Control
-sidebar_label: Mandatory Access Control
+course: information-security
+lecture: mandatory-access-control
 ---
 
 ## Discretionary Access Control

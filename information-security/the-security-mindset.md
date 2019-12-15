@@ -1,7 +1,8 @@
 ---
-id: the-security-mindset
+id: information-security-the-security-mindset
 title: The Security Mindset
-sidebar_label: The Security Mindset
+course: information-security
+lecture: the-security-mindset
 ---
 
 ## Why Cyber Security?

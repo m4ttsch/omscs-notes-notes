@@ -1,7 +1,8 @@
 ---
-id: inter-process-communication
+id: operating-systems-inter-process-communication
 title: Inter-Process Communication
-sidebar_label: Inter-Process Communication
+course: operating-systems
+lecture: inter-process-communication
 ---
 
 ## Inter Process Communication

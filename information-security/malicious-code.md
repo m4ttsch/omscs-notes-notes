@@ -1,7 +1,8 @@
 ---
-id: malicious-code
+id: information-security-malicious-code
 title: Malicious Code
-sidebar_label: Malicious Code
+course: information-security
+lecture: malicious-code
 ---
 
 ## What is Malware Quiz

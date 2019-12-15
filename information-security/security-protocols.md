@@ -1,7 +1,8 @@
 ---
-id: security-protocols
+id: information-security-security-protocols
 title: Security Protocols
-sidebar_label: Security Protocols
+course: information-security
+lecture: security-protocols
 ---
 
 ## Why Security Protocols

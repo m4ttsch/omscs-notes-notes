@@ -1,7 +1,8 @@
 ---
-id: authentication
+id: information-security-authentication
 title: Authentication
-sidebar_label: Authentication
+course: information-security
+lecture: authentication
 ---
 
 ## What is Authentication?

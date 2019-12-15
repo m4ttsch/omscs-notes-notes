@@ -1,7 +1,8 @@
 ---
-id: introduction-to-cryptography
+id: information-security-introduction-to-cryptography
 title: Introduction to Cryptography
-sidebar_label: Introduction to Cryptography
+course: information-security
+lecture: introduction-to-cryptography
 ---
 
 ## Decryption

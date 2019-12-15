@@ -1,7 +1,8 @@
 ---
-id: synchronization-constructs
+id: operating-systems-synchronization-constructs
 title: Synchronization Constructs
-sidebar_label: Synchronization Constructs
+course: operating-systems
+lecture: synchronization-constructs
 ---
 
 ## Why Are We Still Talking About Synchronization?

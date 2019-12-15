@@ -1,7 +1,8 @@
 ---
-id: download-pdf
+id: computer-networks-download-pdf
 title: Download to PDF
-sidebar_label: Download to PDF
+course: computer-networks
+lecture: download-pdf
 ---
 
 Some students have expressed interest in downloading PDF copies of the notes for

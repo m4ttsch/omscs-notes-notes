@@ -1,7 +1,8 @@
 ---
-id: web-security
+id: information-security-web-security
 title: Web Security
-sidebar_label: Web Security
+course: information-security
+lecture: web-security
 ---
 
 ## How the Web Works

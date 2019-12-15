@@ -1,7 +1,8 @@
 ---
-id: dns
+id: computer-networks-dns
 title: DNS
-sidebar_label: DNS
+course: computer-networks
+lecture: dns
 ---
 
 ## Domain Name System

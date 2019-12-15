@@ -1,7 +1,8 @@
 ---
-id: operating-system-security
+id: information-security-operating-system-security
 title: Operating System Security
-sidebar_label: Operating System Security
+course: information-security
+lecture: operating-system-security
 ---
 
 ## Operating Systems Defined

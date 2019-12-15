@@ -1,7 +1,8 @@
 ---
-id: scheduling
+id: operating-systems-scheduling
 title: Scheduling
-sidebar_label: Scheduling
+course: operating-systems
+lecture: scheduling
 ---
 
 ## Scheduling Overview

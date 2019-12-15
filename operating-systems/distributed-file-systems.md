@@ -1,7 +1,8 @@
 ---
-id: distributed-file-systems
+id: operating-systems-distributed-file-systems
 title: Distributed File Systems
-sidebar_label: Distributed File Systems
+course: operating-systems
+lecture: distributed-file-systems
 ---
 
 ## Distributed File Systems

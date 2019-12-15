@@ -1,7 +1,8 @@
 ---
-id: midterm-2-study-guide
+id: information-security-midterm-2-study-guide
 title: Midterm 2 Study Guide
-sidebar_label: Midterm 2 Study Guide
+course: information-security
+lecture: midterm-2-study-guide
 ---
 
 First of all, I'd like to give a big shout out to all the folks that helped to create this document.

@@ -1,7 +1,8 @@
 ---
-id: welcome
+id: information-security-welcome
 title: Introduction to Information Security (IIS)
-sidebar_label: Welcome to IIS
+course: information-security
+lecture: welcome
 ---
 
 ### Howdy Friends

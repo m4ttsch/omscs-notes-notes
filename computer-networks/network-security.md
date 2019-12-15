@@ -1,7 +1,8 @@
 ---
-id:  network-security
+id: computer-networks-network-security
 title: Network Security
-sidebar_label: Network Security
+course: computer-networks
+lecture: network-security
 ---
 
 ## Need for Network Security

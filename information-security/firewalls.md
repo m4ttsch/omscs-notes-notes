@@ -1,7 +1,8 @@
 ---
-id: firewalls
+id: information-security-firewalls
 title: Firewalls
-sidebar_label: Firewalls
+course: information-security
+lecture: firewalls
 ---
 
 ## Defense in Depth

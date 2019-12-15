@@ -1,7 +1,8 @@
 ---
-id: software-defined-networking
+id: computer-networks-software-defined-networking
 title: Software Defined Networking
-sidebar_label: Software Defined Networking
+course: computer-networks
+lecture: software-defined-networking
 ---
 
 ## Network Management Overview

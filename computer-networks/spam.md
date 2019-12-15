@@ -1,7 +1,8 @@
 ---
-id: spam
+id: computer-networks-spam
 title: Spam
-sidebar_label: Spam
+course: computer-networks
+lecture: spam
 ---
 
 ## Spam

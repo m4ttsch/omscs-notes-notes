@@ -1,7 +1,8 @@
 ---
-id: intrusion-detection
+id: information-security-intrusion-detection
 title: Intrusion Detection
-sidebar_label: Intrusion Detection
+course: information-security
+lecture: intrusion-detection
 ---
 
 ## Defense in Depth

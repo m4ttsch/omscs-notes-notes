@@ -1,7 +1,8 @@
 ---
-id: io-management
+id: operating-systems-io-management
 title: IO Management
-sidebar_label: IO Management
+course: operating-systems
+lecture: io-management
 ---
 
 ## I/O Devices

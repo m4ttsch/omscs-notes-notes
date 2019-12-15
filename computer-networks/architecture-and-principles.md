@@ -1,7 +1,8 @@
 ---
-id: architecture-and-principles
+id: computer-networks-architecture-and-principles
 title: Architecture and Principles
-sidebar_label: Architecture and Principles
+course: computer-networks
+lecture: architecture-and-principles
 ---
 
 ## A Brief History of the Internet

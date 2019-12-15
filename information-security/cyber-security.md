@@ -1,7 +1,8 @@
 ---
-id: cyber-security
+id: information-security-cyber-security
 title: Cyber Security
-sidebar_label: Cyber Security
+course: information-security
+lecture: cyber-security
 ---
 
 ## Managing Security

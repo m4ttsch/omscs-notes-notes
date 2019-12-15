@@ -1,7 +1,8 @@
 ---
-id: router-design-basics
+id: computer-networks-router-design-basics
 title: Router Design Basics
-sidebar_label: Router Design Basics
+course: computer-networks
+lecture: router-design-basics
 ---
 
 ## Router Design

@@ -1,7 +1,8 @@
 ---
-id: ipsec-and-tls
+id: information-security-ipsec-and-tls
 title: IPSec and TLS
-sidebar_label: IPSec and TLS
+course: information-security
+lecture: ipsec-and-tls
 ---
 
 ## Goals of IPSec

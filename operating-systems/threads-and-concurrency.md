@@ -1,7 +1,8 @@
 ---
-id: threads-and-concurrency
+id: operating-systems-threads-and-concurrency
 title: Threads And Concurrency
-sidebar_label: Threads And Concurrency
+course: operating-systems
+lecture: threads-and-concurrency
 ---
 
 ## Process vs. Thread

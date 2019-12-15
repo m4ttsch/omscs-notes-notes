@@ -1,7 +1,8 @@
 ---
-id: traffic-engineering
+id: computer-networks-traffic-engineering
 title: Traffic Engineering
-sidebar_label: Traffic Engineering
+course: computer-networks
+lecture: traffic-engineering
 ---
 
 ## Traffic Engineering Overview

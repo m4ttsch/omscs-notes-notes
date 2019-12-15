@@ -1,7 +1,8 @@
 ---
-id: remote-procedure-calls
+id: operating-systems-remote-procedure-calls
 title: Remote Procedure Calls
-sidebar_label: Remote Procedure Calls
+course: operating-systems
+lecture: remote-procedure-calls
 ---
 
 ## Why RPC?

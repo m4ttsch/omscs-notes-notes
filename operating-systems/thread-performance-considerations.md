@@ -1,7 +1,8 @@
 ---
-id: thread-performance-considerations
+id: operating-systems-thread-performance-considerations
 title: Thread Performance Considerations
-sidebar_label: Thread Performance Considerations
+course: operating-systems
+lecture: thread-performance-considerations
 ---
 
 ## Which Threading Model Is Better?

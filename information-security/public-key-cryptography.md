@@ -1,7 +1,8 @@
 ---
-id: public-key-cryptography
+id: information-security-public-key-cryptography
 title: Public-Key Cryptography
-sidebar_label: Public-Key Cryptography
+course: information-security
+lecture: public-key-cryptography
 ---
 
 ## Modular Arithmetic

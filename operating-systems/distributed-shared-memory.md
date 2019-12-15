@@ -1,7 +1,8 @@
 ---
-id: distributed-shared-memory
+id: operating-systems-distributed-shared-memory
 title: Distributed Shared Memory
-sidebar_label: Distributed Shared Memory
+course: operating-systems
+lecture: distributed-shared-memory
 ---
 
 ## Reviewing DFS

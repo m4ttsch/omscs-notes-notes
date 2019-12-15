@@ -1,7 +1,8 @@
 ---
-id: datacenter-technologies
+id: operating-systems-datacenter-technologies
 title: Datacenter Technologies
-sidebar_label: Datacenter Technologies
+course: operating-systems
+lecture: datacenter-technologies
 ---
 
 ## Internet Services

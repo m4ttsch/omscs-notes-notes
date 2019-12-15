@@ -1,7 +1,8 @@
 ---
-id: wireless-and-mobile-security
+id: information-security-wireless-and-mobile-security
 title: Wireless and Mobile Security
-sidebar_label: Wireless and Mobile Security
+course: information-security
+lecture: wireless-and-mobile-security
 ---
 
 ## Introduction to Wifi

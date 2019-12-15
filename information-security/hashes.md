@@ -1,7 +1,8 @@
 ---
-id: hashes
+id: information-security-hashes
 title: Hashes
-sidebar_label: Hashes
+course: information-security
+lecture: hashes
 ---
 
 ## Hash Functions

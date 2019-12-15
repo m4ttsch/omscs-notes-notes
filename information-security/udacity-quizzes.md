@@ -1,7 +1,8 @@
 ---
-id: udacity-quizzes
+id: information-security-udacity-quizzes
 title: Udacity Quizzes
-sidebar_label: Udacity Quizzes
+course: information-security
+lecture: udacity-quizzes
 ---
 
 ## The Security Mindset

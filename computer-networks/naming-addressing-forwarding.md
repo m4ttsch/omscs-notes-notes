@@ -1,7 +1,8 @@
 ---
-id:  naming-addressing-forwarding
+id: computer-networks-naming-addressing-forwarding
 title: Naming, Addressing & Forwarding
-sidebar_label: Naming, Addressing & Forwarding
+course: computer-networks
+lecture: naming-addressing-forwarding
 ---
 
 ## IP Addressing

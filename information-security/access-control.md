@@ -1,7 +1,8 @@
 ---
-id: access-control
+id: information-security-access-control
 title: Access Control
-sidebar_label: Access Control
+course: information-security
+lecture: access-control
 ---
 
 ## Controlling Accesses to Resources

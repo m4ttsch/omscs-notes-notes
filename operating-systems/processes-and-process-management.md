@@ -1,7 +1,8 @@
 ---
-id: processes-and-process-management
+id: operating-systems-processes-and-process-management
 title: Processes and Process Management
-sidebar_label: Processes and Process Management
+course: operating-systems
+lecture: processes-and-process-management
 ---
 
 ## What is a Process?

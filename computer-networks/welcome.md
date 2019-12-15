@@ -1,7 +1,8 @@
 ---
-id: welcome
+id: computer-networks-welcome
 title: Computer Networking (CN)
-sidebar_label: Welcome to CN
+course: computer-networks
+lecture: welcome
 ---
 
 ### Howdy Friends

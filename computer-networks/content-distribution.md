@@ -1,7 +1,8 @@
 ---
-id: content-distribution
+id: computer-networks-content-distribution
 title: Content Distribution
-sidebar_label: Content Distribution
+course: computer-networks
+lecture: content-distribution
 ---
 
 ## The Web and Caching
