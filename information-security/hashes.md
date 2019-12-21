@@ -28,7 +28,7 @@ Even though the hash code is encrypted, the attacker only needs to find a messag
 
 As a result, the receiver is unable to tell that an attacker has modified the message because the modified message has the same hash code as the original message, and thus the same encrypted hash code.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/199B4A9A-827F-427B-9D14-4A453A38889B.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/199B4A9A-827F-427B-9D14-4A453A38889B.png)
 
 ### Strong Collision-Resistant Property
 
@@ -42,7 +42,7 @@ If the strong collision-resistant property is not present, Bob can find two diff
 
 Bob can present the IOU for `X` to Alice and have Alice sign it. Later, Bob can present the signature with the message for `XXX` and ask Alice to pay it. Because the two messages have the same hash value, Alice cannot deny that she has signed the message agreeing to pay `XXX`.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/1870D722-FE9F-4F55-97C5-8C8C38E4C7C9.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/1870D722-FE9F-4F55-97C5-8C8C38E4C7C9.png)
 
 ## Hash Function Weaknesses
 To understand the constraints and potential weaknesses of hash functions, we need to understand two concepts: the pigeonhole principle, and the birthday paradox.
@@ -102,10 +102,10 @@ Suppose a hash function produces hash codes that are `l` bits long. As a result,
 Therefore, if `l = 64`, then there are `2^64` hash values, and an attacker only needs to search `2^32` messages to find a collision. This search is entirely feasible with modern computing power. In practice, hash values are at least 128 bits long.
 
 ## Hash Size Quiz
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/4782A47E-5391-43F5-A80C-CA9F02FDBD71.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/4782A47E-5391-43F5-A80C-CA9F02FDBD71.png)
 
 ## Hash Size Quiz Solution
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/EC0A4B95-7A5E-4C5B-87AD-6D39D17FA04C.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/EC0A4B95-7A5E-4C5B-87AD-6D39D17FA04C.png)
 
 Given a hash length `n`, an attacker needs to hash `2^(n / 2)` messages to find a collision. For `n = 128`, an attacker needs to compute `2^64` hashes.
 
@@ -114,7 +114,7 @@ The original secure hash algorithm is SHA-1, which produces a hash value of 160 
 
 The following table compares the SHA parameters.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/C2D62752-3F78-4D50-9280-D473532E1547.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/C2D62752-3F78-4D50-9280-D473532E1547.png)
 
 Message digest size refers to the length of the hash value. As we know, SHA-1 produces 160-bit hashes, and SHA-512 produces 512-bit hashes.
 
@@ -125,7 +125,7 @@ As we move from left to right in the table, each subsequent algorithm produces a
 ## Message Processing
 The following figure shows the overall processing of a message to produce a hash value.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/44BE949B-28F2-415D-B39B-0C86214F8749.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/44BE949B-28F2-415D-B39B-0C86214F8749.png)
 
 Before any processing can start, we must pad the message to a multiple of 1024 because the hash function processes the message in 1024-bit blocks. First, we store the length of the original message in the final 128 bits of the last block. Next, we fill in the space between the end of the original message and the last 128 bits with 1 followed by as many 0s as necessary.
 
@@ -135,7 +135,7 @@ For the first message block, the input includes an **initialization vector** (IV
 
 The following figure shows the processing of a single message block.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/E7BCDFC8-DF87-4A7E-B680-75AE0BF28B67.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/E7BCDFC8-DF87-4A7E-B680-75AE0BF28B67.png)
 
 Processing a single block involves 80 rounds of operations that operate on both the current message block `m` and the output of processing the previous block.
 
@@ -153,7 +153,7 @@ There have been several proposals to incorporate a secret key into an existing h
 
 The following diagram illustrates how HMAC works.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/68F165A1-0C6B-44D3-86DB-304093AF2695.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/68F165A1-0C6B-44D3-86DB-304093AF2695.png)
 
 HMAC involves a hash function `H` and a secret key `k`. The message `m` consists of multiple blocks of `b` bits. For example, in SHA-512, each block is 1024 bits, so `b = 1024`.
 
@@ -177,7 +177,7 @@ Without the secret key, there is no way the attacker can compute the correct HMA
 In summary, because of the use of the secret key, HMAC is much more secure than a cryptographic hash function alone.
 
 ## Hash Function Quiz
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/AD311597-0FE3-4399-B9A1-11A70E568C55.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/AD311597-0FE3-4399-B9A1-11A70E568C55.png)
 
 ## Hash Function Quiz Solution
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/137488B0-4ADC-4B1E-AD86-DFA5067E6565.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/137488B0-4ADC-4B1E-AD86-DFA5067E6565.png)

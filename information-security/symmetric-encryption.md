@@ -8,7 +8,7 @@ lecture: symmetric-encryption
 ## Block Cipher Scheme
 Most symmetric encryption schemes are block ciphers. A **block cipher** encrypts a plaintext block of length `n` into a ciphertext block of length `n` using a secret key  `k` and decrypts the ciphertext using the same `k`.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/47BCD6ED-91B1-47D2-BF37-313E1F60D22B.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/47BCD6ED-91B1-47D2-BF37-313E1F60D22B.png)
 
 ## Block Cipher Primitives
 The goal of encryption is to transform plaintext into an unintelligible form. Since we assume that an attacker can obtain the ciphertext, we don’t want the ciphertext to convey any information about the key or the plaintext.
@@ -24,21 +24,21 @@ For example, instead of mapping an English letter to another English letter, we 
 We need this combination - confusion and diffusion - to affect every bit in the ciphertext, so a block cipher typically runs for multiple rounds. The initial round affects some parts of the ciphertext, and subsequent rounds further propagate these effects into other parts of the ciphertext. Eventually, all bits of ciphertext are affected.
 
 ## Block Cipher Quiz
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/F77DC130-7DC8-46BD-A0EF-6A05F934BF23.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/F77DC130-7DC8-46BD-A0EF-6A05F934BF23.png)
 
 ## Block Cipher Quiz Solution
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/5A22576A-05B2-48C1-AE69-874601220654.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/5A22576A-05B2-48C1-AE69-874601220654.png)
 
 ## Data Encryption Standard
 A widely used symmetric encryption scheme is based on the **Data Encryption Standard** (DES), which was established in 1977 and standardized in 1979.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/5CC2B27E-728F-44B1-871D-3CBDC4BAE48F.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/5CC2B27E-728F-44B1-871D-3CBDC4BAE48F.png)
 
 In DES, the key is 64 bits (8 bytes) long. For each byte, there is one parity bit, so the actual value of the key is only 56 bits. DES receives a 64-bit plaintext block as input and produces a 64-bit ciphertext block.
 
 DES contains an initial and final permutation step that remaps the positions of the bits to achieve diffusion.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/3FB71F34-AB14-415C-8AE1-31FF22CDD047.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/3FB71F34-AB14-415C-8AE1-31FF22CDD047.png)
 
 In between the permutation steps, DES performs 16 rounds of operations using 16 48-bit subkeys generated from the original 56-bit key. Each round receives as input the ciphertext produced by the previous round and outputs the ciphertext used as input by the next round.
 
@@ -46,7 +46,7 @@ A round proceeds as follows. First, the 64-bit input is divided into two 32-bit 
 
 The mangler function receives a 32-bit input, expands it to 48 bits, XORs it with the 48-bit per-round key, and then passes it to an S-box to substitute the 48-bit value back into a 32-bit value.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/34020DAC-7E9B-4405-8526-DE29767A7FA9.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/34020DAC-7E9B-4405-8526-DE29767A7FA9.png)
 
 The decryption process performs the same operations as the encryption process but uses the keys in reverse order. That is, the first decryption step uses the sixteenth key, and the final step uses the first key.
 
@@ -58,10 +58,10 @@ Since each encryption round swaps the right and left halves of the input, the in
 After 16 rounds of decryption, the algorithm has recovered the right and left halves of the original plaintext, and the final swap arranges the halves in the correct order.
 
 ## XOR Quiz
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/E6D8649E-9459-4BE3-8091-6B4FB8C456FF.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/E6D8649E-9459-4BE3-8091-6B4FB8C456FF.png)
 
 ## XOR Quiz Solution
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/9E317675-DB11-4A1E-AAC8-D59F6667ABB9.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/9E317675-DB11-4A1E-AAC8-D59F6667ABB9.png)
 
 “H” has an ASCII code of 72, which maps to `0b01001000`, and “i” has an ASCII code of 105, which maps to `0b01101001`. “F” maps to 15 (`0b1111`) and “A” maps to 11 (`0b1001`), so “FA” maps to `0b11111001` and “F2” maps to `0b11111001`.
 
@@ -70,18 +70,18 @@ We XOR two numbers bit-by-bit, and we return 0 when the bits match and 1 otherwi
 ## Mangler Function
 The **mangler function** performs the bulk of the processing in a DES round. It expands the right half of the input from 32 bits to 48 bits and XORs it with the per-round key. The result is substituted back into a 32-bit value, which the function then permutates.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/5DC76BA7-E969-4935-8B3D-2F4400C34696.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/5DC76BA7-E969-4935-8B3D-2F4400C34696.png)
 
 ## S Box
 An **S-box** substitutes a 6-bit value with a 4-bit value using a predefined lookup table. DES uses 8 such S-boxes to substitute a 48-bit (6*8) value with a 32-bit (4*8) value. We can perform the substitution of a 6-bit value by using the outer two bits to look up the row of the S-box and the inner four bits to look up the column.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/39565F8B-7E22-4EFA-8636-5F496968C397.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/39565F8B-7E22-4EFA-8636-5F496968C397.png)
 
 ## S Box Quiz
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/47A34B5B-85A1-45EE-BB2F-07EC4B1A59AB.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/47A34B5B-85A1-45EE-BB2F-07EC4B1A59AB.png)
 
 ## S Box Quiz Solution
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/0C60D9C2-1E8B-45D3-8410-8C63C9F1FDE8.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/0C60D9C2-1E8B-45D3-8410-8C63C9F1FDE8.png)
 
 ## Security of DES
 The key size in DES is 56 bits, so there are only `2^56` possible keys. This keyspace is too small, and an attacker can use brute-force to find the correct key relatively easily using today’s computers.
@@ -95,17 +95,17 @@ To overcome the small keyspace that renders DES insecure, we can run DES multipl
 
 To encrypt plaintext using triple DES, we first run the encryption process with key `k1`, followed by the decryption process with a second key `k2`, followed by the encryption process with a third key `k3`. To decrypt a ciphertext, we run the process in reverse, decrypting with `k3`, encrypting with `k2`, and decrypting again with `k1`.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/94B5C99F-3DE9-4735-B910-C7F33289CCF0.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/94B5C99F-3DE9-4735-B910-C7F33289CCF0.png)
 
 This order of operations is advantageous because it supports multiple key lengths. For example, if `k1` and `k3` are equal, the result is 112-bit DES. If all three keys are different, the effective key length is 168 bits.
 
 Additionally, if we set `k2` equal to `k1`, then triple DES has essentially become single DES using `k3`. Using this configuration, we can allow DES and triple DES to communicate with one another.
 
 ## DES Quiz
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/FCF98268-BDC4-48AA-8E11-39B427244D6B.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/FCF98268-BDC4-48AA-8E11-39B427244D6B.png)
 
 ## DES Quiz Solution
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/3233B23D-A5CA-4E0E-9818-C9FC4773221C.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/3233B23D-A5CA-4E0E-9818-C9FC4773221C.png)
 
 ## Advanced Encryption Standard
 Key length is a significant shortcoming of DES. At 56 bits long, the keyspace for DES is too small, and an attacker can use brute force to find a key with the power of modern computers. While we can use triple DES to increase the key length, running DES three times is not an efficient approach.
@@ -114,7 +114,7 @@ The replacement for DES is the **Advanced Encryption Standard** (AES). Like DES,
 
 The following diagram presents a high-level overview of AES.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/6D5708D5-B97E-47AD-A97A-9A92F52ECAAB.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/6D5708D5-B97E-47AD-A97A-9A92F52ECAAB.png)
 
 Each block of plaintext that AES operates on is represented as a square matrix called the *state array*. This array is first XORed with a per-round key before going through multiple rounds of encryption.
 
@@ -127,22 +127,22 @@ Adding the per-round key involves the XOR operation, which by itself is reversib
 ## AES Round
 Let’s take a closer look at each round of AES and the transformations the algorithm performs on the state matrix `S`. Each operation updates the value of `S` directly.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/97074222-8C31-4E0D-A0CF-52ED8BB349B2.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/97074222-8C31-4E0D-A0CF-52ED8BB349B2.png)
 
 First,  `SubBytes` uses S-boxes to perform a byte-by-byte substitution. Next,  `ShiftRows` permutates `S` by shifting the bytes in each row of  `S`  a specified amount. Then, `MixColumns` substitutes each byte in a column as a function of all the bytes in the column. Finally, `AddRoundKey` XORs `S` with the per-round key, passing the final value of `S`  to the next encryption round.
 
 ## AES Encryption Quiz
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/194759AE-0DA0-4C26-87D6-66A9E764598A.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/194759AE-0DA0-4C26-87D6-66A9E764598A.png)
 
 ## AES Encryption Quiz Solution
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/A427A006-090C-4F5B-AA31-32FBA20D10C3.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/A427A006-090C-4F5B-AA31-32FBA20D10C3.png)
 
 ## Encrypting a Large Message
 A block cipher takes in a fixed-length data block as input: 64 bits in DES and 128 bits in AES. If we want to encrypt a much bigger message, the solution seems obvious: break the message into fixed-size blocks, apply the cipher to each block, and combine the resulting ciphertexts.
 
 The simplest method for encrypting large messages is to use an **electronic codebook** (ECB).
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/86F29C4B-6856-4A55-96D4-DDCA012A21F8.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/86F29C4B-6856-4A55-96D4-DDCA012A21F8.png)
 
 First, the original large message is broken down into fixed-size blocks. The final block is potentially padded if it is smaller than the block size. Each plaintext block is then encrypted using the same key, and the collection of ciphertext blocks is the ciphertext of the original message.
 
@@ -165,7 +165,7 @@ Another problem with ECB is that the plaintext blocks are independently encrypte
 ## Cipher Block Chaining
 The most widely-used approach for encrypting a large message is **cipher block chaining** (CBC).
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/61A73F61-DD7D-4826-B20A-DCA38D7FFD90.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/61A73F61-DD7D-4826-B20A-DCA38D7FFD90.png)
 
 In CBC, the input to the encryption algorithm is the result of XORing the previous ciphertext block with the current plaintext block. To encrypt the first plaintext block, we XOR the block with an **initialization vector** (IV), which we then encrypt to produce the first ciphertext block.
 
@@ -175,7 +175,7 @@ More importantly, if two plaintext blocks are the same, the ciphertext blocks ar
 
 Decryption works similarly. CBC decrypts a ciphertext block and then XORs the result with the previous ciphertext block to produce the current plaintext block.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/AB210D64-377D-423A-9950-C76B58C70784.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/AB210D64-377D-423A-9950-C76B58C70784.png)
 
 The first decrypted ciphertext block must be XORed with the IV to produce the first plaintext block, which means that the IV must be known to both parties.
 
@@ -190,7 +190,7 @@ When the authorized recipient receives the message, they will run the message th
 To protect both message confidentiality and integrity, we should use two separate keys and two encryption rounds: one key produces the ciphertext, and the other key produces the CBC residue. Alternatively, we can first compute a hash of the message, append the hash to the message, and then encrypt the entire entity.
 
 ## CBC Quiz
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/DBF9FA91-292C-4847-ABFB-2C1166D0D5CA.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/DBF9FA91-292C-4847-ABFB-2C1166D0D5CA.png)
 
 ## CBC Quiz Solution
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/5146C532-57F6-4F41-9D3E-2512206871DE.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/5146C532-57F6-4F41-9D3E-2512206871DE.png)

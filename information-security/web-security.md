@@ -8,7 +8,7 @@ lecture: web-security
 ## How the Web Works
 A web browser and a web server communicate using the **HyperText Transfer Protocol** (HTTP). The browser requests documents through a URL, and the server responds with documents in **HyperText Markup Language** (HTML).
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/176D0F91-9527-4508-9D0C-8D9FB3200865.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/176D0F91-9527-4508-9D0C-8D9FB3200865.png)
 
 HTML documents can include text, graphics, video, audio, PostScript, JavaScript, and other components. The browser displays text and embedded graphics and executes the JavaScript and other helper scripts.
 
@@ -17,7 +17,7 @@ Each HTTP request uses its own HTTP connection; that is, HTTP is a *stateless* p
 
 Browsers and servers use cookies as a way of carrying information, such as user authentication/session state, across multiple HTTP requests.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/1BAB1B26-F15A-4E20-B3B3-5C593392FA73.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/1BAB1B26-F15A-4E20-B3B3-5C593392FA73.png)
 
 **Cookies** are small strings of text that a web server can create as part of any HTTP response using the `Set-cookie` HTTP header. Cookies are essentially key/value pairs, such as `userName=user123`.
 
@@ -26,10 +26,10 @@ In addition to the key/value pair itself, a cookie also contains some metadata, 
 A user’s browser stores cookies and includes them in subsequent requests as a way to create and preserve state over fundamentally stateless connections.
 
 ## Cookie Quiz
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/F6BDEF06-29AB-4349-832F-56EBC69D1D49.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/F6BDEF06-29AB-4349-832F-56EBC69D1D49.png)
 
 ## Cookie Quiz Solution
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/2CE3FD4D-3E64-4591-A9F3-D19A90B9C151.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/2CE3FD4D-3E64-4591-A9F3-D19A90B9C151.png)
 
 Cookies are just strings of text. They are not compiled code, and therefore cannot infect a system the way a virus can.
 
@@ -45,10 +45,10 @@ On the server side, a website runs applications that process requests from brows
 These web applications, like any software, may have security vulnerabilities. Furthermore, many websites do not authenticate users, which means that attackers are free to send requests designed to exploit security vulnerabilities in these web applications.
 
 ## Web Security Quiz
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/532467B0-2F02-40A1-BEF9-C9B7E418FBB9.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/532467B0-2F02-40A1-BEF9-C9B7E418FBB9.png)
 
 ## Web Security Quiz Solution
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/BD31DC8E-4CA2-49A9-8C52-AA394F2DCEF6.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/BD31DC8E-4CA2-49A9-8C52-AA394F2DCEF6.png)
 
 ## Cross-Site Scripting (XSS)
 Many websites, including social networking sites, blogs, forums, and wikis, display user-supplied data. For example, a user Joe might visit a website and fill out a form indicating that his name is Joe. The website might greet him with a page saying, “Hello Joe.”
@@ -66,7 +66,7 @@ In a **cross-site scripting** (XSS) attack, an attacker tricks the browser into 
 
 The following diagram presents how this attack might work.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/97CEA72E-2455-439F-95C4-D9F7CC3B27EA.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/97CEA72E-2455-439F-95C4-D9F7CC3B27EA.png)
 
 First, the user logs in to a vulnerable site, naive.com, and the browser stores a cookie to naive.com. Next, the attacker directs the user to evil.com, which returns a page containing a hidden iframe.
 
@@ -75,10 +75,10 @@ The iframe forces the browser to visit naive.com and invoke the `hello.cgi` web 
 The browser displays the HTML page and executes the malicious script, which steals the user’s cookie to naive.com and sends it to the attacker. Since the cookie can include session authentication information for naive.com, the attacker can now impersonate this user on naive.com.
 
 ## XSS Quiz
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/8DBE2B0F-CC6F-4437-9A92-1C3FB2F37165.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/8DBE2B0F-CC6F-4437-9A92-1C3FB2F37165.png)
 
 ## XSS Quiz Solution
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/E9AC9C05-8E76-4DBF-B342-F55A1A723FA8.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/E9AC9C05-8E76-4DBF-B342-F55A1A723FA8.png)
 
 ## XSRF: Cross-Site Request Forgery
 When a user logs in to a site, the server usually writes a cookie to the user’s browser that contains session authentication information for that user on that site.
@@ -89,12 +89,12 @@ If a user browses to a malicious site in the middle of their session with a trus
 
 The user never sees this malicious request, since the malicious site often triggers it from a hidden iframe. Additionally, the trusted server doesn’t find the request suspicious since it contains the user’s cookie, which the server itself granted.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/9F08DB29-3750-474F-841B-677EA4D1F0FC.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/9F08DB29-3750-474F-841B-677EA4D1F0FC.png)
 
 ## XSRF Example
 Here is an illustration of an XRSF example involving a trusted site, bank.com, and a malicious site, attacker.com.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/86B95C1B-A028-43AE-AAC5-13F386336EC2.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/86B95C1B-A028-43AE-AAC5-13F386336EC2.png)
 
 The user logs in to bank.com and keeps the session alive, which means that the browser has a cookie to bank.com. Meanwhile, the attacker phishes the user and directs them to the malicious site attacker.com.
 
@@ -110,10 +110,10 @@ In cross-site request forgery, an attacker forges user requests to a website. As
 Both XSS and XSRF are the results of security weaknesses in websites, in particular, the lack of authenticating and validating user input.
 
 ## XSRF Quiz
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/01278C58-9179-459C-9DD1-A25AA8951AE0.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/01278C58-9179-459C-9DD1-A25AA8951AE0.png)
 
 ## XSRF Quiz Solution
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/9EC2B8EE-1317-434A-A103-89F4C1FE68DE.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/9EC2B8EE-1317-434A-A103-89F4C1FE68DE.png)
 
 ## Structured Query Language (SQL)
 SQL is the most widely-used database query language. We use SQL to retrieve database information, such as tables or records, and modify database information; for example, adding records to a table or modifying the specific values of a record.
@@ -123,32 +123,32 @@ Many websites contain forms that users fill out with information that they want 
 
 For example, the following PHP snippet builds an SQL query based partially on user input.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/E73A8762-957A-4800-B230-0C7C5CA96E68.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/E73A8762-957A-4800-B230-0C7C5CA96E68.png)
 
 The security threat here is that specially crafted input can generate malicious SQL queries that can lead to compromise of data confidentiality and integrity.
 
 ## Example Login
 Here is an example of a web form consisting of username and password fields that a user might use to log in to a web site.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/C84D690A-40AB-40AB-A735-AA97C2365F25.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/C84D690A-40AB-40AB-A735-AA97C2365F25.png)
 
 To authenticate the user, the web server first needs to compare the received password hash with the stored password hash for the user. The web server issues an SQL query to the database to retrieve the stored user information.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/9F384F2C-0D9E-4ECC-80DC-70F469CE2A8D.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/9F384F2C-0D9E-4ECC-80DC-70F469CE2A8D.png)
 
 ## Malicious User Input
 Suppose an attacker enters this malicious string as the user name.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/81320400-97C9-4DE0-B25B-DA1DB932918A.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/81320400-97C9-4DE0-B25B-DA1DB932918A.png)
 
 What is going to happen?
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/4A1296B9-EA61-4DAA-9CD5-83B86E4A0E78.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/4A1296B9-EA61-4DAA-9CD5-83B86E4A0E78.png)
 
 The SQL query sent from the web server to the backend database server triggers the deletion of all user records.
 
 ## SQL Injection Quiz
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/669AD069-005A-400C-A12A-5E0F9C200658.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/669AD069-005A-400C-A12A-5E0F9C200658.png)
 
 ## SQL Injection Quiz Solution
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/A22C245A-EF36-478E-A72F-2F986CA67513.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/A22C245A-EF36-478E-A72F-2F986CA67513.png)

@@ -39,7 +39,7 @@ If a semaphore is initialized with a 1 - a binary semaphore - it will behave lik
 ## POSIX Semaphores
 The simple POSIX semaphore API defines one type `sem_t` as well as three operations that manipulate that type. These operations create the semaphore, wait on the semaphore, and unlock the semaphore.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/EA5326AD-08F0-47F0-9ACC-0640A0BFC497.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/EA5326AD-08F0-47F0-9ACC-0640A0BFC497.png)
 
 **NB** The pshared flag indicates whether the semaphore is to be shared across processes.
 
@@ -55,7 +55,7 @@ A reader/writer lock behaves similarly to a mutex; however, now the developer on
 ## Using Reader/Writer Locks
 Here is the primary API for reader/writer locks in Linux.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/B9FC4930-CACD-4388-BF04-A83D95487B84.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/B9FC4930-CACD-4388-BF04-A83D95487B84.png)
 
 As usual, we have a datatype - `rwlock_t` and we perform operations on that data type. We can lock/unlock the lock for reads as well as for writes.
 
@@ -132,7 +132,7 @@ Which specific atomic instructions are available on a given platform varies from
 ## Shared Memory Multiprocessors
 A multiprocessor system consists of more than one CPU and some memory unit that is accessible to all of these CPUs. That is, the memory component is shared by the CPUs.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/8A94ED90-9931-476A-BA86-570434DB54A3.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/8A94ED90-9931-476A-BA86-570434DB54A3.png)
 
 In the interconnect-based configuration, multiple memory references can be in flight at a given moment, one to each connected memory module. In a bus-based configuration, the shared bus can only support one memory reference at a time.
 
@@ -140,7 +140,7 @@ Shared memory multiprocessors are also referred to as symmetric multiprocessors,
 
 Each of the CPUs in an SMP platform will have a cache.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/6FBD6B73-A5F8-45C8-AF72-BEBBB7EA9B47.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/6FBD6B73-A5F8-45C8-AF72-BEBBB7EA9B47.png)
 
 In general, access to the cache data is faster than access to data in main memory. Put another way, caches hide memory latency. This latency is even more pronounced in shared memory systems because there may be contention amongst different CPUs for the shared memory components. This contention will cause memory accesses to be delayed, making cached lookups appear that much faster.
 
@@ -155,7 +155,7 @@ A final alternative is to apply the write immediately to the cache, and perform 
 ## Cache Coherence
 What happens when multiple CPUs reference the same data?
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/B8415B29-8C25-4E4B-9735-AC1A2591DD34.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/B8415B29-8C25-4E4B-9735-AC1A2591DD34.png)
 
 On some architectures this problem needs to be dealt with completely in software; otherwise, the caches will be incoherent. For instance, if one CPU writes a new version of `X` to its cache, the hardware will not update the value across the other CPU caches. These architectures are called **non-cache-coherent** (NCC) architectures.
 
@@ -200,7 +200,7 @@ Finally, we would like a design that *reduces contention* on the shared bus or i
 ## Test and Set Spinlock
 Here is the API for the **test-and-set spinlock**.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/5CB26CEB-E617-4CBC-8123-3375C2C6875D.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/5CB26CEB-E617-4CBC-8123-3375C2C6875D.png)
 
 The `test_and_set` instruction is a very common atomic that most hardware platforms support.
 
@@ -219,7 +219,7 @@ The intuition is that CPUs can potentially test their cached copy of the lock an
 
 Here is the resulting spinlock `lock` operation.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/C46BDD52-2F95-4EB4-8FA3-D10C244CF546.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/C46BDD52-2F95-4EB4-8FA3-D10C244CF546.png)
 
 First we check if the lock is busy. Importantly, this check is performed against the cached value. As long as the lock is busy, we will stay in the while loop, and we won’t need to evaluate the second part of the predicate. Only when the lock becomes free - when `lock == busy` evaluates to false - do actually execute the atomic.
 
@@ -244,7 +244,7 @@ However, write-invalidate will invalidate the cached copy. Even if the value has
 ## Spinlock “Delay” Alternatives
 We can introduce a delay in order to deal with the problems introduced by the `test_and_set` and `test_and_test_and_set` spin locks.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/525BCCBF-AF42-4E79-A432-B1108B420862.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/525BCCBF-AF42-4E79-A432-B1108B420862.png)
 
 This implementation introduces a delay every time the thread notices that the lock is free.
 
@@ -260,7 +260,7 @@ From a delay perspective, clearly our performance has decreased. Once a thread s
 
 An alternative delay-based lock introduces a delay after each memory reference.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/7925E4F5-39B8-4964-94C8-495FF0644EE2.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/7925E4F5-39B8-4964-94C8-495FF0644EE2.png)
 -
 The main benefit of this is that it works on NCC architectures. Since a thread has to go to main memory on every reference on NCC architectures, introducing an artificial delay great decreases the number of reference the thread has to perform while spinning.
 
@@ -290,7 +290,7 @@ Alternatively, if we can prevent every thread from seeing that the lock has be f
 
 The lock that controls which thread(s) see that the lock is free at which time is the **queuing lock**.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/16939119-DCB7-4091-9ADF-06204B9178B4.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/16939119-DCB7-4091-9ADF-06204B9178B4.png)
 
 The queueing lock uses an array of flags with up to `n` elements, where `n` is the number of threads in the system. Each element in the array will have one of two values: either `has_lock` or `must_wait`.  In addition, one pointer will indicate the current lock holder (which will have a value of `has_lock`), and another pointer will reference the last element on the queue.
 
@@ -307,7 +307,7 @@ This strategy has two drawbacks. First, it requires support for the `read_and_in
 In addition, this lock requires much more space than other locks. All other locks required a single memory location to track the value of the lock. This lock requires `n` such locations, one for each thread.
 
 ## Queueing Lock Implementation
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/64C44444-FF38-4F73-80C2-60198EE906BD.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/64C44444-FF38-4F73-80C2-60198EE906BD.png)
 
 The atomic operation involves the variable `queuelast`, but the rest of the locking code doesn’t involve that variable. Any invalidation traffic concerned with cached values of `queuelock` aren’t going to concern the spinning that occurs on any of the elements in the flags array.
 
@@ -321,7 +321,7 @@ In order to realize these contention gains, we must have a cache coherent archit
 
 ## Spinlock Performance Comparisons
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/6D87B21E-1691-43A6-BB9D-9901D9B4E543.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/6D87B21E-1691-43A6-BB9D-9901D9B4E543.png)
 
 This figures shows measurements that were gathered from executing a program that had multiple processes. Each process executed a critical section in a loop, one million times. The number of processes in the system was varied such that there was only one process per processor.
 

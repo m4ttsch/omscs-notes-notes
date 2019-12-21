@@ -30,7 +30,7 @@ Now the local resolver will issue the same A record query to the edu servers. Th
 
 Finally, the local resolver will issue the same query to the authoritative server for the GATech hierarchy, at which point it may receive the actual IP address that corresponds to the domain name in question.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/FD099829-5459-48C5-978C-04801A6CA9E8.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/FD099829-5459-48C5-978C-04801A6CA9E8.png)
 
 ### Caching and TTL
 

@@ -8,7 +8,7 @@ lecture: introduction-to-cryptography
 ## Decryption
 **Encryption** is the process of converting data into a form that is unintelligible to the unintended or unauthorized party. We call the original data **plaintext**, and the unintelligible data **ciphertext**. An authorized party can reverse this process; that is, they can **decrypt** the ciphertext to reveal the plaintext.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/2BD18913-D8BD-40C3-B4BC-C101BAE8BA1B.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/2BD18913-D8BD-40C3-B4BC-C101BAE8BA1B.png)
 
 The decryption process always recovers the original plaintext because there is a one-to-one mapping between plaintext and ciphertext.
 
@@ -47,18 +47,18 @@ The attacker can also exploit implementation or systems issues. For example, res
 The weakest link in a security system is often the naive users who can be exploited using social engineering tricks. For example, an attacker can call an unsuspecting user and pretend to be a sysadmin who has forgotten their key.
 
 ## Encryption Attack Quiz
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/DAF48208-84E4-496E-B228-B4C8B0B841CA.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/DAF48208-84E4-496E-B228-B4C8B0B841CA.png)
 
 ## Encryption Attack Quiz Solution
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/462EA39F-5754-47D1-B624-335F35CF3647.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/462EA39F-5754-47D1-B624-335F35CF3647.png)
 
 In a brute-force attack, the attacker must try all potential keys. The only way to make this task more difficult is to increase the length of the key, thus increasing the size of the keyspace.
 
 ## Simple Ciphers Quiz
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/88162C87-3BE8-476A-BC36-E9B325A11A04.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/88162C87-3BE8-476A-BC36-E9B325A11A04.png)
 
 ## Simple Ciphers Quiz Solution
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/B6279774-5618-4B04-8081-1499BCF75299.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/B6279774-5618-4B04-8081-1499BCF75299.png)
 
 Since “A” maps to “D”, “B” maps to “E”, and so forth, we can just “rewind” each letter in the ciphertext by three to obtain the plaintext.
 
@@ -82,7 +82,7 @@ An attacker can use statistical analysis to decrypt the message directly or at l
 ## Letter Frequency of Ciphers
 Here is the frequency distribution of English letters.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/D1DF722B-FFB6-4EEF-A1BB-25E0B0A9480B.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/D1DF722B-FFB6-4EEF-A1BB-25E0B0A9480B.png)
 
 Using this frequency distribution, we should be able to make some educated guesses to decipher the following ciphertext:
 
@@ -109,17 +109,17 @@ ARE MADE
 In practice, we might also look at the frequency distribution of letter pairs and even triples in addition to single letters.
 
 ## Monoalphabetic Cipher Quiz
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/693FC6D9-96D7-4E8D-8736-0D2D2CD8165D.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/693FC6D9-96D7-4E8D-8736-0D2D2CD8165D.png)
 
 ## Monoalphabetic Cipher Quiz Solution
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/43C05969-AD5E-4A44-A49D-590BD32B62FD.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/43C05969-AD5E-4A44-A49D-590BD32B62FD.png)
 
 ## Vigenere Cipher
 While a substitution cipher uses a single alphabet, a **polyalphabetic cipher** uses multiple substitution alphabets. The Vigenere cipher is the most well-known polyalphabetic cipher.
 
 We can represent the Vigenere translation with the following matrix, `M`, whereby the ciphertext for a given plaintext `P` and key `K` resides at column  `P`, row `K` in `M`.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/957CCAC1-F7A3-458B-9BFD-B38188C4863E.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/957CCAC1-F7A3-458B-9BFD-B38188C4863E.png)
 
 
 Suppose we want to encrypt the plaintext “ATTACKATDAWN” using the Vigenere cipher with “LEMON” as the key.  Since Vigenere encryption proceeds characterwise, the key must be as long as the plaintext. We generate the **keystream** “LEMONLEMONLE” by repeating the key until the required number of characters are present.
@@ -129,10 +129,10 @@ To encrypt “A”, we look at column “A” and row “L” of the matrix. The
 We can continue in this fashion to transform “ATTACKATDAWN” into “LXFOPVEFRNHR”.
 
 ## Vigenere Cipher Quiz
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/C188A430-4FD1-41CB-B6F3-1991645DB0E1.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/C188A430-4FD1-41CB-B6F3-1991645DB0E1.png)
 
 ## Vigenere Cipher Quiz Solution
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/4F4575D2-8431-473F-9F1B-AF4BC57359C6.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/4F4575D2-8431-473F-9F1B-AF4BC57359C6.png)
 
 ## What Should be Kept Secret?
 While we should always keep our encryption keys a secret, our encryption algorithms should be public.
@@ -191,42 +191,42 @@ The one-way property of hash functions - a hash function should be easy to compu
 
 When a user authenticates themselves to a system, they often supply a password. The system hashes the supplied password and compares this hash against the saved hash of the password for that user. The system grants access if the two values match, denying access otherwise.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/AD80CACB-6AB4-4DA1-9911-CAF3D486D978.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/AD80CACB-6AB4-4DA1-9911-CAF3D486D978.png)
 
 The advantage of this scheme is that the system only has to store the hashed passwords. If the system chose to store the cleartext passwords, then anyone who has access to the system can impersonate anyone else registered on the system after reading the password file.
 
 If an attacker gains access to a system, they can steal the hashed passwords and compare the hashes against a dictionary of commonly-used passwords and their hashes to find matches. We must avoid using common passwords like “password” and “123456”.
 
 ## Hash Function Quiz
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/333D362C-324B-4AE9-9256-66111A0EAA3B.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/333D362C-324B-4AE9-9256-66111A0EAA3B.png)
 
 ## Hash Function Quiz Solution
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/9FCFF378-D376-46B5-8734-E5DB63549DCA.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/9FCFF378-D376-46B5-8734-E5DB63549DCA.png)
 
 The **avalanche effect** states that a small change in the input to a hash function causes a large change to the output. We want this in place as a way to obscure similar passwords. Without the avalanche effect, an attacker may be able to deduce password `A` from its hash value if he knows that the hash of a string `B` is similar to `A`’s hash.
 
 ## Symmetric Encryption
 Symmetric encryption uses the same key for both encryption and decryption. The encryption algorithm takes the plaintext and the key as input and produces the ciphertext using substitution and permutation. The decryption algorithm reverses the encryption process, reproducing the original plaintext from the key and the ciphertext.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/DE62E9FB-9D84-40E9-8188-FA81DA9D5E9C.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/DE62E9FB-9D84-40E9-8188-FA81DA9D5E9C.png)
 
 
 ## Comparison of Encryption Algorithms
 The most important symmetric algorithms are the [Data Encryption Standard](https://en.wikipedia.org/wiki/Data_Encryption_Standard) (DES) block cipher and the [Advanced Encryption Standard](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) (AES) block cipher. A **block cipher** encrypts plaintext in fixed-size blocks and produces ciphertext blocks of equal size. DES and AES use different key sizes and block lengths.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/B43E6CEB-8431-4738-AA7A-1DBAEEEFB90C.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/B43E6CEB-8431-4738-AA7A-1DBAEEEFB90C.png)
 
 Since a longer key indicates a larger keyspace, DES and AES can be distinguished by the amount of time necessary to successfully conduct a brute-force attack. The following table shows how much time is required to brute-force various ciphers with different key lengths.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/AC07E8B6-686C-4967-9320-8013388C4B49.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/AC07E8B6-686C-4967-9320-8013388C4B49.png)
 
 Note that DES - now seen as insecure - is breakable within an hour using a supercomputer. Ciphers with key lengths of 128 bits or greater are effectively unbreakable using modern processing power.
 
 ## Symmetric Encryption Quiz
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/1E31561D-622A-48AB-8B4B-D46F37A11AD1.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/1E31561D-622A-48AB-8B4B-D46F37A11AD1.png)
 
 ## Symmetric Encryption Quiz Solution
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/5F18ADCF-329B-4A37-9876-305990D371B2.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/5F18ADCF-329B-4A37-9876-305990D371B2.png)
 
 ## Asymmetric Encryption
 While symmetric encryption uses the same key for encryption and decryption, **asymmetric encryption** uses two keys: one for encryption and the other for decryption. The two keys are paired together mathematically such that if one key encrypts a message, only the other key can decrypt it.
@@ -235,13 +235,13 @@ To communicate using asymmetric encryption, a user must first generate a pair of
 
 If Bob wants to send a private message to Alice, Bob must first obtain Alice’s public key. With Alice’s public key in hand, Bob encrypts his message to Alice using an asymmetric encryption algorithm such as [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)). Bob then transmits the ciphertext to Alice, which she can decrypt using her private key.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/8215B680-F699-4223-BADB-64C030A6CF44.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/8215B680-F699-4223-BADB-64C030A6CF44.png)
 
 ## Asymmetric Encryption Quiz
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/2CAA6C73-F6D0-4797-B4A7-FABFA269EFF6.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/2CAA6C73-F6D0-4797-B4A7-FABFA269EFF6.png)
 
 ## Asymmetric Encryption Quiz Solution
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/1374D8F4-378E-4CD8-9B80-511E87EA2F3C.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/1374D8F4-378E-4CD8-9B80-511E87EA2F3C.png)
 
 ## Digital Signatures
 The public key in public-key encryption is genuinely public. Any user can broadcast their public key to the world for any other user to consume. Although this approach is very convenient, it has a significant weakness: any user can forge such a public announcement.
@@ -254,7 +254,7 @@ The CA then constructs Bob's certificate using his identification, his public ke
 
 Now Bob can send his public key certificate to Alice. When Alice receives the certificate, she can extract the key as well as the information about Bob and the certificate itself. Alice can then hash the certificate and use the CA's public key to decrypt the signed, appended hash. If the two hashes match, she can be sure that no one has tampered with the certificate.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/DA7D2F48-C67B-4112-94EC-2459B17D9893.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/DA7D2F48-C67B-4112-94EC-2459B17D9893.png)
 
 The underlying assumption is that the CA is a trusted party by everyone involved. In practice, the CA is a well-known company, such as VeriSign, Microsoft, Google, or Apple. Their public keys are already in your software - such as your browser - so they can automatically validate certificates that they have signed.
 
@@ -265,14 +265,14 @@ Suppose Alice and Bob wish to communicate securely.
 
 Alice first creates a random symmetric key that she wants to share with Bob and encrypts her message to Bob using this key. She then encrypts the symmetric key with Bob’s public key and transmits a **digital envelope** containing both the message and the encrypted key to Bob.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/68B24E81-900B-4504-8D8C-74143A815C77.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/68B24E81-900B-4504-8D8C-74143A815C77.png)
 
 When Bob receives the envelope, he can use his private key to decrypt the encrypted symmetric key. With the decrypted key in hand, he can decrypt the actual message from Alice.
 
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/258777EB-CFF5-4D68-B65F-793FFE4B1737.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/258777EB-CFF5-4D68-B65F-793FFE4B1737.png)
 
 ## Encryption Quiz
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/623ADEEA-F8E3-4CC7-A61B-51EC26C8F93B.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/623ADEEA-F8E3-4CC7-A61B-51EC26C8F93B.png)
 
 ## Encryption Quiz Solution
-![](https://omscs-notes.s3.us-east-2.amazonaws.com/CB248B54-A4DA-49D9-A9DC-477AE73A38B3.png)
+![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/CB248B54-A4DA-49D9-A9DC-477AE73A38B3.png)
