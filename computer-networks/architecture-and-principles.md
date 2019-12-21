@@ -7,10 +7,10 @@ lecture: architecture-and-principles
 
 ## A Brief History of the Internet
 ### ARPANet Late 1960s
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/3AB91C8F-7A57-4479-B4EE-F209C0BDAE24.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/3AB91C8F-7A57-4479-B4EE-F209C0BDAE24.png)
 
 ### ARPANet 1974
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/54A8AD53-4B1B-4F60-9A97-E67B2A80ACC5.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/54A8AD53-4B1B-4F60-9A97-E67B2A80ACC5.png)
 
 Other networks included:
 - SAT Networks (Satellite)
@@ -18,7 +18,7 @@ Other networks included:
 - Ethernet local area networks (LANs)
 
 ### Internet Host Growth
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/3E697E92-D6E9-4945-8555-FFE5B2BDB8D7.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/3E697E92-D6E9-4945-8555-FFE5B2BDB8D7.png)
 
 Growth markers include:
 - DNS (1982)
@@ -92,7 +92,7 @@ Below the link layer, we have the physical layer, which include protocols such a
 
 The most critical aspect of this design is that the network layer essentially only has one protocol in use, the internet protocol. Every device on the network must speak IP. As long as a device speaks IP, it can get on the internet.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/BA147DFC-0C94-4469-BAE1-282BFE84AE62.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/BA147DFC-0C94-4469-BAE1-282BFE84AE62.png)
 
 The design is sometimes called “IP over anything” or “anything over IP”.
 
@@ -159,7 +159,7 @@ Sometimes the end to end argument is summarized as **dumb network, intelligent e
 ## File Transfer
 Let’s suppose that computer A wants to send a file to computer B.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/0C84D6AA-19CA-4EA2-B2C5-A93938F552DE.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/0C84D6AA-19CA-4EA2-B2C5-A93938F552DE.png)
 
 There can be errors in every single step of this transfer.
 
@@ -204,7 +204,7 @@ For outbound traffic the NAT creates a table entry, mapping the device’s priva
 
 For inbound traffic to the network, the NAT checks the destination port on the packet, and based on the port it rewrites the destination IP address and port to the private IP address in the table before forwarding the traffic to a local device in the home network.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/14BE0D80-3EEF-4696-9472-A857839EAC86.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/14BE0D80-3EEF-4696-9472-A857839EAC86.png)
 
 The NAT clearly violates the end to end principle because machines behind the NAT are not globally addressable, or routable. Put another way, other hosts on the public internet cannot initiate inbound connections to these devices behind the NAT.
 

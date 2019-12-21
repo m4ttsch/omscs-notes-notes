@@ -95,7 +95,7 @@ Zero-day attacks are particular virulent because the worm can spread extremely q
 ## Modeling Fast-Spreading Worms
 Here is a plot showing the infection rate of the Code Red 1 v2 worm, which ultimately infected 350k vulnerable hosts.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/F1B2CB50-9BCA-466B-8C81-D59B9D58FCE7.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/F1B2CB50-9BCA-466B-8C81-D59B9D58FCE7.png)
 
 The worm is effectively dormant, or at least spreading very slowly, for quite a period of time. Then there is an inflection point, at which point the infection rate becomes exponential.
 At some later point infections slow, and the infection rate ultimately plateaus, presumably after all the infected hosts have been found.
@@ -117,7 +117,7 @@ This tells us that if we want to design a very fast spreading worm, then we shou
 ## Increasing Compromise Rate
 One possible way to increase the initial compromise rate is to create a **hit list**, or list of vulnerable hosts ahead of time.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/F1B2CB50-9BCA-466B-8C81-D59B9D58FCE7.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/F1B2CB50-9BCA-466B-8C81-D59B9D58FCE7.png)
 
 From this infection curve, we can see that the time to infect the first ten thousand hosts dominates the total infection time.
 

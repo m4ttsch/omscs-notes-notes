@@ -22,7 +22,7 @@ Once we establish the source of a request, the next step is **authorization**. I
 
 Once authentication and authorization are complete, then the operating system can allow access to the protected hardware resources.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/A30BC14D-0AD8-446B-B81B-DE77032DFF5D.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/A30BC14D-0AD8-446B-B81B-DE77032DFF5D.png)
 
 The operating system needs to know who is making a request for a protected resource.
 
@@ -48,10 +48,10 @@ In other words, we don’t want to have any *false positives*. This means that w
 Authentication systems that have low false positive rates are said to have **authenticity**. That is, these systems ensure that they only authenticate users with authentic claims to their identity.
 
 ## Authentication Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/196A1024-D729-4CE2-BA23-5C8D8CD10B6B.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/196A1024-D729-4CE2-BA23-5C8D8CD10B6B.png)
 
 ## Authentication Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/57996615-B926-4F51-BF29-E3372F1A5C63.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/57996615-B926-4F51-BF29-E3372F1A5C63.png)
 
 If someone steals your phone, you will be thankful for your lock screen/passcode.
 
@@ -66,7 +66,7 @@ Finally, authentication can be implemented using something that the user is. For
 
 Here is a diagram illustrating the basic steps in an authentication interaction between as user and a system.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/B148F4BD-E1C1-4E73-A1DD-37918E708306.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/B148F4BD-E1C1-4E73-A1DD-37918E708306.png)
 
 The user first comes to the system and requests access to it. In this request they claim an identity and provide a means of verifying that identity.
 
@@ -79,18 +79,18 @@ If the check fails, then the system believes that the user has not provided the 
 In this case, the system doesn’t have the right match and authentication fails.
 
 ## Login Attacks Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/5A9CA9D1-FD6A-413F-9DF6-43B0D94BBE71.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/5A9CA9D1-FD6A-413F-9DF6-43B0D94BBE71.png)
 
 ## Login Attacks Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/DBB01EA0-AF2A-4894-96DF-5D34EEC42A10.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/DBB01EA0-AF2A-4894-96DF-5D34EEC42A10.png)
 
 Remember, the positive event is gaining access to the system. A false positive is gaining access erroneously. An attacker authenticating as someone else is a false positive.
 
 ## Implementation Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/6E147430-22A9-4286-A6F3-475688360A5A.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/6E147430-22A9-4286-A6F3-475688360A5A.png)
 
 ## Implementation Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/CC89677E-5EA4-41E8-899B-5697A658BA99.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/CC89677E-5EA4-41E8-899B-5697A658BA99.png)
 
 ## Threat Modeling of the Password Method
 How can we attack password-based authentication?
@@ -113,10 +113,10 @@ In addition, the display and keyboard must be connected to the CPU on which the 
 Sometimes, visual feedback can be provided to assure the user that they are using the trusted path, such as a certain type of display on a computer monitor or a light on a keyboard.
 
 ## Password Popularity Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/7E55E7C7-D42D-49D1-8BD8-426BFA142037.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/7E55E7C7-D42D-49D1-8BD8-426BFA142037.png)
 
 ## Password Popularity Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/3F2C0344-3371-466B-B6CF-D7D1E177661C.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/3F2C0344-3371-466B-B6CF-D7D1E177661C.png)
 
 If we are attacking systems, we might get the best bang for our buck trying these passwords.
 
@@ -178,24 +178,24 @@ Dictionary attacks are examples of an **offline attack**, whereby the malicious 
 In offline attacks, the attacker has plenty of time to test a wide value of common passwords and hash functions against a stolen password file.
 
 ## Password Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/24F5D97B-1D55-46CD-B2D8-8E795B30BA8F.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/24F5D97B-1D55-46CD-B2D8-8E795B30BA8F.png)
 
 ## Password Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/31FE2544-CBD2-4906-B310-7F05DC21E645.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/31FE2544-CBD2-4906-B310-7F05DC21E645.png)
 
 A trusted path ensures that there is no application between the user and the operating system. Without this path, malicious programs may intercept login credentials.
 
 ## Hashed Passwords Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/C4A2AD00-738F-455D-830F-718C3ED2205D.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/C4A2AD00-738F-455D-830F-718C3ED2205D.png)
 
 ## Hashed Passwords Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/2F6B2EAE-5899-4DE4-B41A-49697B251132.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/2F6B2EAE-5899-4DE4-B41A-49697B251132.png)
 
 ## Hash Function Characteristics Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/3F37F04D-3EC1-4EA7-A0F4-C3EE3098D70D.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/3F37F04D-3EC1-4EA7-A0F4-C3EE3098D70D.png)
 
 ## Hash Function Characteristics Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/245963DD-ABEE-4364-96FA-16B7753AAD9C.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/245963DD-ABEE-4364-96FA-16B7753AAD9C.png)
 
 ## Brute Force Guessing of Passwords
 If an attacker has a system password file, how hard is it for them to brute force hash every single possible password?
@@ -228,7 +228,7 @@ To avoid this situation, we can add a **salt** - a random number - to each passw
 Since the hashed value is derived from the salt and the password, the salt must be stored in the password file with the hashed value.
 
 ## Brute Force Figure
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/85645D9B-66D3-4EE4-86A6-A71645CCAC9D.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/85645D9B-66D3-4EE4-86A6-A71645CCAC9D.png)
 
 An enrolled user attempts to authenticate with the system by supplying a user id and a password.
 
@@ -239,26 +239,26 @@ The system then takes the supplied password, and the saved salt, and runs them b
 It is important to note that the hash function used by the system is intentionally slow. This is done to ensure that brute force attacks take much longer.
 
 ## Unique PINS Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/C7E9CD09-30CD-4A70-A3E8-12CA15DB1769.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/C7E9CD09-30CD-4A70-A3E8-12CA15DB1769.png)
 
 ## Unique PINS Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/B3B14694-D6EC-4C26-B0F3-C00DBB302AB8.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/B3B14694-D6EC-4C26-B0F3-C00DBB302AB8.png)
 
 With ten options for the first digit, ten options for the second digit, and so on, the total number of four digit pins is 10 * 10 * 10 * 10, or `10^4`, or 10,000.
 
 ## Brute Force Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/F88846E5-1F09-4695-9ABA-9C6786066E21.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/F88846E5-1F09-4695-9ABA-9C6786066E21.png)
 
 ## Brute Force Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/0EA2B5B0-F329-4B96-80EA-1BF697743D43.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/0EA2B5B0-F329-4B96-80EA-1BF697743D43.png)
 
 With 72 options for each other six characters, the total number of unique passwords is 72^6, which is the number of attempts the hacker will have to make in the very worst case.
 
 ## Touch Screen Passwords Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/AB789F7E-C3A5-4938-B5C9-58BF3C3424D9.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/AB789F7E-C3A5-4938-B5C9-58BF3C3424D9.png)
 
 ## Touch Screen Passwords Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/D02FF363-D3A3-4D71-B4E6-E5A137CE04A8.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/D02FF363-D3A3-4D71-B4E6-E5A137CE04A8.png)
 
 Basically, the idea here is that attackers will likely not have to exhaustively search the space of possible patterns because biases exist that greatly shrink this space into a much smaller space of much more probable patterns.
 
@@ -324,7 +324,7 @@ The system will have to pick a certain threshold of similarity by which the fals
 False negatives - denying valid users access - hurts usability while false positives - allowing Alice to authenticate as Bob - is insecure.
 
 ### Implementing Biometric Authentication
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/25D9B1BF-8B63-4958-9830-CA2335C34FB8.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/25D9B1BF-8B63-4958-9830-CA2335C34FB8.png)
 
 After a user supplies their identity to a system, the biometric sensors capture the biometric data of interest.
 
@@ -350,25 +350,25 @@ When we are authenticating with services over the open Internet, we no longer ha
 Cryptography helps secure network communication through encryption and shared secrets. Of course, this doesn’t help against certain *man-in-the-middle* attacks.
 
 ## Multi-factor Authentication Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/41CFA250-2487-4089-A2D7-D01CC482495F.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/41CFA250-2487-4089-A2D7-D01CC482495F.png)
 
 ## Multi-factor Authentication Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/CC9A6A59-47B9-465A-BCAD-4F0257BE84A5.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/CC9A6A59-47B9-465A-BCAD-4F0257BE84A5.png)
 
 Remember, a false positive occurs when a malicious user is granted access to the system as a valid user. The likelihood of this happening decreases when multiple authentication components are employed by the system.
 
 ## Chip and Pin Authentication Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/77924BCE-4594-4893-B02E-08E46A624821.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/77924BCE-4594-4893-B02E-08E46A624821.png)
 
 ## Chip and Pin Authentication Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/4668FB80-8C96-4083-A753-7E4A41F8CC1D.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/4668FB80-8C96-4083-A753-7E4A41F8CC1D.png)
 
 Read more [here](http://www.darkreading.com/vulnerabilities---threats/flaws-in-emv-chip-and-pin-undercut-security/d/d-id/1269155) and [here](https://www.schneier.com/blog/archives/2014/05/preplay_attack_.html).
 
 ## Biometric Authentication Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/3D51F432-5BE0-41DC-BCE5-243BEEF20CA6.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/3D51F432-5BE0-41DC-BCE5-243BEEF20CA6.png)
 
 ## Biometric Authentication Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/62C0DA99-A728-42B8-867F-D0FB6CEB9DA2.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/62C0DA99-A728-42B8-867F-D0FB6CEB9DA2.png)
 
 As a basic example, consider someone recording your voice and playing it back to a voice-based authentication system.

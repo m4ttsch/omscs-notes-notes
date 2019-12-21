@@ -30,7 +30,7 @@ When we shape CBR traffic, we tend to shape according to the peak rate. VBR traf
 ## Leaky Bucket Traffic Shaping
 In a **leaky bucket** traffic shaper, traffic arrives in a bucket of size β and drains from the bucket at rate ρ. Each traffic flow has its own bucket.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/C15197CB-DE6B-48A5-A8CA-2218F942D846.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/C15197CB-DE6B-48A5-A8CA-2218F942D846.png)
 
 While traffic can flow into the bucket at any rate, it cannot drain from the bucket at a rate faster than ρ. Therefore, the maximum average rate that data can be sent through this bucket is ρ.
 
@@ -72,7 +72,7 @@ For this scenario, we might use a **token bucket**.
 
 In a token bucket, tokens arrive in a bucket at a rate ρ. Again, β is the capacity of the bucket. Traffic may arrive at an average rate and a peak rate.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/41551786-986F-4D91-8994-FC3FB14C32B6.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/41551786-986F-4D91-8994-FC3FB14C32B6.png)
 
 Traffic can be sent by the regulator as long as there are sufficient tokens in the bucket.
 
@@ -112,7 +112,7 @@ There is a need to limit how long a token bucket can sender can monopolize the n
 ## Policing With Token Buckets
 To apply policing to token buckets, one strategy is to use a **composite shaper**, which combines a token bucket and a leaky bucket.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/85D930D2-561B-4782-842B-B74301E3D3AC.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/85D930D2-561B-4782-842B-B74301E3D3AC.png)
 
 The combination of the two ensures that a flow’s data rate doesn’t exceed the average data rate enforced by the smooth leaky bucket.
 
@@ -123,7 +123,7 @@ The implementation is more complex, though, since each flow now requires two tim
 
 For example, if you subscribed at a rate of 10Mbps, power boost might allow you to send at a higher rate for some period of time before being shaped back to the rate at which you subscribed at.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/456DF464-7914-4DD3-BAA2-5265031AFE03.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/456DF464-7914-4DD3-BAA2-5265031AFE03.png)
 
 Power boost targets the spare capacity in the network for use by subscribers who don’t put sustained load on the network.
 
@@ -146,7 +146,7 @@ Suppose that a sender is sending at some rate `R` which is greater than their su
 
 How long can a sender send at rate `R`?
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/FFA084B1-B165-4D45-A23B-6EAC4122FB24.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/FFA084B1-B165-4D45-A23B-6EAC4122FB24.png)
 
 Given the diagram above, we need to solve for `d`.
 
@@ -155,7 +155,7 @@ We know that the β is `d * (R - r)` , so if we solve for `d`, we see that `d` i
 ## Examples of Power Boost
 Here is a graph (courtesy of the [BISmark project](http://projectbismark.net/)) measuring the power boost experienced by four different home networks - each with a different cable modem - connecting through Comcast.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/7ABA7499-AB4F-4436-95F6-FBEBC915C474.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/7ABA7499-AB4F-4436-95F6-FBEBC915C474.png)
 
 Different homes exhibit different shaping profiles: some have a very steady pattern, whereas others have a very erratic pattern.
 
@@ -164,7 +164,7 @@ In addition, it appears that there are two different tiers of higher throughput 
 ## Effects on Latency
 Even though power boost allows users to send at a higher traffic rate, users may experience high latency and loss over the duration that they are sending at this higher rate.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/C982E511-EE85-4B9A-B237-36D432639B98.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/C982E511-EE85-4B9A-B237-36D432639B98.png)
 
 The reason for this is that the access link may not be able to support the higher rate.
 
@@ -200,7 +200,7 @@ These larger buffers can be found in
 ## Buffer Bloat Example
 Let’s look at the round trip times for 3 different DSL routers.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/5EC1D656-591F-453A-AF2E-5A00FF66AB2F.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/5EC1D656-591F-453A-AF2E-5A00FF66AB2F.png)
 
 An upload was started at 30 seconds.
 

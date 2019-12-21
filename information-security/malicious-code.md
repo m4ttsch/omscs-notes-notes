@@ -6,10 +6,10 @@ lecture: malicious-code
 ---
 
 ## What is Malware Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/40637903-CAAE-402C-9F8D-DC289CB7EC62.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/40637903-CAAE-402C-9F8D-DC289CB7EC62.png)
 
 ## What is Malware Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/07625575-7DE3-4F7F-AEF7-5E0B1178E7A7.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/07625575-7DE3-4F7F-AEF7-5E0B1178E7A7.png)
 
 ## Types of Malware
 There are two major types of malware.
@@ -71,23 +71,23 @@ In the *triggering* phase,  the virus is activated for execution. A user clickin
 The final phase is the *execution* phase. In this phase, the virus actually performs its malicious work. For example, an executing virus might delete all of the files on disk.
 
 ## Host Required Malware Quiz 1
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/A4EDCDB2-1BCA-44CE-82D9-F9F87A38CED2.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/A4EDCDB2-1BCA-44CE-82D9-F9F87A38CED2.png)
 
 ## Host Required Malware Quiz 1 Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/5FECA411-7C95-4E9C-B485-2FB274E512F5.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/5FECA411-7C95-4E9C-B485-2FB274E512F5.png)
 
 ## Host Required Malware Quiz 2
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/21C54A27-F1F6-4A37-969F-A29DE164F9F5.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/21C54A27-F1F6-4A37-969F-A29DE164F9F5.png)
 
 ## Host Required Malware Quiz 2 Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/049C97B7-000C-4F42-8755-89BDE3A06DB9.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/049C97B7-000C-4F42-8755-89BDE3A06DB9.png)
 
 ## Virus Structure
 A virus infects a program by modifying the program code. In order to achieve this, the virus code has to be physically inserted into the program file.
 
 When an infected program runs, the virus code runs first. The virus code then runs the original program so that the user doesn’t suspect that the program has been infected. Finally, the virus code runs again, often to perform some cleanup to avoid detection.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/28595BDF-E52D-41AB-9E4D-19C299539E78.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/28595BDF-E52D-41AB-9E4D-19C299539E78.png)
 
 The first line of the infected program must ensure that the virus runs immediately. This can be achieved with an instruction that calls the `main` function of the virus.
 
@@ -119,7 +119,7 @@ Any of these viruses can be polymorphic.
 ## Boot Sector Virus
 In order to understand a boot sector virus, we need to understand how the boot sector works.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/D45893B7-A8E1-43B1-99FC-8276CC5145A1.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/D45893B7-A8E1-43B1-99FC-8276CC5145A1.png)
 
 A **boot sector** is a special sector on the hard drive of a system. When a system is booted, the code in the boot sector - called the **bootstrap loader** - always runs first.
 
@@ -131,7 +131,7 @@ During system boot, the virus performs its malicious functions,  such as infecti
 
 After the virus executes, it transfers control to the original bootstrap loader in order to give the appearance that the system is functioning normally.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/A9F823EB-31F6-4E93-8D78-1AD37DEE40C3.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/A9F823EB-31F6-4E93-8D78-1AD37DEE40C3.png)
 
 ## Macro Viruses
 A **macro** is a program embedded in a document, such as a Microsoft Word document. A macro typically contains instructions for some useful functions, such as opening a file or starting a new application.
@@ -147,10 +147,10 @@ The macro virus can perform malicious activities such as sending the infected do
 A macro virus can also copy its macro to the global macro file. Whenever a user opens a new document, this now global macro will be copied into the new document, meaning that all new documents on the user’s system will be infected.
 
 ## Types of Viruses Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/133BBEDD-CE14-4ED3-A8ED-48F539E3E52B.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/133BBEDD-CE14-4ED3-A8ED-48F539E3E52B.png)
 
 ## Types of Viruses Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/6294734B-447D-4C84-9F5E-C80BD8923832.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/6294734B-447D-4C84-9F5E-C80BD8923832.png)
 
 Macro viruses run when an infected document is opened with a given application. Boot sector viruses run before the operating system is loaded.
 
@@ -165,31 +165,31 @@ Similarly, when the user executes the `ps` command to see what programs are runn
 
 Here is the functional flow for listing files using the windows command `dir`.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/9474681E-8F39-4A87-B7A7-191C40CF07C0.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/9474681E-8F39-4A87-B7A7-191C40CF07C0.png)
 
 Before the rootkit has been embedded, here is what an operating system will typically return when the user lists the files in a directory.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/16203A74-AC28-4BD8-9E31-9A74AF188A49.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/16203A74-AC28-4BD8-9E31-9A74AF188A49.png)
 
 The installed rootkit intercepts any call to the operating system and then determines whether the call will reveal the malware. If so, the rootkit alters the result to hide the malware; otherwise, it passes the result to the caller unmodified.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/E559CAC9-6FCA-4ED3-AEF0-DBAD9ADDCE39.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/E559CAC9-6FCA-4ED3-AEF0-DBAD9ADDCE39.png)
 
 For example, the rootkit can intercept the directory listing from the `dir` command and remove the malware entry.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/E9070948-A413-4C12-9C50-22D1DDFD6A18.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/E9070948-A413-4C12-9C50-22D1DDFD6A18.png)
 
 ## Rootkit Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/F9D17F35-7B72-4538-9425-77C62F298C1D.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/F9D17F35-7B72-4538-9425-77C62F298C1D.png)
 
 ## Rootkit Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/F4D927F4-F0EF-4056-9F9C-3979A28E1375.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/F4D927F4-F0EF-4056-9F9C-3979A28E1375.png)
 
 ## Truth and Misconceptions Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/C55A0FCE-82C4-4243-83F9-9FE14B9B1982.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/C55A0FCE-82C4-4243-83F9-9FE14B9B1982.png)
 
 ## Truth and Misconceptions Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/FE1571D1-8225-4963-ABEA-379773BD8D9A.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/FE1571D1-8225-4963-ABEA-379773BD8D9A.png)
 
 ## Worms
 Worms are independent malicious programs that typically use network connections to spread from one system to another.
@@ -233,10 +233,10 @@ We also learned that we need to have a fast and coordinated response to a major 
 
 
 ## Worm Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/63C5BA47-1177-48B3-8C53-AB4B8BD90395.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/63C5BA47-1177-48B3-8C53-AB4B8BD90395.png)
 
 ## Worm Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/60DAF027-9368-40B6-AE36-FC6EA78B32B8.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/60DAF027-9368-40B6-AE36-FC6EA78B32B8.png)
 
 ## Malware Prevention & Detection Approaches
 We can prevent malware from infecting our computer systems  by limiting our contact with the outside world. In other words, if we don’t accept documents or programs from any external source, we can greatly reduce our chance of infection.
@@ -276,15 +276,15 @@ This strategy can also include a sandbox-based analysis. A **sandbox** is typica
 We can observe a suspicious executable in a sandbox first to ensure that it will not cause any damage to the system or network before allowing it to run outside of the sandbox.
 
 ## Malware Prevention & Detection Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/36682CCE-48D2-43A0-B174-A5558BA230E6.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/36682CCE-48D2-43A0-B174-A5558BA230E6.png)
 
 ## Malware Prevention & Detection Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/919A3EB0-92AE-4221-BFC5-D339E835C7E6.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/919A3EB0-92AE-4221-BFC5-D339E835C7E6.png)
 
 ## Most Expensive Worm Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/8C469D3D-9061-45F2-8B2F-53D35CBD5A30.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/8C469D3D-9061-45F2-8B2F-53D35CBD5A30.png)
 
 ## Most Expensive Worm Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/38A65997-26BC-4D80-A560-169AF0930940.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/38A65997-26BC-4D80-A560-169AF0930940.png)
 
 [Source](https://encyclopedia2.thefreedictionary.com/Top+10+Worst+Computer+Worms+of+All+Time)

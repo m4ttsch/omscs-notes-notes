@@ -48,7 +48,7 @@ Another common header is the user agent, which identifies the client software be
 
 ### Example
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/F07B7AFF-11C5-4CF6-B8AE-51F3E3F8B20A.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/F07B7AFF-11C5-4CF6-B8AE-51F3E3F8B20A.png)
 
 We can see the request line at the top, and the headers that follow.
 
@@ -98,7 +98,7 @@ The `Last-Modified` header indicates the last time the page was modified.
 
 ### Example
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/874E8181-EEAA-4485-ABCA-3212AAE39237.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/874E8181-EEAA-4485-ABCA-3212AAE39237.png)
 
 ## Early HTTP
 Early versions of HTTP only allowed one request/response per TCP connection.
@@ -153,7 +153,7 @@ Clients can be directed to a cache in multiple ways. In some cases, a user can c
 
 We can see the effects of caching through a quick experiment with google.com.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/F82D54D7-1DCA-4F20-A88B-61DAA9B01702.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/F82D54D7-1DCA-4F20-A88B-61DAA9B01702.png)
 
  We first use `dig` to retrieve the IP addresses for google.com, and when we `ping` one of the addresses, we see that the RTT is only 1ms.
 
@@ -216,7 +216,7 @@ Naming-based redirection provides significant flexibility in directing different
 ## Naming Based Redirection
 ### Symantec
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/C01D089F-608B-4A15-A587-5D6E84D556EC.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/C01D089F-608B-4A15-A587-5D6E84D556EC.png)
 
 When we look up the www.symantec.com from NYC, we don’t get an A record directly. Instead, we get a CNAME record pointing to a568.d.akamai.net. When we look up the CNAME, we see 2 corresponding IP addresses.
 
@@ -224,7 +224,7 @@ When we perform the same lookup from Boston, we still encounter the same CNAME r
 
 ### Youtube
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/8FF74067-35FC-45F2-80F9-18700FC128C7.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/8FF74067-35FC-45F2-80F9-18700FC128C7.png)
 
 When we `ping` youtube.com, we can see that we get very low latency: on the order of 1ms.
 
@@ -346,7 +346,7 @@ The idea in chord is that a key is stored at its successor which is the node wit
 
 Imagine the following setup, with node IDs in green and key IDs in orange.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/93346A6B-FD86-4ECA-8927-02360DB64687.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/93346A6B-FD86-4ECA-8927-02360DB64687.png)
 
 In this case, the node with ID 32 will be responsible for the key with ID 17. The node with ID 43 will be responsible for the key with ID 42, and so on.
 
@@ -366,7 +366,7 @@ With finger tables, every node knows `m` other nodes in the ring, and the distan
 
 Let’s construct the finger table for node 10.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/5E9E22A6-66E1-4CCB-A958-696F9A3BB6D0.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/5E9E22A6-66E1-4CCB-A958-696F9A3BB6D0.png)
 
 The fingers of node 10 would be
 - 10 + 2^0 = 10 + 1 = 11
@@ -392,7 +392,7 @@ When a node joins, we must first initiate the fingers of the new node and then u
 
 In addition we must transfer the keys from the successor to the new node.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/FBF68057-F611-4208-9689-38C96E64D4D5.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/FBF68057-F611-4208-9689-38C96E64D4D5.png)
 
 For example, when we add node with ID 59, we must transfer the ownership of key with ID 54 from node with ID 1 to the new node.
 

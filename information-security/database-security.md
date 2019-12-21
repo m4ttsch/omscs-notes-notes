@@ -21,18 +21,18 @@ For example, a user could query a database of employees and ask for a view that 
 Database views are powerful tool for achieving access control. A database owner can extract some subset of the data and give other users access to only that subset.
 
 ## Database Threats Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/DF4376DB-23F1-4197-A713-0D67A365E539.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/DF4376DB-23F1-4197-A713-0D67A365E539.png)
 
 ## Database Threats Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/EEA0ABC9-F002-4A9D-8654-81E456D1921D.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/EEA0ABC9-F002-4A9D-8654-81E456D1921D.png)
 
 [Source](http://www.oracle.com/us/products/database/2014-ioug-dba-security-superhero-2338955.pdf)
 
 ## Database Hacking Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/BC720089-2712-4976-B060-FF39DC587337.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/BC720089-2712-4976-B060-FF39DC587337.png)
 
 ## Database Hacking Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/027DCEF8-3F17-4FD1-8D27-191328C18040.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/027DCEF8-3F17-4FD1-8D27-191328C18040.png)
 
 
 ## Relational Database Systems (RDBS) Part 1
@@ -61,7 +61,7 @@ Some of the columns in a table hold special values called **keys**. Keys uniquel
 ## Relational Database Systems (RDBS) Part 2
 Let’s look at an example of a relation that contains information about employees.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/66526878-6A01-4729-B187-6E1EB0FAC626.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/66526878-6A01-4729-B187-6E1EB0FAC626.png)
 
 This table defines the following columns:
 - Employee name
@@ -97,18 +97,18 @@ WHERE DID = '15';
 ```
 
 ## Key Value Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/83E4EFF2-3CED-4058-AD08-39D3DEFC3A62.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/83E4EFF2-3CED-4058-AD08-39D3DEFC3A62.png)
 
 ## Key Value Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/66B99FB2-D304-43C2-979E-BDA1CAD672A8.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/66B99FB2-D304-43C2-979E-BDA1CAD672A8.png)
 
 A primary key uniquely identifies a row.
 
 ## Database Views Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/12C1B7B6-9B61-4C2A-B9CB-55D63FB07E0A.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/12C1B7B6-9B61-4C2A-B9CB-55D63FB07E0A.png)
 
 ## Database Views Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/8046AD01-9F33-468B-9F3E-2A1D04087814.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/8046AD01-9F33-468B-9F3E-2A1D04087814.png)
 
 ## Database Access Control
 There are two basic SQL commands for implementing database access control.
@@ -164,22 +164,22 @@ REVOKE SELECT ON ANY TABLE FROM Alice;
 ```
 
 ## Database Access Control Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/7D499BB8-5C13-4A36-8CF3-0C3E8F301532.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/7D499BB8-5C13-4A36-8CF3-0C3E8F301532.png)
 
 ## Database Access Control Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/11C78BAE-41F8-42FC-8AFE-F234639D2D20.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/11C78BAE-41F8-42FC-8AFE-F234639D2D20.png)
 
 ## Cascading Authorizations Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/31AD71A2-E008-405D-8F49-8C4A9CA746D9.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/31AD71A2-E008-405D-8F49-8C4A9CA746D9.png)
 
 ## Cascading Authorizations Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/4A856303-A0BB-473A-8E98-41306F1E2AE4.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/4A856303-A0BB-473A-8E98-41306F1E2AE4.png)
 
 ## DAC or MAC Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/5947BE2E-48E7-4792-A77C-432EBC939BF2.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/5947BE2E-48E7-4792-A77C-432EBC939BF2.png)
 
 ## DAC or MAC Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/6AED63B6-5A43-4EF8-BDCF-3624B7789381.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/6AED63B6-5A43-4EF8-BDCF-3624B7789381.png)
 
 ## Attacks on Databases: SQL Injections Part 1
 One famous attack that is carried out against databases is the SQL injection attack.
@@ -237,16 +237,16 @@ As always, input checking remains a crucial defense for blocking SQL injection. 
 In addition, the Open Web Application Security Project (OWASP)  defines a list of [ten proactive controls](https://www.owasp.org/index.php/OWASP_Proactive_Controls) for guarding against common software vulnerabilities, including SQL injection.
 
 ## SQL Login Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/29ADEB96-538D-470A-85E1-28D2D25B40AC.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/29ADEB96-538D-470A-85E1-28D2D25B40AC.png)
 
 ## SQL Login Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/6FF291D3-98CE-4AD1-93D7-9A93431D5335.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/6FF291D3-98CE-4AD1-93D7-9A93431D5335.png)
 
 ## SQL Login Quiz 2
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/7BA1E896-52B9-43EB-A710-2EB5C7170141.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/7BA1E896-52B9-43EB-A710-2EB5C7170141.png)
 
 ## SQL Login Quiz 2 Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/87FB43B8-EEE7-4BB8-A3CE-10DFA9911FAE.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/87FB43B8-EEE7-4BB8-A3CE-10DFA9911FAE.png)
 
 ## Inference Attacks on Databases Part 1
 **Inference attacks** occur when a user is able to make inferences about data that they are not authorized to access based on queries that they are authorized to execute.
@@ -309,15 +309,15 @@ In addition to de-identification and anonymization, we can use **generalization*
 This still may not be sufficient to defend against inference attacks if the data is not diverse enough.
 
 ## SQL Inference Attack Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/972B9CAC-ECD3-40CF-9187-8CA4B3F1E280.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/972B9CAC-ECD3-40CF-9187-8CA4B3F1E280.png)
 
 ## SQL Inference Attack Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/379AB37B-1684-45F6-AD8D-54C00A35629B.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/379AB37B-1684-45F6-AD8D-54C00A35629B.png)
 
 ## SQL Inference Attack Quiz 2
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/0C1BADC4-C735-4958-9274-F9F2DB3E9411.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/0C1BADC4-C735-4958-9274-F9F2DB3E9411.png)
 
 ## SQL Inference Attack Quiz 2 Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/13759837-A50F-4319-9A86-FDD985C5EE27.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/13759837-A50F-4319-9A86-FDD985C5EE27.png)
 
 Consider the case where one student from a region containing two students retrieves the grade information about that region.

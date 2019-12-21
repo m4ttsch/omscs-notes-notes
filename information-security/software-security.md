@@ -55,10 +55,10 @@ We then ask the user for their password (`gets`). Their response gets read into 
 Finally, if `allow_login` is `0`, we print “Login request rejected”. Otherwise, we print “Login request allowed”.
 
 ## Stack Access Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/429E7357-0C4A-4E2E-B10B-474694620410.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/429E7357-0C4A-4E2E-B10B-474694620410.png)
 
 ## Stack Access Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/1094841F-A963-4260-BA08-4E5F4BB130B5.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/1094841F-A963-4260-BA08-4E5F4BB130B5.png)
 
 Since `allow_login`, `pwdstr` and `targetpwd` are all local variables to `main`, any access of them will access memory locations inside the stack frame for `main`.
 
@@ -76,10 +76,10 @@ We can assume that the stack grows from high (numerically larger) addresses to l
 This means that the stack pointer points to the highest memory address at the beginning of program execution, and decreases as frames are pushed onto the stack.
 
 ## Attacker Code Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/4E905E4F-F658-4D3E-8A95-BC7BD589593A.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/4E905E4F-F658-4D3E-8A95-BC7BD589593A.png)
 
 ## Attacker Code Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/82AEC50D-14C8-41D9-98DB-930CF11CA87E.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/82AEC50D-14C8-41D9-98DB-930CF11CA87E.png)
 
 Remember that the stack pointer moves down in memory as space is allocated. This means that `allow_login` will receive memory starting at the highest feasible address, and `pwdstr` will receive memory starting at the next highest feasible address.
 
@@ -99,7 +99,7 @@ These are the two basic outcomes for a naive attack: either the attacker guesses
 ## Attacker Code Execution Part 2
 In order to understand how an attacker can use buffer overflow to gain control of this program, we first need to look at how the data associated with this program is laid out on the stack.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/5B523282-ED4E-4694-9701-C7552C481019.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/5B523282-ED4E-4694-9701-C7552C481019.png)
 
 We know that the stack grows from higher memory addresses to lower memory address.
 
@@ -131,10 +131,10 @@ If we do this, what will happen?
 Remember, the point of the return address is to give the function a location to transfer control to when it is done executing. If we overwrite that address, the function will “return” to the address we supply and begin executing instructions from that address.
 
 ## Buffer Overflow Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/AF1E8B07-5821-4767-976D-54A9EE56319C.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/AF1E8B07-5821-4767-976D-54A9EE56319C.png)
 
 ## Buffer Overflow Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/07B11C34-5DB8-4233-BC74-E2075631A2E1.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/07B11C34-5DB8-4233-BC74-E2075631A2E1.png)
 
 The first answer is wrong. The target password can be as long as you’d like, but if the attacker submits a longer password, the overflow will still happen.
 
@@ -173,10 +173,10 @@ This can be a set of privileges associated with a certain user and/or group. Alt
 This is the best case scenario for the attacker, and the worst case scenario for the host.
 
 ## NVD Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/61204FE2-AD15-4170-BCB4-48EC8A23F6C1.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/61204FE2-AD15-4170-BCB4-48EC8A23F6C1.png)
 
 ## NVD Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/FFB98B29-CFB5-4F45-8359-BC6804E3D04D.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/FFB98B29-CFB5-4F45-8359-BC6804E3D04D.png)
 
 ## Return to libc
 So far we have talked about stack buffer overflows. There are other variations of buffer overflows.
@@ -246,10 +246,10 @@ One issue with automated analysis tools is that they may have many false positiv
 There is no excuse for writing code that is insecure!
 
 ## Strongly Vs Weakly Typed Language Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/041BD85C-82D0-4D30-AABA-C35771B37CB3.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/041BD85C-82D0-4D30-AABA-C35771B37CB3.png)
 
 ## Strongly Vs Weakly Typed Language Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/BB9848DB-A87B-4B54-B4FE-4CDB1A596F7A.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/BB9848DB-A87B-4B54-B4FE-4CDB1A596F7A.png)
 
 
 ## Analysis Tools
@@ -291,10 +291,10 @@ There is no legitimate reason for programs to execute instructions that are stor
 Many modern operating systems implement such [executable-space protection](https://en.wikipedia.org/wiki/Executable_space_protection).
 
 ## Buffer Overflow Attacks Quiz
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/0AF6ADAD-2A2D-435A-BE02-786B77295BA2.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/0AF6ADAD-2A2D-435A-BE02-786B77295BA2.png)
 
 ## Buffer Overflow Attacks Quiz Solution
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/618CEAB7-54EA-4819-9CE8-12CA704FC5C1.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/618CEAB7-54EA-4819-9CE8-12CA704FC5C1.png)
 
 Stack canaries do prevent return-to-libc buffer overflow attacks, because stack canaries prevent return address overwriting. Without overwriting the return address, a function can only return to the function that called it.
 

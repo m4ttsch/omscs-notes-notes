@@ -11,7 +11,7 @@ What is congestion control and why do we need it? Simply put, the goal of conges
 ## Congestion
 Suppose that we have the following network.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/5CB6F6BB-9640-44EF-81F0-05CAC17D71D1.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/5CB6F6BB-9640-44EF-81F0-05CAC17D71D1.png)
 
 The two senders on the left can send at rates of 10Mbps and 100Mbps, respectively. The link to the host on the right, however, only has a capacity of 1.5Mbps.
 
@@ -75,11 +75,11 @@ The sender uses acknowledgements from the receiver to clock the retransmission o
 
 Suppose the sender’s window is four packets.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/F4A84FD2-7D9A-413E-B55E-710C8B1BB0FD.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/F4A84FD2-7D9A-413E-B55E-710C8B1BB0FD.png)
 
 At this point, there are four packets outstanding in the network, and the sender cannot send more packets until it has received an acknowledgement from the receiver.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/9FF8D5E9-B850-4333-BB90-DF7EAE151A9A.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/9FF8D5E9-B850-4333-BB90-DF7EAE151A9A.png)
 
 When the acknowledgement is received, the sender can send another packet. Thus, there are still four packets in flight after the first “ACK” has been received.
 
@@ -107,13 +107,13 @@ We can represent fairness and efficiency in terms of a phase plot where each axi
 
 Suppose we have two users in the network, and their sending rates are `x1` and `x2`. If the capacity of the network is `C`, then we can represent the full utilization of the network as the line `x1 + x2 = C`.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/536AECC5-695C-4823-AD2F-8AFDF91930B6.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/536AECC5-695C-4823-AD2F-8AFDF91930B6.png)
 
 Anything to the left of this line represents under utilization of the network, and anything to the right of this line represents over utilization of the network.
 
 We can also represent “fairness” as the line `x1 = x2`.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/C5FCFFFE-F3B7-44E2-9FC1-365AD9148A09.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/C5FCFFFE-F3B7-44E2-9FC1-365AD9148A09.png)
 
 The optimal network resource allocation in this case is the intersection of the two lines; namely, where both senders have equal rates that utilize the network completely.
 
@@ -121,13 +121,13 @@ We can use this phase diagram to understand why senders who use AIMD converge to
 
 Let’s suppose that we start at the following operating point.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/04E043CB-E549-4C5B-9CBA-6A8FF52A1CD4.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/04E043CB-E549-4C5B-9CBA-6A8FF52A1CD4.png)
 
 At this point, both senders will additively increase their sending rates. This results in moving along a line that is parallel to the line `x1 = x2` since both senders are increasing their rate by the same amount.
 
 Additive increase will continue until the network becomes overloaded.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/780522D3-3E8E-4A98-95F3-81CC6AC66730.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/780522D3-3E8E-4A98-95F3-81CC6AC66730.png)
 
 At this point, the senders will see a packet drop and perform multiplicative decrease, cutting their rates by some constant factor.
 
@@ -135,7 +135,7 @@ This new operating point will fall closer to the line of “fairness”.
 
 At this point, both senders will additively increase their sending rates again. This results in moving along a line that is parallel to the line `x1 = x2` since both senders are increasing their rate by the same amount.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/F255DD6B-C4CA-40B3-916D-E8C70DB8FA03.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/F255DD6B-C4CA-40B3-916D-E8C70DB8FA03.png)
 
 Eventually, the senders will reach the optimal operating point.
 
@@ -148,7 +148,7 @@ To visualize the sender’s sending rate over time, we can look at a **TCP sawto
 
 This particular diagram plots the congestion window (in packets) over time (in RTTs).
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/F54C12E9-E632-47F7-87B9-4DFCFE8FABCF.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/F54C12E9-E632-47F7-87B9-4DFCFE8FABCF.png)
 
 TCP periodically probes for available bandwidth by increasing its congestion window using additive increase.
 
@@ -166,12 +166,12 @@ We can calculate the throughput of the sender by taking the average window size 
 
 If we want to relate the throughput to the loss rate
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/C92ED629-7024-4C3A-B89B-974AB27C657A.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/C92ED629-7024-4C3A-B89B-974AB27C657A.png)
 
 ## Data Centers and TCP Incast
 A typical data center consists a set of server racks - each holding a large number of servers - the switches connecting those racks, and the connecting links that connect those switches to other parts of the topology.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/89AAC436-7785-4304-B61B-0E99974CEA1E.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/89AAC436-7785-4304-B61B-0E99974CEA1E.png)
 
 One characteristic of a data center is a high fan-in: there are many leaves (servers) relative to the higher layers in the tree (switches).
 
@@ -202,7 +202,7 @@ This would reduce the retransmission timeout for TCP, which would improve the sy
 
 Another way to reduce the network load is to have the client acknowledge every other packet, instead of every packet.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/326BEC5D-C939-47D7-80EA-6B81500A48F0.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/326BEC5D-C939-47D7-80EA-6B81500A48F0.png)
 
 
 ## Multimedia and Streaming
@@ -233,7 +233,7 @@ We can sample the audio signal at fixed intervals and represent the amplitude of
 
 For example, if our dynamic range was from 0 to 15, we could **quantize** the amplitude of the signal such that each sample could be represented with 4 bits.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/919309B3-9B08-4715-A673-FD8BDF164C35.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/919309B3-9B08-4715-A673-FD8BDF164C35.png)
 
 ## Video Compression
 A video is a sequence of images.
@@ -242,11 +242,11 @@ A video is a sequence of images.
 
 For example, if a person is walking towards a tree, two consecutive images might be almost the same except for the person, who will be in a slightly different position.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/787B3138-3C7D-4FDF-9308-8A8E050C5DF9.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/787B3138-3C7D-4FDF-9308-8A8E050C5DF9.png)
 
 Video compression uses a combination of static image compression on reference/anchor (I) frames and derived (P) frames.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/D6583164-3286-4CCD-A48A-F690367A0BC4.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/D6583164-3286-4CCD-A48A-F690367A0BC4.png)
 
 If we take the I frame and divide it into blocks, we can then see that the P frame is almost the same except for a few blocks that can be represented in terms of the original iframe blocks plus a few motion vectors.
 
@@ -272,7 +272,7 @@ The rate at which packets are generated does not necessarily equal the rate at w
 
 Network traffic may introduce variable delay in packet transmission from the server to the client.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/BA0EF7C3-072E-45D3-800F-8D7A95724B72.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/BA0EF7C3-072E-45D3-800F-8D7A95724B72.png)
 
 We want to avoid these types of delays when we play out.
 
@@ -336,7 +336,7 @@ Applications compete for bandwidth.
 
 Consider a VoIP application and an FTP application that are sharing the same link.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/7B403D41-688C-4390-AF69-8EBE5DE1A60C.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/7B403D41-688C-4390-AF69-8EBE5DE1A60C.png)
 
 We’d like the audio packets to receive priority over the file transfer packets since the user’s experience can be significantly degraded by lost or delayed audio packets.
 

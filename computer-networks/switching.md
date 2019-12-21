@@ -37,7 +37,7 @@ The simplest way that a LAN can be connected is with a **hub**. A hub essentiall
 
 If a particular host sends a frame that is destined for another host on the LAN, the hub will broadcast that frame out every outgoing port, so all packets will be seen everywhere.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/83EA168C-1751-44B4-8B1B-3EA6D3BCE3F0.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/83EA168C-1751-44B4-8B1B-3EA6D3BCE3F0.png)
 
 There is a *lot* of flooding and there are many chances for [collision](https://searchnetworking.techtarget.com/definition/collision). The chance of collision introduces additional latency in the network, because collision requires other hosts to back off and not send as soon as they see other senders trying to send at the same time.
 
@@ -50,7 +50,7 @@ In contrast, **switches** provide some amount of traffic isolation so that the e
 
 A switch will partition the LAN into separate broadcast/collision domains, or segments. A frame that is bound for a host in the same LAN segment will only be broadcast within that segment. The switch will not broadcast it to other segments.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/F6560408-9B61-4E6D-B860-3B310732EDD9.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/F6560408-9B61-4E6D-B860-3B310732EDD9.png)
 
 Enforcing this type of isolation requires constructing a switch table at the switch which maps destination MAC addresses to switch output ports.
 
@@ -74,11 +74,11 @@ We need a solution to ensure that the switches don’t always flood all packets 
 ## Spanning Tree
 A **spanning** tree is a loop-free topology that covers every node in a graph.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/F21BE28D-1369-43A8-BB40-638D34B5AD78.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/F21BE28D-1369-43A8-BB40-638D34B5AD78.png)
 
 Instead of flooding a frame, a switch in this topology would simply forward packets along the spanning tree, *not* across all output links.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/987B9734-03E0-4BF7-BF6D-56ADEF99B873.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/987B9734-03E0-4BF7-BF6D-56ADEF99B873.png)
 
 In order to construct a spanning tree, a collection of nodes must first elect a root - every tree must have a root. Typically, the switch with the smallest ID is the root.
 
@@ -97,7 +97,7 @@ Assume that nodes message each other using the format `(Y, d, X)` where `X` is t
 
 Initially, every node thinks that it is the root, so every node will broadcast `(X, 0, X)` .
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/7463F426-9A9C-49F3-92B4-5A870C8F0255.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/7463F426-9A9C-49F3-92B4-5A870C8F0255.png)
 
 Consider node 4 above.
 
@@ -123,7 +123,7 @@ Let’s suppose that we have a path between a source and a destination that incl
 
 Assume that the round trip ([propagation delay](https://searchnetworking.techtarget.com/definition/propagation-delay)) is `2T` (measured in seconds), and the capacity of the bottleneck link is `C`, (measured in bits/seconds). The commonly held view is that this router need a buffer of size `2T * C` (with units of bits).
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/8C9AB32C-9A17-49E5-BE43-ACDF5BDBB674.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/8C9AB32C-9A17-49E5-BE43-ACDF5BDBB674.png)
 
 The quantity `2T * C` essentially refers to the number of bits that could be outstanding on this path at any given time.
 
@@ -158,7 +158,7 @@ All this to say: we only have propagation delay - not queueing delay - after the
 
 As a result, `RTT_old = 2T + (B/C)` and `RTT_new = 2T`. Thus:
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/FullSizeRender.jpeg)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/FullSizeRender.jpeg)
 
 The rule of thumb makes sense for a single flow, but a router in a typical backbone network has more than 20,000 flows.
 
@@ -173,7 +173,7 @@ As the network begins to support an increasingly larger number of flows, the ind
 
 Individual flows may see peaks at different times. Instead of seeing a large sawtooth - which would be the sum of a number of synchronized flows - the aggregate window will look much smoother.
 
-![](https://console.cloud.google.com/storage/browser/omscs-notes.appspot.com/3AD05C66-E7E5-46B3-AC6D-E2268E7AB9A3.png)
+![](https://storage.cloud.google.com/omscs-notes.appspot.com/3AD05C66-E7E5-46B3-AC6D-E2268E7AB9A3.png)
 
 We can represent the buffer occupancy as a random variable which will, at any given time, take on a range of values, which can be analyzed by the central limit theorem.
 
