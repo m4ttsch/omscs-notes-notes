@@ -1,6 +1,6 @@
 ---
 id: operating-systems-welcome
-title: Graduate Introduction to Operating Systems (GIOS)
+title: Welcome to GIOS
 course: operating-systems
 lecture: welcome
 ---

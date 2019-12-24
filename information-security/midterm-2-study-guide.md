@@ -5,10 +5,6 @@ course: information-security
 lecture: midterm-2-study-guide
 ---
 
-First of all, I'd like to give a big shout out to all the folks that helped to create this document.
-
-You can find the original issue threads, where all of the contributors added their questions, [here](https://github.gatech.edu/mschlenker3/iis-midterm-1-study-guide/issues?q=is%3Aissue+is%3Aclosed).
-
 ## Chapter 7: Denial-of-Service Attacks
 
 **Multiple Choice**

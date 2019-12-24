@@ -1,6 +1,6 @@
 ---
 id: information-security-welcome
-title: Introduction to Information Security (IIS)
+title: Welcome to IIS
 course: information-security
 lecture: welcome
 ---

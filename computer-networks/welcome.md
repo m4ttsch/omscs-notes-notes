@@ -1,6 +1,6 @@
 ---
 id: computer-networks-welcome
-title: Computer Networking (CN)
+title: Welcome to CN
 course: computer-networks
 lecture: welcome
 ---
