@@ -5,6 +5,8 @@ course: computer-networks
 lecture: content-distribution
 ---
 
+# Content Distribution
+
 ## The Web and Caching
 In this lesson we’ll talk about the web and how web caches can improve web performance.
 

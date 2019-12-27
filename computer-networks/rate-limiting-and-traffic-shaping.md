@@ -5,6 +5,8 @@ course: computer-networks
 lecture: rate-limiting-and-traffic-shaping
 ---
 
+# Rate Limiting & Traffic Shaping
+
 ## Traffic Classification and Shaping
 This lesson focuses on ways to classify traffic as well as several traffic shaping strategies, including
 - leaky bucket

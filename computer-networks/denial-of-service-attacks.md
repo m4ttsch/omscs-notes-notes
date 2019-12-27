@@ -5,6 +5,8 @@ course: computer-networks
 lecture: denial-of-service-attacks
 ---
 
+# Denial of Service Attacks
+
 ## Denial of Service Attacks Overview
 Denial of service is an attack that attempts to exhaust resources.
 

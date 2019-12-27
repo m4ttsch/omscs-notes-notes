@@ -5,6 +5,8 @@ course: computer-networks
 lecture: naming-addressing-forwarding
 ---
 
+# Naming, Addressing & Forwarding
+
 ## IP Addressing
 In this lesson, we will be covering IPv4 address structure and allocation.
 

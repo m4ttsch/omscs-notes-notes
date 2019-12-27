@@ -5,6 +5,8 @@ course: computer-networks
 lecture: spam
 ---
 
+# Spam
+
 ## Spam
 While we don’t really interact with spam these days outside of our spam folder, it remains a scourge for network operators.
 

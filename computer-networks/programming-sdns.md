@@ -5,6 +5,8 @@ course: computer-networks
 lecture: programming-sdns
 ---
 
+# Programming SDNs
+
 ## Updates in Software Defined Networks
 In the last lesson, we looked at how to update switch flow table entries using OpenFlow control commands from the controller.
 
@@ -45,7 +47,7 @@ Simple match-action rules don’t allow us to express such exceptions.
 
 The solution to this problem is a language primitive that allows us to express predicates, such as
 
-```
+```bash
 (srcip !== 1.2.3.4) && (srcport == 80)
 ```
 
@@ -325,7 +327,7 @@ Using a dictionary to represent the packet allows for easy injection of virtual 
 ## Composing Network Policies with Pyretic II
 Pyretic enables the notion of both parallel and sequential composition.
 
-```
+```bash
 match(dstIP=2.2.2.8) >> fwd(1)
 ```
 
@@ -333,7 +335,7 @@ demonstrates sequential composition, represented by the `>>` operator.
 
 Parallel composition allows two policies to be applied in parallel, with the `+` operator.
 
-```
+```bash
 match(dstIP=2.2.2.8) >> fwd(1) + match(dstIP=2.2.2.9) >> fwd(2)
 ```
 
@@ -341,7 +343,7 @@ In this example, we are applying two policies in parallel: one that forwards pac
 
 Pyretic also allows an operator to construct queries that allow the program to see packet streams.
 
-```
+```bash
 self.query = packets(1, ['srcmac', 'switch'])
 ```
 

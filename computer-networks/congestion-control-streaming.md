@@ -5,6 +5,8 @@ course: computer-networks
 lecture: congestion-control-streaming
 ---
 
+# Congestion Control & Streaming
+
 ## Congestion Control
 What is congestion control and why do we need it? Simply put, the goal of congestion control is to fill the internet’s “pipes” without “overflowing” them.
 

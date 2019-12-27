@@ -5,6 +5,8 @@ course: computer-networks
 lecture: architecture-and-principles
 ---
 
+# Architecture and Principles
+
 ## A Brief History of the Internet
 ### ARPANet Late 1960s
 ![](https://assets.omscs.io/3AB91C8F-7A57-4479-B4EE-F209C0BDAE24.png)

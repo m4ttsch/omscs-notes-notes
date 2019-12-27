@@ -5,6 +5,8 @@ course: computer-networks
 lecture: network-security
 ---
 
+# Network Security
+
 ## Need for Network Security
 The internet is subject to a wide variety of attacks against various parts of the infrastructure.
 

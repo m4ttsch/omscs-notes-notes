@@ -5,6 +5,8 @@ course: computer-networks
 lecture: router-design-basics
 ---
 
+# Router Design Basics
+
 ## Router Design
 Here are two modern router chassis.
 

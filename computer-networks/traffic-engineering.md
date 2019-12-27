@@ -5,6 +5,8 @@ course: computer-networks
 lecture: traffic-engineering
 ---
 
+# Traffic Engineering
+
 ## Traffic Engineering Overview
 Traffic engineering is the process of reconfiguring the network in response to changing traffic loads in order to achieve some operational goal.
 

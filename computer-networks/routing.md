@@ -5,6 +5,8 @@ course: computer-networks
 lecture: routing
 ---
 
+# Routing
+
 ## Internet Routing
 The internet is not a single network, but rather a collection of tens of thousands of independently operated networks, or **autonomous systems**.
 
@@ -46,7 +48,7 @@ Distance vector routing protocols are based on the [Bellman–Ford algorithm](ht
 
 Formally,
 
-```
+```bash
 d_x(y) = min_v{cost(x, v) + d_v(y)}
 ```
 

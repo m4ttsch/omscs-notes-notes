@@ -5,6 +5,8 @@ course: computer-networks
 lecture: switching
 ---
 
+# Switching
+
 ## Switching and Bridging
 In this lesson, we will learn about how hosts find each other on a subnet and how subnets are interconnected.
 

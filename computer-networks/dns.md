@@ -5,6 +5,8 @@ course: computer-networks
 lecture: dns
 ---
 
+# DNS
+
 ## Domain Name System
 The purpose of the **domain name system** (DNS) is to map human-readable names - such as www.gatech.edu - to IP addresses - such as 130.207.160.173.
 
@@ -70,7 +72,7 @@ From the man pages:
 ### Example 1 (GATech A)
 Here is an example of a lookup for an A record for www.gatech.edu.
 
-```
+```bash
 Matts-MBP:~ mschlenker$ dig www.gatech.edu
 
 ; <<>> DiG 9.10.6 <<>> www.gatech.edu
@@ -104,7 +106,7 @@ The numbers “60” and “30” for the CNAME and A record entries, respective
 ### Example 2 (NYTimes A)
 Here is an example of an A record query for nytimes.com.
 
-```
+```bash
 Matts-MBP:~ mschlenker$ dig nytimes.com
 
 ; <<>> DiG 9.10.6 <<>> nytimes.com
@@ -137,7 +139,7 @@ The client can use any one of these. It might prefer the first one, but if we is
 ### Example 3 (NS)
 Here is an example of an NS record query for gatech.edu.
 
-```
+```bash
 Matts-MBP:~ mschlenker$ dig ns gatech.edu
 
 ; <<>> DiG 9.10.6 <<>> ns gatech.edu
@@ -167,7 +169,7 @@ In the “QUESTION SECTION”, we can see that we have an NS record query instea
 ### Example 4 (MX)
 Here is an example of an MX record query for gatech.edu.
 
-```
+```bash
 Matts-MBP:~ mschlenker$ dig mx gatech.edu
 
 ; <<>> DiG 9.10.6 <<>> mx gatech.edu
@@ -198,7 +200,7 @@ In addition to the TTL, we also have a notion of priority: 10 for each of the ma
 ### Example 5 (trace)
 Here is an example of an A record query for gatech.edu with a trace.
 
-```
+```bash
 Matts-MBP:~ mschlenker$ dig +trace +nodnssec gatech.edu
 
 ; <<>> DiG 9.10.6 <<>> +trace +nodnssec gatech.edu
@@ -250,7 +252,7 @@ The local resolver issues a query to to the root server, which responds with an 
 ### Example 6 (PTR)
 Here is an example of how to map an IP address back to a name; that is, given an IP address, find the PTR record that points to the domain name.
 
-```
+```bash
 Matts-MBP:~ mschlenker$ dig +trace +nodnssec -x 130.207.7.36
 
 ; <<>> DiG 9.10.6 <<>> +trace +nodnssec -x 130.207.7.36

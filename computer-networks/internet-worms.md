@@ -5,6 +5,8 @@ course: computer-networks
 lecture: internet-worms
 ---
 
+# Internet Worms
+
 ## Types of Viruses and Worm Overview
 A **virus** is an “infection” of an existing program that results in the modification of the original program’s behavior.
 
