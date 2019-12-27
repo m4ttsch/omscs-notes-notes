@@ -5,6 +5,8 @@ course: operating-systems
 lecture: distributed-file-systems
 ---
 
+# Distributed File Systems
+
 ## Distributed File Systems
 Modern operating systems export a high-level filesystem interface to abstract all of the (potentially) different types of storage devices present on a machine and unify them under a common API.
 

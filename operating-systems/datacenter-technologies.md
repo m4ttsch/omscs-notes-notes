@@ -5,6 +5,8 @@ course: operating-systems
 lecture: datacenter-technologies
 ---
 
+# Datacenter Technologies
+
 ## Internet Services
 An **internet service** is any type of service that is accessible via a web interface.
 

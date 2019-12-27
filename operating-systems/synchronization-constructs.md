@@ -5,6 +5,8 @@ course: operating-systems
 lecture: synchronization-constructs
 ---
 
+# Synchronization Constructs
+
 ## Why Are We Still Talking About Synchronization?
 During our past discussion of synchronization constructs - like mutexes and condition variables - we mentioned a number of common pitfalls.
 

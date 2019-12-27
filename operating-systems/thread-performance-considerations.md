@@ -5,6 +5,8 @@ course: operating-systems
 lecture: thread-performance-considerations
 ---
 
+# Thread Performance Considerations
+
 ## Which Threading Model Is Better?
 Let’s compare the following two models to see which one is better
 

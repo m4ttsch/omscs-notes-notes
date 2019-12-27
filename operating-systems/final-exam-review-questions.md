@@ -5,6 +5,8 @@ course: operating-systems
 lecture: final-exam-review-questions
 ---
 
+# Final Exam Review Questions
+
 ## P3L1
 ### How does scheduling work? What are the basic steps and data structures involved in scheduling a thread on the CPU?
 

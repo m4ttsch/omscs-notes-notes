@@ -5,6 +5,8 @@ course: operating-systems
 lecture: threads-case-study-pthreads
 ---
 
+# Threads Case Study - PThreads
+
 ## PThread Creation
 To represent threads, pthreads supports a `pthread_t` data type. Variables of this type will by uniquely identified by an identifier and will describe a thread.
 
@@ -92,7 +94,7 @@ In this case, the call to `pthread_create` passes in a value for the final param
 ## PThread Creation Example 3
 This section explains how this is a valid input for the example above
 
-```
+```bash
 Thread Number 0
 Thread Number 2
 Thread Number 2

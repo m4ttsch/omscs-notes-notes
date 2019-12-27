@@ -5,6 +5,8 @@ course: operating-systems
 lecture: midterm-exam-review-questions
 ---
 
+# Midterm Exam Review Questions
+
 ## What are the key roles of an operating system?
 The operating system has three main roles:
 - hide hardware complexity

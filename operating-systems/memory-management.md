@@ -5,6 +5,8 @@ course: operating-systems
 lecture: memory-management
 ---
 
+# Memory Management
+
 ## Memory Management: Goals
 Remember that one of the roles of the operating system is to manage the physical resources - in this case DRAM - on behalf of one or more executing processes.
 

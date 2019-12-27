@@ -5,6 +5,8 @@ course: operating-systems
 lecture: inter-process-communication
 ---
 
+# Inter-Process Communication
+
 ## Inter Process Communication
 **Inter process communication** (IPC) refers to a set of mechanisms that the operating system must support in order to permit multiple processes to interact amongst each other. This include mechanisms related to synchronization, coordination and communication.
 

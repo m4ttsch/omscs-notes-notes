@@ -5,6 +5,8 @@ course: operating-systems
 lecture: scheduling
 ---
 
+# Scheduling
+
 ## Scheduling Overview
 The CPU scheduler decides how and when the processes (and their threads) access the shared CPUs.  The scheduler concerns the scheduling of both user level tasks and kernel level tasks.
 

@@ -5,6 +5,8 @@ course: operating-systems
 lecture: thread-design-considerations
 ---
 
+# Thread Design Considerations
+
 ## Kernel Vs. User Level Threads
 Threads can be supported at the user level, the kernel level or both.
 

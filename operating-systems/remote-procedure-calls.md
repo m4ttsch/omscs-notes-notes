@@ -5,6 +5,8 @@ course: operating-systems
 lecture: remote-procedure-calls
 ---
 
+# Remote Procedure Calls
+
 ## Why RPC?
 Let’s look at two applications. In the first application, the client gets a file from the server. In the second application, the client sends an image to the server for some processing/modification.
 
@@ -218,7 +220,7 @@ The client will use service name, procedure name, and service number, whereas th
 ## Compiling XDR
 To generate the client/server C stubs from the interface defined in the .x file, run
 
-```
+```bash
 rpcgen -C <interface>.x
 ```
 
@@ -246,7 +248,7 @@ Once we have this, the developer can just call the function.
 
 By default, `rpcgen` generates code that is not thread safe. To generate thread safe code use:
 
-```
+```bash
 rpc_gen -C -M <interface>.x
 ```
 
@@ -259,7 +261,7 @@ The code that the server needs in order to register with the registry is autogen
 
 In SunRPC, the registry process runs on every machine, and is called **portmapper**. To start this process on Linux, run
 
-```
+```bash
 sudo /sbin/portmap
 ```
 
@@ -267,7 +269,7 @@ This is the process that needs to be contacted both by the server when it wishes
 
 Once the RPC daemon is running, we can check the services that are running with it using
 
-```
+```bash
 /usr/sbin/rpcinfo -p
 ```
 
