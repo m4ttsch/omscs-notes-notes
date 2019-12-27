@@ -16,7 +16,7 @@ Direct use of hardware is really difficult. Instead of managing the hardware exp
 
 The applications that we as users directly deal with - browsers, word processors and the like - sit on top of the operating system and interact with the physical resources through this intermediary.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/EC421F6A-25C4-4DDC-B5FE-F0654D08DDAB.png)
+![](https://assets.omscs.io/EC421F6A-25C4-4DDC-B5FE-F0654D08DDAB.png)
 
 As a mediator between applications and the real, hardware resources, the operating system unsurprisingly plays an important role in the security of computer systems.
 
@@ -84,28 +84,28 @@ Note that the operating system doesn’t autonomously decide who accesses a give
 The operating system implements a policy by performing access checks and either granting or denying access in accordance with the policy.
 
 ## Secure OS Quiz 1
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/3E4E1A33-04F6-49C8-A8BE-5C9B97CD9F46.png)
+![](https://assets.omscs.io/3E4E1A33-04F6-49C8-A8BE-5C9B97CD9F46.png)
 
 [Mac vs PC Security](https://usa.kaspersky.com/resource-center/threats/mac-vs-pc#.VRLACxDF-Hw)
 
 ## Secure OS Quiz 1 Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/A47F089A-E76B-45FB-8EAB-67A1410CD42A.png)
+![](https://assets.omscs.io/A47F089A-E76B-45FB-8EAB-67A1410CD42A.png)
 
 ## Secure OS Quiz 2
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/8FB30729-124D-4073-9C7B-E9B8BE6B98AE.png)
+![](https://assets.omscs.io/8FB30729-124D-4073-9C7B-E9B8BE6B98AE.png)
 
 ## Secure OS Quiz 2 Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/14FB0734-2CED-4A50-97FE-789C608E61C3.png)
+![](https://assets.omscs.io/14FB0734-2CED-4A50-97FE-789C608E61C3.png)
 
 A system call requires control transfer from the calling process into the OS, which then must perform authentication/authorization checks before granting access and transferring control back.
 
 This is more costly than a regular call, which incurs none of this overhead.
 
 ## Secure OS Quiz 3
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/B1E759C2-2BDC-4F1D-87CC-D0FF65033E40.png)
+![](https://assets.omscs.io/B1E759C2-2BDC-4F1D-87CC-D0FF65033E40.png)
 
 ## Secure OS Quiz 3 Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/9F2E641A-BA27-4DEB-8754-E4C12B164432.png)
+![](https://assets.omscs.io/9F2E641A-BA27-4DEB-8754-E4C12B164432.png)
 
 Processes run on behalf of users. Users must login to the system to run applications/processes.
 
@@ -145,10 +145,10 @@ We can rely on the hardware to protect memory. If you are running in user mode, 
 This hardware protection also applies to processes trying to access memory belonging to other processes. The hardware enforces that processes only access memory that has been made available to it, blocking access to any other memory locations.
 
 ## User Isolation Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/65EE949F-30AB-462D-ABAF-766E03061E1B.png)
+![](https://assets.omscs.io/65EE949F-30AB-462D-ABAF-766E03061E1B.png)
 
 ## User Isolation Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/2CF867D1-BB5E-4D7F-A303-4A6F0A5CC1AD.png)
+![](https://assets.omscs.io/2CF867D1-BB5E-4D7F-A303-4A6F0A5CC1AD.png)
 
 ## Address Space
 From a process’s point of view, it has the entire computer to itself. It isn’t aware that it shares physical memory with other processes.
@@ -179,7 +179,7 @@ For example, the process thinks it has access to a chunk of contiguous memory - 
 
 Naturally, the operating system needs to maintain a system to map between the abstraction and the reality.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/E66B6D85-F314-4E7E-9A19-21F1F82D17C1.png)
+![](https://assets.omscs.io/E66B6D85-F314-4E7E-9A19-21F1F82D17C1.png)
 
 This mapping process does not occur byte for byte. The number of mappings we would have to maintain if this were the case would not be scalable.
 
@@ -220,10 +220,10 @@ For example, an entry may store some information as to whether a given page is a
 As a result, interacting with memory really has two components: first, understanding which memory locations are even available to a process, and; second, understanding which types of accesses are permitted on those locations.
 
 ## Revisiting Stack Overflow Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/5D690072-1177-4D13-9415-4E98EDD4BC2A.png)
+![](https://assets.omscs.io/5D690072-1177-4D13-9415-4E98EDD4BC2A.png)
 
 ## Revisiting Stack Overflow Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/D1ECF899-825E-4B79-89D3-4B6B2A5A64FC.png)
+![](https://assets.omscs.io/D1ECF899-825E-4B79-89D3-4B6B2A5A64FC.png)
 
 ## Preventing Malicious Code Execution
 One of the strategies that we have talked about for protecting against a stack buffer overflow attack is to use a non-executable stack.
@@ -259,13 +259,13 @@ While modern operating systems create this fence between untrusted code and trus
 For example, MS-DOS does not have this separation. This means that any process could alter operating system code. Clearly, this is a vulnerability of this early OS.
 
 ## Kernel Memory Split
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/9551B5CF-1C3D-4761-8997-E558DC22A4E8.png)
+![](https://assets.omscs.io/9551B5CF-1C3D-4761-8997-E558DC22A4E8.png)
 
 ## Execution Privilege Level Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/71D72E8A-2857-48A2-8D0C-0B88F2A66C77.png)
+![](https://assets.omscs.io/71D72E8A-2857-48A2-8D0C-0B88F2A66C77.png)
 
 ## Execution Privilege Level Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/3716BF8E-4D50-43B3-936E-318EABBFDDB4.png)
+![](https://assets.omscs.io/3716BF8E-4D50-43B3-936E-318EABBFDDB4.png)
 
 ## Complete Mediation: The TCB
 The second requirement of the a TCB is **complete mediation**.
@@ -321,7 +321,7 @@ With virtualization we can achieve isolation between virtual machines - each wit
 In this case, the TCB is now the hypervisor, which manages the hardware resources on behalf of the virtual machines.
 
 ## Virtualization Security Layers
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/069815F0-839D-4E4F-AE4A-ABBF554C550C.png)
+![](https://assets.omscs.io/069815F0-839D-4E4F-AE4A-ABBF554C550C.png)
 
 ## Correctness: The Final TCB Requirement
 Correctness is important because compromise of the OS means that an attacker has access to all the physical resources: every memory page, every block on disc, etc.
@@ -331,25 +331,25 @@ Meeting the correctness requirement for operating systems is really hard. Operat
 Virtualization can help with correctness by reducing complexity. The hypervisor can be much smaller and simpler than the operating system since all it has to do is partition physical resources among virtual machines.
 
 ## TCB Requirements Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/B91C6769-2EB6-41EC-884C-9BECF16EAA16.png)
+![](https://assets.omscs.io/B91C6769-2EB6-41EC-884C-9BECF16EAA16.png)
 
 ## TCB Requirements Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/449C3685-5396-4F92-A070-F09425449193.png)
+![](https://assets.omscs.io/449C3685-5396-4F92-A070-F09425449193.png)
 
 In this case, we have tampered with the TCB by turning off the check. The access still proceeds through the operating system, and is still technically correct (i.e. the access wasn’t permitted because of a bug).
 
 ## Size of Security Code
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/D40FCB93-786B-464E-B73E-ED5EAE001FE2.png)
+![](https://assets.omscs.io/D40FCB93-786B-464E-B73E-ED5EAE001FE2.png)
 
 ## Size of Security Code Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/A944CF7D-097D-4359-B600-BAB6F6E3BB8F.png)
+![](https://assets.omscs.io/A944CF7D-097D-4359-B600-BAB6F6E3BB8F.png)
 
 I think the point being made here is that the increase in complexity may be accompanied by an increase in vulnerability.
 
 ## Hypervisor Code Size Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/8AE1A120-4AD3-44D6-9A06-C19DB78BC670.png)
+![](https://assets.omscs.io/8AE1A120-4AD3-44D6-9A06-C19DB78BC670.png)
 
 ## Hypervisor Code Size Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/32D8E299-1B81-442E-8468-5834F515C381.png)
+![](https://assets.omscs.io/32D8E299-1B81-442E-8468-5834F515C381.png)
 
 Again, the argument being made here is that using a hypervisor as a TCB, with fewer lines of code than a full-fledged operating system, might be a more secure choice.

@@ -134,7 +134,7 @@ In order to do this, the attacker needs to somehow disrupt the routes to the res
 ### Example
 Suppose the AS 200 originates a prefix and the paths that result from the original BGP routing below.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/C21DD724-5D50-49A9-97B9-E210F2B095CE.png)
+![](https://assets.omscs.io/C21DD724-5D50-49A9-97B9-E210F2B095CE.png)
 
 Now suppose that AS 100 seeks to become a MITM. If the original prefix being advertised was `P`, AS 100 could also advertise `P`.
 
@@ -146,7 +146,7 @@ AS 100 will advertise a route that includes AS 10 and AS 20 in the AS path. Both
 
 Every other AS not on the path back from 100 to 200 will switch.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/470D883C-3C35-4F42-888A-D5CFD3265C99.png)
+![](https://assets.omscs.io/470D883C-3C35-4F42-888A-D5CFD3265C99.png)
 
 Now all of the traffic en route to AS 200 will traverse AS 100.
 
@@ -189,7 +189,7 @@ The second part of BGPSEC is a **path attestation**. These are a set of signatur
 ## Autonomous System Path Attestation
 Let’s assume that we have a path with three ASes, and AS 1 wants to advertise prefix `P`.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/31E8B038-43AF-44E6-B183-B8C34150120D.png)
+![](https://assets.omscs.io/31E8B038-43AF-44E6-B183-B8C34150120D.png)
 
 Each AS also has a private/public key-pair. An AS can sign a route with its own private key, and any other AS can check that signature with the signing AS’s public key.
 
@@ -201,7 +201,7 @@ When AS 2 re-advertises the route announcement to AS 3, it advertises the new AS
 
 It adds its own route attestation, `3 2 1` signed by its own private key, and it also includes the original path attestation, signed by AS 1.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/4D955A61-EDA9-4849-8F37-075ABD3B66DF.png)
+![](https://assets.omscs.io/4D955A61-EDA9-4849-8F37-075ABD3B66DF.png)
 
 A recipient of a route along this path can thus verify every step of the AS path.
 
@@ -213,11 +213,11 @@ This is precisely why the AS signs a path attestation with not just its own part
 
 To see the importance of this inclusion, let’s suppose that these next hop ASes were not present in path attestations.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/C9648821-BAF2-4A6C-A7A4-784392D19E5D.png)
+![](https://assets.omscs.io/C9648821-BAF2-4A6C-A7A4-784392D19E5D.png)
 
 If this were the case, an attacker (AS 4) could claim it was connected to `P` via AS 1, when no such link exists, simply by replaying only the path attestation `1`, signed by AS 1.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/D7E2CB60-A8B7-45B5-BDDB-B7B4ACD9B018.png)
+![](https://assets.omscs.io/D7E2CB60-A8B7-45B5-BDDB-B7B4ACD9B018.png)
 
 In reality, however, AS 1 never generates this signature. It generates the signature `2 1`. In order to accurately spoof the path attestation, AS 4 would have to generate the attestation `4 1`, signed by AS 1.
 
@@ -234,7 +234,7 @@ Finally, there is no way to guarantee that the data traffic actually travels alo
 ## DNS Security
 To understand the threats and vulnerabilities of DNS, we first need to look at the DNS architecture.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/573F5127-7ABD-4EB6-A9BF-A4D1FE4C4432.png)
+![](https://assets.omscs.io/573F5127-7ABD-4EB6-A9BF-A4D1FE4C4432.png)
 
 We could have a man in the middle attack positioned between the stub resolver and the caching resolver, whereby an attacker observes a query and forges a response.
 
@@ -244,7 +244,7 @@ This is called **cache poisoning** and is particularly virulent.
 
 In addition, master and replica name servers can be spoofed. [Zone files](https://en.wikipedia.org/wiki/Zone_file) can be corrupted and updates to the [dynamic update](https://en.wikipedia.org/wiki/Dynamic_DNS) systems can also be spoofed.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/3036162D-2F1F-4126-8CD8-BF31E0A387A8.png)
+![](https://assets.omscs.io/3036162D-2F1F-4126-8CD8-BF31E0A387A8.png)
 
 ## Why is DNS Vulnerable?
 The fundamental reason for the vulnerability of DNS is that basic DNS protocols have no means of authenticating responses received by resolvers.
@@ -256,7 +256,7 @@ A secondary reason that these types of spoofed replies are possible is that DNS 
 ## DNS Cache Poisoning
 Consider a network where a stub resolver issues a query to a recursive resolver and the recursive resolver sends the query to the start of authority (SOA) for that domain.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/0079F057-B712-4800-BD49-34B118C899C5.png)
+![](https://assets.omscs.io/0079F057-B712-4800-BD49-34B118C899C5.png)
 
 In an ideal world, the authoritative nameserver for that domain would reply with the correct IP address.
 
@@ -264,7 +264,7 @@ If an attacker guesses that the recursive resolver may need to eventually issue 
 
 Even though the query has some query ID, the attacker doesn’t need to see that ID because they can simply flood the resolver with a bunch of bogus replies, each containing a different ID, and one of them will eventually match.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/DF162473-FC44-4DFB-A3EB-9D761DE1BF65.png)
+![](https://assets.omscs.io/DF162473-FC44-4DFB-A3EB-9D761DE1BF65.png)
 
 As long as the bogus response reaches the resolver before the legitimate response, the recursive resolver will accept the bogus message and will cache it.
 
@@ -325,7 +325,7 @@ The **DNSSEC protocol** adds authentication to DNS responses by adding signature
 
 Consider the following DNS traversal for google.com. For the sake of the example, assume there is no caching involved.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/02BC98A8-C129-4692-BF01-482A0F019006.png)
+![](https://assets.omscs.io/02BC98A8-C129-4692-BF01-482A0F019006.png)
 
 When a stub resolver issues a query, the query is relayed by the recursive resolver to the root nameserver.
 

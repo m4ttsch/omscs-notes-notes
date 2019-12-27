@@ -45,7 +45,7 @@ For example if we have an ACM `A`, a user `U`, and a resource `R`, then `A[U,R]`
 ## Access Control Matrix
 Here is an example of an `m x n` matrix, with `m` rows and `n` columns.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/64483C40-D000-4FDD-A3C4-B71605042DA4.png)
+![](https://assets.omscs.io/64483C40-D000-4FDD-A3C4-B71605042DA4.png)
 
 The first row in this matrix corresponds to the first user, the second row to the second user, and so on until the m-th user in the m-th row.
 
@@ -56,26 +56,26 @@ Each cell in this matrix contains the authorized operations that a user can perf
 The operations present will be some subset of the possible operations that can be performed on the given resource. In the case of a file `F` - which can be readable, writeable, and/or executable - and user `U` , `A[U,F]` will have some combination of read, write, and execute bits present.
 
 ## Data Confidentiality Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/AD434002-43B3-41CC-A837-4B2BBFA18017.png)
+![](https://assets.omscs.io/AD434002-43B3-41CC-A837-4B2BBFA18017.png)
 
 ## Data Confidentiality Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/C9D0D775-0D1F-4695-9F4F-8EBA71914E34.png)
+![](https://assets.omscs.io/C9D0D775-0D1F-4695-9F4F-8EBA71914E34.png)
 
 Controlling read access is connected to data confidentiality, while controlling write access is connected to data integrity.
 
 ## Determining Access Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/104BA89A-BC90-4875-A0BD-48765D8DD073.png)
+![](https://assets.omscs.io/104BA89A-BC90-4875-A0BD-48765D8DD073.png)
 
 ## Determining Access Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/0E90ADD5-3CCB-4A69-9C9E-55E06E88A8E8.png)
+![](https://assets.omscs.io/0E90ADD5-3CCB-4A69-9C9E-55E06E88A8E8.png)
 
 Access control conflicts can be securely resolved by denying access.
 
 ## Discretionary Access Control Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/8C822B06-A689-4ABC-BC3C-69517F39029D.png)
+![](https://assets.omscs.io/8C822B06-A689-4ABC-BC3C-69517F39029D.png)
 
 ## Discretionary Access Control Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/69519ED2-526D-47DB-8CFF-B3A922D2DBDF.png)
+![](https://assets.omscs.io/69519ED2-526D-47DB-8CFF-B3A922D2DBDF.png)
 
 Bob can write the contents of the file to a new file that he owns, and share that file with Charlie.
 
@@ -107,7 +107,7 @@ Consider a user  `U`. If `U` can read object `X`, and can write object `Y`, but 
 This type of list is called a **capability list** (C-list), and identifies which objects a user can access and in what fashion.
 
 ## Example Access Control Matrix
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/83D673FC-D0C1-4D65-8817-58624749D45F.png)
+![](https://assets.omscs.io/83D673FC-D0C1-4D65-8817-58624749D45F.png)
 
 In this example, we have a system with users `A`, `B`, and `C`, and objects `X`, `Y`, and `Z`.
 
@@ -168,28 +168,28 @@ For C-lists, Alice can’t remove permissions from Bob’s catalogue at will.
 Revocation is easier to perform using ACLs.
 
 ## ACE Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/38DA4583-E908-4834-A4A8-A30FB65A2754.png)
+![](https://assets.omscs.io/38DA4583-E908-4834-A4A8-A30FB65A2754.png)
 
 ## ACE Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/89BFDAE7-ED13-41D6-BB4C-01D5948DD108.png)
+![](https://assets.omscs.io/89BFDAE7-ED13-41D6-BB4C-01D5948DD108.png)
 
 The presentation of the ticket is sufficient to gain access to the theater. No other access checks are required. This is closest in functionality to a capability.
 
 ## ACE Access Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/790A92B9-8315-4A52-8B83-9F7CF9F33947.png)
+![](https://assets.omscs.io/790A92B9-8315-4A52-8B83-9F7CF9F33947.png)
 
 ## ACE Access Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/0D94E256-D8D9-4BCE-9E83-F7BFD18F7E20.png)
+![](https://assets.omscs.io/0D94E256-D8D9-4BCE-9E83-F7BFD18F7E20.png)
 
 Negative access rights supersede positive access rights, so you can’t terminate as soon as you find a positive access right. You can terminate as soon as you find a negative access right, though.
 
 NB: The third option can’t be true if the second option is true.
 
 ## Revocation of Rights Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/99C6BB65-DB67-42A9-A133-484EAEC0498C.png)
+![](https://assets.omscs.io/99C6BB65-DB67-42A9-A133-484EAEC0498C.png)
 
 ## Revocation of Rights Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/06734230-A91A-4DCB-BBC0-35AF61DC9A09.png)
+![](https://assets.omscs.io/06734230-A91A-4DCB-BBC0-35AF61DC9A09.png)
 
 ## Access Control Implementation Part 1
 In Unix, every resource that needs protection is represented as a file.
@@ -239,7 +239,7 @@ Read more about [open](http://man7.org/linux/man-pages/man2/open.2.html), [read]
 ## How does the OS Implement ACL?
 What happens when you open a file?
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/4BE62145-B4CD-4EFC-A74F-8E37C7BD64AE.png)
+![](https://assets.omscs.io/4BE62145-B4CD-4EFC-A74F-8E37C7BD64AE.png)
 
 When we execute the `open` system call, the very first thing that happens is that we switch into kernel mode and start executing from within the operating system.
 
@@ -262,26 +262,26 @@ What is important to understand here is that after the file descriptor is return
 Of course, if a process opens a file for reading and then tries to write to the file, the system will prevent it.
 
 ## Time to Check vs Time to Use Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/252D27FB-9B58-4DCD-AE9C-6D6B7C3143E9.png)
+![](https://assets.omscs.io/252D27FB-9B58-4DCD-AE9C-6D6B7C3143E9.png)
 
 ## Time to Check vs Time to Use Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/B464C794-6718-40DB-BDAB-EAA956AD1C13.png)
+![](https://assets.omscs.io/B464C794-6718-40DB-BDAB-EAA956AD1C13.png)
 
 As long as you had the permissions when you called `open`, you can access the file using the file descriptor.
 
 ## Unix File Sharing Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/88897E9D-9338-459B-B582-7A87A6EB74E6.png)
+![](https://assets.omscs.io/88897E9D-9338-459B-B582-7A87A6EB74E6.png)
 
 ## Unix File Sharing Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/8E7ED659-B2F6-4823-A54F-C312F6110482.png)
+![](https://assets.omscs.io/8E7ED659-B2F6-4823-A54F-C312F6110482.png)
 
 You would need to somehow add the descriptor to the per-process descriptor table for the process with which you wish to share the descriptor. Since the OS owns this table, mutating it is impossible.
 
 ## SetUID Bit Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/71AAA4B5-5DD3-414A-8317-8BB17007E533.png)
+![](https://assets.omscs.io/71AAA4B5-5DD3-414A-8317-8BB17007E533.png)
 
 ## SetUID Bit Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/E2739829-4308-4DBE-8C7D-0AAF1025E54E.png)
+![](https://assets.omscs.io/E2739829-4308-4DBE-8C7D-0AAF1025E54E.png)
 
 The effective UID of a process executing a file with the setuid bit set is the owner of the file, not the user who created the process.
 
@@ -313,15 +313,15 @@ In RBAC, a user can start in one role and access a subset of the files that are 
 Without roles, a user just has static access to the complete universe of things they would ever need to access. Roles allow for much tighter access control scoped by functionality.
 
 ## RBAC Benefits Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/D1B82974-ED31-4162-B636-012F375BCE35.png)
+![](https://assets.omscs.io/D1B82974-ED31-4162-B636-012F375BCE35.png)
 
 ## RBAC Benefits Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/01A48AF0-F1FD-4085-A588-4BA0C746FE0C.png)
+![](https://assets.omscs.io/01A48AF0-F1FD-4085-A588-4BA0C746FE0C.png)
 
 ## Access Control Policy Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/7221A53F-3B6C-4CA2-9738-3A63FCA7CEFA.png)
+![](https://assets.omscs.io/7221A53F-3B6C-4CA2-9738-3A63FCA7CEFA.png)
 
 ## Access Control Policy Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/5DEE9998-897C-4B46-8565-A383DD6FC069.png)
+![](https://assets.omscs.io/5DEE9998-897C-4B46-8565-A383DD6FC069.png)
 
 From a security standpoint, denying access is a fail-safe default. It never fails to keep your system secure.

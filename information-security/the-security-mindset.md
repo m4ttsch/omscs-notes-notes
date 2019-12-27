@@ -21,7 +21,7 @@ Smart grids, which control the electrical power generation and distribution, are
 At a more general level, businesses and governments use the internet to carry out their daily activities, many of which involve storing proprietary and/or classified information. If hackers or adversaries gain access to this information, the consequences could be economically or politically disastrous.
 
 ## Security Impact Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/Screen%20Shot%202019-08-20%20at%208.42.25%20PM.png)
+![](https://assets.omscs.io/Screen%20Shot%202019-08-20%20at%208.42.25%20PM.png)
 
 ## Security Impact Quiz Solution
 No one right solution. I think the important thing to understand here is that no company is safe from a breach, and many companies that we interact with on a daily basis have suffered security breaches.
@@ -83,25 +83,25 @@ In this case, the vulnerability was human.
 The attack began with a [phishing](https://en.wikipedia.org/wiki/Phishing) message sent to a member of the HVAC company that was contracting for Target. Through the phishing attacks, the criminals were able to get credentials to get onto Target’s network, at which point they were able to install malware on the point-of-sale systems in order to siphon off the credit card numbers.
 
 ## Black Market Prices Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/E8C3B157-9CC2-43BB-B761-89A237C8A7E5.png)
+![](https://assets.omscs.io/E8C3B157-9CC2-43BB-B761-89A237C8A7E5.png)
 
 ## Black Market Prices Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/E405BEDE-4306-4A65-91C9-AD0296201E67.png)
+![](https://assets.omscs.io/E405BEDE-4306-4A65-91C9-AD0296201E67.png)
 
 I think the point here is not to remember the exact numbers, but rather to understand that this information can be purchased relatively cheaply. This makes sense given that millions of records can be retrieved in a single breach.
 
 ## Sony Pictures Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/3430D19A-B3A4-4978-B9D1-D2CCFFBB7676.png)
+![](https://assets.omscs.io/3430D19A-B3A4-4978-B9D1-D2CCFFBB7676.png)
 
 ## Sony Pictures Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/E35AAD32-24F6-494C-A37F-8DF068591D26.png)
+![](https://assets.omscs.io/E35AAD32-24F6-494C-A37F-8DF068591D26.png)
 
 Read more [here](https://en.wikipedia.org/wiki/Sony_Pictures_hack)
 
 ## Revisiting Threats, Vulnerabilities and Risk
 The following diagram succinctly illustrates the relationship between assets,  vulnerabilities, threats, and risk.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/CCD7D070-44CA-4A73-B2A5-7C5D08503901.png)
+![](https://assets.omscs.io/CCD7D070-44CA-4A73-B2A5-7C5D08503901.png)
 
 ## What Should We Do in Cyber Security?
 There are different things that we can hope to achieve in the field of cyber security.
@@ -123,10 +123,10 @@ These three requirements comprise the **CIA triad**.
 While these three requirements are primarily concerned with the data aspects of cyber security, cyber attacks can also have physical consequences. The most well-known case of this is [Stuxnet](https://en.wikipedia.org/wiki/Stuxnet).
 
 ## Security Requirements Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/38ACE867-7D38-47CD-A9BB-52AA9B654980.png)
+![](https://assets.omscs.io/38ACE867-7D38-47CD-A9BB-52AA9B654980.png)
 
 ## Security Requirements Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/1ED304D4-8E4A-43E3-9209-62B58C7AD5E5.png)
+![](https://assets.omscs.io/1ED304D4-8E4A-43E3-9209-62B58C7AD5E5.png)
 
 Since data breaches involve the disclosure of information to unauthorized parties, these breaches violate confidentiality.
 
@@ -144,10 +144,10 @@ Finally, we must provide some *remediation* to ensure that the same attack doesn
 Cybersecurity consists of *policies*, which describe what needs to be done on each of these fronts, and *mechanisms*, which describe how the policies will be carried out.
 
 ## Losses Due to Cyber Crime Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/015A31E9-BB3F-4406-A5CD-A4A246C12321.png)
+![](https://assets.omscs.io/015A31E9-BB3F-4406-A5CD-A4A246C12321.png)
 
 ## Losses Due to Cyber Crime Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/0405619E-94F9-42E9-8E7F-5CB07EB9CBF2.png)
+![](https://assets.omscs.io/0405619E-94F9-42E9-8E7F-5CB07EB9CBF2.png)
 
 ## How Do We Address Cyber Security?
 One way to reduce vulnerability is to follow design principles that are good for security.
@@ -167,7 +167,7 @@ One way to reduce vulnerability is to follow design principles that are good for
 These principles come from the paper [Design Principles for Secure Systems](http://www.cs.cornell.edu/courses/cs513/2005fa/NL02.html)
 
 ## Security Mindset Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/980D23F6-7ADD-4C3A-BB92-FA6FD53BF9E7.png)
+![](https://assets.omscs.io/980D23F6-7ADD-4C3A-BB92-FA6FD53BF9E7.png)
 
 ## Security Mindset Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/D8E63E79-4288-4ECA-97E1-CA3270A46652.png)
+![](https://assets.omscs.io/D8E63E79-4288-4ECA-97E1-CA3270A46652.png)

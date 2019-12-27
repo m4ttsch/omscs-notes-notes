@@ -15,10 +15,10 @@ In wireless networking, data is not transmitted via physical wiring, but rather 
 Without hard wiring connecting two devices for direct communication, devices in a wireless environment must use broadcasting; that is, a sender must broadcast a message, and a receiver must be listening for a broadcast.
 
 ## Wifi Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/A1605EE1-CD3B-44F8-B316-087EB5CCDEBD.png)
+![](https://assets.omscs.io/A1605EE1-CD3B-44F8-B316-087EB5CCDEBD.png)
 
 ## Wifi Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/3FB90460-9F73-461D-AF2F-9A572F610D1D.png)
+![](https://assets.omscs.io/3FB90460-9F73-461D-AF2F-9A572F610D1D.png)
 
 ## Overview of Wifi Security
 The earlier WiFi security standard, Wired Equivalent Privacy (WEP), is easily breakable even when properly configured. The new, more secure standard is 802.11i, which WiFi Protected Access 2 (WPA2) implements. You should always use WPA2 over WEP.
@@ -33,34 +33,34 @@ The more advanced EAP methods, such as TLS, provide mutual authentication, which
 Additionally, 802.11i follows strong security practices. For example, it uses different keys for encryption and integrity protection, and also uses more secure encryption schemes - AES in particular.
 
 ## Wifi Security Standards Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/9F9DCFAA-4E6E-4100-8875-AEBB630F432D.png)
+![](https://assets.omscs.io/9F9DCFAA-4E6E-4100-8875-AEBB630F432D.png)
 
 ## Wifi Security Standards Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/7C57D6D4-3AB3-401F-8291-4762198BCC1E.png)
+![](https://assets.omscs.io/7C57D6D4-3AB3-401F-8291-4762198BCC1E.png)
 
 ## Overview of Smartphone Security
 The following plot shows a significant increase in smartphone sales in recent years.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/E69C1979-A030-492E-8971-1B557DA2290A.png)
+![](https://assets.omscs.io/E69C1979-A030-492E-8971-1B557DA2290A.png)
 
 People use smartphones now more than ever, and we are using them for more and more essential tasks. Therefore, we must examine the security of smartphones.
 
 ## Overview of iOS Security
 The iOS security architecture combines both hardware and software features to provide security to iOS devices such as iPhones and iPads.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/D6E8E31D-832C-46CF-95BB-065F65C52881.png)
+![](https://assets.omscs.io/D6E8E31D-832C-46CF-95BB-065F65C52881.png)
 
 The architecture contains built-in cryptographic capabilities - for example, the cryptographic engine and keys are embedded into the hardware - for supporting data protection via confidentiality and integrity.
 
 The architecture also provides powerful isolation mechanisms. For example, it uses app sandboxing to protect app security. These sandboxes enable apps to run in isolation, free from interference from other apps. Additionally, sandboxing helps to ensure the integrity of the overall system. In other words, even if an app is compromised, its capability to damage the system is minimal.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/255A3E0A-2841-42CF-839B-0DBBAAC9C8EC.png)
+![](https://assets.omscs.io/255A3E0A-2841-42CF-839B-0DBBAAC9C8EC.png)
 
 ## Operating System Vulnerabilities Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/0BF73658-68A7-45E7-B8FF-6117B810C8B2.png)
+![](https://assets.omscs.io/0BF73658-68A7-45E7-B8FF-6117B810C8B2.png)
 
 ## Operating System Vulnerabilities Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/3BB6C671-DF45-44C8-A21D-620C92AF45ED.png)
+![](https://assets.omscs.io/3BB6C671-DF45-44C8-A21D-620C92AF45ED.png)
 
 Betcha thought it was gonna be all Microsoft, didn’t you? Read more [here](https://techtalk.gfi.com/most-vulnerable-operating-systems-and-applications-in-2014/).
 
@@ -74,7 +74,7 @@ A UID is unique to a device and is not recorded by Apple or its suppliers. GIDs 
 ## iOS Trusted Bootchain
 iOS uses a **trusted bootchain** to establish the security of an iOS device on boot. Each step in the bootchain (except the first) only executes once the previous step has verified it.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/274985FE-70FC-41F8-8A5D-7B5937456B8B.png)
+![](https://assets.omscs.io/274985FE-70FC-41F8-8A5D-7B5937456B8B.png)
 
 When an iOS device is turned on, each application processor immediately executes code from a section of read-only memory known as the *BootROM*. This immutable, implicitly-trusted code, known as the hardware *root of trust*, is burned into the hardware during chip fabrication.
 
@@ -89,7 +89,7 @@ Data protection enables a high level of encryption for user data. Critical syste
 
 Data protection constructs and manages a hierarchy of keys - such as class, file, and filesystem keys - that builds on the hardware encryption technologies built into each iOS device.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/900975FC-B103-4BA8-9E13-C5352FE4C48A.png)
+![](https://assets.omscs.io/900975FC-B103-4BA8-9E13-C5352FE4C48A.png)
 
 Each time a file is created, the data protection system generates a new 256-bit *file key*, which it gives to the hardware AES engine. The engine encrypts the file using this key - via the CBC mode of AES - every time the file is written to flash memory.
 
@@ -100,10 +100,10 @@ The metadata of all files in the filesystem is encrypted using the same random k
 When a file is opened, it’s metadata is decrypted first using the filesystem key, which reveals the encrypted file key. Next, the file key is decrypted using one or more class keys. Finally, the file is used to decrypt the file as it is read from flash memory.
 
 ## Security Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/4AA42396-DE28-4F4E-A5E9-19038D09F56B.png)
+![](https://assets.omscs.io/4AA42396-DE28-4F4E-A5E9-19038D09F56B.png)
 
 ## Security Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/B9B9D6E5-BE56-49FF-A59F-C47ADFC8A716.png)
+![](https://assets.omscs.io/B9B9D6E5-BE56-49FF-A59F-C47ADFC8A716.png)
 
 ## Mandatory Code Signing
 The iOS kernel controls which user processes and apps are allowed to run. iOS requires all executable code to be signed with an Apple-issued certificate to ensure that all apps come from a known and approved source and have not been modified in unauthorized ways.
@@ -124,10 +124,10 @@ Furthermore, Apple reviews all apps in the App Store to ensure that they operate
 The restricted app distribution model, combined with app signing, makes it very difficult to upload malware to the App Store.
 
 ## App Store Security Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/F70A9C5D-E64F-4BBA-A8AC-4B827080A4AA.png)
+![](https://assets.omscs.io/F70A9C5D-E64F-4BBA-A8AC-4B827080A4AA.png)
 
 ## App Store Security Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/F55BD9F8-0B42-44EE-ABC9-2653B6FE11E0.png)
+![](https://assets.omscs.io/F55BD9F8-0B42-44EE-ABC9-2653B6FE11E0.png)
 
 Read more [here](https://www.computerworld.com/article/2483867/researchers-outwit-apple--plant-malware-in-the-app-store.html).
 
@@ -136,7 +136,7 @@ Once an app resides on a device, iOS enforces additional security measures to pr
 
 Each app receives a unique home directory for its files, which is randomly assigned when the app is installed. This directory serves as a sandbox; that is, iOS restricts apps from accessing information outside of the directory.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/EF44FABA-293E-4DDC-98F4-E6F54B26C241.png)
+![](https://assets.omscs.io/EF44FABA-293E-4DDC-98F4-E6F54B26C241.png)
 
 If a third-party app needs to access external information, it must use services explicitly provided by iOS. This requirement prevents apps from unauthorized access or modification to information it does not own.
 
@@ -151,13 +151,13 @@ A common class of attack - which includes the [return-to-libc](https://en.wikipe
 
 As a countermeasure, iOS randomly arranges the different program components in memory upon app initialization. This randomization makes it virtually impossible for an attacker to locate a useful library function to exploit.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/D542DCBC-FA88-42FF-B287-F03E788F59D3.png)
+![](https://assets.omscs.io/D542DCBC-FA88-42FF-B287-F03E788F59D3.png)
 
 ## iOS Security Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/CF5A41AA-2B88-4025-9A26-9C5386660D66.png)
+![](https://assets.omscs.io/CF5A41AA-2B88-4025-9A26-9C5386660D66.png)
 
 ## iOS Security Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/9B84187A-9DAC-4F61-8E87-9EACE74CD93D.png)
+![](https://assets.omscs.io/9B84187A-9DAC-4F61-8E87-9EACE74CD93D.png)
 
 Read more [here](https://drive.google.com/file/d/0BxxXk1d3yyuZOFlsdkNMSGswSGs/view).
 
@@ -176,15 +176,15 @@ iOS supports 4-digit numeric and arbitrary-length alphanumeric passcodes. To dis
 A user can opt to use Touch ID instead of a passcode. Touch ID is the fingerprint-sensing system that makes secure access to the device faster and easier.
 
 ## iOS Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/3A910142-A483-4840-B86C-17202FB1F483.png)
+![](https://assets.omscs.io/3A910142-A483-4840-B86C-17202FB1F483.png)
 
 ## iOS Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/46D2028E-7DD1-4982-861E-7D31F2574142.png)
+![](https://assets.omscs.io/46D2028E-7DD1-4982-861E-7D31F2574142.png)
 
 ## Android Security Overview
 Android is implemented as a software-stack architecture, consisting of a Linux kernel, a runtime environment with corresponding libraries, an application framework, and a set of applications.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/E7639F62-7467-4DF9-B028-D07A3EEADC32.png)
+![](https://assets.omscs.io/E7639F62-7467-4DF9-B028-D07A3EEADC32.png)
 
 The Linux kernel sits at the lowest level of the architecture stack and provides a level of abstraction between device hardware and the upper layers of the stack.
 
@@ -210,7 +210,7 @@ An app can announce the permissions it needs, and a user can grant these permiss
 ## Android Sandbox vs iOS Sandbox
 From a security perspective, one of the main differences between the Android and iOS sandbox is how they handle permissions.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/3F51B9F1-1D96-4EE5-843C-4EEFA0D5EBBF.png)
+![](https://assets.omscs.io/3F51B9F1-1D96-4EE5-843C-4EEFA0D5EBBF.png)
 
 Android apps can announce the permissions that they require, and users can approve these permissions at install time. Notably, Android apps can ask for very powerful permissions.
 
@@ -226,7 +226,7 @@ While Apple uses code signing to identify developers and verify app executables,
 Specifically, Android devices use code signing to ensure that updates for an app are coming from the same developer that created the app. Additionally, code signing helps manage the trust relationship between apps so that they can share code and data.
 
 ## Android Apps Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/FB9C919C-FAF9-467C-A2C8-C080760A7C84.png)
+![](https://assets.omscs.io/FB9C919C-FAF9-467C-A2C8-C080760A7C84.png)
 
 ## Android Apps Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/D4C6F94A-5A0A-4014-8D94-982837DEE5DB.png)
+![](https://assets.omscs.io/D4C6F94A-5A0A-4014-8D94-982837DEE5DB.png)

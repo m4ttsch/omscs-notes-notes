@@ -10,7 +10,7 @@ The CPU scheduler decides how and when the processes (and their threads) access 
 
 The scheduler selects one of the tasks in the ready queue and then schedules it on the CPU. Tasks may become ready a number of different ways.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/0CD9CFF9-08C7-4678-B3AE-F3C8E25B5042.png)
+![](https://assets.omscs.io/0CD9CFF9-08C7-4678-B3AE-F3C8E25B5042.png)
 
 Whenever the CPU becomes idle, we need to run the scheduler. For example, if a task makes an I/O request and is placed on the wait queue for that device, the scheduler has to select a new task from the ready queue to run on the CPU.
 
@@ -49,11 +49,11 @@ With this algorithm, it doesn’t really make sense for the runqueue to be a FIF
 ## Preemptive Scheduling: SJF + Preempt
 Let’s remove the assumption that a task cannot be interrupted once its execution has started. Let’s also relax the assumption that tasks must all arrive at the same time.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/302527F5-EA2F-4DD0-9E07-F38CA209E204.png)
+![](https://assets.omscs.io/302527F5-EA2F-4DD0-9E07-F38CA209E204.png)
 
 When T2 arrives, it is the only task in the system, so the scheduler will schedule it. When T1 and T3 arrive, T2 should be preempted, in line with our SJF policy. The execution of the rest of the scenario is as follows.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/0EC22063-46A4-47EF-B109-571A03494F41.png)
+![](https://assets.omscs.io/0EC22063-46A4-47EF-B109-571A03494F41.png)
 
 Whenever tasks enter the runqueue, the scheduler needs to be invoked so that it can invoke the new task’s runtime, and make a decision as to whether it should preempt the currently executing task.
 
@@ -64,15 +64,15 @@ Instead of looking at execution time when making scheduling decisions, as we do 
 
 When scheduling based on priority, the scheduler must run the highest priority task next. As a precondition of this policy, the scheduler must be able to preempt lower priority tasks when a high priority task enters the runqueue.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/55C02A40-B081-416F-826E-19749053B0C8.png)
+![](https://assets.omscs.io/55C02A40-B081-416F-826E-19749053B0C8.png)
 
 We start with the execution of T2, as it is the only thread in the system. Once T3 and T1 are ready, T2 is preempted. T3 is scheduled as it has the highest priority, and it runs to completion. T2 is scheduled again - as it has higher priority than T1 - and runs to completion. Finally, T1 is scheduled and runs to completion.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/9FF251EC-C80C-4184-91CE-11DC71A15A45.png)
+![](https://assets.omscs.io/9FF251EC-C80C-4184-91CE-11DC71A15A45.png)
 
 Our scheduler now not only needs to know which tasks are runnable, but also each task’s priority. An effective way to be able to quickly tell a task’s priority is to maintain a separate runqueue for each priority level. As a result, the scheduler can just empty queues by priority level.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/B9E26ED4-074D-4A16-A0C4-8EBB6AB9966D.png)
+![](https://assets.omscs.io/B9E26ED4-074D-4A16-A0C4-8EBB6AB9966D.png)
 
  One dangerous situation that can occur with priority scheduling is **starvation**, in which a low priority tasks is essentially never scheduled because higher priority tasks continually enter the system and take precedence.
 
@@ -81,11 +81,11 @@ One mechanism to protect against starvation is **priority aging**. In priority a
 ## Priority Inversion
 Consider the following setup assuming an SJF policy with priority, where P3 < P2 < P1.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/975B4BFD-B8BD-46FC-BE7A-8E48B91F47E5.png)
+![](https://assets.omscs.io/975B4BFD-B8BD-46FC-BE7A-8E48B91F47E5.png)
 
 Initially, T3 is the only task in the system, so it begins executing. Suppose it acquires a mutex. T2 now arrives, which has higher priority than T3, so T3 is preempted and T2 begins to execute. Now T1 arrives and preempts T2. Suppose T1 needs the lock that T3 holds. T1 gets put on the wait queue for the lock and T2 executes. T2 finishes and T3 executes. Once T3 finishes and unlocks the mutex, T1 can finally run.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/E11CA11B-7FD7-435C-95CC-0A2E2CACFACE.png)
+![](https://assets.omscs.io/E11CA11B-7FD7-435C-95CC-0A2E2CACFACE.png)
 
 We see that we have a case of **priority inversion** here because T1 which has the highest priority is now waiting on T3 which has the lowest priority. The order of execution should have been T1, T2, T3, but instead was T2, T3, T1.
 
@@ -96,19 +96,19 @@ We can now see why it is important to keep track of the current owner of the mut
 ## Round Robin Scheduling
 When it comes to running jobs with the same priority there are alternatives to FCFS and SJF. A popular option is **round robin scheduling**. Consider the following scenario.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/BD3715F2-BD12-4661-ACDB-2E74F02B6B38.png)
+![](https://assets.omscs.io/BD3715F2-BD12-4661-ACDB-2E74F02B6B38.png)
 
 We have three tasks that all arrive at the same time and are all present in the runqueue. We first remove T1 from the queue and schedule it on the CPU.  When T1 completes,  T2 will be removed from the queue and scheduled on the CPU. When T2 completes, T3 will be removed from the queue and scheduled on the CPU.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/62D89DA0-691E-4F48-9343-E437EB64C1B8.png)
+![](https://assets.omscs.io/62D89DA0-691E-4F48-9343-E437EB64C1B8.png)
 
 We can generalize round robin to include priorities as well.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/EDCC9CA7-6286-49DB-A03C-F40A1B12DDE8.png)
+![](https://assets.omscs.io/EDCC9CA7-6286-49DB-A03C-F40A1B12DDE8.png)
 
 A further modification that makes sense with round robin is not to wait until the tasks explicitly yield, but instead to interrupt them in order to mix in all the tasks in the system at the same time. For example, we would give each task a window of one time unit before interrupting it to schedule a new task. We call this mechanism **timeslicing**.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/AED712E3-7C9D-4E10-B5CD-48ACB79788FA.png)
+![](https://assets.omscs.io/AED712E3-7C9D-4E10-B5CD-48ACB79788FA.png)
 
 ## Timesharing and Timeslices
 A **timeslice** (also known as a time quantum) is the maximum amount of uninterrupted time that can be given to a task. A task may run for a smaller amount of time than what the timeslice specifies. If the task needs to be wait on an I/O operation, or synchronize with another task, the task will execute for less than its timeslice before it is placed on the appropriate queue and preempted. Also, if a higher priority tasks becomes runnable for a lower priority task’s timeslice has expired, the lower priority task will be preempted.
@@ -117,7 +117,7 @@ The use of timeslices allows for the tasks to be interleaved. That is, they will
 
 Let’s compare round robin scheduling with a timeslice of 1 to the FCFS and SJF algorithms across the metrics of throughput, average wait, and average completion.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/4D3CD488-5851-47C3-8840-4E79CBD288FA.png)
+![](https://assets.omscs.io/4D3CD488-5851-47C3-8840-4E79CBD288FA.png)
 
 T1 executes for one second, and is completed. T2 executes for one second and is preempted by T3. T3 executes for 1 second and is completed. T2 now executes for 9 seconds (no other tasks are present to preempt it), and it completes.
 
@@ -139,7 +139,7 @@ Timeslices provide benefits to the system, but also come with certain overheads.
 ## CPU Bound Timeslice Length
 Let’s consider two CPU bound tasks that each take 10 seconds to complete. Let’s assume that the time to context switch is 0.1 seconds. Let’s consider a timeslice value of 1 second and a timeslice value of 5 seconds.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/7E4262FA-1297-474A-A624-4BBD1B57DA5B.png)
+![](https://assets.omscs.io/7E4262FA-1297-474A-A624-4BBD1B57DA5B.png)
 
 With a smaller timeslice value, we have to pay the time cost of context switching more frequently. This will degrade our throughput and our average completion time. That being said, smaller timeslices mean that tasks are started sooner, so our average wait time is better when we have smaller timeslices.
 
@@ -147,18 +147,18 @@ The user cannot really perceive when a CPU bound task starts, so average wait ti
 
 For CPU bound tasks, we are better off choosing a larger timeslice. In fact, if our timeslice value was infinite - that is to say we never preempt tasks - our metrics would be best.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/033B24F5-0B4D-445D-899E-9CC8A7119851.png)
+![](https://assets.omscs.io/033B24F5-0B4D-445D-899E-9CC8A7119851.png)
 
 ## I/O Bound Timeslice Length
 Let’s consider two I/O bound tasks that each take 10 seconds to complete. Let’s assume that the time to context switch is 0.1 seconds. Let’s assume that each task issues an I/O request every 1 second, and that I/O completes in every 0.5 seconds. Let’s consider a timeslice value of 1 second and a timeslice value of 5 seconds.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/C7A8B07E-5DBC-445B-8C9B-639425A92F93.png)
+![](https://assets.omscs.io/C7A8B07E-5DBC-445B-8C9B-639425A92F93.png)
 
 In both cases, regardless of the timeslice, each task is yielding the CPU after every second of operation - when it makes its I/O request. There isn’t really any preemption going on. Thus the execution graphs and the metrics for timeslice values of 1 second and 5 seconds are identical.
 
 Let’s change the scenario and assume only T2 is I/O bound. T1 is now CPU bound.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/F384B9B2-2367-42EA-B43F-DFAC45DF4626.png)
+![](https://assets.omscs.io/F384B9B2-2367-42EA-B43F-DFAC45DF4626.png)
 
 The metrics for a timeslice value of 1 second do not change. The only function difference we have is that T1 is now explicitly preempted when its timeslice expires as opposed to before when T1 yielded the CPU after issuing its I/O request.
 
@@ -180,7 +180,7 @@ For example, if we want I/O and CPU bound tasks to have different timeslice valu
 
 One common data structure is a multi queue structure that maintains multiple distinct queues, each differentiated by their timeslice value. I/O intensive tasks will be associated with the queue with the smallest timeslice values, while CPU intensive tasks will be associated with the queue with the largest timeslice values.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/E73C69B5-5984-42BF-A68B-3E495829C2A3.png)
+![](https://assets.omscs.io/E73C69B5-5984-42BF-A68B-3E495829C2A3.png)
 
 This solution is beneficial because it provides timeslicing benefits for I/O bound tasks, while also avoid timeslicing overheads for CPU bound tasks.
 
@@ -196,7 +196,7 @@ If a task in a lower queue begins to frequently release the CPU due to I/O waits
 
 The resulting data structure is called the **multi-level feedback queue**.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/1A833C17-905A-46B8-B90B-F5E0803B3B6E.png)
+![](https://assets.omscs.io/1A833C17-905A-46B8-B90B-F5E0803B3B6E.png)
 
 The MLFQ is not just a group of priority queues. There are different scheduling policies associated with each level. Importantly, this data structure provides feedback on a task, and helps the scheduler understand over time which queue a task belongs to given the makeup of tasks in the system.
 
@@ -234,7 +234,7 @@ As a replacement for the O(1) scheduler, the CFS scheduler was introduced. CFS i
 
 CFS uses a **red-black tree** as a runqueue structure. Red black trees are self-balancing trees, which ensure that all of the paths from the root of the tree to the leaves are approximately the same size.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/EB1FD238-3A0E-4D51-AC7A-A859C6539011.png)
+![](https://assets.omscs.io/EB1FD238-3A0E-4D51-AC7A-A859C6539011.png)
 
 Tasks are ordered in the tree based on the amount of time that they spent running on the CPU, a quantity known as **vruntime** (virtual runtime). CFS tracks this quantity to the nanosecond.
 
@@ -255,7 +255,7 @@ In a **shared memory multiprocessor**, there are multiple CPUs. Each CPU has its
 
 In a **multicore** system, each CPU can have multiple internal cores. Each core has it’s own private L1/L2 cache, and the CPU as a whole shares an LLC. DRAM is present in this system as well.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/4CF9EA4E-5B8F-4B27-B0EC-397F76E05656.png)
+![](https://assets.omscs.io/4CF9EA4E-5B8F-4B27-B0EC-397F76E05656.png)
 
 As far as the operating system is concerned, it sees all of the CPUs and all of the cores in the CPUs as entities onto which it can schedule tasks.
 
@@ -267,14 +267,14 @@ To load balance across the CPUs, we can look at the length of each of the runque
 
 In addition to having multiple processors, it is possible to have multiple memory nodes. The CPUs and the memory nodes will be connected via some physical interconnect. In most configurations it is common that a memory node will be closer to a socket of multiple processors, which means that access to this memory node from those processors is faster than accessing some remote memory node. We call these platforms **non-uniform memory access** (NUMA) platforms.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/B506B72A-ECBC-4DF4-8DAB-62F9FD2BC10B.png)
+![](https://assets.omscs.io/B506B72A-ECBC-4DF4-8DAB-62F9FD2BC10B.png)
 
 From a scheduling perspective, what makes sense is to keep tasks on the CPU closest to the memory node where their state is, in order to maximize the speed of memory access. We refer to this as **NUMA-aware scheduling**.
 
 ## Hyperthreading
 The reason why we have to context switch among threads is because the CPU only has one set of registers to describe an execution context. Over time, hardware architects have realized they can hide some of the latency associated with context switching. One of the ways that this has been achieved is to have CPUs with multiple sets of registers where each set of registers can describe the context of a separate thread.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/DA77AC78-FEB2-4DB0-B12C-F84B43FF7D24.png)
+![](https://assets.omscs.io/DA77AC78-FEB2-4DB0-B12C-F84B43FF7D24.png)
 
 We call this **hyperthreading**. In hyperthreading, we have multiple hardware-supported execution context. We still have one CPU - so only one of these threads will execute at a given time - but context switching amongst the threads is very fast.
 
@@ -297,7 +297,7 @@ First, we need to assume that a thread can issue an instruction on every CPU cyc
 
 Second, we need to assume that memory access takes four cycles. What this means is that a memory bound thread will experience some idle cycles while it is waiting for the memory access to complete.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/2B1476A6-EE31-4AA9-A733-718FDDFE3727.png)
+![](https://assets.omscs.io/2B1476A6-EE31-4AA9-A733-718FDDFE3727.png)
 
 Third, we can also assume that hardware switching is instantaneous.
 
@@ -305,7 +305,7 @@ Finally, we will assume that we have an SMT platform with two hardware threads.
 
 Let’s look at the scenario of co-scheduling two compute-bound threads.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/B90046E6-16D2-4B95-89A9-DCF7264862CF.png)
+![](https://assets.omscs.io/B90046E6-16D2-4B95-89A9-DCF7264862CF.png)
 
 Even though each thread is able to issue a CPU instruction during each cycle, only one thread will be able to issue an instruction at a time since there is only one CPU pipeline. As a result, these threads will interfere with one another as they compete for CPU pipeline resources.
 
@@ -315,13 +315,13 @@ In addition, the memory component is completely idle during this computation, as
 
 Let’s look at the scenario of co-scheduling two memory-bound threads.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/F48DA477-45B0-45E0-966D-BDA4E885C859.png)
+![](https://assets.omscs.io/F48DA477-45B0-45E0-966D-BDA4E885C859.png)
 
  Similar to the CPU-bound thread example, we still have idle time where both threads are waiting on memory access to return, which means wasted CPU cycles.
 
 Let’s look at co-scheduling a mix of CPU and memory-bound threads.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/702A8D07-EEE9-4FB3-98B0-C32117214897.png)
+![](https://assets.omscs.io/702A8D07-EEE9-4FB3-98B0-C32117214897.png)
 
 This solution seems best. We schedule the CPU-bound thread until the memory-bound thread needs to issue a memory request. We context switch over, issue the request, and then context switch back and continue our compute-heavy task. This way, we minimize the number of wasted CPU cycles.
 
@@ -364,12 +364,12 @@ She wants to assess is the overall performance when a specific mix of threads ge
 
 She runs four experiments, (a) - (d), with each core having a specific composition of threads.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/19415E6A-E6EF-4A29-823A-EE8C95FFB327.png)
+![](https://assets.omscs.io/19415E6A-E6EF-4A29-823A-EE8C95FFB327.png)
 
 ## CPI Experiment Results
 Here are the results for the four experiments.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/F39D7297-567A-4D1C-8B45-56285FCC173A.png)
+![](https://assets.omscs.io/F39D7297-567A-4D1C-8B45-56285FCC173A.png)
 
 In the first two experiments, we have a fairly well balance mix of high- and low-CPI threads across the cores. We see that in these two cases, the processor pipeline was well-utilized and our IPC is high.
 
@@ -381,10 +381,10 @@ We have used a synthetic workload in this case, with each task having a CPI that
 
 In order to answer this, Fedorova profiled a number of applications from several respected benchmark suites and computed the CPI values for each.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/CC98A928-2A37-420E-A949-F801FA2DEB7E.png)
+![](https://assets.omscs.io/CC98A928-2A37-420E-A949-F801FA2DEB7E.png)
 
 What we can see is that most of the values are quite cluttered together. We do not see the distinct values presented in the synthetic workload. Most CPIs range from 2.5 - 4.5.
 
 Because CPI isn’t that different across applications, it may not be the most instructive metric to inform scheduling decisions.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/A260F044-D32B-4ADA-8E2C-AE04AE7F0A92.png)
+![](https://assets.omscs.io/A260F044-D32B-4ADA-8E2C-AE04AE7F0A92.png)

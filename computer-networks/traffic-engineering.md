@@ -26,13 +26,13 @@ In particular, traffic engineering seeks to avoid congested links and satisfy ce
 ## Intradomain Traffic Engineering
 Suppose we have a single autonomous system with the following static link weights.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/EB76C06D-F341-4289-BA4B-95737D28D14E.png)
+![](https://assets.omscs.io/EB76C06D-F341-4289-BA4B-95737D28D14E.png)
 
 An operator can affect the shortest path between two nodes in the graph by configuring the link weights, thus affecting the way that traffic flows through network.
 
 Suppose that the operator of this network above would like to shift traffic off of a congested link in the middle of the network.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/EBC2D987-9713-4994-B111-23DCDEB592E8.png)
+![](https://assets.omscs.io/EBC2D987-9713-4994-B111-23DCDEB592E8.png)
 
 By changing the link weight from 1 to 3, the shortest path between the two nodes now takes an alternate route.
 
@@ -65,7 +65,7 @@ We can define utilization as the amount of traffic on a link divided by the capa
 
 Solving the optimization problem is much easier if we approximate the “true” quadratic cost function (orange below) with a piecewise, linear function (blue below).
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/2D79803D-E366-4842-B04E-65FB43992A7F.png)
+![](https://assets.omscs.io/2D79803D-E366-4842-B04E-65FB43992A7F.png)
 
 Our objective might be to minimize the sum of this piecewise linear cost function over all the links in the network.
 
@@ -174,7 +174,7 @@ Data center networking challenges include
 
 A data center typically has three layers: an access layer, an aggregation layer and a core layer.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/65A28204-4A7B-4810-809C-B504D80A3373.png)
+![](https://assets.omscs.io/65A28204-4A7B-4810-809C-B504D80A3373.png)
 
 The access layer connects the servers themselves, while the aggregation layer connects the access layer and the core layer provides the connection to the larger internet.
 
@@ -199,7 +199,7 @@ Every server in the network has a topology-independent hardware address and so, 
 
 One solution is to introduce **pods**. Each server in a pod is assigned a pseudo MAC address in addition to their “real” MAC address.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/D553B797-DBA0-4DF8-9E37-543235BEE151.png)
+![](https://assets.omscs.io/D553B797-DBA0-4DF8-9E37-543235BEE151.png)
 
 With pods, switches in the data center no longer need to maintain forwarding table entries for every host, but rather only need entries for reaching other pods in the topology.
 
@@ -243,7 +243,7 @@ This intermediate switch then forwards the traffic to the ultimate destination d
 
 Subsequent flows might pick different indirection points for the traffic at random.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/E40ACFE5-2097-4439-A32A-25C7588DB20E.png)
+![](https://assets.omscs.io/E40ACFE5-2097-4439-A32A-25C7588DB20E.png)
 
 The notion of picking a random indirection point to balance traffic more evenly across the topology comes from multiprocessor architecture design, and has recently been rediscovered in the context of data centers.
 
@@ -265,7 +265,7 @@ In Jellyfish, the graph nodes are switches.
 
 Here is a visualization of a jellyfish random graph parameterized by 432 servers, 180 switches, and a fixed degree of 12.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/F3902EA4-D8E3-415B-9F3F-CD382D9A60CF.png)
+![](https://assets.omscs.io/F3902EA4-D8E3-415B-9F3F-CD382D9A60CF.png)
 
 Jellyfish’s approach is to construct a random graph at the Top of Rack (ToR) switch layer.
 
@@ -290,7 +290,7 @@ This higher capacity is achieved because the paths through the topology are shor
 
 Consider the following topology with 16 server, 20 switches and a degree of 4.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/96E31275-E297-46E6-B16B-B72E9EE400FF.png)
+![](https://assets.omscs.io/96E31275-E297-46E6-B16B-B72E9EE400FF.png)
 
 In the fat tree topology, only four out of sixteen servers are reachable by five hops. In the jellyfish random graph, twelve out of sixteen servers are reachable in five hops.
 

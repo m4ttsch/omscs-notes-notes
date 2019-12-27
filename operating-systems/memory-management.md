@@ -35,20 +35,20 @@ Since the memory address translation happens on every memory reference, most MMU
 
 Finally, the actual translation of the physical address from the virtual address is done by the hardware. While the operating system maintains page tables which are necessary for the translation process; however, the actual hardware performs it. This implies that the hardware dictates what type of memory management modes are available, be they page-based or segment-based.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/3A5AF4E6-D08B-4627-8382-6B7E6108065E.png)
+![](https://assets.omscs.io/3A5AF4E6-D08B-4627-8382-6B7E6108065E.png)
 
 ## Page Tables
 Pages are the more popular method for memory management. Page tables are used to convert the virtual memory addresses into physical memory addresses.
 
 For each virtual address, an entry in the page table is used to determine the actual physical address associated with that virtual address. To this end, the page table serves as a map, mapping virtual addresses to physical addresses.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/F4D30C66-2702-4D92-95A0-57F1A761B83C.png)
+![](https://assets.omscs.io/F4D30C66-2702-4D92-95A0-57F1A761B83C.png)
 
 The sizes of the pages in virtual memory is identical to the sizes of the page frames in physical memory. By keeping the size of these the same, the operating system does not need to manage the translation of every single virtual address within a page. Instead, we can only translate the first virtual address in a page to the first physical address in a page frame. The rest of the memory address in the page map to the corresponding offsets in the page frame. As a result, we can reduce the number of entries we have in the page table.
 
 What this means is that only the first portion of the virtual address is used to index into the page table. We call this part of the address the **virtual page number** (VPN), and the rest of the of the virtual address is the **offset**. The VPN is used as an index into the page table, which will produce the **physical frame number** (PFN), which is the first physical address of the frame in DRAM. To complete the full translation, the PFN needs to be summed with the offset specified in the latter portion of the virtual address to produce the actual physical address. The PFN with the offset can be used to reference a specific location in DRAM.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/6C1CB2E4-D8C7-4F2C-BC0C-831E2DF40CCD.png)
+![](https://assets.omscs.io/6C1CB2E4-D8C7-4F2C-BC0C-831E2DF40CCD.png)
 
 Let’s say we want to initialize an array for the very first time. We have already allocated the memory for that array into the virtual address space for the process, we have just never accessed it before. Since this portion of the address space has not been accessed before, the operating system has not yet allocated memory for it.
 
@@ -56,7 +56,7 @@ What will happen the first time we access this memory is that the operating syst
 
 The physical memory is only allocated when the process is trying to access it. This is called **allocation on first touch**. The reason for this is to make sure that physical memory is only allocated when it’s really needed. Sometimes, programmers may create data structures that they don’t really use.   
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/6785C624-4B55-4F1F-AED0-B9C31954877A.png)
+![](https://assets.omscs.io/6785C624-4B55-4F1F-AED0-B9C31954877A.png)
 
 If a process hasn’t used some of its memory pages for a long time, it is possible that those pages will be reclaimed. The contents will no longer be present in physical memory. They will be swapped out to disk, and some other content will end up in the corresponding physical memory slot.
 
@@ -68,7 +68,7 @@ Ultimately, if the access is granted, there will be a new page mapping that is r
 
 In summary, the operating system creates a page table for every single process in the system. That means that whenever a context switch is performed, the operating system must swap in the page table associated with the new process. Hardware assists with page table access by maintaining a register that points to the active page table. On x86 platforms, this register is the **CR3 register**.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/1234345B-1FE2-4424-A6FB-7E13693B22EE.png)
+![](https://assets.omscs.io/1234345B-1FE2-4424-A6FB-7E13693B22EE.png)
 
 ## Page Table Entry
 Every page table entry will have at least a PFN and a valid bit. This bit is also called a present bit, as it represents whether or not the contents of the virtual memory are present in physical memory or not.
@@ -83,7 +83,7 @@ We can also keep track of **protection bits** which specify whether a page is al
 
 Pentium x86 Page Table Entry
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/761F6331-A7C2-44BF-B516-92A921D1483B.png)
+![](https://assets.omscs.io/761F6331-A7C2-44BF-B516-92A921D1483B.png)
 
 The MMU uses the page table entry not just to perform the address translation, but also to rely on these bits to determine the validity of the access. If the hardware determines that a physical memory access cannot be performed, it causes a page fault.
 
@@ -109,7 +109,7 @@ It is important to know that a process will not use all of the theoretically ava
 ## Multi Level Page Tables
 We don’t really design flat page tables anymore. Instead, we now use a more hierarchical page table structure.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/Screen%20Shot%202018-10-19%20at%201.47.34%20PM.png)
+![](https://assets.omscs.io/Screen%20Shot%202018-10-19%20at%201.47.34%20PM.png)
 
 The outer level is referred to as a **page table directory**. Its elements are not pointers to individual page frames, but rather pointers to page tables themselves.
 
@@ -121,13 +121,13 @@ If a process requests more memory to be allocated to it via `malloc` the OS will
 
 To find the right element in the page table structure, the virtual address is split into more components.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/9CB5D47B-9A63-46A9-9117-E147205AD34C.png)
+![](https://assets.omscs.io/9CB5D47B-9A63-46A9-9117-E147205AD34C.png)
 
 The last part of the logical address is still the offset, which is used to actually index into the physical page frame. The first two components of the address are used to index into the different levels of the page tables, and they ultimately will produce the PFN that is the starting address of the physical memory region being accessed. The first portion indexes into the page table directory to get the page table, and the second portion indexes into the page table to get the PFN.
 
 In this particular scenario, the address format is such that the outer index occupies 12 bits, the inner index occupies 10 bits, and the offset occupies 10 bits.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/94D5824C-54DD-4118-A769-6AD8B2847A94.png)
+![](https://assets.omscs.io/94D5824C-54DD-4118-A769-6AD8B2847A94.png)
 
 This means that a given page table can contain 2^10 entries (p2), and each entry can address 2^10 bytes of physical memory (d). Loosely, we can think about the page table pointing to 2^10 “rows” of physical memory, with each row having 2^10 “cells”. P2 gives us the memory “row”, and d gives us the “cell” within that “row”. This means that each page table can address 1MB of memory.
 
@@ -141,7 +141,7 @@ Because of this, we have larger gaps between page tables that are actually alloc
 
 Let’s look at two different addressing schemes for 64-bit platforms.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/2D989531-A664-498C-BEDE-D5A0BE50C8F1.png)
+![](https://assets.omscs.io/2D989531-A664-498C-BEDE-D5A0BE50C8F1.png)
 
 In the top figure, we have two page table layers, while in the bottom figure, we have three page table layers. Both figures have page frames in physical memory that are 4KB (4 * 2^10).
 
@@ -173,13 +173,13 @@ The representation of a logical memory address when using inverted page tables i
 
 A linear scan of the inverted page table is performed when a process attempts to perform a memory access. When the correct entry is found - validated by the combination of the PID and the virtual address - it is the index of that entry that is the frame number in physical memory. That index combined with the offset serves to reference the exact physical address.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/598B0234-CFB4-47D7-9356-73432E59A65C.png)
+![](https://assets.omscs.io/598B0234-CFB4-47D7-9356-73432E59A65C.png)
 
 Linear scans are slow, but thankfully, the TLB comes to the rescue to speed up lookups. That being said, we still have to perform these scans with some frequency, and we need a way to improve the performance.
 
 Inverted page tables are often supplemented with **hashing page tables**. Basically, the address is hashed and looked up in a hash table, where the hash points to a (small) linked list of possible matches. This allows us to speed up the linear search to consider just a few possibilities.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/5B8687C4-AA22-40E8-920C-B5B021652EAE.png)
+![](https://assets.omscs.io/5B8687C4-AA22-40E8-920C-B5B021652EAE.png)
 
 ## Segmentation
 Virtual to physical memory mappings can also be maintain using **segments**. With segments, the address space is divided into components of arbitrary size, and the components will correspond to some logically meaningful section of the address space, like the code, heap, data or stack.
@@ -192,7 +192,7 @@ In practice, segmentation and paging are used together. The linear address that 
 
 The type of address translation that is possible on a particular platform is determined by the hardware. Intel x86_32 platforms support segmentation and paging. Linux supports up to 8K segments per process and another 8K global segments. Intel x86_64 platforms support segmentation for backward compatibility, but the default mode is to use just paging.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/B38534C8-2529-4E6F-AC22-3C6989B13194.png)
+![](https://assets.omscs.io/B38534C8-2529-4E6F-AC22-3C6989B13194.png)
 
 ## Page Size
 The size of the memory page, or frame, is determined by the number of bits in the offset. For example, if we have a 10-bit offset, our page size is 2^10 bytes, or 1KB. A 12-bit offset means we have a page size of 4KB.
@@ -221,15 +221,15 @@ Once the kernel allocates some memory through a `malloc` call, the kernel is no 
 ## Memory Allocation Challenges
 Consider a page-based memory management system that needs to manage 16 page frames. This system takes requests for 2 or 4 pages frames at a time and is currently facing one request for two page frames, and three requests for four page frames. The frames must be allocated contiguously for a given request.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/FF84D314-D11E-4B0D-9883-5A4B95B81696.png)
+![](https://assets.omscs.io/FF84D314-D11E-4B0D-9883-5A4B95B81696.png)
 
 The operating system may choose to allocate the pages as follows.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/2E0A9A0A-A838-4A7F-B3F7-AB1A90BC8718.png)
+![](https://assets.omscs.io/2E0A9A0A-A838-4A7F-B3F7-AB1A90BC8718.png)
 
 Now suppose that the initial two request frames are freed. The page table may look like this now.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/D858CB66-A95B-4EFB-84D1-AD3448FEBEC5.png)
+![](https://assets.omscs.io/D858CB66-A95B-4EFB-84D1-AD3448FEBEC5.png)
 
 What do we do when a request for four page frames comes in now? We do have four available page frames, but the allocator cannot satisfy this request because the pages are not contiguous.
 
@@ -237,7 +237,7 @@ This example illustrates a problem called **external fragmentation**. This occur
 
 Perhaps we can do better, using the following allocation strategy.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/9E026C20-E04E-4CE6-B31F-F4EB073272EA.png)
+![](https://assets.omscs.io/9E026C20-E04E-4CE6-B31F-F4EB073272EA.png)
 
 Now when the free request comes in, the first two frames are again freed. However, because of the way that we have laid out our memory, we now have four *contiguous* free frames. Now a new request for four pages can granted successfully.
 
@@ -250,7 +250,7 @@ The **buddy allocator** starts with some consecutive memory region that is free 
 
 Let’s look at the following sequence of requests and frees.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/ABC594B2-8DD5-4767-8E68-E91770CC47D5.png)
+![](https://assets.omscs.io/ABC594B2-8DD5-4767-8E68-E91770CC47D5.png)
 
 First, a request for 8 units comes in. The allocator divides the 64 unit chunk into two chunks of 32. One chunk of 32 becomes 2 chunks of 16, and one of those chunks becomes two chunks of 8. We can fill our first request. Suppose a request for 8 more units comes in. We have another free chunk of 8 units from splitting 16, so we can fill our second request. Suppose a request for 4 units comes in. We now have to subdivide our other chunk of 16 units into two chunks of 8, and we subdivide one of the chunks of 8 into two chunks of 4. At this point we can fill our third request.
 
@@ -266,7 +266,7 @@ Because the buddy allocator has granularity of powers of two, there will be some
 
 Thankfully, we can leverage the **slab allocator**. The slab allocator builds custom object caches on top of slabs. The slabs themselves represent contiguously allocated physical memory. When the kernel starts it will pre-create caches for different objects, like the task struct. Then, when an allocation request occurs, it will go straight to the cache and it will use one of the elements in the cache. If none of the entries is available, the kernel will allocate another slab, and it will pre-allocate another portion of contiguous memory to be managed by the slab allocator.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/4D7BC1F3-90FB-44C7-8D77-D9D128DB7B62.png)
+![](https://assets.omscs.io/4D7BC1F3-90FB-44C7-8D77-D9D128DB7B62.png)
 
 The benefit of the slab allocator is that internal fragmentation is avoided. The entities being allocated in the slab are the exact size of the objects being stored in them. External fragmentation isn’t really an issue either. Since each entry can store an object of a given size, and only objects of a given size will be stored, there will never be any un-fillable gaps in the slab.
 
@@ -283,7 +283,7 @@ Once the page is brought into memory, the OS will determine a free frame where t
 
 At that point, control is handed back to the process that issued this reference, and the program counter of the process will be restarted with the same instruction, so that this reference will now be made again. This time, the reference will succeed.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/76DE9169-A186-412A-B18C-EBD53058BB3A.png)
+![](https://assets.omscs.io/76DE9169-A186-412A-B18C-EBD53058BB3A.png)
 
 We may require a page to be constantly present in memory, or maintain its original physical address throughout its lifetime. We will have to **pin** the page. In order words, we disable swapping. This is useful when the CPU is interacting with devices that support direct memory access, and therefore don’t pass through the MMU.
 
@@ -317,7 +317,7 @@ One such mechanism is called **Copy-on-Write** (COW). When we need to create a n
 
 In order to avoid unnecessary copying, a new process’s address space, entirely or in part, will just point to the address space of its parent. The same physical address may be referred to by two completely different virtual addresses belonging to the two processes. We have to make sure to **write protect** the page as a way to track accesses to it.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/1763C799-DD05-4442-95AD-F57F32314875.png)
+![](https://assets.omscs.io/1763C799-DD05-4442-95AD-F57F32314875.png)
 
 If the page is only going to be read, we save memory and we also save on the CPU cycles we would waste performing the unnecessary copy.
 

@@ -19,7 +19,7 @@ In mutual authentication, Alice needs to prove to Bob that she is Alice, and Bob
 
 Suppose that Alice and Bob share a secret key `K_AB`, which only they know. Using this secret key, we can envision the following authentication protocol.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/6B53C586-BE9C-4F21-B901-48EB7D94938E.png)
+![](https://assets.omscs.io/6B53C586-BE9C-4F21-B901-48EB7D94938E.png)
 
 First, Alice sends a message to Bob, claiming that she is Alice. Bob response with a random value `r1`, referred to as a **challenge**. Alice encrypts `r1` with `K_AB` and sends the ciphertext back to Bob as a **response** to the challenge. When Bob receives the response, he decrypts it with `K_AB` and sees if it matches the plaintext `r1`.
 
@@ -42,15 +42,15 @@ We assume that Trudy can intercept any messages delivered over the Internet, and
 Additionally, we need to protect the shared secret key `K_AB`. If Trudy can steal a copy of `K_AB` from either Alice’s or Bob’s machine, then she can impersonate both Alice and Bob. The security of the endpoints is as important as the security of the communication between the two endpoints.
 
 ## Mutual Authentication Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/80FD51E1-A56A-41ED-A67C-73513A08A815.png)
+![](https://assets.omscs.io/80FD51E1-A56A-41ED-A67C-73513A08A815.png)
 
 ## Mutual Authentication Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/6F5B4FC5-A864-4ABF-A723-74B86A03E032.png)
+![](https://assets.omscs.io/6F5B4FC5-A864-4ABF-A723-74B86A03E032.png)
 
 ## Mutual Authentication: Simplified
 The mutual authentication protocol described above takes five steps. Can we shorten it to require only the following three steps?
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/BEFD76D4-457E-489F-ADDF-4BCBC2972D60.png)
+![](https://assets.omscs.io/BEFD76D4-457E-489F-ADDF-4BCBC2972D60.png)
 
 First, Alice presents her identity to Bob and sends a challenge `r2`. Bob responds with both the ciphertext of `r2` generated from `K_AB` as well as his challenge `r1`. Upon receiving the response, Alice decrypts the ciphertext using `K_AB` and validates that the plaintext matches `r2` . Third, Alice sends Bob the ciphertext of `r1`, which Bob decrypts and compares with plaintext `r1` to authenticate Alice.
 
@@ -67,7 +67,7 @@ This type of attack is referred to as a reflection attack because Trudy reflects
 ### Preventing Reflection Attacks
 One strategy to defend against reflection attacks is to use two different shared keys: one for the initiator of the connection and one for the responder.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/73C4601B-1984-4FDA-839A-09802C1A3D09.png)
+![](https://assets.omscs.io/73C4601B-1984-4FDA-839A-09802C1A3D09.png)
 
 Suppose Alice uses `K_AB1`, and Bob uses `K_AB2`. In this setup, Bob sends ciphertext encrypted using `K_AB2` and expects to receive ciphertext encrypted with `K_AB1`. Even though Trudy can intercept the challenge sent from Bob, she cannot obtain the correct ciphertext through reflection.
 
@@ -80,7 +80,7 @@ Therefore, when Trudy receives a challenge `r1` from Bob, the challenge is an od
 ## Mutual Authentication Public Keys
 If Bob and Alice have each other’s public key, they can use public-key cryptography for mutual authentication.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/77941BB4-9E0E-49F8-940F-FCC1DB862272.png)
+![](https://assets.omscs.io/77941BB4-9E0E-49F8-940F-FCC1DB862272.png)
 
 First, Alice sends Bob a challenge `r2` encrypted with Bob’s public key. Upon receiving the challenge, Bob decrypts the ciphertext using his private key, and sends back the plaintext challenge `r2` along with his own challenge `r1`. `r1` is encrypted using Alice’s public key.
 
@@ -91,10 +91,10 @@ Alice also decrypts the ciphertext for `r1` using her private key and sends the 
 This protocol can be modified to use signing with private keys instead of encrypting with public keys.
 
 ## Security Protocols Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/55902D91-0F5A-4553-829E-34C88755CFFD.png)
+![](https://assets.omscs.io/55902D91-0F5A-4553-829E-34C88755CFFD.png)
 
 ## Security Protocols Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/183F382E-5822-4207-AAB9-BA9CEC7B898B.png)
+![](https://assets.omscs.io/183F382E-5822-4207-AAB9-BA9CEC7B898B.png)
 
 ## Session Keys
 After authentication, Alice and Bob need to establish a shared secret key for their communication session so they can securely send messages to one another.
@@ -107,7 +107,7 @@ Intuitively, the more a secret is used, the higher the chance of a leak. Therefo
 
 Suppose Alice and Bob share a master key, `K_AB`. They can establish a session key as follows. Note that the first three steps are the same as before and serve for Bob to authenticate Alice.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/AA0CDBE6-C036-40D1-9997-30298091B776.png)
+![](https://assets.omscs.io/AA0CDBE6-C036-40D1-9997-30298091B776.png)
 
 After authentication, Bob and Alice compute the same session key based on both `K_AB` and something about the current session. Incorporating information about the current session into the generation of the session key helps to ensure that the key is unique to the session.
 
@@ -124,7 +124,7 @@ A **key distribution center** (KDC) solves this scalability problem. In this set
 
 If Alice and Bob want to have a secure session, they must first establish a session key `K_S`. The following diagram illustrates the steps involved in this operation.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/BD7F7DE0-75D6-4BA0-9746-88EEDB48C28D.png)
+![](https://assets.omscs.io/BD7F7DE0-75D6-4BA0-9746-88EEDB48C28D.png)
 
 First, Alice sends a message to the KDC containing both a request for a shared session key between her and Bob as well as a random [nonce](https://en.wikipedia.org/wiki/Cryptographic_nonce) value `n1`. The KDC sends a response encrypted using the master key `K_A` that it shares with Alice.
 
@@ -147,13 +147,13 @@ Alice can then send this certificate to a user, such as Bob, or she can publish 
 
 Likewise, Bob can obtain his certificate from the CA and send it to Alice so that Alice has Bob’s public key as well.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/B2C43DA5-BABC-4E55-B80D-0B71617D4929.png)
+![](https://assets.omscs.io/B2C43DA5-BABC-4E55-B80D-0B71617D4929.png)
 
 ## Session Key Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/0A70D994-363F-4512-8333-3D30F130D0C3.png)
+![](https://assets.omscs.io/0A70D994-363F-4512-8333-3D30F130D0C3.png)
 
 ## Session Key Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/F44F5C79-3691-440B-B5E9-72181E40A834.png)
+![](https://assets.omscs.io/F44F5C79-3691-440B-B5E9-72181E40A834.png)
 
 ## Kerberos
 **Kerberos** is a standard protocol used to provide authentication and access control in a networked environment, such as an enterprise network.
@@ -164,7 +164,7 @@ For human users, the master key is derived from his or her password, while for n
 
 The following diagram summarizes the interactions that take place when Bob logs into a workstation backed by Kerberos.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/F30C76D4-1654-4AC1-9CD9-A709BA129ACF.png)
+![](https://assets.omscs.io/F30C76D4-1654-4AC1-9CD9-A709BA129ACF.png)
 
 When Bob logs in, his workstation first contacts the KDC with an authentication service request. The KDC generates a per-day session key, `S_B`, and a so-called **ticket-granting ticket** (TGT) that contains `S_B` and Bob’s ID. This ticket is encrypted using the KDC’s key.
 
@@ -181,7 +181,7 @@ Second, the master key `K_B` that Bob shares with the KDC is only used once ever
 ## Accessing the Printer
 Suppose Bob wants to send a print job to a printer `hp1`.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/F3B41699-2CF7-42C2-AF9C-8C47EF41D42E.png)
+![](https://assets.omscs.io/F3B41699-2CF7-42C2-AF9C-8C47EF41D42E.png)
 
 His localhost sends a ticket-granting service request to the KDC. The request contains the TGT and an authenticator: the current timestamp encrypted using Bob’s per-day session key `S_B`.
 
@@ -197,7 +197,7 @@ The KDC sends a ticket-granting service response to Bob’s localhost, which con
 
 Now Bob’s localhost can authenticate itself to the printer.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/C7E0F5CB-2337-437F-A99B-C91EBF3434EE.png)
+![](https://assets.omscs.io/C7E0F5CB-2337-437F-A99B-C91EBF3434EE.png)
 
 First, it sends an authentication request to the printer containing the ticket and a new authenticator encrypted with `K_BP`.
 
@@ -212,7 +212,7 @@ The printer then sends a response to authenticate itself to Bob by, say, adding 
 After these authentication steps, Bob’s localhost can send the print job to the printer.
 
 ## Kerberos Quiz
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/0327A697-D433-41EE-B0E4-54A3F830AFC7.png)
+![](https://assets.omscs.io/0327A697-D433-41EE-B0E4-54A3F830AFC7.png)
 
 ## Kerberos Quiz Solution
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/358A47CC-D72F-4BAB-BCCD-590496B92FBF.png)
+![](https://assets.omscs.io/358A47CC-D72F-4BAB-BCCD-590496B92FBF.png)

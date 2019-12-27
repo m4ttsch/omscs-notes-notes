@@ -19,7 +19,7 @@ Examples of I/O devices include
 ## I/O Device Features
 The device space is extremely diverse.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/95C30A1B-9A9B-4CFD-A7CA-967EF1BD431F.png)
+![](https://assets.omscs.io/95C30A1B-9A9B-4CFD-A7CA-967EF1BD431F.png)
 
 Devices come in all shapes and sizes with a lot of variability in their hardware architecture, functionality, and interfaces. Our discussion will focus on the key features of a device that enable its integration into a system.
 
@@ -27,12 +27,12 @@ In general, a device will have a set of control registers which can be accessed 
 
 Internally, the device will incorporate all other device-specific logic. This will include the **microcontroller** - which is basically the device’s CPU - on device memory, as well as any other logic needed by the device. For example, some devices may need chips for converting analog to digital signals. As another example, network devices may need chips to interact with the physical network medium, be it optics or copper wire.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/DA5651B0-8568-45A2-A26E-B5DE1F699F9B.png)
+![](https://assets.omscs.io/DA5651B0-8568-45A2-A26E-B5DE1F699F9B.png)
 
 ## CPU Device Interconnect
 Devices interface with the rest of the system via a controller that is typically integrated as part of the device packaging that is used to connect the device with the rest of the CPU complex via some CPU/device interconnect.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/38B48ADB-1EC5-4771-A87B-92D9102ADA69.png)
+![](https://assets.omscs.io/38B48ADB-1EC5-4771-A87B-92D9102ADA69.png)
 
 In this figure, all of the the controllers are connected to the rest of the system via a **Peripheral Component Interconnect** (PCI) bus.
 
@@ -45,7 +45,7 @@ The device controllers determine what type of interconnect a device can attach t
 ## Device Drivers
 Operating systems support devices via **device drivers**.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/BE7972F7-6118-4819-95D2-EFE8A38524FB.png)
+![](https://assets.omscs.io/BE7972F7-6118-4819-95D2-EFE8A38524FB.png)
 
 Device drivers are device-specific software components. The operating systems needs to include a device driver for every type of device that is included in the system.
 
@@ -126,7 +126,7 @@ Finally, once the device is configured, the device will perform the actual reque
 
 Any results/events originating on the device will traverse this chain in reverse: from the device to the driver to the kernel and finally into the user process.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/1C2567BE-17C9-43AE-98C9-A864103CCE98.png)
+![](https://assets.omscs.io/1C2567BE-17C9-43AE-98C9-A864103CCE98.png)
 
 ## OS Bypass
 It is not necessary to go through the kernel to get to a device. It is possible to configure some devices to be accessible directly from user level. This is called **operating system bypass**. In OS bypass, any memory/registers assigned for use by the device is directly available to a user process.
@@ -148,7 +148,7 @@ For synchronous operations, the calling thread will block. The OS kernel will pl
 
 With asynchronous operations, the thread is allowed to continue as soon as it issues the request. At some later time, the user process can be allowed to check if the response is available. Alternatively, the kernel can notify the process that the operation is complete and that the results are available.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/791986F3-95FD-400A-B5E2-0B0A27992CC8.png)
+![](https://assets.omscs.io/791986F3-95FD-400A-B5E2-0B0A27992CC8.png)
 
 Remember when we talked about Flash, we discussed that the implementation mimicked asynchronous I/O by delegating all I/O calls to special helper threads. Here we are talking about true, OS-supported asynchronous I/O.
 
@@ -174,7 +174,7 @@ What if files are not even local to a machine, and are accessed over the network
 
 To solve the underlying problems that these questions pose, operating systems like Linux include a **virtual filesystem** (VFS) layer. This layer hides all details regarding the underlying filesystem(s) from the higher level consumers.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/DE9A5B7E-FDE3-4C19-9D65-7BFFDC72A9B0.png)
+![](https://assets.omscs.io/DE9A5B7E-FDE3-4C19-9D65-7BFFDC72A9B0.png)
 
 Applications continue to interact with the VFS using the same POSIX API as before, and the VFS specifies a more detailed set of filesystem-related abstractions that every single underlying filesystem must implement.
 
@@ -205,7 +205,7 @@ The ext2 filesystem was the default filesystem in Linux until it was replaced by
 
 A disk partition that is used as a ext2 Linux filesystem looks as follows.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/E63DEDAE-89A8-4A35-B994-24482EC5FE27.png)
+![](https://assets.omscs.io/E63DEDAE-89A8-4A35-B994-24482EC5FE27.png)
 
 The first block is not used by Linux and is often used to boot the system.
 
@@ -232,7 +232,7 @@ Finally, the block group contains the actual data blocks themselves that hold th
 ## inodes
 Inodes play a key role in organizing how files are stored on disk because they essentially integrate an index of all of the disk blocks that correspond to a particular file.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/4FC8ECB4-6FB8-40AC-A066-FAB96A8CB28E.png)
+![](https://assets.omscs.io/4FC8ECB4-6FB8-40AC-A066-FAB96A8CB28E.png)
 
 A file is uniquely identified by its inode. The inode contains a list of all of the blocks that correspond to the actual file. In addition to the list of blocks, an inode also contains additional metadata information.
 
@@ -245,7 +245,7 @@ The downside of this approach is that there is a limit on the file size for file
 ## inodes with Indirect Pointers
  One way to solve the issue of file size limits is to use **indirect pointers**.
 
-![](https://storage.cloud.google.com/omscs-notes.appspot.com/04E687DF-CB15-4C86-A420-625B1288AEF9.png)
+![](https://assets.omscs.io/04E687DF-CB15-4C86-A420-625B1288AEF9.png)
 
 The first section of blocks contain blocks that point directly to data. The direct pointers will point to 1kb per entry.
 
