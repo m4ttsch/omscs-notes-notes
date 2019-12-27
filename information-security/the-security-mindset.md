@@ -5,6 +5,8 @@ course: information-security
 lecture: the-security-mindset
 ---
 
+# The Security Mindset
+
 ## Why Cyber Security?
 Before considering why we care about cyber security, it’s important to understand why we would care about security in general.
 

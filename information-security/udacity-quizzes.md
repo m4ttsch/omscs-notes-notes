@@ -5,6 +5,8 @@ course: information-security
 lecture: udacity-quizzes
 ---
 
+# Udacity Quizzes
+
 ## The Security Mindset
 ### Security Impact Quiz
 ![](https://assets.omscs.io/Screen%20Shot%202019-08-20%20at%208.42.25%20PM.png)

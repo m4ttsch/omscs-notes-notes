@@ -5,6 +5,8 @@ course: information-security
 lecture: operating-system-security
 ---
 
+# Operating System Security
+
 ## Operating Systems Defined
 Operating systems play a really important role in computer systems. When we talk about computers, we often refer to the operating system when naming a device; for example, a Windows machine or an iOS device.
 

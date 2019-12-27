@@ -5,6 +5,8 @@ course: information-security
 lecture: malicious-code
 ---
 
+# Malicious Code
+
 ## What is Malware Quiz
 ![](https://assets.omscs.io/40637903-CAAE-402C-9F8D-DC289CB7EC62.png)
 

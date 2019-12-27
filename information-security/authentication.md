@@ -5,6 +5,8 @@ course: information-security
 lecture: authentication
 ---
 
+# Authentication
+
 ## What is Authentication?
 We can understand the importance of authentication by going back to the conversation about trusted computing bases.
 

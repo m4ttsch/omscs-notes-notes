@@ -5,6 +5,8 @@ course: information-security
 lecture: mandatory-access-control
 ---
 
+# Mandatory Access Control
+
 ## Discretionary Access Control
 In the last lesson we talked about access control.
 
@@ -97,7 +99,7 @@ In order to fully implement access control using labels, we need some strategy f
 
 Sensitivity levels in the DoD scheme are ordered as follows:
 
-```
+```bash
 TS > S > C > U
 ```
 
@@ -124,7 +126,8 @@ Based on the comparison rules just described, the following chart depicts the ci
 
 ## Ordering Among Labels
 Let’s try to compare the following labels.
-```
+
+```bash
 L1 = (TS, {A,B,C})
 L2 = (S, {A, B})
 L3 = (S, {B, C, D})
@@ -528,7 +531,7 @@ The Department of Defense created the [Trusted Computer System Evaluation Criter
 
 This document defines a ranking of system security using the following divisions (letters) and classes (numbers).
 
-```
+```bash
 D < C1 < C2 < B1 < B2 < B3 < A1
 ```
 

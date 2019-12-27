@@ -5,6 +5,8 @@ course: information-security
 lecture: hashes
 ---
 
+# Hashes
+
 ## Hash Functions
 A **hash function** can be applied to a block of data of any size and produces a fixed-size output, typically in the range of 128-512 bits. Given a message `m`, computing the hash `H(m)` should be very easy.
 
@@ -71,13 +73,13 @@ The third person, `t`, is in a similar situation. Since two people precede them,
 
 Generally, for `k` possible birthdays and `n` individuals in the room, we can calculate the `p` as:
 
-```
+```bash
 p = (1 / k)^n * (k! / (k - n)!)
 ```
 
 We can steadily increase `n` to determine when `p` dips below 0.5. For `k = 365` and `n = 23`, we see that:
 
-```
+```bash
 p = (1 / 365)^23 * (365! / (365 - 23)!) = 0.492703
 ```
 

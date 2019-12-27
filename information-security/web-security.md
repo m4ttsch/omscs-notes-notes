@@ -5,6 +5,8 @@ course: information-security
 lecture: web-security
 ---
 
+# Web Security
+
 ## How the Web Works
 A web browser and a web server communicate using the **HyperText Transfer Protocol** (HTTP). The browser requests documents through a URL, and the server responds with documents in **HyperText Markup Language** (HTML).
 

@@ -5,6 +5,8 @@ course: information-security
 lecture: firewalls
 ---
 
+# Firewalls
+
 ## Defense in Depth
 When it comes to defense against attacks, the most important principle is to employ **defense in depth**. In other words, we should utilize multiple layers of defense mechanisms.
 

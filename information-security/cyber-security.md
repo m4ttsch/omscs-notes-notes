@@ -5,6 +5,8 @@ course: information-security
 lecture: cyber-security
 ---
 
+# Cyber Security
+
 ## Managing Security
 The digital components of a business - be they routers, operating systems, or databases - are crucial to successful business operation. A business must implement appropriate security measures to protect these assets against malicious actors attempting to gain unauthorized access.
 

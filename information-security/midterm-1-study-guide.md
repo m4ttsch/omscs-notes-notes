@@ -5,6 +5,8 @@ course: information-security
 lecture: midterm-1-study-guide
 ---
 
+# Midterm 1 Study Guide
+
 ## DAC
 
 Which Type of control is based on the identity of the requestor and the access rules state what a requestor can or cannot do?

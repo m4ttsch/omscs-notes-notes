@@ -5,6 +5,8 @@ course: information-security
 lecture: symmetric-encryption
 ---
 
+# Symmetric Encryption
+
 ## Block Cipher Scheme
 Most symmetric encryption schemes are block ciphers. A **block cipher** encrypts a plaintext block of length `n` into a ciphertext block of length `n` using a secret key  `k` and decrypts the ciphertext using the same `k`.
 

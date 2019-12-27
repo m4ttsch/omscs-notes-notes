@@ -5,6 +5,8 @@ course: information-security
 lecture: intrusion-detection
 ---
 
+# Intrusion Detection
+
 ## Defense in Depth
 Recall the *defense in depth* principle: we need multiple layers of defense mechanisms. We typically deploy prevention systems to block attacks, but some intrusion attempts are always going to get through. If we can’t stop an attack, at the very least, we need to detect it. Specifically, we need to deploy intrusion detection systems to inform us when an attack occurs.
 

@@ -5,6 +5,8 @@ course: information-security
 lecture: software-security
 ---
 
+# Software Security
+
 ## Software Vulnerabilities
 A common vulnerability that we are going to discuss is a **buffer overflow**.
 

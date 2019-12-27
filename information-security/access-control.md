@@ -5,6 +5,8 @@ course: information-security
 lecture: access-control
 ---
 
+# Access Control
+
 ## Controlling Accesses to Resources
 Any program can make a request for a protected resource, so the OS needs to know whether to grant or deny these requests.
 
@@ -90,7 +92,7 @@ If we focus on each column of the matrix, we can make a list of all of the acces
 
 Consider an object `O`. If user `A` has read access to `O` and user `B` has write access to `O`, and user `C` has no access to `O`, we can represent the accesses permitted on `O` as
 
-```
+```bash
 [(A, r), (B,w)]
 ```
 
@@ -100,7 +102,7 @@ Alternatively, we can focus on each row in the matrix, which corresponds to a pa
 
 Consider a user  `U`. If `U` can read object `X`, and can write object `Y`, but cannot access object `Z`, we can represent the authorized operations that `U` can perform as
 
-```
+```bash
 [(X, r), (Y, w)]
 ```
 

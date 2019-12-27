@@ -5,6 +5,8 @@ course: information-security
 lecture: database-security
 ---
 
+# Database Security
+
 ## Importance of Database Security
 Databases store massive amounts of sensitive data. When hackers steal millions of customer records from a company - often containing data like social security numbers, addresses, and credit card numbers - they usually steal this information from one or more databases.
 
@@ -116,7 +118,7 @@ There are two basic SQL commands for implementing database access control.
 ### Grant
 The SQL command for granting privileges has the following syntax.
 
-```
+```bash
 GRANT          { privileges | role }
 [ON            TABLE]
 TO				 { user | role | public }  
@@ -145,7 +147,7 @@ Alternatively, we could grant access for `INSERT`, `UPDATE` and/or `DELETE`.
 ### Revoke
 The SQL command for revoking privileges has the following syntax.
 
-```
+```bash
 REVOKE { privileges | role }
 [ON    TABLE]
 FROM	 { user | role | public }  
@@ -269,7 +271,7 @@ The attacker can deduce the exam grade of this student by executing `Q` before t
 
 For example, if there are 10 students in the class and the `Q` returns 100 before the student takes the exam, and 99 after, we can calculate the student’s score as:
 
-```
+```bash
 99 = (9 * 100 + x) / 10;
 990 = 900 + x;
 x = 90;

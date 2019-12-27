@@ -5,6 +5,8 @@ course: information-security
 lecture: law-ethics-and-privacy
 ---
 
+# Law, Ethics, and Privacy
+
 ## US Laws Related to Online Abuse
 People can do many different things online. Some of these activities can be very productive while others can be quite harmful. We can examine the various laws in place that offer protection against different types of online abuse.
 

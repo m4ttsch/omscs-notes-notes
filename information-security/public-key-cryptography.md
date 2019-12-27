@@ -5,6 +5,8 @@ course: information-security
 lecture: public-key-cryptography
 ---
 
+# Public-Key Cryptography
+
 ## Modular Arithmetic
 Both RSA and Diffie-Hellman - the most widely-used public-key algorithms - are based on number theory and use modular arithmetic - modular addition, multiplication, and exponentiation. Before we dive into the details of the algorithms themselves, let’s review the basics of modular arithmetic.
 

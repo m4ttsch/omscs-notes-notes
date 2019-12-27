@@ -5,6 +5,8 @@ course: information-security
 lecture: wireless-and-mobile-security
 ---
 
+# Wireless and Mobile Security
+
 ## Introduction to Wifi
 A typical use of WiFi is to allow WiFi-enabled personal computers or devices to access the Internet through a wireless access point (AP). Alternatively, devices can connect directly to one another wirelessly through the AP.
 

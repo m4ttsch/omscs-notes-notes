@@ -5,6 +5,8 @@ course: information-security
 lecture: security-protocols
 ---
 
+# Security Protocols
+
 ## Why Security Protocols
 A network protocol defines the rules and conventions for communications between two parties. A security protocol defines the rules and conventions for secure communications between two parties.
 

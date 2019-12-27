@@ -5,6 +5,8 @@ course: information-security
 lecture: introduction-to-cryptography
 ---
 
+# Introduction to Cryptography
+
 ## Decryption
 **Encryption** is the process of converting data into a form that is unintelligible to the unintended or unauthorized party. We call the original data **plaintext**, and the unintelligible data **ciphertext**. An authorized party can reverse this process; that is, they can **decrypt** the ciphertext to reveal the plaintext.
 
@@ -65,7 +67,7 @@ Since “A” maps to “D”, “B” maps to “E”, and so forth, we can jus
 ## Simple Ciphers
 Caesar’s cipher - an example of a **shift cipher** - maps each letter to another letter by shifting it a fixed amount. If we represent each letter in the alphabet as a number - A = 1, B = 2, … , Z = 26 - then we can represent this encryption scheme for a given `letter` and a given `shift` as
 
-```
+```bash
 (letter + shift) mod 26
 ```
 
@@ -86,7 +88,7 @@ Here is the frequency distribution of English letters.
 
 Using this frequency distribution, we should be able to make some educated guesses to decipher the following ciphertext:
 
-```
+```bash
 IQ IFCC VQQR FB RDQ VFLLCQ NA RDQ
 CFJWHWZ HR BNNB HCC HWWHBSQVQBRE
 HWQ VHLQ
@@ -100,7 +102,7 @@ We also have the word `HR`, which can be “AT”. If so, then `HWQ` is “ARE�
 
 If we continue with this process, using both the frequency distribution of the letters in the English language along with our knowledge of English words to help us, we can uncover the following plaintext:
 
-```
+```bash
 WE WILL MEET IN THE MIDDLE OF THE
 LIBRARY AT NOON ALL ARRANGEMENTS
 ARE MADE

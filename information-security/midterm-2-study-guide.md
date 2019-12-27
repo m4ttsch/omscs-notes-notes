@@ -5,6 +5,8 @@ course: information-security
 lecture: midterm-2-study-guide
 ---
 
+# Midterm 2 Study Guide
+
 ## Chapter 7: Denial-of-Service Attacks
 
 **Multiple Choice**
