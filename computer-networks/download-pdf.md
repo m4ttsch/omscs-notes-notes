@@ -11,8 +11,6 @@ a simpler, more portable study experience.
 While the content on the site will always be free, the following PDFs are available
 for download:
 
-## CN Complete
+## CN Complete ($20)
 
-<div class="gumroad-product-embed" data-gumroad-product-id="cn-full">
-  <a href="https://gumroad.com/l/gios-full">CN Complete</a>
-</div>
+[![CN Complete](https://assets.omscs.io/ebooks/cn-full.jpg)](https://gum.co/cn-full?wanted=true)

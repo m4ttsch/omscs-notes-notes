@@ -11,20 +11,15 @@ a simpler, more portable study experience.
 While the content on the site will always be free, the following PDFs are available
 for download:
 
-## IIS Complete
+## IIS Complete ($20)
 
-<div class="gumroad-product-embed" data-gumroad-product-id="iis-full">
-  <a href="https://gumroad.com/l/gios-full">GIOS Complete</a>
-</div>
+[![IIS Complete](https://assets.omscs.io/ebooks/iis-full.jpg)](https://gum.co/iis-full?wanted=true)
 
-## IIS Lecture Notes
 
-<div class="gumroad-product-embed" data-gumroad-product-id="iis-lecture">
-  <a href="https://gumroad.com/l/gios-lecture-notes">GIOS Lecture Notes</a>
-</div>
+## IIS Lecture Notes ($20)
 
-## IIS Exam Review
+[![IIS Complete](https://assets.omscs.io/ebooks/iis-lecture.jpg)](https://gum.co/iis-lecture?wanted=true)
 
-<div class="gumroad-product-embed" data-gumroad-product-id="iis-exam">
-  <a href="https://gumroad.com/l/gios-exam-review">GIOS Exam Review</a>
-</div>
+## IIS Exam Review ($10)
+
+[![IIS Complete](https://assets.omscs.io/ebooks/iis-exam.jpg)](https://gum.co/iis-exam?wanted=true)

@@ -11,20 +11,15 @@ a simpler, more portable study experience.
 While the content on the site will always be free, the following PDFs are available
 for download:
 
-## GIOS Complete
+## GIOS Complete ($20)
 
-<div class="gumroad-product-embed" data-gumroad-product-id="gios-full">
-  <a href="https://gumroad.com/l/gios-full">GIOS Complete</a>
-</div>
+[![GIOS Complete](https://assets.omscs.io/ebooks/gios-full.jpg)](https://gum.co/gios-full?wanted=true)
 
-## GIOS Lecture Notes
 
-<div class="gumroad-product-embed" data-gumroad-product-id="gios-lecture">
-  <a href="https://gumroad.com/l/gios-lecture-notes">GIOS Lecture Notes</a>
-</div>
+## GIOS Lecture Notes ($20)
 
-## GIOS Exam Review
+[![GIOS Complete](https://assets.omscs.io/ebooks/gios-lecture.jpg)](https://gum.co/gios-lecture?wanted=true)
 
-<div class="gumroad-product-embed" data-gumroad-product-id="gios-exam">
-  <a href="https://gumroad.com/l/gios-exam-review">GIOS Exam Review</a>
-</div>
+## GIOS Exam Review ($10)
+
+[![GIOS Complete](https://assets.omscs.io/ebooks/gios-exam.jpg)](https://gum.co/gios-exam?wanted=true)
