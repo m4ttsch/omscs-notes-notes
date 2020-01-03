@@ -1,15 +1,15 @@
 ---
-id: computer-networks-welcome
-title: Welcome to CN
-course: computer-networks
+id: machine-learning-trading-welcome
+title: Welcome to ML4T
+course: machine-learning-trading
 lecture: welcome
 ---
 
 ### Howdy Friends
 
-Here are my notes from when I took CN in OMSCS during Spring 2019.
+Here are my notes from when I took ML4T in OMSCS during Spring 2020.
 
-Each document in "Lecture Notes" corresponds to a lesson in [Udacity](https://classroom.udacity.com/courses/ud436). Within each document, the headings correspond to the videos within that lesson. Usually, I omit the lesson intro videos.
+Each document in "Lecture Notes" corresponds to a lesson in [Udacity](https://classroom.udacity.com/courses/ud501). Within each document, the headings correspond to the videos within that lesson. Usually, I omit any introductory or summary videos.
 
 There is a lot of information in these documents. I hope you find it helpful!
 
