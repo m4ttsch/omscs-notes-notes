@@ -1,7 +1,7 @@
 ---
-id: operating-systems-download-pdf
+id: information-security-download-pdf
 title: Download to PDF
-course: operating-systems
+course: information-security
 lecture: download-pdf
 ---
 
@@ -11,20 +11,20 @@ a simpler, more portable study experience.
 While the content on the site will always be free, the following PDFs are available
 for download:
 
-## GIOS Complete
+## IIS Complete
 
-<div class="gumroad-product-embed" data-gumroad-product-id="gios-full">
+<div class="gumroad-product-embed" data-gumroad-product-id="iis-full">
   <a href="https://gumroad.com/l/gios-full">GIOS Complete</a>
 </div>
 
-## GIOS Lecture Notes
+## IIS Lecture Notes
 
-<div class="gumroad-product-embed" data-gumroad-product-id="gios-lecture">
+<div class="gumroad-product-embed" data-gumroad-product-id="iis-lecture">
   <a href="https://gumroad.com/l/gios-lecture-notes">GIOS Lecture Notes</a>
 </div>
 
-## GIOS Exam Review
+## IIS Exam Review
 
-<div class="gumroad-product-embed" data-gumroad-product-id="gios-exam">
+<div class="gumroad-product-embed" data-gumroad-product-id="iis-exam">
   <a href="https://gumroad.com/l/gios-exam-review">GIOS Exam Review</a>
 </div>
