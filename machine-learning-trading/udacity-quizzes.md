@@ -8,7 +8,6 @@ lecture: udacity-quizzes
 # Udacity Quizzes - ML4T
 
 ## Reading and Plotting Stock Data
-
 ### Which Fields Should Be In A CSV File Quiz
 ![](https://assets.omscs.io/BED27ABE-D85D-4358-A2A3-FAE24EEDE5F6.png)
 
@@ -125,3 +124,61 @@ df.ix[start_index:end_index, columns]
 - [pandas.DataFrame.ix - DEPRECATED](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.ix.html)
 - [pandas.DataFrame.loc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.loc.html)
 - [pandas.DataFrame.iloc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.iloc.html)
+
+## The Power of NumPy
+### Replace a Slice Quiz
+![](https://assets.omscs.io/1E2BC0CC-EADA-4431-ABDF-AE07857CF80D.png)
+
+We need to move data from the last two rows and the last two columns of `nd2` to the first two rows and the first two columns of `nd1`. 
+
+### Replace a Slice Quiz Solution
+![](https://assets.omscs.io/60DEA1EE-99C0-4CC6-95F7-B01B9681CD59.png)
+
+Let’s first look at how we can slice `nd2` to extract the data we want. We can slice the last two rows using negative indexing: `-2:`. We can slice the last two columns as `2:4`. Remember that NumPy indexing is upper-bound exclusive.
+
+Now let’s see how we can transplant that data into `nd1`. We can select the first two rows of `nd1` as `0:2`, and we can select the first two columns as `0:2`.
+
+The complete data transfer can be accomplished with the following code:
+
+```python
+nd1[0:2, 0:2] = nd2[-2:, 2:4]
+```
+
+#### Documentation
+- [Indexing](https://docs.scipy.org/doc/numpy-1.13.0/reference/arrays.indexing.html)
+ 
+### Specify the Data Type Quiz
+![](https://assets.omscs.io/1A04EA50-3DE1-4BA2-85E6-B852F298AB7B.png)
+
+We saw that the elements in an array created by `np.ones` are floats by default. Our task here is to update the call to `np.ones` and pass in a parameter that tells NumPy to give us integers instead of floats.
+
+### Specify the Data Type Quiz Solution
+![](https://assets.omscs.io/29CA699E-4950-4B22-948D-A38910E9A9EA.png)
+
+We can accomplish this change with the following code:
+
+```python
+np.ones((5, 4), dtype=np.int_)
+```
+
+#### Documentation
+- [numpy.ones](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ones.html)
+- [Data types](https://docs.scipy.org/doc/numpy/user/basics.types.html#data-types)
+
+### Locate Maximum Value Quiz
+![](https://assets.omscs.io/55FC058B-8B31-4172-8F44-B44502611542.png)
+
+Our task is to implement the function `get_max_index`, which takes a one-dimensional ndarray `a` and returns the index of the maximum value.
+
+### Locate Maximum Value Quiz Solution
+![](https://assets.omscs.io/480BE86C-66FF-452B-965F-AD9833D98574.png)
+
+We can retrieve the index of the maximum value in `a` with the `argmax` method:
+
+```python
+def get_max_index(a):
+	return a.argmax()
+```
+
+#### Documentation
+- [numpy.argmax](https://docs.scipy.org/doc/numpy/reference/generated/numpy.argmax.html#numpy.argmax)
