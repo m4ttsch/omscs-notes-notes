@@ -182,3 +182,98 @@ def get_max_index(a):
 
 #### Documentation
 - [numpy.argmax](https://docs.scipy.org/doc/numpy/reference/generated/numpy.argmax.html#numpy.argmax)
+
+## Statistical Analysis of Time Series
+
+### Which Statistic to Use Quiz
+
+Assume we are using a rolling mean to track the movement of a stock. We are looking for an opportunity to find when the price has diverged significantly far from the rolling mean, as we can use this divergence to signal a buy or a sell.
+
+Which statistic might we use to discover if the price has diverged significantly enough?
+
+![](https://assets.omscs.io/2020-01-12-17-51-42.png)
+
+### Which Statistic to Use Quiz Solution
+
+![](https://assets.omscs.io/2020-01-12-17-52-03.png)
+
+Standard deviation gives us a measure of divergence from the mean. Therefore, if the price breaches the standard deviation, we may conclude that the price has moved significantly enough for us to consider buying or selling the stock.
+
+### Calculate Bollinger Bands Quiz
+
+Computing Bollinger bands consists of three main steps: first, computing the rolling mean; second, computing the rolling standard deviation and; third, computing the upper and lower bands.
+
+Our goal is to implement the three functions below to accomplish these tasks.
+
+![](https://assets.omscs.io/2020-01-12-19-11-03.png)
+
+### Calculate Bollinger Bands Quiz Solution
+
+Given an ndarray `values` and a window `window`, we can calculate the rolling standard deviation as follows:
+
+```python
+# OLD
+pd.rolling_std(values, window=window)
+
+# NEW
+values.rolling(window).std()
+```
+
+Given a rolling mean `rm` and a rolling standard deviation `rstd`, we can calculate the Bollinger bands as follows:
+
+```python
+rm + (2 * rstd), rm - (2 * rstd)
+```
+
+![](https://assets.omscs.io/2020-01-12-19-22-39.png)
+
+#### Documentation
+- [pandas.DataFrame.rolling](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.rolling.html)
+
+### Compute Daily Returns Quiz
+
+![](https://assets.omscs.io/2020-01-12-22-45-10.png)
+
+Our task is to implement a function `compute_daily_returns` that receives a DataFrame `df` and returns a DataFrame consisting of the daily return values. The returned DataFrame must have the same number of rows as `df`, and any rows with missing data must be filled with zeroes.
+
+### Compute Daily Returns Solution
+
+![](https://assets.omscs.io/2020-01-12-22-50-41.png)
+
+Given a DataFrame `df` with `n` rows, we can create a new DataFrame with `n + m` rows where each row is shifted down `m` rows with the following code:
+
+```python
+df.shift(m)
+```
+
+Note that the newly created `m` rows at the top of the DataFrame will be filled with `NaN` values.
+
+Therefore, we can divide every price in our DataFrame `df` by the price on the previous day like this:
+
+```python
+df / df.shift(1)
+```
+
+We can complete the daily return calculation, and generate a DataFrame `daily_returns` like so:
+
+```python
+df / df.shift(1) - 1
+```
+
+The only thing we have to consider now is the first row in `daily_returns`. Since the first row in the shifted DataFrame is filled with `NaN` values, any subsequent mathematical operations on those values yield `NaN`.
+
+However, our task was to fill any rows with missing data with zeroes. We can fix `daily_returns` like this:
+
+```python
+# Deprecated
+daily_returns.ix[0, :] = 0
+
+# Use this
+daily_returns.iloc[0] = 0
+```
+
+#### Documentation
+- [pandas.DataFrame.shift](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.shift.html)
+- [pandas.DataFrame.ix - DEPRECATED](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.ix.html)
+- [pandas.DataFrame.loc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.loc.html)
+- [pandas.DataFrame.iloc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.iloc.html)
