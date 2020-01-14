@@ -277,3 +277,35 @@ daily_returns.iloc[0] = 0
 - [pandas.DataFrame.ix - DEPRECATED](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.ix.html)
 - [pandas.DataFrame.loc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.loc.html)
 - [pandas.DataFrame.iloc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.iloc.html)
+
+## Incomplete Data
+
+### Pandas fillna() Quiz
+
+![](https://assets.omscs.io/2020-01-14-00-38-50.png)
+
+Our task is to find the parameter that we need to pass to `fillna` to fill forward missing values.
+
+### Pandas fillna() Quiz Solution
+
+![](https://assets.omscs.io/2020-01-14-00-40-02.png)
+
+#### Documentation
+- [pandas.DataFrame.fillna](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.fillna.html)
+
+### Fill Missing Values Quiz
+
+If we look at the following plot of stock price data, we can see several gaps.
+
+![](https://assets.omscs.io/2020-01-14-00-50-55.png)
+
+Our task is to use the `fillna` method to fill these gaps.
+
+### Fill Missing Values Solution
+
+![](https://assets.omscs.io/2020-01-14-00-52-39.png)
+
+We can use forward filling for gaps that have a definitive start date, and backward filling for gaps that have no beginning or begin before our date range.
+
+#### Documentation
+- [pandas.DataFrame.fillna](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.fillna.html)
