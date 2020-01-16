@@ -309,3 +309,53 @@ We can use forward filling for gaps that have a definitive start date, and backw
 
 #### Documentation
 - [pandas.DataFrame.fillna](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.fillna.html)
+
+## Histograms and Scatter Plots
+
+### What Would it Look Like Quiz
+
+Suppose that we've taken all of the SPY pricing data from over the years, generated an array of daily returns, and created a histogram from those returns.
+
+Which of the following shapes would the histogram most likely have?
+
+![](https://assets.omscs.io/2020-01-14-21-45-58.png)
+
+### What Would it Look Like Quiz Solution
+
+![](https://assets.omscs.io/2020-01-14-21-46-20.png)
+
+### Compare Two Histograms Quiz
+
+A common practice in finance is to plot histograms of the daily returns of different stocks together to assess how the stocks relate to each other.
+
+Below are the daily returns histograms for SPY and XYZ, as well as three statements describing the relationship between the two.
+
+![](https://assets.omscs.io/2020-01-14-22-30-14.png)
+
+Which statement do you think is correct?
+
+> Note that "vol" refers to volatility and not volume.
+
+### Compare Two Histograms Quiz Solution
+
+![](https://assets.omscs.io/2020-01-14-22-31-49.png)
+
+We can see that the mean of SPY is slightly higher than the mean of XYZ, indicating that SPY outperforms XYZ.
+
+Additionally, we can see that the XYZ curve is "flatter" than the SPY curve. This feature indicates that the daily returns of XYZ are more spread out than those of SPY, which are more centralized.
+
+In summary, XYZ has both lower returns and higher volatility than SPY.
+
+### Correlation vs. Slope Quiz
+
+Given what we just learned about correlation and slope (beta), let's look at two scatterplots with their best-fit lines, and choose the most accurate statement.
+
+![](https://assets.omscs.io/2020-01-15-22-13-09.png)
+
+### Correlation vs. Slope Quiz Solution
+
+![](https://assets.omscs.io/2020-01-15-22-15-24.png)
+
+The best-fit line in the SPY vs. ABC scatterplot has a higher beta because that line has a larger slope than the corresponding line in the SPY vs. XYZ plot.
+
+Additionally, the SPY and ABC daily returns are more highly correlated, which can be determined visually from examining how "tightly" they hug the best-fit line in the SPY vs. ABC plot.
