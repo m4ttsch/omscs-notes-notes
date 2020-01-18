@@ -359,3 +359,79 @@ Given what we just learned about correlation and slope (beta), let's look at two
 The best-fit line in the SPY vs. ABC scatterplot has a higher beta because that line has a larger slope than the corresponding line in the SPY vs. XYZ plot.
 
 Additionally, the SPY and ABC daily returns are more highly correlated, which can be determined visually from examining how "tightly" they hug the best-fit line in the SPY vs. ABC plot.
+
+## Sharpe Ratio and Other Portfolio Statistics
+
+### Which Portfolio is Better Quiz
+
+The Sharpe ratio allows us to consider our returns in the context of *risk*: the standard deviation, or volatility, of the returns. When we look at portfolio performance, we don't typically look at raw returns; instead, we adjust the returns received for the risk borne.
+
+With this in mind, let's look at three comparisons of two stocks, ABC and XYZ, and decide which is better.
+
+![](https://assets.omscs.io/2020-01-17-16-16-52.png)
+
+### Which Portfolio is Better Quiz Solution
+
+![](https://assets.omscs.io/2020-01-17-16-21-44.png)
+
+For the first comparison, ABC is better. ABC and XYZ have similar amounts of volatility, but ABC has double the return of XYZ.
+
+For the second comparison, XYZ is better. Both ABC and XYZ have the same return, but ABC is much more volatile than XYZ.
+
+For the third comparison, we can't tell which is better, given the information provided. ABC has a higher return than XYZ, but that return is offset by higher volatility.
+
+We need a qualitative measure to compare ABC and XYZ in this third example, and the Sharpe ratio is that measure.
+
+### Form of the Sharpe Ratio Quiz
+
+Consider the following three factors.
+
+![](https://assets.omscs.io/2020-01-18-10-33-20.png)
+
+How would you combine these three factors into a simple equation to create a metric that provides a measure of risk-adjusted return?
+
+![](https://assets.omscs.io/2020-01-18-10-34-58.png)
+
+### Form of the Sharpe Ratio Quiz Solution
+
+![](https://assets.omscs.io/2020-01-18-10-35-43.png)
+
+Only the third choice meets the two criteria we described earlier; all else being equal, higher returns increase our metric, and lower risk increases our metric. Additionally, a higher rate of risk-free return decreases our metric.
+
+### What is the Sharpe Ratio Quiz
+
+Assume we have been trading a strategy for 60 days now. On average, our strategy returns one-tenth of one percent per day. Our daily risk-free rate is two one-hundredths of a percent. The standard deviation of our daily return is one-tenth of one percent.
+
+What is the Sharpe ratio of this strategy?
+
+![](https://assets.omscs.io/2020-01-18-14-34-48.png)
+
+> In financial terminology, one one-hundredth of one percent is known as a **basis point**, or "bip". Instead of saying, for example, that our strategy returns one-tenth of one percent per day, we could say it returns 10 bps per day.
+
+### What is the Sharpe Ratio Quiz Solution
+
+![](https://assets.omscs.io/2020-01-18-14-38-32.png)
+
+Let's recall our formula for the Sharpe ratio:
+
+$$
+S = K * \frac{mean(R_p - R_f)}{\sigma_{R_p}}
+$$
+
+Given that $R_p = 0.001$ on average, $R_f = 0.0002$ on average, and $\sigma{R_p} = 0.001$, with a daily sample rate:
+
+$$
+S = \sqrt{252} * \frac{0.001 - 0.0002}{0.001}
+$$
+
+$$
+S = \sqrt{252} * \frac{0.0008}{0.001}
+$$
+
+$$
+S = \sqrt{252} * 0.8
+$$
+
+$$
+S \approx 12.7
+$$
