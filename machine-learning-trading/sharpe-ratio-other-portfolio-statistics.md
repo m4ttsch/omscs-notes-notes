@@ -20,7 +20,7 @@ Let's look at how we can calculate the value of the portfolio day-by-day. We sta
 First, we create a DataFrame `normed` that contains the normalized values of the prices in `prices`:
 
 ```python
-normed = prices / prices[0]
+normed = prices / prices[0].values
 ```
 
 Note that the first row of `normed` contains all ones, and each subsequent row contains the ratio of the price on that day to the price on day one.
