@@ -435,3 +435,33 @@ $$
 $$
 S \approx 12.7
 $$
+
+## Optimizers: Building a Parameterized Model
+
+### How to Defeat a Minimizer Quiz
+
+Which of the following functions would be hard for the minimizer to solve?
+
+![](https://assets.omscs.io/2020-01-20-00-40-15.png)
+
+### How to Defeat a Minimizer Quiz Solution
+
+![](https://assets.omscs.io/2020-01-20-00-40-46.png)
+
+The first graph is hard because of the "flat" areas on either side of the parabola. A minimizer testing a point in the middle of this area wouldn't be able to find any gradient to follow, so it wouldn't know how to adjust the value it was currently testing.
+
+The second graph is hard because it has several local minima that aren't necessarily the global minimum. A minimizer might "get stuck" in a local minimum, even though a more significant, global minimum exists.
+
+The fourth graph is challenging  both because of the "flat" area and the discontinuity between the two halves.
+
+### What is a Good Error Metric Quiz
+
+Let's assume that a point $p_i$ has an error $e_i$, which is the vertical distance between $p_i$ and the best-fit line currently under consideration. Given a number of such errors $e_0, e_1, ..., e_n$, which of the following expressions describes the metric we want to minimize?
+
+![](https://assets.omscs.io/2020-01-20-14-11-22.png)
+
+### What is a Good Error Metric Quiz Solution
+
+![](https://assets.omscs.io/2020-01-20-14-13-28.png)
+
+We want to minimize the sum of the errors, but we want to ensure that errors above and below the line do not cancel out. To accomplish this, we need to make each error positive by either squaring it or taking its absolute value.
