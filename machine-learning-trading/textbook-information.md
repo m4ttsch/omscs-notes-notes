@@ -5,7 +5,7 @@ course: machine-learning-trading
 lecture: textbook-information
 ---
 
-**Note**: If you'd like to add a helpful resource to this list, please contact me.
+# Textbook Information
 
 ## Official Textbooks
 

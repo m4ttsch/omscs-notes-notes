@@ -5,7 +5,9 @@ course: information-security
 lecture: welcome
 ---
 
-### Howdy Friends
+# Welcome
+
+## Howdy Friends
 
 Here are my notes from when I took IIS in OMSCS during Fall 2019.
 

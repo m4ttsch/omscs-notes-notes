@@ -5,7 +5,9 @@ course: operating-systems
 lecture: welcome
 ---
 
-### Howdy Friends
+# Welcome
+
+## Howdy Friends
 
 Here are my notes from when I took GIOS in OMSCS during Fall 2018.
 

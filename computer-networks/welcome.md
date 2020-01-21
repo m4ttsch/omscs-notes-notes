@@ -5,7 +5,9 @@ course: computer-networks
 lecture: welcome
 ---
 
-### Howdy Friends
+# Welcome
+
+## Howdy Friends
 
 Here are my notes from when I took CN in OMSCS during Spring 2019.
 

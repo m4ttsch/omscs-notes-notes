@@ -5,6 +5,10 @@ course: information-security
 lecture: download-pdf
 ---
 
+# Download to PDF
+
+## Download to PDF
+
 Some students have expressed interest in downloading PDF copies of the notes for
 a simpler, more portable study experience.
 

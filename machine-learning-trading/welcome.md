@@ -5,7 +5,9 @@ course: machine-learning-trading
 lecture: welcome
 ---
 
-### Howdy Friends
+# Welcome
+
+## Howdy Friends
 
 Here are my notes from when I took ML4T in OMSCS during Spring 2020.
 
