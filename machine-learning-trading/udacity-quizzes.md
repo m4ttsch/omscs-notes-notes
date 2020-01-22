@@ -465,3 +465,19 @@ Let's assume that a point $p_i$ has an error $e_i$, which is the vertical distan
 ![](https://assets.omscs.io/2020-01-20-14-13-28.png)
 
 We want to minimize the sum of the errors, but we want to ensure that errors above and below the line do not cancel out. To accomplish this, we need to make each error positive by either squaring it or taking its absolute value.
+
+## Optimizers: How to Optimize a Portfolio
+
+### Which Criteria is Easiest to Solve For Quiz
+
+Let's assume we have a portfolio of four stocks, and we want to find the optimal allocations that maximize some performance metric. Which of the following metrics would be easiest to optimize for?
+
+![](https://assets.omscs.io/2020-01-21-16-35-00.png)
+
+### Which Criteria is Easiest to Solve For Quiz Solution
+
+![](https://assets.omscs.io/2020-01-21-16-35-19.png)
+
+It would be easiest to write an optimizer for cumulative return. To do so, all we need to do is allocate 100% of our portfolio into whichever stock had the highest cumulative return.
+
+Optimizing for minimum volatility or Sharpe ratio involves evaluating various combinations of stocks, which is more complicated than simply putting all our eggs in one basket.
