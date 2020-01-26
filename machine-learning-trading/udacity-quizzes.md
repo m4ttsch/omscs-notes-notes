@@ -481,3 +481,17 @@ Let's assume we have a portfolio of four stocks, and we want to find the optimal
 It would be easiest to write an optimizer for cumulative return. To do so, all we need to do is allocate 100% of our portfolio into whichever stock had the highest cumulative return.
 
 Optimizing for minimum volatility or Sharpe ratio involves evaluating various combinations of stocks, which is more complicated than simply putting all our eggs in one basket.
+
+## How Machine Learning is Used at a Hedge Fund
+
+### What's X and Y Quiz
+
+Let's think about building a model to use in trading. Which of the following factors might be input values ($X$) to the model, and which might be output values ($Y$)?
+
+![](https://assets.omscs.io/2020-01-22-17-57-46.png)
+
+### What's X and Y Quiz Solution
+
+![](https://assets.omscs.io/2020-01-22-17-58-20.png)
+
+Since we often use models to predict values in the future, both future price and future return make sense as output values. Our model might make these predictions by considering price momentum, current price, and Bollinger values as input.
