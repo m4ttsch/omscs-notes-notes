@@ -495,3 +495,103 @@ Let's think about building a model to use in trading. Which of the following fac
 ![](https://assets.omscs.io/2020-01-22-17-58-20.png)
 
 Since we often use models to predict values in the future, both future price and future return make sense as output values. Our model might make these predictions by considering price momentum, current price, and Bollinger values as input.
+
+## Assessing a Learning Algorithm
+
+### What Happens as K Varies Quiz
+
+Consider the following three models, each generated using a different value for $K$.
+
+![](https://assets.omscs.io/2020-01-27-16-18-46.png)
+
+Our first task is to match the value of $K$ with the corresponding plot. Our second task is to decide whether we increase the chances of overfitting as we increase $K$. A **overfit** model matches the training set very well but fails to generalize to new examples.
+
+### What Happens as K Varies Quiz Solution
+
+![](https://assets.omscs.io/2020-01-27-16-36-13.png)
+
+Let's consider the case where $K = 1$. In this case, the model passes through every point $P$ directly, since near $P$, the only point that has any influence is $P$.
+
+Now consider the case where $K = N$. In this case, every point considers all of the neighbors. Thus, the generated model is a straight line passing through the mean of the $y$ values of all the points.
+
+Of course, when $1 < K < N$, the graph lies between these two extremes. For $K = 3$, the graph roughly follows the points without passing through them directly.
+
+As a result, we see that increases in $K$ decrease the probability of overfitting.
+
+### What Happens as D Varies Quiz
+
+Consider the following three polynomial models. The difference between each model is the [degree of the polynomial](https://en.wikipedia.org/wiki/Degree_of_a_polynomial) $d$.
+
+![](https://assets.omscs.io/2020-01-27-17-08-58.png)
+
+Our first task is to match the value of $d$ with the corresponding plot. Our second task is to decide whether we increase the chances of overfitting as we increase $d$.
+
+### What Happens as D Varies Quiz Solution
+
+![](https://assets.omscs.io/2020-01-27-17-23-47.png)
+
+A polynomial of degree one matches the equation $y = m_1x + b$, which is the equation of a line and corresponds to the third plot.
+
+A polynomial of degree two matches the equation $y = m_1x + m_2x^2 + b$, which is the equation of a parabola and corresponds to the first plot.
+
+A third-order polynomial matches the equation $y = m_1x + m_2x^2 + m_3x^3 + b$, which corresponds to the second plot.
+
+We see that as we increase $d$, our model begins to follow the points more closely. Indeed, it can be shown that for $N$ points, a parabola of degree $N$ exists that passes through each point.
+
+Notice that for each of these models, we can extrapolate beyond the data given. This ability to extrapolate is a property of parametric models that instance-based models lack.
+
+### Which is Worse Quiz
+
+Suppose we just built a model. Which error would you expect to be larger: in-sample or out-of-sample?
+
+![](https://assets.omscs.io/2020-01-28-23-28-25.png)
+
+### Which is Worse Quiz Solution
+
+In general, the out-of-sample error is worse than the in-sample error.
+
+![](https://assets.omscs.io/2020-01-28-23-29-18.png)
+
+### Correlation and RMS Error Quiz
+
+Let's think about the relationship between RMS error and the correlation between $Y_{test}$ and $Y_{predict}$. Which of the following statements is true?
+
+![](https://assets.omscs.io/2020-01-29-22-15-19.png)
+
+### Correlation and RMS Error Quiz Solution
+
+![](https://assets.omscs.io/2020-01-29-22-16-21.png)
+
+In most cases, correlation decreases as RMS error increases. However, it is possible to construct examples where correlation increases as RMS error increases.
+
+### Overfitting Quiz
+
+Let's consider overfitting in KNN and how in-sample and out-of-sample error changes as $K$ increases from 1 to the number of items $N$ in a data set.
+
+Which of the following plots correctly represents the shape of the error curves that we would expect for both types of error as we increase $K$?
+
+![](https://assets.omscs.io/2020-01-30-20-56-43.png)
+
+### Overfitting Quiz Solution
+
+![](https://assets.omscs.io/2020-01-30-21-00-06.png)
+
+Remember that KNN models are least generalized when $K = 1$. In other words, when $K = 1$, the model predicts each training point in the data set perfectly but fails to predict testing points accurately. As a result, KNN models overfit when $K$ is small.
+
+### A Few Other Considerations Quiz
+
+There are a few other factors worth considering when evaluating a learning algorithm. For each of the following factors, which of the two models has better performance?
+
+![](https://assets.omscs.io/2020-01-30-21-11-49.png)
+
+### A Few Other Considerations Quiz Solution
+
+![](https://assets.omscs.io/2020-01-30-21-12-14.png)
+
+Linear regression models require less space for persistence than KNN models. A linear regression model of degree four can be described in as few as four integers, while a KNN model must retain every single data point ever seen.
+
+KNN models require less compute time to train than linear regression models. In fact, KNN models require zero time to train.
+
+Linear regression models process queries more quickly than KNN models. The query time for a linear regression model is constant. The query time for KNN models grows with the number of queries, as previously queried data points are added to the data set and must be examined in subsequent queries.
+
+Adding new data is quicker in KNN than in linear regression. Incorporating new data into a model requires retraining the model, but, as we just saw, the training time for a KNN model is zero.
