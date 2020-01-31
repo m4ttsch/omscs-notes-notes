@@ -504,7 +504,7 @@ Consider the following three models, each generated using a different value for 
 
 ![](https://assets.omscs.io/2020-01-27-16-18-46.png)
 
-Our first task is to match the value of $K$ with the corresponding plot. Our second task is to decide whether we increase the chances of overfitting as we increase $K$. A **overfit** model matches the training set very well but fails to generalize to new examples.
+Our first task is to match the value of $K$ with the corresponding plot. Our second task is to decide whether we increase the chances of overfitting as we increase $K$. An **overfit** model matches the training set very well but fails to generalize to new examples.
 
 ### What Happens as K Varies Quiz Solution
 
