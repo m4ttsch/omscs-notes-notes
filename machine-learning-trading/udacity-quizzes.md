@@ -496,6 +496,46 @@ Let's think about building a model to use in trading. Which of the following fac
 
 Since we often use models to predict values in the future, both future price and future return make sense as output values. Our model might make these predictions by considering price momentum, current price, and Bollinger values as input.
 
+## Regression
+
+### How to Predict Quiz
+
+We've identified that, in KNN, for a particular query $Q$, we want to utilize the $K$ nearest data points to $Q$ to come up with a prediction. What should we do with those neighboring data points to find that prediction?
+
+![](https://assets.omscs.io/2020-01-31-15-53-54.png)
+
+### How to Predict Quiz Solution
+
+![](https://assets.omscs.io/2020-01-31-15-58-08.png)
+
+Remember that we want to predict a $y$-value for the queried $x$-value. As a result, it doesn't make sense to take the average of the $x$-values of the nearest neighbors. Additionally, we don't want to take the largest $y$-value; otherwise, the other neighbors have no influence on the prediction. The correct approach here is to take the mean of their $y$-values.
+
+### Parametric vs Non-Parametric Quiz
+
+Let's consider the relationship between variables in two different scenarios.
+
+The first scenario involves firing a cannon. The independent variable is the value of the angle that the cannon makes with the ground, and the dependent variable is the horizontal distance the cannonball travels.
+
+![](https://assets.omscs.io/2020-01-31-16-39-33.png)
+
+The second scenario involves attracting bees to a food source. The independent variable is the richness of the food source, and the dependent variable is the number of bees attracted to that source.
+
+![](https://assets.omscs.io/2020-01-31-16-42-14.png)
+
+Note that this scenario is slightly different than the first because it's not clear that the number of bees always increases as richness increases.
+
+Given these two scenarios, which, if any, is better modeled using a parametric model, and which, if any, is better modeled using a non-parametric model?
+
+![](https://assets.omscs.io/2020-01-31-16-43-44.png)
+
+### Parametric vs Non-Parametric Quiz Solution
+
+![](https://assets.omscs.io/2020-01-31-16-48-54.png)
+
+In the first scenario, we can start with an estimate of the underlying behavior of the system in terms of a mathematical equation that expresses how it behaves. This equation is just the equation of trajectory, which we can find online. We can then learn the parameters of this equation such that it describes the relationship between our variables.
+
+In the second scenario, we have no initial estimate for the underlying mathematical equation, so it's better to use a non-parametric model, which can model any "shape" of relationship.
+
 ## Assessing a Learning Algorithm
 
 ### What Happens as K Varies Quiz
