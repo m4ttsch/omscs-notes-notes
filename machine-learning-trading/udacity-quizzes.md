@@ -635,3 +635,45 @@ KNN models require less compute time to train than linear regression models. In 
 Linear regression models process queries more quickly than KNN models. The query time for a linear regression model is constant. The query time for KNN models grows with the number of queries, as previously queried data points are added to the data set and must be examined in subsequent queries.
 
 Adding new data is quicker in KNN than in linear regression. Incorporating new data into a model requires retraining the model, but, as we just saw, the training time for a KNN model is zero.
+
+## Ensemble Learners, Bagging, and Boosting
+
+### How to Build an Ensemble Quiz
+
+How might we go about building an ensemble of learners?
+
+![](https://assets.omscs.io/2020-02-02-18-16-45.png)
+
+### How to Build an Ensemble Quiz Solution
+
+![](https://assets.omscs.io/2020-02-02-18-18-42.png)
+
+We can create an ensemble by training several parameterized polynomials of differing degrees (A) or by training several KNN models using different subsets of data (B).
+
+It doesn't make sense to train KNN models using randomized $Y$-values, because we want to train any model we plan to use on the actual data in our training set. As a result, neither (C) nor (E) is correct.
+
+Instead of using just polynomial learners or KNN learners, we can combine the two into a super ensemble (D) for even better results.
+
+### Overfitting Quiz
+
+Which of these two models is least likely to overfit?
+
+> Aside: the screenshot says "most likely to overfit", but he selects the model that is least likely to overfit.
+
+![](https://assets.omscs.io/2020-02-02-20-19-46.png)
+
+### Overfitting Quiz Solution
+
+![](https://assets.omscs.io/2020-02-02-20-20-05.png)
+
+### Overfitation Quiz
+
+As we increase the number of models $m$ in our ensemble, which of the following strategies is more likely to overfit?
+
+![](https://assets.omscs.io/2020-02-02-22-55-14.png)
+
+### Overfitation Quiz Solution
+
+![](https://assets.omscs.io/2020-02-02-22-55-46.png)
+
+AdaBoost focuses primarily on improving the system for specific data points; in other words, it strives to fit. As a result, it is more susceptible to overfitting than is simple bagging.
