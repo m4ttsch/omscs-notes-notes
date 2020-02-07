@@ -49,41 +49,39 @@ Typically, symbols for ETFs have three or four letters, while mutual fund symbol
 
 ## Incentives for Fund Managers
 
-We've discussed differences regarding transparency and liquidity among ETFs, mutual funds, and hedge funds. 
+We've discussed differences regarding transparency and liquidity among ETFs, mutual funds, and hedge funds. Now, let's focus on how the managers of these funds are compensated.
 
-Now, we focus on how the managers of these funds are compensated. There are rules for each type of fund that shows how the fund managers make money, and that's very important because the manner in which they are paid incentivizes them to trade or act in certain ways.
+Each type of fund has different rules for how managers receive compensation, and it's essential to investigate these compensation mechanisms because they incentivize managers to act in specific ways.
 
-Before we can discuss we have to introduce one concept: **assets under management** (AUM). AUM refers to how much money is managed by the fund and is important because, for each type of fund, part of the compensation is based on the AUM.
+Before we can discuss these compensation structures, we have to introduce one concept: **assets under management** (AUM). AUM refers to the amount of money managed by the fund and is important because, for each type of fund, part of the compensation is derived from AUM.
 
-The managers of ETFs are compensated according to an **expense ratio**, which is essentially just a percentage of AUM. Expense ratios are typically quite low, and vary from 0.01% to 1%
+The managers of ETFs are compensated according to an **expense ratio**, which is essentially a percentage of AUM. Expense ratios are typically quite low and vary from 0.01% to 1%.
 
-Mutual fund managers are also compensated according to an expense ratio, and the range of expense ratios for these managers are slightly higher than those for ETFs, varying from about 0.5% to 3%.
+Mutual fund managers are also compensated according to an expense ratio, and the range of expense ratios for these managers is slightly higher than for those who manage ETFs, varying from about 0.5% to 3%.
 
-What's the reason for this difference? Mutual fund managers will tell you that the reason for this difference is because the way they manage funds requires much more skill.
+Remember that ETFs are typically tied to an index. For example, SPY is a popular ETF that is supposed to track the S&P 500. As a result, an SPY manager has to "simply" make sure they are holding all of the stocks in the S&P 500.
 
-Mutual fund managers typically have much more discretion that ETF managers, which are usually tied to an index. For example, SPY is a popular ETF that is supposed to track the S&P 500. All that an ETF manager has to do in that case is make sure that they are holding all of the stocks in the S&P 500.
+Mutual fund managers typically have much more discretion than ETF managers, and therefore can command a higher expense ratio, both for the cost of their research and for their skill.
 
-Mutual funds, on the other hand, supposedly use more skill, and therefore can charge a higher expense ratio, both for the cost of their research, and also for their skill.
+Hedge funds are a completely different breed in terms of how their managers are compensated. These funds typically follow a **two and twenty** model, whereby the manager receives an expense ratio of 2% as well as 20% of the profits.
 
-Finally, hedge funds are a completely different breed in terms of how their managers are compensated. They typically follow a **"Two and Twenty"** model. The "two" in this model refers to a 2% expense ratio, while the "twenty" refers to 20% of the profits.
-
-We've been talking about how the folks who manage these funds are compensated. Separately, we can talk about how investors in these funds are compensated.
-
-If we invest in a fund, our return is based on how much the value of that fund increases. In most cases, that increase in subject to what happens to the economy or what happens in the markets.
+We've been examining how fund managers are compensated, but we can also look at how fund investors are compensated. If we invest in a fund, our return is based on the increase in the value of that fund. In most cases, that increase is subject to macroeconomic and market activity.
 
 ## Two and Twenty
 
-Consider that we are managing a hedge fund of $100,000,000. Over the course of a year, our skill has resulted in an increase in value of that fund by 15%. Over that year, the fund grew from $100,000,000 to $115,000,000. What would our compensation be?
+Consider that we are managing a hedge fund with $100,000,000 AUM. Over a year, our investment skill results in an increase in the value of that fund by 15%; in other words, the fund grew from $100,000,000 to $115,000,000.
+
+What's our compensation?
 
 Two percent of AUM comes out to $0.02 * 100,000,000 = 2,000,000$ and twenty percent of profits equals $0.2 * 15,000,000 = 3,000,000$. In total, our compensation for the year would be about $5,000,000.
 
-One question we might ask: when determining our compensation, should we use an AUM of $100,000,000 or $115,000,000? It depends on the hedge fund, of course, and when they take accounting snapshots. The full answer is that its probably going to be a blend between $100,000,000 and $115,000,000.
+One question we might ask: when determining our compensation, should we use an AUM of $100,000,000 or $115,000,000? It depends on the hedge fund, of course, and when they take accounting snapshots, but the AUM used for compensation will likely fall somewhere between the two values.
 
-The "two and twenty" has been assailed lately, and its difficult to find a hedge fund today that offers rates that high. They are much lower now, closer to "one and ten". There are some star hedge funds that charge more. For instance, [SAC Capital](https://en.wikipedia.org/wiki/S.A.C._Capital_Advisors), which is no longer operating to the public, charged as much as "four and forty."
+The two and twenty model has been assailed lately, and it's rare to find a hedge fund today that compensates that highly. Typical rates these days are much lower, closer to "one and ten". There are some star hedge funds that charge more; for instance, [SAC Capital](https://en.wikipedia.org/wiki/S.A.C._Capital_Advisors), which is no longer operating to the public, charged as much as "four and forty."
 
 ## Incentives Quiz
 
-So far, we've have looked at two different incentive structures: expense ratio and the "two and twenty" rule. Given these incentives, which of the following actions might be incentivized?
+So far, we've looked at two different incentive structures: expense ratios and the two and twenty rule. Which of the following actions might these compensation mechanisms incentivize?
 
 ![](2020-02-04-22-29-02.png)
 
@@ -91,8 +89,48 @@ So far, we've have looked at two different incentive structures: expense ratio a
 
 ![](2020-02-04-22-29-24.png)
 
-The expense ratio primarily motives AUM accumulation, since the expense ratio is driven from AUM. Additionally, the "two" of "two and twenty" incentivizes AUM accumulation, so that incentive structure overall slightly motivates AUM accumulation.
+The expense ratio, which is derived entirely from AUM, primarily incentivizes AUM accumulation. Additionally, since the "two" of two and twenty is based on AUM, that incentive structure overall slightly incentivizes AUM accumulation.
 
-ETF managers and mutual fund managers are not compensated for making profits. ETFs, for example are specifically designed to track an index, and they don't particularly care whether an index goes up or down. The "Two and twenty" rule most incentivizes profit, as the "twenty" component is earned through profit gains.
+ETF managers and mutual fund managers are not compensated for making profits. ETFs, for example, are specifically designed to track an index, and they don't particularly care whether an index goes up or down. The two and twenty rule incentivizes profit, as the "twenty" component is earned through profit gains.
 
-With regard to risk taking, an expense ratio-based fund is not incentivized to take risks at all. Under the two and twenty model, they are incentivized to take risks because that's how they can get to profits. Also, because they are always going to get the 2%, they know they can take a risk without sacrificing that 2%. They are incentivized to take risk because they have the 2 to buffer them and the profit-incentivized portion of the compensation as well.
+Funds that compensate according to expense ratios are not incentivized to take risks at all. Under the two and twenty model, however, risk-taking is incentivized since significant profit gains can be realized by undertaking considerable risk.
+
+Additionally, fund managers under the two and twenty rule are insulated from risk by the 2% expense ratio that they receive no matter what. As a result, they experience the upside of risk and a minimized downside.
+
+## How Funds Attract Investors
+
+There are three major types of investors in hedge funds: individuals, institutions, and funds of funds.
+
+Individuals may wish to deploy a portion of their personal wealth into a hedge fund. Hedge funds usually can only have up to 100 investors, and managers want to maximize AUM, so hedge funds typically only consider very wealthy people who make sizable investments.
+
+When we talk about institutions, we are referring to entities such as large retirement funds - [CalPERS](https://www.calpers.ca.gov/) in California, for example - and university foundations, like those associated with Harvard or Georgia Tech.
+
+These institutions, often non-profit in nature, have large sums of money that they need to keep somewhere. Since they'd like to see their money accrue in value, they might look to hedge funds as an investment strategy.
+
+Funds of funds group together the funds of many individuals or institutions. For instance, an individual might be wealthy enough to invest in one hedge fund but would like the advantage of investing in several funds. This person might invest their money into a fund of funds, which spreads the investments it receives across several hedge funds.
+
+Besides knowing the types of investors that might be interested in our fund, it's critically important to know *why* they would invest, as this directs how we might present our case to potential investors.
+
+Some of the most persuasive evidence we can present to potential investors is the track record of our fund, as this serves as an indication that our fund will continue to perform. Indeed, many institutional investors will want to see a track record for at least five years before they will invest in a particular fund.
+
+Of course, younger hedge fund managers might not have this track record, so they simulate/backtest their strategy instead. Investors will consider these simulations; however, they must be backed by a convincing story demonstrating that the proposed strategy will be successful in the wild.
+
+Finally, potential investors consider how our strategy fits within their portfolio. In other words, if our strategy is for large-cap S&P 500 stocks, and they've already covered that ground with another fund, they might not consider our fund. If our strategy aligns with a particular investment need that their portfolio is missing, they might be inclined to give our fund more thought.
+
+## Hedge Fund Goals and Metrics
+
+Hedge funds typically try to achieve one of two goals: beat a benchmark or provide an absolute return.
+
+For example, if we are good at picking stocks from the S&P 500, we might build a hedge fund whose goal is to beat the S&P 500. Here, the S&P 500 is the benchmark, and we hope to beat this benchmark by selectively investing in those stocks we expect to outperform.
+
+The benchmark we choose should depend on our expertise. For example, if we are an expert in selecting stocks in emerging markets in Eastern Europe, we should pick a benchmark that represents that type of investing, such as an index comprised of companies in emerging markets in Eastern Europe.
+
+One thing to note is that many benchmarks, such as indexes, can go down in value. Of course, it's natural for a portfolio associated with a losing benchmark to also lose money, but the fund can still beat the benchmark by losing less value.
+
+Funds that strive for absolute returns seek to provide positive returns no matter what. These funds are usually long/short, which means they make positive bets on stocks they think are going to go up and negative bets on stocks they think are going to go down.
+
+The objective of these funds is to make slow, consistent, positive returns. Often, these funds don't make the same percentage gains as the funds that are pegged to a benchmark, but they have lower drawdowns; in other words, when the market takes a big hit, they don't.
+
+How do we measure how well a fund is meeting its goals? We use the metrics that we've discussed previously - cumulative return, volatility, and Sharpe ratio - which we talk about at length [here](/machine-learning-trading/sharpe-ratio-other-portfolio-statistics).
+
+## The Computing Inside a Hedge Fund
