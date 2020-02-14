@@ -134,3 +134,35 @@ The objective of these funds is to make slow, consistent, positive returns. Ofte
 How do we measure how well a fund is meeting its goals? We use the metrics that we've discussed previously - cumulative return, volatility, and Sharpe ratio - which we talk about at length [here](/machine-learning-trading/sharpe-ratio-other-portfolio-statistics).
 
 ## The Computing Inside a Hedge Fund
+
+Hedge funds are among the most computationally demanding environments, with infrastructural requirements like massive databases, low latency,  high-bandwidth connectivity, and real-time processing.
+
+Let's examine the different components of a hedge fund, from both a data-centric and an algorithmic perspective, by working backward from the market.
+
+![](2020-02-08-22-58-20.png)
+
+One component that a hedge fund needs to keep track of is its *live portfolio*. Just like any other investor, a hedge fund has a collection of positive and negative positions in various stocks.
+
+In addition to the live portfolio, which describes currently held stock positions, the hedge fund also maintains a *target portfolio*. The target portfolio describes the positions that the hedge fund would like to hold.
+
+The *trading algorithm* is one of the most central pieces of the hedge fund. This algorithm interacts with the market, and issues *orders* to move the positions in the live portfolio to match those in the target portfolio.
+
+At first glance, it might seem like a hedge fund doesn't need a sophisticated algorithm to acquire the positions in its target portfolio; instead, they can simply buy what they lack and sell what they have in excess.
+
+In reality, hedge funds rarely execute everything all at once, as massive buy or sell orders can have detrimental impacts on execution prices. The trading algorithm seeks to enter and exit positions as quietly as possible. Indeed, it can take days to shift holdings substantially.
+
+Now, let's step back further into the hedge fund and see how we derive the target portfolio.
+
+![](2020-02-08-23-03-14.png)
+
+One important piece of data that informs the makeup of a hedge fund's target portfolio is a *forecast*. A forecast predicts prices for a group of stocks some $N$ days into the future and informs a hedge fund as to the optimal positions to take regarding those stocks today.
+
+Another valuable set of data to consider is the *historical data* - open, high, low, close, and volume - for the group of stocks under consideration. Historical data can often reveal correlations between individual stocks, which may, in turn, inform buying or selling decisions.
+
+The current portfolio is also of critical importance. A hedge fund may be penalized for rapidly opening and closing positions and may want to weigh these penalties against forecast predictions.
+
+These three data sources feed into an algorithm called a *portfolio optimizer* that searches for a portfolio that maximizes rewards given a set of risk constraints. The resulting portfolio then becomes the target portfolio.
+
+Let's now look at how to calculate an $N$-day forecast. A hedge fund might train a machine-learning-based forecasting model using a combination of proprietary information alongside public, historical data.
+
+![](2020-02-08-23-09-29.png)
