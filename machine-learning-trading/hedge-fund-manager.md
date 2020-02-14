@@ -131,7 +131,7 @@ Funds that strive for absolute returns seek to provide positive returns no matte
 
 The objective of these funds is to make slow, consistent, positive returns. Often, these funds don't make the same percentage gains as the funds that are pegged to a benchmark, but they have lower drawdowns; in other words, when the market takes a big hit, they don't.
 
-How do we measure how well a fund is meeting its goals? We use the metrics that we've discussed previously - cumulative return, volatility, and Sharpe ratio - which we talk about at length [here](/machine-learning-trading/sharpe-ratio-other-portfolio-statistics).
+How do we measure how well a fund is meeting its goals? We use the metrics that we've discussed previously - cumulative return, volatility, and Sharpe ratio - which we talk about at length [here](../sharpe-ratio-other-portfolio-statistics).
 
 ## The Computing Inside a Hedge Fund
 
