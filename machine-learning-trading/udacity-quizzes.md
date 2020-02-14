@@ -677,3 +677,35 @@ As we increase the number of models $m$ in our ensemble, which of the following 
 ![](https://assets.omscs.io/2020-02-02-22-55-46.png)
 
 AdaBoost focuses primarily on improving the system for specific data points; in other words, it strives to fit. As a result, it is more susceptible to overfitting than is simple bagging.
+
+## So You Want to be a Hedge Fund Manager
+
+### What Type of Fund is it Quiz
+
+For each of the following five funds, determine if the fund is an ETF, mutual fund, or hedge fund. Use [Google Finance](https://www.google.com/finance) or [Yahoo Finance](https://finance.yahoo.com/) for help.
+
+![](https://assets.omscs.io/2020-02-03-22-32-48.png)
+
+### What Type of Fund is it Quiz Solution
+
+![](https://assets.omscs.io/2020-02-03-22-36-01.png)
+
+Typically, symbols for ETFs have three or four letters, while mutual fund symbols usually have five. Hedge funds don't have symbols; instead, we refer to them by their full name.
+
+### Incentives Quiz
+
+So far, we've looked at two different incentive structures: expense ratios and the two and twenty rule. Which of the following actions might these compensation mechanisms incentivize?
+
+![](https://assets.omscs.io/2020-02-04-22-29-02.png)
+
+### Incentives Quiz Solution
+
+![](https://assets.omscs.io/2020-02-04-22-29-24.png)
+
+The expense ratio, which is derived entirely from AUM, primarily incentivizes AUM accumulation. Additionally, since the "two" of two and twenty is based on AUM, that incentive structure overall slightly incentivizes AUM accumulation.
+
+ETF managers and mutual fund managers are not compensated for making profits. ETFs, for example, are specifically designed to track an index, and they don't particularly care whether an index goes up or down. The two and twenty rule incentivizes profit, as the "twenty" component is earned through profit gains.
+
+Funds that compensate according to expense ratios are not incentivized to take risks at all. Under the two and twenty model, however, risk-taking is incentivized since significant profit gains can be realized by undertaking considerable risk.
+
+Additionally, fund managers under the two and twenty rule are insulated from risk by the 2% expense ratio that they receive no matter what. As a result, they experience the upside of risk and a minimized downside.

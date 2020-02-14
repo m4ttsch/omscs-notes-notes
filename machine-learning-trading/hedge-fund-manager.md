@@ -25,7 +25,7 @@ Hedge funds are hard to exit, as they usually require investors to lock their mo
 
 Finally, hedge funds don't have to disclose what they are holding, not even to their investors, making hedge funds both the least transparent and least liquid of the three.
 
-![](2020-02-03-22-25-26.png)
+![](https://assets.omscs.io/2020-02-03-22-25-26.png)
 
 ## Liquidity and Capitalization
 
@@ -39,11 +39,11 @@ Note that the price of a stock only relates to the price of one share, not the o
 
 For each of the following five funds, determine if the fund is an ETF, mutual fund, or hedge fund. Use [Google Finance](https://www.google.com/finance) or [Yahoo Finance](https://finance.yahoo.com/) for help.
 
-![](2020-02-03-22-32-48.png)
+![](https://assets.omscs.io/2020-02-03-22-32-48.png)
 
 ## What Type of Fund is it Quiz Solution
 
-![](2020-02-03-22-36-01.png)
+![](https://assets.omscs.io/2020-02-03-22-36-01.png)
 
 Typically, symbols for ETFs have three or four letters, while mutual fund symbols usually have five. Hedge funds don't have symbols; instead, we refer to them by their full name.
 
@@ -83,11 +83,11 @@ The two and twenty model has been assailed lately, and it's rare to find a hedge
 
 So far, we've looked at two different incentive structures: expense ratios and the two and twenty rule. Which of the following actions might these compensation mechanisms incentivize?
 
-![](2020-02-04-22-29-02.png)
+![](https://assets.omscs.io/2020-02-04-22-29-02.png)
 
 ## Incentives Quiz Solution
 
-![](2020-02-04-22-29-24.png)
+![](https://assets.omscs.io/2020-02-04-22-29-24.png)
 
 The expense ratio, which is derived entirely from AUM, primarily incentivizes AUM accumulation. Additionally, since the "two" of two and twenty is based on AUM, that incentive structure overall slightly incentivizes AUM accumulation.
 
@@ -139,7 +139,7 @@ Hedge funds are among the most computationally demanding environments, with infr
 
 Let's examine the different components of a hedge fund, from both a data-centric and an algorithmic perspective, by working backward from the market.
 
-![](2020-02-08-22-58-20.png)
+![](https://assets.omscs.io/2020-02-08-22-58-20.png)
 
 One component that a hedge fund needs to keep track of is its *live portfolio*. Just like any other investor, a hedge fund has a collection of positive and negative positions in various stocks.
 
@@ -153,7 +153,7 @@ In reality, hedge funds rarely execute everything all at once, as massive buy or
 
 Now, let's step back further into the hedge fund and see how we derive the target portfolio.
 
-![](2020-02-08-23-03-14.png)
+![](https://assets.omscs.io/2020-02-08-23-03-14.png)
 
 One important piece of data that informs the makeup of a hedge fund's target portfolio is a *forecast*. A forecast predicts prices for a group of stocks some $N$ days into the future and informs a hedge fund as to the optimal positions to take regarding those stocks today.
 
@@ -165,4 +165,4 @@ These three data sources feed into an algorithm called a *portfolio optimizer* t
 
 Let's now look at how to calculate an $N$-day forecast. A hedge fund might train a machine-learning-based forecasting model using a combination of proprietary information alongside public, historical data.
 
-![](2020-02-08-23-09-29.png)
+![](https://assets.omscs.io/2020-02-08-23-09-29.png)
