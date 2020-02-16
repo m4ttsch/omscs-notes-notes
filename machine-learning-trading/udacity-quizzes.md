@@ -709,3 +709,33 @@ ETF managers and mutual fund managers are not compensated for making profits. ET
 Funds that compensate according to expense ratios are not incentivized to take risks at all. Under the two and twenty model, however, risk-taking is incentivized since significant profit gains can be realized by undertaking considerable risk.
 
 Additionally, fund managers under the two and twenty rule are insulated from risk by the 2% expense ratio that they receive no matter what. As a result, they experience the upside of risk and a minimized downside.
+
+## Market Mechanics
+
+### Up or Down Quiz
+
+Consider the following order book. Do you think the price of this equity is likely to go up or down in the near future?
+
+![](https://assets.omscs.io/2020-02-10-22-23-32.png)
+
+### Up or Down Quiz Solution
+
+![](https://assets.omscs.io/2020-02-10-22-23-51.png)
+
+The price is likely to drop in the near future because there is more selling pressure than buying pressure.
+
+Consider what would happen if we put in a market order to sell 200 shares. We would get 100 shares at $99.95, 50 shares at $99.90, and 50 shares at $99.85. Our single order would cause the price of the equity to drop by $0.10.
+
+On the other hand, suppose we issue a market order to buy 200 shares. We would receive 200 of the 1000 shares available for sale at $100. The next market buy order would start with the remaining 800 shares for sale at $100. In other words, our buy order wouldn't affect the sale price at all.
+
+### Short Selling Quiz
+
+Suppose we've been watching IBM, and we decide to short it when it reaches $100 because we think that it is going to go down. If we short 100 shares at $100 per share and submit an order to buy back the shares at $90 per share to close out our position, what is our net return?
+
+![](https://assets.omscs.io/2020-02-12-20-36-56.png)
+
+### Short Selling Quiz Solution
+
+![](https://assets.omscs.io/2020-02-12-20-37-14.png)
+
+Each time IBM drops $1 in price, we make $100 because we are shorting 100 shares. Altogether, the stock dropped $10, so we made $1000.
