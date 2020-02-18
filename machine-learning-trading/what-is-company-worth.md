@@ -73,9 +73,17 @@ Let's first consider the case of receiving a one-dollar bill right now. Since we
 
 Let's look at a different example. Suppose that the United States government offers a bond at a 1% interest rate. The present value of $1, paid to us in one year, at a 1% interest rate is
 
-$$ PV = \frac{\$1}{(1 + 0.01)^1} $$
-$$ PV = \frac{\$1}{1.01} $$
-$$ PV \approx \$0.99 $$
+$$
+PV = \frac{\$1}{(1 + 0.01)^1}
+$$
+
+$$
+PV = \frac{\$1}{1.01}
+$$
+
+$$
+PV \approx \$0.99
+$$
 
 In other words, we should only buy this government bond if we have to pay $0.99 or less.
 
@@ -83,13 +91,21 @@ Now consider the Tucker Balch Bond. Professor Balch can't sell us his bond with 
 
 Professor Balch can only attract investors by offering a higher interest rate, such as 5%. The present value of $1, paid to us in one year, at a 5% interest rate is
 
-$$ PV = \frac{\$1}{(1 + 0.05)^1} $$
-$$ PV = \frac{\$1}{1.05} $$
-$$ PV \approx \$0.95 $$
+$$
+PV = \frac{\$1}{(1 + 0.05)^1}
+$$
+
+$$
+PV = \frac{\$1}{1.05}
+$$
+
+$$
+PV \approx \$0.95
+$$
 
 In other words, if Professor Balch wants to attract us to buy his $1 bond, he could only charge us $0.95.
 
-We can plot the present value of a $1 bond backed by both the US government and Tucker Balch, as a function of $i$.
+We can plot the present value of a \$1 bond backed by both the US government and Tucker Balch, as a function of $i$.
 
 ![](https://assets.omscs.io/2020-02-17-20-17-04.png)
 
@@ -129,7 +145,9 @@ Let's consider a company that generates a $1 dividend. Suppose that, after much 
 
 The present value of this company is
 
-$$ \frac{\$1}{0.05} = \$20 $$
+$$
+\frac{\$1}{0.05} = \$20
+$$
 
 ## Intrinsic Value Quiz
 
@@ -141,7 +159,9 @@ Consider a company that pays a dividend of $2 per year. Given a discount rate of
 
 The present value, $PV$, of a company is equal to the future value, $FV$, divided by the discount rate, $DR$. Given $FV = 2$ and $DR = 0.04$,
 
-$$ PV = \frac{\$2}{0.04} = \$50 $$
+$$
+PV = \frac{\$2}{0.04} = \$50
+$$
 
 ![](https://assets.omscs.io/2020-02-17-20-36-55.png)
 

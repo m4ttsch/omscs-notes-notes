@@ -778,7 +778,9 @@ Consider a company that pays a dividend of $2 per year. Given a discount rate of
 
 The present value, $PV$, of a company is equal to the future value, $FV$, divided by the discount rate, $DR$. Given $FV = 2$ and $DR = 0.04$,
 
-$$ PV = \frac{\$2}{0.04} = \$50 $$
+$$
+PV = \frac{\$2}{0.04} = \$50
+$$
 
 ![](https://assets.omscs.io/2020-02-17-20-36-55.png)
 
