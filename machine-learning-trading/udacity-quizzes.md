@@ -739,3 +739,79 @@ Suppose we've been watching IBM, and we decide to short it when it reaches $100 
 ![](https://assets.omscs.io/2020-02-12-20-37-14.png)
 
 Each time IBM drops $1 in price, we make $100 because we are shorting 100 shares. Altogether, the stock dropped $10, so we made $1000.
+
+## What Is a Company Worth
+
+### What Is a Company Worth Quiz
+
+Suppose there is a company that consistently generates $1 per year. What is that company worth?
+
+![](https://assets.omscs.io/2020-02-16-12-35-39.png)
+
+### What Is a Company Worth Quiz Solution
+
+![](https://assets.omscs.io/2020-02-16-12-36-13.png)
+
+### The Balch Bond Quiz
+
+Assume that we are in a position to receive one of three different assets.
+
+The first asset is a $1 bill: cold, hard cash. The second asset is a Tucker Balch bond; essentially, a promise certified by the professor that he will pay us $1 in one year. The third asset is a US Government bond, which also pays out $1 in one year, but is backed by the United States government.
+
+Which of these assets would you rather receive? Rank the choices from 1 (best) to 3 (worst).
+
+![](https://assets.omscs.io/2020-02-16-13-34-02.png)
+
+### The Balch Bond Quiz Solution
+
+![](https://assets.omscs.io/2020-02-16-13-49-15.png)
+
+The most valuable asset among these three is the $1 delivered right now because you can spend it right now. The other two are promises for a reward at some point in the future. Among these two bonds, the one backed by the US government is likely more valuable than the one backed by the professor.
+
+### Intrinsic Value Quiz
+
+Consider a company that pays a dividend of $2 per year. Given a discount rate of 4%, what is the intrinsic value of this company?
+
+![](https://assets.omscs.io/2020-02-17-20-35-00.png)
+
+### Intrinsic Value Quiz Solution
+
+The present value, $PV$, of a company is equal to the future value, $FV$, divided by the discount rate, $DR$. Given $FV = 2$ and $DR = 0.04$,
+
+$$ PV = \frac{\$2}{0.04} = \$50 $$
+
+![](https://assets.omscs.io/2020-02-17-20-36-55.png)
+
+### Compute Company Value Quiz
+
+Consider a fictitious airline company.
+
+This company owns 10 airplanes, each valued at $10 million. Additionally, it has a brand name worth another $10 million. Finally, it has an outstanding loan for $20 million. What is the book value of this company?
+
+This company pays $1 million per year in dividends. Assuming a 5% discount rate, what is the intrinsic value of this company?
+
+This company has one million shares of stock outstanding. Given a stock price of $75 per share, what is the market capitalization of this company?
+
+![](https://assets.omscs.io/2020-02-17-21-08-46.png)
+
+### Compute Company Value Quiz Solution
+
+![](https://assets.omscs.io/2020-02-17-21-09-03.png)
+
+To calculate book value, we take the value of the total assets and subtract the intangible assets, like the brand, and the liabilities. Given $110,000,000 in total assets, a $10,000,000 intangible asset, and a $20,000,000 liability, the book value for this company is $80,000,000.
+
+To compute the intrinsic value, we divide the value of the dividends, $1,000,000, by the discount rate, 0.05, to get $20,000,000.
+
+To compute the market capitalization, we take the product of the share price, $75, and the number of outstanding shares, 1,000,000, to get $75,000,000.
+
+### Would you Buy this Stock Quiz
+
+Since this company has a market capitalization of $75,000,000, we could buy all of the shares and, effectively the company, for $75,000,000. Should we?
+
+![](https://assets.omscs.io/2020-02-17-21-12-47.png)
+
+### Would you Buy this Stock Quiz Solution
+
+It might seem like a tricky question, given such a relatively low intrinsic value, but it's not. We should buy this company for $75,000,000 and then break it apart and sell the individual assets for $80,000,000 to get an immediate $5,000,000 profit.
+
+Stock prices very rarely dip below book value for this exact reason; otherwise, predatory buyers swoop in and buy the whole company just to sell it for parts.
