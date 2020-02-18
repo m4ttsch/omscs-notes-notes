@@ -776,13 +776,13 @@ Consider a company that pays a dividend of $2 per year. Given a discount rate of
 
 ### Intrinsic Value Quiz Solution
 
+![](https://assets.omscs.io/2020-02-17-20-36-55.png)
+
 The present value, $PV$, of a company is equal to the future value, $FV$, divided by the discount rate, $DR$. Given $FV = 2$ and $DR = 0.04$,
 
 $$
 PV = \frac{\$2}{0.04} = \$50
 $$
-
-![](https://assets.omscs.io/2020-02-17-20-36-55.png)
 
 ### Compute Company Value Quiz
 
@@ -813,6 +813,8 @@ Since this company has a market capitalization of $75,000,000, we could buy all 
 ![](https://assets.omscs.io/2020-02-17-21-12-47.png)
 
 ### Would you Buy this Stock Quiz Solution
+
+![](https://assets.omscs.io/2020-02-18-01-10-10.png)
 
 It might seem like a tricky question, given such a relatively low intrinsic value, but it's not. We should buy this company for $75,000,000 and then break it apart and sell the individual assets for $80,000,000 to get an immediate $5,000,000 profit.
 
