@@ -819,3 +819,55 @@ Since this company has a market capitalization of $75,000,000, we could buy all 
 It might seem like a tricky question, given such a relatively low intrinsic value, but it's not. We should buy this company for $75,000,000 and then break it apart and sell the individual assets for $80,000,000 to get an immediate $5,000,000 profit.
 
 Stock prices very rarely dip below book value for this exact reason; otherwise, predatory buyers swoop in and buy the whole company just to sell it for parts.
+
+## The Capital Assets Pricing Model (CAPM)
+
+### Portfolio Return Quiz
+
+Consider a portfolio consisting of two stocks: Stock A and Stock B. 75% of the portfolio is in Stock A, and -25% of the portfolio is in Stock B; in other words, the portfolio has taken a short position in Stock B.
+
+Assume that, today, the price of Stock A increases by 1%, while the price of Stock B decreases by 2%. What is the return on this portfolio?
+
+![](https://assets.omscs.io/2020-02-18-21-39-14.png)
+
+### Portfolio Return Quiz Solution
+
+![](https://assets.omscs.io/2020-02-18-22-02-13.png)
+
+Remember the formula to calculate portfolio return.
+
+$$ r_p(t) = \sum_i^n{w_i r_i(t)} $$
+
+If we plug in the weights and returns for Stock A and Stock B, we can compute a portfolio return of 1.25%.
+
+$$ r_p(t) = (0.75 * 1) + (-0.25 * -2) $$
+$$ r_p(t) = 0.75 + 0.5 $$
+$$ r_p(t) = 1.25 $$
+
+### Compare Alpha and Beta Quiz
+
+Consider the following two scatterplots. The plot on the left shows the daily returns of a fictional stock XYZ against the daily returns of the S&P 500. The plot on the right shows the daily returns of a fictional stock ABC against the daily returns of the S&P 500.
+
+Given these two plots, which asset has a higher $\alpha$ and which has a higher $\beta$?
+
+![](https://assets.omscs.io/2020-02-19-00-16-19.png)
+
+### Compare Alpha and Beta Quiz Solution
+
+![](https://assets.omscs.io/2020-02-19-00-17-07.png)
+
+Recall that $\beta$ is the slope of the fit line, and $\alpha$ is the y-intercept of the fit line. We can tell from the plots that ABC has both a higher $\alpha$ and a higher $\beta$.
+
+### Implications of CAPM Quiz
+
+If we are in an upward market, do we want a portfolio with a larger $\beta_p$ or a smaller $\beta_p$? How about if we are in a downward market?
+
+![](https://assets.omscs.io/2020-02-19-20-48-30.png)
+
+### Implications of CAPM Quiz Solution
+
+![](https://assets.omscs.io/2020-02-19-20-50-34.png)
+
+In upward markets, we want a portfolio with a larger $\beta_p$. For example, a portfolio with a $\beta_p$ greater than one rises even higher than the market, while a portfolio with a $\beta_p$ smaller than one won't be able to take full advantage of market performance.
+
+In downward markets, we want the opposite: a smaller $\beta$. Indeed, a portfolio with a smaller $\beta_p$ falls less sharply in a downward market, while a portfolio with a larger $\beta_p$ crashes hard.
