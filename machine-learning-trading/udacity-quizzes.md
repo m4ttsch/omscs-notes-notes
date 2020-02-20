@@ -836,13 +836,23 @@ Assume that, today, the price of Stock A increases by 1%, while the price of Sto
 
 Remember the formula to calculate portfolio return.
 
-$$ r_p(t) = \sum_i^n{w_i r_i(t)} $$
+$$
+r_p(t) = \sum_i^n{w_i r_i(t)}
+$$
 
 If we plug in the weights and returns for Stock A and Stock B, we can compute a portfolio return of 1.25%.
 
-$$ r_p(t) = (0.75 * 1) + (-0.25 * -2) $$
-$$ r_p(t) = 0.75 + 0.5 $$
-$$ r_p(t) = 1.25 $$
+$$
+r_p(t) = (0.75 * 1) + (-0.25 * -2)
+$$
+
+$$
+r_p(t) = 0.75 + 0.5
+$$
+
+$$
+r_p(t) = 1.25
+$$
 
 ### Compare Alpha and Beta Quiz
 

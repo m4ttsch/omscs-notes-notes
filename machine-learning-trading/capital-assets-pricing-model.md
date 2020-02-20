@@ -17,15 +17,21 @@ If we consider these allocations as a set of weights instead of percentages, we 
 
 We can stipulate that the sum of the weights of each investment equals one; in other words, our portfolio allocations must add to 100%. Formally, given $n$ investments, where $w_i$ represents the weight of the investment in asset $i$,
 
-$$ \sum_i^n{w_i} = 1.0 $$
+$$
+\sum_i^n{w_i} = 1.0
+$$
 
 However, not all weights need to be positive. For example, if we short GOOG, our allocation might be -0.2 instead of 0.2. We can refine the constraint above as follows.
 
-$$ \sum_i^n{|w_i|} = 1.0 $$
+$$
+\sum_i^n{|w_i|} = 1.0
+$$
 
 For a given day, $t$, we can calculate the daily return of the portfolio, $r_p(t)$, as the weighted sum of the daily returns of each of the assets on day $t$.
 
-$$ r_p(t) = \sum_i^n{w_i r_i(t)} $$
+$$
+r_p(t) = \sum_i^n{w_i r_i(t)}
+$$
 
 ## Portfolio Return Quiz
 
@@ -41,13 +47,23 @@ Assume that, today, the price of Stock A increases by 1%, while the price of Sto
 
 Remember the formula to calculate portfolio return.
 
-$$ r_p(t) = \sum_i^n{w_i r_i(t)} $$
+$$
+r_p(t) = \sum_i^n{w_i r_i(t)}
+$$
 
 If we plug in the weights and returns for Stock A and Stock B, we can compute a portfolio return of 1.25%.
 
-$$ r_p(t) = (0.75 * 1) + (-0.25 * -2) $$
-$$ r_p(t) = 0.75 + 0.5 $$
-$$ r_p(t) = 1.25 $$
+$$
+r_p(t) = (0.75 * 1) + (-0.25 * -2)
+$$
+
+$$
+r_p(t) = 0.75 + 0.5
+$$
+
+$$
+r_p(t) = 1.25
+$$
 
 ## The Market Portfolio
 
@@ -61,7 +77,9 @@ Stock market indexes are composed of many individual stocks, and the **market po
 
 Formally, given a total market capitalization $M_{total}$ of all of the stocks in the index, the weight of an individual stock with a market capitalization of $M_{individual}$ is
 
-$$ \frac{M_{individual}}{M_{total}} $$
+$$
+\frac{M_{individual}}{M_{total}}
+$$
 
 Some stocks have surprisingly large weightings. For example, Apple and Exxon each comprise about 5% of the S&P 500, and the 10 largest companies account for over 20% of the performance of the index. Smaller stocks may comprise only one-tenth of one percent.
 
