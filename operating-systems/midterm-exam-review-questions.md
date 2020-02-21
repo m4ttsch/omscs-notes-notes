@@ -243,9 +243,10 @@ mutex_unlock(&m);
 
 mutex_lock(&m);
 status = 0;
-signal(&cond_writer);
-broadcast(&cond_reader);
 mutex_unlock(&m);
+
+signal(&cond_writer, &m);
+broadcast(&cond_reader, &m);
 ```
 
 ## What are spurious wake-ups, how do you avoid them, and can you always avoid them?
