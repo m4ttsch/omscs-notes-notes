@@ -881,3 +881,117 @@ If we are in an upward market, do we want a portfolio with a larger $\beta_p$ or
 In upward markets, we want a portfolio with a larger $\beta_p$. For example, a portfolio with a $\beta_p$ greater than one rises even higher than the market, while a portfolio with a $\beta_p$ smaller than one won't be able to take full advantage of market performance.
 
 In downward markets, we want the opposite: a smaller $\beta$. Indeed, a portfolio with a smaller $\beta_p$ falls less sharply in a downward market, while a portfolio with a larger $\beta_p$ crashes hard.
+
+## How Hedge Funds Use the CAPM
+
+### Two Stock Scenario Quiz
+
+Let's consider another scenario now.
+
+Instead of staying flat, suppose that the market went up 10%. What are the relative and absolute returns for both stocks, and what is our total return, both relative and absolute?
+
+![](https://assets.omscs.io/2020-02-21-22-10-17.png)
+
+Let's also consider the scenario where the market goes down 10%. What are the relative and absolute returns for both stocks, and what is our total return, both relative and absolute?
+
+![](https://assets.omscs.io/2020-02-21-22-21-24.png)
+
+### Two Stock Scenario Quiz Solution
+
+Let's first look at the case where the market rises by 10%.
+
+![](https://assets.omscs.io/2020-02-21-22-13-24.png)
+
+Consider stock A, which has a $\beta$ of 1.0 and an $\alpha$ of 0.01. A $\beta$ of 1.0 tells us that for every percentage point that the market moves, stock A moves one percent. An $\alpha$ of 0.01 tells us that stock A will move 1% above its movement with the market.
+
+As a result, stock A moves 10% plus 1%, for a total relative return of 11%, and a total absolute return of $5.50, 11% on a $50 investment.
+
+Let's consider stock B now, which has a $\beta$ of 2.0 and an $\alpha$ of -0.01. A $\beta$ of 2.0 tells us that for every percentage point the market moves, stock A moves two percent. An $\alpha$ of -0.01 tells us that stock A will move 1% below its movement with the market.
+
+As a result, stock B moves 20% minus 1%, for a total relative return of 19%. However, since we shorted stock B, this return is actually -19%, and we have lost $9.50.
+
+Let's compute the total return. Since we gained $5.50 on stock A and lost $9.50 on stock B, our total absolute return is -$4.
+
+Calculating the relative return is a little tricky; that is, we can't just add 11% and -19% to get -8%. Instead, since we split our investment across stock A and stock B, our actual return is one-half of 11% plus one-half of -19%, or -4%.
+
+Now, let's look at the case where the market falls 10%.
+
+![](https://assets.omscs.io/2020-02-21-22-25-50.png)
+
+In this case, stock A falls with the market, but does 1% better, for a total relative loss of 9%, which equates to a $4.50 loss on a $50 investment.
+
+Stock B falls twice as hard as the market, and does 1% worse on top of that, for a total relative loss of 21%. However, since we shorted stock B, this loss is actually a 21% gain, or a gain of $10.50 on a $50 investment.
+
+Overall, this market scenario nets us 6%, or $6 on a $100 investment.
+
+### Allocations Remove Market Risk Quiz
+
+Let's look at our two stocks again. Stock A has a $\beta$ of 1.0 and an $\alpha$ of 0.01. Stock B has a $\beta$ of 2.0 and an $\alpha$ of -0.01. What should the weights be for stock A and stock B so that we can minimize market risk?
+
+![](https://assets.omscs.io/2020-02-22-12-44-41.png)
+
+### Allocations Remove Market Risk Quiz Solution
+
+![](https://assets.omscs.io/2020-02-22-12-45-05.png)
+
+We need to solve the following equation.
+
+$$
+0 = 0.01w_A + 0.02w_B
+$$
+
+$$
+w_A = -2w_B
+$$
+
+We also know that the sum of the absolute values $w_A$ and $w_B$ should equal one.
+
+$$
+|w_A| + |w_B| = 1
+$$
+
+If we substitute $-2w_B$ for $w_A$, we can solve for $w_B$.
+
+$$
+|-2w_b| + |w_b| = 1
+$$
+
+$$
+|-3w_b| = 1
+$$
+
+$$
+|w_b| = \frac{1}{3}
+$$
+
+However, since we want to short B, $w_B$ is actually $\frac{-1}{3}$, not $\frac{1}{3}$. We can now solve for $w_A$.
+
+$$
+|w_A| + |w_B| = 1
+$$
+
+$$
+|w_A| + |-\frac{1}{3}| = 1
+$$
+
+$$
+|w_B| = \frac{2}{3}
+$$
+
+If we plug these two weights back into our original equation, we can verify that we do get an overall $\beta_p$ of 0.
+
+$$
+\beta_p = 0.01w_A + 0.02w_B
+$$
+
+$$
+\beta_p = (0.01 * 0.66) + (0.02 * -0.33)
+$$
+
+$$
+\beta_p = 0.66 - 0.66
+$$
+
+$$
+\beta_p = 0
+$$
