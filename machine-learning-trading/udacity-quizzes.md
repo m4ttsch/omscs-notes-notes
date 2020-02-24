@@ -995,3 +995,37 @@ $$
 $$
 \beta_p = 0
 $$
+
+## Technical Analysis
+
+### Potential Indicators Quiz
+
+Now that we know some differences between the types of data used for fundamental and technical analysis, let's look at the following four factors. Which of these are fundamental, and which are technical?
+
+![](https://assets.omscs.io/2020-02-23-07-01-59.png)
+
+### Potential Indicators Quiz Solution
+
+![](https://assets.omscs.io/2020-02-23-07-07-55.png)
+
+Remember that technical analysis considers only price and volume data, whereas fundamental analysis incorporates other types of data.
+
+The moving average of price and the percent change in volume consider only price and volume, respectively, so they are both technical indicators.
+
+P/E ratio considers both price and earnings, making it a fundamental factor, as well as intrinsic value, which is based on dividends
+
+### Buy or Sell Quiz
+
+Let's consider how we might trade using Bollinger Bands. Consider the four events below, each of which involves the price of a stock crossing over a Bollinger Band. For each event, determine if the event demonstrates a buying opportunity, a selling opportunity, or no opportunity at all.
+
+![](https://assets.omscs.io/2020-02-23-08-23-45.png)
+
+### Buy or Sell Quiz Solution
+
+![](https://assets.omscs.io/2020-02-23-08-28-28.png)
+
+For the first event, we see the price crossing from the outside to the inside of the upper Bollinger Band. This event indicates that the price is moving back towards the moving average after a strong upward excursion. This is a sell signal.
+
+For the second event, we see the price crossing from the inside to the outside of the lower Bollinger Band. This is not a signal, although it does indicate a significant excursion from the moving average.
+
+For the third and fourth events, we see the price crossing from the outside to the inside of the lower Bollinger Band. These events indicate that the price is moving back towards the moving average after a strong downward excursion. Correspondingly, they are both buy signals.
