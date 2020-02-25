@@ -177,7 +177,7 @@ The process jumps to the user level library scheduler when:
 The library scheduler may also gain execution in response to certain signals from timers and/or the kernel.
 
 ## Issue On Multiple CPUs
-In a multi CPU system, the kernel level threads that support a process may be running concurrently on multiple CPUs. We may have a situation where the user level library that is operating in the context of one thread on one CPU needs to somehow what is running on **another** CPU.
+In a multi CPU system, the kernel level threads that support a process may be running concurrently on multiple CPUs. We may have a situation where the user level library that is operating in the context of one thread on one CPU needs to somehow impact what is running on **another** CPU.
 
 Scenario
 ![](https://assets.omscs.io/8859114F-5FA0-445D-9B5D-9324D73FC541.png)
