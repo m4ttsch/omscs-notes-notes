@@ -188,7 +188,7 @@ Notice that we have two distinct subplots. Instead, we want the histograms to sh
 
 ```python
 daily_returns['SPY'].hist(bins=20, label="SPY")
-daily_returns['SPY'].hist(bins=20, label="XOM")
+daily_returns['XOM'].hist(bins=20, label="XOM")
 plt.legend(loc="upper right")
 ```
 

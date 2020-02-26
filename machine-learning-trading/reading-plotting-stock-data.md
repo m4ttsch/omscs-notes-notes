@@ -103,7 +103,7 @@ print df.tail()
 ### Documentation 
 - [pandas.read_csv](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html)
 - [pandas.DataFrame.head](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.head.html)
-- [pandas.DataFrame.head](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.tail.html)
+- [pandas.DataFrame.tail](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.tail.html)
 
 ## Select Rows
 Of course, we would like to be able to access more than just the first five or last five rows of our DataFrame. For more flexible row accesses, we need to look at *slicing*.
