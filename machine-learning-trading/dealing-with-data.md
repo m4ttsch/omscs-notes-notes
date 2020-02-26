@@ -66,5 +66,51 @@ What we see here is a **stock split**, whereby a single share becomes $n$ shares
 For example, consider the drop in price from $300 per share to $75 per share. This 75% drop in price is consistent with a 4-for-1 stock split, whereby one share becomes four shares. Note that the total value of the shares is preserved - four $75 shares still equals $300 worth of IBM - but the number of overall shares has increased.
 
 ## Stock Splits
+
+The most common reason for a company to issue a stock split is to drive down the share price. Naturally, that begs the question: why is a high share price a problem?
+
+Consider a stock with a high share price, such as $500. Investors generally buy stocks in groups of one hundred - referred to as a **lot**. At $500 per share, a lot costs $50,000, and some investors might find this price prohibitively expensive. Additionally, share price impacts derivative securities, like stock options, which typically control lots, and can make them more expensive and less liquid.
+
+As well, investors often strive to build portfolios with finely-tuned proportions allocated to each stock. If some of the stock in the portfolio have very high share prices, such fine resolution may be difficult to achieve.
+
+Let's look at two stock splits.
+
+![](2020-02-26-16-53-05.png)
+
+Here we see a 4:1 stock split, whereby one share becomes four, and the resulting stock price is quartered. As well, we see a 2:1 stock split, which involves a doubling of the share count and a halving of the share price.
+
+Suppose we feed this pricing data into a computer and ask it to find trading opportunities. As we might expect, the algorithm is likely to find fantastic shorting opportunities on the days before each split!
+
+Of course, that strategy is incorrect, as the value of the company hasn't actually decreased; instead, the number of shares of the company are increasing, and the price per share is adjusting to account for that increase. If we want to trade using the actual close data, we need to account for these splits.
+
+The solution to this problem is to use **adjusted close** instead of close. Adjusted close retroactively accounts for stock splits and provides a measure of split-adjusted price movement that gives investors - and computers - a less turbulent view of the share price over time.
+
+Here's how it works. We walk back in time, day by day, setting adjusted close equal to actual close until we encounter the most recent $n$:1 stock split. From that point back to the beginning of time, we set the adjusted close equal to the actual close divided by $n$.
+
+![](2020-02-26-17-02-03.png)
+
+For our example, we divide all close prices leading up to the 2:1 split by two and all close prices leading up to the 4:1 split by four. Notice that the values leading up to the 4:1 split are effectively divided by eight, to account for both splits.
+
+By computing the adjusted close, we now have a smooth line representing the split-adjusted stock price, and we no longer have to account for stock splits explicitly. Additionally, we can look back into the past - several splits ago - and accurately understand the accumulation of value between then and now.
+
 ## Split Adjustment Quiz
+
+Consider the following plot of close prices for a particular stock over time. Notice the 2:1 stock split. For each of the three days identified below, what is the adjusted close price for this stock?
+
+![](2020-02-26-15-37-31.png)
+
 ## Split Adjustment Quiz Solution
+
+![](2020-02-26-15-42-44.png)
+
+For each day since the stock split, the adjusted close is equivalent to the actual close. As a result, the adjusted close for the most recent of the three days is $100.
+
+For all days before the 2:1 split, we calculate the adjusted close by dividing the actual close by two. As a result, the adjusted close prices for the previous two days, moving backward from the split, are $50 and $25, respectively.
+
+Consider buying one share of stock, on the first of the three days, for $50. After the split, we would have two shares, each worth $50, and by the third day, our shares would be worth $100 apiece. This trajectory represents a four-fold increase in value, from $50 to $200 worth of stock.
+
+Note that using the adjusted close accurately reflects this quadrupling of value, whereas the actual close seems to indicate, incorrectly, only a doubling of value.
+
+## Dividends
+## Dividends Quiz
+## Dividends Quiz Solution
