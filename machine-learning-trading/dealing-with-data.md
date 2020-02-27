@@ -115,7 +115,7 @@ Note that using the adjusted close accurately reflects this quadrupling of value
 
 Many companies regularly pay dividends to their shareholders. For example, a company might pay a 1-2% dividend per share per year. For a stock trading at $100 per share, this dividend equals $1-2.
 
-Dividend payments can have significant effects on a stock's price. Consider a company whose stock is currently trading at around $100 per share and for whom investors have derived a fundamental value of exactly $100 per share. Let's suppose that this stock has an upcoming dividend payment of $1.
+Dividend payments can have significant effects on a stock's price. Consider a company whose stock is currently trading at around $100 per share and for which investors have derived a fundamental value of exactly $100 per share. Let's suppose that this stock has an upcoming dividend payment of $1.
 
 ![](2020-02-27-16-10-25.png)
 
