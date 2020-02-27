@@ -112,5 +112,25 @@ Consider buying one share of stock, on the first of the three days, for $50. Aft
 Note that using the adjusted close accurately reflects this quadrupling of value, whereas the actual close seems to indicate, incorrectly, only a doubling of value.
 
 ## Dividends
+
+Many companies regularly pay dividends to their shareholders. For example, a company might pay a 1-2% dividend per share per year. For a stock trading at $100 per share, this dividend equals $1-2.
+
+Dividend payments can have significant effects on a stock's price. Consider a company whose stock is currently trading at around $100 per share and for whom investors have derived a fundamental value of exactly $100 per share. Let's suppose that this stock has an upcoming dividend payment of $1.
+
+![](2020-02-27-16-10-25.png)
+
 ## Dividends Quiz
+
+What share price do we expect to see the day before the dividend is paid? How about after the dividend is paid?
+
+![](2020-02-27-16-11-51.png)
+
 ## Dividends Quiz Solution
+
+![](2020-02-27-16-12-15.png)
+
+The day before the dividend is paid, we should expect to see the stock price rise to $101. A share price of $101 reflects the underlying value of $100 per share, for which there is consensus, plus the expected $1 dividend payment.
+
+On the very next day, we should expect the price to drop by $1 to $100 per share. Since the dividend has been paid, the share price should drop back down to the price aligned with its fundamental value: $100 per share.
+
+Note that the overall value for investors who bought before the dividend was paid is still $101 per share: $100 per share plus $1 in cash per share.
