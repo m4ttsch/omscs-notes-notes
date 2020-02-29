@@ -307,7 +307,7 @@ Attributes like size and shape are useful when you need to iterate over the elem
 
 Finally, you can access the data type of each element using the `dtype` attribute of the ndarray. For example:
 
-```
+```python
 a.dtype
 ```
 

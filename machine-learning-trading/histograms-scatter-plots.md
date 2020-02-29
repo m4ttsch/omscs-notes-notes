@@ -248,7 +248,7 @@ In our example, we have a beta of one. This value of beta indicates that, on ave
 
 If we had a higher beta, like 2, we would expect our stock to move by two percent every time the market moved by one percent.
 
-We can also consider another property of the best-fit line: the ?*y-intercept*. This value, called **alpha**, indicates how well the stock performs, on average, relative to the market.
+We can also consider another property of the best-fit line: the *y-intercept*. This value, called **alpha**, indicates how well the stock performs, on average, relative to the market.
 
 If alpha is positive, as is the case here, it means that the stock is outperforming the market, on average. On the other hand, if alpha is negative, it means that the stock is performing worse than the market.
 

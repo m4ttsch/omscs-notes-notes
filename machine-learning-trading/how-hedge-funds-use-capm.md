@@ -26,7 +26,7 @@ Consider the following scenario. Let's assume that the market stays flat, return
 Consider the returns of stock A, using the CAPM equation.
 
 $$
-r_A = \beta_Ar_m + \alpha_a
+r_A = \beta_Ar_m + \alpha_A
 $$
 
 Since the market returned 0%, the equation simplifies.
@@ -176,15 +176,15 @@ $$
 If we substitute $-2w_B$ for $w_A$, we can solve for $w_B$.
 
 $$
-|-2w_b| + |w_b| = 1
+|-2w_B| + |w_B| = 1
 $$
 
 $$
-|-3w_b| = 1
+|-3w_B| = 1
 $$
 
 $$
-|w_b| = \frac{1}{3}
+|w_B| = \frac{1}{3}
 $$
 
 However, since we want to short B, $w_B$ is actually $\frac{-1}{3}$, not $\frac{1}{3}$. We can now solve for $w_A$.
@@ -198,7 +198,7 @@ $$
 $$
 
 $$
-|w_B| = \frac{2}{3}
+|w_A| = \frac{2}{3}
 $$
 
 If we plug these two weights back into our original equation, we can verify that we do get an overall $\beta_p$ of 0.
