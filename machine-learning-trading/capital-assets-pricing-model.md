@@ -11,7 +11,7 @@ lecture: capital-assets-pricing-model
 
 A **portfolio** is a weighted set of assets.
 
-Let's suppose we have a portfolio of three different assets: Apple (AAPL), Google (GOOG), and Oracle (ORCL). Let's also assume that we have allocated 60% of the portfolio to APPL, and 20% each to GOOG and AAPL.
+Let's suppose we have a portfolio of three different assets: Apple (AAPL), Google (GOOG), and Oracle (ORCL). Let's also assume that we have allocated 60% of the portfolio to APPL, and 20% each to GOOG and ORCL.
 
 If we consider these allocations as a set of weights instead of percentages, we would say that our AAPL position has a weight of 0.6, while our GOOG and ORCL positions each have a weight of 0.2.
 
@@ -73,7 +73,7 @@ The best example of such an index in the United States is the S&P 500, which rep
 
 There are similar stock market indices in other countries, such as FTA in the United Kingdom and TOPIX in Japan. Additionally, there are specialized indices that track companies only within specific industries, such as healthcare or technology.
 
-Stock market indexes are composed of many individual stocks, and the **market portfolio** is the combination of those stocks according to a particular weighting. Most indices are **capitalization-weighted**, which means that the individual weight of each stock in the portfolio is proportional to that stock's market capitalization.
+Stock market indices are composed of many individual stocks, and the **market portfolio** is the combination of those stocks according to a particular weighting. Most indices are **capitalization-weighted**, which means that the individual weight of each stock in the portfolio is proportional to that stock's market capitalization.
 
 Formally, given a total market capitalization $M_{total}$ of all of the stocks in the index, the weight of an individual stock with a market capitalization of $M_{individual}$ is
 

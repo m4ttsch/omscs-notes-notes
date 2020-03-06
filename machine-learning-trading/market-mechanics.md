@@ -9,7 +9,7 @@ lecture: market-mechanics
 
 ## What Is in an Order
 
-The way that we build a portfolio or, more specifically, buy stocks that we hold in our portfolio, is buying issuing orders. We usually send these orders to a stockbroker, and they take care of executing them for us.
+The way that we build a portfolio or, more specifically, buy stocks that we hold in our portfolio, is by issuing orders. We usually send these orders to a stockbroker, and they take care of executing them for us.
 
 There are several components of a well-formed order. First, we need to indicate whether we are looking to buy or sell shares. Second, we need to specify the symbol of the equity that we are interested in - for instance, IBM or SPLV.
 

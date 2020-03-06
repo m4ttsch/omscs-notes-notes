@@ -158,8 +158,8 @@ We can also quantify buy and sell signals.
 $$
 f(SMA_{it}, p_i) = \left\{
         \begin{array}{ll}
-            Buy, & \quad \frac{SMA_{it}}{p_i} - 1 < 0 \\\\
-            Sell, & \quad \frac{SMA_{it}}{p_i} - 1 > 0
+            Buy, & \quad \frac{SMA_{it}}{p_i} - 1 > 0 \\\\
+            Sell, & \quad \frac{SMA_{it}}{p_i} - 1 < 0
         \end{array}
     \right.
 $$

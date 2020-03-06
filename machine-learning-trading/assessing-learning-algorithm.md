@@ -79,7 +79,7 @@ The model might look something like this.
 
 ![](https://assets.omscs.io/2020-01-28-22-46-23.png)
 
-We can assess this model at each real data point $d$ and measure the difference between the y-value of $d$ and the $y$ value of the model for the $x$ value of $d$. This difference is the error.
+We can assess this model at each real data point $d$ and measure the difference between the $y$-value of $d$ and the $y$-value of the model for the $x$ value of $d$. This difference is the error.
 
 ![](https://assets.omscs.io/2020-01-28-22-48-07.png)
 
@@ -92,7 +92,7 @@ A common type of error is the **root-mean-square error** (RMSE), which we comput
 Formally, given a model fit to $N$ data points, each with an error $e_i$, we can calculate RMSE as:
 
 $$
-\sqrt{\frac{\sum_i{e_i}}{N}}
+\sqrt{\frac{\sum_i{e_i^2}}{N}}
 $$
 
 The RMSE formulation gives us an approximation of the average error, although it emphasizes larger errors slightly more than smaller ones.
@@ -115,9 +115,9 @@ Suppose we just built a model. Which error would you expect to be larger: in-sam
 
 ## Which is Worse Quiz Solution
 
-In general, the out-of-sample error is worse than the in-sample error.
-
 ![](https://assets.omscs.io/2020-01-28-23-29-18.png)
+
+In general, the out-of-sample error is worse than the in-sample error.
 
 ## Cross Validation
 

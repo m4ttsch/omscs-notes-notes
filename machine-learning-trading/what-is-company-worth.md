@@ -169,7 +169,7 @@ $$
 
 A classic definition of book value is total assets minus intangible assets and liabilities.
 
-Tangible assets are those that are easy to price: factories, offices, inventory, and so on. Intangible assets, like patents, or the value of a brand - are much harder to price. Liabilities refer to things that are owed, like loans, debts, or other obligations.
+Tangible assets are those that are easy to price: factories, offices, inventory, and so on. Intangible assets, like patents, or the value of a brand, are much harder to price. Liabilities refer to things that are owed, like loans, debts, or other obligations.
 
 Let's consider a company that owns four factories, each priced at $10 million, and three patents, each valued at $5 million. Additionally, suppose the company has one liability, a loan worth $10 million.
 

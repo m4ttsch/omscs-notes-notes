@@ -154,7 +154,7 @@ We define our `LinRegLearner` class, and the associated constructor using the `_
 ```python
 class LinRegLearner:
  def __init__():
- pass
+  pass 
 ```
 
 Next, we need to implement the `train` method. Given a training data set consisting of `X` and `Y`, `train` finds the `m` and `b` of the line that best fits the data.
@@ -163,7 +163,7 @@ Next, we need to implement the `train` method. Given a training data set consist
 class LinRegLearner:
  # ... #
  def train(X, Y):
- self.m, self.b = favorite_linreg(X, Y)
+  self.m, self.b = favorite_linreg(X, Y)
 ```
 
 We can use any of several regression algorithms at our disposal as part of SciPy and NumPy to find `m`, and `b`, and we store these parameters as instance variables on the learner.
@@ -173,7 +173,7 @@ Finally, the `query` method takes in `X` as an argument and computes the corresp
 ```python
 class LinRegLearner:
  def query(X):
- return self.m * X + self.b
+  return self.m * X + self.b
 ```
 
 A KNN learner would have the same API, although its constructor would look a little different because we want to be able to specify $K$:
@@ -181,7 +181,7 @@ A KNN learner would have the same API, although its constructor would look a lit
 ```python
 class KNNLearner:
  def __init__(k):
- self.k = k
+  self.k = k
 ```
 
 Enforcing that all learners implement the same API is advantageous because, once we know how to use one learner, we know how to use them all.

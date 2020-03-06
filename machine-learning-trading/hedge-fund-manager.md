@@ -13,7 +13,7 @@ There are many different types of funds, but three broad classes that we are goi
 
 ETFs represent baskets of stocks, yet can be bought and sold as if they were individual stocks. ETF prices change throughout the day, and we can buy or sell ETF shares whenever the market is open. In other words, ETFs are very liquid. Additionally, ETF managers are very transparent concerning investment goals - for instance, tracking the S&P 500 - and holdings.
 
-Mutual funds are less liquid than ETFs. At the end of the trading day, a mutual fund adds up all of its holdings to compute a *net asset value*, and its from this value that the buy/sell price is derived. Unlike ETFs, which investors can trade intraday, mutual funds can only be bought or sold at the end of the day.
+Mutual funds are less liquid than ETFs. At the end of the trading day, a mutual fund adds up all of its holdings to compute a *net asset value*, and it's from this value that the buy/sell price is derived. Unlike ETFs, which investors can trade intraday, mutual funds can only be bought or sold at the end of the day.
 
 Additionally, mutual funds are less transparent then ETFs. Mutual funds only have to disclose their holdings once every quarter. As a result, investing in a mutual fund can be somewhat of a black box in the middle of the quarter, as investors are unsure of the composition of the fund at the time of investment.
 
