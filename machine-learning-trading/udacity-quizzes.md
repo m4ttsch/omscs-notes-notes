@@ -1029,3 +1029,59 @@ For the first event, we see the price crossing from the outside to the inside of
 For the second event, we see the price crossing from the inside to the outside of the lower Bollinger Band. This is not a signal, although it does indicate a significant excursion from the moving average.
 
 For the third and fourth events, we see the price crossing from the outside to the inside of the lower Bollinger Band. These events indicate that the price is moving back towards the moving average after a strong downward excursion. Correspondingly, they are both buy signals.
+
+## Dealing With Data
+
+### Price Anomaly Quiz
+
+Consider the following plot of IBM stock prices over time.
+
+![](https://assets.omscs.io/2020-02-24-22-42-38.png)
+
+Notice the sudden drops in price. In one example, the price drops from $300 per share to $75 per share; in another, the price drops from $250 per share to $125 per share. These drops represent a 75% and a 50% price decline, respectively.
+
+Undoubtedly, the value of IBM did not drop that much in one day, so, which of the following reasons might explain the sudden drop in stock price?
+
+![](https://assets.omscs.io/2020-02-24-22-45-08.png)
+
+### Price Anomaly Quiz Solution
+
+![](https://assets.omscs.io/2020-02-24-22-51-28.png)
+
+What we see here is a **stock split**, whereby a single share becomes $n$ shares, and the price of each share is divided by $n$.
+
+For example, consider the drop in price from $300 per share to $75 per share. This 75% drop in price is consistent with a 4-for-1 stock split, whereby one share becomes four shares. Note that the total value of the shares is preserved - four $75 shares still equals $300 worth of IBM - but the number of overall shares has increased.
+
+### Split Adjustment Quiz
+
+Consider the following plot of close prices for a particular stock over time. Notice the 2:1 stock split. For each of the three days identified below, what is the adjusted close price for this stock?
+
+![](https://assets.omscs.io/2020-02-26-15-37-31.png)
+
+### Split Adjustment Quiz Solution
+
+![](https://assets.omscs.io/2020-02-26-15-42-44.png)
+
+For each day since the stock split, the adjusted close is equivalent to the actual close. As a result, the adjusted close for the most recent of the three days is $100.
+
+For all days before the 2:1 split, we calculate the adjusted close by dividing the actual close by two. As a result, the adjusted close prices for the previous two days, moving backward from the split, are $50 and $25, respectively.
+
+Consider buying one share of stock, on the first of the three days, for $50. After the split, we would have two shares, each worth $50, and by the third day, our shares would be worth $100 apiece. This trajectory represents a four-fold increase in value, from $50 to $200 worth of stock.
+
+Note that using the adjusted close accurately reflects this quadrupling of value, whereas the actual close seems to indicate, incorrectly, only a doubling of value.
+
+### Dividends Quiz
+
+What share price do we expect to see the day before the dividend is paid? How about after the dividend is paid?
+
+![](https://assets.omscs.io/2020-02-27-16-11-51.png)
+
+### Dividends Quiz Solution
+
+![](https://assets.omscs.io/2020-02-27-16-12-15.png)
+
+The day before the dividend is paid, we should expect to see the stock price rise to $101. A share price of $101 reflects the underlying value of $100 per share, for which there is consensus, plus the expected $1 dividend payment.
+
+On the very next day, we should expect the price to drop by $1 to $100 per share. Since the dividend has been paid, the share price should drop back down to the price aligned with its fundamental value: $100 per share.
+
+Note that the overall value for investors who bought before the dividend was paid is still $101 per share: $100 per share plus $1 in cash per share.
