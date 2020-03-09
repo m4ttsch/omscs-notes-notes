@@ -1085,3 +1085,17 @@ The day before the dividend is paid, we should expect to see the stock price ris
 On the very next day, we should expect the price to drop by $1 to $100 per share. Since the dividend has been paid, the share price should drop back down to the price aligned with its fundamental value: $100 per share.
 
 Note that the overall value for investors who bought before the dividend was paid is still $101 per share: $100 per share plus $1 in cash per share.
+
+## Efficient Markets Hypothesis
+
+### The EMH Prohibits Quiz
+
+Consider the three forms of the efficient markets hypothesis: weak, semi-strong, and strong. Which forms prohibit which of the following different analyses?
+
+![](https://assets.omscs.io/2020-03-08-22-25-06.png)
+
+### The EMH Prohibits Quiz Solution
+
+![](https://assets.omscs.io/2020-03-08-22-31-43.png)
+
+The weak version of the EMH prohibits us from profiting using technical analysis but is silent on fundamental analysis and insider knowledge. The semi-strong version prohibits technical and fundamental analysis but is silent on insider knowledge. The strong version prohibits all three.
