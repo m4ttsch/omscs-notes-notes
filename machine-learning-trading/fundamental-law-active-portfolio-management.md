@@ -65,7 +65,15 @@ In the single-bet case, where we bet 1000 chips at once, our expected return is 
 Since we are using a biased coin, we have a 51% chance of winning 1000 tokens and a 49% chance of losing 1000 tokens. If we multiply this out, we see that our expected return is 20 tokens.
 
 $$
-\mathbb{E} = 0.51 * 1000 + 0.49 * -1000 \\= (0.51 - 0.49) * 1000 \\= (0.02) * 1000 \\ =20
+\mathbb{E} = 0.51 * 1000 + 0.49 * -1000
+$$
+
+$$
+\mathbb{E} = (0.51 - 0.49) * 1000
+$$
+
+$$
+\mathbb{E} = 0.02 * 1000 = 20
 $$
 
 What is the expected return in the multi-bet case, where we bet 1000 tokens across 1000 different tables?
@@ -79,7 +87,15 @@ What is the expected return in the multi-bet case, where we bet 1000 tokens acro
 In this case, we have the same chances of winning and losing - 51% and 49%, respectively - but the amount we stand to win or lose on any bet is only one dollar. Since we are placing 1000 bets, our overall expected value is 1000 times the expected value of any individual bet.
 
 $$
-\mathbb{E} = 1000 * (0.51 * 1 + 0.49 * -1) \\= (0.51 - 0.49) * 1000 \\= (0.02) * 1000 \\ =20
+\mathbb{E} = (0.51 * 1 + 0.49 * -1) * 1000
+$$
+
+$$
+\mathbb{E} = (0.51 - 0.49) * 1000
+$$
+
+$$
+\mathbb{E} = 0.02 * 1000 = 20
 $$
 
 Notice that for both the single-bet and multi-bet scenarios, the expected return - the reward - is precisely the same. To understand why the multi-bet setup is a better choice, we have to also consider the risk inherent in each scenario.
