@@ -1099,3 +1099,119 @@ Consider the three forms of the efficient markets hypothesis: weak, semi-strong,
 ![](https://assets.omscs.io/2020-03-08-22-31-43.png)
 
 The weak version of the EMH prohibits us from profiting using technical analysis but is silent on fundamental analysis and insider knowledge. The semi-strong version prohibits technical and fundamental analysis but is silent on insider knowledge. The strong version prohibits all three.
+
+## The Fundamental Law of Active Portfolio Management
+
+### Which Bet is Better Quiz
+
+Let's consider two different ways to bet.
+
+One approach is to put all 1000 tokens on one table and zero tokens on the other 999 tables. Another approach is to put one coin on each of the 1000 tables. Which of these approaches is better, or is it the case that they are equivalent?
+
+![](https://assets.omscs.io/2020-03-09-16-15-37.png)
+
+### Which Bet is Better Quiz Solution
+
+![](https://assets.omscs.io/2020-03-09-16-20-13.png)
+
+The first bet is very risky; that is, there is a 49% chance that we are going to lose all of our money with the single flip of a coin. The second bet is much less risky. By distributing our tokens across all one thousand tables, we only lose all of our money if we lose all 1000 bets: a very low probability indeed. 
+
+Since the expected return for each of these bets is the same, the second bet is a better choice from the perspective of risk-adjusted reward.
+
+### Coin-Flip Casino: Reward Quiz
+
+To figure out which of these different scenarios is best, we need to consider reward and risk. When we talk about reward in this situation, we are talking about *expected return*.
+
+In the single-bet case, where we bet 1000 chips at once, our expected return is the chance of winning the bet times the amount that we would win plus the chance of losing the bet times the amount that we would lose.
+
+Since we are using a biased coin, we have a 51% chance of winning 1000 tokens and a 49% chance of losing 1000 tokens. If we multiply this out, we see that our expected return is 20 tokens.
+
+$$
+\mathbb{E} = 0.51 * 1000 + 0.49 * -1000 \\= (0.51 - 0.49) * 1000 \\= (0.02) * 1000 \\ =20
+$$
+
+What is the expected return in the multi-bet case, where we bet 1000 tokens across 1000 different tables?
+
+![](https://assets.omscs.io/2020-03-09-18-33-21.png)
+
+### Coin-Flip Casino: Reward Quiz Solution
+
+![](https://assets.omscs.io/2020-03-09-18-59-26.png)
+
+In this case, we have the same chances of winning and losing - 51% and 49%, respectively - but the amount we stand to win or lose on any bet is only one dollar. Since we are placing 1000 bets, our overall expected value is 1000 times the expected value of any individual bet.
+
+$$
+\mathbb{E} = 1000 * (0.51 * 1 + 0.49 * -1) \\= (0.51 - 0.49) * 1000 \\= (0.02) * 1000 \\ =20
+$$
+
+Notice that for both the single-bet and multi-bet scenarios, the expected return - the reward - is precisely the same. To understand why the multi-bet setup is a better choice, we have to also consider the risk inherent in each scenario.
+
+### Coin-Flip Casino: Reward/Risk Quiz
+
+Now we can consider the risk-adjusted reward.
+
+Let's look at the single-bet case first. In this case, the expected reward is $20, and the expected risk is $31.62. If we divide the reward by the risk, we get a value of 0.63.
+
+What is the risk-adjusted reward calculation for the multi-bet case?
+
+![](https://assets.omscs.io/2020-03-10-23-48-24.png)
+
+### Coin-Flip Casino: Reward/Risk Quiz Solution
+
+![](https://assets.omscs.io/2020-03-10-23-50-00.png)
+
+In the multi-bet case, the reward was the same - $20 - but the risk was much smaller: $1. Thus, the risk-adjusted reward for this scenario is 20, which is much higher than that of the single-bet scenario.
+
+The take-home message here is that we can increase the risk-adjusted reward simply by spreading our money across a large number of bets.
+
+### Simons vs. Buffet Quiz
+
+How can we relate the performance of Renaissance Technologies - really, Jim Simons - and Warren Buffett?
+
+For this problem, let's assume that Simons and Buffett both have the same information ratio. Let's also assume that Simons's stock-picking algorithms are only about 1/1000th as smart as Buffett's; in other words, Simon's information coefficient is 1/1000th that of Buffett.
+
+If Buffett trades 120 times a year, how many times must Simons trade to maintain the same information ratio as Buffett?
+
+![](https://assets.omscs.io/2020-03-11-16-13-08.png)
+
+### Simons vs. Buffet Quiz Solution
+
+![](https://assets.omscs.io/2020-03-11-16-13-16.png)
+
+If Buffett trades only 120 times per year, Simons has to trade 120,000,000 times to match Buffett's performance.
+
+Let's step through the math. Since Buffett and Simons both have the same information ratio, we can set the equation for $IR_B$ equal to the equation for $IR_S$.
+
+$$
+IC_B * \sqrt{B_B} = IC_S * \sqrt{B_S}
+$$
+
+Furthermore, we know that Simons's IC is 1/1000th Buffett's IC.
+
+$$
+IC_B * \sqrt{B_B} = \frac{IC_B * \sqrt{B_S}}{1000}
+$$
+
+We can manipulate this equation to isolate $B_S$.
+
+$$
+1000 = \frac{IC_B * \sqrt{B_S}}{IC_B * \sqrt{B_B}}
+$$
+
+$$
+1000 = \frac{\sqrt{B_S}}{\sqrt{B_B}}
+$$
+
+$$
+1000 * \sqrt{B_B} = \sqrt{B_S}
+$$
+
+$$
+1000000 * B_B = B_S
+$$
+
+Since we know that $B_B = 120$, we can solve for $B_S$.
+
+$$
+1000000 * 120 = B_S = 120,000,000
+$$
