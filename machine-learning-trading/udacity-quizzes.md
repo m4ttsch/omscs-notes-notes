@@ -1215,3 +1215,27 @@ Since we know that $B_B = 120$, we can solve for $B_S$.
 $$
 1000000 * 120 = B_S = 120,000,000
 $$
+
+## Portfolio Optimization and the Efficient Frontier
+
+### Building a Portfolio Quiz
+
+Let's consider the three following portfolios.
+
+![](https://assets.omscs.io/2020-03-13-09-34-02.png)
+
+Each green dot represents an asset held in the portfolio, and the size of the dot represents the weight of that asset.
+
+If we were to aggregate the risk and return of the individual stocks into one value, which of the following plots - in orange below - would match which portfolio?
+
+![](https://assets.omscs.io/2020-03-13-09-36-44.png)
+
+### Building a Portfolio Quiz Solution
+
+![](https://assets.omscs.io/2020-03-13-09-50-25.png)
+
+The first portfolio emphasizes two high-risk stocks: one with low return and one with high return. Of the three plots, B looks best-aligned for this allocation.
+
+The second portfolio emphasizes three low-risk stocks with an aggregate middle-of-the-road return. Of the three plots, A looks best-aligned for this allocation.
+
+Finally, the third portfolio emphasizes two low-return stocks: one with low risk and one with high risk. Of the three plots, C looks best-aligned for this allocation.
