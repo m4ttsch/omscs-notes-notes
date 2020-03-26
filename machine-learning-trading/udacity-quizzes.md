@@ -1239,3 +1239,39 @@ The first portfolio emphasizes two high-risk stocks: one with low return and one
 The second portfolio emphasizes three low-risk stocks with an aggregate middle-of-the-road return. Of the three plots, A looks best-aligned for this allocation.
 
 Finally, the third portfolio emphasizes two low-return stocks: one with low risk and one with high risk. Of the three plots, C looks best-aligned for this allocation.
+
+## Reinforcement Learning
+
+### Trading as an RL Problem Quiz
+
+We want to use reinforcement learning algorithms to trade; to do so, we have to translate the trading problem into a reinforcement learning problem.
+
+Consider the following items. For each item, select whether the item corresponds to a component of the external state $S$, an action $a$ we might take within the environment, or a reward $r$ that we might use to inform our policy $\pi$.
+
+![](https://assets.omscs.io/2020-03-23-23-28-54.png)
+
+### Trading as an RL Problem Quiz Solution
+
+![](https://assets.omscs.io/2020-03-23-23-38-35.png)
+
+Buying and selling stock are both actions that we execute upon our environment.
+
+Holding long and Bollinger value are both parts of the state. Holding long tells us about our position in a particular stock, and Bollinger value tells us about the current price characteristics of a stock. Both of these pieces of information might drive subsequent action.
+
+The return from a trade is our reward. If our return is positive, so is our reward. On the other hand, a negative reward indicates that we lost money on the position. Daily return could be either a component of the state - a factor we consider before generating an action - but it could also be a reward.
+
+## Which Approach Gets $1M Quiz
+
+Which of the following approaches leads our robot to a policy that causes it to reach the $1 million reward?
+
+![](https://assets.omscs.io/2020-03-25-22-05-58.png)
+
+## Which Approach Gets $1M Quiz Summary
+
+![](https://assets.omscs.io/2020-03-25-22-13-18.png)
+
+With an infinite horizon, the robot may exclusively grab the $1 ad infinitum, or it might first grab the $1 million before returning to the $1. As a result, obtaining the $1 million is possible with infinite horizon, but not guaranteed.
+
+With a finite horizon of length four, the robot does not reach the $1 million. A journey towards the $1 million results in four penalties, whereas heading towards the $1 results in a positive reward. However, if we increase the horizon to ten, the robot does reach the $1 million.
+
+In the discounted scenario, each reward in the future is successively devalued by 5%. Even so, the $1 million reward is so large that seeking this reward is still the optimal strategy.
