@@ -1260,13 +1260,13 @@ Holding long and Bollinger value are both parts of the state. Holding long tells
 
 The return from a trade is our reward. If our return is positive, so is our reward. On the other hand, a negative reward indicates that we lost money on the position. Daily return could be either a component of the state - a factor we consider before generating an action - but it could also be a reward.
 
-## Which Approach Gets $1M Quiz
+### Which Approach Gets $1M Quiz
 
 Which of the following approaches leads our robot to a policy that causes it to reach the $1 million reward?
 
 ![](https://assets.omscs.io/2020-03-25-22-05-58.png)
 
-## Which Approach Gets $1M Quiz Summary
+### Which Approach Gets $1M Quiz Solution
 
 ![](https://assets.omscs.io/2020-03-25-22-13-18.png)
 

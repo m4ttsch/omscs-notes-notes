@@ -130,7 +130,7 @@ $$
 
 Remember from one of our earlier lessons where we talked about the present value and future value of money. One of the main points that we arrived at was that a dollar tomorrow is worth less than a dollar today.
 
-We can think about rewards in a similar fashion: a reward of $1 today is more valuable than a reward of $1 tomorrow. We can reformulate our expression above to incorporate the discounting of future rewards. That is, given a discount rate, $\gamma$, we want to maximize
+We can think about rewards in a similar fashion: a reward of one dollar today is more valuable than a reward of one dollar tomorrow. We can reformulate our expression above to incorporate the discounting of future rewards. That is, given a discount rate, $\gamma$, we want to maximize
 
 $$
 \sum_{i=1}^{\infty} \gamma^{i-1} * r_i
@@ -148,7 +148,7 @@ Which of the following approaches leads our robot to a policy that causes it to 
 
 ![](https://assets.omscs.io/2020-03-25-22-05-58.png)
 
-## Which Approach Gets $1M Quiz Summary
+## Which Approach Gets $1M Quiz Solution
 
 ![](https://assets.omscs.io/2020-03-25-22-13-18.png)
 
