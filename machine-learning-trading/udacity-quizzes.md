@@ -1275,3 +1275,39 @@ With an infinite horizon, the robot may exclusively grab the $1 ad infinitum, or
 With a finite horizon of length four, the robot does not reach the $1 million. A journey towards the $1 million results in four penalties, whereas heading towards the $1 results in a positive reward. However, if we increase the horizon to ten, the robot does reach the $1 million.
 
 In the discounted scenario, each reward in the future is successively devalued by 5%. Even so, the $1 million reward is so large that seeking this reward is still the optimal strategy.
+
+## Q-Learning
+
+### The Trading Problem: Rewards Quiz
+
+The rewards that our learner reaps should relate in some way to the returns of our strategy. There are at least two different ways that we can think about rewards. 
+
+On the one hand, we can think about the reward for a position as the daily return of a stock held in our portfolio. On the other hand, we can think about the reward for a position being zero until we exit the position, at which point the reward is the cumulative return of that position.
+
+Which of these approaches results in a faster convergence to the optimal policy?
+
+![](https://assets.omscs.io/2020-03-29-20-05-54.png)
+
+### The Trading Problem: Rewards Quiz Solution
+
+![](https://assets.omscs.io/2020-03-29-20-18-57.png)
+
+If we choose the delayed paradigm - where the reward is zero until the end of the trade cycle - the learner has to infer the correct sequence of actions leading up to the final action that brought about the large windfall. If we reward a little bit each day, however, the learner can learn much more quickly because it receives much more frequent rewards.
+
+### The Trading Problem: State Quiz
+
+Consider the following factors and select which should be part of the state that we examine when selecting an appropriate action.
+
+![](https://assets.omscs.io/2020-03-29-20-25-46.png)
+
+### The Trading Problem: State Quiz Solution
+
+![](https://assets.omscs.io/2020-03-29-20-35-56.png)
+
+Neither adjusted close nor SMA alone are useful components of the state because they don't particularly mean much as absolute values. For example, if GOOG closes at $1000 per share, and XYZ closes at $5 per share, we cannot determine, based on that information alone, whether we should buy, sell, or hold either of those stocks.
+
+However, the ratio of adjusted close to SMA can be a valuable piece of state. For example, a positive ratio indicates that the close is larger than the SMA, which may be a sell signal. Additionally, other technical and fundamental indicators such as Bollinger Bands and P/E ratio can be essential parts of our state.
+
+Whether or not we are currently holding a stock that we are examining is an important piece of state. For example, if we are holding a stock, it might be advantageous to get rid of it. Alternatively, if we are not holding a stock, we may not want to sell because we don't want to enter a short position.
+
+Finally, our return since we entered a position might be a piece of our state. For example, we might decide to sell off a particularly volatile stock after we have locked in some amount of return.
