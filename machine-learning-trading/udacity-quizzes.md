@@ -1311,3 +1311,29 @@ However, the ratio of adjusted close to SMA can be a valuable piece of state. Fo
 Whether or not we are currently holding a stock that we are examining is an important piece of state. For example, if we are holding a stock, it might be advantageous to get rid of it. Alternatively, if we are not holding a stock, we may not want to sell because we don't want to enter a short position.
 
 Finally, our return since we entered a position might be a piece of our state. For example, we might decide to sell off a particularly volatile stock after we have locked in some amount of return.
+
+## Dyna
+
+### How to Evaluate T Quiz
+
+Assume we have been interacting with the real world for a while, and we would like to consult our model of $T$. Can you write an equation for $T$ in terms of $T_c$?
+
+![](https://assets.omscs.io/2020-03-31-22-24-00.png)
+
+### How to Evaluate T Quiz Solution
+
+![](https://assets.omscs.io/2020-03-31-22-28-58.png)
+
+**NOTE**: The denominator in this equation should reference $T_c$, not $T$.
+
+What we want to find here is the probability of a particular resulting state, $s'$, given a current state, $s$ and an action, $a$. Thus, we need a fraction where the numerator is the number of transitions from $s$ to $s'$, by way of $a$, and the denominator is the total number of transitions out of $s$, by way of $a$.
+
+Let's consider the numerator first. The total number of transitions from $s$ to $s'$, as a result of $a$, is simply the recorded value, $T_c[s,a,s']$.
+
+Next, let's consider the denominator. The total number of times we transitioned out of $s$ by taking $a$ is the sum $T_c[s,a,s_1] + T_c[s,a,s_2] + ... + T_c[s,a,s_n]$, where $n$ is the size of $S$, the state space.
+
+Altogether, we have the following equation:
+
+$$
+T[s,a,s'] = \frac{T_c[s,a,s']}{\sum_{i}^{n}T_c[s,a,s_i]}
+$$
