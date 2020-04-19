@@ -945,7 +945,7 @@ Page 256
 
 **True or False?**
 
-One of many intruder behaviors is Maintaining Access is by adding a machine code backdoor that is hard to detect because it modifies machine level code.
+One of many intruder behaviors is Maintaining Access.  This is done by adding a machine code backdoor that is hard to detect.  Detection is difficult because the backdoor modifies machine level code.
 
 <details>
 <summary>Answer</summary>
