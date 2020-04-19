@@ -929,7 +929,7 @@ Page 256
 
 **True or False?**
 
-Intrusion Detection Systems are only allowed to use a single sensor.ß
+Intrusion Detection Systems are only allowed to use a single sensor.
 
 <details>
 <summary>Answer</summary>
@@ -945,12 +945,12 @@ Page 256
 
 **True or False?**
 
-Maintaining Access is backdoor that is hard to detect because it modifies machine level code.
+One of many intruder behaviors is Maintaining Access is by adding a machine code backdoor that is hard to detect because it modifies machine level code.
 
 <details>
 <summary>Answer</summary>
 
-False
+True
 
 **Source**
 
@@ -1389,6 +1389,8 @@ False
 Text pg 35
 </details>
 
+** Multiple Choice **
+
 All but one of the following situations are examples were Message Authentication confidentiality would not be preferable. Select that situation.
 
 - A. When a message or notification is broadcast to many different users.
@@ -1405,6 +1407,8 @@ B
 
 Text pg 37
 </details>
+
+** Multiple Choice ** 
 
 Which of the following is not a characteristic that is sought in random (or pseudo random) numbers used in cryptography?
 
@@ -1613,11 +1617,11 @@ How can 3DES be used to decrypt DES encrypted ciphertext?
 <details>
 <summary>Answer</summary>
 
-A
+B
 
 **Source**
 
-Text pg 611,  P2_L6 Notes pg 8
+Text pg 612,  P2_L6 Notes pg 8
 </details>
 
 **Multiple Choice**
@@ -1746,6 +1750,8 @@ False
 Text pg 35
 </details>
 
+** Multiple Choice **
+
 What is the main reason 3DES uses an encrypt-decrypt-encrypt sequence?
 
 - A. It makes it more difficult to crytanalyze by eavesdroppers.
@@ -1762,6 +1768,8 @@ C
 
 Text pg 611
 </details>
+
+** Multiple Choice **
 
 Which of the following is not a mode of operation used in Cipher blocks?
 
@@ -1781,6 +1789,8 @@ A
 Text pg 622
 </details>
 
+** Multiple Choice **
+
 Which of the following is the weakest form of attack?
 
 - A. Chosen Plaintext
@@ -1798,6 +1808,8 @@ D
 
 https://notes.shichao.io/cnspp/ch2/
 </details>
+
+** Multiple Choice **
 
 What is RC4?
 
@@ -1829,6 +1841,8 @@ False
 
 Text pg 627
 </details>
+
+** Multiple Choice **
 
 What operation does the Diffie-Hellman algorithm use as a one way function?
 
@@ -2054,7 +2068,7 @@ What is the main advantage of ECC compared to RSA?
 
 D
 
-(A and B are the _opposite_ of being true, and C is a true statement, but it's not relevant her- e.
+(A and B are the _opposite_ of being true, and C is a true statement, but it's not relevant here.
 
 **Source**
 
@@ -2412,20 +2426,6 @@ Text pg 694
 
 **True or False?**
 
-The Certification Authority is responsible for generating the public keys.
-
-<details>
-<summary>Answer</summary>
-
-False
-
-**Source**
-
-https://www.youtube.com/watch?v=JAgaWJivKwg (about 3:55)
-</details>
-
-**True or False?**
-
 Kerberos provides _both_ authentication _and_ access control.
 
 <details>
@@ -2735,7 +2735,7 @@ Text pg 670
 
 **Multiple Choice**
 
-What is the basic tool that permits the widespread use of S/MIIME?
+What is the basic tool that permits the widespread use of S/MIME?
 
 - A. Public-key certificates
 - B. HMAC
@@ -3602,7 +3602,7 @@ True
 Text pg 585
 </details>
 
-**True or False?**
+**Multiple Choice**
 
 Under the Digital Millennium Copyright ACT, individuals may be allowed to do which of the following?
 
