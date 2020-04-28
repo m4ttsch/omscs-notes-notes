@@ -33,7 +33,7 @@ As a result, exchanges usually consolidate tick data into time slices - minute-b
 
 We can describe each chunk using five data points: open, high, low, close, and volume. Let's consider the first chunk.
 
-The **open** is the price of the first transaction within the chunk, which is $100.00. The **high** is the highest transaction price within the chunk, which is also $100.00. The **low** is the lowest transaction price within the chunk, which is $99.05. The **close** is the price of the last transaction within the chunk, which is $99.50. Finally, the **volume** represents the total number of shares transacted within the chunk, which is 600.
+The **open** is the price of the first transaction within the chunk, which is $100.00. The **high** is the highest transaction price within the chunk, which is also $100.00. The **low** is the lowest transaction price within the chunk, which is $99.05. The **close** is the price of the last transaction within the chunk, which is $95.50. Finally, the **volume** represents the total number of shares transacted within the chunk, which is 600.
 
 ![](https://assets.omscs.io/2020-02-24-22-38-26.png)
 
