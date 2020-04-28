@@ -1,7 +1,7 @@
 ---
-id: computer-networks-download-pdf
+id: machine-learning-trading-download-pdf
 title: Download to PDF
-course: computer-networks
+course: machine-learning-trading
 lecture: download-pdf
 ---
 
@@ -15,8 +15,6 @@ a simpler, more portable study experience.
 While the content on the site will always be free, the following PDFs are available
 for download:
 
-## CN Complete ($5)
+## ML4T Complete ($20)
 
-**Note**: I know this course has changed significantly since I took it, so I've permanently marked down the PDF from $20 to $5. Enjoy.
-
-[![CN Complete](https://assets.omscs.io/ebooks/cn-full.jpg)](https://gum.co/cn-full?wanted=true)
+[![ML4T Complete](https://assets.omscs.io/ebooks/ml4t-full.jpg)](https://gum.co/ml4t-full?wanted=true)
