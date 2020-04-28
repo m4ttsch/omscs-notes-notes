@@ -209,7 +209,7 @@ Conversely, when we see price crossing over from the outside to the inside of th
 Generally, if we want to calculate the Bollinger Bands, $BB$, on a given day, $t$, from a sequence of prices, $p$, using an $n$-day moving average, $SMA$, we can use the following formula. Note that $\sigma$ refers to the standard deviation.
 
 $$
-BB_t = SMA_t \plusmn 2\sigma(p_{t - n:t})
+BB_t = SMA_t \pm 2\sigma(p_{t - n:t})
 $$
 
 Additionally, we can look at the ratio, $r$, of the current price, less $SMA_t$, to the current Bollinger Band, $BB_t$.
