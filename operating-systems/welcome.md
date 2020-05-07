@@ -24,6 +24,6 @@ There is a lot of information in these documents. I hope you find it helpful!
 
 If you have any questions, comments, concerns, or improvements, don't hesitate to reach out to me. You can find me at:
 
-* [omscs-notes@gatech.edu](mailto:omscs-notes@gatech.edu)
+* [matt@omscs-notes.com](mailto:matt@omscs-notes.com)
 * [Matt Schlenker \| Linkedin](https://www.linkedin.com/in/matt-schlenker-3457b047/)
 * @mschlenker \(Slack\)
