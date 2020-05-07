@@ -30,15 +30,15 @@ Many other sources of traffic are **variable bit rate** (VBR).  Video and data t
 When we shape CBR traffic, we tend to shape according to the peak rate. VBR traffic is often shaped according to an average rate and a peak rate.
 
 ## Leaky Bucket Traffic Shaping
-In a **leaky bucket** traffic shaper, traffic arrives in a bucket of size β and drains from the bucket at rate ρ. Each traffic flow has its own bucket.
+In a **leaky bucket** traffic shaper, traffic arrives in a bucket of size $\beta$ and drains from the bucket at rate $\rho$. Each traffic flow has its own bucket.
 
 ![](https://assets.omscs.io/C15197CB-DE6B-48A5-A8CA-2218F942D846.png)
 
-While traffic can flow into the bucket at any rate, it cannot drain from the bucket at a rate faster than ρ. Therefore, the maximum average rate that data can be sent through this bucket is ρ.
+While traffic can flow into the bucket at any rate, it cannot drain from the bucket at a rate faster than $\rho$. Therefore, the maximum average rate that data can be sent through this bucket is $\rho$.
 
-The size β of the bucket controls the maximum burst size that a sender can send for a particular flow. Even though the average rate cannot exceed ρ, the sender may be able to, at times, send at a faster rate, as long as the total size of the burst does not overflow the bucket.
+The size $\beta$ of the bucket controls the maximum burst size that a sender can send for a particular flow. Even though the average rate cannot exceed $\rho$, the sender may be able to, at times, send at a faster rate, as long as the total size of the burst does not overflow the bucket.
 
-Setting a larger bucket size can accommodate a larger burst rate. Setting a larger value of ρ can enable a faster packet rate.
+Setting a larger bucket size can accommodate a larger burst rate. Setting a larger value of $\rho$ can enable a faster packet rate.
 
 In short, the leaky bucket allows flows to periodically burst while maintaining a constant drain rate.
 
@@ -72,13 +72,13 @@ Sometimes we want to shape bursty traffic, allowing for bursts to be sent on the
 
 For this scenario, we might use a **token bucket**.
 
-In a token bucket, tokens arrive in a bucket at a rate ρ. Again, β is the capacity of the bucket. Traffic may arrive at an average rate and a peak rate.
+In a token bucket, tokens arrive in a bucket at a rate $\rho$. Again, $\beta$ is the capacity of the bucket. Traffic may arrive at an average rate and a peak rate.
 
 ![](https://assets.omscs.io/41551786-986F-4D91-8994-FC3FB14C32B6.png)
 
 Traffic can be sent by the regulator as long as there are sufficient tokens in the bucket.
 
-To consider the difference between a token bucket and a leaky bucket, consider sending a packet of size `b` < β.
+To consider the difference between a token bucket and a leaky bucket, consider sending a packet of size `b` < $\beta$.
 
 If the token bucket is full, the packet is sent, and `b` tokens are removed.
 
@@ -87,23 +87,23 @@ If the token bucket is empty, the packet must wait until `b` tokens drip into th
 If the bucket is partially full, the packet may or may not be sent. If the number of tokens in the bucket exceed `b`, then the packet is sent immediately and `b` tokens are removed. Otherwise, the packet must wait until `b` tokens are present in the bucket.
 
 ## Token Bucket vs Leaky Bucket
-A token bucket permits traffic to be bursty but bounds it by the rate ρ. A leaky bucket forces the bursty traffic to be smooth.
+A token bucket permits traffic to be bursty but bounds it by the rate $\rho$. A leaky bucket forces the bursty traffic to be smooth.
 
-If our bucket size in a token bucket is β, we know that for any interval T, our rate must be less than β plus the rate that which tokens accumulate (ρ) times T.
+If our bucket size in a token bucket is $\beta$, we know that for any interval T, our rate must be less than $\beta$ plus the rate that which tokens accumulate ($\rho$) times T.
 
-Intuitively, this makes sense. We can completely drain the bucket and also consume the tokens that are added to the bucket over the interval T, which ρ*T.
+Intuitively, this makes sense. We can completely drain the bucket and also consume the tokens that are added to the bucket over the interval T, which $\rho$*T.
 
-We also know that the long-term rate will always be less than  ρ.
+We also know that the long-term rate will always be less than  $\rho$.
 
 Token buckets have no discard or priority policies, while leaky buckets typically implement priority policies for flows that exceed the smoothing rate.
 
 Both token buckets and leaky buckets are relatively easy to implement, but the token bucket is a little bit more flexible since it has additional parameters for configuring burst size.
 
-One of the limitations of token buckets is that in any interval of length T, the flow can send β + T*ρ tokens of data.
+One of the limitations of token buckets is that in any interval of length T, the flow can send $\beta$ + T*$\rho$ tokens of data.
 
-If a network tries to police the flows by simply measuring the flows over intervals of length T, the flow can cheat by sending β + T*ρ traffic in each interval.
+If a network tries to police the flows by simply measuring the flows over intervals of length T, the flow can cheat by sending $\beta$ + T*$\rho$ traffic in each interval.
 
-Consider an interval of 2T. If the flow can send β + T*ρ in each interval, the flow can send 2(β + T * ρ) in an interval of 2T, which is greater than what it should be allowed to send: β + 2T * ρ.
+Consider an interval of 2T. If the flow can send $\beta$ + T*$\rho$ in each interval, the flow can send 2($\beta$ + T * $\rho$) in an interval of 2T, which is greater than what it should be allowed to send: $\beta$ + 2T * $\rho$.
 
 Policing traffic being sent by token buckets can be rather difficult.
 
@@ -133,18 +133,18 @@ There are two types of power boost.
 
 If the rate at which the user can achieve during the burst window is set to not exceed a particular rate, the power boost is **capped**. Otherwise, the power boost is **uncapped**.
 
-In the uncapped setting, the change to the traffic shaper is simple. The size β of the token bucket is increased. Since the rate of flow through a token bucket depends on β, a larger bucket size will be able to sustain a bigger burst.
+In the uncapped setting, the change to the traffic shaper is simple. The size $\beta$ of the token bucket is increased. Since the rate of flow through a token bucket depends on $\beta$, a larger bucket size will be able to sustain a bigger burst.
 
-In this case, the maximum sustained traffic rate is remains ρ.
+In this case, the maximum sustained traffic rate is remains $\rho$.
 
-If we want to cap the rate, all we need to do is simply apply a second token bucket with another value of ρ.
+If we want to cap the rate, all we need to do is simply apply a second token bucket with another value of $\rho$.
 
-That token bucket limits the peak sending rate for power boost eligible packets to Ρ, where P is larger than ρ.
+That token bucket limits the peak sending rate for power boost eligible packets to $\rho$, where P is larger than $\rho$.
 
-Since ρ plays a role in how quickly tokens can refill in the bucket, so it also plays a role in the maximum rate that can be sustained in a power boost window.
+Since $\rho$ plays a role in how quickly tokens can refill in the bucket, so it also plays a role in the maximum rate that can be sustained in a power boost window.
 
 ## Calculating Power Boost Rates
-Suppose that a sender is sending at some rate `R` which is greater than their subscribed rate `r`. Suppose as well that the power boost bucket size is β.
+Suppose that a sender is sending at some rate `R` which is greater than their subscribed rate `r`. Suppose as well that the power boost bucket size is $\beta$.
 
 How long can a sender send at rate `R`?
 
@@ -152,7 +152,7 @@ How long can a sender send at rate `R`?
 
 Given the diagram above, we need to solve for `d`.
 
-We know that the β is `d * (R - r)` , so if we solve for `d`, we see that `d` is equal to `β / (R - r)`.
+We know that the $\beta$ is `d * (R - r)` , so if we solve for `d`, we see that `d` is equal to `$\beta$ / (R - r)`.
 
 ## Examples of Power Boost
 Here is a graph (courtesy of the [BISmark project](http://projectbismark.net/)) measuring the power boost experienced by four different home networks - each with a different cable modem - connecting through Comcast.
