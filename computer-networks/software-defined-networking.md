@@ -27,7 +27,7 @@ Black holes describe the scenario whereby a packet reaches a router that does no
 ## Why is Configuration Hard?
 Configuration is hard to get right for several reasons.
 
-First, it can be difficult to define what is meant by “correct behavior” when it comes to routing rules.
+First, it can be difficult to define what is meant by "correct behavior" when it comes to routing rules.
 
 Second, the interactions between multiple routing protocols can lead to unpredictable results. Furthermore, since each AS is independently configured, the interactions between the policies of different ASes can lead to unintended behavior.
 
@@ -51,7 +51,7 @@ However, there is no inherent reason that a router needs to compute routes. Even
 
 Rather, the computation could be logically centralized and controlled from a centralized control program.
 
-A simple way to sum up software-defined network is simply to “remove routing from routers” and perform the routing computation at a logically centralized controller.
+A simple way to sum up software-defined network is simply to "remove routing from routers" and perform the routing computation at a logically centralized controller.
 
 ## Software Defined Networking
 ### What is an SDN?
@@ -179,8 +179,8 @@ A final challenge is security/robustness. In particular, we want to make sure th
 [NOX](noxrepo.org) is a first-generation OpenFlow controller. It is open-source, stable and widely used.
 
 There are two flavors of NOX
-- “classic” NOX (C++/Python, no longer supported)
-- “new” NOX (C++ only, fast, clean codebase)
+- "classic" NOX (C++/Python, no longer supported)
+- "new" NOX (C++ only, fast, clean codebase)
 
 ### Architecture
 In a NOX network, there may be a set of switches and various network-attached servers. The controller maintains a network view and may also run several applications that run on top of that network view.

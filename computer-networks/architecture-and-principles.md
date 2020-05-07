@@ -58,7 +58,7 @@ It’s not that these design choices were right or wrong. Rather, they reflect t
 Some of the technical lessons - for example, packet switching, and fate sharing - from the original design have turned out to be timeless.
 
 ## Goal
-The fundamental design goal of the internet was **multiplexed utilization of existing interconnected networks**. To achieve multiplexed utilization - shared use of a single communication channel - packet switching was invented. To solve the issue of connecting existing (and future) networks, the “narrow waist” was designed.
+The fundamental design goal of the internet was **multiplexed utilization of existing interconnected networks**. To achieve multiplexed utilization - shared use of a single communication channel - packet switching was invented. To solve the issue of connecting existing (and future) networks, the "narrow waist" was designed.
 
 ## Packet Switching
 In **packet switching**, the information for forwarding traffic is contained in the destination address of every datagram, or packet.
@@ -96,7 +96,7 @@ The most critical aspect of this design is that the network layer essentially on
 
 ![](https://assets.omscs.io/BA147DFC-0C94-4469-BAE1-282BFE84AE62.png)
 
-The design is sometimes called “IP over anything” or “anything over IP”.
+The design is sometimes called "IP over anything" or "anything over IP".
 
 The advantage of the narrow waist is that it is fairly easy to get a device on the network. The drawback is that since every device is running IP, it’s very difficult to make any changes at this layer.
 
@@ -120,7 +120,7 @@ It became clear that every application did not need reliable, in-order delivery.
 
 Fortunately, the narrow waist of IP allowed the proliferation of many different transport protocols in addition to TCP.
 
-The internet also supports heterogeneity through the “best effort” service model, whereby the network can lose packets, deliver them out of order, and generally doesn’t provide any quality guarantees. The network also doesn’t provide information about failures or performance.
+The internet also supports heterogeneity through the "best effort" service model, whereby the network can lose packets, deliver them out of order, and generally doesn’t provide any quality guarantees. The network also doesn’t provide information about failures or performance.
 
 ## Goals Distributed Management
 Another goal of the internet is distributed management and there are many scenarios where distributed management has played out.
@@ -129,7 +129,7 @@ For example, in addressing, we have routing registries. In North America, the ma
 
 No single entity needs to be in charge, which allows for organic growth and stable management.
 
-On the downside, the internet has no single “owner”. In such a network where management is distributed, it can often be very difficult to determine who or what is causing a problem.
+On the downside, the internet has no single "owner". In such a network where management is distributed, it can often be very difficult to determine who or what is causing a problem.
 
 Other goals of the internet include:
 - Cost effectiveness
@@ -171,7 +171,7 @@ Another possible solution is to provide some end-to-end error checking. In this 
 
 Another example where the end to end argument applies is encryption. The keys are maintained by the end applications and cipher text is generated before the application sends the message across the network.
 
-What are the “ends”? The “ends” may vary depending on what the application is!
+What are the "ends"? The "ends" may vary depending on what the application is!
 
 For example, if the application involves internet routing, the ends might be routers. If the application/protocol concerns transport, the ends may be the end hosts.
 

@@ -83,7 +83,7 @@ We can retrieve the first object from `dates` by calling `dates[0]`, which looks
 
 ![](https://assets.omscs.io/EEC45445-36DA-4177-9510-7A4DAF518AE5.png)
 
-The “00:00:00” represents the default timestamp, midnight, for a `DateTimeIndex` object. The index for our DataFrame only concerns dates, so we can effectively ignore this timestamp.
+The "00:00:00" represents the default timestamp, midnight, for a `DateTimeIndex` object. The index for our DataFrame only concerns dates, so we can effectively ignore this timestamp.
 
 We can now create a DataFrame `df` that uses `dates` as its index with the following code:
 
@@ -129,7 +129,7 @@ The issue here is that while `df` has an index of `DatetimeIndex` objects, `dfSP
 We can rectify this by telling pandas that the `Date` column of the SPY CSV should be used as the index column and that the values in this column should be interpreted as dates. We accomplish this with the following code:
 
 ```python
-dfSPY = pd.read_csv(‘data/SPY.csv', index_col=“Date”, parse_dates=True)
+dfSPY = pd.read_csv(‘data/SPY.csv', index_col="Date", parse_dates=True)
 ```
 
 If we print `dfSPY` now, we see the following, correct DataFrame. 
@@ -138,12 +138,12 @@ If we print `dfSPY` now, we see the following, correct DataFrame.
 
 Since we only care about the adjusted close and the date columns, we can construct `dfSPY` to only include those columns using the `usecols` parameter.
 
-Additionally, we can replace textual values representing null or absent values with proper `NaN`s using the `na_values` parameter. In the SPY CSV, `NaN` is represented by the string “nan”.
+Additionally, we can replace textual values representing null or absent values with proper `NaN`s using the `na_values` parameter. In the SPY CSV, `NaN` is represented by the string "nan".
 
 The full initialization of `dfSPY` is demonstrated by the following code:
 
 ```python
-dfSPY = pd.read_csv(‘data/SPY.csv', index_col=“Date”, parse_dates=True, usecols=[“Date”, “Adj Close”], na_values=[‘nan’])
+dfSPY = pd.read_csv(‘data/SPY.csv', index_col="Date", parse_dates=True, usecols=["Date", "Adj Close"], na_values=[‘nan’])
 ```
 
 If we again print `df`, the result of the join, we see the following DataFrame.
@@ -183,7 +183,7 @@ We want to read in data about three more stocks - GOOG, IBM, and GLD - and creat
 
 ```python
 for symbol in symbols:
-	df_temp = pd.read_csv(‘data/{}.csv'.format(symbol), index_col=“Date”, parse_dates=True, usecols=[“Date”, “Adj Close”], na_values=[‘nan’])
+	df_temp = pd.read_csv(‘data/{}.csv'.format(symbol), index_col="Date", parse_dates=True, usecols=["Date", "Adj Close"], na_values=[‘nan’])
 
 	df = df.join(df_temp)
 ```
@@ -192,7 +192,7 @@ However, when we try to print `df`, we see an error.
 
 ![](https://assets.omscs.io/0BF0ECA7-8584-4A36-B644-629AF7C37E9B.png)
 
-The issue here is that we have multiple DataFrames that each has a column name “Adj Close”. Pandas complains that it does not know how to resolve the overlap when joining DataFrames with identical column names. In other words, column names must be unique.
+The issue here is that we have multiple DataFrames that each has a column name "Adj Close". Pandas complains that it does not know how to resolve the overlap when joining DataFrames with identical column names. In other words, column names must be unique.
 
 Instead of having four columns with the same name, we’d like to name each column after the symbol whose data it contains. We can accomplish that with the following code:
 
@@ -224,7 +224,7 @@ We have consolidated both the DataFrame initialization code and the joining code
 Additionally, since we are using SPY as our baseline, we drop all rows from `df` where SPY has not traded - that is, where the SPY column has `NaN` values - with the following code:
 
 ```python
-df = df.dropna(subset=[“SPY”])
+df = df.dropna(subset=["SPY"])
 ```
 
 ### Documentation
@@ -323,15 +323,15 @@ As a result, it can be hard to compare these stocks objectively. We’d like to 
 
 ![](https://assets.omscs.io/6B0D8B98-E393-4E7F-A14C-43FB50B2F9F6.png)
 
-If we can **normalize** the stock prices in this manner, we can more easily compare them on an “apples to apples” basis.
+If we can **normalize** the stock prices in this manner, we can more easily compare them on an "apples to apples" basis.
 
 ### Documentation
 - [Plotting](https://pandas.pydata.org/pandas-docs/stable/reference/frame.html#plotting)
 
-## How to Plot on “Equal Footing” Quiz
+## How to Plot on "Equal Footing" Quiz
 ![](https://assets.omscs.io/533F01B4-36B8-4898-A860-8B735E1ADA08.png)
 
-## How to Plot on “Equal Footing" Quiz Solution
+## How to Plot on "Equal Footing" Quiz Solution
 ![](https://assets.omscs.io/EF3D7A60-CF3B-4769-A3F8-D5157B461134.png)
 
 While both of these are technically correct, the second approach leverages *vectorization* which is must faster than the iterative approach. Read more about vectorization [here](https://engineering.upside.com/a-beginners-guide-to-optimizing-pandas-code-for-speed-c09ef2c6a4d6).

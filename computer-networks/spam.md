@@ -22,10 +22,10 @@ Finally, spam can create security problems for users who receive and interact wi
 
 Spam messages often contain payloads that can be harmful, such as malware. Alternatively, many spam messages are **phishing attacks**: attempts to steal private or sensitive information, like passwords.
 
-How can we separate the spam from the “ham”?
+How can we separate the spam from the "ham"?
 
 ### Content-based filtering
-Content-based filtering looks at what is being said in the email. For example, a content-based filter might reject mail containing particular words, like “viagra” or “Rolex”.
+Content-based filtering looks at what is being said in the email. For example, a content-based filter might reject mail containing particular words, like "viagra" or "Rolex".
 
 Unfortunately, there are [many different spellings of viagra](http://cockeyed.com/lessons/viagra/viagra.html). In addition, message content can be carried not only in text, but in images, excel spreadsheets, audio and movies.
 

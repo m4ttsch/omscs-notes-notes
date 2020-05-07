@@ -114,7 +114,7 @@ A **macro virus** is a virus embedded in a document. The virus runs when the doc
 
 A **boot sector virus** resides in the boot sector of the hard drive and executes whenever the system is booted.
 
-A **polymorphic virus** “looks different” with each infection. This is achieved by encrypting a portion of the virus code with a randomly generated key during each infection. The purpose of using polymorphic viruses is to avoid detection by anti-virus systems that rely on [virus signatures](https://www.computerhope.com/jargon/v/virus-signature.htm).
+A **polymorphic virus** "looks different" with each infection. This is achieved by encrypting a portion of the virus code with a randomly generated key during each infection. The purpose of using polymorphic viruses is to avoid detection by anti-virus systems that rely on [virus signatures](https://www.computerhope.com/jargon/v/virus-signature.htm).
 
 Any of these viruses can be polymorphic.
 
@@ -218,7 +218,7 @@ Sysadmins had to disconnect their servers from the Internet in order to disinfec
 When the Morris Worm identified the next target to infect, it looked for several security flaws that it knew how to exploit.
 
 From [court documents](http://www.loundy.com/CASES/US_v_Morris2.html):
-> Morris identified four ways in which the worm could break into computers on the network: (1) through a “hole” or “bug” (an error) in SEND MAIL, a computer program that transfers and receives electronic mail on a computer; (2) through a bug in the “finger demon” program, a program that permits a person to obtain limited information about the users of another computer; (3) through the “trusted hosts” feature, which permits a user with certain privileges on one computer to have equivalent privileges on another computer without using a password; and (4) through a program of password guessing, whereby various combinations of letters are tried out in rapid sequence in the hope that one will be an authorized user’s password, which is entered to permit whatever level of activity that user is authorized to perform.  
+> Morris identified four ways in which the worm could break into computers on the network: (1) through a "hole" or "bug" (an error) in SEND MAIL, a computer program that transfers and receives electronic mail on a computer; (2) through a bug in the "finger demon" program, a program that permits a person to obtain limited information about the users of another computer; (3) through the "trusted hosts" feature, which permits a user with certain privileges on one computer to have equivalent privileges on another computer without using a password; and (4) through a program of password guessing, whereby various combinations of letters are tried out in rapid sequence in the hope that one will be an authorized user’s password, which is entered to permit whatever level of activity that user is authorized to perform.  
 
 Specifically, the `fingerd` daemon was exploited via a buffer overflow vulnerability, and `sendmail` was exploited via a trapdoor that accepted shell commands.
 

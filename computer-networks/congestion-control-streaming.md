@@ -8,7 +8,7 @@ lecture: congestion-control-streaming
 # Congestion Control & Streaming
 
 ## Congestion Control
-What is congestion control and why do we need it? Simply put, the goal of congestion control is to fill the internet’s “pipes” without “overflowing” them.
+What is congestion control and why do we need it? Simply put, the goal of congestion control is to fill the internet’s "pipes" without "overflowing" them.
 
 ## Congestion
 Suppose that we have the following network.
@@ -71,7 +71,7 @@ In the decrease algorithm, the senders react to congestion to achieve optimal lo
 
 ## Two Approaches to Adjusting Rate
 ### Window Based
-One approach is a **window-based** algorithm. In this approach, a sender can only have a certain number of packets outstanding, or “in flight”.
+One approach is a **window-based** algorithm. In this approach, a sender can only have a certain number of packets outstanding, or "in flight".
 
 The sender uses acknowledgements from the receiver to clock the retransmission of new data.
 
@@ -83,7 +83,7 @@ At this point, there are four packets outstanding in the network, and the sender
 
 ![](https://assets.omscs.io/9FF8D5E9-B850-4333-BB90-DF7EAE151A9A.png)
 
-When the acknowledgement is received, the sender can send another packet. Thus, there are still four packets in flight after the first “ACK” has been received.
+When the acknowledgement is received, the sender can send another packet. Thus, there are still four packets in flight after the first "ACK" has been received.
 
 If a sender wants to increase the rate at which it is sending, it simply needs to increase its window size.
 
@@ -113,7 +113,7 @@ Suppose we have two users in the network, and their sending rates are `x1` and `
 
 Anything to the left of this line represents under utilization of the network, and anything to the right of this line represents over utilization of the network.
 
-We can also represent “fairness” as the line `x1 = x2`.
+We can also represent "fairness" as the line `x1 = x2`.
 
 ![](https://assets.omscs.io/C5FCFFFE-F3B7-44E2-9FC1-365AD9148A09.png)
 
@@ -133,7 +133,7 @@ Additive increase will continue until the network becomes overloaded.
 
 At this point, the senders will see a packet drop and perform multiplicative decrease, cutting their rates by some constant factor.
 
-This new operating point will fall closer to the line of “fairness”.
+This new operating point will fall closer to the line of "fairness".
 
 At this point, both senders will additively increase their sending rates again. This results in moving along a line that is parallel to the line `x1 = x2` since both senders are increasing their rate by the same amount.
 

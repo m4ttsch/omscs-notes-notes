@@ -21,7 +21,7 @@ Every node in the system owns some portion of the state. There is some state tha
 
 All of the nodes are **peers**: they all require accesses to the state located  elsewhere in the system and provide accesses to their local state.
 
-This is slightly different from “peer-to-peer” applications: it’s likely that there will still be some nodes that provide some overall configuration or management of the entire system. In a peer-to-peer system, these tasks would still be performed cooperatively by all peers.
+This is slightly different from "peer-to-peer" applications: it’s likely that there will still be some nodes that provide some overall configuration or management of the entire system. In a peer-to-peer system, these tasks would still be performed cooperatively by all peers.
 
 ## Distributed Shared Memory (DSM)
 Distributed shared memory is a service that manages memory across multiple nodes so that applications will have the illusion that they are running on a single shared-memory machine.
@@ -34,7 +34,7 @@ For instance, when nodes read and write shared memory locations, these reads and
 
 Distributed shared memory mechanisms are important to study because they permit scaling beyond the limitations of how much memory we can include in a single machine.
 
-Single machines with large amounts of memory can cost hundreds of thousands of dollars per machine. In order to scale up memory affordably, it’s imperative to understand DSM concepts and semantics so many cheap machines can be connected to give the illusion of a high memory “single” machine.
+Single machines with large amounts of memory can cost hundreds of thousands of dollars per machine. In order to scale up memory affordably, it’s imperative to understand DSM concepts and semantics so many cheap machines can be connected to give the illusion of a high memory "single" machine.
 
 Naturally, the overall memory access will be slower in a DSM environment as a result of network costs, but this is often affordable, and optimizable. It is possible to hide these network delays by making the right application design choices.
 

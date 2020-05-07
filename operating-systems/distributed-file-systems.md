@@ -76,7 +76,7 @@ A **stateful** server maintains information about:
 - which clients have a file cached
 - which clients have read/written the file
 
-Because of the state, the server can allow data to be cached and can guarantee consistency. In addition, state management allows for other functionality like locking. Since accesses are known, clients can request relative blocks (“next kB of data”) instead of having to specify absolute offsets.
+Because of the state, the server can allow data to be cached and can guarantee consistency. In addition, state management allows for other functionality like locking. Since accesses are known, clients can request relative blocks ("next kB of data") instead of having to specify absolute offsets.
 
 On failure, however, all that state needs to be recovered so that the filesystem remains consistent. This requires that the state must be incrementally check-pointed to prevent too much loss. In addition, there are runtime overheads incurred by the server to maintain state and enforce consistency protocols and by the client to perform caching.
 
@@ -96,7 +96,7 @@ Whenever a file is modified by any process, that change is immediately visible t
 ![](https://assets.omscs.io/78F61AEB-F700-4CEE-8D92-14B7D8E0FC26.png)
 
 ### DFS
-Even if a write gets pushed to the file server immediately, it will take some time before that update is actually delivered to the file server. It is possible that another client will not see that update for a while, and every time it performs a read operation it will continue seeing “stale” data. Given that message latencies may vary, we have no way of determining how long to delay any possible read operation in order to make sure that any write from anywhere in the system arrives at the file servers so that we can guarantee no staleness.
+Even if a write gets pushed to the file server immediately, it will take some time before that update is actually delivered to the file server. It is possible that another client will not see that update for a while, and every time it performs a read operation it will continue seeing "stale" data. Given that message latencies may vary, we have no way of determining how long to delay any possible read operation in order to make sure that any write from anywhere in the system arrives at the file servers so that we can guarantee no staleness.
 
 ![](https://assets.omscs.io/4559FB2E-50BC-44BB-8A2C-39C2159B9945.png)
 
@@ -169,7 +169,7 @@ NFSv4 incorporates a delegation mechanism where the server delegates to the clie
 
 With server-side state, NFS can support locking. NFS uses a lease-based mechanism to support locking. When a client acquires a lock, the server assigns a certain time period to the client during which the lock is valid. It is then the clients responsibility to either release the lock within the specified time frame or explicitly extend the lock. If the client goes down, the server isn’t locked forever.
 
-NFSv4 also supports a reader/writer lock called “share reservation”. It also support mechanisms for upgrading from being a reader to a writer, and vice versa.
+NFSv4 also supports a reader/writer lock called "share reservation". It also support mechanisms for upgrading from being a reader to a writer, and vice versa.
 
 ## Sprite Distributed File System
 ![](https://assets.omscs.io/BF2F3D15-E0CE-4DFE-B0DF-EFF69297E33E.png)

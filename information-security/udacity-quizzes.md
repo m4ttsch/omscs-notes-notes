@@ -415,7 +415,7 @@ While `secret < top-secret` , `{Asia, Europe}` cannot be compared with `{Europe,
 
 In order for `D1` to dominate `D2`, `D1` must have a higher sensitivity level than `D2`.
 
-In addition, the compartment of `D1` must contain the compartment of `D2` in order to be ‘greater’ (based on the ordering rules for sets). For this to be the case, the compartment of `D2` must be a subset of (“narrower” than) the compartment of `D1`.
+In addition, the compartment of `D1` must contain the compartment of `D2` in order to be ‘greater’ (based on the ordering rules for sets). For this to be the case, the compartment of `D2` must be a subset of ("narrower" than) the compartment of `D1`.
 
 ### Unclassified Documents Quiz
 ![](https://assets.omscs.io/EA4A6F50-B773-4345-BD3C-28CFB3AEA7D4.png)
@@ -733,7 +733,7 @@ A news site can be hard to detect, because traffic to news websites is common. H
 ### Firewall Filtering Quiz Solution
 ![](https://assets.omscs.io/448612E5-28F9-422A-ADBA-7661F4D4F1EF.png)
 
-The first example follows the “default drop” rule, which is high security but requires new services to be expressly allowed. The second example follows the “default forward” rule, which is easier to use at the expense of security. The final approach sits in between the two in terms of security and ease of use.
+The first example follows the "default drop" rule, which is high security but requires new services to be expressly allowed. The second example follows the "default forward" rule, which is easier to use at the expense of security. The final approach sits in between the two in terms of security and ease of use.
 
 ### Packet Filtering Quiz
 ![](https://assets.omscs.io/97AF2EAE-DC71-4E99-AF2D-49520F5D1BD1.png)
@@ -893,7 +893,7 @@ In a brute-force attack, the attacker must try all potential keys. The only way 
 ### Simple Ciphers Quiz Solution
 ![](https://assets.omscs.io/B6279774-5618-4B04-8081-1499BCF75299.png)
 
-Since “A” maps to “D”, “B” maps to “E”, and so forth, we can just “rewind” each letter in the ciphertext by three to obtain the plaintext.
+Since "A" maps to "D", "B" maps to "E", and so forth, we can just "rewind" each letter in the ciphertext by three to obtain the plaintext.
 
 ### Monoalphabetic Cipher Quiz
 ![](https://assets.omscs.io/693FC6D9-96D7-4E8D-8736-0D2D2CD8165D.png)
@@ -946,7 +946,7 @@ The **avalanche effect** states that a small change in the input to a hash funct
 ### XOR Quiz Solution
 ![](https://assets.omscs.io/9E317675-DB11-4A1E-AAC8-D59F6667ABB9.png)
 
-“H” has an ASCII code of 72, which maps to `0b01001000`, and “i” has an ASCII code of 105, which maps to `0b01101001`. “F” maps to 15 (`0b1111`) and “A” maps to 11 (`0b1001`), so “FA” maps to `0b11111001` and “F2” maps to `0b11111001`.
+"H" has an ASCII code of 72, which maps to `0b01001000`, and "i" has an ASCII code of 105, which maps to `0b01101001`. "F" maps to 15 (`0b1111`) and "A" maps to 11 (`0b1001`), so "FA" maps to `0b11111001` and "F2" maps to `0b11111001`.
 
 We XOR two numbers bit-by-bit, and we return 0 when the bits match and 1 otherwise. Therefore `0b0100100001101001` XOR `0b1111100111110010` is `0b1011000110011011`.
 

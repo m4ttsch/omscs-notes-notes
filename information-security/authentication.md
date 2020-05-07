@@ -217,7 +217,7 @@ As a fun aside: increasing the password length to nine random characters increas
 ## Passwords are not Really Random
 Passwords are not really random, so when an attacker is trying a brute force attack, they don’t have to search for things in a completely random manner.
 
-A smart attacker will try popular passwords first - for example, “password” and “123456” - in order to reduce the amount of work that they have to do.
+A smart attacker will try popular passwords first - for example, "password" and "123456" - in order to reduce the amount of work that they have to do.
 
 An attacker can create a **rainbow table** mapping potential passwords to their hash values. With this table, the attacker doesn’t even need to perform the hashing directly. Instead they can just lookup hash values from the password file and see what password maps to those hash values.
 
@@ -303,13 +303,13 @@ In addition, a smart card needs special hardware - such as a card reader - insta
 Another problem with this approach is misplaced trust. For example, the [RSA SecureID system breach](https://en.wikipedia.org/wiki/RSA_SecurID#March_2011_system_compromise) created a situation in which tokens could potentially be forged by attackers.
 
 ## Something You Are Authentication
-Finally, authentication can be based on **biometrics** or, more colloquially, “something you are”.
+Finally, authentication can be based on **biometrics** or, more colloquially, "something you are".
 
 For example, a system can look at the pattern of ridges and grooves in a supplied fingerprint to verify a user’s identity.
 
 Alternatively, a system can analyze keystroke dynamics, such as how fast a user types or how long it takes a user to transition from certain keys to others. This data can be synthesized to create a representation of a specific user.
 
-(To be fair, keystroke dynamics fall more into the “something you do” category, as opposed to the “something you are” category. Such behavioral identifiers are sometimes referred to as *behaviometrics*.)
+(To be fair, keystroke dynamics fall more into the "something you do" category, as opposed to the "something you are" category. Such behavioral identifiers are sometimes referred to as *behaviometrics*.)
 
 Some systems can analyze the sound and speed of your speech to authenticate you by your voice. Other systems can verify your identity by scanning your retina and measuring the underlying blood flow.
 
@@ -342,7 +342,7 @@ For example, some websites may require you to log-in with your password and then
 
 Another example is the ATM card and PIN combination required to withdraw money from the bank. The card is something you have and the PIN is something you know.
 
-Other authentication methods can incorporate other factors. For example, a system can use a location-based factor - “somewhere you are” - by examining IP addresses in network requests.
+Other authentication methods can incorporate other factors. For example, a system can use a location-based factor - "somewhere you are" - by examining IP addresses in network requests.
 
 Multi-factor authentication makes it harder for attackers to impersonate users.
 

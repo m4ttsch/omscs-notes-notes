@@ -14,7 +14,7 @@ lecture: udacity-quizzes
 ### Which Fields Should Be In A CSV File Quiz Solution
 ![](https://assets.omscs.io/EFB7C1BB-0A52-4357-83E9-D5BCCB262559.png)
 
-We want to include data that changes frequently; otherwise, we are wasting space including redundant data. Of the options given, both “date/time” and “price of the stock” are good fits. The other data points are either static or change relatively infrequently.
+We want to include data that changes frequently; otherwise, we are wasting space including redundant data. Of the options given, both "date/time" and "price of the stock" are good fits. The other data points are either static or change relatively infrequently.
 
 ### Compute Mean Volume Quiz
 ![](https://assets.omscs.io/9C27B65A-7816-42FF-880F-93D981E0A193.png)
@@ -24,7 +24,7 @@ Your task is to calculate the mean volume for each of the given symbols.
 ### Compute Mean Volume Quiz Solution
 ![](https://assets.omscs.io/99A66C8E-4B8E-413B-9713-22E7762069D9.png)
 
-Given a DataFrame `df` containing a "Volume” column, the following code returns the mean of the values in that column.
+Given a DataFrame `df` containing a "Volume" column, the following code returns the mean of the values in that column.
 
 ```python
 df[‘Values’].mean()
@@ -47,7 +47,7 @@ First, we need to make sure that we read in the right CSV, which we can accompli
 df = pd.read_csv(‘data/IBM.csv’)
 ```
 
-Next, we can retrieve the “High” column and plot it:
+Next, we can retrieve the "High" column and plot it:
 
 ```python
 df[‘High’].plot()
@@ -92,16 +92,16 @@ We have consolidated both the DataFrame initialization code and the joining code
 Additionally, since we are using SPY as our baseline, we drop all rows from `df` where SPY has not traded - that is, where the SPY column has `NaN` values - with the following code:
 
 ```python
-df = df.dropna(subset=[“SPY”])
+df = df.dropna(subset=["SPY"])
 ```
 
 #### Documentation
 - [pandas.DataFrame.dropna](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.dropna.html)
  
-### How to Plot on “Equal Footing” Quiz
+### How to Plot on "Equal Footing" Quiz
 ![](https://assets.omscs.io/533F01B4-36B8-4898-A860-8B735E1ADA08.png)
 
-### How to Plot on “Equal Footing" Quiz Solution
+### How to Plot on "Equal Footing" Quiz Solution
 ![](https://assets.omscs.io/EF3D7A60-CF3B-4769-A3F8-D5157B461134.png)
 
 While both of these are technically correct, the second approach leverages *vectorization* which is must faster than the iterative approach. Read more about vectorization [here](https://engineering.upside.com/a-beginners-guide-to-optimizing-pandas-code-for-speed-c09ef2c6a4d6).

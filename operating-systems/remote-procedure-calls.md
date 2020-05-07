@@ -155,7 +155,7 @@ Another solution allows pointers to be used, but ensures that the referenced dat
 
 On the server side, once the data is unpacked, the unmarshalling code will pass the address of this data to the local procedure.
 
-In this way, RPC allows pointers to be “passed” between the client and the server.
+In this way, RPC allows pointers to be "passed" between the client and the server.
 
 ## Handling Partial Failures
 When a client hangs while waiting on a remote procedure call, it is often difficult to pinpoint the problem.
@@ -335,7 +335,7 @@ There may be a 1-1 mapping between how the data is represented in memory and how
 Finally, the packet of data needs to be preceded by the transport header (TCP/UDP) in order to actually be sent along the wire in accordance with these transmission protocols.
 
 ## XDR Encoding
-In addition to providing an IDL, XDR also defines an encoding; that is, the binary representation of our data “on the wire”.
+In addition to providing an IDL, XDR also defines an encoding; that is, the binary representation of our data "on the wire".
 
 All data types are encoded in multiples of four bytes. Encoding a single byte argument therefore would take and 3 bytes of padding.
 

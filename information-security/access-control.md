@@ -36,7 +36,7 @@ Once the administrators have delivered this policy to the system, the system nee
 Complete mediation is essential for access control to work. There is no point having a system enforce policies if a user can step around the system.
 
 ## Access Control Matrix Defined
-We can abstract the information about “who has access to what” into a data structure called an **access control matrix** (ACM).
+We can abstract the information about "who has access to what" into a data structure called an **access control matrix** (ACM).
 
 Like any matrix, an ACM has rows and columns. The rows of an ACM correspond to the users, subjects or groups present in the system. The columns of an ACM correspond to the system resources that need to be protected.
 
@@ -113,7 +113,7 @@ This type of list is called a **capability list** (C-list), and identifies which
 
 In this example, we have a system with users `A`, `B`, and `C`, and objects `X`, `Y`, and `Z`.
 
-We can create ACLs by looking “down” the column for each object, and we can create C-lists by looking “across” the row for each user.
+We can create ACLs by looking "down" the column for each object, and we can create C-lists by looking "across" the row for each user.
 
 ## ACL Implementation
 Since an ACL determines who can access a resource that needs to be protected, ACLs must be stored in the kernel. Otherwise, any untrusted application could change access rules arbitrarily.
@@ -124,7 +124,7 @@ For example, a file has a bunch of metadata associated with block locations and 
 
 When a request for an object occurs, the operating system must traverse the ACL to determine if an **access control entry** (ACE) is present for the requesting user and, if so, whether the requested action is permitted.
 
-For example, if user `A` is trying to read file `F`, the operating system must retrieve the ACL for `F`, find the ACE for `A` and check to see whether the “read” operation is present in the list of authorized operations.
+For example, if user `A` is trying to read file `F`, the operating system must retrieve the ACL for `F`, find the ACE for `A` and check to see whether the "read" operation is present in the list of authorized operations.
 
 ## C Lists Implementation
 A capability is an unforgeable handle for a resource, which a user can present to the system to gain access to the resource. A capability is essentially a token that proves that a user has been given permission to access a resource.

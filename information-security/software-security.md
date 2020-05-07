@@ -10,7 +10,7 @@ lecture: software-security
 ## Software Vulnerabilities
 A common vulnerability that we are going to discuss is a **buffer overflow**.
 
-A buffer overflow occurs when the amount of memory allocated for a piece of expected data is insufficient (too small) to hold the actual received data. As a result, the received data “runs over” into adjacent memory, often corrupting the values present there.
+A buffer overflow occurs when the amount of memory allocated for a piece of expected data is insufficient (too small) to hold the actual received data. As a result, the received data "runs over" into adjacent memory, often corrupting the values present there.
 
 Specifically, **stack buffer overflows** are buffer overflows that exploit data in the **call stack**.
 
@@ -54,7 +54,7 @@ In addition, we have allocated space for a user-submitted password (`pwdstr`) an
 
 We then ask the user for their password (`gets`). Their response gets read into `pwdstr` and if `pwdstr` matches `targetpwd` (via `strncmp`), we set `allow_login` to `1`.
 
-Finally, if `allow_login` is `0`, we print “Login request rejected”. Otherwise, we print “Login request allowed”.
+Finally, if `allow_login` is `0`, we print "Login request rejected". Otherwise, we print "Login request allowed".
 
 ## Stack Access Quiz
 ![](https://assets.omscs.io/429E7357-0C4A-4E2E-B10B-474694620410.png)
@@ -71,7 +71,7 @@ There are two things you can do with a stack: push and pop.
 
 The stack grows when something is pushed onto it, and shrinks when something is popped off of it.
 
-The current “top” of the stack is maintained by a stack pointer, which points to different memory locations as the stack grows and shrinks.
+The current "top" of the stack is maintained by a stack pointer, which points to different memory locations as the stack grows and shrinks.
 
 We can assume that the stack grows from high (numerically larger) addresses to low (numerically smaller) addresses.
 
@@ -130,7 +130,7 @@ If we know the address of the code that we want to execute, we can craft our inp
 
 If we do this, what will happen?
 
-Remember, the point of the return address is to give the function a location to transfer control to when it is done executing. If we overwrite that address, the function will “return” to the address we supply and begin executing instructions from that address.
+Remember, the point of the return address is to give the function a location to transfer control to when it is done executing. If we overwrite that address, the function will "return" to the address we supply and begin executing instructions from that address.
 
 ## Buffer Overflow Quiz
 ![](https://assets.omscs.io/AF1E8B07-5821-4767-976D-54A9EE56319C.png)
@@ -159,7 +159,7 @@ int main (int argc, char *argv[]) {
 }
 ```
 
-The “magic” here is [execve](http://man7.org/linux/man-pages/man2/execve.2.html), which replaces the currently running program with the invoked program - in this case, the shell at `/bin/sh`.
+The "magic" here is [execve](http://man7.org/linux/man-pages/man2/execve.2.html), which replaces the currently running program with the invoked program - in this case, the shell at `/bin/sh`.
 
 While the code can be written in C, it must be supplied to the vulnerable program as compiled machine code, because it is going to be stored in memory as actual machine instructions that will be executed once control is transferred.
 
@@ -170,7 +170,7 @@ When control is transferred, what privileges will be used?
 
 The shellcode will have the same privileges as the host program.
 
-This can be a set of privileges associated with a certain user and/or group. Alternatively, if the host program is a system service, the shellcode may end up with root privileges, essentially being handed the “keys to the the kingdom”.
+This can be a set of privileges associated with a certain user and/or group. Alternatively, if the host program is a system service, the shellcode may end up with root privileges, essentially being handed the "keys to the the kingdom".
 
 This is the best case scenario for the attacker, and the worst case scenario for the host.
 
@@ -221,10 +221,10 @@ These languages:
 - perform automatic bounds checking
 - perform automatic memory management
 
-Languages that have these features are referred to as “safe” languages and include languages like Java and C++.
+Languages that have these features are referred to as "safe" languages and include languages like Java and C++.
 
 ## Safe Languages
-If we choose a “safe” language, buffer overflows become impossible due to the checks the language performs at runtime.
+If we choose a "safe" language, buffer overflows become impossible due to the checks the language performs at runtime.
 
 For example, instead of having to perform bounds checking explicitly, programmers can rest assured knowing that the language runtime will perform the check for them.
 
@@ -233,7 +233,7 @@ So, why don’t we use these languages for everything?
 One drawback for these languages is performance degradation. The extra runtime checks slow down the execution of your program.
 
 ## Unsafe Languages
-When using “unsafe” languages, the programmer takes on the responsibility of preventing potential buffer overflow scenarios.
+When using "unsafe" languages, the programmer takes on the responsibility of preventing potential buffer overflow scenarios.
 
 One way to do that is by checking all input to ensure that it conforms to expectations. Assume that all input is evil.
 

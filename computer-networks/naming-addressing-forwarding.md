@@ -22,7 +22,7 @@ Imagine storing every single IP address in a table. Very quickly, that becomes a
 
 We need a concise way of grouping IP addresses.
 
-## Pre-1994: “Classful” Addressing
+## Pre-1994: "Classful" Addressing
 Before 1994, addresses were divided into a *network ID* portion and a *host ID* portion.
 
 ![](https://assets.omscs.io/8B912D39-34B6-422E-B307-3B88CB9A33E7.png)
@@ -187,7 +187,7 @@ This is terribly inefficient, as we would have to maintain 32 tables, and send e
 ## Address Lookup Using Tries
 More commonly, we use a data structure called a **trie** to perform address lookups.
 
-In a trie, prefixes are “spelled out” by following a path from the root. To find the best prefix, we simply spell out the address in the trie.
+In a trie, prefixes are "spelled out" by following a path from the root. To find the best prefix, we simply spell out the address in the trie.
 
 Lets suppose we had the prefixes in our routing table
 - P1: 111*
@@ -291,7 +291,7 @@ Thus, the NAT will rewrite the destination IP address of the packet from `133.4.
 
 NATs are popular on broadband access networks, small/home offices, and VPNs.
 
-There is clear savings in IPv4 address space since there can many many devices in a private network, but all of those devices “use up” only one public IP address.
+There is clear savings in IPv4 address space since there can many many devices in a private network, but all of those devices "use up" only one public IP address.
 
 The drawback to NATs is that they break the end-to-end model. If the NAT device fails, the mapping between the private IP/port and public IP/port would be lost, thereby breaking all active connections for which the NAT is on the path.
 
@@ -316,7 +316,7 @@ The format of these addresses are as follows:
 
 The top 48 bits are for the public routing topology. The next 16 bits provide a site identifier. Finally, there is a 64 bit interface ID, which is the 48-bit Ethernet ID + 16 more bits.
 
-The top 48 bits can be broken down even further. The top three bits are for aggregation. The next 13 bits identify the associated “tier-1” ISP. The next 8 bits are reserved, and then there are the final 24 additional bits, which are unspecified.
+The top 48 bits can be broken down even further. The top three bits are for aggregation. The next 13 bits identify the associated "tier-1" ISP. The next 8 bits are reserved, and then there are the final 24 additional bits, which are unspecified.
 
 Note that there are13 bits in the address that directly map to the tier-1 ISP, meaning that addresses are purely provider-based. This means that changing ISPs would require renumbering.
 
@@ -349,7 +349,7 @@ The dual stack must have an IPv4-compatible address. Either the host has both an
 
 One possible way of ensuring compatibility of an IPv6 address with IPv4 is simply to embed the the IPv4 address in 32 bits of the 128 bits of the IPv6 address.
 
-A dual stack host configuration solves the problem of host IP address assignment, but it doesn’t solve the problem of “island” IPv6 deployments.
+A dual stack host configuration solves the problem of host IP address assignment, but it doesn’t solve the problem of "island" IPv6 deployments.
 
 For example, multiple independent portions of the internet might deploy IPv6. What if the middle of the network only speaks and routes IPv4?
 

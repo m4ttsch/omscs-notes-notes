@@ -131,9 +131,9 @@ In this particular scenario, the address format is such that the outer index occ
 
 ![](https://assets.omscs.io/94D5824C-54DD-4118-A769-6AD8B2847A94.png)
 
-This means that a given page table can contain 2^10 entries (p2), and each entry can address 2^10 bytes of physical memory (d). Loosely, we can think about the page table pointing to 2^10 “rows” of physical memory, with each row having 2^10 “cells”. P2 gives us the memory “row”, and d gives us the “cell” within that “row”. This means that each page table can address 1MB of memory.
+This means that a given page table can contain 2^10 entries (p2), and each entry can address 2^10 bytes of physical memory (d). Loosely, we can think about the page table pointing to 2^10 "rows" of physical memory, with each row having 2^10 "cells". P2 gives us the memory "row", and d gives us the "cell" within that "row". This means that each page table can address 1MB of memory.
 
-Whenever there is a gap in virtual memory that is 1MB (or greater), we don’t need to fill in the gap with (unused) page tables. For example, if we have a page table containing pages 0-999, and we allocate another page table containing pages 30000-30999, we don’t need to allocate the 29 page tables in between. This will reduce the overall size of the page table(s) that are required for a particular process. This is in contrast to the “flat” page table, in which every entry needs to be able to translate every single virtual address and it has entries for every virtual page number. There can’t be any gaps in a flat page table.
+Whenever there is a gap in virtual memory that is 1MB (or greater), we don’t need to fill in the gap with (unused) page tables. For example, if we have a page table containing pages 0-999, and we allocate another page table containing pages 30000-30999, we don’t need to allocate the 29 page tables in between. This will reduce the overall size of the page table(s) that are required for a particular process. This is in contrast to the "flat" page table, in which every entry needs to be able to translate every single virtual address and it has entries for every virtual page number. There can’t be any gaps in a flat page table.
 
 The hierarchical page table can be extended to use even more layers. We can have a third level that contains pointers to page table directories. We can add a fourth level, which would be a map of page table directory pointers.
 
@@ -167,7 +167,7 @@ Even a small number of addresses cached in TLB can result in a high TLB hit rate
 On modern x86 platforms, there is a 64-entry data TLB and 128-entry instruction TLB per core, as well as a shared 512-entry shared second-level TLB.
 
 ## Inverted Page Tables
-Standard page tables serve to map virtual memory to physical memory on a per process basis. Each process has its own page table, so the total amount of virtual memory “available” in the system is proportional to the amount of physical memory times the number of processes currently in the system.
+Standard page tables serve to map virtual memory to physical memory on a per process basis. Each process has its own page table, so the total amount of virtual memory "available" in the system is proportional to the amount of physical memory times the number of processes currently in the system.
 
 Perhaps it makes more sense to have a virtual memory representation that is closer to the physical memory layout. Here is where **inverted page tables** come in. Inverted page tables are managed on a system-wide basis, not on a per-process basis, and each entry in the inverted page table points to a frame in main memory.
 
@@ -258,7 +258,7 @@ First, a request for 8 units comes in. The allocator divides the 64 unit chunk i
 
 When we release one chunk of 8 units, we have a little bit of fragmentation, but once we release the other chunk of 8 units, those two chunks are combined to make one free chunk of 16 units.  
 
-Fragmentation definitely still exists in the buddy allocator, but on free, one chunk can check with its “buddy” chunk (of the same size) to see if it is also free, at which point the two will aggregate into a larger chunk.
+Fragmentation definitely still exists in the buddy allocator, but on free, one chunk can check with its "buddy" chunk (of the same size) to see if it is also free, at which point the two will aggregate into a larger chunk.
 
 This buddy checking step can continue up the tree, aggregating as much as possible. For example, imagine requesting 1 memory unit above, and then freeing it. We would have to subdivide the chunks all the way down to 1, but then could build them all the way back up to 64 on free.
 

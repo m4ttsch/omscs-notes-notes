@@ -581,7 +581,7 @@ From: https://www.proprofs.com/quiz-school/story.php?title=mr-f-quiz-network
 
 
 
-A __________ virus is a virus that mutates with every infection, making detection by the “signature” of the virus impossible.
+A __________ virus is a virus that mutates with every infection, making detection by the "signature" of the virus impossible.
 
 - A.    Metamorphic
 - B.    Encrypted

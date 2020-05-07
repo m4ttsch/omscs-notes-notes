@@ -62,7 +62,7 @@ In a brute-force attack, the attacker must try all potential keys. The only way 
 ## Simple Ciphers Quiz Solution
 ![](https://assets.omscs.io/B6279774-5618-4B04-8081-1499BCF75299.png)
 
-Since “A” maps to “D”, “B” maps to “E”, and so forth, we can just “rewind” each letter in the ciphertext by three to obtain the plaintext.
+Since "A" maps to "D", "B" maps to "E", and so forth, we can just "rewind" each letter in the ciphertext by three to obtain the plaintext.
 
 ## Simple Ciphers
 Caesar’s cipher - an example of a **shift cipher** - maps each letter to another letter by shifting it a fixed amount. If we represent each letter in the alphabet as a number - A = 1, B = 2, … , Z = 26 - then we can represent this encryption scheme for a given `letter` and a given `shift` as
@@ -75,9 +75,9 @@ The secret key in this scheme is the value of `shift`. Since there are only 26 p
 
 A generalization of this scheme allows arbitrary mapping of one letter to another; that is, this scheme no longer requires shifting each plaintext letter by the same fixed amount. These generalized ciphers are referred to as **substitution ciphers** or **monoalphabetic ciphers**.
 
-The substitution alphabet is the secret key in this scheme. The number of possible alphabets is vast. If I wanted to create such an alphabet, I would have 26 options for mapping “A”, 25 options for mapping “B”, and so forth. Put another way, there are 26! (2^88) possible alphabets. An attacker cannot brute-force this scheme.
+The substitution alphabet is the secret key in this scheme. The number of possible alphabets is vast. If I wanted to create such an alphabet, I would have 26 options for mapping "A", 25 options for mapping "B", and so forth. Put another way, there are 26! (2^88) possible alphabets. An attacker cannot brute-force this scheme.
 
-Instead of attempting to try every key, an attacker can analyze the statistical frequency of letters in the ciphertext. For example, in English, the most frequently used letter is “E”. If the most common letter in the ciphertext is “X”, then there is a high probability that “E” maps to “X”.
+Instead of attempting to try every key, an attacker can analyze the statistical frequency of letters in the ciphertext. For example, in English, the most frequently used letter is "E". If the most common letter in the ciphertext is "X", then there is a high probability that "E" maps to "X".
 
 An attacker can use statistical analysis to decrypt the message directly or at least drastically reduce the size of the keyspace over which they subsequently run a brute-force attack.
 
@@ -94,11 +94,11 @@ CFJWHWZ HR BNNB HCC HWWHBSQVQBRE
 HWQ VHLQ
 ```
 
-To start, we notice that the letter “Q” is the most frequent in our ciphertext. In English, the most common letter is “E”, so there is a high probability that “Q” is the plaintext letter “E”.
+To start, we notice that the letter "Q" is the most frequent in our ciphertext. In English, the most common letter is "E", so there is a high probability that "Q" is the plaintext letter "E".
 
-Then we can look at the three-letter words, `RDQ` and `HWQ`, which both end in “E”. It is likely that one of these words is “ARE”, while the other is “THE”.
+Then we can look at the three-letter words, `RDQ` and `HWQ`, which both end in "E". It is likely that one of these words is "ARE", while the other is "THE".
 
-We also have the word `HR`, which can be “AT”. If so, then `HWQ` is “ARE” and `RDQ` is “THE”. If “H” is “A”, then the word `HCC` is likely “ALL”.
+We also have the word `HR`, which can be "AT". If so, then `HWQ` is "ARE" and `RDQ` is "THE". If "H" is "A", then the word `HCC` is likely "ALL".
 
 If we continue with this process, using both the frequency distribution of the letters in the English language along with our knowledge of English words to help us, we can uncover the following plaintext:
 
@@ -124,11 +124,11 @@ We can represent the Vigenere translation with the following matrix, `M`, whereb
 ![](https://assets.omscs.io/957CCAC1-F7A3-458B-9BFD-B38188C4863E.png)
 
 
-Suppose we want to encrypt the plaintext “ATTACKATDAWN” using the Vigenere cipher with “LEMON” as the key.  Since Vigenere encryption proceeds characterwise, the key must be as long as the plaintext. We generate the **keystream** “LEMONLEMONLE” by repeating the key until the required number of characters are present.
+Suppose we want to encrypt the plaintext "ATTACKATDAWN" using the Vigenere cipher with "LEMON" as the key.  Since Vigenere encryption proceeds characterwise, the key must be as long as the plaintext. We generate the **keystream** "LEMONLEMONLE" by repeating the key until the required number of characters are present.
 
-To encrypt “A”, we look at column “A” and row “L” of the matrix. The first character of the ciphertext is “L”. To encrypt “T”, we look at column “T” and row “E” of the matrix. The second character of the ciphertext is “X”. To encrypt “T”, we look at column “T” and row “M” of the matrix. The third character of the ciphertext is “F”.
+To encrypt "A", we look at column "A" and row "L" of the matrix. The first character of the ciphertext is "L". To encrypt "T", we look at column "T" and row "E" of the matrix. The second character of the ciphertext is "X". To encrypt "T", we look at column "T" and row "M" of the matrix. The third character of the ciphertext is "F".
 
-We can continue in this fashion to transform “ATTACKATDAWN” into “LXFOPVEFRNHR”.
+We can continue in this fashion to transform "ATTACKATDAWN" into "LXFOPVEFRNHR".
 
 ## Vigenere Cipher Quiz
 ![](https://assets.omscs.io/C188A430-4FD1-41CB-B6F3-1991645DB0E1.png)
@@ -142,7 +142,7 @@ While we should always keep our encryption keys a secret, our encryption algorit
 According to [Kerckhoff’s principle](https://en.wikipedia.org/wiki/Kerckhoffs%27s_principle):
 > A  cryptosystem should be secure even if everything about the system, except the key, is public knowledge.  
 
-In general, we keep our encryption algorithms open so that they can be analyzed and improved by the broader community. More importantly, we don’t have to rely on the secrecy of the algorithm for its security - the so-called “security by obscurity” principle. In practice, we should exclusively use the widely-known algorithms and standards.
+In general, we keep our encryption algorithms open so that they can be analyzed and improved by the broader community. More importantly, we don’t have to rely on the secrecy of the algorithm for its security - the so-called "security by obscurity" principle. In practice, we should exclusively use the widely-known algorithms and standards.
 
 ## Types of Cryptography
 **Secret key cryptography** uses a single key for encryption and decryption, which means that the sender and the receiver must possess the same key.
@@ -197,7 +197,7 @@ When a user authenticates themselves to a system, they often supply a password. 
 
 The advantage of this scheme is that the system only has to store the hashed passwords. If the system chose to store the cleartext passwords, then anyone who has access to the system can impersonate anyone else registered on the system after reading the password file.
 
-If an attacker gains access to a system, they can steal the hashed passwords and compare the hashes against a dictionary of commonly-used passwords and their hashes to find matches. We must avoid using common passwords like “password” and “123456”.
+If an attacker gains access to a system, they can steal the hashed passwords and compare the hashes against a dictionary of commonly-used passwords and their hashes to find matches. We must avoid using common passwords like "password" and "123456".
 
 ## Hash Function Quiz
 ![](https://assets.omscs.io/333D362C-324B-4AE9-9256-66111A0EAA3B.png)

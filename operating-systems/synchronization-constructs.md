@@ -48,7 +48,7 @@ The simple POSIX semaphore API defines one type `sem_t` as well as three operati
 ## Reader/Writer Locks
 When specifying synchronization requirements, it is sometimes useful to distinguish among different types of resource access.
 
-For instance, we commonly want to distinguish “read” accesses - those that do not modify a shared resource - from “write” accesses - those that do modify a shared resource. For read accesses, a resource can be shared concurrently while write accesses requires exclusive access to a resource.
+For instance, we commonly want to distinguish "read" accesses - those that do not modify a shared resource - from "write" accesses - those that do modify a shared resource. For read accesses, a resource can be shared concurrently while write accesses requires exclusive access to a resource.
 
 This is a common scenario and, as a result, many operating systems and language runtimes support a construct known as **reader/writer** locks.
 
@@ -83,7 +83,7 @@ When invoking the entry procedure, all of the necessary locking and checking wil
 ## More Synchronization Constructs
 **Serializers** make it easier to define priorities and also hide the need for explicit signaling and explicit use of condition variables from the programmer.
 
-**Path Expressions** require that a programmer specify a regular expression that captures the correct synchronization behavior. As opposed to using locks, the programmer would specify something like “Many Reads, Single Write”, and the runtime will make sure that the way the operations are interleaved satisfies the regular expression.
+**Path Expressions** require that a programmer specify a regular expression that captures the correct synchronization behavior. As opposed to using locks, the programmer would specify something like "Many Reads, Single Write", and the runtime will make sure that the way the operations are interleaved satisfies the regular expression.
 
 **Barriers** are like reverse semaphores. While a semaphore allows n threads to proceed before it blocks, a barrier blocks until n threads arrive at the barrier point. Similarly, **Rendezvous Points** also wait for multiple threads to arrive at a particular point in execution.
 
@@ -92,7 +92,7 @@ To further boost scalability and efficiency metrics, there are efforts to achiev
 All of these methods require some support from the underlying hardware to *atomically* make updates to a memory location. This is the only way they can actually guarantee that a lock is properly acquired and that protected state changes are performed in a safe, race-free way.
 
 ## Sync Building Block Spinlock
-We will now focus on “The Performance of Spin Lock Alternatives for Shared Memory Multiprocessors”, a paper that discusses different implementations of spinlocks. Since spinlocks are one of the most basic synchronization primitives and are used to create more complex synchronization constructs, this paper will help us understand both spinlocks and their higher level counterparts.
+We will now focus on "The Performance of Spin Lock Alternatives for Shared Memory Multiprocessors", a paper that discusses different implementations of spinlocks. Since spinlocks are one of the most basic synchronization primitives and are used to create more complex synchronization constructs, this paper will help us understand both spinlocks and their higher level counterparts.
 
 ## Need for Hardware Support
 We need the checking of the lock value and the setting of the lock value to happen **atomically**, so that we can guarantee that only one thread at a time can successfully obtain the lock.
@@ -243,7 +243,7 @@ If we have a write-update situation, that coherence traffic will update the valu
 
 However, write-invalidate will invalidate the cached copy. Even if the value hasn’t changed, the invalidation will force the CPU to go to main memory to execute the atomic. What this means is that any time another CPU executes an atomic, all of the other CPUs will be invalidated and will have to go to memory.
 
-## Spinlock “Delay” Alternatives
+## Spinlock "Delay" Alternatives
 We can introduce a delay in order to deal with the problems introduced by the `test_and_set` and `test_and_test_and_set` spin locks.
 
 ![](https://assets.omscs.io/525BCCBF-AF42-4E79-A432-B1108B420862.png)
@@ -275,7 +275,7 @@ One benefit of this approach is its simplicity, and the fact that under high loa
 
 The problem with this approach is that it will create unnecessary load under low contention. For example, if one process is running on a CPU with an ID of 1, and another process is running on a CPU with an ID of 32, and the delay calculation is 100ms * CPU ID, the second thread will have to wait an inordinate amount of time before executing, even though there is no contention.
 
-To avoid the issue of excessive delays without contention, **dynamic delays** can be used. With dynamic delays, each thread will take a random delay value from a range of possible delays that increases with the “perceived” contention in the system.
+To avoid the issue of excessive delays without contention, **dynamic delays** can be used. With dynamic delays, each thread will take a random delay value from a range of possible delays that increases with the "perceived" contention in the system.
 
 Under high load, both dynamic and static delays will be sufficient enough to reduce contention within the system.
 

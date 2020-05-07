@@ -156,7 +156,7 @@ One of the main motivations for the rise of virtual networking was the *ossifica
 
 In particular, because the internet protocol was so pervasive, making fundamental changes to the way the underlying internet architecture operated became increasingly difficult.
 
-There was a lot of work on overlay networks in the early 2000s, but “one size fits all” network architectures were very difficult to deploy.
+There was a lot of work on overlay networks in the early 2000s, but "one size fits all" network architectures were very difficult to deploy.
 
 Rather than trying to replace existing network architectures, network virtualization was intended to allow for easier evolution.
 

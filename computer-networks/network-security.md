@@ -37,9 +37,9 @@ The internet’s design is fundamentally insecure. Many explicit design choices 
 
 The internet was designed for simplicity. Security was not a primary consideration when the internet was designed.
 
-In addition, the internet is “on by default”. In other words, when a host is connected to internet, it is by default reachable by any other host that has a public IP address.
+In addition, the internet is "on by default". In other words, when a host is connected to internet, it is by default reachable by any other host that has a public IP address.
 
-This “on by default” model wasn’t an issue when the internet consisted of a small number of trusted networks, but as the internet continued to grow, the model has come under fire.
+This "on by default" model wasn’t an issue when the internet consisted of a small number of trusted networks, but as the internet continued to grow, the model has come under fire.
 
 Part of the reason that model doesn’t work is because hosts are insecure. This makes it possible, and sometimes easy, for a remote attacker to compromise a machine that is connected to the internet and commandeer it for purposes of attack.
 
@@ -284,7 +284,7 @@ The attack does not need to send replies with all 32,000 IDs.
 
 The success of a DNS cache poisoning attack depends not only on the ability to reply to a query with the correct query ID.
 
-It also depends on “winning the race”; that is, the attacker must reply to the query before the legitimate authoritative nameserver. If the attacker loses the race, then they have to wait for the cached entry to expire before trying again.
+It also depends on "winning the race"; that is, the attacker must reply to the query before the legitimate authoritative nameserver. If the attacker loses the race, then they have to wait for the cached entry to expire before trying again.
 
 However, the attacker could generate their own DNS queries to send to the resolver. For example, the attacker could query 1.google.com, 2.google.com, and so forth.
 

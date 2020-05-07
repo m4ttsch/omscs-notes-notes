@@ -8,7 +8,7 @@ lecture: internet-worms
 # Internet Worms
 
 ## Types of Viruses and Worm Overview
-A **virus** is an “infection” of an existing program that results in the modification of the original program’s behavior.
+A **virus** is an "infection" of an existing program that results in the modification of the original program’s behavior.
 
 A **worm** is code that propagates and replicates itself across the network.
 
@@ -31,7 +31,7 @@ Worms typically spread automatically by scanning for vulnerabilities and infecti
 ## Internet Worm Lifecycle
 Once a worm infects a host, that host will first scan other machines on the internet to discover vulnerable hosts, and will then infect those hosts via remote exploit.
 
-## First Worm: “Morris” Worm
+## First Worm: "Morris" Worm
 The first worm - the [Morris Worm](https://en.wikipedia.org/wiki/Morris_worm) - was designed by [Robert Morris](https://en.wikipedia.org/wiki/Robert_Tappan_Morris) in 1988.
 
 The worm itself had no malicious payload, but it ended up bogging down the machines it infected by spawning new processes uncontrollably and exhausting resources.
@@ -56,7 +56,7 @@ First, the worm has to scan other machines on the network to find more potential
 The summer of 2001 saw three major worm outbreaks: Code Red 1 v2,  Code Red 2, and Nimda.
 
 ### Code Red 1
-[Code Red 1](https://malware.wikia.org/wiki/CodeRed) - the first “modern” worm - was released on July 13, 2001. This worm exploited a buffer overflow in Microsoft’s IIS server.
+[Code Red 1](https://malware.wikia.org/wiki/CodeRed) - the first "modern" worm - was released on July 13, 2001. This worm exploited a buffer overflow in Microsoft’s IIS server.
 
 From the 1st through the 20th of each month, the worm would spawn 99 threads which generated IP addresses at random, and would then look for vulnerable instances of IIS on the hosts at those IP addresses. If the vulnerability was found, the worm would spread to that host.
 

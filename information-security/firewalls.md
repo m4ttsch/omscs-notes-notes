@@ -91,7 +91,7 @@ The **default forward policy** says that if no rule matches the packet, the pack
 ## Firewall Filtering Quiz Solution
 ![](https://assets.omscs.io/448612E5-28F9-422A-ADBA-7661F4D4F1EF.png)
 
-The first example follows the “default drop” rule, which is high security but requires new services to be expressly allowed. The second example follows the “default forward” rule, which is easier to use at the expense of security. The final approach sits in between the two in terms of security and ease of use.
+The first example follows the "default drop" rule, which is high security but requires new services to be expressly allowed. The second example follows the "default forward" rule, which is easier to use at the expense of security. The final approach sits in between the two in terms of security and ease of use.
 
 ## Typical Firewall Configuration
 Most standard applications that run on top of TCP follow a client-server model. The Simple Mail Transfer Protocol (SMTP), for example, allows client systems to send email to server systems. The client generates new email messages, typically from user input, and the server accepts incoming messages and places them in the appropriate user mailboxes.
@@ -225,7 +225,7 @@ Here are some of the common network services that are typically blocked by a per
 ## Advanced Firewall Protection
 Besides disabling and enabling certain services, personal firewalls can also provide advanced features.
 
-A firewall can be configured to operate in “stealth mode”: dropping all unsolicited packets it receives from the Internet to hide the system(s) behind it.
+A firewall can be configured to operate in "stealth mode": dropping all unsolicited packets it receives from the Internet to hide the system(s) behind it.
 
 A user can configure the firewall to drop all UDP and ICMP packets and only accept TCP packets to certain ports.
 

@@ -65,7 +65,7 @@ The cost of congestion increases in a quadratic manner as the loads on the links
 
 We can define utilization as the amount of traffic on a link divided by the capacity of that link.
 
-Solving the optimization problem is much easier if we approximate the “true” quadratic cost function (orange below) with a piecewise, linear function (blue below).
+Solving the optimization problem is much easier if we approximate the "true" quadratic cost function (orange below) with a piecewise, linear function (blue below).
 
 ![](https://assets.omscs.io/2D79803D-E366-4842-B04E-65FB43992A7F.png)
 
@@ -195,11 +195,11 @@ This hierarchy can potentially create single points of failure and links at the 
 Modern data center network operators have observed that core links can carry as much as 200x the traffic carried by links towards the bottom of the hierarchy.
 
 ## Data Center Topologies
-The scale problem arises in data centers because there are tens of thousands of servers on a “flat” layer two topology.
+The scale problem arises in data centers because there are tens of thousands of servers on a "flat" layer two topology.
 
 Every server in the network has a topology-independent hardware address and so, by default, every switch in the topology has to store a forwarding table entry for every MAC address.
 
-One solution is to introduce **pods**. Each server in a pod is assigned a pseudo MAC address in addition to their “real” MAC address.
+One solution is to introduce **pods**. Each server in a pod is assigned a pseudo MAC address in addition to their "real" MAC address.
 
 ![](https://assets.omscs.io/D553B797-DBA0-4DF8-9E37-543235BEE151.png)
 
@@ -217,7 +217,7 @@ The fabric manager responds with the pseudo MAC address corresponding to the IP 
 
 The querying host then sends the frame with destination pseudo MAC address, and switches in the topology can forward that frame to the appropriate pod corresponding to the pseudo MAC address of the destination server.
 
-Once the frame reaches the destination pod, the switch at the top of the pod can then map the pseudo MAC address back to the real MAC address, and the destination server receives a frame with its “real” MAC address as the destination.
+Once the frame reaches the destination pod, the switch at the top of the pod can then map the pseudo MAC address back to the real MAC address, and the destination server receives a frame with its "real" MAC address as the destination.
 
 ## Data Center (Intradomain) Traffic Engineering
 Existing data center topologies provide extremely limited server-to-server capacity because of the oversubscription of the links at the top of the hierarchy.

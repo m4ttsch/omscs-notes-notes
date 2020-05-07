@@ -16,7 +16,7 @@ Let’s first look at the hardware of a computing system. This computing system 
 * GPU
 * Storage Devices (Disk, Flash drives [USB])
 
-In addition, a computing system can have higher level applications. These are the “programs” that we use every day on our computer:
+In addition, a computing system can have higher level applications. These are the "programs" that we use every day on our computer:
 
 * Skype
 * Word

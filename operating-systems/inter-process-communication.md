@@ -149,7 +149,7 @@ If we specify `IPC_RMID` as the `cmd`, we can destroy the segment.
 ## POSIX Shared Memory API
 The POSIX shared memory standard doesn’t use segments, but rather uses files.
 
-They are not “real” files that live in a filesystem that are used elsewhere by the operating system. Instead they are files that live in the *tmpfs* filesystem.  This filesystem is intended to look and feel like a filesystem, so the operating system can reuse a lot of the mechanisms that it uses for filesystems, but it is really just a bunch of state that is present in physical memory. The OS simply uses the same representation and the same data structures that are used for representing a file to represent a bunch of pages in physical memory that correspond to a share memory region.
+They are not "real" files that live in a filesystem that are used elsewhere by the operating system. Instead they are files that live in the *tmpfs* filesystem.  This filesystem is intended to look and feel like a filesystem, so the operating system can reuse a lot of the mechanisms that it uses for filesystems, but it is really just a bunch of state that is present in physical memory. The OS simply uses the same representation and the same data structures that are used for representing a file to represent a bunch of pages in physical memory that correspond to a share memory region.
 
 Since shared memory segments are now referenced by a file descriptor, there is no longer a need for the key generation process.
 
@@ -186,7 +186,7 @@ In addition, shared memory accesses can be synchronized using operating system p
 
 We can rely on other means of synchronization in those cases, such as message queues and semaphores.
 
-With message queues, we can implement mutual exclusion via send/recv operations. For example, process A can write to the data in shared memory and then send a “ready” message into the queue. Process B can receive the msg, read the data, and send an “ok” message back.
+With message queues, we can implement mutual exclusion via send/recv operations. For example, process A can write to the data in shared memory and then send a "ready" message into the queue. Process B can receive the msg, read the data, and send an "ok" message back.
 
 Semaphores are an OS support synchronization construct and a binary semaphore can have two states, 0 or 1. When a semaphore has a value of 0, the process will be blocked. If the semaphore has a value of 1, the process will decrement the value (to 0) and will proceed.
 

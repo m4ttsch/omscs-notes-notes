@@ -255,7 +255,7 @@ Spurious wake ups occur when a thread is woken up when the application is in a s
 Spurious wake ups can often be avoided by placing signal/broadcast calls outside of the mutex. Note that, this cannot always happen: if a signaling call depends on some configuration of shared state, this must be checked while holding the mutex, as with any other shared state access.
 
 ## Do you understand the need for using a while() look for the predicate check in the critical section entry code examples in the lessons?
-When a condition variable is signaled on, and a thread is to be “woken up”, two things occur:
+When a condition variable is signaled on, and a thread is to be "woken up", two things occur:
 - The thread is removed from the wait queue
 - The thread reacquires the mutex
 
@@ -317,7 +317,7 @@ I think that the AMTED model would perform better than the AMPED model, as the M
 ##  There are several sets of experimental results from the Flash paper discussed in the lesson. Do you understand the purpose of each set of experiments (what was the question they wanted to answer)? Do you understand why the experiment was structured in a particular why (why they chose the variables to be varied, the workload parameters, the measured metric…).
 
 ### Single File Test
-This test was a test of “best case”: to show what performance would look like across the servers when the request pattern was optimal. To achieve this, requests were made for a single file which varied in size. SPED performed better than AMPED - which performs the extra check to see if the file is in memory (not an issue here because its one file and is always going to be in memory). Both performed better than MT/MP, which were slowed by context switching overhead.
+This test was a test of "best case": to show what performance would look like across the servers when the request pattern was optimal. To achieve this, requests were made for a single file which varied in size. SPED performed better than AMPED - which performs the extra check to see if the file is in memory (not an issue here because its one file and is always going to be in memory). Both performed better than MT/MP, which were slowed by context switching overhead.
 
 ### Owlnet Trace
 This tests workloads that can primarily be served from cache, but not completely. AMPED performs slightly better than SPED here. Since some of the work is disk-bound SPED blocks where AMPED context switches. Both of these approaches are better than MT/MP models, which have more memory allocated to them (less for cache size), and still incur the overhead of context switching.

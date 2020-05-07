@@ -76,18 +76,18 @@ Many instead I am more concerned about energy requirements. I might look at **pe
 
 When looking to incorporate enterprise software into the system, another useful metric may be the **percentage of SLA violations**. It may not make sense to create a contract with a software company if the SLA violations on their products are very high.
 
-Some metrics are not super useful to maximize. For example, “smooth” video requires ~30fps. It doesn’t make sense to maximize the fps, but rather the goal should be to stay above or around 30fps for some high percentage of the time. In this case **client-perceived performance** is the goal, not raw performance.
+Some metrics are not super useful to maximize. For example, "smooth" video requires ~30fps. It doesn’t make sense to maximize the fps, but rather the goal should be to stay above or around 30fps for some high percentage of the time. In this case **client-perceived performance** is the goal, not raw performance.
 
 You may be interested in just one metric before making decisions, or you may need to aggregate metrics or even derive new metrics in order to accurately understand the system that you are evaluating.
 
 In summary, a metric is some measurable quantity we can use to reason about the behavior of a system.
 
-Ideally, we will obtain these measurements running real software on real machines with real workloads. Often, this is not feasible for many different reasons. In these cases, we may have to settle on “toy” experiments that are *representative* of realistic situations that we may encounter.
+Ideally, we will obtain these measurements running real software on real machines with real workloads. Often, this is not feasible for many different reasons. In these cases, we may have to settle on "toy" experiments that are *representative* of realistic situations that we may encounter.
 
 We refer to these experimental settings as a **testbed**. The testbed tells us where/how the experiments were carried out and what were the relevant metrics being gathered.
 
 ## Really … Are Threads Useful?
-There isn’t really a straightforward answer to this question or the more general question of “Is X Useful?”. The answer depends on which metrics we have gathered, as well as the workload on the system. For different combinations of these two variables, we may arrive at very different conclusions.
+There isn’t really a straightforward answer to this question or the more general question of "Is X Useful?". The answer depends on which metrics we have gathered, as well as the workload on the system. For different combinations of these two variables, we may arrive at very different conclusions.
 
 For example, some graph traversal algorithms work best on sparse graphs, while others work best on dense graphs. Some filesystems are optimized for read access, while others might be optimized for a write-heavy system.
 
@@ -305,7 +305,7 @@ Flash performs the best. It has the smallest memory footprint, which means it ha
  We can see that in all cases, connection rate decreases with file size. That being said, connection rate increases as the number of optimization increases, with the fully optimized flash having the highest connection rate at a given file size. Optimizations are important!
 
 ## Summary of Performance Results
-When the data is in cache, SPED smokes AMPED Flash, since AMPED Flash makes an “unnecessary” test for memory presence on each request. Both SPED and AMPED Flash perform better than MT/MP models, because neither occurs any synchronization or context switching overhead.
+When the data is in cache, SPED smokes AMPED Flash, since AMPED Flash makes an "unnecessary" test for memory presence on each request. Both SPED and AMPED Flash perform better than MT/MP models, because neither occurs any synchronization or context switching overhead.
 
 When the workload is disk-bound, AMPED Flash performs much better than SPED, which blocks on I/O request because it doesn’t have asynchronous I/O. AMPED Flash performs better than MT/MP because the more efficient memory implementation leaves more memory available for caching.
 

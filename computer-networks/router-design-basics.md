@@ -97,7 +97,7 @@ Defining fairness is tricky, and there are multiple possible definitions of fair
 ## Max-Min Fairness
 One type of fairness is **max-min fairness**.
 
-To define max-min fairness, let’s first assume that we have some allocation of rates `{x1, x2 … xn }` across flows. We say that this allocation is “max-min fair” if increasing any rate `xi` implies that some other rate `xj`, where `xj < xi`, must be decreased to accommodate for the increase in `xi`.
+To define max-min fairness, let’s first assume that we have some allocation of rates `{x1, x2 … xn }` across flows. We say that this allocation is "max-min fair" if increasing any rate `xi` implies that some other rate `xj`, where `xj < xi`, must be decreased to accommodate for the increase in `xi`.
 
 Put another way, the allocation is max-min fair if we can’t make any rate better off without making an already worse off rate even worse.
 
@@ -136,6 +136,6 @@ Alternatively, we can use **bit-by-bit scheduling** where, during each time slot
 
 While this is perfectly fair, this is difficult from a feasibility standpoint. How do we service one bit from a queue?
 
-A third alternative is called **fair queueing** which achieves max-min fairness by servicing packets according to the “soonest finishing time”.
+A third alternative is called **fair queueing** which achieves max-min fairness by servicing packets according to the "soonest finishing time".
 
 A fair queueing algorithm computes the virtual finishing time of all candidate packets, which are the packets at the head of all non-empty flow queues. The scheduler then services the queue with the minimum finishing time.

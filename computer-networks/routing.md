@@ -247,7 +247,7 @@ While local preference is often used to control outbound traffic, ASes can attac
 
 Let’s suppose that AS `A` wanted to control inbound traffic by affecting how neighboring AS `B` and AS `C` set local preference.
 
-If `A` wants traffic to arrive via `B` instead of `C`, `A` might advertise its BGP routes with “primary” and “backup” communities to `B` and `C`, respectively. The “backup” community value might cause a router in `C` to adjust its local preference value, thus affecting how its outbound traffic choices are made.
+If `A` wants traffic to arrive via `B` instead of `C`, `A` might advertise its BGP routes with "primary" and "backup" communities to `B` and `C`, respectively. The "backup" community value might cause a router in `C` to adjust its local preference value, thus affecting how its outbound traffic choices are made.
 
 This type of arrangement requires prior agreement between `A`, `B`, and `C`. `B` and `C` must be able to understand and respond to community values attached to route advertisements originating from `A`.
 

@@ -261,7 +261,7 @@ In a **multicore** system, each CPU can have multiple internal cores. Each core 
 
 As far as the operating system is concerned, it sees all of the CPUs and all of the cores in the CPUs as entities onto which it can schedule tasks.
 
-Since the performance of processes/threads is highly dependent on the amount of execution state that is present in the CPU cache - as opposed to main memory - it makes sense that we would want to schedule tasks on to CPUs such that we can maximize how “hot” we can keep our CPU caches. To achieve this, we want to schedule our tasks back on the same CPUs they  had been executing on in the past. This is known as **cache affinity**.
+Since the performance of processes/threads is highly dependent on the amount of execution state that is present in the CPU cache - as opposed to main memory - it makes sense that we would want to schedule tasks on to CPUs such that we can maximize how "hot" we can keep our CPU caches. To achieve this, we want to schedule our tasks back on the same CPUs they  had been executing on in the past. This is known as **cache affinity**.
 
 To achieve cache affinity, we can have a hierarchical scheduling architecture which maintains a load balancing component that is responsible for dividing the tasks among CPUs. Each CPU then has its own scheduler with its own runqueue, and is responsible for scheduling tasks on that CPU exclusively.  
 

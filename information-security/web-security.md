@@ -53,15 +53,15 @@ These web applications, like any software, may have security vulnerabilities. Fu
 ![](https://assets.omscs.io/BD31DC8E-4CA2-49A9-8C52-AA394F2DCEF6.png)
 
 ## Cross-Site Scripting (XSS)
-Many websites, including social networking sites, blogs, forums, and wikis, display user-supplied data. For example, a user Joe might visit a website and fill out a form indicating that his name is Joe. The website might greet him with a page saying, “Hello Joe.”
+Many websites, including social networking sites, blogs, forums, and wikis, display user-supplied data. For example, a user Joe might visit a website and fill out a form indicating that his name is Joe. The website might greet him with a page saying, "Hello Joe."
 
 Suppose that instead of entering his name, Joe submits the following.
 
 ```html
-<script type=“text/javascript”>alert(‘Hello World’)</script>
+<script type="text/javascript">alert(‘Hello World’)</script>
 ```
 
-The website takes this string as the user’s name and includes it in the HTML page sent to the browser. Therefore, when the browser displays this webpage, the script runs, and the webpage displays “Hello World.”
+The website takes this string as the user’s name and includes it in the HTML page sent to the browser. Therefore, when the browser displays this webpage, the script runs, and the webpage displays "Hello World."
 
 ## XSS Example
 In a **cross-site scripting** (XSS) attack, an attacker tricks the browser into executing malicious scripts without the user’s knowledge.

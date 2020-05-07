@@ -246,7 +246,7 @@ Each time we acquire the mutex, we must ensure that a condition is met such that
 
 ![](https://assets.omscs.io/359DCB22-6F78-4FF1-87E6-2EC2E7D1E554.png)
 
-The “enter critical section” blocks can be seen as a higher level “lock” operation, while the “exit critical section” blocks can be seen as a higher level “unlock” operation, even though a mutex is being locked and unlocked within each of those blocks.
+The "enter critical section" blocks can be seen as a higher level "lock" operation, while the "exit critical section" blocks can be seen as a higher level "unlock" operation, even though a mutex is being locked and unlocked within each of those blocks.
 
 ![](https://assets.omscs.io/E1172921-B522-4812-B54F-5D6106CBB30A.png)
 
@@ -418,7 +418,7 @@ A downside of this approach is that it is difficult to keep the pipeline balance
 
 
 ### Layered Pattern
-A layered model of multithreading is one in which similar subtasks are grouped together into a “layer” and the threads that are assigned to a layer can perform any of the subtasks in that layer. The end-to-end task must pass through all the layers.
+A layered model of multithreading is one in which similar subtasks are grouped together into a "layer" and the threads that are assigned to a layer can perform any of the subtasks in that layer. The end-to-end task must pass through all the layers.
 
 A benefit of this approach is that we can have specialization while being less fine-grained than the pipeline pattern.
 

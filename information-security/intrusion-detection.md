@@ -225,7 +225,7 @@ The IDS matches the observed activities using a set of attack signatures or patt
 
 ![](https://assets.omscs.io/442FE44B-A994-48BC-909C-1DCF6161F7E4.png)
 
-For example, the system may raise an alarm if it spots the so-called “land attack” defined in the picture above. Again, such a simple approach cannot detect new attacks since they don’t have signatures.
+For example, the system may raise an alarm if it spots the so-called "land attack" defined in the picture above. Again, such a simple approach cannot detect new attacks since they don’t have signatures.
 
 ## Attacks Quiz
 ![](https://assets.omscs.io/F5CFF1A9-853F-4258-9A6A-C5ACDD8C643A.png)
@@ -385,7 +385,7 @@ Here is an example of how Snort can capture and respond to this event.
 
 ![](https://assets.omscs.io/1F19DBF9-0CB7-4E44-909A-42B098E4A7C4.png)
 
-It looks for traffic to the SMTP port on any host in the /24 subnet and checks if the content of the email contains “mail from root”, which indicates that a root user is attempting to send email. Snort then sends an alert with the following message: “root user attempts to send an email”.
+It looks for traffic to the SMTP port on any host in the /24 subnet and checks if the content of the email contains "mail from root", which indicates that a root user is attempting to send email. Snort then sends an alert with the following message: "root user attempts to send an email".
 
 The content keyword used above is one of the more important features of Snort. It allows sysadmins to set rules that search for specific content in the packet payload and then trigger responses based on that data.
 
@@ -409,7 +409,7 @@ A honeypot system is instrumented with monitors and event loggers so that any ac
 Since a honeypot is not a real system and has no production value, any access to it is not legitimate. Most likely, any inbound connection to a honeypot is a network scan or a direct attack. Any outbound traffic from the honeypot indicates that the system is most likely compromised.
 
 ## Honeypots Classification
-A **low interaction** honeypot typically emulates some network services, such as the web server, but does not provide a full version of the service. For example, an emulated web server may be able to “speak” HTTP but might not contain all the web contents and server-side programs.
+A **low interaction** honeypot typically emulates some network services, such as the web server, but does not provide a full version of the service. For example, an emulated web server may be able to "speak" HTTP but might not contain all the web contents and server-side programs.
 
 A low interaction honeypot is typically sufficient to detect basic network scans and probes and warn of imminent attacks. On the other hand, these weakly emulated services may not fool a sophisticated attacker, who might realize early on that these services are not real.
 

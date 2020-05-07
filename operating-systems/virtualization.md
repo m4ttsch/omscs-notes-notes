@@ -157,7 +157,7 @@ To achieve this, we need to distinguish among three types of addresses: virtual 
 
 Virtual addresses are used by the applications in the guest. Physical addresses are used by the kernel of the guest. Machine address correspond to the physical addresses on the underlying physical platform.
 
-The guest OS makes mappings of virtual addresses to the physical addresses that it thinks it owns. Underneath, the hypervisor maintains a mapping of the physical addresses to the machine addresses. “Contiguous” physical addresses can map to discontiguous machine addresses.
+The guest OS makes mappings of virtual addresses to the physical addresses that it thinks it owns. Underneath, the hypervisor maintains a mapping of the physical addresses to the machine addresses. "Contiguous" physical addresses can map to discontiguous machine addresses.
 
 In effect, there are two page tables: one maintained by the guest OS, and one maintained by the hypervisor.
 
@@ -241,9 +241,9 @@ One benefit of this approach is that the device emulation overhead can be elimin
 
 One of the first things that was fixed was to close the holes with the 17 non-virtualizable hardware instructions so that they will cause a trap and pass control over to the hypervisor in privileged mode.
 
-Also, the new protection mode was introduced. Now, there was a “root” and “non-root” mode (also known as “host” and “guest”, respectively).
+Also, the new protection mode was introduced. Now, there was a "root" and "non-root" mode (also known as "host" and "guest", respectively).
 
-Support was added for the hardware processor to interpret the state of the virtual processors (or vCPUs). This information is captured in a VM control block. The hardware understands how to “walk” this data structure, and can specify whether or not a system call should trap.
+Support was added for the hardware processor to interpret the state of the virtual processors (or vCPUs). This information is captured in a VM control block. The hardware understands how to "walk" this data structure, and can specify whether or not a system call should trap.
 
 Once hardware was able to detect the presence of different VMs, the next step was to tag the memory structures used by the hypervisor with the different VM identifiers.
 

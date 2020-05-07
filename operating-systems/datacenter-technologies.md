@@ -100,7 +100,7 @@ These infrastructural/software resources are made available via some APIs for ac
 
 Providers offer different types of billing and accounting services. Some marketplaces incorporate spot pricing, reservation pricing, or other pricing models.
 
-Billing is often not done by raw usage, as overheads with monitoring at that level of fine-grained control are pretty high. Instead, billing is done based on some discrete step function. For example, compute resources may be billed according to “size”: tiny, medium, extra-large.
+Billing is often not done by raw usage, as overheads with monitoring at that level of fine-grained control are pretty high. Instead, billing is done based on some discrete step function. For example, compute resources may be billed according to "size": tiny, medium, extra-large.
 
 All of this is managed by the cloud provider. Common software stacks more managing cloud resources include the open source OpenStack and VMware’s vSphere software stack.
 
@@ -166,7 +166,7 @@ In addition, resource-provisioning and -scheduling technologies are required to 
 
 In order to address customers’ needs for scale, cloud technologies need to provide abilities to process and store large amounts of data. **Hadoop MapReduce** and **Spark** are popular technologies for big data.
 
-Regarding data storage, cloud computing platforms incorporate distributed filesystems - that typically operate in some “append only” mode. In addition, NoSQL databases and distributed in-memory caches can also help with accessing and manipulating data at scale.
+Regarding data storage, cloud computing platforms incorporate distributed filesystems - that typically operate in some "append only" mode. In addition, NoSQL databases and distributed in-memory caches can also help with accessing and manipulating data at scale.
 
 Cloud users need to be isolated from one another. Cloud computing technologies need software that can enable and configure these defined slices of resources.
 

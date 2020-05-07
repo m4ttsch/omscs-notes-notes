@@ -192,7 +192,7 @@ This goal presents a number of questions.
 ## Server Selection
 The fundamental problem with server selection is determining which server to direct the client to.
 
-A CDN can use many different criteria to select the server for the client, such as: the server with lowest load; the server with the lowest network latency relative to the client; or just any “alive” server.
+A CDN can use many different criteria to select the server for the client, such as: the server with lowest load; the server with the lowest network latency relative to the client; or just any "alive" server.
 
 CDNs typically aim to direct clients towards servers that provide the lowest latency since latency plays a very significant role in the web performance that clients see.
 

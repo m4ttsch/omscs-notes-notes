@@ -10,7 +10,7 @@ lecture: law-ethics-and-privacy
 ## US Laws Related to Online Abuse
 People can do many different things online. Some of these activities can be very productive while others can be quite harmful. We can examine the various laws in place that offer protection against different types of online abuse.
 
-For example, consider cybercrime. We know that things like theft and extortion are illegal in the physical world. We’ve discussed similar activities that take place in the digital realm, such as data theft, identity theft, and ransomware. Thankfully, there are laws that offer us protection against cybercrime just as there are laws that protect us from “real” crime.
+For example, consider cybercrime. We know that things like theft and extortion are illegal in the physical world. We’ve discussed similar activities that take place in the digital realm, such as data theft, identity theft, and ransomware. Thankfully, there are laws that offer us protection against cybercrime just as there are laws that protect us from "real" crime.
 
 Additionally, consider creators of digital objects, such as software or digital music. In the non-digital world, we have ways to protect intellectual property with copyrights, patents, and trade secrets. There is a set of laws that control the copying and distribution of digital objects.
 
@@ -102,7 +102,7 @@ Situations like this are present throughout the digital world, and handling them
 ![](https://assets.omscs.io/63AB025B-A11C-43E2-80B2-74825F271520.png)
 
 ## Privacy Definition
-Justice Louis Brandeis made his famous statement about the “[right to be let alone](https://en.wikipedia.org/wiki/Louis_Brandeis#Olmstead_v._United_States_(1928)_%E2%80%93_Right_of_privacy)” almost 100 years ago; clearly, concerns about privacy are not new. That being said, privacy in the digital era looks different than privacy in the early twentieth century. When we talk about privacy online, we are primarily referring to a user’s ability to control how data about him or her is collected, used, and shared by someone else.
+Justice Louis Brandeis made his famous statement about the "[right to be let alone](https://en.wikipedia.org/wiki/Louis_Brandeis#Olmstead_v._United_States_(1928)_%E2%80%93_Right_of_privacy)" almost 100 years ago; clearly, concerns about privacy are not new. That being said, privacy in the digital era looks different than privacy in the early twentieth century. When we talk about privacy online, we are primarily referring to a user’s ability to control how data about him or her is collected, used, and shared by someone else.
 
 ## Privacy is Not a New Problem
 People have always worried about what others - friends, family, adversaries, the government - know about them, whether it be their whereabouts, activities, or preferences. In the modern, digital context, websites and other software capture use and distribute our information at an unprecedented scale.
@@ -181,14 +181,14 @@ We saw how Google collects information about us, and what type of information it
 
 First, it uses the data to personalize our experience with its services. Two random people are likely interested in quite different types of information, and the more information that Google has about them, the more it can tailor an experience to them.
 
-For example, a doctor searching for “lens” might be referring to the part of the eye, while a photographer might be looking for the part of the camera. Without collecting (or inferring) the occupation of both searchers, Google might serve the same search result to two contextually different queries.
+For example, a doctor searching for "lens" might be referring to the part of the eye, while a photographer might be looking for the part of the camera. Without collecting (or inferring) the occupation of both searchers, Google might serve the same search result to two contextually different queries.
 
 Second, Google uses the data to serve better-targeted advertisements. Google makes its money selling ads and, the more it knows about you, the better it can understand which products and services you are likely to buy. This knowledge allows it to charge a higher premium for ad delivery using its network.
 
 ## Google: Who is it Shared With
 Now that we understand how Google collects and uses our information, we can begin to look at how and with whom Google shares our information.
 
-Google allows us to opt-in to sharing our information with other businesses and services. For example, if we use a “Log in with Google” button on a third party website, Google makes us confirm that we indeed consent to give this third party our information.
+Google allows us to opt-in to sharing our information with other businesses and services. For example, if we use a "Log in with Google" button on a third party website, Google makes us confirm that we indeed consent to give this third party our information.
 
 Additionally, Google may share information with individuals who provide user support to an organization to which we belong. These individuals include, for example, domain administrators and resellers. Google also shares information with affiliates, which are other trusted businesses or people.
 
@@ -260,7 +260,7 @@ First, a TOR client uses a directory service to get a set of TOR nodes that can 
 
 Next, the client encrypts the message as follows. It first encrypts the message with the public key of the final node. Then, it encrypts that result with the public key of the second to last node. It works backward until it finally encrypts the bundle with the public key of the first node.
 
-This strategy results in a message that is encrypted in layers, hence the “onion”. As the traffic passes through the network, each node decrypts its layer, unwrapping the message one decryption at a time. The final node reveals the plaintext packet and forwards it the last hop to its destination.
+This strategy results in a message that is encrypted in layers, hence the "onion". As the traffic passes through the network, each node decrypts its layer, unwrapping the message one decryption at a time. The final node reveals the plaintext packet and forwards it the last hop to its destination.
 
 ## Controlling Tracking on the Internet
 Browsers give us some control with regard to how we are tracked on the Internet. There are a few techniques we can employ to try to reduce the amount of information collected about us.

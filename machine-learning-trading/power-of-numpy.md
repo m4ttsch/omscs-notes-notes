@@ -70,7 +70,7 @@ nd[:, 1:3] # select all rows, second and third column
 nd[0:2, :] # select first and second row, all columns
 ```
 
-NumPy also provides syntax for **negative indexing**. Passing in a negative number in the slicing expression allows us to index from the “bottom” and/or “right” of `nd`. For example:
+NumPy also provides syntax for **negative indexing**. Passing in a negative number in the slicing expression allows us to index from the "bottom" and/or "right" of `nd`. For example:
 
 ```python
 nd[-1, :] # select last row, all columns
@@ -345,7 +345,7 @@ If we print `a` with `a.sum()`, we see the following.
 
 We can also calculate the sum of `a` in a specific direction. In other words, we can specify that we want to sum across the rows or down the columns of `a`.
 
-We refer to this “direction" as an *axis*. The rows of an ndarray are aligned along axis zero, and the columns of an ndarray are aligned along axis one. Thus, if we want to sum all of the rows, we must sum along axis one, and if we want to sum all of the columns, we must sum down axis zero:
+We refer to this "direction" as an *axis*. The rows of an ndarray are aligned along axis zero, and the columns of an ndarray are aligned along axis one. Thus, if we want to sum all of the rows, we must sum along axis one, and if we want to sum all of the columns, we must sum down axis zero:
 
 ```python
 a.sum(axis=0) # Sum columns
@@ -401,10 +401,10 @@ We can use the `time` module and the `time` function in that library to capture 
 import time
 
 t1 = time.time()
-print “ML4T”
+print "ML4T"
 t2 = time.time()
 
-print “The time taken by print statement is ”, t2 - t1 ,” seconds”
+print "The time taken by print statement is ", t2 - t1 ," seconds"
 ```
 
 If we run this code, we see the following. 
@@ -548,7 +548,7 @@ Indeed, we can see that our resulting array contains the elements of `a` at indi
 ### Documentation
 - [Indexing](https://docs.scipy.org/doc/numpy/user/basics.indexing.html)
 
-## Boolean or “Mask” Index Arrays
+## Boolean or "Mask" Index Arrays
 Let’s see how we can retrieve all of the values from an ndarray that are less than the mean of that array. First, we construct our two-dimensional ndarray `a` and calculate the mean:
 
 ```python

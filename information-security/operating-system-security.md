@@ -14,7 +14,7 @@ Operating systems play a critical role when it comes to protecting and securing 
 
 When we are looking at the arrangement of a computer system, we first start at the level of hardware. At this layer, we have the CPU, physical memory, and other I/O devices.
 
-Direct use of hardware is really difficult. Instead of managing the hardware explicitly, we run a “program” called an **operating system** - such as Linux, Windows, or macOS - that handles the access and management of the low-level hardware resources.
+Direct use of hardware is really difficult. Instead of managing the hardware explicitly, we run a "program" called an **operating system** - such as Linux, Windows, or macOS - that handles the access and management of the low-level hardware resources.
 
 The applications that we as users directly deal with - browsers, word processors and the like - sit on top of the operating system and interact with the physical resources through this intermediary.
 
@@ -57,7 +57,7 @@ This is important because processes may not trust each other. The operating syst
 ## Need for Trusting an Operating System
 The operating system has direct control over basically everything in the system. It can manipulate processes running on top of it, and access hardware beneath it.
 
-The operating system has the “keys to the kingdom”, so to speak, so it is important that the operating system function as a **trusted computing base** (TCB) for our computer systems.
+The operating system has the "keys to the kingdom", so to speak, so it is important that the operating system function as a **trusted computing base** (TCB) for our computer systems.
 
 The following requirements should be met by a trusted computing base.
 

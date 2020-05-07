@@ -28,7 +28,7 @@ The earlier WiFi security standard, Wired Equivalent Privacy (WEP), is easily br
 ## Overview of 802.11i
 The 802.11i standard enforces access control, and the underlying access control protocol is based on another standard, 802.1x. 802.1x is flexible because it is based on the [Extensible Authentication Protocol](https://en.wikipedia.org/wiki/Extensible_Authentication_Protocol) (EAP).
 
-EAP is designed as a carrier protocol whose purpose is to transport the messages of “real” authentication protocols, such as TLS. In other words, you can implement a host of different authentication methods on top of EAP, and therefore on top of 802.1x.
+EAP is designed as a carrier protocol whose purpose is to transport the messages of "real" authentication protocols, such as TLS. In other words, you can implement a host of different authentication methods on top of EAP, and therefore on top of 802.1x.
 
 The more advanced EAP methods, such as TLS, provide mutual authentication, which limits man-in-the-middle attacks by authenticating both the server and client. Furthermore, this EAP method results in key material, which can be used to generate dynamic encryption keys.
 

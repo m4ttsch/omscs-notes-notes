@@ -213,13 +213,13 @@ Shipcity = Request.form("Shipcity");
 var sql = "select * from OrdersTable where Shipcity = '" + Shipcity + "';
 ```
 
-If the user submits “Redmond” on the form, the SQL query sent to the database becomes:
+If the user submits "Redmond" on the form, the SQL query sent to the database becomes:
 
 ```sql
 SELECT * from OrdersTable where Shipcity = 'Redmond';
 ```
 
-What if the user submits “’Redmond; DROP table OrdersTable;”?
+What if the user submits "’Redmond; DROP table OrdersTable;"?
 
 This SQL query will be sent to the database:
 
@@ -304,9 +304,9 @@ We can further defend against inference attacks by removing identifying informat
 
 Even with de-identification, inference attacks may still be possible.
 
-For example, if we know that there is one junior in the class, we can still `SELECT` the tuple where the student year is “junior” to reveal information about that student. We must remove or change the student year column to **anonymize** this student.
+For example, if we know that there is one junior in the class, we can still `SELECT` the tuple where the student year is "junior" to reveal information about that student. We must remove or change the student year column to **anonymize** this student.
 
-In addition to de-identification and anonymization, we can use **generalization**. For example, we might generalize the data in the student year column to say either “upperclassmen” or “underclassmen” instead of revealing the exact year.
+In addition to de-identification and anonymization, we can use **generalization**. For example, we might generalize the data in the student year column to say either "upperclassmen" or "underclassmen" instead of revealing the exact year.
 
 This still may not be sufficient to defend against inference attacks if the data is not diverse enough.
 

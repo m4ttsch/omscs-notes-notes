@@ -65,7 +65,7 @@ After 16 rounds of decryption, the algorithm has recovered the right and left ha
 ## XOR Quiz Solution
 ![](https://assets.omscs.io/9E317675-DB11-4A1E-AAC8-D59F6667ABB9.png)
 
-“H” has an ASCII code of 72, which maps to `0b01001000`, and “i” has an ASCII code of 105, which maps to `0b01101001`. “F” maps to 15 (`0b1111`) and “A” maps to 11 (`0b1001`), so “FA” maps to `0b11111001` and “F2” maps to `0b11111001`.
+"H" has an ASCII code of 72, which maps to `0b01001000`, and "i" has an ASCII code of 105, which maps to `0b01101001`. "F" maps to 15 (`0b1111`) and "A" maps to 11 (`0b1001`), so "FA" maps to `0b11111001` and "F2" maps to `0b11111001`.
 
 We XOR two numbers bit-by-bit, and we return 0 when the bits match and 1 otherwise. Therefore `0b0100100001101001` XOR `0b1111100111110010` is `0b1011000110011011`.
 

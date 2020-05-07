@@ -30,7 +30,7 @@ Following the header line, we have several rows of data. Each row contains data 
 ## Which Fields Should Be In A CSV File Quiz Solution
 ![](https://assets.omscs.io/EFB7C1BB-0A52-4357-83E9-D5BCCB262559.png)
 
-We want to include data that changes frequently; otherwise, we are wasting space including redundant data. Of the options given, both “date/time” and “price of the stock” are good fits. The other data points are either static or change relatively infrequently.
+We want to include data that changes frequently; otherwise, we are wasting space including redundant data. Of the options given, both "date/time" and "price of the stock" are good fits. The other data points are either static or change relatively infrequently.
 
 ## Real Stock Data
 Let’s take a look at real stock data, presented in the following CSV.
@@ -73,7 +73,7 @@ Pandas provides several functions that make it easy to read in data like the CSV
 ```python
 import pandas as pd
 
-df = pd.read_csv(“data/AAPL.csv”)
+df = pd.read_csv("data/AAPL.csv")
 ```
 
 Note that we `import pandas as pd` to avoid having to write out the full `pandas` every time we want to call a method.
@@ -130,7 +130,7 @@ Note that the range is upper-bound exclusive, which means it won’t include the
 - [Slicing ranges](https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#slicing-ranges)
 
 ## Compute Max Closing Price
-Let’s assume we have a DataFrame `df` containing columns such as “Open”, “High”, “Low” and “Close”, among others. If we’d like to retrieve just the “Close” column from `df`, we can use the following code:
+Let’s assume we have a DataFrame `df` containing columns such as "Open", "High", "Low" and "Close", among others. If we’d like to retrieve just the "Close" column from `df`, we can use the following code:
 
 ```python
 close = df[‘Close’]
@@ -154,7 +154,7 @@ Your task is to calculate the mean volume for each of the given symbols.
 ## Compute Mean Volume Quiz Solution
 ![](https://assets.omscs.io/99A66C8E-4B8E-413B-9713-22E7762069D9.png)
 
-Given a DataFrame `df` containing a "Volume” column, the following code returns the mean of the values in that column.
+Given a DataFrame `df` containing a "Volume" column, the following code returns the mean of the values in that column.
 
 ```python
 df[‘Values’].mean()
@@ -199,7 +199,7 @@ First, we need to make sure that we read in the right CSV, which we can accompli
 df = pd.read_csv(‘data/IBM.csv’)
 ```
 
-Next, we can retrieve the “High” column and plot it:
+Next, we can retrieve the "High" column and plot it:
 
 ```python
 df[‘High’].plot()

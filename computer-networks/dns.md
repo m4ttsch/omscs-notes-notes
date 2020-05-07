@@ -22,7 +22,7 @@ The client query is typically sent *recursively*. This means that the client doe
 
 The local resolver, on the other hand, will perform iterative queries.
 
-Each fully qualified domain name is expected to end with a “dot” (.), indicating the root of the DNS hierarchy.
+Each fully qualified domain name is expected to end with a "dot" (.), indicating the root of the DNS hierarchy.
 
 The IP addresses for the root servers - those that are authoritative for the root - may already be configured in the local DNS resolver.
 
@@ -57,7 +57,7 @@ The mapping for a local name - like www.gatech.edu - might change more frequentl
 
 **MX records** show the mail server for a domain.
 
-Occasionally, one name is just an alias for another. For example, www.gatech.edu has a slightly different “real” name. The **CNAME record** is basically just a pointer from an alias to another domain name that needs to be looked up.
+Occasionally, one name is just an alias for another. For example, www.gatech.edu has a slightly different "real" name. The **CNAME record** is basically just a pointer from an alias to another domain name that needs to be looked up.
 
 The **PTR record** maps IPs address to domain names. This is sometimes referred to as a **reverse lookup**.
 
@@ -97,11 +97,11 @@ tlweb.gtm.gatech.edu.	30	IN	A	130.207.160.173
 
 ```
 
-In the “QUESTION SECTION”, you can see our query. We are looking for an A record for www.gatech.edu.
+In the "QUESTION SECTION", you can see our query. We are looking for an A record for www.gatech.edu.
 
-In the “ANSWER SECTION”, you can see the response to our query. Our initial query response is a CNAME record, which maps www.gatech.edu to tlweb.gtm.gatech.edu. We then issue an A record query for tlweb.gtm.gatech.edu, the response to which is `130.207.160.173`.
+In the "ANSWER SECTION", you can see the response to our query. Our initial query response is a CNAME record, which maps www.gatech.edu to tlweb.gtm.gatech.edu. We then issue an A record query for tlweb.gtm.gatech.edu, the response to which is `130.207.160.173`.
 
-The numbers “60” and “30” for the CNAME and A record entries, respectively, indicate the TTL in seconds that the entry can be stored in the cache.
+The numbers "60" and "30" for the CNAME and A record entries, respectively, indicate the TTL in seconds that the entry can be stored in the cache.
 
 ### Example 2 (NYTimes A)
 Here is an example of an A record query for nytimes.com.
@@ -164,7 +164,7 @@ gatech.edu.		86400	IN	NS	dns2.gatech.edu.
 ;; MSG SIZE  rcvd: 96
 ```
 
-In the “QUESTION SECTION”, we can see that we have an NS record query instead of an A record query. In the “ANSWER SECTION”, we can see that we have received the names of three name servers, any of which can answer authoritatively for subdomains of gatech.edu
+In the "QUESTION SECTION", we can see that we have an NS record query instead of an A record query. In the "ANSWER SECTION", we can see that we have received the names of three name servers, any of which can answer authoritatively for subdomains of gatech.edu
 
 ### Example 4 (MX)
 Here is an example of an MX record query for gatech.edu.
@@ -193,7 +193,7 @@ gatech.edu.		60	IN	MX	10 mxip1a.gatech.edu.
 ;; MSG SIZE  rcvd: 85
 ```
 
-In the “QUESTION SECTION”, we can see that we have an MX record query. In the “ANSWER SECTION”, we have two MX records corresponding the mail servers for gatech.edu.
+In the "QUESTION SECTION", we can see that we have an MX record query. In the "ANSWER SECTION", we have two MX records corresponding the mail servers for gatech.edu.
 
 In addition to the TTL, we also have a notion of priority: 10 for each of the mail servers. This priority value allows administrators to define a primary mail server and a backup.
 
@@ -302,7 +302,7 @@ in-addr.arpa.		172800	IN	NS	f.in-addr-servers.arpa.
 
 When we ask the root server about this particular IP address, we are referred to a special top level domain `in-addr.arpa` which maintains referrals to authoritative servers that are maintained by the respective internet routing registries, such as ARIN, RIPE, or APNIC.
 
-After our initial referral to `in-addr.arpa`, we see another referral to `130.in-addr.arpa` where the “130” corresponds to the first octet of the IP address in question: `130.207.7.36`.
+After our initial referral to `in-addr.arpa`, we see another referral to `130.in-addr.arpa` where the "130" corresponds to the first octet of the IP address in question: `130.207.7.36`.
 
 Next, we ask ARIN about `130.in-addr.arpa`, and we receive a referral to `207.130.in-addr.arpa`. Because `130.207` is allocated gatech.edu, ARIN knows to point us to dns{1,2,3}.gatech.edu.
 

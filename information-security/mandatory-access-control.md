@@ -112,7 +112,7 @@ Two sets `S1` and `S2` can be oriented such that
 - `S2` is contained in `S1`
 - Neither set contains the other
 
-Sets are compared by containment. A set that contains another set is “greater” than that set. Note that this ordering is *partial*, because two sets that don’t contain each other cannot be ordered.
+Sets are compared by containment. A set that contains another set is "greater" than that set. Note that this ordering is *partial*, because two sets that don’t contain each other cannot be ordered.
 
 When we want to order labels, we must look at both the sensitivity level and the compartment
 
@@ -163,7 +163,7 @@ While `secret < top-secret` , `{Asia, Europe}` cannot be compared with `{Europe,
 
 In order for `D1` to dominate `D2`, `D1` must have a higher sensitivity level than `D2`.
 
-In addition, the compartment of `D1` must contain the compartment of `D2` in order to be ‘greater’ (based on the ordering rules for sets). For this to be the case, the compartment of `D2` must be a subset of (“narrower” than) the compartment of `D1`.
+In addition, the compartment of `D1` must contain the compartment of `D2` in order to be ‘greater’ (based on the ordering rules for sets). For this to be the case, the compartment of `D2` must be a subset of ("narrower" than) the compartment of `D1`.
 
 ## Using Labels for MAC: Confidentiality
 The **Bell and LaPadula Model** (BLP) is a model that deals with confidentiality. Its development was funded by the DoD.
@@ -286,9 +286,9 @@ Let’s assume we have the following documents in our system.
 
 ![](https://assets.omscs.io/FF68C6DD-8AB9-4A4C-B4A5-EFCB0EB09B02.png)
 
-The group of documents in the “Banks” box are referred to as a **conflict class**. Since Wells Fargo, Chase, and Bank of America are all competitors, access to documents about more than one of these banks can present an individual with a conflict of interest.
+The group of documents in the "Banks" box are referred to as a **conflict class**. Since Wells Fargo, Chase, and Bank of America are all competitors, access to documents about more than one of these banks can present an individual with a conflict of interest.
 
-Similarly, the “Oil Companies” conflict class contains documents about competitors Exxon, Shell and Chevron.
+Similarly, the "Oil Companies" conflict class contains documents about competitors Exxon, Shell and Chevron.
 
 The Chinese wall policy basically says that a user can access any object as long as they have not previously accessed an object from the same conflict class.
 
@@ -415,7 +415,7 @@ During execution, a process can allocate some temporary memory or disk space for
 
 If a process leaves behind some (potentially sensitive) data and the operating system reallocates the resources containing that data to a new process, the new process can potentially read that data. The operating system will have broken process isolation.
 
-A system must understand that a process can leave behind some artifacts in these reusable resources and must ensure that they are “zeroed out” before being allocated again.
+A system must understand that a process can leave behind some artifacts in these reusable resources and must ensure that they are "zeroed out" before being allocated again.
 
 **Secure file deletion** refers to the operating system procedure of overwriting reclaimed disk space with varying patterns of zeros and ones in order to obfuscate the original contents.
 
@@ -441,7 +441,7 @@ We can keep an **audit log** of what happens in the system, and can use this log
 
 Naturally, the audit log, like all other data managed by the TCB, must also be tamper-proof.
 
-[Butler Lampson](https://en.wikipedia.org/wiki/Butler_Lampson) describes the gold standard of security as authentication, authorization and audit. The symbol for gold is “Au” in the periodic table.
+[Butler Lampson](https://en.wikipedia.org/wiki/Butler_Lampson) describes the gold standard of security as authentication, authorization and audit. The symbol for gold is "Au" in the periodic table.
 
 ## Kernel Design
 One approach for creating a trusted computing base is to design a **security kernel** where you bring the security-relevant functions together and place them at the core of the system you are trying to build.
@@ -466,7 +466,7 @@ One basic check involves interacting with the developers of the system and ensur
 
 A more structured way to provide assurance is to extensively test the system. There are three main types of testing.
 
-One type of testing looks at functionality. We write tests to ensure that our functions execute and our software is not “buggy”.
+One type of testing looks at functionality. We write tests to ensure that our functions execute and our software is not "buggy".
 
 Another type of testing is **penetration testing**. In penetration testing, the tester approaches the software with the adversarial mindset and specifically tries to uncover vulnerabilities in the system.
 

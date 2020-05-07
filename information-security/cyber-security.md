@@ -74,7 +74,7 @@ NOTE: answers 1 and 3 are correct.
 ## Security Planning: Controls
 Security planning involves understanding which security controls make the most sense for a given organization’s assets and threat posture. Let’s take a look at a few of these controls.
 
-**Identity and Access Management** (IAM) is a popular security control. The “identity” part of IAM serves to identify a user who is requesting any type of resource present in the system. The “access management” component of IAM serves to perform access control on the resource, ensuring that a user has sufficient permission to access the resource they have requested.
+**Identity and Access Management** (IAM) is a popular security control. The "identity" part of IAM serves to identify a user who is requesting any type of resource present in the system. The "access management" component of IAM serves to perform access control on the resource, ensuring that a user has sufficient permission to access the resource they have requested.
 
 Credentialing is another security measure that concerns resource access. When a business provides a user with a credential, the credential serves as a proxy for the user’s identity, allowing them to access resources without explicitly identifying themselves each time.
 
@@ -180,7 +180,7 @@ Occasionally, a company may decide that both the probability and impact of an at
 ![](https://assets.omscs.io/A2F22984-714E-452C-8801-507291A5711A.png)
 
 ## Enterprise Cyber Security Posture Part 1
-The whole point of security planning and security management is to become better prepared when it comes to cybersecurity. **Cybersecurity posture** captures this level of preparation; roughly, it refers to how “good” an organization is at cybersecurity. A cybersecurity posture can either be reactive or proactive.
+The whole point of security planning and security management is to become better prepared when it comes to cybersecurity. **Cybersecurity posture** captures this level of preparation; roughly, it refers to how "good" an organization is at cybersecurity. A cybersecurity posture can either be reactive or proactive.
 
 ### Reactive
 Unfortunately, most postures are reactive. In other words, an organization worries about cybersecurity because of some external entity or event.
