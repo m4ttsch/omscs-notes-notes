@@ -1053,7 +1053,7 @@ Alice sends $\alpha^a \pmod q$ to Bob, which is equivalent to $5^6 \pmod{23} = 8
 ### Hash Size Quiz Solution
 ![](https://assets.omscs.io/EC0A4B95-7A5E-4C5B-87AD-6D39D17FA04C.png)
 
-Given a hash length `n`, an attacker needs to hash `2^(n / 2)` messages to find a collision. For `n = 128`, an attacker needs to compute `2^64` hashes.
+Given a hash length $n$, an attacker needs to hash $2^{n / 2}$ messages to find a collision. For $n = 128$, an attacker needs to compute $2^{64}$ hashes.
 
 ### Hash Function Quiz
 ![](https://assets.omscs.io/AD311597-0FE3-4399-B9A1-11A70E568C55.png)
