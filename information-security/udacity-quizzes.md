@@ -975,13 +975,14 @@ We XOR two numbers bit-by-bit, and we return 0 when the bits match and 1 otherwi
 ![](https://assets.omscs.io/5146C532-57F6-4F41-9D3E-2512206871DE.png)
 
 ## Public-Key Cryptography
+
 ### Additive Inverse Quiz
 ![](https://assets.omscs.io/90F567FE-9F15-4966-A205-678D05E4DF66.png)
 
 ### Additive Inverse Quiz Solution
 ![](https://assets.omscs.io/E00E3BB9-A148-4AFA-8A9E-DAFA95C4DC80.png)
 
-In modular addition, a number `k`  has an inverse `k'` such that `k + k' mod M = 0`. In this case, `M = 20` and `k = 8`. Therefore, `k' = 12` because `8 + 12 mod 20 = 0`.
+In modular addition, a number $k$  has an inverse $k'$ such that $k + k' \pmod M = 0$. In this case, $M = 20$ and $k = 8$. Therefore, $k' = 12$ because $8 + 12 \pmod{20} = 0$.
 
 ### Modular Multiplication Quiz
 ![](https://assets.omscs.io/89D8C09E-CF46-4E8F-8F14-B9F075C0302C.png)
@@ -989,7 +990,7 @@ In modular addition, a number `k`  has an inverse `k'` such that `k + k' mod M =
 ### Modular Multiplication Quiz Solution
 ![](https://assets.omscs.io/252A1D26-CED8-446B-B012-40592D172D03.png)
 
-In modular multiplication, a number `k`  has an inverse `k'` such that `k * k' mod M = 1`. In this case, `M = 17` and `k = 3`. Therefore, `k' = 6` because `3 * 6 mod 17 =  18 mod 17 = 1`.
+In modular multiplication, a number $k$  has an inverse $k'$ such that $k * k' \pmod M = 1$. In this case, $M = 17$ and $k = 3$. Therefore, $k' = 6$ because $3 * 6 \pmod{17} =  18 \pmod{17} = 1$.
 
 ### Totient Quiz
 ![](https://assets.omscs.io/E9CACF9B-A69C-4D35-8FF1-1B8D1AC252ED.png)
@@ -997,7 +998,7 @@ In modular multiplication, a number `k`  has an inverse `k'` such that `k * k' m
 ### Totient Quiz Solution
 ![](https://assets.omscs.io/4A80521F-0882-4BAC-A178-7A72A29A1531.png)
 
-If `n = p * q` and `p` and `q` are prime, then `T(n) = (p - 1) * (q - 1)`. For `n = 21`, `p = 3` and `q = 7`, `T(n) = (3 - 1) * (7 - 1) = 2 * 6 = 12`.
+If $n = p * q$ and $p$ and $q$ are prime, then $\phi(n) = (p - 1) * (q - 1)$. For $n = 21$, $p = 3$ and $q = 7$, $\phi(n) = (3 - 1) * (7 - 1) = 2 * 6 = 12$.
 
 ### Modular Exponentiation Quiz
 ![](https://assets.omscs.io/DBABA778-3D5F-46BA-BF46-4AA6CBF87024.png)
@@ -1005,7 +1006,7 @@ If `n = p * q` and `p` and `q` are prime, then `T(n) = (p - 1) * (q - 1)`. For `
 ### Modular Exponentiation Quiz Solution
 ![](https://assets.omscs.io/7396A649-2E25-4636-9B04-532FA86DC8C6.png)
 
-We know that `x^y mod n = x^(y mod T(n)) mod n`. For `x = 7`, `y = 27` and `n = 30`, `7^27 mod 30 = 7^(27 mod T(30)) mod 30`. We can calculate `T(30)` as follows:  `T(30) = T(3) * T(10) = T(3) * T(2) * T(5) = 2 * 1 * 4 = 8`. Thus, `7^27 mod 30 = 7^(27 mod 8) mod 30`. If we divide 27 by 8, we are left with a remainder of 3, so `7^27 mod 30 = 7^3 mod 30`. `7^3 = 343`, which yields a remainder of 13 when divided by 30.
+We know that $x^y \pmod n = x^{y \pmod{\phi(n)}} \pmod n$. For $x = 7$, $y = 27$ and $n = 30$, $7^{27} \pmod{30} = 7^{27 \pmod{\phi(30)}} \pmod{30}$. We can calculate $\phi(30)$ as follows:  $\phi(30) = \phi(3) * \phi(10) = \phi(3) * \phi(2) * \phi(5) = 2 * 1 * 4 = 8$. Thus, $7^{27} \pmod{30} = 7^{27 \pmod 8} \pmod{30}$. If we divide 27 by 8, we are left with a remainder of 3, so $7^{27} \pmod{30} = 7^3 \pmod{30}$. $7^3 = 343$, which yields a remainder of 13 when divided by 30.
 
 ### RSA Quiz
 ![](https://assets.omscs.io/0BDF0664-4A30-41C8-9EFC-CA0FEC5B9BAF.png)
@@ -1013,7 +1014,7 @@ We know that `x^y mod n = x^(y mod T(n)) mod n`. For `x = 7`, `y = 27` and `n = 
 ### RSA Quiz Solution
 ![](https://assets.omscs.io/9B9F10D9-B82B-4F16-8A44-B25CCADF7491.png)
 
-`n = p * q`, so `n = 11 * 3 = 33`. The totient of `n`, `t`, is equal to `(p - 1) * (q - 1)`. Therefore, `t = 2 * 10 = 20`. `e` and `d` must be multiplicative inverses `mod t`, so for `e = 7`, `d = 3`, since `21 mod 20 = 1`. Finally, public key `{e, n}` is equal to `{7, 33}`, and private key, `{d, n}` is equal to `{3, 33}`.
+$n = p * q = 11 * 3 = 33$ and $\phi(n) = (p - 1) * (q - 1) = 2 * 10 = 20$. $e$ and $d$ must be multiplicative inverses $\pmod{\phi(n)}$, so for $e = 7$, $d = 3$, since $21 \pmod{20} = 1$. Finally, public key ${e, n}$ is equal to ${7, 33}$, and private key, ${d, n}$ is equal to ${3, 33}$.
 
 ### RSA Encryption Quiz
 ![](https://assets.omscs.io/FC5100D0-A94A-46DB-8DAB-F12DF35B30E1.png)
@@ -1021,7 +1022,7 @@ We know that `x^y mod n = x^(y mod T(n)) mod n`. For `x = 7`, `y = 27` and `n = 
 ### RSA Encryption Quiz Solution
 ![](https://assets.omscs.io/A38846E8-2C2B-4683-B7FF-6D847E9F23CE.png)
 
-Encrypting message `m` involves computing  `m^e mod n`, which is equivalent to `2^7 mod 33 = 128 mod 33 = 29`.  Decrypting ciphertext `C` involves computing `C^d mod n`, which is equivalent to `29^3 mod 33 = 24389 mod 33 = 3`
+Encrypting message $m$ involves computing  $m^e \pmod n$, which is equivalent to $2^7 \pmod{33} = 128 \pmod{33} = 29$.  Decrypting ciphertext $C$ involves computing $C^d \pmod n$, which is equivalent to $29^3 \pmod{33} = 24389 \pmod{33} = 3$.
 
 ### RSA in Practice Quiz
 ![](https://assets.omscs.io/63B9D9AB-3440-4F75-8417-FAF749B460D8.png)
@@ -1037,7 +1038,7 @@ Always use standard libraries, as they have been reviewed and tested by experts 
 ### Diffie-Hellman Quiz Solution
 ![](https://assets.omscs.io/AA61E589-45F8-4F17-87B5-0FCE0DD5A99D.png)
 
-Alice sends `α^a mod q` to Bob, which is equivalent to `5^6 mod 23 = 8`. Bob sends `α^b mod q` to Alice, which is equivalent to `5^15 mod 23 = 19`.
+Alice sends $\alpha^a \pmod q$ to Bob, which is equivalent to $5^6 \pmod{23} = 8$. Bob sends $\alpha^b \pmod q$ to Alice, which is equivalent to $5^{15} \pmod{23} = 19$.
 
 ### RSA, Diffie-Hellman Quiz
 ![](https://assets.omscs.io/0DE9D182-0375-4A0C-BE6C-B6ECF5D66E4A.png)
