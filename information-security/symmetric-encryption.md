@@ -13,11 +13,11 @@ Most symmetric encryption schemes are block ciphers. A **block cipher** encrypts
 ![](https://assets.omscs.io/47BCD6ED-91B1-47D2-BF37-313E1F60D22B.png)
 
 ## Block Cipher Primitives
-The goal of encryption is to transform plaintext into an unintelligible form. Since we assume that an attacker can obtain the ciphertext, we don’t want the ciphertext to convey any information about the key or the plaintext.
+The goal of encryption is to transform plaintext into an unintelligible form. Since we assume that an attacker can obtain the ciphertext, we don't want the ciphertext to convey any information about the key or the plaintext.
 
 **Confusion** obscures the relationship between the key and the ciphertext and is typically achieved with *substitution*. Through confusion, the attacker cannot determine the key, even if they obtain the ciphertext.
 
-Confusion alone is not sufficient. Even when a letter can be mapped to any other letter, an attacker can perform a statistical analysis of letter frequencies to break the scheme. For example, the most common letter in English is ‘E’. If the most common letter in the ciphertext is ‘Q’, we can be confident that ‘E’ maps to ‘Q’.
+Confusion alone is not sufficient. Even when a letter can be mapped to any other letter, an attacker can perform a statistical analysis of letter frequencies to break the scheme. For example, the most common letter in English is 'E'. If the most common letter in the ciphertext is 'Q', we can be confident that 'E' maps to 'Q'.
 
 The second principle that we need is diffusion. **Diffusion** spreads the influence of one plaintext bit over many ciphertext bits to hide the statistical properties of the plaintext. We can achieve diffusion with *permutation*.
 
@@ -86,7 +86,7 @@ An **S-box** substitutes a 6-bit value with a 4-bit value using a predefined loo
 ![](https://assets.omscs.io/0C60D9C2-1E8B-45D3-8410-8C63C9F1FDE8.png)
 
 ## Security of DES
-The key size in DES is 56 bits, so there are only `2^56` possible keys. This keyspace is too small, and an attacker can use brute-force to find the correct key relatively easily using today’s computers.
+The key size in DES is 56 bits, so there are only `2^56` possible keys. This keyspace is too small, and an attacker can use brute-force to find the correct key relatively easily using today's computers.
 
 Another issue with DES is that the design criteria for the S-boxes have been kept secret. On the one hand, the S-boxes are resistant to attacks that were published years after DES was published, which indicates the security of the design. On the other hand, because the design criteria have been kept secret, one might wonder if the designer of DES knew about these attacks years before they were published.
 
@@ -127,7 +127,7 @@ In AES, the decryption process runs the encryption process in the reverse direct
 Adding the per-round key involves the XOR operation, which by itself is reversible. The decryption process uses an inverse function to reverse the other operations: `SubBytes`, `ShiftRows`, and `MixColumns`. Since each operation is reversible, the entire process is reversible, and we can recover the plaintext from the ciphertext.
 
 ## AES Round
-Let’s take a closer look at each round of AES and the transformations the algorithm performs on the state matrix `S`. Each operation updates the value of `S` directly.
+Let's take a closer look at each round of AES and the transformations the algorithm performs on the state matrix `S`. Each operation updates the value of `S` directly.
 
 ![](https://assets.omscs.io/97074222-8C31-4E0D-A0CF-52ED8BB349B2.png)
 
@@ -159,7 +159,7 @@ Cryptanalysts can exploit this consistency. For example, if an analyst knows tha
 
 Cryptanalysts can also leverage repetitive elements in a message. Whenever they see two identical ciphertext blocks, they know that the corresponding plaintext blocks are the same.
 
-If they obtain a plaintext block for a ciphertext block, they can be sure that if they see the same ciphertext block again - assuming the key hasn’t changed - that it decrypts to the plaintext block in their possession.
+If they obtain a plaintext block for a ciphertext block, they can be sure that if they see the same ciphertext block again - assuming the key hasn't changed - that it decrypts to the plaintext block in their possession.
 
 ## ECB Problem #2
 Another problem with ECB is that the plaintext blocks are independently encrypted. An attacker can potentially rearrange inflight ciphertext blocks or substitute in a previously captured block for one currently being transmitted. Either way, an attacker can compromise message integrity as a result of the independent encryption scheme used by ECB.
@@ -186,7 +186,7 @@ While we usually discuss encryption as a method for providing confidentiality, w
 
 One approach for providing message integrity is to send the last block of CBC - the CBC *residue* - along with the plaintext. If an attacker intercepts the message and modifies the plaintext, they cannot recompute the CBC residue since they do not have the encryption key. Thus, they are forced to send the modified plaintext with the original residue.
 
-When the authorized recipient receives the message, they will run the message through CBC to produce the residue. Since the plaintext has changed inflight, but the residue has not, the recipient’s computed residue will not match the received residue. Therefore, the receiver will know that an unauthorized party has modified the plaintext.
+When the authorized recipient receives the message, they will run the message through CBC to produce the residue. Since the plaintext has changed inflight, but the residue has not, the recipient's computed residue will not match the received residue. Therefore, the receiver will know that an unauthorized party has modified the plaintext.
 
 ## Protecting Message Confidentiality and Integrity
 To protect both message confidentiality and integrity, we should use two separate keys and two encryption rounds: one key produces the ciphertext, and the other key produces the CBC residue. Alternatively, we can first compute a hash of the message, append the hash to the message, and then encrypt the entire entity.

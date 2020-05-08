@@ -14,11 +14,11 @@ While the human-readable name is much easier for us to read and interpret, the I
 
 ### DNS Query Walkthrough
 
-A client might want to lookup a domain name, like www.gatech.edu. A networked application’s source code may invoke this lookup with the `gethostbyname` function.
+A client might want to lookup a domain name, like www.gatech.edu. A networked application's source code may invoke this lookup with the `gethostbyname` function.
 
 The client typically has a *stub resolver*. This resolver takes the domain name and issues a query to a *local DNS resolver*. The local DNS resolver is typically configured automatically when a host is assigned an IP address, through a protocol called the **Domain Host Configuration Protocol** ([DHCP](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol)) .
 
-The client query is typically sent *recursively*. This means that the client doesn’t want to receive intermediate referrals from DNS servers trying to resolve the query. The client only cares about the final answer.
+The client query is typically sent *recursively*. This means that the client doesn't want to receive intermediate referrals from DNS servers trying to resolve the query. The client only cares about the final answer.
 
 The local resolver, on the other hand, will perform iterative queries.
 
@@ -53,7 +53,7 @@ The mapping for a local name - like www.gatech.edu - might change more frequentl
 ## Record Types
 **A records** map names to IP addresses.
 
-**NS records**, or name server records, map domain names to the authoritative name server for that domain. This can be helpful when a particular DNS server doesn’t know the answer to a query, but can refer the caller to the authoritative server for that space of the domain system.
+**NS records**, or name server records, map domain names to the authoritative name server for that domain. This can be helpful when a particular DNS server doesn't know the answer to a query, but can refer the caller to the authoritative server for that space of the domain system.
 
 **MX records** show the mail server for a domain.
 

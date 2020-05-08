@@ -81,7 +81,7 @@ Identifying the entity making the request is known as **authentication**. Authen
 
 Once we authenticate the requesting entity, we employ **authorization** to grant or deny access to the requested resource.
 
-Note that the operating system doesn’t autonomously decide who accesses a given resource or not. System administrators must define **policies** that describe who can access what, and under which circumstances.
+Note that the operating system doesn't autonomously decide who accesses a given resource or not. System administrators must define **policies** that describe who can access what, and under which circumstances.
 
 The operating system implements a policy by performing access checks and either granting or denying access in accordance with the policy.
 
@@ -120,7 +120,7 @@ The CPU executes in different **execution modes** (also known as **execution rin
 
 Many architectures support more than two (user and system) execution rings.
 
-Thanks to these rings, the processor is aware of which kind of code it is executing - be it untrusted user code or trusted system code -  and knows that it shouldn’t access code or data belonging to a higher privilege level.
+Thanks to these rings, the processor is aware of which kind of code it is executing - be it untrusted user code or trusted system code -  and knows that it shouldn't access code or data belonging to a higher privilege level.
 
 Certain privileged hardware instructions can only be executed when the processor is executing in ring 0. These instructions are usually ones that provide direct access to the hardware: manipulating memory, interacting with devices, and so forth.
 
@@ -131,7 +131,7 @@ These calls cannot be arbitrary. The operating system exposes an API which enume
 
 These calls must enter the operating system in a controlled fashion. They come through **call gates**, which are accompanied by a processor privilege ring change on system entry and exit.
 
-Crossing this boundary means that the operating system will have to change some data structures that keep track of memory mappings, because we will be able to access memory now that we couldn’t access before. In addition, certain registers will have to be saved, while others have to be loaded.
+Crossing this boundary means that the operating system will have to change some data structures that keep track of memory mappings, because we will be able to access memory now that we couldn't access before. In addition, certain registers will have to be saved, while others have to be loaded.
 
 This used to happen via a hardware interrupt/[trap](https://en.wikipedia.org/wiki/Trap_(computing)) into the system from user mode, but in [x86 architectures](https://www.computerhope.com/jargon/x/x86.htm), we have explicit instructions to cross the system boundary: `sysenter` to enter the operating system during the system call and `sysexit` to return from the system call.
 
@@ -153,7 +153,7 @@ This hardware protection also applies to processes trying to access memory belon
 ![](https://assets.omscs.io/2CF867D1-BB5E-4D7F-A303-4A6F0A5CC1AD.png)
 
 ## Address Space
-From a process’s point of view, it has the entire computer to itself. It isn’t aware that it shares physical memory with other processes.
+From a process's point of view, it has the entire computer to itself. It isn't aware that it shares physical memory with other processes.
 
 This is made possible by the **address space** abstraction that the operating system creates for a process upon creating the process itself.
 
@@ -166,9 +166,9 @@ The memory that a process views may be larger than the actual physical memory pr
 The address space usually contains `2^32`  addresses (for a 32-bit architecture) or `2^64` addresses (for a 64-bit architecture).
 
 ## Unit of Isolation
-Physical addresses point to locations in physical memory, but addresses in an address space don’t directly reference physical locations. Instead, these **logical addresses** must be translated into physical addresses by the operating system.
+Physical addresses point to locations in physical memory, but addresses in an address space don't directly reference physical locations. Instead, these **logical addresses** must be translated into physical addresses by the operating system.
 
-For example, the operating system might maintain a map that connects logical address 2000 in process A’s address space to to physical address 5000.
+For example, the operating system might maintain a map that connects logical address 2000 in process A's address space to to physical address 5000.
 
 When process A is running, its address space maps to certain physical addresses in memory. When process B is running, its address space maps to different physical address in memory.
 
@@ -177,7 +177,7 @@ Even though the physical addresses corresponding to the address spaces of two pr
 ## Address Translation
 The reason that translation has to happen is that the address space that the process is provided is just an abstraction of the physical memory layout underneath.
 
-For example, the process thinks it has access to a chunk of contiguous memory - which it doesn’t - and in some cases the process may think that it has access to more memory than is currently physically available.
+For example, the process thinks it has access to a chunk of contiguous memory - which it doesn't - and in some cases the process may think that it has access to more memory than is currently physically available.
 
 Naturally, the operating system needs to maintain a system to map between the abstraction and the reality.
 
@@ -211,7 +211,7 @@ What this means is that it is impossible for process A to access physical memory
 ## Process Protection through Memory Management
 Protecting processes from each other and protecting the operating system from untrusted process code follow the same mechanism.
 
-Page table lookups prevent a process from accessing any physical pages that belong to the operating system, since the operating system has not explicitly mapped those locations into the process’s address space.
+Page table lookups prevent a process from accessing any physical pages that belong to the operating system, since the operating system has not explicitly mapped those locations into the process's address space.
 
 This translation process is so important that we typically have a piece of hardware called a **memory management unit** (MMU), that helps the OS perform this translation efficiently, using memory caches such as [translation look-aside buffers](https://en.wikipedia.org/wiki/Translation_lookaside_buffer).
 
@@ -232,14 +232,14 @@ One of the strategies that we have talked about for protecting against a stack b
 
 While a malicious user might still be able to inject malicious instructions onto the stack, those instructions will not actually be executed.
 
-The operating system can achieve this by not writing an executable bit for any page table entry associated with the virtual addresses within the process’s stack.
+The operating system can achieve this by not writing an executable bit for any page table entry associated with the virtual addresses within the process's stack.
 
 Windows, OS X and Linux all make the stack non-executable.
 
 ## OS Isolation from Application Code Part 1
 Protecting processes from each other and protecting the operating system from untrusted process code follow the same mechanism.
 
-The operating system (kernel) resides in a portion of each process’s address space.
+The operating system (kernel) resides in a portion of each process's address space.
 
 The address space in which a process executes now has two sections: the user code/data and the kernel code/data. This partitioning exists for every process that we have in the system.
 
@@ -252,11 +252,11 @@ For 32-bit Linux systems, the address space is 4GB. Of that 4GB, the lower 3GB i
 
 Access to different portions of address space (user vs kernel) are governed the current privilege ring in which a process is currently executing.
 
-In x86 systems, a process must be in ring 0 to access kernel code. If it is operating in user mode (ring 3), it can’t access the kernel portion of the address space.
+In x86 systems, a process must be in ring 0 to access kernel code. If it is operating in user mode (ring 3), it can't access the kernel portion of the address space.
 
-The 1GB points to the same kernel code in each process (i.e. we aren’t copying code for each process that is created), but the 3GB section is unique for each process.
+The 1GB points to the same kernel code in each process (i.e. we aren't copying code for each process that is created), but the 3GB section is unique for each process.
 
-While modern operating systems create this fence between untrusted code and trusted code, older operating systems didn’t do this.
+While modern operating systems create this fence between untrusted code and trusted code, older operating systems didn't do this.
 
 For example, MS-DOS does not have this separation. This means that any process could alter operating system code. Clearly, this is a vulnerability of this early OS.
 
@@ -285,14 +285,14 @@ We just saw an example of this with address spaces. A process can only access me
 ## Complete Mediation: The User Code
 Protected resources are implemented by the operating system, and the data structures that are utilized to access those resources - page tables, for example - live in the kernel portion of the address space.
 
-While a process is executing user code, it can’t access that portion of your address space. The process will need to switch to the system mode through a system call, and this transfer of control will be mediated by the operating system itself.
+While a process is executing user code, it can't access that portion of your address space. The process will need to switch to the system mode through a system call, and this transfer of control will be mediated by the operating system itself.
 
 In addition, user code cannot access physical resources directly because interacting with those resources often requires access to privileged instructions that can only be executed in system mode.
 
 ## Complete Mediation: OS
 At user level, a process has access to virtual resources and the operating system exposes APIs for how those virtualized resources can be used.
 
-For example, a process doesn’t access a disk block directly. Instead, the operating system performs the disk I/O, and abstracts the disk controller operations into the *file* interface, which a process can use to read from and write to files.
+For example, a process doesn't access a disk block directly. Instead, the operating system performs the disk I/O, and abstracts the disk controller operations into the *file* interface, which a process can use to read from and write to files.
 
 Since virtual resources are just abstractions of physical resources, there must be a translation process whereby the virtual reference resolves into a physical reference.
 
@@ -301,7 +301,7 @@ If you want to access a disk block or a page of memory for example, you have to 
 This level of indirection added by the operating system makes it impossible for a process to directly reference physical resources and allows the OS achieve complete mediation.
 
 ## Virtualization
-We don’t have to stop at virtualizing individual physical resources. The concept of translating virtual resources into physical resources can apply to the computer system as a whole, giving rise to [virtual machines](https://en.wikipedia.org/wiki/Virtual_machine).
+We don't have to stop at virtualizing individual physical resources. The concept of translating virtual resources into physical resources can apply to the computer system as a whole, giving rise to [virtual machines](https://en.wikipedia.org/wiki/Virtual_machine).
 
 Virtual machines provide functionality needed to execute entire operating systems, and an intermediary known as a hypervisor manages the hardware on behalf of one (or more!) operating systems running on top of it.
 
@@ -328,7 +328,7 @@ In this case, the TCB is now the hypervisor, which manages the hardware resource
 ## Correctness: The Final TCB Requirement
 Correctness is important because compromise of the OS means that an attacker has access to all the physical resources: every memory page, every block on disc, etc.
 
-Meeting the correctness requirement for operating systems is really hard. Operating systems are very complex, and we’ve already discussed how added complexity can make security much more difficult.
+Meeting the correctness requirement for operating systems is really hard. Operating systems are very complex, and we've already discussed how added complexity can make security much more difficult.
 
 Virtualization can help with correctness by reducing complexity. The hypervisor can be much smaller and simpler than the operating system since all it has to do is partition physical resources among virtual machines.
 
@@ -338,7 +338,7 @@ Virtualization can help with correctness by reducing complexity. The hypervisor 
 ## TCB Requirements Quiz Solution
 ![](https://assets.omscs.io/449C3685-5396-4F92-A070-F09425449193.png)
 
-In this case, we have tampered with the TCB by turning off the check. The access still proceeds through the operating system, and is still technically correct (i.e. the access wasn’t permitted because of a bug).
+In this case, we have tampered with the TCB by turning off the check. The access still proceeds through the operating system, and is still technically correct (i.e. the access wasn't permitted because of a bug).
 
 ## Size of Security Code
 ![](https://assets.omscs.io/D40FCB93-786B-464E-B73E-ED5EAE001FE2.png)

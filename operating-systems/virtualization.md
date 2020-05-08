@@ -30,7 +30,7 @@ Virtualization is supported by the virtual machine monitor (VMM). The VMM has th
 
 First, the VMM must provide an environment that is essentially identical to the original machine. The capacity may differ, but the overall setup (type of CPU, types of devices) should be the same. The VMM must provide some **fidelity** that the representation of the hardware that is visible to the VM matches the hardware that is available on the physical platform.
 
-Second, programs that run in VMs must show at worst only minor decreases in speed. Clearly, the VMs are only given a portion of the resources available to the host machine. However, the goal of the VMM is to ensure that the VM would perform at the same speed as a native application if it were given all of the host’s resources. The VMM must provide **performance** to the VMs that is as close to native performance as possible.
+Second, programs that run in VMs must show at worst only minor decreases in speed. Clearly, the VMs are only given a portion of the resources available to the host machine. However, the goal of the VMM is to ensure that the VM would perform at the same speed as a native application if it were given all of the host's resources. The VMM must provide **performance** to the VMs that is as close to native performance as possible.
 
 Finally, the VMM is in complete control of the system resources. The VMM controls who access which resources and when, and it can be relied upon to provide **safety and isolation** among the VMs.
 
@@ -116,18 +116,18 @@ The hypervisor intervention must be invisible to the guest OS.
 ## x86 Virtualization in the Past
 Before 2005, x86 platforms had only the four privilege rings, without the root/non-root distinction. The basic strategy for virtualization software was to run the hypervisor in ring 0, and the guest operating system in ring 1.
 
-However, there were exactly 17 hardware instructions that were privileged (required ring 0), but didn’t cause a trap. Issuing them from another protection level wouldn’t pass control to the hypervisor, but would just fail silently.
+However, there were exactly 17 hardware instructions that were privileged (required ring 0), but didn't cause a trap. Issuing them from another protection level wouldn't pass control to the hypervisor, but would just fail silently.
 
 For example, enabling/disabling interrupts requires manipulating a bit in a privileged register, which can be done with the POPF/PUSHF instructions. When these instructions were issued, they just failed silently.
 
-Since control isn’t passed to the hypervisor, the hypervisor has no idea that the OS wanted to change the interrupt status, so it cannot emulate that behavior.
+Since control isn't passed to the hypervisor, the hypervisor has no idea that the OS wanted to change the interrupt status, so it cannot emulate that behavior.
 
-At the same time, since the failure was silent, the OS doesn’t know about it and assumes the change was successful. As a result, it continues with its execution.
+At the same time, since the failure was silent, the OS doesn't know about it and assumes the change was successful. As a result, it continues with its execution.
 
 ## Binary Translation
 One way to solve the issue of the 17 hardware instructions was to write the VM binary to never issue those 17 instructions. This process is called **binary translation**.
 
-The goal pursued by binary translation is to run unmodified guest operating systems. We shouldn’t need to install additional software or policies to alter the guest OS in order to run in a virtualized environment. When the guest OS is not modified, this type of virtualization is called **full virtualization**.
+The goal pursued by binary translation is to run unmodified guest operating systems. We shouldn't need to install additional software or policies to alter the guest OS in order to run in a virtualized environment. When the guest OS is not modified, this type of virtualization is called **full virtualization**.
 
 To avoid these bad hardware instructions, some interception and translation must take place at the virtualization layer. Instruction sequences - typically at a function-level granularity - that are about to be executed are captured from the VM binary. This needs to be done at runtime, dynamically, because the execution of the instruction sequences may depend on code passed in at runtime.
 
@@ -178,7 +178,7 @@ Since an OS knows that it is in a virtualized environment in paravirtualization,
 
 The guest OS can explicitly register its page tables with the hypervisor, so there is no need for two page tables.
 
-The guest still doesn’t have write permissions to this page table - which is now used directly by the hardware - as this would allow as guest to potentially corrupt another guest by overwriting its memory.
+The guest still doesn't have write permissions to this page table - which is now used directly by the hardware - as this would allow as guest to potentially corrupt another guest by overwriting its memory.
 
 Because of this, every write to the page table will cause a trap to the hypervisor. However, since the guest is paravirtualized, we can modify the guest to batch page table updates into a single hypercall, amortizing the cost of the VM exit across multiple updates.
 
@@ -187,7 +187,7 @@ Many of the overheads associated with memory virtualization in both full and par
 ## Device Virtualization
 When we talk about CPU/Memory virtualization, certain things are relatively less complicated because there is a significant level of standardization at the **instruction set architecture** (ISA) level across different platforms.
 
-From a virtualization standpoint, we know that we have to support a specific ISA and we don’t care if there are lower level differences between the hardware because it is up to the hardware manufacturers to be standardized at the ISA level.
+From a virtualization standpoint, we know that we have to support a specific ISA and we don't care if there are lower level differences between the hardware because it is up to the hardware manufacturers to be standardized at the ISA level.
 
 This is the case for a specific ISA like x86.
 
@@ -230,7 +230,7 @@ In the **split device driver model**, all of the devices accesses are controlled
 
 The **front-end driver** resides in the guest VM and the actual driver for the physical device - the **back-end driver** - resides in the service VM (or the host in type 2 virtualization).
 
-Although the back-end driver doesn’t necessarily have to be modified, as it is the same driver that the OS would use as if it were running natively, the front-end driver does need to be modified.
+Although the back-end driver doesn't necessarily have to be modified, as it is the same driver that the OS would use as if it were running natively, the front-end driver does need to be modified.
 
 The front-end driver needs to take the device operations that are made by the applications in the guest, and then wrap them in a standard format to be delivered to the back-end component. Because of this modification, this model can only really be used in paravirtualized guests.
 

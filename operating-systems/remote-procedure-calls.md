@@ -8,7 +8,7 @@ lecture: remote-procedure-calls
 # Remote Procedure Calls
 
 ## Why RPC?
-Let’s look at two applications. In the first application, the client gets a file from the server. In the second application, the client sends an image to the server for some processing/modification.
+Let's look at two applications. In the first application, the client gets a file from the server. In the second application, the client sends an image to the server for some processing/modification.
 
 ![](https://assets.omscs.io/3F721352-2899-4EBA-A6B0-6EADB5E2581E.png)
 
@@ -39,7 +39,7 @@ One way to deal with the conversion is for the RPC runtime, and both endpoints t
 Finally, RPC is meant to be more than a transport-level protocol. RPC should support different types of protocols - whether UDP, TCP or others - to communicate. RPC should also incorporate some higher level mechanisms like access control, authentication, and fault tolerance.
 
 ## Structure of RPC
-The client wants to perform some addition but doesn’t know how. The server is the calculator. In this scenario, the client needs to send the operation it wants to perform as well the data needed to perform that operation over to the server. The server contains the implementation of that operation, and will perform it on behalf of the client.
+The client wants to perform some addition but doesn't know how. The server is the calculator. In this scenario, the client needs to send the operation it wants to perform as well the data needed to perform that operation over to the server. The server contains the implementation of that operation, and will perform it on behalf of the client.
 
 We can use RPC to abstract away all of the low-level communication/transport details.
 
@@ -47,13 +47,13 @@ We can use RPC to abstract away all of the low-level communication/transport det
 
 ### Client
 
-With RPC, the client is still allowed to call the function `add` with `i` and `j`, even those the client doesn’t hold the implementation of the `add` function.
+With RPC, the client is still allowed to call the function `add` with `i` and `j`, even those the client doesn't hold the implementation of the `add` function.
 
-In a regular program, when a procedure is called, the execution jumps to some other point in the address space where the implementation of that procedure is actually stored. In this example, when the client calls `add`, the execution will also jump to another location in the address space, but it won’t be where the implementation of `add` lives. Instead, it will be in a **stub** implementation. To the rest of the process, this stub will look like the real `add`.
+In a regular program, when a procedure is called, the execution jumps to some other point in the address space where the implementation of that procedure is actually stored. In this example, when the client calls `add`, the execution will also jump to another location in the address space, but it won't be where the implementation of `add` lives. Instead, it will be in a **stub** implementation. To the rest of the process, this stub will look like the real `add`.
 
 The responsibility of the client stub is to create a buffer and populate that buffer with all of the appropriate information - the function name (`add`) and the arguments  `i` and `j` in this case. After the buffer is created, the RPC runtime sends the buffer to the server process. This may be via TCP/IP sockets or some other transport-level protocol.
 
-The stub code itself is automatically generated via some tools that are part of the RPC package; that is, the programmer doesn’t have to write the stub code.
+The stub code itself is automatically generated via some tools that are part of the RPC package; that is, the programmer doesn't have to write the stub code.
 
 ### Server
 
@@ -66,7 +66,7 @@ The server will then create a buffer for the result and send it back to the clie
 Finally, the client function will return. The result of the call will be available, and client execution will proceed.
 
 ## Steps in RPC
-Let’s summarize the steps that have to take place in an RPC interaction between a client and a server.
+Let's summarize the steps that have to take place in an RPC interaction between a client and a server.
 
 ![](https://assets.omscs.io/8E8660BC-CC54-4A5B-8768-7BDF0796BA89.png)
 
@@ -89,7 +89,7 @@ The server will compute the result of the operation, which will be passed to the
 Note that before the client can bind to the server, the server must do something to let the world know it can be found. The server must execute a registration step to let the world know what procedures it supports, what arguments it requires, and what location it can communicated with at.
 
 ## Interface Design Language
-When using RPC, the client and the server don’t need to be developed together. The can be written by different developers in different programming languages.
+When using RPC, the client and the server don't need to be developed together. The can be written by different developers in different programming languages.
 
 For this to work, however, there must be some type of agreement so that the server can explicitly say what procedures it supports and what arguments it requires.
 
@@ -106,14 +106,14 @@ Another important piece of information to include is a version number. If there 
 
 An RPC system can use an IDL that is language-agnostic. **SunRPC** uses an IDL called **eXternal Data Representation** (XDR). XDR is a different specification from any programming language.  An RPC system can also use an IDL that is language-specific. For example, the Java RMI uses Java.
 
-For programmers that know the language, a language-specific IDL is great. For programmers that don’t know that language, learning a language-agnostic IDL is simpler than learning a whole new programming language.
+For programmers that know the language, a language-specific IDL is great. For programmers that don't know that language, learning a language-agnostic IDL is simpler than learning a whole new programming language.
 
 Whatever the choice of IDL, the IDL is used solely to define the interface. The IDL is used to help the RPC system generate stubs and to generate information that is used in the service discovery process.
 
 The IDL is not used for the implementation of the service.
 
 ## Marshaling
-To understand marshaling, let’s look at the `add` example again, with arguments `i` and `j`.  Initially, `i` and `j` live somewhere in the client address space. When the client calls the add function, it passes in `i` and `j` as discrete entities.
+To understand marshaling, let's look at the `add` example again, with arguments `i` and `j`.  Initially, `i` and `j` live somewhere in the client address space. When the client calls the add function, it passes in `i` and `j` as discrete entities.
 
 At the lowest level, a socket will need to send a contiguous buffer of information over to the server. This buffer will need to hold a descriptor for the procedure (`add`) to be called on the server, as well as the necessary arguments, `i` and `j`.
 
@@ -252,7 +252,7 @@ By default, `rpcgen` generates code that is not thread safe. To generate thread 
 rpc_gen -C -M <interface>.x
 ```
 
-The `-M` flag doesn’t actually give a multithreaded server, rather it ensures that the code produces will be thread safe.
+The `-M` flag doesn't actually give a multithreaded server, rather it ensures that the code produces will be thread safe.
 
 To actual generate a multithreaded server, you can pass the `-A` flag on Solaris. In Linux, a multithreaded server needs to be implemented manually.
 
@@ -291,7 +291,7 @@ CLIENT* clnt_handle;
 clnt_handle = clnt_create(rpc_host_name, SQUARE_PROG, SQUARE_VERS, "tcp");
 ```
 
-`SQUARE_PROG` and `SQUARE_VERS` are autogenerated from the compilation of the XDR file and will be included in header file as `#define`’d values.
+`SQUARE_PROG` and `SQUARE_VERS` are autogenerated from the compilation of the XDR file and will be included in header file as `#define`'d values.
 
 The return from this function is the client handle that will be used in every subsequent RPC call. This handle can also be used to track the status of the current request, as well as handle any error messages or authentication related information.
 
@@ -304,7 +304,7 @@ Some of the default XDR data types include:
 - int
 - float
 
-XDR also support a `const` datatype which will get compiled into a `#define`’d value in C.
+XDR also support a `const` datatype which will get compiled into a `#define`'d value in C.
 
 `hyper` values correspond to 64-bit integers and `quadruples` refer to 128-bit floats.
 
@@ -342,7 +342,7 @@ All data types are encoded in multiples of four bytes. Encoding a single byte ar
 Big endian is used as the transmission standard. Regardless of the endianness of the client or the server, every communication will require that the data be converted to the big endian representation prior to transmission.
 
 Other encoding rules include:
-- two’s complement representation of integers
+- two's complement representation of integers
 - IEEE format for floating point numbers
 
 ![](https://assets.omscs.io/FF850174-AB55-4111-82DD-59CE3A9C98A7.png)

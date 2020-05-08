@@ -75,7 +75,7 @@ The big benefit of this approach is that once the physical memory is mapped into
 
 Data copies are reduced, but not necessarily avoided. For data to be available to both process, it needs to explicitly be allocated from the virtual addresses the belong to the shared memory region. If that is not the case, the data within the same address space needs to be copied in and out of the shared memory region.
 
-Since the shared memory area can be concurrently accessed by both processes, this means that processes must explicitly synchronize their shared memory operations. In addition, it is now the developer’s responsibility to handle any protocol-related implementations, which adds to the complexity of the application.
+Since the shared memory area can be concurrently accessed by both processes, this means that processes must explicitly synchronize their shared memory operations. In addition, it is now the developer's responsibility to handle any protocol-related implementations, which adds to the complexity of the application.
 
 Unix-based system support two popular shared memory APIs: SysV and POSIX. In addition, shared memory IPC can be established between processes by using a memory-mapped file.
 
@@ -91,7 +91,7 @@ The memory-mapping operation is costly, but it is a one time cost, and can pay o
 Windows systems leverage this difference. If the data that needs to be transferred is smaller than a certain threshold, the data is copied in and out of a communication channel via a port-like interface. Otherwise the data is mapped into the address space of the target process. This mechanism is called **Local Procedure Calls** (LPC).
 
 ## SysV Shared Memory
-The operating systems supports **segments** of shared memory, which don’t need to correspond to contiguous physical pages. The operating system treats shared memory as a shared resource using system wide policies. That means that there is a limit on the total number of segments and the total size of the shared memory. Currently in Linux the limit is 4000 segments, although in the past it was as few as 6.
+The operating systems supports **segments** of shared memory, which don't need to correspond to contiguous physical pages. The operating system treats shared memory as a shared resource using system wide policies. That means that there is a limit on the total number of segments and the total size of the shared memory. Currently in Linux the limit is 4000 segments, although in the past it was as few as 6.
 
 When a process requests that a shared memory segment is created, the operating system allocates the required amount of physical memory and then it assigns to it a unique key. This key is used to uniquely identify the segment within the operating system. Another other process can refer to this segment using this key. If the creating process wants to communicate with other processes using this segment of shared memory, then it needs to make sure that they learn this key somehow.
 
@@ -101,7 +101,7 @@ Detaching a segment means invalidating the virtual address mappings for the virt
 
 A segment is not really destroyed once it is detached. A segment may be attached, detached and re-attached by multiple processes many times through its lifetime.
 
-Once a segment is created, it’s essentially a persistent entity until there is an explicit request for it to be destroyed. Note that this is very different from memory that is local to a process, which is reclaimed when the process exits.
+Once a segment is created, it's essentially a persistent entity until there is an explicit request for it to be destroyed. Note that this is very different from memory that is local to a process, which is reclaimed when the process exits.
 
 ## SysV Shared Memory API
 To create or open a segment we use
@@ -118,7 +118,7 @@ The `shmid` is the key that references the shared memory segment. This is not cr
 ftok(pathname, proj_id)
 ```
 
-This function generates a token based on its arguments. If you pass it the same arguments you will always get the same key. It’s basically a hashing function. This is how different processes can agree upon how they will obtain a unique key for the memory segment they wish to share.
+This function generates a token based on its arguments. If you pass it the same arguments you will always get the same key. It's basically a hashing function. This is how different processes can agree upon how they will obtain a unique key for the memory segment they wish to share.
 
 To attach the shared memory segment into the address space of the process, we can use
 
@@ -128,7 +128,7 @@ shmat(shmid, addr, flags)
 
 The programmer has an option to provide the virtual addresses to which the segment should be mapped, using the `addr` argument. If `NULL` is passed, the operating system will choose some suitable addresses.
 
-The returned virtual memory address can be interpreted in various ways, so it is the programmer’s responsibility to cast the address to that memory region to the appropriate type.
+The returned virtual memory address can be interpreted in various ways, so it is the programmer's responsibility to cast the address to that memory region to the appropriate type.
 
 To detach a segment, we can use
 
@@ -147,7 +147,7 @@ shmctl(shmid, cmd, buf)
 If we specify `IPC_RMID` as the `cmd`, we can destroy the segment.
 
 ## POSIX Shared Memory API
-The POSIX shared memory standard doesn’t use segments, but rather uses files.
+The POSIX shared memory standard doesn't use segments, but rather uses files.
 
 They are not "real" files that live in a filesystem that are used elsewhere by the operating system. Instead they are files that live in the *tmpfs* filesystem.  This filesystem is intended to look and feel like a filesystem, so the operating system can reuse a lot of the mechanisms that it uses for filesystems, but it is really just a bunch of state that is present in physical memory. The OS simply uses the same representation and the same data structures that are used for representing a file to represent a bunch of pages in physical memory that correspond to a share memory region.
 
@@ -173,7 +173,7 @@ One very important thing to remember is that these data structures must also liv
 
 To create the shared memory segment, we first need to create our segment identifier. We do this with `ftok`, passing `arg[0]` which is the pathname for the program executable as well as some integer parameter. We pass this id into `shmget`, where we specify a segment size of 1KB and also pass in some flags.
 
-Using the segment id, we attach the segment with `shmat`, which returns a shared memory address - which we assign to `shm_address` here. `shm_address` is the virtual address in this process’s address space that points to the physically shared memory.
+Using the segment id, we attach the segment with `shmat`, which returns a shared memory address - which we assign to `shm_address` here. `shm_address` is the virtual address in this process's address space that points to the physically shared memory.
 
 Then we cast that address to the datatype of the struct we defined -  `shm_data_struct_t`. This struct has two fields. One field is the actual buffer of information, the data. The other component is the mutex. In this example, the mutex will control access to the data.
 
@@ -182,7 +182,7 @@ To actually create the mutex, we first have to create the mutexattr struct. Once
 This set of operations will properly allocate and initialize a mutex that is shared amongst processes.
 
 ## Sync for Other IPC
-In addition, shared memory accesses can be synchronized using operating system provided mechanisms for inter-process interactions. This is particularly important because the `PTHREAD_PROCESS_SHARED` option for pthreads isn’t necessarily always supported on every platform.
+In addition, shared memory accesses can be synchronized using operating system provided mechanisms for inter-process interactions. This is particularly important because the `PTHREAD_PROCESS_SHARED` option for pthreads isn't necessarily always supported on every platform.
 
 We can rely on other means of synchronization in those cases, such as message queues and semaphores.
 
@@ -194,13 +194,13 @@ Semaphores are an OS support synchronization construct and a binary semaphore ca
 ![](https://assets.omscs.io/A87134C6-ABEF-4923-B993-8E3C48A4A8E6.png)
 
 ## Design Considerations
-Let’s consider two multithreaded processes in which the threads need to communicate via shared memory.
+Let's consider two multithreaded processes in which the threads need to communicate via shared memory.
 
 First, consider how many segments the processes will need to communicate.
 
 Will you use one large segment? If so, you will have to implement some kind of management of the shared memory. You will need some manager that will be responsible for allocating and freeing memory in this region.
 
-Alternatively, you can have multiple segments, one for each pairwise communication. If you choose this strategy, it is probably a smart idea to pre-allocate a pool of segments ahead of time, so you don’t need to incur the cost of creating a segment in the middle of execution. With this strategy, you will also need to manage how these segments are picked up for use by the pairs. A queue of segment ids is probably sufficient.
+Alternatively, you can have multiple segments, one for each pairwise communication. If you choose this strategy, it is probably a smart idea to pre-allocate a pool of segments ahead of time, so you don't need to incur the cost of creating a segment in the middle of execution. With this strategy, you will also need to manage how these segments are picked up for use by the pairs. A queue of segment ids is probably sufficient.
 
 Second, you will need to think about how large your segments should be.
 

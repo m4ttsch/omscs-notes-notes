@@ -110,17 +110,17 @@ Around 2000, fast growth in routing tables resumed.
 A significant contributor to this growth was a practice called **multihoming**. Multihoming can make it difficult for upstream providers to aggregate prefixes together, often requiring an upstream provider to store multiple IP prefixes for a single autonomous system.
 
 ## Multihoming Frustrates Aggregation
-Let’s consider that following example.
+Let's consider that following example.
 
 ![](https://assets.omscs.io/7696495C-B3D4-41AE-8D93-91F8597B94F1.png)
 
-AS 30308 might receive an allocation - say `12.20.249.0/24` from one of its providers. Let’s suppose that it receives this allocation from AT&T, which owns `12.0.0.0/8`.
+AS 30308 might receive an allocation - say `12.20.249.0/24` from one of its providers. Let's suppose that it receives this allocation from AT&T, which owns `12.0.0.0/8`.
 
-Let’s suppose that AS 30308 wants to be reachable both by AT&T and Verizon. That is, AS 30308 wants to be multi-homed. To do this, AS 30308 needs to advertise its prefix via both AT&T and Verizon.
+Let's suppose that AS 30308 wants to be reachable both by AT&T and Verizon. That is, AS 30308 wants to be multi-homed. To do this, AS 30308 needs to advertise its prefix via both AT&T and Verizon.
 
 The problem occurs when AT&T and Verizon want to advertise that prefix to the rest of the Internet.
 
-AT&T can’t aggregate this `/24` prefix into `12.0.0.0/8`, because then Verizon would be advertising the longer `12.20.249.0/24`. This would mean that all traffic for AS 30308 would be routed through Verizon.
+AT&T can't aggregate this `/24` prefix into `12.0.0.0/8`, because then Verizon would be advertising the longer `12.20.249.0/24`. This would mean that all traffic for AS 30308 would be routed through Verizon.
 
 As a result, AT&T and Verizon must both advertise the `/24` to the rest of the Internet.
 
@@ -133,7 +133,7 @@ Suppose AS `A` owns `10.1.0.0/16`  and it advertises its prefix out to both of i
 
 Given an advertisement of one prefix upstream, AS `D` is going to pick *one* best BGP route by which to send traffic back to `A`.
 
-Let’s suppose that  `A`, wanted to balance its traffic across its incoming links. `A` could essentially split its `/16` in half, advertising one `/17` to `B` and the other `/17` to `C`.
+Let's suppose that  `A`, wanted to balance its traffic across its incoming links. `A` could essentially split its `/16` in half, advertising one `/17` to `B` and the other `/17` to `C`.
 
 ![](https://assets.omscs.io/F314B05E-04A3-495B-AF43-5CDEBB115144.png)
 
@@ -153,7 +153,7 @@ Nonetheless, the report shows that there are probably many more IP prefixes in t
 ![](https://assets.omscs.io/5D72559D-4D79-41DD-AEF1-16AD8824E153.png)
 
 ## Lookup Algorithm Depends on Protocol
-The lookup algorithm that a router uses depends on the protocol that it’s using to forward packets.
+The lookup algorithm that a router uses depends on the protocol that it's using to forward packets.
 
 ![](https://assets.omscs.io/BC9D1329-9DD4-4EBA-B06B-130DE4E0D649.png)
 
@@ -199,7 +199,7 @@ In a trie, spelling out the bit 1 always adds a node to the right, and spelling 
 
 ![](https://assets.omscs.io/3F356D3E-6C34-4CA1-80D8-7737CF451F74.png)
 
-Let’s suppose we want to look up 10111. All we have to do is spell this out in the trie.
+Let's suppose we want to look up 10111. All we have to do is spell this out in the trie.
 
 ![](https://assets.omscs.io/4256A2BF-5C90-4EED-8D75-4D057BF9C50C.png)
 
@@ -238,7 +238,7 @@ We can generalize this in a multi-ary trie, with the depth being `W/k`, the degr
 Note that the binary trie is a simple case of the multi-ary trie, where `k` is 1.
 
 ## 4-ary Trie
-Let’s construct a 4-ary trie (with k=2), using the same forwarding table as before.
+Let's construct a 4-ary trie (with k=2), using the same forwarding table as before.
 
 ![](https://assets.omscs.io/CBF5A4C9-E250-42C1-B9AD-A8BEAAA4F229.png)
 
@@ -271,7 +271,7 @@ A particular private IP address space that can be reused by multiple networks is
 
 Other private IP address spaces are specified in [RFC 1918](https://tools.ietf.org/html/rfc1918) (Section 3).
 
-Obviously two networks with the same IP address cannot coexist on the public internet, because routers wouldn’t know where to route a packet destined for that address.
+Obviously two networks with the same IP address cannot coexist on the public internet, because routers wouldn't know where to route a packet destined for that address.
 
 A NAT takes a group of private IP addresses and translates it to a single, globally visible IP address for communication with the broader internet.
 
@@ -349,7 +349,7 @@ The dual stack must have an IPv4-compatible address. Either the host has both an
 
 One possible way of ensuring compatibility of an IPv6 address with IPv4 is simply to embed the the IPv4 address in 32 bits of the 128 bits of the IPv6 address.
 
-A dual stack host configuration solves the problem of host IP address assignment, but it doesn’t solve the problem of "island" IPv6 deployments.
+A dual stack host configuration solves the problem of host IP address assignment, but it doesn't solve the problem of "island" IPv6 deployments.
 
 For example, multiple independent portions of the internet might deploy IPv6. What if the middle of the network only speaks and routes IPv4?
 

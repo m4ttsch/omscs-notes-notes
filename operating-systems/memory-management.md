@@ -20,7 +20,7 @@ The range of the virtual addresses that are visible to a process can be much lar
 
 The virtual address space is subdivided into fixed-size segments called **pages**. The physical memory is divided into **page frames** of the same size. In terms of allocation, the operating system maps pages into page frames. In this type of **page-based memory management** the arbitration is done via **page tables**.
 
-Paging is not the only way to decouple the virtual and physical memories. Another approach is **segmentation**, or a **segment-based memory approach**. With segmentation, the allocation process doesn’t use fixed-size pages, but rather more flexibly-sized segments that can be mapped to some regions in physical memory as well as swapped in and out of physical memory. Arbitration of accesses uses **segment registers** that are typical supported on modern hardware.
+Paging is not the only way to decouple the virtual and physical memories. Another approach is **segmentation**, or a **segment-based memory approach**. With segmentation, the allocation process doesn't use fixed-size pages, but rather more flexibly-sized segments that can be mapped to some regions in physical memory as well as swapped in and out of physical memory. Arbitration of accesses uses **segment registers** that are typical supported on modern hardware.
 
 Paging is the dominant memory management mechanism used in modern operating systems.
 
@@ -29,7 +29,7 @@ Memory management is not done by the operating system alone. Hardware mechanisms
 
 Every CPU package contains a **memory management unit** (MMU). The CPU issues virtual addresses to the MMU, and the MMU is responsible for converting these into physical addresses.
 
-If there is an issue, the MMU can generate a **fault**. A fault can signal that the memory access is illegal; that is, there is an attempt to access memory that hasn’t been allocated. A fault could also signal that there are insufficient permissions to perform a particular access. A third type of fault can indicate that the requested page is not present in memory and must be fetched from disk.
+If there is an issue, the MMU can generate a **fault**. A fault can signal that the memory access is illegal; that is, there is an attempt to access memory that hasn't been allocated. A fault could also signal that there are insufficient permissions to perform a particular access. A third type of fault can indicate that the requested page is not present in memory and must be fetched from disk.
 
 Another way that hardware supports memory management is by assigning designated registers to help with the memory translation process. For instance, registers can point to the currently active page table in a page-based memory system. In a segmentation system, the registers may point to the base address, the size of the segment and the total numbers of segments.
 
@@ -52,15 +52,15 @@ What this means is that only the first portion of the virtual address is used to
 
 ![](https://assets.omscs.io/6C1CB2E4-D8C7-4F2C-BC0C-831E2DF40CCD.png)
 
-Let’s say we want to initialize an array for the very first time. We have already allocated the memory for that array into the virtual address space for the process, we have just never accessed it before. Since this portion of the address space has not been accessed before, the operating system has not yet allocated memory for it.
+Let's say we want to initialize an array for the very first time. We have already allocated the memory for that array into the virtual address space for the process, we have just never accessed it before. Since this portion of the address space has not been accessed before, the operating system has not yet allocated memory for it.
 
-What will happen the first time we access this memory is that the operating system will realize that there isn’t physical memory that corresponds to this range of virtual memory addresses, so it will take a free page of physical memory, and create a page table entry linking the two.
+What will happen the first time we access this memory is that the operating system will realize that there isn't physical memory that corresponds to this range of virtual memory addresses, so it will take a free page of physical memory, and create a page table entry linking the two.
 
-The physical memory is only allocated when the process is trying to access it. This is called **allocation on first touch**. The reason for this is to make sure that physical memory is only allocated when it’s really needed. Sometimes, programmers may create data structures that they don’t really use.   
+The physical memory is only allocated when the process is trying to access it. This is called **allocation on first touch**. The reason for this is to make sure that physical memory is only allocated when it's really needed. Sometimes, programmers may create data structures that they don't really use.   
 
 ![](https://assets.omscs.io/6785C624-4B55-4F1F-AED0-B9C31954877A.png)
 
-If a process hasn’t used some of its memory pages for a long time, it is possible that those pages will be reclaimed. The contents will no longer be present in physical memory. They will be swapped out to disk, and some other content will end up in the corresponding physical memory slot.
+If a process hasn't used some of its memory pages for a long time, it is possible that those pages will be reclaimed. The contents will no longer be present in physical memory. They will be swapped out to disk, and some other content will end up in the corresponding physical memory slot.
 
 In order to detect this, page table entries also have a number of bits that give the memory management system some more information about the validity of the access. For instance, if the page is in memory and the mapping is valid, its valid bit will be 1. Otherwise, it will be 0.
 
@@ -79,7 +79,7 @@ There are number of other bits that are present in the page table entry which th
 
 For example, most hardware supports a **dirty bit** which gets set whenever a page is written to. This is useful in file systems, where files are cached in memory. We can use this dirty bit to see which files have been written to and thus which files need to be updated on disk.
 
-It’s also useful to keep track of an **access bit**,  which can tell us whether the page has been accessed period, for reads or for writes.
+It's also useful to keep track of an **access bit**,  which can tell us whether the page has been accessed period, for reads or for writes.
 
 We can also keep track of **protection bits** which specify whether a page is allowed to be read, written, or executed.
 
@@ -109,7 +109,7 @@ Remember that page tables are a *per-process* allocation.
 It is important to know that a process will not use all of the theoretically available virtual memory. Even on 32-bit architectures, not all of the 4GB is used by every type of process. The problem is that the page table assumes that there is an entry for every VPN, regardless of whether the VPN is needed by the process or not. This is unnecessarily large.
 
 ## Multi Level Page Tables
-We don’t really design flat page tables anymore. Instead, we now use a more hierarchical page table structure.
+We don't really design flat page tables anymore. Instead, we now use a more hierarchical page table structure.
 
 ![](https://assets.omscs.io/Screen%20Shot%202018-10-19%20at%201.47.34%20PM.png)
 
@@ -133,15 +133,15 @@ In this particular scenario, the address format is such that the outer index occ
 
 This means that a given page table can contain 2^10 entries (p2), and each entry can address 2^10 bytes of physical memory (d). Loosely, we can think about the page table pointing to 2^10 "rows" of physical memory, with each row having 2^10 "cells". P2 gives us the memory "row", and d gives us the "cell" within that "row". This means that each page table can address 1MB of memory.
 
-Whenever there is a gap in virtual memory that is 1MB (or greater), we don’t need to fill in the gap with (unused) page tables. For example, if we have a page table containing pages 0-999, and we allocate another page table containing pages 30000-30999, we don’t need to allocate the 29 page tables in between. This will reduce the overall size of the page table(s) that are required for a particular process. This is in contrast to the "flat" page table, in which every entry needs to be able to translate every single virtual address and it has entries for every virtual page number. There can’t be any gaps in a flat page table.
+Whenever there is a gap in virtual memory that is 1MB (or greater), we don't need to fill in the gap with (unused) page tables. For example, if we have a page table containing pages 0-999, and we allocate another page table containing pages 30000-30999, we don't need to allocate the 29 page tables in between. This will reduce the overall size of the page table(s) that are required for a particular process. This is in contrast to the "flat" page table, in which every entry needs to be able to translate every single virtual address and it has entries for every virtual page number. There can't be any gaps in a flat page table.
 
 The hierarchical page table can be extended to use even more layers. We can have a third level that contains pointers to page table directories. We can add a fourth level, which would be a map of page table directory pointers.
 
-This technique is important on 64-bit architectures. The page table requirements are larger in these architectures (think about how many bits can be allocated to p2 and d), and as a result are often more sparse (processes on 64-bit platforms don’t necessarily need more memory than those on 32-bit platforms).
+This technique is important on 64-bit architectures. The page table requirements are larger in these architectures (think about how many bits can be allocated to p2 and d), and as a result are often more sparse (processes on 64-bit platforms don't necessarily need more memory than those on 32-bit platforms).
 
 Because of this, we have larger gaps between page tables that are actually allocated. With four level addressing structures, we may be able to save entire page table directories from being allocated as a result of these gaps.
 
-Let’s look at two different addressing schemes for 64-bit platforms.
+Let's look at two different addressing schemes for 64-bit platforms.
 
 ![](https://assets.omscs.io/2D989531-A664-498C-BEDE-D5A0BE50C8F1.png)
 
@@ -216,7 +216,7 @@ Memory allocation incorporates mechanisms to decide what are the physical pages 
 
 **Kernel level allocators** are responsible for allocating pages for the kernel and also for certain static state of processes when they are created - the code, the stack and so forth. In addition, the kernel level allocators are responsible for keeping track of the free memory that is available in the system.
 
-**User level allocators** are used for dynamic process state - the heap. This is memory this is dynamically allocated during the process’s execution. The basic interface for these allocators includes `malloc`  and `free`. These calls request some amount of memory from kernel’s free pages and then ultimately release it when they are done.
+**User level allocators** are used for dynamic process state - the heap. This is memory this is dynamically allocated during the process's execution. The basic interface for these allocators includes `malloc`  and `free`. These calls request some amount of memory from kernel's free pages and then ultimately release it when they are done.
 
 Once the kernel allocates some memory through a `malloc` call, the kernel is no longer involved in the management of that memory. That memory is now under the purview of the user level allocator.
 
@@ -250,7 +250,7 @@ The linux kernel relies on two main allocators: the buddy allocator, and the sla
 
 The **buddy allocator** starts with some consecutive memory region that is free that is a power of two. Whenever a request comes in, the allocator subdivides the area into smaller chunks such that every one of them is also a power of two. It will continue subdividing until it finds a small enough chunk that is power of two that can satisfy the request.
 
-Let’s look at the following sequence of requests and frees.
+Let's look at the following sequence of requests and frees.
 
 ![](https://assets.omscs.io/ABC594B2-8DD5-4767-8E68-E91770CC47D5.png)
 
@@ -262,7 +262,7 @@ Fragmentation definitely still exists in the buddy allocator, but on free, one c
 
 This buddy checking step can continue up the tree, aggregating as much as possible. For example, imagine requesting 1 memory unit above, and then freeing it. We would have to subdivide the chunks all the way down to 1, but then could build them all the way back up to 64 on free.
 
-The reason that the chunks are powers of two is so that the addresses of budding only differs by one bit. For example, if my buddy and I are both 4 units long, and my starting address is 0x000, my buddy’s starting address will be 0x100. This helps make computation easier.
+The reason that the chunks are powers of two is so that the addresses of budding only differs by one bit. For example, if my buddy and I are both 4 units long, and my starting address is 0x000, my buddy's starting address will be 0x100. This helps make computation easier.
 
 Because the buddy allocator has granularity of powers of two, there will be some internal fragmentation using the buddy allocator. This is a problem because there are a lot of data structures in the Linux kernel that are not close to powers of 2 in size. For example, the task struct used to represent processes/threads is 1.7Kb.
 
@@ -270,10 +270,10 @@ Thankfully, we can leverage the **slab allocator**. The slab allocator builds cu
 
 ![](https://assets.omscs.io/4D7BC1F3-90FB-44C7-8D77-D9D128DB7B62.png)
 
-The benefit of the slab allocator is that internal fragmentation is avoided. The entities being allocated in the slab are the exact size of the objects being stored in them. External fragmentation isn’t really an issue either. Since each entry can store an object of a given size, and only objects of a given size will be stored, there will never be any un-fillable gaps in the slab.
+The benefit of the slab allocator is that internal fragmentation is avoided. The entities being allocated in the slab are the exact size of the objects being stored in them. External fragmentation isn't really an issue either. Since each entry can store an object of a given size, and only objects of a given size will be stored, there will never be any un-fillable gaps in the slab.
 
 ## Demand Paging
-Since the physical memory is much smaller than the addressable virtual memory, allocated pages don’t always have to present in physical memory. Instead, the backing physical page frame can be repeatedly saved and stored to and from some secondary storage, like disk.
+Since the physical memory is much smaller than the addressable virtual memory, allocated pages don't always have to present in physical memory. Instead, the backing physical page frame can be repeatedly saved and stored to and from some secondary storage, like disk.
 
 This process is knowing as **paging** or **demand paging**. In this process, pages are **swapped** from DRAM to a secondary storage device like a disk, where the reside on a special swap partition.
 
@@ -287,22 +287,22 @@ At that point, control is handed back to the process that issued this reference,
 
 ![](https://assets.omscs.io/76DE9169-A186-412A-B18C-EBD53058BB3A.png)
 
-We may require a page to be constantly present in memory, or maintain its original physical address throughout its lifetime. We will have to **pin** the page. In order words, we disable swapping. This is useful when the CPU is interacting with devices that support direct memory access, and therefore don’t pass through the MMU.
+We may require a page to be constantly present in memory, or maintain its original physical address throughout its lifetime. We will have to **pin** the page. In order words, we disable swapping. This is useful when the CPU is interacting with devices that support direct memory access, and therefore don't pass through the MMU.
 
 ## Page Replacement
 ###### When should pages be swapped out of main memory and on to disk?
 Periodically, when the amount of occupied memory reaches a particular threshold, the operating system will run some **page out daemon** to look for pages that can be freed.
 
-Pages should be swapped when the memory usage in the system exceeds some threshold and the CPU usage is low enough so that this daemon doesn’t cause too much interruption of applications.
+Pages should be swapped when the memory usage in the system exceeds some threshold and the CPU usage is low enough so that this daemon doesn't cause too much interruption of applications.
 
 ###### Which pages should be swapped out?
-Obviously, the pages that won’t be used in the future! Unfortunately, we don’t know this directly. However, we can use historic information to help us make informed predictions.
+Obviously, the pages that won't be used in the future! Unfortunately, we don't know this directly. However, we can use historic information to help us make informed predictions.
 
-A common algorithm to determine if a page should be swapped out is too look at how recently a page has been used, and use that to inform a prediction about the page’s future use. The intuition here is that a page that has been more recently used is more likely to be needed in the immediate future whereas a page that hasn’t been accessed in a long time is less likely to be needed.
+A common algorithm to determine if a page should be swapped out is too look at how recently a page has been used, and use that to inform a prediction about the page's future use. The intuition here is that a page that has been more recently used is more likely to be needed in the immediate future whereas a page that hasn't been accessed in a long time is less likely to be needed.
 
 This policy is known as the **Least-Recently Used** (LRU) policy. This policy uses the **access bit** that is available on modern hardware to keep track of whether or not the page has been referenced.
 
-Other candidates for pages that can be freed from physical memory are pages that don’t need to be written out to disk. Writing pages out to secondary storage takes time, and we would like to avoid this overhead. To assist in making this decision, OS can keep track of the **dirty bit** maintained by the MMU hardware which keeps track of whether or not a given page has been modified.
+Other candidates for pages that can be freed from physical memory are pages that don't need to be written out to disk. Writing pages out to secondary storage takes time, and we would like to avoid this overhead. To assist in making this decision, OS can keep track of the **dirty bit** maintained by the MMU hardware which keeps track of whether or not a given page has been modified.
 
 In addition, there may be certain pages that are non-swappable. Making sure that these pages are not considered by the currently executing swapping algorithm is important.
 
@@ -315,9 +315,9 @@ Finally, the default replacement algorithm in Linux is a variation of the LRU po
 ## Copy On Write
 Operating systems rely on the MMU to perform address translation as well as access tracking and protection enforcement. The same hardware can be used to build other useful services beyond just these.
 
-One such mechanism is called **Copy-on-Write** (COW). When we need to create a new process, we need to re-create the entire parent process by copying over its entire address space. However, many of the pages in the parent address space are static - they won’t change - so it’s unclear why we have to incur the copying cost.
+One such mechanism is called **Copy-on-Write** (COW). When we need to create a new process, we need to re-create the entire parent process by copying over its entire address space. However, many of the pages in the parent address space are static - they won't change - so it's unclear why we have to incur the copying cost.
 
-In order to avoid unnecessary copying, a new process’s address space, entirely or in part, will just point to the address space of its parent. The same physical address may be referred to by two completely different virtual addresses belonging to the two processes. We have to make sure to **write protect** the page as a way to track accesses to it.
+In order to avoid unnecessary copying, a new process's address space, entirely or in part, will just point to the address space of its parent. The same physical address may be referred to by two completely different virtual addresses belonging to the two processes. We have to make sure to **write protect** the page as a way to track accesses to it.
 
 ![](https://assets.omscs.io/1763C799-DD05-4442-95AD-F57F32314875.png)
 

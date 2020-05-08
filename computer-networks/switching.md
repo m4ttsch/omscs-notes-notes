@@ -48,7 +48,7 @@ LANs that are connected with hubs are also vulnerable to failures or misconfigur
 We need to improve on this broadcast medium by imposing some amount of isolation.
 
 ## Switches: Traffic Isolation
-In contrast, **switches** provide some amount of traffic isolation so that the entire LAN doesn’t become one broadcast medium.
+In contrast, **switches** provide some amount of traffic isolation so that the entire LAN doesn't become one broadcast medium.
 
 A switch will partition the LAN into separate broadcast/collision domains, or segments. A frame that is bound for a host in the same LAN segment will only be broadcast within that segment. The switch will not broadcast it to other segments.
 
@@ -71,7 +71,7 @@ Most underlying physical topologies have loops for reasons of redundancy. If a g
 
 When two switches are connected in a loop, and one sends a broadcast frame, the other switch will receive it, and broadcast it back out. The first switch will receive it again and rebroadcast it again. This is often referred to as a **forwarding loop** or **broadcast storm**.
 
-We need a solution to ensure that the switches don’t always flood all packets on all outgoing ports. We need a protocol to create a logical forwarding tree on top of the underlying physical topology.
+We need a solution to ensure that the switches don't always flood all packets on all outgoing ports. We need a protocol to create a logical forwarding tree on top of the underlying physical topology.
 
 ## Spanning Tree
 A **spanning** tree is a loop-free topology that covers every node in a graph.
@@ -121,7 +121,7 @@ Is it possible to get the benefits of layer two switching - auto-configuration a
 ## Buffer Sizing
 While it is well known that switches and routers do need packet buffers to accommodate for statistical multiplexing, it is less clear how much buffering is actually necessary.
 
-Let’s suppose that we have a path between a source and a destination that includes one router.
+Let's suppose that we have a path between a source and a destination that includes one router.
 
 Assume that the round trip ([propagation delay](https://searchnetworking.techtarget.com/definition/propagation-delay)) is `2T` (measured in seconds), and the capacity of the bottleneck link is `C`, (measured in bits/seconds). The commonly held view is that this router need a buffer of size `2T * C` (with units of bits).
 
@@ -136,7 +136,7 @@ In addition, the bigger the buffers, the bigger the queuing delay. This means th
 ## Buffer Sizing for a TCP Sender
 Suppose that we have a TCP sender that is sending packets, where the sending rate is controlled by  the [congestion window](https://blog.stackpath.com/glossary/cwnd-and-rwnd/) `cwnd`, and the sender is receiving ACKs.
 
-With a window `cwnd`, only `cwnd` unacknowledged packets may be in flight at any time. The source’s sending rate `R` , then, is simply the window `cwnd`, divided by the round-trip time, `RTT`.
+With a window `cwnd`, only `cwnd` unacknowledged packets may be in flight at any time. The source's sending rate `R` , then, is simply the window `cwnd`, divided by the round-trip time, `RTT`.
 
 Remember that TCP uses an **additive increase, multiplicative decrease** ([AIMD](https://en.wikipedia.org/wiki/Additive_increase/multiplicative_decrease#Algorithm)) strategy for congestion control.
 
@@ -144,7 +144,7 @@ For every `cwnd` ACKs received, we send `cwnd + 1` packets, up to the the receiv
 
 We start sending packets using some window `cwnd_max / 2` and increase this window additively up to `cwnd_max`. When we see a drop, we apply multiplicative decrease, and reduce our window - and thus our sending rate - back to `cwnd_max / 2` again.
 
-We’d like the sender to send a common rate `R` before and after the packet drop. Thus:
+We'd like the sender to send a common rate `R` before and after the packet drop. Thus:
 
 `cwnd_max / RTT_old = (cwnd_max / 2) / RTT_new`
 

@@ -34,7 +34,7 @@ As a synchronization construct, **semaphores** allows us to express count relate
 
 Semaphores are initialized with an integer value. Threads arriving at a semaphore with a nonzero value with decrement the value and proceed with their execution. Threads arriving at a semaphore with a zero value will have to wait. As a result, the number of threads that will be allowed to proceed at a given time will equal the initialization value of the semaphore.
 
-When a thread leaves the critical section, it signals the semaphore, which will increment the semaphore’s counter.
+When a thread leaves the critical section, it signals the semaphore, which will increment the semaphore's counter.
 
 If a semaphore is initialized with a 1 - a binary semaphore - it will behave like a mutex, only allowing one thread at a time to pass.
 
@@ -87,7 +87,7 @@ When invoking the entry procedure, all of the necessary locking and checking wil
 
 **Barriers** are like reverse semaphores. While a semaphore allows n threads to proceed before it blocks, a barrier blocks until n threads arrive at the barrier point. Similarly, **Rendezvous Points** also wait for multiple threads to arrive at a particular point in execution.
 
-To further boost scalability and efficiency metrics, there are efforts to achieve concurrency without explicitly locking and waiting. These **wait-free synchronization** constructs are optimistic in the sense that they bet on the fact that there won’t be any concurrent writes and that it is safe to allow reads to proceed concurrently. An example of this is **read-copy-update** (RCU) lock that is part of the Linux kernel.
+To further boost scalability and efficiency metrics, there are efforts to achieve concurrency without explicitly locking and waiting. These **wait-free synchronization** constructs are optimistic in the sense that they bet on the fact that there won't be any concurrent writes and that it is safe to allow reads to proceed concurrently. An example of this is **read-copy-update** (RCU) lock that is part of the Linux kernel.
 
 All of these methods require some support from the underlying hardware to *atomically* make updates to a memory location. This is the only way they can actually guarantee that a lock is properly acquired and that protected state changes are performed in a safe, race-free way.
 
@@ -169,16 +169,16 @@ Hardware using the **write-invalidate** (WI) strategy will invalidate all cache 
 
 Hardware using the **write-update** (WU) strategy will ensure that all cache entries of `X` are updated once one CPU updates its copy of `X`. Subsequent accesses of `X` by any of the CPUs will continue to be served by the cache.
 
-With write-invalidate, we pose lower bandwidth requirements on the shared interconnect in the system. This is because we don’t have to send the value of `X`, but rather just its address so it can be invalidated amongst the other caches. Once a cache invalidation occurs, subsequent changes to `X` won’t require subsequent invalidations: a cache either has an entry for `X` or it doesn’t.
+With write-invalidate, we pose lower bandwidth requirements on the shared interconnect in the system. This is because we don't have to send the value of `X`, but rather just its address so it can be invalidated amongst the other caches. Once a cache invalidation occurs, subsequent changes to `X` won't require subsequent invalidations: a cache either has an entry for `X` or it doesn't.
 
-If `X` isn’t needed on any of the other CPUs anytime soon, its possible to amortize the cost of the coherence traffic over multiple changes. `X` can change multiple times on one CPU before its value is needed on another CPU.
+If `X` isn't needed on any of the other CPUs anytime soon, its possible to amortize the cost of the coherence traffic over multiple changes. `X` can change multiple times on one CPU before its value is needed on another CPU.
 
 For write-update architectures, the benefit is that the `X` will be available immediately on the other CPUs that need to access it. We will not have to pay the cost of a main memory access. Programs that will need to access the new value of`X` immediately on another CPU will benefit from this design.
 
 The use of write-update or write-invalidate is determined by the hardware supporting your platform. You as the software developer have no say in which strategy is used.
 
 ## Cache Coherence and Atomics
-Let’s consider a scenario in which we have two CPUs.  Each CPU needs to perform an atomic operation concerning `X`, and both CPUs have a reference to `X` present in their caches.
+Let's consider a scenario in which we have two CPUs.  Each CPU needs to perform an atomic operation concerning `X`, and both CPUs have a reference to `X` present in their caches.
 
 When an atomic instruction is performed against the a cached value of `X` on one CPU, it is really challenging to know whether or not an atomic instruction will be attempted on the cached value of `X` on another CPU. We obviously cannot have incoherent cache references between CPUs: this will affect the correctness of our applications.
 
@@ -215,7 +215,7 @@ From a contention perspective this lock does not perform well. As long as the th
 The real problem with this implementation is that we are continuously spinning on the atomic instruction. Regardless of cache coherence, we are forced to constantly waste time going to memory every time when execute the `test_and_set` instruction.
 
 ## Test and Test and Set Spinlock
-The problem with the previous implementation is that all of the CPUs are spinning on the atomic operation. Let’s try to separate the test part - checking the value of the lock - from the atomic.
+The problem with the previous implementation is that all of the CPUs are spinning on the atomic operation. Let's try to separate the test part - checking the value of the lock - from the atomic.
 
 The intuition is that CPUs can potentially test their cached copy of the lock and only execute the atomic if it detects that its cached copy has changed.
 
@@ -223,7 +223,7 @@ Here is the resulting spinlock `lock` operation.
 
 ![](https://assets.omscs.io/C46BDD52-2F95-4EB4-8FA3-D10C244CF546.png)
 
-First we check if the lock is busy. Importantly, this check is performed against the cached value. As long as the lock is busy, we will stay in the while loop, and we won’t need to evaluate the second part of the predicate. Only when the lock becomes free - when `lock == busy` evaluates to false - do actually execute the atomic.
+First we check if the lock is busy. Importantly, this check is performed against the cached value. As long as the lock is busy, we will stay in the while loop, and we won't need to evaluate the second part of the predicate. Only when the lock becomes free - when `lock == busy` evaluates to false - do actually execute the atomic.
 
 This spinlock is referred to as the **test-and-test-and-set spinlock**.  It is also called a spin-on-read or spin-on-cached-value spinlock.
 
@@ -231,7 +231,7 @@ From a latency and delay standpoint, this lock is okay. It is slightly worse tha
 
 From a contention standpoint, our performance varies.
 
-If we don’t have a cache coherent architecture, there is no difference in contention. Every single memory reference will go to memory.
+If we don't have a cache coherent architecture, there is no difference in contention. Every single memory reference will go to memory.
 
 If we have cache coherence with the write-update strategy, our contention improves. The only problem with write-update is that all of the processors will see the value of the lock as free and thus all of them will try to lock the lock at once.
 
@@ -241,7 +241,7 @@ One outcome of executing an atomic instruction is that we will trigger the cache
 
 If we have a write-update situation, that coherence traffic will update the value of the other caches with the new value of the lock. If the lock was busy before the write-update event, and the lock remains busy after the write-update event, there is no problem. The CPU can keep spinning on the cached copy.
 
-However, write-invalidate will invalidate the cached copy. Even if the value hasn’t changed, the invalidation will force the CPU to go to main memory to execute the atomic. What this means is that any time another CPU executes an atomic, all of the other CPUs will be invalidated and will have to go to memory.
+However, write-invalidate will invalidate the cached copy. Even if the value hasn't changed, the invalidation will force the CPU to go to main memory to execute the atomic. What this means is that any time another CPU executes an atomic, all of the other CPUs will be invalidated and will have to go to memory.
 
 ## Spinlock "Delay" Alternatives
 We can introduce a delay in order to deal with the problems introduced by the `test_and_set` and `test_and_test_and_set` spin locks.
@@ -252,7 +252,7 @@ This implementation introduces a delay every time the thread notices that the lo
 
 The rationale behind this is to prevent every thread from executing the atomic instruction at the same time.
 
-As a result, the contention in the system will be significantly improved. When the delay expires, the delayed threads will try to re-check the value of the lock, and it’s possible that another thread executed the atomic and the delayed threads will see that the lock is busy. If the lock is free, the delayed thread will execute the atomic.
+As a result, the contention in the system will be significantly improved. When the delay expires, the delayed threads will try to re-check the value of the lock, and it's possible that another thread executed the atomic and the delayed threads will see that the lock is busy. If the lock is free, the delayed thread will execute the atomic.
 
 There will be fewer cases in which threads see a busy lock as free and try to execute an atomic that will not be successful.
 
@@ -283,7 +283,7 @@ How can we evaluate how much contention there is in the system?
 
 A good metric to estimate the contention is to track the number of failed `test_and_set` operations. The more these operations fail, the more likely it is that there is a higher degree of contention.
 
-If we delay after each lock reference, however, our delay grows not only as a function of contention but also as a function of the the length of the critical section. If a thread is executing a large critical section, all spinning threads will be increasing their delays even though the contention in the system hasn’t actually increased.
+If we delay after each lock reference, however, our delay grows not only as a function of contention but also as a function of the the length of the critical section. If a thread is executing a large critical section, all spinning threads will be increasing their delays even though the contention in the system hasn't actually increased.
 
 ## Queueing Lock
 The reason for introducing a delay is to guard against the case where every thread tries to acquire a lock once it is freed.
@@ -298,7 +298,7 @@ The queueing lock uses an array of flags with up to `n` elements, where `n` is t
 
 When a new thread arrives at the lock, it will receive a ticket, which corresponds to the current position of the thread in the lock. This will be done by adding it after the existing last element in the queue.
 
-Since multiple threads may enter the lock at the same time, it’s important to increment the `queuelast` pointer atomically. This requires some support for a `read_and_incremement`  atomic.
+Since multiple threads may enter the lock at the same time, it's important to increment the `queuelast` pointer atomically. This requires some support for a `read_and_incremement`  atomic.
 
 For each thread arriving at the lock, the assigned element of the flags array at the ticket index acts like a private lock. As long as this value is `must_wait`, the thread will have to spin. When the value of the element is becomes `has_lock`, this will signify to the threads that the lock is free and they can attempt to enter their critical section.
 
@@ -311,13 +311,13 @@ In addition, this lock requires much more space than other locks. All other lock
 ## Queueing Lock Implementation
 ![](https://assets.omscs.io/64C44444-FF38-4F73-80C2-60198EE906BD.png)
 
-The atomic operation involves the variable `queuelast`, but the rest of the locking code doesn’t involve that variable. Any invalidation traffic concerned with cached values of `queuelock` aren’t going to concern the spinning that occurs on any of the elements in the flags array.
+The atomic operation involves the variable `queuelast`, but the rest of the locking code doesn't involve that variable. Any invalidation traffic concerned with cached values of `queuelock` aren't going to concern the spinning that occurs on any of the elements in the flags array.
 
 From a latency perspective, this lock is not very efficient. It performs a more complex atomic operation, `read_and_increment` which takes more cycles than a standard `test_and_set`.
 
 From a delay perspective, this lock is good. Each lock holder directly signals the next element in the queue that the lock has been freed.
 
-From a contention perspective, this lock is much better than any locks we have discussed, since the atomic is only executed once up front and is not part of the spinning code. The atomic operation and the spinning code are involve separate variables, so cache invalidation on the atomic variable doesn’t impact spinning.
+From a contention perspective, this lock is much better than any locks we have discussed, since the atomic is only executed once up front and is not part of the spinning code. The atomic operation and the spinning code are involve separate variables, so cache invalidation on the atomic variable doesn't impact spinning.
 
 In order to realize these contention gains, we must have a cache coherent architecture. Otherwise, spinning must involve remote memory references. In addition, we have to make sure that every element is on a different cache line. Otherwise, when we change the value of one element in the array, we will invalidate the entire cache line, so the processors spinning on other elements will have their caches invalidated.
 

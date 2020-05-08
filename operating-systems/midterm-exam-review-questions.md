@@ -36,13 +36,13 @@ Example of abstractions include:
 **Mechanisms** are the tools by which policies are implemented. For example, in order to enforce the LRU policy of memory management above, memory addresses/blocks may be moved to the front of a queue every time they are accessed. When it comes time to swap memory to disk, the memory at the back of the queue can be swapped. In this example, the queue is the mechanism by which the LRU policy is implemented.
 
 ## What does the principle of separation of mechanism and policy mean?
-The idea behind separation of mechanism and policy is that how you enforce a policy shouldn’t be coupled to the policy itself. Since a given policy is only valid in some contexts or during some states of execution, having a mechanism that only suits that policy is very brittle. Instead, we should try to make sure that our mechanism is able to support a variety of policies, as any one of these policies may be in effect at a given point in time.
+The idea behind separation of mechanism and policy is that how you enforce a policy shouldn't be coupled to the policy itself. Since a given policy is only valid in some contexts or during some states of execution, having a mechanism that only suits that policy is very brittle. Instead, we should try to make sure that our mechanism is able to support a variety of policies, as any one of these policies may be in effect at a given point in time.
 
 That being said, certain policies may occur more frequently than others, so it may make sense to optimize our mechanisms a little bit in one direction or anything while still maintaining their flexibility.
 
 ## What does the principle optimize for the common case mean?
 Optimizing for the common case means ensuring that the most frequent path of execution operates as performantly as possible. This is valuable for two reasons:
-- it’s simpler than trying to optimize across all possible cases
+- it's simpler than trying to optimize across all possible cases
 - it leads to the largest performance gains as you are optimizing the flow that by definition is executed the most often
 
 A great example of this is discussed in the SunOS paper, when talking about using threads for signal handling instead of changing masks before entering/after exiting a mutex:
@@ -52,7 +52,7 @@ is about 40 SPARC instructions. The savings in the
 mutex enter/exit path is about 12 instructions. However,
 mutex operations are much more frequent than
 interrupts, so there is a net gain in time cost, as long
-as interrupts don’t block too frequently. The work
+as interrupts don't block too frequently. The work
 to convert an interrupt into a "real" thread is performed
 only when there is lock contention.
 
@@ -125,7 +125,7 @@ When a user process makes a system call, the operating system needs to context s
 * Expensive cost of frequent user/kernel crossing
 
 ## What are the differences between processes and threads? What happens on a process vs. thread context switch?
-A process is defined by two main components: it’s virtual address mapping, and it’s execution context. The virtual address mapping contains the code of the program, any data that the program is initialized with, and the heap.  The execution context contains the stack and CPU registers associated with the process’s execution.
+A process is defined by two main components: it's virtual address mapping, and it's execution context. The virtual address mapping contains the code of the program, any data that the program is initialized with, and the heap.  The execution context contains the stack and CPU registers associated with the process's execution.
 
 Different processes will have different virtual address mappings and different execution contexts, all represented by the process control block. Different threads will exist within the same process, so they will share the virtual address mapping of the process. Only the execution context will be different. As a result, a multiprocess application will require a much larger memory footprint than a multithreaded application.
 
@@ -134,7 +134,7 @@ Greater memory needs mean that data will need to be swapped to disk more often, 
 Since threads share more data than processes, less data needs to be swapped during a context switch. Because of this, thread context switching can be performed more quickly than process context switching. Process context switching involves the indirect cost of going from a hot cache to a cold cache. When a process is swapped out, most of the information the new process needs is in main memory and needs to be brought into the hardware cache. Since threads share more information - have more locality with one another - a new thread may still be able to benefit from the cache that was used by an older thread.
 
 ## Describe the states in a lifetime of a process?
-When a process is created, it’s in the **new** state. At this point, the operating system initializes the PCB for the process, and it moves to the **ready** state. In this state it is able to be executed, but it is not being executed. Once the process is scheduled and moved on to the CPU it is in the **running** state. If the process is then interrupted by the scheduler, it moves back the the ready state. If the process is running, and then makes an I/O request, it will move onto the wait queue for that I/O device and be in the **waiting** state. After the request is serviced, the process will move back to the ready state. If a running process exits, it moves to the **terminated** state.
+When a process is created, it's in the **new** state. At this point, the operating system initializes the PCB for the process, and it moves to the **ready** state. In this state it is able to be executed, but it is not being executed. Once the process is scheduled and moved on to the CPU it is in the **running** state. If the process is then interrupted by the scheduler, it moves back the the ready state. If the process is running, and then makes an I/O request, it will move onto the wait queue for that I/O device and be in the **waiting** state. After the request is serviced, the process will move back to the ready state. If a running process exits, it moves to the **terminated** state.
 
 ##  Describe the lifetime of a thread?
 A thread can be created  (a new execution context can be created and initialized). To create a thread, we need to specify what procedure it will run, and what arguments to pass to that procedure. Once the thread has been created, it will be a separate entity from the thread that created it, and we will say at this point that the process overall is multithreaded.
@@ -148,14 +148,14 @@ Finally, at the end of their life, threads can be joined back in to their parent
 Threads can also be zombies! A zombie thread is a thread that has completed its work, but whose data has not yet been reclaimed. A zombie thread is doing nothing but taking up space. Zombies live on death row. Every once in a while, a special reaper thread comes and cleans up these zombie threads. If a new thread is requested before a zombie thread is reaped, the allocated data structures for the zombie will be reused for the new thread.
 
 ## Describe all the steps which take place for a process to transition form a waiting (blocked) state to a running (executing on the CPU) state.
-When a process is in a blocked state, this means that process is currently waiting for an I/O request to be fulfilled. Usually this means that the process is sitting on an I/O queue within the kernel that is associated with the device it’s making the request to. Once the request is fulfilled, the process moves back to a ready state, where it can be executed, although it is not yet scheduled. The currently executing process must be preempted, and the ready process must be switched in. At this point, the process is executing on the CPU.
+When a process is in a blocked state, this means that process is currently waiting for an I/O request to be fulfilled. Usually this means that the process is sitting on an I/O queue within the kernel that is associated with the device it's making the request to. Once the request is fulfilled, the process moves back to a ready state, where it can be executed, although it is not yet scheduled. The currently executing process must be preempted, and the ready process must be switched in. At this point, the process is executing on the CPU.
 
 ### What are the pros-and-cons of message-based vs. shared-memory-based IPC?
 
 ### Message Passing IPC
-The benefits of message passing IPC is that the operating system will manage the message passing channel, and already has system calls in place for operations like `read/write` and `recv/send`. The user doesn’t need to worry about any go the details.
+The benefits of message passing IPC is that the operating system will manage the message passing channel, and already has system calls in place for operations like `read/write` and `recv/send`. The user doesn't need to worry about any go the details.
 
-The downside of messaged-based IPC is the overhead. Every piece of data that is sent between processes must first be copied from the sending process’s address space into memory associated with the kernel and then into the receiving process’s address space. There is user/kernel crossing for every message.
+The downside of messaged-based IPC is the overhead. Every piece of data that is sent between processes must first be copied from the sending process's address space into memory associated with the kernel and then into the receiving process's address space. There is user/kernel crossing for every message.
 
 ### Shared-Memory IPC
 The benefit of this approach is that the kernel is completely uninvolved. The processes can read from and write to this memory as they would with any other memory in their address space. Unfortunately, without the kernel, a lot of the APIs that were taken for granted with message passing IPC may have to be re-implemented. For example, the user now has to manage all of the synchronization themselves.
@@ -167,7 +167,7 @@ Parallelization comes into effect on multi CPU systems in which separate threads
 
 Concurrency refers to the idea that the CPU can do a little bit of work on one thread, and then switch and do a little bit of work on another thread. Succinctly, concurrency refers to the idea that the execution of tasks can be interwoven with one another.
 
-The primary benefit of concurrency without parallelization - that is, concurrency on single CPU platforms - is the hiding of I/O latency. When a thread is waiting in an I/O queue, that thread is blocked: it’s execution cannot proceed. In a multithreaded environment, a thread scheduler can detect a blocked thread, and switch in a thread that can accomplish some work. This way, it looks as if progress is always being made (CPU utilization is high) even though one or more threads may be waiting idle for I/O to complete at any given time.
+The primary benefit of concurrency without parallelization - that is, concurrency on single CPU platforms - is the hiding of I/O latency. When a thread is waiting in an I/O queue, that thread is blocked: it's execution cannot proceed. In a multithreaded environment, a thread scheduler can detect a blocked thread, and switch in a thread that can accomplish some work. This way, it looks as if progress is always being made (CPU utilization is high) even though one or more threads may be waiting idle for I/O to complete at any given time.
 
 Adding threads make sense if you have fewer threads than you have cores or if you are performing many I/O requests. Adding threads can lead to pure overhead otherwise.
 
@@ -184,7 +184,7 @@ Second, decrease the amount of work the boss has to do. Since the boss has to do
 
 This approach is still limited by the amount of processing power you have. After a certain number of threads, the work will become CPU-bound. Some threads will end up just having to wait their turn for computing resources.
 
-In addition, this approach lacks locality. The boss doesn’t keep track of what any of the workers were doing last. It is possible that a thread is just finishing a task that is very similar to an incoming task, and therefore may be best suited to complete that task. The boss has no insight into this fact.
+In addition, this approach lacks locality. The boss doesn't keep track of what any of the workers were doing last. It is possible that a thread is just finishing a task that is very similar to an incoming task, and therefore may be best suited to complete that task. The boss has no insight into this fact.
 
 ## Describe the pipelined multithreading pattern. If you need to improve a performance metric like throughput or response time, what could you do in a pipelined model? What are the limiting factors in improving performance with this pattern?
 In the pipeline pattern, the execution of the task is broken down into stages. Threads are assigned to continually complete the work at once stage, receiving requests from the stage before it and passing work on to the stage after it.
@@ -250,7 +250,7 @@ broadcast(&cond_reader);
 ```
 
 ## What are spurious wake-ups, how do you avoid them, and can you always avoid them?
-Spurious wake ups occur when a thread is woken up when the application is in a state during which it’s impossible for that thread to make progress. This often occurs when one thread tries to signal/broadcast while holding a mutex. Threads associated with condition variable being signaled on will be woken up from the wait queue associated with the condition variable, but since the signaling thread holds the mutex, they will immediately be placed on the wait queue associated with acquiring the mutex. CPU cycles will be wasted.
+Spurious wake ups occur when a thread is woken up when the application is in a state during which it's impossible for that thread to make progress. This often occurs when one thread tries to signal/broadcast while holding a mutex. Threads associated with condition variable being signaled on will be woken up from the wait queue associated with the condition variable, but since the signaling thread holds the mutex, they will immediately be placed on the wait queue associated with acquiring the mutex. CPU cycles will be wasted.
 
 Spurious wake ups can often be avoided by placing signal/broadcast calls outside of the mutex. Note that, this cannot always happen: if a signaling call depends on some configuration of shared state, this must be checked while holding the mutex, as with any other shared state access.
 
@@ -261,7 +261,7 @@ When a condition variable is signaled on, and a thread is to be "woken up", two 
 
 The two steps are logically independent. What this means is that another thread may be given CPU time (and potentially the mutex) in between these two steps. As a result, the shared state may be updated before the waking up thread reacquires the mutex. Therefore, the thread must do another check when it actually acquires the mutex to ensure the condition it needs to proceed is still true.
 
-##  What’s a simple way to prevent deadlocks? Why?
+##  What's a simple way to prevent deadlocks? Why?
 Simplest way to prevent deadlocks is to maintain a lock order. This will prevent a cycle in the wait graph, which is necessary and sufficient for a deadlock to occur. Two threads can deadlock if they are each trying to acquire mutexes the other holds.  A thread can also deadlock with itself if it tries to acquire a mutex it already holds. Enforcing a lock order can ensure that neither of these scenarios occurs.
 
 ## Can you explain the relationship among kernel vs. user-level threads? Think though a general mxn scenario (as described in the Solaris papers), and in the current Linux model. What happens during scheduling, synchronization and signaling in these cases?
@@ -276,11 +276,11 @@ In a so-called many-to-many scenario, there can be one or more user threads sche
 Signaling in a many to many scenario comes with complexities. If the kernel thread has a signal enabled but the user thread does not, the user threading library may have to send directed signals back down into the kernel to get the right user level thread to respond to the signal.
 
 ## Can you explain why some of the mechanisms described in the Solaris papers (for configuring the degree concurrency, for signaling, the use of LWP…) are not used or necessary in the current threads model in Linux?
-The mechanisms described in the Solaris paper were all mechanisms for rationing the number of threads that are created at any given point in time. Configuring the degree of concurrency implied that you couldn’t just be automatically given as much as you needed. Having LWPs multiplex over kernel threads indicated that kernel threads needed to be shared. The rationing was based on real concerns about the available memory in a system at any given time.
+The mechanisms described in the Solaris paper were all mechanisms for rationing the number of threads that are created at any given point in time. Configuring the degree of concurrency implied that you couldn't just be automatically given as much as you needed. Having LWPs multiplex over kernel threads indicated that kernel threads needed to be shared. The rationing was based on real concerns about the available memory in a system at any given time.
 
 The native implementation of threads in Linux is the Native POSIX Threads Library (NPTL). This is a 1:1 model, meaning that there is a kernel level task for each user level  thread. In NPTL, the kernel sees every user level thread. This is acceptable because kernel trapping has become much cheaper, so user/kernel crossings are much more affordable. Also, modern platforms have more memory - removing the constraints to keep the number of kernel threads as small as possible.
 
-## What’s an interrupt? What’s a signal? What happens during interrupt or signal handling? How does the OS know what to execute in response to a interrupt or signal? Can each process configure their own signal handler? Can each thread have their own signal handler?
+## What's an interrupt? What's a signal? What happens during interrupt or signal handling? How does the OS know what to execute in response to a interrupt or signal? Can each process configure their own signal handler? Can each thread have their own signal handler?
 ### Interrupts
 Interrupts are signals that the hardware sends to the CPU that signal that something has occurred. For example, when a user-level application tries to perform a illegal task using the hardware, the kernel is notified via an interrupt. An interrupt is handled on a per-CPU basis, and the operating system maintains an interrupt table, which maps interrupts by number to handling procedures. When the interrupt occurs, the kernel jumps to the associated interrupt handler and executes that code.
 
@@ -289,10 +289,10 @@ Which interrupts occur is a function of the platform on which you are running. H
 ### Signals
 Signals are notifications that are delivered from the kernel to a user process. For example, if a process tries to access memory it has not allocated, the operating system may throw a SIGSEGV (segmentation fault).  Signals are operating system specific.  
 
-Each process maintains its own signal handling table, which is very similar to kernel-level interrupt handling table. Each entry contains a reference to the signal and a reference to the handling code. When a signal comes in, the process jumps to the handling code. Threads cannot have their own handler, although they can set their own signal masks to ensure that they can disable signals they don’t want to receive.
+Each process maintains its own signal handling table, which is very similar to kernel-level interrupt handling table. Each entry contains a reference to the signal and a reference to the handling code. When a signal comes in, the process jumps to the handling code. Threads cannot have their own handler, although they can set their own signal masks to ensure that they can disable signals they don't want to receive.
 
-## What’s the potential issue if a interrupt or signal handler needs to lock a mutex? What’s the workaround described in the Solaris papers?
-Since handlers are executed within a thread’s stack, there is the potential for a thread to deadlock with itself if it tries to lock a mutex it has already acquired. This is because the current stack frame needs the mutex that was acquired in a lower stack frame to be released.
+## What's the potential issue if a interrupt or signal handler needs to lock a mutex? What's the workaround described in the Solaris papers?
+Since handlers are executed within a thread's stack, there is the potential for a thread to deadlock with itself if it tries to lock a mutex it has already acquired. This is because the current stack frame needs the mutex that was acquired in a lower stack frame to be released.
 
 The solution is to have signal handlers execute in another thread. This way, the signal handling code can contend for a mutex like any other thread, which removes the possibility of deadlock.
 
@@ -301,14 +301,14 @@ Another solution is to have threads alter their signal masks before entering and
 ## Contrast the pros-and-cons of a multithreaded (MT) and multiprocess (MP) implementation of a webserver, as described in the Flash paper.
 ### Multiprocess
 
-The main benefits of the MP model are its simplicity. Each request is handled in a new process with it’s own address space: there is no need for any (explicit) synchronization code. However, this benefit comes at the cost of performance. First, the memory foot print of the MP implementation is large. Processes have discrete address spaces, which means that memory usage grows steeply with request count. As a result, there is less memory available for caching, which means that computation becomes disk-bound more quickly. As well, context switching slows down the performance of the MP implementation. Context switching between processes consumes CPU cycles, which could otherwise be spent handling requests.
+The main benefits of the MP model are its simplicity. Each request is handled in a new process with it's own address space: there is no need for any (explicit) synchronization code. However, this benefit comes at the cost of performance. First, the memory foot print of the MP implementation is large. Processes have discrete address spaces, which means that memory usage grows steeply with request count. As a result, there is less memory available for caching, which means that computation becomes disk-bound more quickly. As well, context switching slows down the performance of the MP implementation. Context switching between processes consumes CPU cycles, which could otherwise be spent handling requests.
 
 ### Multithreaded
 
-The main benefits of the MT model, compared to the MP model are that it is more efficient. MT applications share the address space of the process they are contained in, so they are more memory efficient than MP applications. As well, this sharing allows for smaller context switches (and often leaves hotter hardware caches), which can help performance. Unfortunately, this benefit comes at the cost of complexity. MT applications require explicit synchronization code to be written (mutexes, condition variables, etc). In addition, MT applications require kernel MT support, which wasn’t a sure bet at the time of this paper.
+The main benefits of the MT model, compared to the MP model are that it is more efficient. MT applications share the address space of the process they are contained in, so they are more memory efficient than MP applications. As well, this sharing allows for smaller context switches (and often leaves hotter hardware caches), which can help performance. Unfortunately, this benefit comes at the cost of complexity. MT applications require explicit synchronization code to be written (mutexes, condition variables, etc). In addition, MT applications require kernel MT support, which wasn't a sure bet at the time of this paper.
 
 ## What are the benefits of the event-based model described in the Flash paper over MT and MP? What are the limitations? Would you convert the AMPED model into a AMTED (async multi-threaded event-driven)? How do you think an AMTED version of Flash would compare to the AMPED version of Flash?
-The event-based model operated primarily in one thread, which makes its memory footprint smaller than both the MT and MP model. As well, the cost of context switching was not (as) present. That being said, helper processes were involved, but their utilization was as needed: they weren’t created blindly for every new request entering the system. The benefit of the smaller memory footprint was that more memory was available for the various types of caching done in the system. This meant that Flash could delay becoming disk-bound longer than the MT/MP models.
+The event-based model operated primarily in one thread, which makes its memory footprint smaller than both the MT and MP model. As well, the cost of context switching was not (as) present. That being said, helper processes were involved, but their utilization was as needed: they weren't created blindly for every new request entering the system. The benefit of the smaller memory footprint was that more memory was available for the various types of caching done in the system. This meant that Flash could delay becoming disk-bound longer than the MT/MP models.
 
 Limitations of the main approach behind Flash was that not every kernel supported asynchronous I/O. As a result, Flash had to fake it in a sense, utilizing helper processes to make I/O look async.
 

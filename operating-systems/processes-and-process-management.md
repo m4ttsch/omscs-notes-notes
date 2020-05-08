@@ -42,7 +42,7 @@ The operating system creates a mapping between the virtual address and the physi
 ![](https://assets.omscs.io/D3CEA64C-2DAC-4F2B-BF4B-8F7B6D143842.png)
 
 ## Address Space and Memory Management
-We may not have enough physical memory to store all a process’s state even if we do need it. To deal with this overflow, the operating system decides dynamically which portion of the process's address space will live in physical memory and which portion will be swapped temporarily to disk.
+We may not have enough physical memory to store all a process's state even if we do need it. To deal with this overflow, the operating system decides dynamically which portion of the process's address space will live in physical memory and which portion will be swapped temporarily to disk.
 
 Operating system must maintain a mapping from the virtual addresses to the physical addresses, and must also check the validity of memory accesses, to make sure that, say, process A isn't trying to write to memory mapped to by process B.
 

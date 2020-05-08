@@ -8,11 +8,11 @@ lecture: content-distribution
 # Content Distribution
 
 ## The Web and Caching
-In this lesson we’ll talk about the web and how web caches can improve web performance.
+In this lesson we'll talk about the web and how web caches can improve web performance.
 
 We will study the **Hypertext Transfer Protocol** (HTTP), which is an application-level protocol to transfer web content.
 
-It’s the protocol that our web browser use to request web pages. The browser, an HTTP client, sends a request to a server asking for web content, and the server responds with the content, often encoded in text.
+It's the protocol that our web browser use to request web pages. The browser, an HTTP client, sends a request to a server asking for web content, and the server responds with the content, often encoded in text.
 
 The server usually maintains no information about past client requests: it is *stateless*.
 
@@ -145,7 +145,7 @@ If instead the client could fetch content from the local cache, performance coul
 
 Caching can also improve the performance when multiple clients are requesting the same content.
 
-Not only do all of the clients benefit from the content being cached locally, but the ISP saves cost on transit, since it doesn’t have to pay for transferring the same content over expensive backbone links.
+Not only do all of the clients benefit from the content being cached locally, but the ISP saves cost on transit, since it doesn't have to pay for transferring the same content over expensive backbone links.
 
 To ensure that clients are seeing the most recent version of a page, caches periodically expire content, based the `Expires` header.
 
@@ -220,7 +220,7 @@ Naming-based redirection provides significant flexibility in directing different
 
 ![](https://assets.omscs.io/C01D089F-608B-4A15-A587-5D6E84D556EC.png)
 
-When we look up the www.symantec.com from NYC, we don’t get an A record directly. Instead, we get a CNAME record pointing to a568.d.akamai.net. When we look up the CNAME, we see 2 corresponding IP addresses.
+When we look up the www.symantec.com from NYC, we don't get an A record directly. Instead, we get a CNAME record pointing to a568.d.akamai.net. When we look up the CNAME, we see 2 corresponding IP addresses.
 
 When we perform the same lookup from Boston, we still encounter the same CNAME record. Looking up the Akamai domain name, however, returns two different IP addresses, which are presumably more local to Boston area.
 
@@ -230,7 +230,7 @@ When we perform the same lookup from Boston, we still encounter the same CNAME r
 
 When we `ping` youtube.com, we can see that we get very low latency: on the order of 1ms.
 
-A `dig` request for the PTR record associated with the IP address that was responding to our ping shows `yh-in-f190.1e100.net` which is an address from Google’s CDN.
+A `dig` request for the PTR record associated with the IP address that was responding to our ping shows `yh-in-f190.1e100.net` which is an address from Google's CDN.
 
 ## CDNs and ISPs
 CDNs and ISPs have a fairly symbiotic relationship when it comes to peering with one another.
@@ -245,7 +245,7 @@ During large request events, having direct connectivity to multiple networks whe
 
 On the other hand, it is advantageous for ISPs to peer with CDNs.
 
-Providing content closer to the ISP’s customers allows the ISP to provide its customers with good performance for a particular service.
+Providing content closer to the ISP's customers allows the ISP to provide its customers with good performance for a particular service.
 
 For example, Georgia Tech has placed a Google cache node in its own network, resulting in very low latencies to Google.
 
@@ -264,7 +264,7 @@ Instead of having everyone retrieve the content from the origin, each client can
 
 We can take the original file and chop it into many different pieces, and replicate the different pieces on many different peers in the network as soon as possible.
 
-Each peer can share its pieces with other peers, and fetch the pieces that it doesn’t have from other peers in the network who have those pieces.
+Each peer can share its pieces with other peers, and fetch the pieces that it doesn't have from other peers in the network who have those pieces.
 
 By trading different pieces of the same file, everyone eventually gets the full file.
 
@@ -288,7 +288,7 @@ Previous peer-to-peer file sharing systems used similar swapping techniques, but
 BitTorrent solved the problem of freeloading.
 
 ## Solution to Freeriding
-BitTorrent’s solution to freeriding is called **choking**, which is type of game theoretic strategy called [tit-for-tat](https://www.investopedia.com/terms/t/tit-for-tat.asp).
+BitTorrent's solution to freeriding is called **choking**, which is type of game theoretic strategy called [tit-for-tat](https://www.investopedia.com/terms/t/tit-for-tat.asp).
 
 In choking, if a node is unable to download from any particular peer - for example, if that peer has left the network - it simply refuses to upload to that peer.
 
@@ -311,7 +311,7 @@ As a result, clients may start by selecting a random piece of the file to downlo
 
 In the end, the client actively requests any missing pieces from all peers, and redundant requests are cancelled when the missing piece arrives.
 
-This is ensures that a single peer with a slow transfer rate doesn’t prevent the download from completing.
+This is ensures that a single peer with a slow transfer rate doesn't prevent the download from completing.
 
 ## Distributed Hash Tables
 Distributed hash tables enable a form of content overlay known as a *structured overlay*.
@@ -323,13 +323,13 @@ Chord is a scalable, performant, distributed lookup service with provable correc
 ## Chord Motivation
 The main motivation of chord is scalable location of data in a large distributed system.
 
-A publisher might want to publish the location of a particular piece of data with a particular name - for example, an mp4 with the name ‘Annie Hall’.
+A publisher might want to publish the location of a particular piece of data with a particular name - for example, an mp4 with the name 'Annie Hall'.
 
-The publisher needs to figure out where to publish this data such that a client can find it, so that when the client performs a lookup for ‘Annie Hall’ it’s directed to the location of the mp4.
+The publisher needs to figure out where to publish this data such that a client can find it, so that when the client performs a lookup for 'Annie Hall' it's directed to the location of the mp4.
 
 The problem that needs to be solved is the problem of lookup, which requires a simple hash function.
 
-What makes this problem interesting, though, is that the hash table isn’t located in one place, but rather it is distributed across the network.
+What makes this problem interesting, though, is that the hash table isn't located in one place, but rather it is distributed across the network.
 
 Consistent hashing allows us to build this distributed hash table.
 
@@ -366,7 +366,7 @@ A solution that provides the best of both worlds - relatively fast lookups with 
 
 With finger tables, every node knows `m` other nodes in the ring, and the distance to the nodes that it knows increases exponentially.
 
-Let’s construct the finger table for node 10.
+Let's construct the finger table for node 10.
 
 ![](https://assets.omscs.io/5E9E22A6-66E1-4CCB-A958-696F9A3BB6D0.png)
 
@@ -384,7 +384,7 @@ The ith finger points to the successor of the node ID + 2^i.  In this case, fing
 
 If node 10 wants to lookup a key corresponding to the ID 42. It can use the finger tables to find the predecessor of that node, node 32.
 
-It then can ask node 32 for its successor. At this point, we can move forward around the ring looking for the node whose successor’s ID is bigger than the ID of the data, which is node 43 in this case.
+It then can ask node 32 for its successor. At this point, we can move forward around the ring looking for the node whose successor's ID is bigger than the ID of the data, which is node 43 in this case.
 
 Due to the structure of the finger table, these lookups require O(log(n)) hops. The size of the finger table requires O(log(n)) state per node.
 
@@ -402,4 +402,4 @@ For example, when we add node with ID 59, we must transfer the ownership of key 
 
 A fall back for handling leaves is to ensure that any particular node not only keeps track of its own finger table, but also of the fingers of any successor.
 
-This way, if a node should fail at any time, then the predecessor node in the ring also knows how to reach the nodes corresponding to the entries in the failed node’s finger table.
+This way, if a node should fail at any time, then the predecessor node in the ring also knows how to reach the nodes corresponding to the entries in the failed node's finger table.

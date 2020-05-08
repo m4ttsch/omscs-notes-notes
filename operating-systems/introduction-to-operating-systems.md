@@ -8,7 +8,7 @@ lecture: introduction-to-operating-systems
 # Introduction To Operating Systems
 
 ## What is an operating system?
-Let’s first look at the hardware of a computing system. This computing system consists of:
+Let's first look at the hardware of a computing system. This computing system consists of:
 
 * Central Processing Unit (CPU)
 * Physical Memory

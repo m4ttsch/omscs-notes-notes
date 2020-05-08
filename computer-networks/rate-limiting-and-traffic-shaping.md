@@ -46,7 +46,7 @@ In short, the leaky bucket allows flows to periodically burst while maintaining 
 
 For an audio application, one might consider setting the size of the bucket to 16kB, so packets of 1kB would then be able to accumulate a burst of up to 16 packets into the bucket.
 
-The regulator’s rate of 8 packets per second, however, would ensure that the audio rate would be smooth to an average rate not to exceed 8kB / second, or 64kbps.
+The regulator's rate of 8 packets per second, however, would ensure that the audio rate would be smooth to an average rate not to exceed 8kB / second, or 64kbps.
 
 ## (r, T) Traffic Shaping
 In **(r, T) traffic shaping** traffic is divided in T-bit frames, and a flow can inject up to r bits in any T-bit frame.
@@ -55,7 +55,7 @@ If the sender wants to send more than one packet of r bits, it simply has to wai
 
 A flow that obeys this rule has an *(r, T) smooth traffic shape*.
 
-In (r, T) traffic shaping a sender can’t send a packet that is larger than r bits long. Unless T is very large, the maximum packet size may be very small, so this type of traffic shaping is typically limited to fixed-rate flows.
+In (r, T) traffic shaping a sender can't send a packet that is larger than r bits long. Unless T is very large, the maximum packet size may be very small, so this type of traffic shaping is typically limited to fixed-rate flows.
 
 Variable flows have to request data rates that are equal to the peak rate. It would be incredibly wasteful to configure the shaper such that the average rate must support whatever peak rate the variable rate flow must send.
 
@@ -68,7 +68,7 @@ Priorities might be assigned at the sender or at the network.
 At the sender, the application might mark its own packets, since the application knows best which packets may be more important. In the network, the routers may mark packets with a lower priority, a feature known as **policing**.
 
 ## Shaping Bursty Traffic Patterns
-Sometimes we want to shape bursty traffic, allowing for bursts to be sent on the network, while still ensuring that the flow doesn’t exceed some average rate.
+Sometimes we want to shape bursty traffic, allowing for bursts to be sent on the network, while still ensuring that the flow doesn't exceed some average rate.
 
 For this scenario, we might use a **token bucket**.
 
@@ -116,7 +116,7 @@ To apply policing to token buckets, one strategy is to use a **composite shaper*
 
 ![](https://assets.omscs.io/85D930D2-561B-4782-842B-B74301E3D3AC.png)
 
-The combination of the two ensures that a flow’s data rate doesn’t exceed the average data rate enforced by the smooth leaky bucket.
+The combination of the two ensures that a flow's data rate doesn't exceed the average data rate enforced by the smooth leaky bucket.
 
 The implementation is more complex, though, since each flow now requires two timers and two counters, one for each bucket.
 
@@ -127,7 +127,7 @@ For example, if you subscribed at a rate of 10Mbps, power boost might allow you 
 
 ![](https://assets.omscs.io/456DF464-7914-4DD3-BAA2-5265031AFE03.png)
 
-Power boost targets the spare capacity in the network for use by subscribers who don’t put sustained load on the network.
+Power boost targets the spare capacity in the network for use by subscribers who don't put sustained load on the network.
 
 There are two types of power boost.
 
@@ -200,7 +200,7 @@ These larger buffers can be found in
 - switches and routers
 
 ## Buffer Bloat Example
-Let’s look at the round trip times for 3 different DSL routers.
+Let's look at the round trip times for 3 different DSL routers.
 
 ![](https://assets.omscs.io/5EC1D656-591F-453A-AF2E-5A00FF66AB2F.png)
 
@@ -210,7 +210,7 @@ We can see that the modems experience a huge increase in latency coinciding with
 
 A home modem has a packet buffer. Your ISP is upstream of that buffer, and the access link is draining that buffer at a certain rate.
 
-TCP senders in the home will send until they see lost packets. If the buffer is large, the senders won’t actually see those lost packets until this buffer has already filled up.
+TCP senders in the home will send until they see lost packets. If the buffer is large, the senders won't actually see those lost packets until this buffer has already filled up.
 
 The senders continue to send at increasingly faster rates until they see a loss. As a result, packets arriving at this buffer see increasing delays, while senders continue to send at faster and faster rates.
 
@@ -267,9 +267,9 @@ One common use for SNMP is to poll a particular interface on a network device fo
 
 By periodically polling, we can determine the rates at which traffic is being sent on a link, and taking the difference in the counts divided by the interval between measurements.
 
-The advantage of SNMP is that is fairly ubiquitous: it’s supported on basically all networking equipment. There are many products available for polling/analyzing SNMP data.
+The advantage of SNMP is that is fairly ubiquitous: it's supported on basically all networking equipment. There are many products available for polling/analyzing SNMP data.
 
-On the other hand, the data is fairly course. Since SNMP only allows for polling byte/packet counts on the interface, we can’t ask really analyze specific hosts or flows.
+On the other hand, the data is fairly course. Since SNMP only allows for polling byte/packet counts on the interface, we can't ask really analyze specific hosts or flows.
 
 Two other ways to measure passively are by monitoring at a packet-level granularity or flow-level granularity. At the packet level, monitors can see full packet contents (or at least headers). At the flow level, a monitor may see specific statistics about individual flows in the network.
 
@@ -289,11 +289,11 @@ Even though packet monitoring sometimes requires expensive hardware on high spee
 
 These tools allow your machine to act as a monitor on the local area network, and if any packets are sent towards your network interface, the monitor records those packets.
 
-On a switched network, you wouldn’t see many packets that weren’t destined for your MAC address, but on a network where there is a lot of traffic being flooded, you might see quite a bit more traffic destined for an interface that you are using to monitor.
+On a switched network, you wouldn't see many packets that weren't destined for your MAC address, but on a network where there is a lot of traffic being flooded, you might see quite a bit more traffic destined for an interface that you are using to monitor.
 
 The advantages of packet monitoring is that it provides lots of detail, like timing information and information gleaned from packet headers.
 
-The disadvantage of packet monitoring is that there is relatively high overhead. It’s very hard to keep up with high speed links, and often requires a separate monitoring hardware device.
+The disadvantage of packet monitoring is that there is relatively high overhead. It's very hard to keep up with high speed links, and often requires a separate monitoring hardware device.
 
 ## Flow Monitoring
 A flow consists of packets that share a common

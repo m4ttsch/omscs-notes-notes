@@ -31,7 +31,7 @@ The library will maintain some user level thread data structure containing:
 * thread registers
 * thread stacks
 
-If we want there to be multiple kernel level threads associated with this process, we don’t want to have to replicate the entire process control block in each kernel level thread we have access to.
+If we want there to be multiple kernel level threads associated with this process, we don't want to have to replicate the entire process control block in each kernel level thread we have access to.
 
 The solution is to split the process control block into smaller structures. Namely, the stack and registers are broken out (since these will be different for different kernel level threads) and only these pieces of information are stored in the kernel level thread data structure.
 
@@ -94,7 +94,7 @@ The thread data structure contains different fields for:
 
 The amount of memory needed for a thread data structure is often almost entirely known up front. This allows for compact representation of threads in memory: basically, one right after the other in a continuous section of memory.
 
-However, the user library does not control stack growth. With this compact memory representation, there may be an issue if one thread starts to overrun its boundary and overwrite the data for the next thread. If this happens, the problem is that they error won’t be detected until the overwritten thread starts to run, even though the cause of the problem is the overwriting thread.
+However, the user library does not control stack growth. With this compact memory representation, there may be an issue if one thread starts to overrun its boundary and overwrite the data for the next thread. If this happens, the problem is that they error won't be detected until the overwritten thread starts to run, even though the cause of the problem is the overwriting thread.
 
 The solution is to separate information about each thread by a **red zone**. The red zone is a portion of the address space that is not allocated. If a thread tries to write to a red zone, the operating system causes a fault. Now it is much easier to reason about what happened as the error is associated with the problematic thread.
 
@@ -199,7 +199,7 @@ T1 holds the mutex and is executing on one CPU. T2 and T3 are blocked. T4 is exe
 
 The normal behavior would be to place T4 on the queue associated with the mutex. However, on a multiprocessor system where things can happen in parallel, it may be the case that be the time T4 is placed on the queue, T1 has released the mutex.
 
-If the critical section is very short, the more efficient case for T4 is not to block, but just to spin (trying to acquire the mutex in a loop).  If the critical section is long, it makes more sense to block (that is, be placed on a queue and retrieved at some later point in time). This is because it takes CPU cycles to spin, and we don’t want to burn through cycles for a long time.
+If the critical section is very short, the more efficient case for T4 is not to block, but just to spin (trying to acquire the mutex in a loop).  If the critical section is long, it makes more sense to block (that is, be placed on a queue and retrieved at some later point in time). This is because it takes CPU cycles to spin, and we don't want to burn through cycles for a long time.
 
 Mutexes which sometimes block and sometimes spin are called **adaptive mutexes.** These only make sense on multiprocessor systems, since we only want to spin if the owner of the mutex is currently executing in parallel to us.
 
@@ -277,13 +277,13 @@ Some asynchronous signals include:
 - SIGALARM (timeout from timer expiration)
 
 ## Why Disable Interrupts or Signals?
-Interrupts and signals are handled in the context of the thread being interrupted/signaled. This means that they are handled on the thread’s stack, which can cause certain issues.
+Interrupts and signals are handled in the context of the thread being interrupted/signaled. This means that they are handled on the thread's stack, which can cause certain issues.
 
 When a thread handles a signal, the program counter of the thread will point to the first address of the handler. The stack pointer will remain the same, meaning that whatever the thread was doing prior to being interrupted with still be on the stack.
 
-If the handling code needs to access some shared state that can be used by other threads in the system, we will have to use mutexes. If the thread which is being interrupted had already locked the mutex prior to be interrupted, we are in a **deadlock**. The thread can’t unlock its mutex until the handler returns, but the handler can’t return until it locks the mutex.
+If the handling code needs to access some shared state that can be used by other threads in the system, we will have to use mutexes. If the thread which is being interrupted had already locked the mutex prior to be interrupted, we are in a **deadlock**. The thread can't unlock its mutex until the handler returns, but the handler can't return until it locks the mutex.
 
-To prevent this situation, we can enforce that the handling code stays simple and make sure it doesn’t do things like try to acquire mutexes. This of course it too restrictive.
+To prevent this situation, we can enforce that the handling code stays simple and make sure it doesn't do things like try to acquire mutexes. This of course it too restrictive.
 
 A better solution is to use **signal/interrupt masks**. These masks allow us to dynamically make decisions as to whether or not signals/interrupts can actually interrupt the execution of a particular thread.
 
@@ -317,12 +317,12 @@ To avoid the deadlock situation we covered before with regards to handler code t
 
 This way, when the thread tries to acquire the mutex, it will block just like any other thread, but will not deadlock. Eventually the thread holding the mutex will release it, and the handling thread may acquire it.
 
-Dynamic thread creation is expensive! Need to only create a new thread if we absolutely need it. If the handler doesn’t block, execute on interrupted thread’s stack. Don’t make a new thread!
+Dynamic thread creation is expensive! Need to only create a new thread if we absolutely need it. If the handler doesn't block, execute on interrupted thread's stack. Don't make a new thread!
 
 In order to eliminate the cost of dynamic thread creation, the kernel pre-creates and -initializes thread structures for interrupt routines. This can help reduce the time it takes for an interrupt to be handled.
 
 ## Interrupts: Top Vs. Bottom Half
-When an interrupt is handled in a different thread, we no longer have to disable handling in the thread that may be interrupted. Since the deadlock situation can no longer occur, we don’t need to add any special logic to our main thread.
+When an interrupt is handled in a different thread, we no longer have to disable handling in the thread that may be interrupted. Since the deadlock situation can no longer occur, we don't need to add any special logic to our main thread.
 
  There are two components of signal handling. The **top half** of signal handling occurs in the context of the interrupted thread (before the handler thread is created). This half must be fast, non-blocking, and include a minimal amount of processing. Once we have created our thread, this **bottom half** can contain arbitrary complexity, as we have now stepped out of the context of our main program into a separate thread.
 
@@ -342,13 +342,13 @@ There is a signal mask associated with each user level thread which is associate
 
 When a user level thread wants to disable a signal, it clears the appropriate bit in the signal mask, which occurs at user level. The kernel level mask is not updated.
 
-When a signal occurs, the kernel needs to know what to do with the signal. It is possible that the kernel mask has that signal bit set to one, so from the kernel’s point of view the signal is still enabled.
+When a signal occurs, the kernel needs to know what to do with the signal. It is possible that the kernel mask has that signal bit set to one, so from the kernel's point of view the signal is still enabled.
 
-If we don’t want to have to make a system call, crossing from user level into kernel level each time a user level threads updates the signal mask, we need to come up with some kind of policy.
+If we don't want to have to make a system call, crossing from user level into kernel level each time a user level threads updates the signal mask, we need to come up with some kind of policy.
 
 If both the kernel level thread and the user level thread have the bit enabled, the kernel will send the signal up to the user level thread and we have no problem.
 
-Let’s look at a more complicated scenario, in which the kernel level thread has a particular signal bit enabled, and the currently executing user level thread does not. However, there is a runnable user level thread that does have the bit enabled.
+Let's look at a more complicated scenario, in which the kernel level thread has a particular signal bit enabled, and the currently executing user level thread does not. However, there is a runnable user level thread that does have the bit enabled.
 
 What we would like to do is to be able to stop the thread that cannot handle the signal, and start the thread that can.
 
@@ -356,7 +356,7 @@ We can achieve this by having the user level threading library (which has visibi
 
 ![](https://assets.omscs.io/0F15B3F6-6413-476B-A93E-68701ED3F138.png)
 
-Let’s look at a different scenario, in which there are user level threads executing concurrently atop two kernel level threads. Both kernel level threads have the signal bit enabled, while only one of the user level threads does.
+Let's look at a different scenario, in which there are user level threads executing concurrently atop two kernel level threads. Both kernel level threads have the signal bit enabled, while only one of the user level threads does.
 
 In the case where a signal is generated by a kernel level thread that is executing on behalf of a user level thread which does not have the bit enabled, the threading library will know that it cannot pass the signal to this particular user thread.
 
@@ -364,7 +364,7 @@ What it can do, however, is send a directed signal down to the kernel level thre
 
 ![](https://assets.omscs.io/E1D06396-5CD0-49B4-8D7F-9BF845406CE3.png)
 
-Let’s consider the final case in which every single user thread has the particular signal disabled. The kernel level masks are still 1, so the kernel still thinks that the process as a whole can handle the signal.
+Let's consider the final case in which every single user thread has the particular signal disabled. The kernel level masks are still 1, so the kernel still thinks that the process as a whole can handle the signal.
 
 When the signal occurs, the kernel interrupts the execution of whichever thread is currently executing atop it. The library handling routine kicks in and sees that no threads that it manages are able to handle this particular signal.
 

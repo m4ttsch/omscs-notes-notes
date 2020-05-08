@@ -8,7 +8,7 @@ lecture: thread-performance-considerations
 # Thread Performance Considerations
 
 ## Which Threading Model Is Better?
-Let’s compare the following two models to see which one is better
+Let's compare the following two models to see which one is better
 
 ![](https://assets.omscs.io/6599CE4C-F1E1-4AA1-A546-F2667436BE59.png)
 
@@ -40,7 +40,7 @@ average_time_per_order =  total_time / total_orders
 
 If execution time is important, pick the pipeline model. Rather, if we care about the average time to complete the order, the boss/workers model is better.  
 
-It’s usually not possible to decree that one model is better than the other. Performance of a model is relative to the metric being measured, and different metrics may be important in different contexts.
+It's usually not possible to decree that one model is better than the other. Performance of a model is relative to the metric being measured, and different metrics may be important in different contexts.
 
 ## Are Threads Useful?
 Threads are useful for a few reasons. They allow us to have speed up because we can parallelize problems. We get to benefit from a hot cache because we can specialize what a particular thread is doing. Using threads leads to implementations that have lower memory requirements and are cheaper to synchronize than implementations that are multiprocess. Threads are useful even on a single CPU because they allow us to hide latency of I/O operations.
@@ -54,7 +54,7 @@ For any of these metrics, we might care about the average value, or the max/min 
 To evaluate some solution, and determine whether it is useful or not, it is important to determine the properties that we really care about. We call such properties **metrics**.
 
 ## Performance Metrics
-A metric is a measurable or quantifiable property of a system that we are interested in that can be used to evaluate the system’s behavior. For example, a metric can be the execution time (measurable property) of a software implementation to a problem (component of system we are interested in) which can be used to see if the implementation being analyzed is more performant than other implementations (system behavior evaluation).
+A metric is a measurable or quantifiable property of a system that we are interested in that can be used to evaluate the system's behavior. For example, a metric can be the execution time (measurable property) of a software implementation to a problem (component of system we are interested in) which can be used to see if the implementation being analyzed is more performant than other implementations (system behavior evaluation).
 
 So far, we have discussed many useful metrics, such as:
 - execution time
@@ -76,7 +76,7 @@ Many instead I am more concerned about energy requirements. I might look at **pe
 
 When looking to incorporate enterprise software into the system, another useful metric may be the **percentage of SLA violations**. It may not make sense to create a contract with a software company if the SLA violations on their products are very high.
 
-Some metrics are not super useful to maximize. For example, "smooth" video requires ~30fps. It doesn’t make sense to maximize the fps, but rather the goal should be to stay above or around 30fps for some high percentage of the time. In this case **client-perceived performance** is the goal, not raw performance.
+Some metrics are not super useful to maximize. For example, "smooth" video requires ~30fps. It doesn't make sense to maximize the fps, but rather the goal should be to stay above or around 30fps for some high percentage of the time. In this case **client-perceived performance** is the goal, not raw performance.
 
 You may be interested in just one metric before making decisions, or you may need to aggregate metrics or even derive new metrics in order to accurately understand the system that you are evaluating.
 
@@ -87,7 +87,7 @@ Ideally, we will obtain these measurements running real software on real machine
 We refer to these experimental settings as a **testbed**. The testbed tells us where/how the experiments were carried out and what were the relevant metrics being gathered.
 
 ## Really … Are Threads Useful?
-There isn’t really a straightforward answer to this question or the more general question of "Is X Useful?". The answer depends on which metrics we have gathered, as well as the workload on the system. For different combinations of these two variables, we may arrive at very different conclusions.
+There isn't really a straightforward answer to this question or the more general question of "Is X Useful?". The answer depends on which metrics we have gathered, as well as the workload on the system. For different combinations of these two variables, we may arrive at very different conclusions.
 
 For example, some graph traversal algorithms work best on sparse graphs, while others work best on dense graphs. Some filesystems are optimized for read access, while others might be optimized for a write-heavy system.
 
@@ -138,7 +138,7 @@ Events (in the case of a web server application)  can correspond to:
 - completion of send
 - completion a disk read
 
-The event dispatcher has the ability to accept any of these types of notifications and based on the notification type invoke the right handler. Since we are taking about a single threaded process invoking a handler is just calling a function, so we just jump our execution to that instruction within the process’s address space.
+The event dispatcher has the ability to accept any of these types of notifications and based on the notification type invoke the right handler. Since we are taking about a single threaded process invoking a handler is just calling a function, so we just jump our execution to that instruction within the process's address space.
 
 The handlers run to completion. If the handler needs to block (by making an I/O request for instance), the handler will initiate the blocking operation and immediately pass control back to the dispatch loop.
 
@@ -147,7 +147,7 @@ In the multiprocess and multithreaded implementation, one request is handled at 
 
 In the event driven model, the processing of multiple requests are interleaved within a single execution context.
 
-Let’s say we have one client that makes a request to our server. The client connection is accepted, and the request is parsed by the server. At some point the server may block on trying to send some information back to the client. In the meantime, two more requests come in. The first of these requests is blocking on the receipt of the HTTP message from the client. The second of these requests is blocking on accepting the connection from the client. At some point later point, the processing for each of these requests will have advanced.
+Let's say we have one client that makes a request to our server. The client connection is accepted, and the request is parsed by the server. At some point the server may block on trying to send some information back to the client. In the meantime, two more requests come in. The first of these requests is blocking on the receipt of the HTTP message from the client. The second of these requests is blocking on accepting the connection from the client. At some point later point, the processing for each of these requests will have advanced.
 
 Even though we are within one thread of execution, we are still able to simultaneously parse multiple requests.
 
@@ -156,7 +156,7 @@ What is the benefit of having a execution context processing multiple requests?
 
 On a single CPU, threads can be useful because they hide latency. If the amount of time a thread will spend idle is greater than the time it takes to context switch twice, it makes sense to context switch and let some other thread do some work.
 
-If there really isn’t any idle time, context switching just wastes cycles that could have been used for request processing.
+If there really isn't any idle time, context switching just wastes cycles that could have been used for request processing.
 
 In the event driven model, a request will be processed exactly until a wait is necessary, at which point the execution context will switch to servicing another request.
 
@@ -196,11 +196,11 @@ When the handler needs to initiate an I/O operation that can block, the handler 
 
 The communication with the helper can be with sockets or pipes, which both present a file descriptor like interface, which means that `select` and `poll` still work.
 
-In doing this, the synchronous I/O call is handled by the helper. The helper will block, but the main event loop will not! Although we don’t have asynchronous system calls, we can fake it to an extent by delegating blocking calls to processes.
+In doing this, the synchronous I/O call is handled by the helper. The helper will block, but the main event loop will not! Although we don't have asynchronous system calls, we can fake it to an extent by delegating blocking calls to processes.
 
 ![](https://assets.omscs.io/007D0E12-DC9B-4787-91A9-FCEA8EB25A4F.png)
 
-If the kernel is not multithreaded - it wasn’t back in the day - the helpers need to be processes. The model was called the **Asymmetric Multi-Process Event-Driven Model** or AMPED. The multithreaded equivalent acronym is AMTED.
+If the kernel is not multithreaded - it wasn't back in the day - the helpers need to be processes. The model was called the **Asymmetric Multi-Process Event-Driven Model** or AMPED. The multithreaded equivalent acronym is AMTED.
 
 The key benefits of this model are that  it resolves some of the portability issues of the basic event-driven model. That is, it fakes asynchronous I/O operations instead of relying on native support for them.
 
@@ -221,7 +221,7 @@ Flash performs application level caching at multiple levels.
 
 It does this on both data and computation. It common to cache files: this is data caching. Computation can also be cached. For instance, every request has an associated pathname, and we need to look up the file given the pathname. That lookup will compute some result, which we can cache so we do not have to perform the same computation again.
 
-Similarly, the fields in the HTTP header are often file dependent. So long as the file doesn’t change, the headers don’t need to change. Thus we can cache the response header so long as we can tell that the file hasn’t changed. Again, we don’t need to perform an unnecessary computation.
+Similarly, the fields in the HTTP header are often file dependent. So long as the file doesn't change, the headers don't need to change. Thus we can cache the response header so long as we can tell that the file hasn't changed. Again, we don't need to perform an unnecessary computation.
 
 Flash also makes some optimizations that take advantage of the available network hardware.
 
@@ -258,20 +258,20 @@ The authors compared their implementation against
 
 They wanted workloads that represented a realistic sequence of requests, because that is what will capture a distribution of web page accesses, but they wanted to be able to reproduce the experiment with the same pattern of accesses. To accomplish this, they gathered traces from real web servers, and replayed those traces to their systems.
 
-They used two real-world traces. The first trace was the CS WebServer trace, which represents the Rice University web server for the computer science department, which includes a large number of files and doesn’t really fit in memory. The second trace was the Owlnet trace, which was from a web server that hosted a number of student run websites and it was much smaller so it would typically fit in the memory of a common server.
+They used two real-world traces. The first trace was the CS WebServer trace, which represents the Rice University web server for the computer science department, which includes a large number of files and doesn't really fit in memory. The second trace was the Owlnet trace, which was from a web server that hosted a number of student run websites and it was much smaller so it would typically fit in the memory of a common server.
 
-In addition to these real traces, they also used a synthetic workload generator. Since they couldn’t replay synthetic workloads, they instead performed some best/worst analysis when looking at performance with these workloads.
+In addition to these real traces, they also used a synthetic workload generator. Since they couldn't replay synthetic workloads, they instead performed some best/worst analysis when looking at performance with these workloads.
 
 ### How will you measure performance?
 
 A common metric to measure web servers - that was used in this paper - is **bandwidth**. Bandwidth measures the total number of bytes transferred divided by the total amount of time it takes to transfer those bytes.
 
-Second, because the authors were concerned with Flash’s ability to perform concurrent processing, they wanted to see the impact of **connection rate** as a metric. This is defined as the total number of client connections serviced divided by the total amount of time that passed.
+Second, because the authors were concerned with Flash's ability to perform concurrent processing, they wanted to see the impact of **connection rate** as a metric. This is defined as the total number of client connections serviced divided by the total amount of time that passed.
 
 Both of these metrics were evaluated as function of file size. The intuition is that with a larger file size, the connection cost can be ammortized, resulting in higher bandwidth. On the other hand, with a larger file size, there is more work to do per connection, so its expected that there will be a lower connection rate.
 
 ## Experimental Results
-Let’s look at the experimental results.
+Let's look at the experimental results.
 
 ### Best Case Numbers
 For the best case, the authors used the synthetic load. They varied the number of requests that were made, but made sure each request asked for the exact same file. The is the best case because once the file is requested once, it can be cached which means that subsequent requests for the file will be answered much more quickly.
@@ -288,7 +288,7 @@ SPED has the best performance. Flash is similar in performance, but it performs 
 
 ![](https://assets.omscs.io/9FA2F6D6-44DC-4BA7-9EF6-FB4D43849B0A.png)
 
- For the Owlnet trace, the results are mostly similar to the best case. We can see that Flash and SPED are the best, followed by MT/MP and then Apache. The reason for this trend is because the owl trace is very small, so most of the requests can be serviced from the cache. However, not everything can be serviced from cache, so sometime blocking I/O is required. In this case, SPED will block, but Flash will not because it has helpers. This helps explain why Flash’s performance is slightly higher than the SPED implementation.
+ For the Owlnet trace, the results are mostly similar to the best case. We can see that Flash and SPED are the best, followed by MT/MP and then Apache. The reason for this trend is because the owl trace is very small, so most of the requests can be serviced from the cache. However, not everything can be serviced from cache, so sometime blocking I/O is required. In this case, SPED will block, but Flash will not because it has helpers. This helps explain why Flash's performance is slightly higher than the SPED implementation.
 
 ### CS Trace
 
@@ -307,7 +307,7 @@ Flash performs the best. It has the smallest memory footprint, which means it ha
 ## Summary of Performance Results
 When the data is in cache, SPED smokes AMPED Flash, since AMPED Flash makes an "unnecessary" test for memory presence on each request. Both SPED and AMPED Flash perform better than MT/MP models, because neither occurs any synchronization or context switching overhead.
 
-When the workload is disk-bound, AMPED Flash performs much better than SPED, which blocks on I/O request because it doesn’t have asynchronous I/O. AMPED Flash performs better than MT/MP because the more efficient memory implementation leaves more memory available for caching.
+When the workload is disk-bound, AMPED Flash performs much better than SPED, which blocks on I/O request because it doesn't have asynchronous I/O. AMPED Flash performs better than MT/MP because the more efficient memory implementation leaves more memory available for caching.
 
 ## Advice on Designing Experiments
 The clients using the web server care about the response time: how quickly they get a response. The operators of the web server care about throughput: how much information can they send as quickly as possible.
@@ -322,17 +322,17 @@ When picking metrics, a good rule of thumb is to start by looking at metrics tha
 
 In addition, you need metrics that answer the who/what/why questions. Why are you doing this work? Whose problems are you trying to solve?
 
-Once you understand the metrics you will be analyzing, it’s important to understand system factors that affect those metrics.
+Once you understand the metrics you will be analyzing, it's important to understand system factors that affect those metrics.
 
 For example, system resources can greatly affect metrics. Systems with different CPUs and memory configurations, running different software will often have wildly different results.
 
-It’s important to also consider the workload configuration. For a web server,  we can vary the request rate, the number of concurrent requests, the file size, the access pattern and many more.
+It's important to also consider the workload configuration. For a web server,  we can vary the request rate, the number of concurrent requests, the file size, the access pattern and many more.
 
-Once you have more insight into the configuration space available to your experiment, you need to actually pick some subset of features. It may be the case that the best approach involves variable ranges for some of the configuration parameters. Try to make these ranges realistic. Don’t use 1, 2 or 3 threads when real world setups use hundreds of threads.
+Once you have more insight into the configuration space available to your experiment, you need to actually pick some subset of features. It may be the case that the best approach involves variable ranges for some of the configuration parameters. Try to make these ranges realistic. Don't use 1, 2 or 3 threads when real world setups use hundreds of threads.
 
 It is possible to engineer configurations such that you can provide best/worst analysis about the system that you are analyzing. In this case, it may be okay to have configurations that, while not common, are still possible.
 
-Compare apples to apples! Put another way, only vary one parameter at a time! Don’t vary the workload and the software; how will you be able to tell which factor influenced your results?
+Compare apples to apples! Put another way, only vary one parameter at a time! Don't vary the workload and the software; how will you be able to tell which factor influenced your results?
 
 What is the baseline performance of the system you are improving? You want to be able to show that your experiment somehow improves the state of the art or at least improves the most common configuration/workflow.
 

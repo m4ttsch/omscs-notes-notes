@@ -12,7 +12,7 @@ Distributed file systems are an example of a distributed service in which the st
 
 The primary focus of the DFS lesson was the caching mechanisms, which were useful to improve performance as seen by clients and scalability as supported by the servers.
 
-We didn’t talk about how the multiple file servers share and coordinate the application state amongst themselves. We also didn’t talk about the scenario in which all of the nodes in the system were both servers and clients (peers).
+We didn't talk about how the multiple file servers share and coordinate the application state amongst themselves. We also didn't talk about the scenario in which all of the nodes in the system were both servers and clients (peers).
 
 ## Peer Distributed Applications
 Often it is hard to distinguish between servers and clients in a system. The state of an application can be shared across all nodes, with different nodes both requesting and serving state at different points in times.
@@ -21,7 +21,7 @@ Every node in the system owns some portion of the state. There is some state tha
 
 All of the nodes are **peers**: they all require accesses to the state located  elsewhere in the system and provide accesses to their local state.
 
-This is slightly different from "peer-to-peer" applications: it’s likely that there will still be some nodes that provide some overall configuration or management of the entire system. In a peer-to-peer system, these tasks would still be performed cooperatively by all peers.
+This is slightly different from "peer-to-peer" applications: it's likely that there will still be some nodes that provide some overall configuration or management of the entire system. In a peer-to-peer system, these tasks would still be performed cooperatively by all peers.
 
 ## Distributed Shared Memory (DSM)
 Distributed shared memory is a service that manages memory across multiple nodes so that applications will have the illusion that they are running on a single shared-memory machine.
@@ -34,7 +34,7 @@ For instance, when nodes read and write shared memory locations, these reads and
 
 Distributed shared memory mechanisms are important to study because they permit scaling beyond the limitations of how much memory we can include in a single machine.
 
-Single machines with large amounts of memory can cost hundreds of thousands of dollars per machine. In order to scale up memory affordably, it’s imperative to understand DSM concepts and semantics so many cheap machines can be connected to give the illusion of a high memory "single" machine.
+Single machines with large amounts of memory can cost hundreds of thousands of dollars per machine. In order to scale up memory affordably, it's imperative to understand DSM concepts and semantics so many cheap machines can be connected to give the illusion of a high memory "single" machine.
 
 Naturally, the overall memory access will be slower in a DSM environment as a result of network costs, but this is often affordable, and optimizable. It is possible to hide these network delays by making the right application design choices.
 
@@ -51,7 +51,7 @@ Memory accesses that reference remote memory locations are passed to the network
 
 The NICs are involved in all aspects of the memory management, access and consistency and even support some atomics.
 
-While it’s very convenient to rely on hardware to do everything, this type of hardware is typically very expensive and as a result is reserved for very high-end machines.
+While it's very convenient to rely on hardware to do everything, this type of hardware is typically very expensive and as a result is reserved for very high-end machines.
 
 Instead, DSM is often realized in software. The software will have to
 - detect local vs remote memory accesses
@@ -71,15 +71,15 @@ Instead, we can look at larger granularities for sharing:
 - page granularity
 - object granularity
 
-Variables are a meaningful unit from a programmer’s perspective, so maybe DSM solutions can operate at the level of variable granularity. Unfortunately, this is likely still too fine-grained. Variables are still too small and occur too frequently in an application, making it likely that we will still incur very high coherence traffic overheads.
+Variables are a meaningful unit from a programmer's perspective, so maybe DSM solutions can operate at the level of variable granularity. Unfortunately, this is likely still too fine-grained. Variables are still too small and occur too frequently in an application, making it likely that we will still incur very high coherence traffic overheads.
 
-Using something larger, like a page or object makes more sense. If the DSM system is to be integrated at the operating system level, page-based granularity makes sense since the OS doesn’t understand objects. Pages are larger than variables, so it’s possible to amortize the cost of remote access across these larger granularities.
+Using something larger, like a page or object makes more sense. If the DSM system is to be integrated at the operating system level, page-based granularity makes sense since the OS doesn't understand objects. Pages are larger than variables, so it's possible to amortize the cost of remote access across these larger granularities.
 
 With some help from a compiler, application level objects can be laid out on different pages, and then we can rely on the page-based operating system level mechanism.
 
 Alternatively, we can have a DSM that is supported by the programming language and the runtime, where the runtime understands which objects are local and which are remote. For remote objects, the runtime will generate all of the necessary operations to communicate with the remote nodes.
 
-In the case of object granularity, the OS doesn’t need to know anything about DSM, and therefore doesn’t have to be modified. That being said, the language level solution is not generalizable outside of programming languages that have this DSM support.
+In the case of object granularity, the OS doesn't need to know anything about DSM, and therefore doesn't have to be modified. That being said, the language level solution is not generalizable outside of programming languages that have this DSM support.
 
 Once we start increasing the granularity of sharing, we have to beware of **false sharing**.
 
@@ -90,14 +90,14 @@ Another important design point when looking at DSM solutions is to understand wh
 
 The simplest kind of application is the **single reader/single writer**. For these kinds of applications, the main role of the DSM layer is to provide the application with the ability to access additional, remote memory. In this case, there are not any consistency- or sharing-related challenges that need to be supported at the DSM layer.
 
-The more complex case is when the application needs to support **multiple readers/single writer** or **multiple readers/multiple writers**. In these cases, it’s not just about how to read or write the correct physical location of memory.
+The more complex case is when the application needs to support **multiple readers/single writer** or **multiple readers/multiple writers**. In these cases, it's not just about how to read or write the correct physical location of memory.
 
-With multiple writers and readers, it’s important that the reads return the most recent value at a memory location. It’s also important that all of the writes that are performed are correctly ordered. This is necessary so as to present a consistent view of the distributed state to all of the nodes in the system.
+With multiple writers and readers, it's important that the reads return the most recent value at a memory location. It's also important that all of the writes that are performed are correctly ordered. This is necessary so as to present a consistent view of the distributed state to all of the nodes in the system.
 
 ## DSM Design: Migration vs Replication
 For a DSM solution to be useful, it most provide good performance to applications. Since the core service provided by DSM solutions is access, the core performance metric to analyze is **access latency**.
 
-Clearly, accessing local memory is faster than remote memory, so it’s important to consider how to maximize the proportion of local memory accesses.
+Clearly, accessing local memory is faster than remote memory, so it's important to consider how to maximize the proportion of local memory accesses.
 
 One way to maximize the proportion of local memory accesses is through  **migration**. Whenever a process on another node needs to access remote state, we copy the state over to that node.
 
@@ -105,7 +105,7 @@ Migration makes sense in the single reader/single writer case, since only one no
 
 We should be careful about this solution, even in the single reader/single writer case. Copying over a large chunk of state just for a single read or write is a cost that cannot be amortized.
 
-With multiple readers and multiple writers, migrating the state all over the place doesn’t make any sense since the state needs to be accessed by multiple nodes at the same time.
+With multiple readers and multiple writers, migrating the state all over the place doesn't make any sense since the state needs to be accessed by multiple nodes at the same time.
 
 In this case, we use **replication** to copy the state on multiple nodes. While this solution is more general, it requires the consistency management. We have to make sure that writes are correctly ordered and that the most recent copies of the state are propagated across nodes for up-to-date reads.
 
@@ -118,7 +118,7 @@ DSM systems are expected to behave similar to SMP systems. Remember that SMP man
 - write-invalidate
 - write-update
 
-In write-invalidate, one processor’s cached value of a variable is invalidated when another processor updates that variable. In write-update, the processor’s cached variable is simply updated to reflect the new value.
+In write-invalidate, one processor's cached value of a variable is invalidated when another processor updates that variable. In write-update, the processor's cached variable is simply updated to reflect the new value.
 
 These coherence operations are triggered by the shared memory support in the hardware on every single write operation. The overhead of supporting this strategy in a DSM system are too high, once network costs are considered.
 
@@ -139,7 +139,7 @@ This approach is referred to as
 Regardless of which strategy we chose, when these methods get triggered depends on the consistency model for the shared state.
 
 ## DSM Architecture
-Let’s look at how a DSM system can be designed.
+Let's look at how a DSM system can be designed.
 
 This system consists of a number of nodes, each with their own physical memory. Each node may contribute only a portion of their physical memory towards the DSM system. The rest of the memory can be used for caching, replication or just local memory.
 
@@ -149,7 +149,7 @@ Every address in this system will be uniquely identified by a combination of the
 
 The node where a page is located is typically referred to as the **home node** for that page.
 
-Let’s assume that the system needs to support the case of multiple readers and multiple writers.
+Let's assume that the system needs to support the case of multiple readers and multiple writers.
 
 In order for this system to be performant and achieve low latency, the DSM layer needs to incorporate caching. Pages will be cached on the nodes where they are accessed.
 
@@ -167,7 +167,7 @@ When a particular page is accessed repeatedly, and sometimes exclusively, by a n
 
 One mechanism that is useful in DSM systems is to separate the distinction of home node from an **owner node**. The owner is the node that currently owns the page, and can control all of the state modifications and drive the coherence mechanisms.
 
-The owner node may be different from the home node, and the owner node may change, as a page is accessed by different nodes through the lifetime of an application’s execution.
+The owner node may be different from the home node, and the owner node may change, as a page is accessed by different nodes through the lifetime of an application's execution.
 
 The role of the home node then becomes to keep track of who is the current owner of a given page that maps to its physical memory.
 
@@ -177,7 +177,7 @@ In addition to creating page copies via caching, page replicas can be explicitly
 ![](https://assets.omscs.io/17D02718-3116-442E-8010-B82EF5CE2861.png)
 
 ## Indexing Distributed State
-When creating distributed memory systems, it’s important to understand how we can determine where a particular page is physically located within the system.
+When creating distributed memory systems, it's important to understand how we can determine where a particular page is physically located within the system.
 
 In order to do this, the DSM component has to maintain some metadata. Each page has an address, which is some combination of the node ID and the page frame number on that node.
 
@@ -191,7 +191,7 @@ This means that the metadata for local pages is partitioned across the system, w
 
 Certain bits from the address are used to identify the manager. There will be a fixed manager identified from that mapping function. If we want some additional flexibility we can take the object id and use it as an index into a global mapping table that will give a manager node.
 
-In this approach, we can change the manager node by updating the mapping table. We don’t need to change the object identifier.
+In this approach, we can change the manager node by updating the mapping table. We don't need to change the object identifier.
 
 ![](https://assets.omscs.io/9EA39B5E-9AF1-4519-A1C2-D3EB9924491E.png)
 
@@ -208,7 +208,7 @@ These overheads should be avoided when accessing local, non-shared state; thus, 
 
 To achieve these goals, we can leverage the hardware support at the **memory management unit** (MMU).
 
-If the MMU doesn’t find a valid mapping for a particular virtual address in a page table or if it detects a write attempt to protected memory, it will trap into the OS.
+If the MMU doesn't find a valid mapping for a particular virtual address in a page table or if it detects a write attempt to protected memory, it will trap into the OS.
 
 Whenever we need to perform an access to a remote address, there will not be a valid local mapping. The hardware will generate a trap, and the OS will pass the access information to the DSM layer to send out the appropriate remote message.
 
@@ -251,7 +251,7 @@ While strict consistency is a nice theoretical model, it is not sustainable in p
 ## Sequential Consistency
 Given that strict consistency is next to impossible to achieve, the next best option with reasonable cost is sequential consistency.
 
-With sequential consistency, it’s not important that we see updates immediately. Rather, it’s important that the ordering the way see correspond to a possible ordering that can be achieved by the operations that were applied.
+With sequential consistency, it's not important that we see updates immediately. Rather, it's important that the ordering the way see correspond to a possible ordering that can be achieved by the operations that were applied.
 
 ![](https://assets.omscs.io/2FAC54FC-883E-45B2-88D6-94843AC1F9F1.png)
 
@@ -303,7 +303,7 @@ Just like before, causal consistency ensures that writes that are performed on t
 ## Weak Consistency
 In the consistency models that we discussed so far, the memory was accessed only by read and write operations.
 
-In the weak consistency models, it’s possible to have additional operations for accessing memory.
+In the weak consistency models, it's possible to have additional operations for accessing memory.
 
 A memory system may introduce **synchronization points**, as operations that are available to the upper layers of the software. In addition to telling the underlying memory system to read or write, you will now be able to tell the system to sync.
 
@@ -313,7 +313,7 @@ A synchronization point makes sure that all of the updates that have happened pr
 
 Also, the synchronization point makes sure that all of the updates that have happened on other processors will become visible subsequently at the synchronizing processor in the future.
 
-If P1 performs a synchronization operation after writing to m1, that doesn’t guarantee that P2 will see that particular update at this moment. P2 hasn’t explicitly synchronized with the rest of the system.
+If P1 performs a synchronization operation after writing to m1, that doesn't guarantee that P2 will see that particular update at this moment. P2 hasn't explicitly synchronized with the rest of the system.
 
 The synchronization point has to be called both by the process that is performing the updates and the process that wishes to see the updates.
 

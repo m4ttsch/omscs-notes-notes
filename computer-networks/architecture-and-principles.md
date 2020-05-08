@@ -36,11 +36,11 @@ One of the major problems is that we are running out of addresses. The current v
 
 Furthermore, IP addresses need to be allocated hierarchically, and many have not been allocated efficiently. For example, MIT has 1/256 of the entire IPv4 address space.
 
-Another problem is congestion control. The goal of congestion control is to match offered load to available capacity. One of the problems with current congestion control algorithms is that they have insufficient dynamic range. They don’t work well over slow and flaky wireless links, and they also don’t work well over very high speed intercontinental paths.
+Another problem is congestion control. The goal of congestion control is to match offered load to available capacity. One of the problems with current congestion control algorithms is that they have insufficient dynamic range. They don't work well over slow and flaky wireless links, and they also don't work well over very high speed intercontinental paths.
 
 A third major problem is routing. Routing is the process by which nodes on the internet discover paths to take to reach another destination.
 
-Today’s inter-domain routing protocol - BGP - suffers from
+Today's inter-domain routing protocol - BGP - suffers from
 - no security
 - easy misconfiguration
 - poor convergence
@@ -48,12 +48,12 @@ Today’s inter-domain routing protocol - BGP - suffers from
 
 Security is another major problem. While secure practices like encryption and authentication are known, we are not the best when it comes to utilizing secure mechanisms and deploying secure applications.
 
-A fifth problem is denial of service. The internet does a great job at transmitting packets to a destination, even if the destination doesn’t want those packets. This makes it easy for an attacker to overload a server. Distributed denial of service (DDoS) attacks are common today.
+A fifth problem is denial of service. The internet does a great job at transmitting packets to a destination, even if the destination doesn't want those packets. This makes it easy for an attacker to overload a server. Distributed denial of service (DDoS) attacks are common today.
 
 ## Architectural Design Principles
 One of the most important conceptual lessons from the design of the internet is that the design principles and priorities were designed for a certain kind of network. As the internet has evolved, we have begun to feel the growing pains resulting from some of those decisions.
 
-It’s not that these design choices were right or wrong. Rather, they reflect the nature of our understanding at the time, as well as the environment and constraints that the designers faced for the particular network that existed at that time.
+It's not that these design choices were right or wrong. Rather, they reflect the nature of our understanding at the time, as well as the environment and constraints that the designers faced for the particular network that existed at that time.
 
 Some of the technical lessons - for example, packet switching, and fate sharing - from the original design have turned out to be timeless.
 
@@ -98,7 +98,7 @@ The most critical aspect of this design is that the network layer essentially on
 
 The design is sometimes called "IP over anything" or "anything over IP".
 
-The advantage of the narrow waist is that it is fairly easy to get a device on the network. The drawback is that since every device is running IP, it’s very difficult to make any changes at this layer.
+The advantage of the narrow waist is that it is fairly easy to get a device on the network. The drawback is that since every device is running IP, it's very difficult to make any changes at this layer.
 
 ## Goals Survivability
 The network should continue to work even if some of the devices fail.
@@ -120,7 +120,7 @@ It became clear that every application did not need reliable, in-order delivery.
 
 Fortunately, the narrow waist of IP allowed the proliferation of many different transport protocols in addition to TCP.
 
-The internet also supports heterogeneity through the "best effort" service model, whereby the network can lose packets, deliver them out of order, and generally doesn’t provide any quality guarantees. The network also doesn’t provide information about failures or performance.
+The internet also supports heterogeneity through the "best effort" service model, whereby the network can lose packets, deliver them out of order, and generally doesn't provide any quality guarantees. The network also doesn't provide information about failures or performance.
 
 ## Goals Distributed Management
 Another goal of the internet is distributed management and there are many scenarios where distributed management has played out.
@@ -140,9 +140,9 @@ The network design is fairly cost effective as is.
 
 Ease of attachment is essentially a huge success. Any device that speaks IP can attach to the internet. The lesson here is that when the barrier to innovation is lowered, people will get creative about the types of devices that will run on top of the internet.
 
-Accountability really wasn’t prioritized. Packet-switched networks can make accountability really challenging. Payments and billing for internet usage is much less precise than that for phone network usage.
+Accountability really wasn't prioritized. Packet-switched networks can make accountability really challenging. Payments and billing for internet usage is much less precise than that for phone network usage.
 
-## What’s Missing?
+## What's Missing?
 - Security
 - Availability
 - Mobility
@@ -159,7 +159,7 @@ Commonly used examples of the end to end argument include:
 Sometimes the end to end argument is summarized as **dumb network, intelligent endpoints**.
 
 ## File Transfer
-Let’s suppose that computer A wants to send a file to computer B.
+Let's suppose that computer A wants to send a file to computer B.
 
 ![](https://assets.omscs.io/0C84D6AA-19CA-4EA2-B2C5-A93938F552DE.png)
 
@@ -183,9 +183,9 @@ There are many things that violate the end to end argument:
 - Spam filters
 - Caches
 
-When considering the end to end argument it’s worth asking whether or not the argument is still valid today, and in what cases.
+When considering the end to end argument it's worth asking whether or not the argument is still valid today, and in what cases.
 
-There are questions about what functions belong in the dumb, minimal network. Can we ever add features? It’s worth considering whether the end to end argument is constraining innovation of the infrastructure by preventing us from putting some of the more interesting or helpful functions inside the network.
+There are questions about what functions belong in the dumb, minimal network. Can we ever add features? It's worth considering whether the end to end argument is constraining innovation of the infrastructure by preventing us from putting some of the more interesting or helpful functions inside the network.
 
 ## Violation: NAT
 A fairly pervasive violation of the end to end argument are home gateways, which typically perform **network address translation**.
@@ -202,7 +202,7 @@ When packets traverse the home router, which is typically running a NAT process,
 
 When traffic comes back to that address, the NAT needs to know which device behind the NAT the traffic needs to be sent to. It uses a mapping of port numbers to identify which device the return traffic should be sent to in the home network.  
 
-For outbound traffic the NAT creates a table entry, mapping the device’s private IP address and port number to the public IP address, and a different port number, and replaces the non-routable private IP address with the public IP address. It also replaces the sender’s source port with a different source port that allows it to demultiplex the packets sent to this return address and port.
+For outbound traffic the NAT creates a table entry, mapping the device's private IP address and port number to the public IP address, and a different port number, and replaces the non-routable private IP address with the public IP address. It also replaces the sender's source port with a different source port that allows it to demultiplex the packets sent to this return address and port.
 
 For inbound traffic to the network, the NAT checks the destination port on the packet, and based on the port it rewrites the destination IP address and port to the private IP address in the table before forwarding the traffic to a local device in the home network.
 

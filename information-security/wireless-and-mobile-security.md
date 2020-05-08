@@ -64,12 +64,12 @@ The architecture also provides powerful isolation mechanisms. For example, it us
 ## Operating System Vulnerabilities Quiz Solution
 ![](https://assets.omscs.io/3BB6C671-DF45-44C8-A21D-620C92AF45ED.png)
 
-Betcha thought it was gonna be all Microsoft, didn’t you? Read more [here](https://techtalk.gfi.com/most-vulnerable-operating-systems-and-applications-in-2014/).
+Betcha thought it was gonna be all Microsoft, didn't you? Read more [here](https://techtalk.gfi.com/most-vulnerable-operating-systems-and-applications-in-2014/).
 
 ## Hardware Security Feature
 Each iOS device has a dedicated AES-256 cryptographic engine built into the direct memory access path between the flash storage and the main system memory, which makes file encryption/decryption highly efficient.
 
-The device’s unique ID (UID) and group ID (GID) are AES 256-bit keys fused into the [secure enclave](https://www.computerhope.com/jargon/s/secure-enclave.htm) hardware component during manufacturing. Only the cryptographic engine, itself a hardware component, can read these keys directly. All other firmware and software components can only see the result of an encryption or decryption operation.
+The device's unique ID (UID) and group ID (GID) are AES 256-bit keys fused into the [secure enclave](https://www.computerhope.com/jargon/s/secure-enclave.htm) hardware component during manufacturing. Only the cryptographic engine, itself a hardware component, can read these keys directly. All other firmware and software components can only see the result of an encryption or decryption operation.
 
 A UID is unique to a device and is not recorded by Apple or its suppliers. GIDs are common to all processors in a class of devices, such as those using the Apple A8 processor, and are used for tasks such as delivering system installations and updates.
 
@@ -95,11 +95,11 @@ Data protection constructs and manages a hierarchy of keys - such as class, file
 
 Each time a file is created, the data protection system generates a new 256-bit *file key*, which it gives to the hardware AES engine. The engine encrypts the file using this key - via the CBC mode of AES - every time the file is written to flash memory.
 
-Every file is a member of one or more file classes, and each class is associated with a *class key*. A class key is protected by the hardware UID and, for some classes, the user’s passcode as well. The file key is encrypted with one or more class keys, depending on which classes the file belongs to, and the result is stored in the file’s metadata.
+Every file is a member of one or more file classes, and each class is associated with a *class key*. A class key is protected by the hardware UID and, for some classes, the user's passcode as well. The file key is encrypted with one or more class keys, depending on which classes the file belongs to, and the result is stored in the file's metadata.
 
 The metadata of all files in the filesystem is encrypted using the same random key: the *filesystem key*. The system generates this key when iOS is first installed, or when a user wipes and restarts the device.
 
-When a file is opened, it’s metadata is decrypted first using the filesystem key, which reveals the encrypted file key. Next, the file key is decrypted using one or more class keys. Finally, the file is used to decrypt the file as it is read from flash memory.
+When a file is opened, it's metadata is decrypted first using the filesystem key, which reveals the encrypted file key. Next, the file key is decrypted using one or more class keys. Finally, the file is used to decrypt the file as it is read from flash memory.
 
 ## Security Quiz
 ![](https://assets.omscs.io/4AA42396-DE28-4F4E-A5E9-19038D09F56B.png)
@@ -166,7 +166,7 @@ Read more [here](https://drive.google.com/file/d/0BxxXk1d3yyuZOFlsdkNMSGswSGs/vi
 ## Data Execution Prevention
 Another runtime security feature that iOS provides is data execution prevention. **Data execution prevention** is an implementation of the policy the makes writeable and executable pages mutually exclusive.
 
-Specifically, iOS marks pages that are writable in runtime, such as pages that contain the stack, as non-executable, using the ARM processor’s [execute never](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0360f/CACHFICI.html) feature. Reciprocally, iOS marks executable memory pages, such as pages that hold code instructions, as non-writeable.
+Specifically, iOS marks pages that are writable in runtime, such as pages that contain the stack, as non-executable, using the ARM processor's [execute never](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0360f/CACHFICI.html) feature. Reciprocally, iOS marks executable memory pages, such as pages that hold code instructions, as non-writeable.
 
 This mutual exclusivity helps prevent code-injection attacks. To inject code, an attacker must write instructions into a memory page and then subsequently execute those instructions. Since a page cannot be both writeable and executable, an attacker can never execute injected code.
 
@@ -216,7 +216,7 @@ From a security perspective, one of the main differences between the Android and
 
 Android apps can announce the permissions that they require, and users can approve these permissions at install time. Notably, Android apps can ask for very powerful permissions.
 
-All iOS apps have the same set of basic permissions. If an app needs to access system resources or data - such as the user’s address book - user approval is required at the first access request. In general, iOS apps have limited permissions.
+All iOS apps have the same set of basic permissions. If an app needs to access system resources or data - such as the user's address book - user approval is required at the first access request. In general, iOS apps have limited permissions.
 
 ## Code Signing
 Android also takes a very different approach than iOS in terms of code signing. In particular, all Android apps are self-signed by developers. A developer can create a public key, self-sign it to create a certificate, and then use the key to sign apps.

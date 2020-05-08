@@ -8,13 +8,13 @@ lecture: spam
 # Spam
 
 ## Spam
-While we don’t really interact with spam these days outside of our spam folder, it remains a scourge for network operators.
+While we don't really interact with spam these days outside of our spam folder, it remains a scourge for network operators.
 
 For example, removing spam primarily relies on filters that separate good traffic from bad traffic, and someone has to design and update those filters.
 
 Even if mail has been classified as spam, it can still pose a threat to mail servers.
 
-If a mail server accepts the delivery of a piece of mail, the internet’s mail protocols dictate that the server must keep it for the user.
+If a mail server accepts the delivery of a piece of mail, the internet's mail protocols dictate that the server must keep it for the user.
 
 Since the vast majority of internet mail traffic is spam, this requirement means that spam mail can potentially consume a significant amount of storage space on email servers.
 
@@ -49,11 +49,11 @@ This allows the attackers to use ephemeral IP addresses, essentially rendering I
 ### Behavioral Features
 We can also construct filters based on behavioral features, or how the mail is sent.
 
-Behavioral features include the geographic locations of sender and receiver, the set of target recipients, the sender’s upstream ISP, or our inference as to whether the sender is a member of a botnet.
+Behavioral features include the geographic locations of sender and receiver, the set of target recipients, the sender's upstream ISP, or our inference as to whether the sender is a member of a botnet.
 
 We can look at single packet features; in other words, features that a receiver could make a decision on just based on the first packet that a sender sends.
 
-Such single packet features include the distance between sender and receiver, the local time at the sender, the sender’s AS, and the density in IP space in terms of how many other mail senders are nearby.
+Such single packet features include the distance between sender and receiver, the local time at the sender, the sender's AS, and the density in IP space in terms of how many other mail senders are nearby.
 
 If we are willing to look beyond a single packet, and look at a single message, the number of recipients and the length of the message also proved effective at distinguishing spammers from legitimate senders.
 

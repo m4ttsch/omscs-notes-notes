@@ -43,7 +43,7 @@ If we want to read state that requires multiple rules, expressing a policy that 
 ### Example
 Lets suppose that when we are reading state we want to see all web server traffic except from source `1.2.3.4`
 
-Simple match-action rules don’t allow us to express such exceptions.
+Simple match-action rules don't allow us to express such exceptions.
 
 The solution to this problem is a language primitive that allows us to express predicates, such as
 
@@ -54,9 +54,9 @@ The solution to this problem is a language primitive that allows us to express p
 A runtime system can then translate these predicates into low-level OpenFlow rules, ensuring that they are installed atomically and in the right order.
 
 ### Unfolding Rules
-Another problem that arises is that switches only have limited space for rules. It’s simply not possible to install all possible rule patterns for every set of flows that we’d like to monitor.
+Another problem that arises is that switches only have limited space for rules. It's simply not possible to install all possible rule patterns for every set of flows that we'd like to monitor.
 
-For example, if we’d like to count the number of bytes for every source IP address and generate a histogram of the resulting traffic, we would potentially need a flow table entry for every possible source IP address.
+For example, if we'd like to count the number of bytes for every source IP address and generate a histogram of the resulting traffic, we would potentially need a flow table entry for every possible source IP address.
 
 The solution is to have the runtime system dynamically unfold rules as traffic arrives.
 
@@ -85,7 +85,7 @@ There are many reasons that a controller might want to write policy to change th
 
 Any of these network tasks require updating state in the network switches. When that state transition happens, we want to make sure that forwarding remains correct and consistent.
 
-In particular, we’d like to maintain the following invariants
+In particular, we'd like to maintain the following invariants
 - no forwarding loops
 - no black holes
 - no intermittent security violations
@@ -164,7 +164,7 @@ Network virtualization enables evolution by letting multiple virtualized archite
 
 In practice, network virtualization has really taken off in multi-tenant data centers, where there may be multiple applications running on a shared cluster of servers.
 
-Well-known examples of multi-tenant data centers include Amazon’s EC2, Rackspace and Google App Engine.
+Well-known examples of multi-tenant data centers include Amazon's EC2, Rackspace and Google App Engine.
 
 Large service providers such as Google and Yahoo also use network virtualization to adjust the resources devoted to any given service at any particular time.
 
@@ -230,7 +230,7 @@ The root namespace manages the communication between these distinct virtual node
 
 ![](https://assets.omscs.io/AC3EB36B-46E8-40AA-AEBB-E113FEC02BA8.png)
 
-Virtual ethernet pairs are assigned to namespaces. For example, S1/Eth1 is assigned to an interface in h2’s network namespace, and S1/Eth2 is assigned to an interface in h3’s network namespace.
+Virtual ethernet pairs are assigned to namespaces. For example, S1/Eth1 is assigned to an interface in h2's network namespace, and S1/Eth2 is assigned to an interface in h3's network namespace.
 
 The OpenFlow switch performs forwarding between the interfaces in the root namespaces, but because the interfaces are paired, we get the illusion of sending traffic between h2 and h3.
 
@@ -240,7 +240,7 @@ When we make modifications to the OpenFlow switch via the controller, we are mak
 Programming OpenFlow is not easy!
 
 - very low level of abstraction in the form of match-action rules.
-- controller only sees events that switches don’t know how to handle.
+- controller only sees events that switches don't know how to handle.
 - race conditions if switch-level rules are not installed properly.
 
 ## SDN Programming Interface
@@ -270,7 +270,7 @@ In this example, frenetic is being used to count the number of bytes coming in o
 ## Overlapping Network Policies
 One issue with programming at this high level of abstraction is that an operator might write multiple modules, each of which affects the same traffic.
 
-Ultimately, all of the modules need to be combined into a single set of OpenFlow rules that together achieve the network operator’s overall goal.
+Ultimately, all of the modules need to be combined into a single set of OpenFlow rules that together achieve the network operator's overall goal.
 
 In order to do this, we need composition operators; that is, ways to specify how individual modules should be combined into a single coherent application.
 

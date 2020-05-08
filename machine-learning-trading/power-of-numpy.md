@@ -11,7 +11,7 @@ lecture: power-of-numpy
 [NumPy](https://numpy.org/) is a numerical library written in Python that focuses on matrix objects called `ndarrays`. NumPy delegates most of its core computation to underlying C and Fortran code, which means that NumPy is very fast. Indeed, many people use Python for financial research because of the functionality provided by NumPy.
 
 ## Relationship to Pandas
-Let’s look back at our DataFrame `df`.
+Let's look back at our DataFrame `df`.
 
 ![](https://assets.omscs.io/D38A6927-FF9C-4865-83D8-32FED6A19B63.png)
 
@@ -25,7 +25,7 @@ As the picture above illustrates, pandas builds `df` on top of an ndarray. We ca
 df.values
 ```
 
-We don’t have to do this explicitly, though; in fact, we can interact with `df` as though it were the underlying ndarray. 
+We don't have to do this explicitly, though; in fact, we can interact with `df` as though it were the underlying ndarray. 
 In other words, functionality that is available to the internal ndarray is available to `df`.
 
 Of course, we create DataFrames because pandas builds a lot of great functionality on top of these ndarrays. For example, pandas provides expressive ways to access data in the array, such as symbol-based column indexing and date-based row indexing in the case of `df`.
@@ -35,7 +35,7 @@ Of course, we create DataFrames because pandas builds a lot of great functionali
 - [pandas.DataFrame.to_numpy](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_numpy.html#pandas.DataFrame.to_numpy)
 
 ## Notes on Notation
-Let’s look at accessing information in an ndarray `nd`. The basic syntax for accessing information about a `row` and `col` looks like this:
+Let's look at accessing information in an ndarray `nd`. The basic syntax for accessing information about a `row` and `col` looks like this:
 
 ```python
 nd[row, col]
@@ -92,9 +92,9 @@ We need to move data from the last two rows and the last two columns of `nd2` to
 ## Replace a Slice Quiz Solution
 ![](https://assets.omscs.io/60DEA1EE-99C0-4CC6-95F7-B01B9681CD59.png)
 
-Let’s first look at how we can slice `nd2` to extract the data we want. We can slice the last two rows using negative indexing: `-2:`. We can slice the last two columns as `2:4`. Remember that NumPy indexing is upper-bound exclusive.
+Let's first look at how we can slice `nd2` to extract the data we want. We can slice the last two rows using negative indexing: `-2:`. We can slice the last two columns as `2:4`. Remember that NumPy indexing is upper-bound exclusive.
 
-Now let’s see how we can transplant that data into `nd1`. We can select the first two rows of `nd1` as `0:2`, and we can select the first two columns as `0:2`.
+Now let's see how we can transplant that data into `nd1`. We can select the first two rows of `nd1` as `0:2`, and we can select the first two columns as `0:2`.
 
 The complete data transfer can be accomplished with the following code:
 
@@ -191,7 +191,7 @@ np.ones((5, 4), dtype=np.int_)
 - [Data types](https://docs.scipy.org/doc/numpy/user/basics.types.html#data-types)
 
 ## Generating Random Numbers
-NumPy also comes with a bunch of handy functions for generating ndarrays filled with random values. These functions are defined in NumPy’s `random` module.
+NumPy also comes with a bunch of handy functions for generating ndarrays filled with random values. These functions are defined in NumPy's `random` module.
 
 The `random` method on the `random` module allows us to generate an ndarray filled with random, uniformly sampled floating-point numbers in the range of 0.0 (inclusive) to 1.0 (exclusive).
 
@@ -269,7 +269,7 @@ If we print the previous four examples, we see the following.
 ## Array Attributes
 Any NumPy ndarray has several attributes that describe it, in addition to the elements it contains.
 
-One of the most useful attributes is `shape`, which is essentially a tuple containing the number of rows and columns in the array. Let’s create an array and access its shape:
+One of the most useful attributes is `shape`, which is essentially a tuple containing the number of rows and columns in the array. Let's create an array and access its shape:
 
 ```python
 a = np.random.random((5,4))
@@ -323,7 +323,7 @@ We can see that the elements of `a` are all 64-bit floating-point numbers.
 - [numpy.ndarray.dtype](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.dtype.html)
 
 ## Operations on Ndarrays
-Now let’s look at performing various mathematical operations on ndarrays. Let’s start by creating an array `a` with five rows and four columns, whose elements are random integers in `[0, 10)`:
+Now let's look at performing various mathematical operations on ndarrays. Let's start by creating an array `a` with five rows and four columns, whose elements are random integers in `[0, 10)`:
 
 ```python
 a = np.random.randint(0, 10, size=(5,4))
@@ -393,7 +393,7 @@ def get_max_index(a):
 - [numpy.argmax](https://docs.scipy.org/doc/numpy/reference/generated/numpy.argmax.html#numpy.argmax)
 
 ## Timing Python Operations
-We claimed that NumPy is very fast, and we’d like to confirm this claim. To do so, we first need to understand how to time functions in general.
+We claimed that NumPy is very fast, and we'd like to confirm this claim. To do so, we first need to understand how to time functions in general.
 
 We can use the `time` module and the `time` function in that library to capture the current time. We compute the time before and after executing a function and take the difference to figure out how long a function took to execute.
 
@@ -416,7 +416,7 @@ If we run this code, we see the following.
 - [time.time](https://docs.python.org/3/library/time.html#time.time)
 
 ## How Fast is NumPy?
-Now that we know how to time an operation in Python, let’s check how fast NumPy is relative to naive Python code. We start by defining a really large array, `nd1`:
+Now that we know how to time an operation in Python, let's check how fast NumPy is relative to naive Python code. We start by defining a really large array, `nd1`:
 
 ```python
 nd1 = np.random.random((1000, 10000))
@@ -432,7 +432,7 @@ Finally, we define a `how_long` function, which itself receives a function `func
 
 ![](https://assets.omscs.io/70BCD191-CE9F-4886-82AF-F67CA83CD58C.png)
 
-Let’s check the difference in execution times.
+Let's check the difference in execution times.
 
 ![](https://assets.omscs.io/DAE46E02-6B18-4E82-BA59-755CE5BCD910.png)
 
@@ -491,7 +491,7 @@ As well as accessing elements in ndarrays, we can also assign values to specific
 a[0, 0] = 1
 ```
 
-Let’s look at `a` before and after the assignment.
+Let's look at `a` before and after the assignment.
 
 ![](https://assets.omscs.io/4155E98C-A86E-4850-9537-9DC8B691AA67.png)
 
@@ -505,7 +505,7 @@ If we print `a`, we see the following.
 
 ![](https://assets.omscs.io/F9E2FC3A-308E-4DFB-AE68-6ECA2C676103.png)
 
-We don’t have to set all of the elements in a row or column to the same value. If we assign a column or row to a list, each element will be set to the corresponding value in the list.
+We don't have to set all of the elements in a row or column to the same value. If we assign a column or row to a list, each element will be set to the corresponding value in the list.
 
 For example, we can set the fourth column of `a` to the values 1 through 5 with the following assignment:
 
@@ -521,13 +521,13 @@ If we print `a`, we see the following.
 - [Indexing](https://docs.scipy.org/doc/numpy/user/basics.indexing.html)
 
 ## Indexing an Array with Another Array
-An ndarray can also be indexed with another ndarray. To demonstrate this, let’s first create an ndarray `a`:
+An ndarray can also be indexed with another ndarray. To demonstrate this, let's first create an ndarray `a`:
 
 ```python
 a = np.random.rand(5)
 ```
 
-Next, let’s create an ndarray `indices` whose elements represent the indices of the values we want to retrieve from `a`:
+Next, let's create an ndarray `indices` whose elements represent the indices of the values we want to retrieve from `a`:
 
 ```python
 indices = np.array([1, 1, 2, 3])
@@ -549,7 +549,7 @@ Indeed, we can see that our resulting array contains the elements of `a` at indi
 - [Indexing](https://docs.scipy.org/doc/numpy/user/basics.indexing.html)
 
 ## Boolean or "Mask" Index Arrays
-Let’s see how we can retrieve all of the values from an ndarray that are less than the mean of that array. First, we construct our two-dimensional ndarray `a` and calculate the mean:
+Let's see how we can retrieve all of the values from an ndarray that are less than the mean of that array. First, we construct our two-dimensional ndarray `a` and calculate the mean:
 
 ```python
 a = np.array([
@@ -590,7 +590,7 @@ If we print `a` now, we see the following.
 - [Indexing](https://docs.scipy.org/doc/numpy/user/basics.indexing.html)
 
 ## Arithmetic Operations
-Arithmetic operations on ndarrays are always applied element-wise. Let’s first create an ndarray `a`:
+Arithmetic operations on ndarrays are always applied element-wise. Let's first create an ndarray `a`:
 
 ```python
 a = np.array([
@@ -631,7 +631,7 @@ If we print the result of this division, we see the following.
 
 ![](https://assets.omscs.io/1A8906A1-E16C-43DF-9871-15CA746AA16A.png)
 
-Our arithmetic capabilities are not limited to just operations between ndarrays and scalar values. We can also perform operations that combine two ndarrays. Let’s create a second ndarray `b`.
+Our arithmetic capabilities are not limited to just operations between ndarrays and scalar values. We can also perform operations that combine two ndarrays. Let's create a second ndarray `b`.
 
 ```python
 a = np.array([

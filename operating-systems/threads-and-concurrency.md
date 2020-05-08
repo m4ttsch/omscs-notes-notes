@@ -184,13 +184,13 @@ Wait(mutex, cond){
 Note that broadcast may not always be super useful. Even though we can wake up all threads in wait, since we immediately lock the mutex when we remove a thread from the wait queue, we can still only execute one thread at a time.
 
 ## Readers/Writer Problem
-Let’s look at scenario where there a some subset of threads that want to read from shared state, and one thread that wants to write to shared state. This is commonly known as the **readers/writer** problem.
+Let's look at scenario where there a some subset of threads that want to read from shared state, and one thread that wants to write to shared state. This is commonly known as the **readers/writer** problem.
 
 At any given point in time, 0 or more readers can access the shared state at a given time, and 0 or 1 writers can access the shared state at a given time. The readers and writer cannot access the shared state at the same time.
 
 One naive approach would be to wrap access to the shared state itself in the mutex. However, this approach is too restrictive. Since mutexes only allow access to shared state one thread at time, we would be able to let multiple readers access state concurrently.
 
-Let’s enumerate the conditions in which reading is allowed, writing is allowed, and neither is allowed. We will use a `read_counter` and a `write_counter` to express the number of readers/writers at a given time.
+Let's enumerate the conditions in which reading is allowed, writing is allowed, and neither is allowed. We will use a `read_counter` and a `write_counter` to express the number of readers/writers at a given time.
 
 If `read_counter == 0` and `write_counter == 0`, then both writing and reading is allowed. If `read_counter > 0`, then only reading is allowed. If `write_counter == 1`, neither reading nor writing is allowed.
 
@@ -201,7 +201,7 @@ Our `resource_counter` is a **proxy variable** that reflects the state that the 
 ![](https://assets.omscs.io/E04D6E34-CC4A-44ED-A448-11D9B3D023AB.png)
 
 ## Readers/Writer Example
-Let’s make our previous discussion concrete with an example.
+Let's make our previous discussion concrete with an example.
 
 ![](https://assets.omscs.io/82238159-E5C0-4B01-A887-9946A2CBB3D4.png)
 
@@ -229,7 +229,7 @@ Once the current writer completes, it resets `resource_counter` to 0, and then `
 
 **NB**: Note that multiple threads cannot access the mutex concurrently, as this defeats the point of the mutex. But, after each thread accesses the mutex in turn, all readers can read from the shared state concurrently. This is why a mutex over the shared state itself was not sufficient: concurrent reads would not have been possible.
 
-Even though we call `broadcast` before `signal` we don’t really have control over whether a waiting reader or writer will be woken up first. That decision is left up to the thread scheduler, into which we do not usually have insight.
+Even though we call `broadcast` before `signal` we don't really have control over whether a waiting reader or writer will be woken up first. That decision is left up to the thread scheduler, into which we do not usually have insight.
 
 ## Critical Section Structure
 If we consider the reading and writing of the data to be the protected operations of the above application, then those sections of code are really the critical sections of our application, even though the exist outside of a mutex block.
@@ -260,7 +260,7 @@ Make sure to keep track of the mutex/condition variables that are used with a gi
 
  Make sure to always protect access to shared state, and make sure to do so consistently by acquiring the **same** mutex. A common mistake occurs when we forget to lock or unlock a mutex associated with a given piece of state. Compilers may generate warnings/errors to help us.
 
-Don’t use different mutexes to access a single resource. Using different mutexes to access a resource is akin to just not using a mutex at all, since there is no mutual exclusion amongst different mutexes.
+Don't use different mutexes to access a single resource. Using different mutexes to access a resource is akin to just not using a mutex at all, since there is no mutual exclusion amongst different mutexes.
 
 Make sure that you are signaling or broadcasting on the correct condition. Signaling that reads can occur when you should be signaling that writes can occur can impact the correctness of your program.
 
@@ -288,9 +288,9 @@ Often we can unlock the mutex before we signal or broadcast. Sometimes we cannot
 ## Deadlocks
 A **deadlock** occurs when two or more competing threads are waiting on each other to complete, but none of them ever do.
 
-Let’s consider two threads, T1 and T2, that need to perform operations on some shared variables A and B. Before performing these operations, each thread must lock the mutex associated with those variables, because they are part of shared state.
+Let's consider two threads, T1 and T2, that need to perform operations on some shared variables A and B. Before performing these operations, each thread must lock the mutex associated with those variables, because they are part of shared state.
 
-Let’s assume that T1 first locks the mutex for A  and then locks the mutex for B before performing the operation. Let’s assume that T2 first locks the mutex for B and then locks the mutex for A, before performing the operation.
+Let's assume that T1 first locks the mutex for A  and then locks the mutex for B before performing the operation. Let's assume that T2 first locks the mutex for B and then locks the mutex for A, before performing the operation.
 
 This is where the problem lies. T2 will not be able to lock the mutex for A, because T1 is holding it. T1 will not be able to lock the mutex for B, because T1 is holding it. *More importantly*, neither T1 nor T2 will be able to release the mutex that the other needs, since they are both blocking trying to acquire the mutex the other has.
 
@@ -330,9 +330,9 @@ One downside of this approach is that is it expensive: for every operation we mu
 ### Many-to-One Model
 In this model, all of the user level threads for a process are mapped onto a single kernel level thread. At the user level, there is a thread management library to makes decisions about which user level thread to map onto the kernel level thread at any given point in time. That user level thread will still only run once that kernel level thread is scheduled on the CPU by the kernel level scheduler.
 
-The benefit of this approach is that it is portable. Everything is done at the user level, which frees us from being reliant on the OS limits and policies. As well, we don’t have make system calls for any thread-related decisions.
+The benefit of this approach is that it is portable. Everything is done at the user level, which frees us from being reliant on the OS limits and policies. As well, we don't have make system calls for any thread-related decisions.
 
-However, the operating system loses its insight into application needs. It doesn’t even know that the process is multithreaded. All it sees is one kernel level thread. If the user level library schedules a thread that performs some blocking operation, the OS will place the associated kernel level thread onto some request queue, which will end up blocking the entire process, even though more work can potentially be done.
+However, the operating system loses its insight into application needs. It doesn't even know that the process is multithreaded. All it sees is one kernel level thread. If the user level library schedules a thread that performs some blocking operation, the OS will place the associated kernel level thread onto some request queue, which will end up blocking the entire process, even though more work can potentially be done.
 
 ### Many-to-Many Model
 This model allows for some user threads to have a one-to-many relationship with a kernel thread, while allowing other user threads to have a one-to-one relationship with a kernel thread.
@@ -348,7 +348,7 @@ At the kernel level, there is system wide thread management, supported by the op
 
 On the other hand,  at the user level, the user level library that manages all of the threads for the given process it is linked to. The user level library thread managers cannot see threads outside of their process, so we say these managers have **process scope**.
 
-To understand the consequences of having different scope, let’s consider the scenario where we have two processes, A and B. A has twice as many user level threads as B.
+To understand the consequences of having different scope, let's consider the scenario where we have two processes, A and B. A has twice as many user level threads as B.
 
 If the threads have a process scope, this means that the kernel cannot see them, and will probably allocate equal kernel resources to A and B. This means that a given thread in A will be allocated half of the CPU cycles as will be allocated to a thread in B.
 
@@ -357,7 +357,7 @@ If we have a system scope, the user level threads will be visible at the kernel,
 ![](https://assets.omscs.io/29EDC9A1-9608-4CDD-832E-8C268E93F031.png)
 
 ## Multithreading Patterns
-Let’s discuss three different patterns.
+Let's discuss three different patterns.
 
 ### Boss/Workers Pattern
 
@@ -371,7 +371,7 @@ The positive of this approach is that the workers do not need to synchronize amo
 
 Another option is to establish a queue between the boss and the workers, similar to a producer/consumer queue. In this case, the boss is the sole producer, while the workers are consumers.
 
-The positive of this approach is that the boss doesn’t need to know any of the details about the workers. It just places the work it accepts on the queue and moves on. Whenever a worker becomes free it just looks at the front of the queue and retrieves the next item.
+The positive of this approach is that the boss doesn't need to know any of the details about the workers. It just places the work it accepts on the queue and moves on. Whenever a worker becomes free it just looks at the front of the queue and retrieves the next item.
 
 The downside of this approach is that further synchronization is required, both for the boss producing to the queue, and the workers competing amongst one another to consume from the queue. Despite this downside, this approach still results in decreased work for the boss for each task, which increases the throughput for the whole system.
 
@@ -388,7 +388,7 @@ A common technique is to use a pool of workers that can be increased in response
 
 The benefit of the boss/workers model is the overall simplicity. One thread assigns the work, and the rest of the threads complete it.
 
-One downside of this approach is the thread pool management overhead. Another downside is that this system lacks **locality**. The boss doesn’t keep track of what any of the workers were doing last. It is possible that a thread is just finishing a task that is very similar to an incoming task, and therefore may be best suited to complete that task. The boss has no insight into this fact.
+One downside of this approach is the thread pool management overhead. Another downside is that this system lacks **locality**. The boss doesn't keep track of what any of the workers were doing last. It is possible that a thread is just finishing a task that is very similar to an incoming task, and therefore may be best suited to complete that task. The boss has no insight into this fact.
 
 #### Worker Variants
 An alternative to having all the workers in the system perform the same task is to have different workers specialized for different tasks. One added stipulation to this setup is that the boss has to do a little bit more work in determining which set of workers should handle a given task, but this extra work is usually offset by the fact that workers are now more efficient at completing their tasks.

@@ -406,7 +406,7 @@ Firewalls always provide protection 100% of the time.
 
 False
 
-The firewall isn’t 100% secure.
+The firewall isn't 100% secure.
 
 **Source**
 
@@ -533,7 +533,7 @@ F
 
 Packet Filtering Firewall
 
-When there is no rule that matches the packet it will be discarded this is safe procedure but also a hindrance to users who see that some traffic isn’t allowed.
+When there is no rule that matches the packet it will be discarded this is safe procedure but also a hindrance to users who see that some traffic isn't allowed.
 
 Forward policy is easier to use and manage and use but less secure it just lets all packets in.
 </details>
@@ -633,7 +633,7 @@ True
 
 **Source**
 
-(True Page 290 This lists the types of traffic authorized to pass through the firewall, including address ranges, protocols, applications, and content types. This policy should be developed from the organization’s information security risk assessment and policy)
+(True Page 290 This lists the types of traffic authorized to pass through the firewall, including address ranges, protocols, applications, and content types. This policy should be developed from the organization's information security risk assessment and policy)
 </details>
 
 **Multiple Choice**
@@ -666,7 +666,7 @@ The following are all in the scope of a firewall except which?
 - B.	Firewalls provide a location for monitoring security-related events
 - C.	Firewalls fully protect against internal threats which include disgruntled employee.
 - D.	Firewalls allow for several internet functions that are not security related also to happen such as Network Address Translators and Network management function.
-- E.	A firewall can serve as a platform for IPSec. Firewalls can be used to implement VPN’s as well
+- E.	A firewall can serve as a platform for IPSec. Firewalls can be used to implement VPN's as well
 
 <details>
 <summary>Answer</summary>
@@ -1648,7 +1648,7 @@ Text pg 658, problem 21.8
 
 **Multiple Choice**
 
-Consider a Diffie-Hellman scheme with a common prime q=11 and a primitive root α=2. If user A has public key YA=9, what is A’s private key XA?
+Consider a Diffie-Hellman scheme with a common prime q=11 and a primitive root $\alpha$=2. If user A has public key YA=9, what is A's private key XA?
 
 - A. 6
 - B. 4

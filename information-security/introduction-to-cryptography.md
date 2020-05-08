@@ -65,13 +65,13 @@ In a brute-force attack, the attacker must try all potential keys. The only way 
 Since "A" maps to "D", "B" maps to "E", and so forth, we can just "rewind" each letter in the ciphertext by three to obtain the plaintext.
 
 ## Simple Ciphers
-Caesar’s cipher - an example of a **shift cipher** - maps each letter to another letter by shifting it a fixed amount. If we represent each letter in the alphabet as a number - A = 1, B = 2, … , Z = 26 - then we can represent this encryption scheme for a given `letter` and a given `shift` as
+Caesar's cipher - an example of a **shift cipher** - maps each letter to another letter by shifting it a fixed amount. If we represent each letter in the alphabet as a number - A = 1, B = 2, … , Z = 26 - then we can represent this encryption scheme for a given `letter` and a given `shift` as
 
 ```bash
 (letter + shift) mod 26
 ```
 
-The secret key in this scheme is the value of `shift`. Since there are only 26 possible keys (any shift higher than 26 wraps back around), an attacker only needs to try at most 26 keys before being able to decrypt any message encrypted with Caesar’s cipher.
+The secret key in this scheme is the value of `shift`. Since there are only 26 possible keys (any shift higher than 26 wraps back around), an attacker only needs to try at most 26 keys before being able to decrypt any message encrypted with Caesar's cipher.
 
 A generalization of this scheme allows arbitrary mapping of one letter to another; that is, this scheme no longer requires shifting each plaintext letter by the same fixed amount. These generalized ciphers are referred to as **substitution ciphers** or **monoalphabetic ciphers**.
 
@@ -139,17 +139,17 @@ We can continue in this fashion to transform "ATTACKATDAWN" into "LXFOPVEFRNHR".
 ## What Should be Kept Secret?
 While we should always keep our encryption keys a secret, our encryption algorithms should be public.
 
-According to [Kerckhoff’s principle](https://en.wikipedia.org/wiki/Kerckhoffs%27s_principle):
+According to [Kerckhoff's principle](https://en.wikipedia.org/wiki/Kerckhoffs%27s_principle):
 > A  cryptosystem should be secure even if everything about the system, except the key, is public knowledge.  
 
-In general, we keep our encryption algorithms open so that they can be analyzed and improved by the broader community. More importantly, we don’t have to rely on the secrecy of the algorithm for its security - the so-called "security by obscurity" principle. In practice, we should exclusively use the widely-known algorithms and standards.
+In general, we keep our encryption algorithms open so that they can be analyzed and improved by the broader community. More importantly, we don't have to rely on the secrecy of the algorithm for its security - the so-called "security by obscurity" principle. In practice, we should exclusively use the widely-known algorithms and standards.
 
 ## Types of Cryptography
 **Secret key cryptography** uses a single key for encryption and decryption, which means that the sender and the receiver must possess the same key.
 
 **Public-key cryptography** uses two keys - a public and a private key - that are linked together mathematically. A user keeps their private key secret and announces their public key to other users.
 
-The public key is used for encryption, and the private key is used for decryption. For example, Alice can use Bob’s public key to encrypt a message that only Bob can decrypt because only Bob has the corresponding private key that can decrypt the message correctly.
+The public key is used for encryption, and the private key is used for decryption. For example, Alice can use Bob's public key to encrypt a message that only Bob can decrypt because only Bob has the corresponding private key that can decrypt the message correctly.
 
 The private key is also used for signing a message, and the public key can be used to verify the signature. For example, Alice can sign a message using her private key, and anyone knowing her public key can verify that only Alice can produce this signature.
 
@@ -205,7 +205,7 @@ If an attacker gains access to a system, they can steal the hashed passwords and
 ## Hash Function Quiz Solution
 ![](https://assets.omscs.io/9FCFF378-D376-46B5-8734-E5DB63549DCA.png)
 
-The **avalanche effect** states that a small change in the input to a hash function causes a large change to the output. We want this in place as a way to obscure similar passwords. Without the avalanche effect, an attacker may be able to deduce password `A` from its hash value if he knows that the hash of a string `B` is similar to `A`’s hash.
+The **avalanche effect** states that a small change in the input to a hash function causes a large change to the output. We want this in place as a way to obscure similar passwords. Without the avalanche effect, an attacker may be able to deduce password `A` from its hash value if he knows that the hash of a string `B` is similar to `A`'s hash.
 
 ## Symmetric Encryption
 Symmetric encryption uses the same key for both encryption and decryption. The encryption algorithm takes the plaintext and the key as input and produces the ciphertext using substitution and permutation. The decryption algorithm reverses the encryption process, reproducing the original plaintext from the key and the ciphertext.
@@ -235,7 +235,7 @@ While symmetric encryption uses the same key for encryption and decryption, **as
 
 To communicate using asymmetric encryption, a user must first generate a pair of keys. The **public key** can be sent to other users, while the **private key** must be known only to the user. A user might have a collection of public keys, one for each user with whom they communicate regularly.
 
-If Bob wants to send a private message to Alice, Bob must first obtain Alice’s public key. With Alice’s public key in hand, Bob encrypts his message to Alice using an asymmetric encryption algorithm such as [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)). Bob then transmits the ciphertext to Alice, which she can decrypt using her private key.
+If Bob wants to send a private message to Alice, Bob must first obtain Alice's public key. With Alice's public key in hand, Bob encrypts his message to Alice using an asymmetric encryption algorithm such as [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)). Bob then transmits the ciphertext to Alice, which she can decrypt using her private key.
 
 ![](https://assets.omscs.io/8215B680-F699-4223-BADB-64C030A6CF44.png)
 
@@ -265,7 +265,7 @@ Public-key encryption is typically used to establish a symmetric key, which is t
 
 Suppose Alice and Bob wish to communicate securely.
 
-Alice first creates a random symmetric key that she wants to share with Bob and encrypts her message to Bob using this key. She then encrypts the symmetric key with Bob’s public key and transmits a **digital envelope** containing both the message and the encrypted key to Bob.
+Alice first creates a random symmetric key that she wants to share with Bob and encrypts her message to Bob using this key. She then encrypts the symmetric key with Bob's public key and transmits a **digital envelope** containing both the message and the encrypted key to Bob.
 
 ![](https://assets.omscs.io/68B24E81-900B-4504-8D8C-74143A815C77.png)
 

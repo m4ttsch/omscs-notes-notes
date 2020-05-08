@@ -16,7 +16,7 @@ An autonomous system might be an internet service provider, a content provider, 
 
 **Intradomain** routing refers to the routing within any given autonomous system, while **interdomain** routing refers to the routing between autonomous systems.
 
-Computing a path between a node in an ISP like Comcast and another node in a network like Georgia Tech’s involves computation of both interdomain and intradomain paths.
+Computing a path between a node in an ISP like Comcast and another node in a network like Georgia Tech's involves computation of both interdomain and intradomain paths.
 
 ## Intra-AS Topology
 The topology inside a single autonomous system consists of nodes and edges.
@@ -40,7 +40,7 @@ There are two types of intradomain routing:
 - link state routing
 
 ## Distance Vector Routing
-In **distance vector routing**, each node sends multiple distance vectors - essentially a copy of the node’s routing table - to each of its neighbors.
+In **distance vector routing**, each node sends multiple distance vectors - essentially a copy of the node's routing table - to each of its neighbors.
 
 Routers then compute costs to each destination in the topology based on the shortest available path.
 
@@ -54,7 +54,7 @@ d_x(y) = min_v{cost(x, v) + d_v(y)}
 
 That is, the minimum cost path from `x` to `y` through some intermediate node `c` is the node `v` that minimizes the cost between `x` and `v` and the already known shortest-cost path between `v` and `y`.
 
-The solution to this equation for all destinations `y` in the topology is `x`’s forwarding table.
+The solution to this equation for all destinations `y` in the topology is `x`'s forwarding table.
 
 ## Example of Distance Vector Routing
 ### Example 1
@@ -66,7 +66,7 @@ Initially, each node has a single distance vector representing the shortest cost
 
 For example, the distance between `x` and `x` is zero, the shortest known distance between `x` and `y` is 1, and the shortest known distance between `x` and `z` is 5.
 
-Note that a shorter path between `x` and `z` - via `y` - does exist, but `x` just doesn’t know about it yet.
+Note that a shorter path between `x` and `z` - via `y` - does exist, but `x` just doesn't know about it yet.
 
 In distance vector routing, every node sends its vector to every other adjacent node, and then each node updates its routing table according to the Bellman-Ford equation.
 
@@ -110,14 +110,14 @@ An example of a distance vector routing protocol is the **routing information pr
 
 In RIP
 - edges have unit cost
-- ‘infinity’ is 16
+- 'infinity' is 16
 - table refreshes occur every thirty seconds
 
 When a table entry changes, an update is sent to all neighbors except the node that caused the entry change, a rule sometimes called the **split horizon rule**.
 
-The small value for infinity ensures that the count to infinity doesn’t take too long.
+The small value for infinity ensures that the count to infinity doesn't take too long.
 
-Every route has a timeout limit of 180 seconds, which is basically reached hasn’t an update from a next hop for six 30 second periods.
+Every route has a timeout limit of 180 seconds, which is basically reached hasn't an update from a next hop for six 30 second periods.
 
 When a router or link fails in RIP, things can often take minutes to stabilize.
 
@@ -128,9 +128,9 @@ The prevailing alternative to distance-vector routing is **link state routing**,
 
 In link state routing, each node distributes a network map to every other node in the network, and then each node performs a shortest-path computation between itself and all other nodes in the network.
 
-The shortest path computation can be performed using [Dijkstra’s algorithm](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm).
+The shortest path computation can be performed using [Dijkstra's algorithm](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm).
 
-**NB**: The description in the video of the steps taken by each node is terrible. For a great walkthrough of Dijkstra’s algorithm, check out this [video](https://www.youtube.com/watch?v=8Ls1RqHCOPw).
+**NB**: The description in the video of the steps taken by each node is terrible. For a great walkthrough of Dijkstra's algorithm, check out this [video](https://www.youtube.com/watch?v=8Ls1RqHCOPw).
 
 Two common link state routing protocols are **open shortest paths first** (OSPF) and **Intermediate System - Intermediate System** (IS-IS).
 
@@ -141,7 +141,7 @@ One problem with link state routing is scale. The complexity of a link state rou
 ## Coping With Scale Hierarchy
 One way of coping with scale is to introduce hierarchy. OSPF has the notion of *areas* and IS-IS has an analogous notion of *levels*.
 
-In a backbone network, the network’s routers may be divided into levels or areas, and the backbone itself may have its own area.
+In a backbone network, the network's routers may be divided into levels or areas, and the backbone itself may have its own area.
 
 In OSPF, the backbone area is called area 0, and each area in the backbone that is not area 0 has an area 0 router.
 
@@ -152,7 +152,7 @@ In each area, the nodes in that area perform the shortest-path computation to al
 
 Intra-area paths are calculated using the simple shortest-path computation, as before.
 
-Paths that must leave an area are now computed by stitching together (1) the shortest path from the origin to the area 0 router in the origin’s area, (2) the shortest path across area 0, and (3) the shortest path from the area 0 router in the destination area to the destination.
+Paths that must leave an area are now computed by stitching together (1) the shortest path from the origin to the area 0 router in the origin's area, (2) the shortest path across area 0, and (3) the shortest path from the area 0 router in the destination area to the destination.
 
 ## Interdomain Routing
 Internet routing consists out routing between tens of thousands of independently operated autonomous systems.
@@ -245,7 +245,7 @@ This can be extremely useful for configuring primary/backup routes.
 
 While local preference is often used to control outbound traffic, ASes can attach a BGP **community** (a fancy name for a tag) to a route to affect how a neighboring AS sets local preference, thereby influencing their own incoming traffic.
 
-Let’s suppose that AS `A` wanted to control inbound traffic by affecting how neighboring AS `B` and AS `C` set local preference.
+Let's suppose that AS `A` wanted to control inbound traffic by affecting how neighboring AS `B` and AS `C` set local preference.
 
 If `A` wants traffic to arrive via `B` instead of `C`, `A` might advertise its BGP routes with "primary" and "backup" communities to `B` and `C`, respectively. The "backup" community value might cause a router in `C` to adjust its local preference value, thus affecting how its outbound traffic choices are made.
 
@@ -272,9 +272,9 @@ This is because the preference for a lower MED value comes before the preference
 
 MED allows an advertising AS to explicitly specify that it wants a neighboring AS to carry traffic on its own backbone network rather than dumping the traffic at the nearest egress and forcing the advertising neighbor to carry the traffic.
 
-MEDs are typically not used in conventional business relationships, but would be used in the case where AS 1 doesn’t want AS 2 free-riding on the backbone network of AS 1.
+MEDs are typically not used in conventional business relationships, but would be used in the case where AS 1 doesn't want AS 2 free-riding on the backbone network of AS 1.
 
-This mechanism is sometimes used when a transit provider peers with a content provider, and the transit provider doesn’t want the content provider essentially getting free transit through it.
+This mechanism is sometimes used when a transit provider peers with a content provider, and the transit provider doesn't want the content provider essentially getting free transit through it.
 
 In the absence of MED, a router inside AS 2 will learn multiple routes to destination `d` via multiple egress points, and would simply pick the next hop with the lowest IGP path cost.
 
@@ -295,7 +295,7 @@ Thus, the basic rule of preference in interdomain routing: *Customer routes are 
 
 In addition to preferences decisions, an AS also needs to make filtering/export decisions. That is, when an AS learns a route from its neighbor, to whom should it re-advertise that route?
 
-Let’s suppose that an AS learns routes to its destination from its customer, peer and provider.
+Let's suppose that an AS learns routes to its destination from its customer, peer and provider.
 
 For the route that is learned from the customer, the AS will wants to re-advertise that route to everyone. Every time that route is used, the AS will make money.
 
@@ -303,7 +303,7 @@ On the other hand, for the route that is learned from a provider, the AS will on
 
 Likewise, routes from peers would also only be advertised to customers, not to other peers or providers.
 
-If every AS followed these rules exactly, then routing stability is guaranteed. Isn’t routing stability guaranteed already?
+If every AS followed these rules exactly, then routing stability is guaranteed. Isn't routing stability guaranteed already?
 
 Nope!
 

@@ -10,13 +10,13 @@ lecture: law-ethics-and-privacy
 ## US Laws Related to Online Abuse
 People can do many different things online. Some of these activities can be very productive while others can be quite harmful. We can examine the various laws in place that offer protection against different types of online abuse.
 
-For example, consider cybercrime. We know that things like theft and extortion are illegal in the physical world. We’ve discussed similar activities that take place in the digital realm, such as data theft, identity theft, and ransomware. Thankfully, there are laws that offer us protection against cybercrime just as there are laws that protect us from "real" crime.
+For example, consider cybercrime. We know that things like theft and extortion are illegal in the physical world. We've discussed similar activities that take place in the digital realm, such as data theft, identity theft, and ransomware. Thankfully, there are laws that offer us protection against cybercrime just as there are laws that protect us from "real" crime.
 
 Additionally, consider creators of digital objects, such as software or digital music. In the non-digital world, we have ways to protect intellectual property with copyrights, patents, and trade secrets. There is a set of laws that control the copying and distribution of digital objects.
 
-It’s important to think about how these laws should be applicable in the context of digital objects. For example, a digital object may be copied and transmitted much more easily than a physical object.
+It's important to think about how these laws should be applicable in the context of digital objects. For example, a digital object may be copied and transmitted much more easily than a physical object.
 
-A third area we can think about is our privacy as Internet users. We spend a lot of time online, visiting different websites, using different services, and searching for different things. It’s very easy for entities that we interact with digitally to collect a lot information about us. A lot of people worry about the concept of Big Brother watching everything they do, and would like some protection.
+A third area we can think about is our privacy as Internet users. We spend a lot of time online, visiting different websites, using different services, and searching for different things. It's very easy for entities that we interact with digitally to collect a lot information about us. A lot of people worry about the concept of Big Brother watching everything they do, and would like some protection.
 
 ## Legal Deterrents Quiz
 ![](https://assets.omscs.io/2762F482-BE0A-4124-B408-52E8CF242DA8.png)
@@ -56,7 +56,7 @@ One of the criticisms that these laws face is that they are too vague and broad,
 ## Computer Abuse Laws Enforcement
 While the mere presence of laws like CFAA and DMCA is helpful, to a degree, to deter attackers from committing digital crimes, the enforcement of these laws remains challenging for several reasons.
 
-First, connecting malicious computer activity with an attacker can be difficult. For example, an attack may originate from a user’s laptop without that user’s knowledge at all. Clearly, the user is not to blame; instead, an attacker likely infected their machine with malware or bot code. Because of maneuvers like this, the process of pinning an attack to its exact source can be quite challenging.
+First, connecting malicious computer activity with an attacker can be difficult. For example, an attack may originate from a user's laptop without that user's knowledge at all. Clearly, the user is not to blame; instead, an attacker likely infected their machine with malware or bot code. Because of maneuvers like this, the process of pinning an attack to its exact source can be quite challenging.
 
 To make matters worse, the Internet has no national boundaries. Attackers that digitally cross borders - hacking into a computer in the United States using a computer in Russia, for example - can only be brought to justice through transnational coordination. Many countries are unable or simply unwilling to cooperate with other countries in this context.
 
@@ -102,7 +102,7 @@ Situations like this are present throughout the digital world, and handling them
 ![](https://assets.omscs.io/63AB025B-A11C-43E2-80B2-74825F271520.png)
 
 ## Privacy Definition
-Justice Louis Brandeis made his famous statement about the "[right to be let alone](https://en.wikipedia.org/wiki/Louis_Brandeis#Olmstead_v._United_States_(1928)_%E2%80%93_Right_of_privacy)" almost 100 years ago; clearly, concerns about privacy are not new. That being said, privacy in the digital era looks different than privacy in the early twentieth century. When we talk about privacy online, we are primarily referring to a user’s ability to control how data about him or her is collected, used, and shared by someone else.
+Justice Louis Brandeis made his famous statement about the "[right to be let alone](https://en.wikipedia.org/wiki/Louis_Brandeis#Olmstead_v._United_States_(1928)_%E2%80%93_Right_of_privacy)" almost 100 years ago; clearly, concerns about privacy are not new. That being said, privacy in the digital era looks different than privacy in the early twentieth century. When we talk about privacy online, we are primarily referring to a user's ability to control how data about him or her is collected, used, and shared by someone else.
 
 ## Privacy is Not a New Problem
 People have always worried about what others - friends, family, adversaries, the government - know about them, whether it be their whereabouts, activities, or preferences. In the modern, digital context, websites and other software capture use and distribute our information at an unprecedented scale.
@@ -114,7 +114,7 @@ People have always worried about what others - friends, family, adversaries, the
 ![](https://assets.omscs.io/926229E1-84F7-45BB-BBC2-C715979D0B6D.png)
 
 ## Institutional Privacy
-Privacy refers to the ability of an individual to control the data about them that is collected and shared. Of course, privacy doesn’t have to only apply to individuals. Indeed, there may be reasons that universities, hospitals, charities, and even political action committees may want to keep information private.
+Privacy refers to the ability of an individual to control the data about them that is collected and shared. Of course, privacy doesn't have to only apply to individuals. Indeed, there may be reasons that universities, hospitals, charities, and even political action committees may want to keep information private.
 
 ## Privacy Quiz
 ![](https://assets.omscs.io/6222EA4E-3B0D-472F-991C-FBEEFACF61A5.png)
@@ -137,7 +137,7 @@ For example, when we talk about network requests from, say, a browser to a serve
 
 Additionally, large scale surveillance is a threat to privacy. Some law enforcement officials claim that allowing encryption without providing a backdoor allows criminals to communicate in complete secret, while others argue that we are currently in the golden age of surveillance. Every piece of information about us is tracked and collected.
 
-Finally, it may be possible for others to infer information about us, even if they don’t possess it directly. For example, when we talked about database inference attacks, we discussed how different data setups, combined with public information an attacker already has, make it easy to de-anonymize data about specific individuals. In the world of big data and data mining analytics today, these inferences are becoming more common.
+Finally, it may be possible for others to infer information about us, even if they don't possess it directly. For example, when we talked about database inference attacks, we discussed how different data setups, combined with public information an attacker already has, make it easy to de-anonymize data about specific individuals. In the world of big data and data mining analytics today, these inferences are becoming more common.
 
 ## Threats to Privacy Part 2
 Social media poses a threat to privacy, as well. While we use these social sites as a tool for communicating with our friends and sharing with the people around us, we also share all of the information we create with companies like Facebook and Twitter.
@@ -162,7 +162,7 @@ Indeed, the privacy policy itself can serve as a threat to privacy. Imagine read
 Finally, we also have to consider the security implications of collecting and storing all of this information. Since attackers have no regard for privacy and consent, we can assume that they will treat our data in the worst way possible. Companies need to address how they safeguard our data even in the face of theft.
 
 ## Example: Google Privacy Policy
-While most websites have privacy policies, few of us honestly look at them carefully, if at all. Let’s look at some components of Google’s privacy policy.
+While most websites have privacy policies, few of us honestly look at them carefully, if at all. Let's look at some components of Google's privacy policy.
 
 Some information that Google collects about us is the information that we give it. For example, when we create a new account in Gmail, we likely provide our name, alternative email address, and phone number.
 
@@ -172,7 +172,7 @@ Google uses cookies - a general website-based tracking mechanism - to keep vario
 
 Additionally, Google captures information about the device we use to communicate with their services. For example, when our browser connects to Gmail, it passes along information such as our operating system, our IP address, and network information.
 
-Google’s original killer feature was search, and so Google naturally collects and retains your search queries to understand what kind of information you are interested in consuming.
+Google's original killer feature was search, and so Google naturally collects and retains your search queries to understand what kind of information you are interested in consuming.
 
 If you use Google Voice, Google has information about who you call and how long you talk. Additionally, some Google services may collect location information.
 
@@ -224,37 +224,37 @@ Read more [here](https://www.eff.org/who-has-your-back-government-data-requests-
 ## Facebook Privacy Policies
 Now that we have discussed what a particular privacy policy might address, we can talk about how well a company adheres to its policy. For this example, we are going to look at Facebook.
 
-Facebook has not done a good job of sticking to its privacy policy. In fact, the U.S. Federal Trade Commission (FTC) had to step in to make sure Facebook stopped doing things with user’s information without their consent.
+Facebook has not done a good job of sticking to its privacy policy. In fact, the U.S. Federal Trade Commission (FTC) had to step in to make sure Facebook stopped doing things with user's information without their consent.
 
 Facebook did numerous things that violated the privacy of its users. For example, it made information that users had designated as private, particularly regarding friend lists, public without their consent.
 
-Additionally, Facebook made personal information available to applications of friends, which means that a friend could access information through an application that a user didn’t agree to share.
+Additionally, Facebook made personal information available to applications of friends, which means that a friend could access information through an application that a user didn't agree to share.
 
 Furthermore, Facebook shared information with advertisers that they had promised not to share. Finally, Facebook said that certain applications were verified when they were not verified, thus misleading users.
 
 As a result, the FTC has taken action against Facebook and mandated that it acts in specific ways to rectify the situation.
 
-For example, Facebook now has to undergo a third-party privacy audit every two years for the next twenty years. The FTC has decided that it cannot take Facebook’s word concerning privacy, and so a third party must independently verify that Facebook is doing the right thing.
+For example, Facebook now has to undergo a third-party privacy audit every two years for the next twenty years. The FTC has decided that it cannot take Facebook's word concerning privacy, and so a third party must independently verify that Facebook is doing the right thing.
 
 Additionally, Facebook is prohibited from misrepresenting privacy and security settings provided to its users. If they say something is not public, it should not be public.
 
 Finally, the FTC also requires that Facebook gets consent from users before sharing any information in a way that exceeds their privacy settings.
 
-Essentially, consent is the focal point when it comes to privacy. If you give express, affirmative consent to a particular action, a company can perform that action. Since Facebook did not get consent before using users’ information, the FTC had to impose sanctions on them.
+Essentially, consent is the focal point when it comes to privacy. If you give express, affirmative consent to a particular action, a company can perform that action. Since Facebook did not get consent before using users' information, the FTC had to impose sanctions on them.
 
 ## Privacy Enhancing Technologies
-We’ve talked about how privacy is a good thing, so now let’s examine some of the tools and technology we can use to enhance our privacy online.
+We've talked about how privacy is a good thing, so now let's examine some of the tools and technology we can use to enhance our privacy online.
 
 One of the privacy threats that we discussed was traffic analysis. Through traffic analysis, attackers can understand who is talking to whom by looking at the source and destination information embedded in a packet.
 
-If we don’t want anyone to see this information, we can use a technology called **TOR**. Using a TOR client, a user can route their traffic through a random path of TOR nodes to their destination. Each node only knows its immediate predecessor and successor and cannot tell where a packet originated or where it is ultimately headed.
+If we don't want anyone to see this information, we can use a technology called **TOR**. Using a TOR client, a user can route their traffic through a random path of TOR nodes to their destination. Each node only knows its immediate predecessor and successor and cannot tell where a packet originated or where it is ultimately headed.
 
 ![](https://assets.omscs.io/F9C377F0-175D-4510-BDE0-A599B417A717.png)
 
 Because of this setup, we can use TOR to implement anonymous communication and prevent attackers from learning about the parties with whom we communicate.
 
 ## TOR
-Now that we’ve taken a brief look at [The Onion Router](https://www.torproject.org/) (TOR) let’s dive deeper into how it works and what services it can provide to us.
+Now that we've taken a brief look at [The Onion Router](https://www.torproject.org/) (TOR) let's dive deeper into how it works and what services it can provide to us.
 
 First, a TOR client uses a directory service to get a set of TOR nodes that can help us route a message from point A to point B. The client picks some random subset of the nodes and orders them. This order forms the path that the traffic traverses as it passes from A to B.
 
@@ -267,7 +267,7 @@ Browsers give us some control with regard to how we are tracked on the Internet.
 
 For instance, we can block third-party cookies. When we visit a site like newyorktimes.com, it can place cookies on our browser. Additionally, it can embed content from other third-party sites, like Facebook, Twitter, and Google, and those sites can also place cookies in our browser. By blocking third-party cookies, we reduce tracking to just the site that we are currently visiting.
 
-Additionally, you can tell your browser that you don’t want to be tracked. Many browsers allow you to set flags like this, and they pass that information along to the websites that you visit. Whether the website honors the request is a different story.
+Additionally, you can tell your browser that you don't want to be tracked. Many browsers allow you to set flags like this, and they pass that information along to the websites that you visit. Whether the website honors the request is a different story.
 
 You can also delete your cookies periodically, block popups, and use private browsing. Each of these activities helps to reduce the amount of information an entity can capture about you.
 

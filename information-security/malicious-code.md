@@ -55,7 +55,7 @@ Trojan horses get their name from an ancient Greek story from the Trojan War. Fr
 
 In the context of malware, a Trojan horse is a piece of malicious code embedded in a utility program that a user runs frequently. When the utility program runs, the malicious code runs with it.
 
-An example of a trojan horse is a login program that performs keylogging. This program will allow the user to login by calling the real login subroutine - a useful utility - while also stealing the user’s credentials.
+An example of a trojan horse is a login program that performs keylogging. This program will allow the user to login by calling the real login subroutine - a useful utility - while also stealing the user's credentials.
 
 Many malicious browser extensions/plugins perform keylogging under the guise of offering some helpful utility.
 
@@ -87,7 +87,7 @@ The final phase is the *execution* phase. In this phase, the virus actually perf
 ## Virus Structure
 A virus infects a program by modifying the program code. In order to achieve this, the virus code has to be physically inserted into the program file.
 
-When an infected program runs, the virus code runs first. The virus code then runs the original program so that the user doesn’t suspect that the program has been infected. Finally, the virus code runs again, often to perform some cleanup to avoid detection.
+When an infected program runs, the virus code runs first. The virus code then runs the original program so that the user doesn't suspect that the program has been infected. Finally, the virus code runs again, often to perform some cleanup to avoid detection.
 
 ![](https://assets.omscs.io/28595BDF-E52D-41AB-9E4D-19C299539E78.png)
 
@@ -140,13 +140,13 @@ A **macro** is a program embedded in a document, such as a Microsoft Word docume
 
 Because a macro is an executable program, it can be infected by viruses just like any other executable programs.
 
-Macro viruses are unique in that users don’t typically expect a document to contain a virus. As a result, attackers have had success spreading infected documents via email attachments.
+Macro viruses are unique in that users don't typically expect a document to contain a virus. As a result, attackers have had success spreading infected documents via email attachments.
 
 When an unsuspecting user clicks on the email attachment and opens the document, the macro executes, and the macro virus runs.
 
-The macro virus can perform malicious activities such as sending the infected document to every person in the user’s address book.
+The macro virus can perform malicious activities such as sending the infected document to every person in the user's address book.
 
-A macro virus can also copy its macro to the global macro file. Whenever a user opens a new document, this now global macro will be copied into the new document, meaning that all new documents on the user’s system will be infected.
+A macro virus can also copy its macro to the global macro file. Whenever a user opens a new document, this now global macro will be copied into the new document, meaning that all new documents on the user's system will be infected.
 
 ## Types of Viruses Quiz
 ![](https://assets.omscs.io/133BBEDD-CE14-4ED3-A8ED-48F539E3E52B.png)
@@ -218,7 +218,7 @@ Sysadmins had to disconnect their servers from the Internet in order to disinfec
 When the Morris Worm identified the next target to infect, it looked for several security flaws that it knew how to exploit.
 
 From [court documents](http://www.loundy.com/CASES/US_v_Morris2.html):
-> Morris identified four ways in which the worm could break into computers on the network: (1) through a "hole" or "bug" (an error) in SEND MAIL, a computer program that transfers and receives electronic mail on a computer; (2) through a bug in the "finger demon" program, a program that permits a person to obtain limited information about the users of another computer; (3) through the "trusted hosts" feature, which permits a user with certain privileges on one computer to have equivalent privileges on another computer without using a password; and (4) through a program of password guessing, whereby various combinations of letters are tried out in rapid sequence in the hope that one will be an authorized user’s password, which is entered to permit whatever level of activity that user is authorized to perform.  
+> Morris identified four ways in which the worm could break into computers on the network: (1) through a "hole" or "bug" (an error) in SEND MAIL, a computer program that transfers and receives electronic mail on a computer; (2) through a bug in the "finger demon" program, a program that permits a person to obtain limited information about the users of another computer; (3) through the "trusted hosts" feature, which permits a user with certain privileges on one computer to have equivalent privileges on another computer without using a password; and (4) through a program of password guessing, whereby various combinations of letters are tried out in rapid sequence in the hope that one will be an authorized user's password, which is entered to permit whatever level of activity that user is authorized to perform.  
 
 Specifically, the `fingerd` daemon was exploited via a buffer overflow vulnerability, and `sendmail` was exploited via a trapdoor that accepted shell commands.
 
@@ -241,7 +241,7 @@ We also learned that we need to have a fast and coordinated response to a major 
 ![](https://assets.omscs.io/60DAF027-9368-40B6-AE36-FC6EA78B32B8.png)
 
 ## Malware Prevention & Detection Approaches
-We can prevent malware from infecting our computer systems  by limiting our contact with the outside world. In other words, if we don’t accept documents or programs from any external source, we can greatly reduce our chance of infection.
+We can prevent malware from infecting our computer systems  by limiting our contact with the outside world. In other words, if we don't accept documents or programs from any external source, we can greatly reduce our chance of infection.
 
 Obviously, this approach imposes a major inconvenience to a computer user.
 

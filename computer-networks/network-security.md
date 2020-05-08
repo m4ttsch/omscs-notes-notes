@@ -17,7 +17,7 @@ BGP essentially allows any AS to advertise an IP prefix to a neighboring AS and 
 
 The attacks where an AS advertises a route that it does not own are called **route hijacks**.
 
-For example, on April 8, 2010, China advertised about 50,000 IP prefixes from 170 different countries. The attack lasted for about 20 minutes. In this particular case, the hijack appears to have been accidental because the prefixes were long enough such that they didn’t disrupt existing routes.
+For example, on April 8, 2010, China advertised about 50,000 IP prefixes from 170 different countries. The attack lasted for about 20 minutes. In this particular case, the hijack appears to have been accidental because the prefixes were long enough such that they didn't disrupt existing routes.
 
 On February 24, 2008, Pakistan hijacked the Youtube prefixes, potentially as a botched attempt to block Youtube in the country following a government order. Unfortunately, the event resulted in disruption of connectivity to Youtube for people all over the world.
 
@@ -33,22 +33,22 @@ One very popular and effective means of mounting an attack on the naming system 
 In a **phishing** attack, an attacker exploits DNS in order to trick a user into revealing personal information - such as passwords - on a rogue website.
 
 ## Internet is Insecure
-The internet’s design is fundamentally insecure. Many explicit design choices have caused the internet to be vulnerable to different types of attacks.
+The internet's design is fundamentally insecure. Many explicit design choices have caused the internet to be vulnerable to different types of attacks.
 
 The internet was designed for simplicity. Security was not a primary consideration when the internet was designed.
 
 In addition, the internet is "on by default". In other words, when a host is connected to internet, it is by default reachable by any other host that has a public IP address.
 
-This "on by default" model wasn’t an issue when the internet consisted of a small number of trusted networks, but as the internet continued to grow, the model has come under fire.
+This "on by default" model wasn't an issue when the internet consisted of a small number of trusted networks, but as the internet continued to grow, the model has come under fire.
 
-Part of the reason that model doesn’t work is because hosts are insecure. This makes it possible, and sometimes easy, for a remote attacker to compromise a machine that is connected to the internet and commandeer it for purposes of attack.
+Part of the reason that model doesn't work is because hosts are insecure. This makes it possible, and sometimes easy, for a remote attacker to compromise a machine that is connected to the internet and commandeer it for purposes of attack.
 
 In many cases, an attack might just look like normal traffic. For example, in the case of an attack on the victim web server, every individual request to that web server might look normal, but the collection of requests together - mounted as a DDoS attack - might add up to a volume of traffic that the server is unable to handle.
 
-Finally, the internet’s federated design obstructs cooperation, diagnosis, and mitigation. Because the internet is run by tens of thousands of independent networks, it can be very difficult to coordinate a defense against an attack because each network is run by different operators, sometimes in completely different countries.
+Finally, the internet's federated design obstructs cooperation, diagnosis, and mitigation. Because the internet is run by tens of thousands of independent networks, it can be very difficult to coordinate a defense against an attack because each network is run by different operators, sometimes in completely different countries.
 
 ## Resource Exhaustion Attacks
-One of the internet’s fundamental design tenets is packet switching.
+One of the internet's fundamental design tenets is packet switching.
 
 In a packet-switched network, resources are not reserved, and packets are self-contained: each packet has a destination IP address and travels independently to the destination host.
 
@@ -63,9 +63,9 @@ Circuit-switched networks - such as the phone network - do not have this problem
 ### Components of Security
 Resource exhaustion attacks a basic component of security known as *availability*, or the ability to use a resource.
 
-In addition to availability, we would like the network to provide *confidentiality*. If you are performing a sensitive transaction, like a bank transfer, you’d like the internet to conceal the details of that transaction.
+In addition to availability, we would like the network to provide *confidentiality*. If you are performing a sensitive transaction, like a bank transfer, you'd like the internet to conceal the details of that transaction.
 
-Another component of security is *authenticity*. Authenticity assures the identity of the origin of a piece of information. For example, if you are reading a news article, you’d like to be assured that it really came from the source it claims.
+Another component of security is *authenticity*. Authenticity assures the identity of the origin of a piece of information. For example, if you are reading a news article, you'd like to be assured that it really came from the source it claims.
 
 A third component of security is *integrity*. Integrity prevents unauthorized changes to information flowing through the network.
 
@@ -77,11 +77,11 @@ One attack on confidentiality is **eavesdropping**, whereby an attacker might ga
 
 For example, if Alice and Bob are sending email between one another, there is a potential - a threat - that Eve might be able to hear that communication.
 
-There are various packet sniffing tools, such as [Wireshark](https://www.wireshark.org/) and [tcpdump](https://www.tcpdump.org/manpages/tcpdump.1.html), that set a machine’s network interface card into *promiscuous mode*.
+There are various packet sniffing tools, such as [Wireshark](https://www.wireshark.org/) and [tcpdump](https://www.tcpdump.org/manpages/tcpdump.1.html), that set a machine's network interface card into *promiscuous mode*.
 
 If Eve has her network card in promiscuous mode, she might be able to hear some of the packets that are flooded on the local area network and, if she is on the same LAN as Alice and Bob, some of those packets may be for their communication.
 
-It’s worth thinking about how different types of traffic might reveal important information about communication.
+It's worth thinking about how different types of traffic might reveal important information about communication.
 
 The ability to see DNS lookups would provide the attacker information about what websites you are visiting. The ability to capture packet headers might give the attacker information about what types of applications you are using. The ability to capture a full packet payload would allow an attacker to effectively see everything you are sending on the network.
 
@@ -112,7 +112,7 @@ For example, the router can simply be misconfigured. In this case, the false rou
 
 Alternatively, the router might actually be compromised by an attacker. Once this happens, the attacker can reconfigure the router to advertise false routes.
 
-Unscrupulous ISPs might also decide to purposely advertise routes that they shouldn’t be advertising.
+Unscrupulous ISPs might also decide to purposely advertise routes that they shouldn't be advertising.
 
 To launch a route attack, an attacker might reconfigure the router or tamper with the management software that changes the configuration. They might also tamper with software or actively modify the routing message.
 
@@ -121,7 +121,7 @@ The most common attack is a route hijack attack, which is an attack on origin au
 ## Route Hijacking
 Suppose that you would like to visit a particular website.
 
-To do so, you’d first need to issue a DNS query which traverses the hierarchy of DNS servers to find the authoritative nameserver for the website’s domain name and thus the IP address associated with that domain name.
+To do so, you'd first need to issue a DNS query which traverses the hierarchy of DNS servers to find the authoritative nameserver for the website's domain name and thus the IP address associated with that domain name.
 
 Ultimately, this authoritative nameserver has its own IP address, advertised via BGP like any other IP address.
 
@@ -129,7 +129,7 @@ If an attacker was using a rogue DNS server and wanted to hijack your DNS query 
 
 The problem with a route hijack attack like this is that all traffic destined for the hijacked IP address is going to head to the attacker, including the traffic from the legitimate network.
 
-What we’d like to have happen instead is for traffic to first go to the rogue location and then pass through to the legitimate location, effectively making the attacker a man in the middle.
+What we'd like to have happen instead is for traffic to first go to the rogue location and then pass through to the legitimate location, effectively making the attacker a man in the middle.
 
 In order to do this, the attacker needs to somehow disrupt the routes to the rest of the internet while leaving the routes between the spoofed and authentic location intact.
 
@@ -144,7 +144,7 @@ We need to ensure that AS 100 maintains a path back to AS 200. This path already
 
 We can accomplish this by using **AS path poisoning**.
 
-AS 100 will advertise a route that includes AS 10 and AS 20 in the AS path. Both of these ASes will drop the announcement because they will think that they already heard the announcement and won’t want to form a loop.
+AS 100 will advertise a route that includes AS 10 and AS 20 in the AS path. Both of these ASes will drop the announcement because they will think that they already heard the announcement and won't want to form a loop.
 
 Every other AS not on the path back from 100 to 200 will switch.
 
@@ -158,14 +158,14 @@ A `traceroute` might look funny taking this circuitous route, but the attacker c
 
 Typically each router along a path will decrement the TTL at each hop.
 
-If the routers in the attacker’s network never decrement the TTL, no time-exceeded messages will be generated by routers in AS 100.
+If the routers in the attacker's network never decrement the TTL, no time-exceeded messages will be generated by routers in AS 100.
 
 As a result, `traceroute` would never show AS 100 on the path at all.
 
 ## Autonomous System Session Authentication
 Session authentication attempts to ensure that BGP routing messages sent between routers on adjacent ASes are authentic.
 
-Since the session between ASes is a TCP session, the authentication can be done using TCP’s MD5 authentication option.
+Since the session between ASes is a TCP session, the authentication can be done using TCP's MD5 authentication option.
 
 In such a setup, every message exchanged on the TCP connection not only contains the message but also a hash of the message with a shared secret key.
 
@@ -175,7 +175,7 @@ Once that key is set within the router configuration, all messages between the a
 
 Another way to guarantee session authentication is to have AS 1 transmit packets with a TTL of 255 and have the AS 2 drop any packet that has a TTL less than 254.
 
-Because most eBGP sessions are only a single hop and attackers are typically remote, it is not possible for the recipient AS to accept a packet from the attacker because the attacker’s packet will have a TTL less than 254.
+Because most eBGP sessions are only a single hop and attackers are typically remote, it is not possible for the recipient AS to accept a packet from the attacker because the attacker's packet will have a TTL less than 254.
 
 ## Origin and Path Authentication
 There is a proposal to modify the existing border gateway protocol to add signatures to various parts of the route advertisement, which can help provide origin and path authentication .
@@ -189,11 +189,11 @@ The certificate must be signed by a trusted party, such as a routing registry or
 The second part of BGPSEC is a **path attestation**. These are a set of signatures that accompany the AS path as it is advertised from one AS to the next.
 
 ## Autonomous System Path Attestation
-Let’s assume that we have a path with three ASes, and AS 1 wants to advertise prefix `P`.
+Let's assume that we have a path with three ASes, and AS 1 wants to advertise prefix `P`.
 
 ![](https://assets.omscs.io/31E8B038-43AF-44E6-B183-B8C34150120D.png)
 
-Each AS also has a private/public key-pair. An AS can sign a route with its own private key, and any other AS can check that signature with the signing AS’s public key.
+Each AS also has a private/public key-pair. An AS can sign a route with its own private key, and any other AS can check that signature with the signing AS's public key.
 
 The BGP announcement from AS 1 to AS 2 will contain the prefix  `P` as well as the AS path, which so far is just `1`.
 
@@ -213,7 +213,7 @@ AS 3 can use the second part of the path attestation to ensure that the path bet
 
 This is precisely why the AS signs a path attestation with not just its own part of the AS path but also includes the AS that is intended to receive the advertisement.
 
-To see the importance of this inclusion, let’s suppose that these next hop ASes were not present in path attestations.
+To see the importance of this inclusion, let's suppose that these next hop ASes were not present in path attestations.
 
 ![](https://assets.omscs.io/C9648821-BAF2-4A6C-A7A4-784392D19E5D.png)
 
@@ -223,7 +223,7 @@ If this were the case, an attacker (AS 4) could claim it was connected to `P` vi
 
 In reality, however, AS 1 never generates this signature. It generates the signature `2 1`. In order to accurately spoof the path attestation, AS 4 would have to generate the attestation `4 1`, signed by AS 1.
 
-AS 4 cannot create this attestation, because it cannot forge AS 1’s signature as it does not own AS 1’s private key.
+AS 4 cannot create this attestation, because it cannot forge AS 1's signature as it does not own AS 1's private key.
 
 This is the reason why each AS signs a path attestation with not only its own AS in the path, but also the next AS along the path.
 
@@ -264,7 +264,7 @@ In an ideal world, the authoritative nameserver for that domain would reply with
 
 If an attacker guesses that the recursive resolver may need to eventually issue a query for a site like google.com, the attacker can simply send the resolver multiple, specially crafted replies, each with a different ID.
 
-Even though the query has some query ID, the attacker doesn’t need to see that ID because they can simply flood the resolver with a bunch of bogus replies, each containing a different ID, and one of them will eventually match.
+Even though the query has some query ID, the attacker doesn't need to see that ID because they can simply flood the resolver with a bunch of bogus replies, each containing a different ID, and one of them will eventually match.
 
 ![](https://assets.omscs.io/DF162473-FC44-4DFB-A3EB-9D761DE1BF65.png)
 
@@ -290,7 +290,7 @@ However, the attacker could generate their own DNS queries to send to the resolv
 
 Each one of these bogus queries will generate a new race, and eventually the attacker will win one of those races for an A record query.
 
-Of course, the attacker doesn’t actually want to own 1.google.com, they want to own all of google.com.
+Of course, the attacker doesn't actually want to own 1.google.com, they want to own all of google.com.
 
 The trick here is that instead of responding with just A records in the bogus replies, the attacker can also respond with NS records, for the entire zone of google.com, essentially making them the SOA for all of Google.
 
@@ -321,7 +321,7 @@ If we start adding other attackers, we can likely create a denial of service att
 Possible defenses against this type of attack include preventing IP address spoofing by using appropriate filtering rules and disabling the ability of a DNS resolver to resolve queries from arbitrary locations on the internet.
 
 ## DNSSEC DNS Security
-One of the major reasons for DNS’s vulnerabilities is the lack of authentication.
+One of the major reasons for DNS's vulnerabilities is the lack of authentication.
 
 The **DNSSEC protocol** adds authentication to DNS responses by adding signatures to the responses that are returned for each DNS reply.
 
@@ -337,7 +337,7 @@ As long as the resolver knows the public key corresponding to the root nameserve
 
 In the process, the resolver also learns the public key corresponding to the .com nameserver.
 
-Thus, when the .com nameserver sends the next referral to google.com nameserver, that referral is signed by the .com nameserver’s private key.
+Thus, when the .com nameserver sends the next referral to google.com nameserver, that referral is signed by the .com nameserver's private key.
 
 Since the root nameserver had relayed the public key associated with the .com nameserver, the resolver can verify the referral from the .com nameserver.
 

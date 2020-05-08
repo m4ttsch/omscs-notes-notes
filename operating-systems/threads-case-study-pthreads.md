@@ -105,7 +105,7 @@ The variable `i` that is used in thread creation in the example above is a globa
 
 In this particular case, the second thread that is created with `pthread_create` is created when `i == 1`. In the thread function, `p` will become equivalent to the address of `i` and `myNum` will take on the value of `i`, which is presumably 1.
 
-However, it is possible that before this thread had the chance to cast the pointer and define a local variable pointing to the pointer’s value, the main thread went into the next iteration of the `for` loop and incremented `i`, making `i` now 2. Since we pass the address of `i` to the start routine, `p` will still point to the address of `i`, but `myNum` will point to the (new) value of `i`, which is 2.
+However, it is possible that before this thread had the chance to cast the pointer and define a local variable pointing to the pointer's value, the main thread went into the next iteration of the `for` loop and incremented `i`, making `i` now 2. Since we pass the address of `i` to the start routine, `p` will still point to the address of `i`, but `myNum` will point to the (new) value of `i`, which is 2.
 
 We call the above situation a **data race** or **race condition**. In summary, these terms refers to situations in which one thread tries to read a value that another thread is modifying.
 
@@ -187,15 +187,15 @@ int pthread_cond_destroy(pthread_cond_t *cond);
 `pthread_cond_init` takes some attributes that can further specify the behavior of the condition variable (much like we saw with `pthread_create` and `pthread_mutex_init`). As before, setting this value to `NULL` gives us the default behavior.
 
 ### Condition Variable Safety Tips
-- Don’t forget to notify waiting threads!
+- Don't forget to notify waiting threads!
 	- When a condition changes, make sure to signal/broadcast the correct condition variable
 - When in doubt use broadcast!
 	- Using broadcast incorrectly can incur a performance loss, but using signal incorrectly make cause your program to execute incorrectly.
-- You don’t need a mutex to signal/broadcast
+- You don't need a mutex to signal/broadcast
 	- May be best to notify after unlocking mutex to prevent spurious wake ups.
 
 ## Producer and Consumer Example
-Let’s walk through a real producer/consumer example using PThreads.
+Let's walk through a real producer/consumer example using PThreads.
 
 ### Global State
 

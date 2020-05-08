@@ -25,7 +25,7 @@ Browsers and servers use cookies as a way of carrying information, such as user 
 
 In addition to the key/value pair itself, a cookie also contains some metadata, including expiration information, domain information, and security requirements for transmission.
 
-A user’s browser stores cookies and includes them in subsequent requests as a way to create and preserve state over fundamentally stateless connections.
+A user's browser stores cookies and includes them in subsequent requests as a way to create and preserve state over fundamentally stateless connections.
 
 ## Cookie Quiz
 ![](https://assets.omscs.io/F6BDEF06-29AB-4349-832F-56EBC69D1D49.png)
@@ -58,13 +58,13 @@ Many websites, including social networking sites, blogs, forums, and wikis, disp
 Suppose that instead of entering his name, Joe submits the following.
 
 ```html
-<script type="text/javascript">alert(‘Hello World’)</script>
+<script type="text/javascript">alert('Hello World')</script>
 ```
 
-The website takes this string as the user’s name and includes it in the HTML page sent to the browser. Therefore, when the browser displays this webpage, the script runs, and the webpage displays "Hello World."
+The website takes this string as the user's name and includes it in the HTML page sent to the browser. Therefore, when the browser displays this webpage, the script runs, and the webpage displays "Hello World."
 
 ## XSS Example
-In a **cross-site scripting** (XSS) attack, an attacker tricks the browser into executing malicious scripts without the user’s knowledge.
+In a **cross-site scripting** (XSS) attack, an attacker tricks the browser into executing malicious scripts without the user's knowledge.
 
 The following diagram presents how this attack might work.
 
@@ -72,9 +72,9 @@ The following diagram presents how this attack might work.
 
 First, the user logs in to a vulnerable site, naive.com, and the browser stores a cookie to naive.com. Next, the attacker directs the user to evil.com, which returns a page containing a hidden iframe.
 
-The iframe forces the browser to visit naive.com and invoke the `hello.cgi` web application, sending the malicious script as the name of the user. `hello.cgi` at naive.com then echos the malicious script in the HTML page sent back to the user’s browser.
+The iframe forces the browser to visit naive.com and invoke the `hello.cgi` web application, sending the malicious script as the name of the user. `hello.cgi` at naive.com then echos the malicious script in the HTML page sent back to the user's browser.
 
-The browser displays the HTML page and executes the malicious script, which steals the user’s cookie to naive.com and sends it to the attacker. Since the cookie can include session authentication information for naive.com, the attacker can now impersonate this user on naive.com.
+The browser displays the HTML page and executes the malicious script, which steals the user's cookie to naive.com and sends it to the attacker. Since the cookie can include session authentication information for naive.com, the attacker can now impersonate this user on naive.com.
 
 ## XSS Quiz
 ![](https://assets.omscs.io/8DBE2B0F-CC6F-4437-9A92-1C3FB2F37165.png)
@@ -83,13 +83,13 @@ The browser displays the HTML page and executes the malicious script, which stea
 ![](https://assets.omscs.io/E9AC9C05-8E76-4DBF-B342-F55A1A723FA8.png)
 
 ## XSRF: Cross-Site Request Forgery
-When a user logs in to a site, the server usually writes a cookie to the user’s browser that contains session authentication information for that user on that site.
+When a user logs in to a site, the server usually writes a cookie to the user's browser that contains session authentication information for that user on that site.
 
-The cookie lives in the user’s browser as long as they keep the session alive. Once they log out of the website, the server resets the cookie.
+The cookie lives in the user's browser as long as they keep the session alive. Once they log out of the website, the server resets the cookie.
 
-If a user browses to a malicious site in the middle of their session with a trusted site, a script on the malicious site can potentially read the user’s cookie to the trusted site and use it to forge requests to that site. This type of attack is called **cross-site request forgery**.
+If a user browses to a malicious site in the middle of their session with a trusted site, a script on the malicious site can potentially read the user's cookie to the trusted site and use it to forge requests to that site. This type of attack is called **cross-site request forgery**.
 
-The user never sees this malicious request, since the malicious site often triggers it from a hidden iframe. Additionally, the trusted server doesn’t find the request suspicious since it contains the user’s cookie, which the server itself granted.
+The user never sees this malicious request, since the malicious site often triggers it from a hidden iframe. Additionally, the trusted server doesn't find the request suspicious since it contains the user's cookie, which the server itself granted.
 
 ![](https://assets.omscs.io/9F08DB29-3750-474F-841B-677EA4D1F0FC.png)
 
@@ -100,14 +100,14 @@ Here is an illustration of an XRSF example involving a trusted site, bank.com, a
 
 The user logs in to bank.com and keeps the session alive, which means that the browser has a cookie to bank.com. Meanwhile, the attacker phishes the user and directs them to the malicious site attacker.com.
 
-When the user visits attacker.com, their browser downloads and executes the malicious page. The scripts on this page direct the browser to make a request to bank.com on the user’s behalf.
+When the user visits attacker.com, their browser downloads and executes the malicious page. The scripts on this page direct the browser to make a request to bank.com on the user's behalf.
 
 Since the user is still logged in to bank.com, their browser also sends the bank.com cookie along with the forged request. As a result, bank.com believes that the request originated from the user and therefore executes the request.
 
 ## XSRF vs XSS
 In cross-site scripting, an attacker injects a script into a badly-implemented website that does not validate user input. As a result, when a user visits this website, their browser downloads and executes the malicious script.
 
-In cross-site request forgery, an attacker forges user requests to a website. As a result, the website executes the attacker’s malicious actions as if they were initiated and authorized by the user.
+In cross-site request forgery, an attacker forges user requests to a website. As a result, the website executes the attacker's malicious actions as if they were initiated and authorized by the user.
 
 Both XSS and XSRF are the results of security weaknesses in websites, in particular, the lack of authenticating and validating user input.
 

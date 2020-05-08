@@ -33,7 +33,7 @@ Following the header line, we have several rows of data. Each row contains data 
 We want to include data that changes frequently; otherwise, we are wasting space including redundant data. Of the options given, both "date/time" and "price of the stock" are good fits. The other data points are either static or change relatively infrequently.
 
 ## Real Stock Data
-Let’s take a look at real stock data, presented in the following CSV.
+Let's take a look at real stock data, presented in the following CSV.
 
 ![](https://assets.omscs.io/C130E72B-C33B-4754-A070-17F77EF8BA4F.png)
 
@@ -124,16 +124,16 @@ Generally, if we want to access rows `n` through `m` in `df`, we use the followi
 df[n:m + 1]
 ```
 
-Note that the range is upper-bound exclusive, which means it won’t include the `m`-th row by default. Thus, we must slice up to, but not including, `m + 1`. 
+Note that the range is upper-bound exclusive, which means it won't include the `m`-th row by default. Thus, we must slice up to, but not including, `m + 1`. 
 
 ### Documentation
 - [Slicing ranges](https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#slicing-ranges)
 
 ## Compute Max Closing Price
-Let’s assume we have a DataFrame `df` containing columns such as "Open", "High", "Low" and "Close", among others. If we’d like to retrieve just the "Close" column from `df`, we can use the following code:
+Let's assume we have a DataFrame `df` containing columns such as "Open", "High", "Low" and "Close", among others. If we'd like to retrieve just the "Close" column from `df`, we can use the following code:
 
 ```python
-close = df[‘Close’]
+close = df['Close']
 ```
 
 Given this object (technically a pandas Series), we can find  the maximum value with the following code:
@@ -157,21 +157,21 @@ Your task is to calculate the mean volume for each of the given symbols.
 Given a DataFrame `df` containing a "Volume" column, the following code returns the mean of the values in that column.
 
 ```python
-df[‘Values’].mean()
+df['Values'].mean()
 ```
 
 ### Documentation
 - [pandas.DataFrame.mean](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.mean.html)
 
 ## Plotting Stock Price Data
-It’s easy to plot data in a DataFrame.
+It's easy to plot data in a DataFrame.
 
 First, we need a library called [matplotlib](https://matplotlib.org/). To plot the adjusted close of `df`, we can run the following code:
 
 ```python
 import matplotlib.pyplot as plt
 
-df[‘Adj Close’].plot()
+df['Adj Close'].plot()
 plt.show()
 ```
 
@@ -196,20 +196,20 @@ Your task is to plot the high prices for IBM.
 First, we need to make sure that we read in the right CSV, which we can accomplish with:
 
 ```python
-df = pd.read_csv(‘data/IBM.csv’)
+df = pd.read_csv('data/IBM.csv')
 ```
 
 Next, we can retrieve the "High" column and plot it:
 
 ```python
-df[‘High’].plot()
+df['High'].plot()
 ```
 
 ## Plot Two Columns
-We don’t have to plot only one column at a time. We can plot both the adjusted close and close of `df` with the following code:
+We don't have to plot only one column at a time. We can plot both the adjusted close and close of `df` with the following code:
 
 ```python
-df[[‘Close’, ‘Adj Close’]].plot()
+df[['Close', 'Adj Close']].plot()
 plt.show()
 ```
 
@@ -217,4 +217,4 @@ Here is the resulting graph.
 
 ![](https://assets.omscs.io/25792257-B96C-43BB-8E90-E699F48E631D.png)
 
-We can see the blue line, which corresponds to ‘Close’, and the green line, which corresponds to ‘Adj Close’. Note that we didn’t have to write any extra code to get these colors or the legend.
+We can see the blue line, which corresponds to 'Close', and the green line, which corresponds to 'Adj Close'. Note that we didn't have to write any extra code to get these colors or the legend.

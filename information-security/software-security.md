@@ -22,7 +22,7 @@ The stack frame contains the allocation of memory for the local variables define
 
 A function call involves a transfer of control from the calling function to the called function. Once the called function has completed its work, it needs to pass control back to the calling function. It does this by holding a reference to the **return address**, also present in the stack frame.
 
-Stack buffer overflows can be exploited through normal system entry points that are called legitimately by non-malicious users of the system. By passing in carefully crafted data, however, an attacker can trigger a stack buffer overflow, and potentially gain control over the system’s execution.
+Stack buffer overflows can be exploited through normal system entry points that are called legitimately by non-malicious users of the system. By passing in carefully crafted data, however, an attacker can trigger a stack buffer overflow, and potentially gain control over the system's execution.
 
 ## Vulnerable Program
 The following program - which roughly resembles a standard password checking program - is vulnerable.
@@ -64,7 +64,7 @@ Finally, if `allow_login` is `0`, we print "Login request rejected". Otherwise, 
 
 Since `allow_login`, `pwdstr` and `targetpwd` are all local variables to `main`, any access of them will access memory locations inside the stack frame for `main`.
 
-The only lines of code that don’t access the stack frame for `main` are the calls to `printf`, (which create a new stack frame), and `else`.
+The only lines of code that don't access the stack frame for `main` are the calls to `printf`, (which create a new stack frame), and `else`.
 
 ## Understanding the Stack
 There are two things you can do with a stack: push and pop.
@@ -138,9 +138,9 @@ Remember, the point of the return address is to give the function a location to 
 ## Buffer Overflow Quiz Solution
 ![](https://assets.omscs.io/07B11C34-5DB8-4233-BC74-E2075631A2E1.png)
 
-The first answer is wrong. The target password can be as long as you’d like, but if the attacker submits a longer password, the overflow will still happen.
+The first answer is wrong. The target password can be as long as you'd like, but if the attacker submits a longer password, the overflow will still happen.
 
-The third answer is also wrong. Besides the fact that you shouldn’t ever really add useless variables, these variables will only provide a finite amount of distance between the user-filled buffer and the return address. With a long enough password, the attacker can still overwrite the return address.
+The third answer is also wrong. Besides the fact that you shouldn't ever really add useless variables, these variables will only provide a finite amount of distance between the user-filled buffer and the return address. With a long enough password, the attacker can still overwrite the return address.
 
 Only the second answer is correct. The overflow happens precisely because input larger than the space allocated for that input is not rejected by the program.
 
@@ -185,7 +185,7 @@ So far we have talked about stack buffer overflows. There are other variations o
 
 The first variation is called **return-to-libc**.
 
-When we talked about shellcode, the goal was to overflow the return address to point to the location of our shellcode, but we don’t need to return to code that we have explicitly written.
+When we talked about shellcode, the goal was to overflow the return address to point to the location of our shellcode, but we don't need to return to code that we have explicitly written.
 
 In [return-to-libc](https://en.wikipedia.org/wiki/Return-to-libc_attack),  the return address will be modified to point to a standard library function. Of course, this assumes that you will be able to figure out the address of the library function.
 
@@ -196,9 +196,9 @@ For example, if you point to the address of the `system` library function, and p
 The main idea with return-to-libc is that we have driven our exploit through instructions already present on the system, as opposed to supplying our own.
 
 ## Heap Overflows
-An overflow doesn’t have to occur to memory associated with the stack. A **heap overflow** describes buffer overflows that occur in the heap.
+An overflow doesn't have to occur to memory associated with the stack. A **heap overflow** describes buffer overflows that occur in the heap.
 
-One crucial difference between the heap and the stack is that the heap does not have a return address, so the traditional stack overflow / return-to-libc mechanism won’t work.
+One crucial difference between the heap and the stack is that the heap does not have a return address, so the traditional stack overflow / return-to-libc mechanism won't work.
 
 What we have in the heap are function pointers, which can be overwritten to point to functions that we want to execute.
 
@@ -207,12 +207,12 @@ Heap overflows require more sophistication and more work than stack overflows.
 ## OpenSSL Heartbleed
 So far, when we have talked about buffer overflow, we have talked about writing data; specially, inputing data into some part of memory and overflowing the memory that was allocated to us.
 
-Overflows don’t just have to be associated with writing data. For example, if a variable has 12 bytes, but we ask to read 100 bytes, the read will continue past the original 12 bytes and return data in subsequent memory locations.
+Overflows don't just have to be associated with writing data. For example, if a variable has 12 bytes, but we ask to read 100 bytes, the read will continue past the original 12 bytes and return data in subsequent memory locations.
 
 The [OpenSSL Heartbleed vulernability](https://en.wikipedia.org/wiki/Heartbleed) did just this. It read past an assumed boundary (due to insufficient bounds checking) and was exploited to steal some important information - like encryption keys - that resided in adjacent memory.
 
 ## Defense Against Buffer Overflows
-Naturally, we shouldn’t write code with buffer overflow vulnerabilities, but if such code is out there deployed on systems, we need to find ways to defend against attacks that exploit these vulnerabilities.
+Naturally, we shouldn't write code with buffer overflow vulnerabilities, but if such code is out there deployed on systems, we need to find ways to defend against attacks that exploit these vulnerabilities.
 
 For instance, choice of programming language is crucial. There are languages where buffer overflows are not possible.
 
@@ -228,7 +228,7 @@ If we choose a "safe" language, buffer overflows become impossible due to the ch
 
 For example, instead of having to perform bounds checking explicitly, programmers can rest assured knowing that the language runtime will perform the check for them.
 
-So, why don’t we use these languages for everything?
+So, why don't we use these languages for everything?
 
 One drawback for these languages is performance degradation. The extra runtime checks slow down the execution of your program.
 
@@ -259,7 +259,7 @@ A number of [source code analysis](https://www.owasp.org/index.php/Source_Code_A
 
 Companies will often incorporate the use of these tools into their software development lifecycle to ensure that all code headed for production is audited before being released.
 
-If you are attempting to analyze code that you didn’t write, you may not have the source code available, at which point source code analysis tools obviously won’t be helpful.
+If you are attempting to analyze code that you didn't write, you may not have the source code available, at which point source code analysis tools obviously won't be helpful.
 
 ## Stack Canary
 One of the tricks that hackers use is to override the return address on the stack to point to some other code they want to execute.
@@ -272,14 +272,14 @@ How can we detect if the return address has been modified? We can use a **stack 
 
 All the runtime has to do, then, is to check if the canary value has changed when a function completes execution. If so, it can be sure that there is a problem.
 
-What is nice about this approach is that the programmer doesn’t have to do anything: the compiler inserts these checks. Of course, this means that the code may have to be recompiled with a compiler that has these features, a step which may come with its own issues.
+What is nice about this approach is that the programmer doesn't have to do anything: the compiler inserts these checks. Of course, this means that the code may have to be recompiled with a compiler that has these features, a step which may come with its own issues.
 
 ## ASLR
 There are also OS-/hardware-based solutions which can help to thwart the exploitation of buffer overflow vulnerabilities.
 
 The first technique that many operating systems use is **address space layout randomization** (ASLR).
 
-Remember that one key job of the attacker is to be able to understand/approximate how memory is laid out within the stack or, in the case of return-to-libc, within a process’s address space.  
+Remember that one key job of the attacker is to be able to understand/approximate how memory is laid out within the stack or, in the case of return-to-libc, within a process's address space.  
 
 ASLR randomizes how memory is laid out within a process to make it very hard for an attacker to predict, even roughly, where certain key data structures and/or libraries reside.
 

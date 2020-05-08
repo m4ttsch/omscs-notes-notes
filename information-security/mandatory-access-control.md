@@ -13,13 +13,13 @@ In the last lesson we talked about access control.
 In particular, we focused on **discretionary access control** (DAC), whereby the user who creates a resource is the owner of that resource and can choose to give access to other users.
 
 ## Two Problems with DAC
-To illustrate the first problem with DAC, let’s consider the following scenario.
+To illustrate the first problem with DAC, let's consider the following scenario.
 
-Alice owns a file and gives read access to Bob, but not to Charlie. Bob copies the contents into a new file, and shares that file with Charlie. Charlie now has effective access to the file that Alice didn’t want to share with him in the first place.
+Alice owns a file and gives read access to Bob, but not to Charlie. Bob copies the contents into a new file, and shares that file with Charlie. Charlie now has effective access to the file that Alice didn't want to share with him in the first place.
 
-While DAC allows users to control direct access to a file, we can’t actually prevent the spread of data contained in that file; that is, we can’t control the *information flow*.
+While DAC allows users to control direct access to a file, we can't actually prevent the spread of data contained in that file; that is, we can't control the *information flow*.
 
-Another problem with DAC is that it doesn’t reflect how most organizations treat their data. Most employers do not leave the decisions about data sharing in the hands of their employees, but rather mandate explicit policies about who can share what.
+Another problem with DAC is that it doesn't reflect how most organizations treat their data. Most employers do not leave the decisions about data sharing in the hands of their employees, but rather mandate explicit policies about who can share what.
 
 To address these problems, we will explore another model for access control: **mandatory access control** (MAC). In mandatory access control, decisions about sharing information are not made at the discretion of the user.
 
@@ -29,7 +29,7 @@ To address these problems, we will explore another model for access control: **m
 ## DAC Quiz Solution
 ![](https://assets.omscs.io/CC4FCC5B-CC40-4ADC-8AC7-B14CEA595009.png)
 
-DAC can’t control information flow, so we must use MAC.
+DAC can't control information flow, so we must use MAC.
 
 ## Mandatory Access Control (MAC) Models
 Hospitals are a great example of an entity that needs to employ mandatory access control.
@@ -40,7 +40,7 @@ In addition, there are regulatory requirements that limit how medical informatio
 
 Of course, there is a need to share your medical information - if you see a new doctor, for instance.
 
-The point is that these access control decisions are not dictated by the individual performing data entry on the patient’s record, but rather by the hospital and the government.
+The point is that these access control decisions are not dictated by the individual performing data entry on the patient's record, but rather by the hospital and the government.
 
 ## Implementing MAC
 In mandatory access control, users and resources/documents will have certain labels associated with them.
@@ -57,7 +57,7 @@ The exact nature of what the labels look like, how we compare them, and the resu
 
 In the Department of Defense, the labels will include a clearance level for users and a classification level for documents, as well as a compartment. The compartment is used to describe what kind of information a document contains and what categories of information a user can access.
 
-In the commercial world, we don’t have notions of clearance and classification, so the labels will look different.
+In the commercial world, we don't have notions of clearance and classification, so the labels will look different.
 
 The concerns are different as well. For example, we may have a policy that prevents conflict of interest. A user may not be able to access resources from which they stand to enjoy a material gain.
 
@@ -68,7 +68,7 @@ The sensitivity levels present in the DoD system, in order from most sensitive t
 
 A label contains a sensitivity level and a compartment that describes what kind of data is contained in the document.
 
-Let’s consider two different documents, which contain information about various arms stockpiles.
+Let's consider two different documents, which contain information about various arms stockpiles.
 
 One document may have the label `(TS, {nuclear, chemical})`, identifying it as a top secret document concerned with nuclear and chemical weapons.
 
@@ -112,7 +112,7 @@ Two sets `S1` and `S2` can be oriented such that
 - `S2` is contained in `S1`
 - Neither set contains the other
 
-Sets are compared by containment. A set that contains another set is "greater" than that set. Note that this ordering is *partial*, because two sets that don’t contain each other cannot be ordered.
+Sets are compared by containment. A set that contains another set is "greater" than that set. Note that this ordering is *partial*, because two sets that don't contain each other cannot be ordered.
 
 When we want to order labels, we must look at both the sensitivity level and the compartment
 
@@ -125,7 +125,7 @@ Based on the comparison rules just described, the following chart depicts the ci
 ![](https://assets.omscs.io/5A925057-513C-4F06-B342-E5D00A71AD2C.png)
 
 ## Ordering Among Labels
-Let’s try to compare the following labels.
+Let's try to compare the following labels.
 
 ```bash
 L1 = (TS, {A,B,C})
@@ -163,7 +163,7 @@ While `secret < top-secret` , `{Asia, Europe}` cannot be compared with `{Europe,
 
 In order for `D1` to dominate `D2`, `D1` must have a higher sensitivity level than `D2`.
 
-In addition, the compartment of `D1` must contain the compartment of `D2` in order to be ‘greater’ (based on the ordering rules for sets). For this to be the case, the compartment of `D2` must be a subset of ("narrower" than) the compartment of `D1`.
+In addition, the compartment of `D1` must contain the compartment of `D2` in order to be 'greater' (based on the ordering rules for sets). For this to be the case, the compartment of `D2` must be a subset of ("narrower" than) the compartment of `D1`.
 
 ## Using Labels for MAC: Confidentiality
 The **Bell and LaPadula Model** (BLP) is a model that deals with confidentiality. Its development was funded by the DoD.
@@ -268,7 +268,7 @@ Finally, a separation of duty requirement can be important for reducing the poss
 For example, a user should not be able to both authorize and execute a financial transaction.
 
 ## Policies for Commercial Environments Part 2
-Let’s look at two different policies that make sense for commercial environments.
+Let's look at two different policies that make sense for commercial environments.
 
 ### Clark-Wilson Policy
 The **Clark-Wilson Policy** says that users should only be able to access certain applications, and only certain applications can access certain objects in the system.
@@ -282,7 +282,7 @@ The **Chinese Wall Policy** deals with conflict of interest. Specifically, this 
 
 If the documents you have accessed so far have no conflict with the document you are currently requesting, access may be granted. Otherwise, access will be denied.
 
-Let’s assume we have the following documents in our system.
+Let's assume we have the following documents in our system.
 
 ![](https://assets.omscs.io/FF68C6DD-8AB9-4A4C-B4A5-EFCB0EB09B02.png)
 
@@ -329,7 +329,7 @@ How do we know that a certain system that claims to be a trusted computing base 
 
 First, it is important to talk about terminology.
 
-When we talk about something being secure, we are usually talking about a binary quality of a system. Either something is secure or it isn’t.
+When we talk about something being secure, we are usually talking about a binary quality of a system. Either something is secure or it isn't.
 
 When we talk about a system being trusted, we mean that we have a high level of confidence that the system will uphold the requirements that we expect it to uphold.
 
@@ -433,7 +433,7 @@ For example, a keylogger could tap the communication path from the keyboard to t
 A trusted path confers confidence that a user is communicating exclusively with the trusted computing base.
 
 ### Auditing
-We’ve talked a lot about prevention mechanisms, such as authentication and authorization, which are used to block inappropriate access to system resources.
+We've talked a lot about prevention mechanisms, such as authentication and authorization, which are used to block inappropriate access to system resources.
 
 The reality is that no matter how hard we work at prevention, things will go wrong. With this realization, we have to employ detection mechanisms in addition to prevention mechanisms.
 
@@ -470,7 +470,7 @@ One type of testing looks at functionality. We write tests to ensure that our fu
 
 Another type of testing is **penetration testing**. In penetration testing, the tester approaches the software with the adversarial mindset and specifically tries to uncover vulnerabilities in the system.
 
-The final kind of testing is **regression testing**, which we run when we enhance a system to make sure that new features don’t break functionality or hurt performance of existing features.
+The final kind of testing is **regression testing**, which we run when we enhance a system to make sure that new features don't break functionality or hurt performance of existing features.
 
 As a word of caution: testing can only demonstrate the existence of a problem. Tests cannot demonstrate the absence of a problem. For example, you cannot run a suite of tests and then claim that the system is completely secure.
 
@@ -491,10 +491,10 @@ In penetration testing, we deliberately employ an ethical hacker to attempt to d
 
 As the good guys, we have the burden of ensuring that *every* possible execution path is secure. In penetration testing, the tester just needs to find *some* execution path containing a vulnerability that can be exploited in order to demonstrate a problem.
 
-If they can’t find any issues, this doesn’t prove that we don’t have a problem. Testing - penetration or otherwise - cannot demonstrate the absence of a problem.
+If they can't find any issues, this doesn't prove that we don't have a problem. Testing - penetration or otherwise - cannot demonstrate the absence of a problem.
 
 ### Formal Verification
-A formal verification is a mathematical specification of a program’s behavior. This verification proves which security assertions and properties hold throughout the execution of a system.
+A formal verification is a mathematical specification of a program's behavior. This verification proves which security assertions and properties hold throughout the execution of a system.
 
 There are automated ways to formally verify a program, such as [model checking](https://en.wikipedia.org/wiki/Model_checking) and [automated theorem proving](https://en.wikipedia.org/wiki/Automated_theorem_proving).
 
@@ -516,7 +516,7 @@ Model checking pioneers won the Turing Award in 2007 and this field remains an a
 ## Testing TCB Quiz Solution
 ![](https://assets.omscs.io/5F87B5BC-DB54-413C-8348-BF6973C787F5.png)
 
-Testing can’t show the absence of problems.
+Testing can't show the absence of problems.
 
 ## Model Checking Quiz
 ![](https://assets.omscs.io/1DD38815-AC14-4050-8BE4-CD4B6545DE3B.png)
@@ -548,7 +548,7 @@ A system that provides a formal verification of TCB correctness is a candidate f
 ## Security Evaluations: Common Criteria
 After time, multiple countries began to recognize the importance of security evaluation, and TCSEC was replaced by an international standard which combined US, Canadian and European efforts: the [Common Criteria](https://en.wikipedia.org/wiki/Common_Criteria).
 
-The idea is that as a consumer of a system, users specify what security they want to see in their software. Vendors implement  these requirements and make claims about their solution meeting users’ needs. The evaluator determines if the claims that are made match the specifications.
+The idea is that as a consumer of a system, users specify what security they want to see in their software. Vendors implement  these requirements and make claims about their solution meeting users' needs. The evaluator determines if the claims that are made match the specifications.
 
 The **evaluation assurance level** (EAL) rates the trustworthiness of the system. EAL1 is the most basic rating and EAL7 is the most rigorous.
 

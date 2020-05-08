@@ -324,7 +324,7 @@ Source: book p. 127
 
 
 
-In the Attribute-Based Access Control (ABAC) model: current date and time, the current virus/hacker activities, and the network’s security level are known as ____
+In the Attribute-Based Access Control (ABAC) model: current date and time, the current virus/hacker activities, and the network's security level are known as ____
 
 - A) Object attributes
 - B) Subjects attributes

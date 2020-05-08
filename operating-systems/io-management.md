@@ -8,7 +8,7 @@ lecture: io-management
 # IO Management
 
 ## I/O Devices
-The execution of applications doesn’t rely on only the CPU and memory, but other hardware components as well. Some of these components are specifically tied to receiving inputs or directing outputs, and these are referred to as **I/O devices**.
+The execution of applications doesn't rely on only the CPU and memory, but other hardware components as well. Some of these components are specifically tied to receiving inputs or directing outputs, and these are referred to as **I/O devices**.
 
 Examples of I/O devices include
 - keyboards
@@ -27,7 +27,7 @@ Devices come in all shapes and sizes with a lot of variability in their hardware
 
 In general, a device will have a set of control registers which can be accessed by the CPU and permit CPU/device interactions. These registers are typically divided into: **command registers**, that the CPU uses to control the device; **data registers**, that are used by the CPU to transfer data in and out of the device; **status registers** that are used by the CPU to understand what is happening on the device.
 
-Internally, the device will incorporate all other device-specific logic. This will include the **microcontroller** - which is basically the device’s CPU - on device memory, as well as any other logic needed by the device. For example, some devices may need chips for converting analog to digital signals. As another example, network devices may need chips to interact with the physical network medium, be it optics or copper wire.
+Internally, the device will incorporate all other device-specific logic. This will include the **microcontroller** - which is basically the device's CPU - on device memory, as well as any other logic needed by the device. For example, some devices may need chips for converting analog to digital signals. As another example, network devices may need chips to interact with the physical network medium, be it optics or copper wire.
 
 ![](https://assets.omscs.io/DA5651B0-8568-45A2-A26E-B5DE1F699F9B.png)
 
@@ -92,7 +92,7 @@ With just basic support from an interconnect like PCI, a CPU can request an oper
 
 The CPU issues instructions by writing into the command registers of the device. The CPU controls data movement to/from the device by reading/writing into the data registers for the device.
 
-Let’s consider how a process running on the CPU transmits a network packet via a **network interface card** (NIC) device.
+Let's consider how a process running on the CPU transmits a network packet via a **network interface card** (NIC) device.
 
 First, the CPU needs to write to a command register on the device. This command needs to instruct the device that it needs to perform a transmission of the data that the CPU will provide. The CPU then needs to copy the packet into the data registers, and will repeat as many times as necessary until the entire packet is sent.
 
@@ -103,7 +103,7 @@ An alternative to using PIO is to use **Direct Memory Access** (DMA) supported d
 
 For devices that have DMA support, the CPU still writes commands directly to the command registers on the device. However, the data movement is controlled by configuring the DMA controller to know which data needs to be moved from memory to the device, and vice versa.
 
-Let’s consider how a process running on the CPU transmits a network packet via a **network interface card** (NIC) device.
+Let's consider how a process running on the CPU transmits a network packet via a **network interface card** (NIC) device.
 
 First, the CPU needs to write to a command register on the device. This command needs to instruct the device that it needs to perform a transmission of the data that the CPU will provide.
 
@@ -135,7 +135,7 @@ It is not necessary to go through the kernel to get to a device. It is possible 
 
 The OS is involved in making the device registers available to the user process on create, but then is out of the way.
 
-Since we don’t want to interact with the kernel in order to control the device, we need a **user-level driver** - basically a library - that the user process links in order to interact with the device. These libraries, like the kernel-level drivers, will usually be provided by the device manufacturers.
+Since we don't want to interact with the kernel in order to control the device, we need a **user-level driver** - basically a library - that the user process links in order to interact with the device. These libraries, like the kernel-level drivers, will usually be provided by the device manufacturers.
 
 The OS has to retain some coarse-grain control. For example, the OS can still enable/disable a device or add permissions to add more processes to use the device. The device must have enough registers so that the OS can map some of them into one or more user processes while still retaining access to a few registers itself so it can interact with the device at a high-level.
 
@@ -155,7 +155,7 @@ With asynchronous operations, the thread is allowed to continue as soon as it is
 Remember when we talked about Flash, we discussed that the implementation mimicked asynchronous I/O by delegating all I/O calls to special helper threads. Here we are talking about true, OS-supported asynchronous I/O.
 
 ## Block Device Stack
-Block devices, like disks, are typically used for storage, and the typical storage-related abstraction used by applications is the file. A file is a *logical* storage unit which maps to some underlying *physical* storage location. At the level of the user process we don’t think about interacting with blocks of storage. We think about interacting with files.
+Block devices, like disks, are typically used for storage, and the typical storage-related abstraction used by applications is the file. A file is a *logical* storage unit which maps to some underlying *physical* storage location. At the level of the user process we don't think about interacting with blocks of storage. We think about interacting with files.
 
 Below the file-based interface used by applications is the file system. The file system will receive read/write operations from a user process for a given file, and will have the information to find the file, determine if the user process can access it and which portion to access. The operating system can then actually perform the access.
 
@@ -189,7 +189,7 @@ For each file the VFS maintains a persistent data structure called an **inode**.
 
 To help with certain operations on directories, Linux maintains a data structure called a **dentry** (directory entry). Each dentry object corresponds to a single path component that is being traversed as we are trying to reach a particular file. For instance, if we are trying to access a file in `/users/ada`, the filesystem will create a dentry for every path component - for `/` ,  `/users` and `/users/ada`.  
 
-This is useful because when we need to find another file in `/users/ada`, we don’t need to go through the entire path and re-read the files that correspond to all of the directories in order to get to the `/users/ada` directory. The filesystem will maintain a **dentry cache** containing all of the directories that we have previously visited. Note that dentry objects live only in memory; they are not persisted.
+This is useful because when we need to find another file in `/users/ada`, we don't need to go through the entire path and re-read the files that correspond to all of the directories in order to get to the `/users/ada` directory. The filesystem will maintain a **dentry cache** containing all of the directories that we have previously visited. Note that dentry objects live only in memory; they are not persisted.
 
 Finally, the **superblock** abstraction provides information about how a particular filesystem is laid out on some storage device. The data structure maintains a map that the filesystem uses so it can figure out how it has organized the persistent data elements like inodes and the data blocks that belong to different files.
 

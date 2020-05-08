@@ -75,7 +75,7 @@ Unfortunately, this optimization problem [NP-complete](https://en.wikipedia.org/
 
 Instead, we must iteratively search through a large set of combinations of link weights to find a good setting. While this search is suboptimal, the graphs are often small enough in practice to allow this approach to be effective.
 
-In practice, we also have other operational realities to worry about. For example, we’d often like to limit the number of changes we make to the network and the frequency with which we make these changes.
+In practice, we also have other operational realities to worry about. For example, we'd often like to limit the number of changes we make to the network and the frequency with which we make these changes.
 
 In addition, whatever solution we come up with must be resistant to failure and it should be robust to measurement noise.
 
@@ -116,7 +116,7 @@ Thus other neighbors - like `D` - might decide to use another path as a result o
 ### Limit influence of neighbors
 Another goal of interdomain traffic engineering is to limit the influence of neighboring ASes.
 
-Specifically, we’d like to use BGP policies and changes to those policies that limit how neighboring ASes might change their behavior in response to changes to the BGP configuration that we make in our own network.
+Specifically, we'd like to use BGP policies and changes to those policies that limit how neighboring ASes might change their behavior in response to changes to the BGP configuration that we make in our own network.
 
 For example, an AS might try to make a path look longer with AS path prepending.
 
@@ -127,7 +127,7 @@ Additionally, if we enforce a constraint that our neighbors should advertise con
 Enforcing consistent advertisements turns out to be difficult in practice.
 
 ### Reduce overhead of routing changes
-A third goal of interdomain traffic engineering is to reduce the overhead of routing changes; that is, we’d like to achieve our network goals with changes to as few IP prefixes as possible.
+A third goal of interdomain traffic engineering is to reduce the overhead of routing changes; that is, we'd like to achieve our network goals with changes to as few IP prefixes as possible.
 
 To achieve this, we can group related prefixes. Rather than exploring all combinations of prefixes in order to move a particular volume of traffic, we can identify routing choices that group routes that have the same AS paths, and we can move groups of prefixes according to the groups of prefixes that share an AS path.
 
@@ -188,7 +188,7 @@ This approach also makes it easier to load balance traffic.
 
 On the other hand, a monolithic layer two topology makes scaling difficult, since now we have tens of thousands of servers on a single flat topology.
 
-Layer two addresses are not hierarchical, so the forwarding tables in these network switches can’t scale as easily because they can’t take advantage of the natural hierarchy that exists in the topology.
+Layer two addresses are not hierarchical, so the forwarding tables in these network switches can't scale as easily because they can't take advantage of the natural hierarchy that exists in the topology.
 
 This hierarchy can potentially create single points of failure and links at the top of the topology in the core layer can become oversubscribed.
 
@@ -205,7 +205,7 @@ One solution is to introduce **pods**. Each server in a pod is assigned a pseudo
 
 With pods, switches in the data center no longer need to maintain forwarding table entries for every host, but rather only need entries for reaching other pods in the topology.
 
-The receiving switch at the top of each pod will have entries for all of the servers inside that pod, but they don’t need to maintain entries for MAC addresses for servers outside of their pod.
+The receiving switch at the top of each pod will have entries for all of the servers inside that pod, but they don't need to maintain entries for MAC addresses for servers outside of their pod.
 
 In such a data center topology, the hosts are unmodified, so they will still respond to things like ARP queries with their real MAC addresses.
 
@@ -228,7 +228,7 @@ For example, if a service is broken up across VMs running in different locations
 
 Reducing this type of fragmentation can result in complicated layer two or layer three routing reconfiguration.
 
-Instead, we’d like to have the abstraction of one big layer two switch, an abstraction provided by [VL2](https://www.microsoft.com/en-us/research/publication/vl2-a-scalable-and-flexible-data-center-network/)
+Instead, we'd like to have the abstraction of one big layer two switch, an abstraction provided by [VL2](https://www.microsoft.com/en-us/research/publication/vl2-a-scalable-and-flexible-data-center-network/)
 
 VL2 achieves layer two semantics across the entire data center topology using a name-location separation and a resolution service that resembles the aforementioned fabric manager.
 
@@ -259,7 +259,7 @@ However, it is hard to change the network topology in response to changing traff
 For example, a hypercube configuration requires 2^k switches where k is the number of servers. Even more efficient topologies, such as a [fat tree](https://en.wikipedia.org/wiki/Fat_tree), requires switch counts that are quadratic in the number of servers.
 
 ## Jellyfish Random Regular Graph
-Jellyfish’s topology is a **random, regular graph**.
+Jellyfish's topology is a **random, regular graph**.
 
 A regular graph is a graph where each node has the same degree, and a random, regular graph is uniformly sampled from the space of all regular graphs.
 
@@ -269,7 +269,7 @@ Here is a visualization of a jellyfish random graph parameterized by 432 servers
 
 ![](https://assets.omscs.io/F3902EA4-D8E3-415B-9F3F-CD382D9A60CF.png)
 
-Jellyfish’s approach is to construct a random graph at the Top of Rack (ToR) switch layer.
+Jellyfish's approach is to construct a random graph at the Top of Rack (ToR) switch layer.
 
 Every ToR switch `i` has some total number of ports `k_i`, of which it uses `r_i` to connect to other ToR switches. The remaining `k_i - r_i` ports are used to connect servers.
 

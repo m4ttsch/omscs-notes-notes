@@ -27,7 +27,7 @@ How do we decide which task to be selected? This depends on the scheduling polic
 ## Run To Completion Scheduling
 **Run To Completion** scheduling assumes that once a task is assigned to a CPU, it will run on that CPU until it is finished.
 
-For the purposes of discussion, it’s necessary to make some assumptions. First, we can assume that we have a group of tasks that need to be scheduled. Second, we can assume that we know the execution times of the tasks. Third, we can assume that there is no preemption in the system. Fourth, assume that there is a single CPU.
+For the purposes of discussion, it's necessary to make some assumptions. First, we can assume that we have a group of tasks that need to be scheduled. Second, we can assume that we know the execution times of the tasks. Third, we can assume that there is no preemption in the system. Fourth, assume that there is a single CPU.
 
 When it comes to comparing schedulers, some common metrics include:
 - throughput
@@ -39,17 +39,17 @@ The first and the simplest algorithm is **First Come First Serve** (FCFS). In th
 
 A simple way to organize these tasks would be a queue structure, in which the tasks can be enqueued to the back of the queue, and dequeued from the front of the queue by the scheduler in a FIFO manner. All the scheduler needs to know is the head of the queue, and how to dequeue tasks.
 
-Let’s look at a scenario with three threads: T1, T2, T3. T1 has a task that takes 1 second, T2 has a task that takes 10 seconds, and T3 has a task that takes 1 second. Let’s assume that T1 arrives before T2, which arrives before
+Let's look at a scenario with three threads: T1, T2, T3. T1 has a task that takes 1 second, T2 has a task that takes 10 seconds, and T3 has a task that takes 1 second. Let's assume that T1 arrives before T2, which arrives before
 T3.
 
 For this example, the throughput is 3 tasks over 12 seconds, or 0.25 tasks per second. The average completion time is (1 second + 11 seconds + 12 seconds) / 3, or 8 seconds. The average wait time is (0 seconds + 1 second + 11 seconds) / 3, or 4 seconds.
 
 We can improve our metrics by changing our algorithm. Instead of FCFS we can try **shortest job first** (SJF), which schedules jobs in order of their execution time.
 
-With this algorithm, it doesn’t really make sense for the runqueue to be a FIFO queue any more. We need to find the shortest task in the queue, so we may need to change our queue to be an ordered queue. This makes the enqueue step more laborious. Alternatively, we can use a tree structure to maintain the runqueue. Depending on how we rebalance the tree every time we add a new task, we can easily find the node containing the shortest job. The runqueue doesn’t have to be queue!
+With this algorithm, it doesn't really make sense for the runqueue to be a FIFO queue any more. We need to find the shortest task in the queue, so we may need to change our queue to be an ordered queue. This makes the enqueue step more laborious. Alternatively, we can use a tree structure to maintain the runqueue. Depending on how we rebalance the tree every time we add a new task, we can easily find the node containing the shortest job. The runqueue doesn't have to be queue!
 
 ## Preemptive Scheduling: SJF + Preempt
-Let’s remove the assumption that a task cannot be interrupted once its execution has started. Let’s also relax the assumption that tasks must all arrive at the same time.
+Let's remove the assumption that a task cannot be interrupted once its execution has started. Let's also relax the assumption that tasks must all arrive at the same time.
 
 ![](https://assets.omscs.io/302527F5-EA2F-4DD0-9E07-F38CA209E204.png)
 
@@ -57,7 +57,7 @@ When T2 arrives, it is the only task in the system, so the scheduler will schedu
 
 ![](https://assets.omscs.io/0EC22063-46A4-47EF-B109-571A03494F41.png)
 
-Whenever tasks enter the runqueue, the scheduler needs to be invoked so that it can invoke the new task’s runtime, and make a decision as to whether it should preempt the currently executing task.
+Whenever tasks enter the runqueue, the scheduler needs to be invoked so that it can invoke the new task's runtime, and make a decision as to whether it should preempt the currently executing task.
 
 We are still holding our assumption that we know the execution time of the task. In reality, this is not really a fair assumption, as the execution time depends on many different things that may be out of our perception. We can generate heuristics about running time based on execution times that have been recorded for similar jobs in the past. We can think about how long a task took to run the very last time or the average execution time over the past n times (a **windowed average**).
 
@@ -72,7 +72,7 @@ We start with the execution of T2, as it is the only thread in the system. Once 
 
 ![](https://assets.omscs.io/9FF251EC-C80C-4184-91CE-11DC71A15A45.png)
 
-Our scheduler now not only needs to know which tasks are runnable, but also each task’s priority. An effective way to be able to quickly tell a task’s priority is to maintain a separate runqueue for each priority level. As a result, the scheduler can just empty queues by priority level.
+Our scheduler now not only needs to know which tasks are runnable, but also each task's priority. An effective way to be able to quickly tell a task's priority is to maintain a separate runqueue for each priority level. As a result, the scheduler can just empty queues by priority level.
 
 ![](https://assets.omscs.io/B9E26ED4-074D-4A16-A0C4-8EBB6AB9966D.png)
 
@@ -113,11 +113,11 @@ A further modification that makes sense with round robin is not to wait until th
 ![](https://assets.omscs.io/AED712E3-7C9D-4E10-B5CD-48ACB79788FA.png)
 
 ## Timesharing and Timeslices
-A **timeslice** (also known as a time quantum) is the maximum amount of uninterrupted time that can be given to a task. A task may run for a smaller amount of time than what the timeslice specifies. If the task needs to be wait on an I/O operation, or synchronize with another task, the task will execute for less than its timeslice before it is placed on the appropriate queue and preempted. Also, if a higher priority tasks becomes runnable for a lower priority task’s timeslice has expired, the lower priority task will be preempted.
+A **timeslice** (also known as a time quantum) is the maximum amount of uninterrupted time that can be given to a task. A task may run for a smaller amount of time than what the timeslice specifies. If the task needs to be wait on an I/O operation, or synchronize with another task, the task will execute for less than its timeslice before it is placed on the appropriate queue and preempted. Also, if a higher priority tasks becomes runnable for a lower priority task's timeslice has expired, the lower priority task will be preempted.
 
 The use of timeslices allows for the tasks to be interleaved. That is, they will be timesharing the CPU. For I/O bound tasks, this is not super critical, as these tasks will often be placed on wait queues. However, for CPU bound tasks, timeslices are the only way that we can achieve timesharing.
 
-Let’s compare round robin scheduling with a timeslice of 1 to the FCFS and SJF algorithms across the metrics of throughput, average wait, and average completion.
+Let's compare round robin scheduling with a timeslice of 1 to the FCFS and SJF algorithms across the metrics of throughput, average wait, and average completion.
 
 ![](https://assets.omscs.io/4D3CD488-5851-47C3-8840-4E79CBD288FA.png)
 
@@ -139,7 +139,7 @@ As long as the timeslice is significantly longer than the amount of time it take
 Timeslices provide benefits to the system, but also come with certain overheads. The balance of the benefits and the overheads will inform the length of the timeslice. The answer is different for I/O bound tasks vs. CPU bound tasks.
 
 ## CPU Bound Timeslice Length
-Let’s consider two CPU bound tasks that each take 10 seconds to complete. Let’s assume that the time to context switch is 0.1 seconds. Let’s consider a timeslice value of 1 second and a timeslice value of 5 seconds.
+Let's consider two CPU bound tasks that each take 10 seconds to complete. Let's assume that the time to context switch is 0.1 seconds. Let's consider a timeslice value of 1 second and a timeslice value of 5 seconds.
 
 ![](https://assets.omscs.io/7E4262FA-1297-474A-A624-4BBD1B57DA5B.png)
 
@@ -152,13 +152,13 @@ For CPU bound tasks, we are better off choosing a larger timeslice. In fact, if 
 ![](https://assets.omscs.io/033B24F5-0B4D-445D-899E-9CC8A7119851.png)
 
 ## I/O Bound Timeslice Length
-Let’s consider two I/O bound tasks that each take 10 seconds to complete. Let’s assume that the time to context switch is 0.1 seconds. Let’s assume that each task issues an I/O request every 1 second, and that I/O completes in every 0.5 seconds. Let’s consider a timeslice value of 1 second and a timeslice value of 5 seconds.
+Let's consider two I/O bound tasks that each take 10 seconds to complete. Let's assume that the time to context switch is 0.1 seconds. Let's assume that each task issues an I/O request every 1 second, and that I/O completes in every 0.5 seconds. Let's consider a timeslice value of 1 second and a timeslice value of 5 seconds.
 
 ![](https://assets.omscs.io/C7A8B07E-5DBC-445B-8C9B-639425A92F93.png)
 
-In both cases, regardless of the timeslice, each task is yielding the CPU after every second of operation - when it makes its I/O request. There isn’t really any preemption going on. Thus the execution graphs and the metrics for timeslice values of 1 second and 5 seconds are identical.
+In both cases, regardless of the timeslice, each task is yielding the CPU after every second of operation - when it makes its I/O request. There isn't really any preemption going on. Thus the execution graphs and the metrics for timeslice values of 1 second and 5 seconds are identical.
 
-Let’s change the scenario and assume only T2 is I/O bound. T1 is now CPU bound.
+Let's change the scenario and assume only T2 is I/O bound. T1 is now CPU bound.
 
 ![](https://assets.omscs.io/F384B9B2-2367-42EA-B43F-DFAC45DF4626.png)
 
@@ -166,7 +166,7 @@ The metrics for a timeslice value of 1 second do not change. The only function d
 
 The metrics for a timeslice value of 5 seconds do change. T1 runs until its timeslice expires at T=5. T2 then runs for only 1 second until it issues its I/O request. T1 then runs again for 5 seconds and completes. Finally T1 runs and completes.  
 
-Note that the I/O latency of T2 can no longer be hidden, which means that the total execution time of these operations is extended (graph is wrong), which means that the throughput suffers. The average wait time suffers as well, because T2 now has to wait 5 seconds for T1’s timeslice to expire. Finally, average completion time is improved, as T1 can completely exhaust its timeslice and finish quickly.
+Note that the I/O latency of T2 can no longer be hidden, which means that the total execution time of these operations is extended (graph is wrong), which means that the throughput suffers. The average wait time suffers as well, because T2 now has to wait 5 seconds for T1's timeslice to expire. Finally, average completion time is improved, as T1 can completely exhaust its timeslice and finish quickly.
 
 For I/O bound tasks, we want a smaller timeslice. We can keep throughput up and average wait time down with a smaller timeslice. As well, we can maximize device utilization with a smaller timeslice, as we can quickly switch between different tasks issuing I/O requests.
 
@@ -176,7 +176,7 @@ CPU bound tasks prefer longer timeslices as this limits the number of context sw
 On the other hand, I/O bound tasks prefer short timeslices. This allows I/O bound tasks to issue I/O requests as soon as possible, and as a result this keeps CPU and device utilization high and well improves user-perceived performance (remember wait times are low).
 
 ## Runqueue Data Structure
-The runqueue data structure is only logically a queue. It can be implemented as multiple queues or even a tree. What’s important is that the data structure is designed so that the scheduler can easily determine which task should be scheduled next.
+The runqueue data structure is only logically a queue. It can be implemented as multiple queues or even a tree. What's important is that the data structure is designed so that the scheduler can easily determine which task should be scheduled next.
 
 For example, if we want I/O and CPU bound tasks to have different timeslice values, we can either place I/O and CPU bound tasks in the same runqueue and have the scheduler check the type, or we can place them in separate runqueues.
 
@@ -188,7 +188,7 @@ This solution is beneficial because it provides timeslicing benefits for I/O bou
 
 How do you know if a task is CPU or I/O intensive?
 
-We can use history based heuristics to determine what a task has done in the past as a way to inform what it might do in the future. However, this doesn’t help us make decisions about new tasks or tasks that have dynamic behaviors.
+We can use history based heuristics to determine what a task has done in the past as a way to inform what it might do in the future. However, this doesn't help us make decisions about new tasks or tasks that have dynamic behaviors.
 
 To help make these decisions, we will need to move tasks between queues.
 
@@ -230,7 +230,7 @@ The O(1) scheduler was introduced in Linux 2.5. Despite its constant time add/se
 ## Linux CFS Scheduler
 One problem with the O(1) is that once a task enters the expired queue, it will not get a chance to run again until all other tasks in the active queue have executed for their timeslices. This is a problem for interactive tasks, introducing jitter into interactions that should appear seamless.
 
-In addition, the scheduler in general doesn’t make any **fairness** guarantees. Intuitively, fairness is the concept that in a given time interval, a task should be able to run for an amount of time that is relative to its priority.
+In addition, the scheduler in general doesn't make any **fairness** guarantees. Intuitively, fairness is the concept that in a given time interval, a task should be able to run for an amount of time that is relative to its priority.
 
 As a replacement for the O(1) scheduler, the CFS scheduler was introduced. CFS is now the default scheduler for non-realtime tasks in Linux.
 
@@ -255,7 +255,7 @@ Before we can talk about scheduling on multiprocessor systems, it is important t
 
 In a **shared memory multiprocessor**, there are multiple CPUs. Each CPU has its own private L1/L2 cache, as well as a last-level cache (LLC) which may or may not be shared amongst the CPUs. Finally, there is system memory (DRAM) which is shared across the CPUs.
 
-In a **multicore** system, each CPU can have multiple internal cores. Each core has it’s own private L1/L2 cache, and the CPU as a whole shares an LLC. DRAM is present in this system as well.
+In a **multicore** system, each CPU can have multiple internal cores. Each core has it's own private L1/L2 cache, and the CPU as a whole shares an LLC. DRAM is present in this system as well.
 
 ![](https://assets.omscs.io/4CF9EA4E-5B8F-4B27-B0EC-397F76E05656.png)
 
@@ -305,7 +305,7 @@ Third, we can also assume that hardware switching is instantaneous.
 
 Finally, we will assume that we have an SMT platform with two hardware threads.
 
-Let’s look at the scenario of co-scheduling two compute-bound threads.
+Let's look at the scenario of co-scheduling two compute-bound threads.
 
 ![](https://assets.omscs.io/B90046E6-16D2-4B95-89A9-DCF7264862CF.png)
 
@@ -315,13 +315,13 @@ The best case scenario is that a thread idles every other cycle while it yields 
 
 In addition, the memory component is completely idle during this computation, as nothing is performing any memory access.
 
-Let’s look at the scenario of co-scheduling two memory-bound threads.
+Let's look at the scenario of co-scheduling two memory-bound threads.
 
 ![](https://assets.omscs.io/F48DA477-45B0-45E0-966D-BDA4E885C859.png)
 
  Similar to the CPU-bound thread example, we still have idle time where both threads are waiting on memory access to return, which means wasted CPU cycles.
 
-Let’s look at co-scheduling a mix of CPU and memory-bound threads.
+Let's look at co-scheduling a mix of CPU and memory-bound threads.
 
 ![](https://assets.omscs.io/702A8D07-EEE9-4FB3-98B0-C32117214897.png)
 
@@ -334,7 +334,7 @@ Note that we will still experience some degradation due to the interference of t
 ## CPU Bound or Memory Bound
 How do we know if a thread is CPU bound or memory bound? We need to use historic information.
 
-When we looked previously at determining whether a process was more interactive or more CPU intensive, we looked at the amount of time the process spent sleeping. This approach won’t work in this case for two reasons. First of all, the thread is not really sleeping when it is waiting on memory access. It is waiting at some stage in the processor pipeline, not on some software queue. Second, to keep track of the sleep time we were using software methods and that is too slow at this level. The context switch takes on the order of cycles, so we need to be able to make our decision on what to run very quickly.
+When we looked previously at determining whether a process was more interactive or more CPU intensive, we looked at the amount of time the process spent sleeping. This approach won't work in this case for two reasons. First of all, the thread is not really sleeping when it is waiting on memory access. It is waiting at some stage in the processor pipeline, not on some software queue. Second, to keep track of the sleep time we were using software methods and that is too slow at this level. The context switch takes on the order of cycles, so we need to be able to make our decision on what to run very quickly.
 
 We need some hardware-level information in order to help make our decision.
 
@@ -387,6 +387,6 @@ In order to answer this, Fedorova profiled a number of applications from several
 
 What we can see is that most of the values are quite cluttered together. We do not see the distinct values presented in the synthetic workload. Most CPIs range from 2.5 - 4.5.
 
-Because CPI isn’t that different across applications, it may not be the most instructive metric to inform scheduling decisions.
+Because CPI isn't that different across applications, it may not be the most instructive metric to inform scheduling decisions.
 
 ![](https://assets.omscs.io/A260F044-D32B-4ADA-8E2C-AE04AE7F0A92.png)

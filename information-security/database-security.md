@@ -61,7 +61,7 @@ For example, the tuple for an employee named Bob might look like:
 Some of the columns in a table hold special values called **keys**. Keys uniquely identify a given tuple. For example, in the above table describing employees, the social security number column contains the key for each tuple since employees can be uniquely identified by this value.
 
 ## Relational Database Systems (RDBS) Part 2
-Let’s look at an example of a relation that contains information about employees.
+Let's look at an example of a relation that contains information about employees.
 
 ![](https://assets.omscs.io/66526878-6A01-4729-B187-6E1EB0FAC626.png)
 
@@ -219,7 +219,7 @@ If the user submits "Redmond" on the form, the SQL query sent to the database be
 SELECT * from OrdersTable where Shipcity = 'Redmond';
 ```
 
-What if the user submits "’Redmond; DROP table OrdersTable;"?
+What if the user submits "'Redmond; DROP table OrdersTable;"?
 
 This SQL query will be sent to the database:
 
@@ -261,15 +261,15 @@ Consider a database of students with the following schema:
 - exam 2 score
 - final exam score
 
-Suppose that students are not authorized to execute a query that will reveal another student’s exam grade. However, students are authorized to execute a query `Q` that returns the average grade for an exam across all students.
+Suppose that students are not authorized to execute a query that will reveal another student's exam grade. However, students are authorized to execute a query `Q` that returns the average grade for an exam across all students.
 
 An attacker wants to gain access to the exact score of another student for a particular exam and may be able to infer the grade through via `Q`.
 
-Inference attacks sometimes require some additional outside information. In this case, let’s suppose that the attacker knows that the particular student takes the exam late.
+Inference attacks sometimes require some additional outside information. In this case, let's suppose that the attacker knows that the particular student takes the exam late.
 
 The attacker can deduce the exam grade of this student by executing `Q` before the student takes the exam and then again after the student takes the exam.
 
-For example, if there are 10 students in the class and the `Q` returns 100 before the student takes the exam, and 99 after, we can calculate the student’s score as:
+For example, if there are 10 students in the class and the `Q` returns 100 before the student takes the exam, and 99 after, we can calculate the student's score as:
 
 ```bash
 99 = (9 * 100 + x) / 10;
@@ -280,7 +280,7 @@ x = 90;
 Again, the problem demonstrated here is that authorized queries like `Q` allow users to make inferences about data that they are not authorized to access.
 
 ## Inference Attacks on Databases Part 3
-The previous example might be a little contrived, so let’s consider another scenario.
+The previous example might be a little contrived, so let's consider another scenario.
 
 Suppose that `Q` is augmented to allow users to constrain the group of students over which they want to see the average score calculated.
 

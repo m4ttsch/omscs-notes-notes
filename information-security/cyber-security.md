@@ -12,7 +12,7 @@ The digital components of a business - be they routers, operating systems, or da
 
 In addition to mitigating explicit threats, companies often secure our digital assets for legal and compliance reasons. For example, HIPAA mandates a process for sharing digital health data. Therefore, an entity that deals with health data may need to implement specific security measures to meet compliance requirements.
 
-We’ve spent time talking about the various technical controls - such as firewalls, intrusion detection systems, and anti-virus programs - that organizations can use to secure their computer systems.
+We've spent time talking about the various technical controls - such as firewalls, intrusion detection systems, and anti-virus programs - that organizations can use to secure their computer systems.
 
 Of course, a business must first understand the risks that they face and the threat landscape surrounding their organization and digital assets before implementing any security measure.
 
@@ -25,7 +25,7 @@ A business faces different challenges during the process of building and impleme
 
 After a business surveys the security landscape of their organization, they then have to implement the security measures. This implementation step requires awareness of the various security solutions and controls present in the market.
 
-Additionally, organizations must perform a cost-benefit analysis before deploying a particular solution. While a business wants to reduce risk, they likely don’t want to spend more than the value of the asset they are protecting.
+Additionally, organizations must perform a cost-benefit analysis before deploying a particular solution. While a business wants to reduce risk, they likely don't want to spend more than the value of the asset they are protecting.
 
 Finally, a business must understand how the employees operate within the organization and the various workflows that a new security implementation can impact. Employees are likely to skirt security measures that drastically hinder their productivity.
 
@@ -42,7 +42,7 @@ Finally, a business must understand how the employees operate within the organiz
 ![](https://assets.omscs.io/BDBF525E-38FC-4589-B8F9-5D60D9BFC8ED.png)
 
 ## Security Planning
-So far, we’ve identified the assets that need protection, determined the parties responsible for understanding the security needs of the organization, examined the technical controls at our disposal, and understood the impact of different implementations on user workflow.
+So far, we've identified the assets that need protection, determined the parties responsible for understanding the security needs of the organization, examined the technical controls at our disposal, and understood the impact of different implementations on user workflow.
 
 During the process of security planning, a business has to understand that no matter how well they deploy their security, they can never reduce the risk to zero. Therefore, the planning process needs to cover response and recovery as well as prevention and detection.
 
@@ -72,11 +72,11 @@ NOTE: answers 1 and 3 are correct.
 ![](https://assets.omscs.io/6739A49C-41D1-4773-AB37-B79A90468145.png)
 
 ## Security Planning: Controls
-Security planning involves understanding which security controls make the most sense for a given organization’s assets and threat posture. Let’s take a look at a few of these controls.
+Security planning involves understanding which security controls make the most sense for a given organization's assets and threat posture. Let's take a look at a few of these controls.
 
 **Identity and Access Management** (IAM) is a popular security control. The "identity" part of IAM serves to identify a user who is requesting any type of resource present in the system. The "access management" component of IAM serves to perform access control on the resource, ensuring that a user has sufficient permission to access the resource they have requested.
 
-Credentialing is another security measure that concerns resource access. When a business provides a user with a credential, the credential serves as a proxy for the user’s identity, allowing them to access resources without explicitly identifying themselves each time.
+Credentialing is another security measure that concerns resource access. When a business provides a user with a credential, the credential serves as a proxy for the user's identity, allowing them to access resources without explicitly identifying themselves each time.
 
 A business may have certain password policies, which dictate how long a password must be and how frequently a password needs to change. Additionally, some organizations may require multi-factor authentication; for example, a user may need to use a password and a smart card to access specific resources.
 
@@ -191,7 +191,7 @@ Other times, an organization is merely responding to customer demands. If custom
 
 Organizations also react to adverse security events that they have suffered. A data breach, for example, can serve as an impetus to review and revise security practices.
 
-Organizations may also react to adverse security events that others have experienced. For instance, when a bank suffers a breach, other banks may react by ensuring that the exploited vulnerabilities don’t exist in their systems.
+Organizations may also react to adverse security events that others have experienced. For instance, when a bank suffers a breach, other banks may react by ensuring that the exploited vulnerabilities don't exist in their systems.
 
 ### Proactive
 A proactive approach to cybersecurity is best. An organization should conduct an inventory of their assets, assess their risk, plan and analyze, and implement controls that achieve risk reduction, instead of waiting for some external force.

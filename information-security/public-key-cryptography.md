@@ -8,15 +8,15 @@ lecture: public-key-cryptography
 # Public-Key Cryptography
 
 ## Modular Arithmetic
-Both RSA and Diffie-Hellman - the most widely-used public-key algorithms - are based on number theory and use modular arithmetic - modular addition, multiplication, and exponentiation. Before we dive into the details of the algorithms themselves, let’s review the basics of modular arithmetic.
+Both RSA and Diffie-Hellman - the most widely-used public-key algorithms - are based on number theory and use modular arithmetic - modular addition, multiplication, and exponentiation. Before we dive into the details of the algorithms themselves, let's review the basics of modular arithmetic.
 
 Given a modulus `M`, `x + y mod M` is equal to the remainder of `(x + y) / M`. For example, `2 + 8 mod 10 = 0`, because `10 / 10` divides evenly whereas `3 + 8 mod 10 = 1` because `11 / 10` yields a remainder of 1.
 
-In modular addition, a number `k`  has an inverse `k'` such that `k + k’ mod M = 0`. For example, for `M = 10` and `k = 2`, `k’ = 8` because `2 + 8 mod 10 = 0`. Every number has an inverse under modular addition.
+In modular addition, a number `k`  has an inverse `k'` such that `k + k' mod M = 0`. For example, for `M = 10` and `k = 2`, `k' = 8` because `2 + 8 mod 10 = 0`. Every number has an inverse under modular addition.
 
 The presence of an additive inverse means that modular addition is reversible. That is, given `c = a + b mod M`, `a = c + b' mod M` and `b = c + a' mod M` . This reversibility is very convenient for encryption because we want the decryption process ideally to be the reverse of the encryption process.
 
-Suppose we have plaintext `p = 3`, key `k = 2` and encryption algorithm `p + k mod 10`. Thus, ciphertext `c = 3 + 2 mod 10 = 5 mod 10 = 5`. We can decrypt `c` using the inverse of `k`: `k’`. Since `k' = 8`,  `c + k’ mod 10 = 5 + 8 mod 10 = 13 mod 10 = 3 = p`.
+Suppose we have plaintext `p = 3`, key `k = 2` and encryption algorithm `p + k mod 10`. Thus, ciphertext `c = 3 + 2 mod 10 = 5 mod 10 = 5`. We can decrypt `c` using the inverse of `k`: `k'`. Since `k' = 8`,  `c + k' mod 10 = 5 + 8 mod 10 = 13 mod 10 = 3 = p`.
 
 ## Additive Inverse Quiz
 ![](https://assets.omscs.io/90F567FE-9F15-4966-A205-678D05E4DF66.png)
@@ -29,7 +29,7 @@ In modular addition, a number `k`  has an inverse `k'` such that `k + k' mod M =
 ## Modular Multiplication
 Given a modulus `M`, `x * y mod M` is equal to the remainder of `(x * y) / M`. For example, `5 * 8 mod 10 = 0`, because `40 / 10` divides evenly whereas `4 * 8 mod 10 = 2` because `32 / 10` yields a remainder of 2.
 
-In modular multiplication, a number `k` , has an inverse `k'` such that `k * k’ mod M = 1`. For example, for `M = 10` and `k = 3`, `k’ = 7` because `3 * 7 mod 10 = 21 mod 10 = 1`.
+In modular multiplication, a number `k` , has an inverse `k'` such that `k * k' mod M = 1`. For example, for `M = 10` and `k = 3`, `k' = 7` because `3 * 7 mod 10 = 21 mod 10 = 1`.
 
 Not all numbers have multiplicative inverses for a given `M`. For `M = 10`, for example, 2, 5, 6, and 8 do not have multiplicative inverses.
 
@@ -82,7 +82,7 @@ The first step is key generation. First, we select two primes `p` and `q` that a
 
 The public key is `{e, n}`. The private key is `{d, n}`.
 
-Suppose Bob wishes to send a message `m` to Alice that only she can read. Bob can encrypt `m` using Alice’s public key, `{e, n}`  by computing  `m^e (mod n)`. On receipt of ciphertext `C`, Alice can use her private key, `{d, n}`, and compute `C^d (mod n)` to recover `m`.
+Suppose Bob wishes to send a message `m` to Alice that only she can read. Bob can encrypt `m` using Alice's public key, `{e, n}`  by computing  `m^e (mod n)`. On receipt of ciphertext `C`, Alice can use her private key, `{d, n}`, and compute `C^d (mod n)` to recover `m`.
 
 RSA guarantees that only Alice can decrypt `m` because only she has the private key that pairs with the public key used to encrypt the message.
 
@@ -90,7 +90,7 @@ Digital signature creation and verification work in a similar fashion as encrypt
 
 ![](https://assets.omscs.io/EAB550A1-2FF6-4308-9D09-D1DA6D461BBB.png)
 
-To create a signature `s` for a message `m`, Alice uses her private key, `{d, n}` to compute `m^d mod n`. Bob can verify Alice’s signature by using her public key, `{e, n}` to compute `s^e mod n`, which is equivalent to the original message  `m`.
+To create a signature `s` for a message `m`, Alice uses her private key, `{d, n}` to compute `m^d mod n`. Bob can verify Alice's signature by using her public key, `{e, n}` to compute `s^e mod n`, which is equivalent to the original message  `m`.
 
 ## Why Does RSA Work
 Remember from the rules of modular exponentiation that, for a base `x`, a power `y`, a modulus `n`, `x^y mod n = x^(y mod φ(n)) mod n`. If `y = 1 mod φ(n)`, then `x^y mod n = x mod n`.
@@ -135,7 +135,7 @@ One issue with RSA is that the algorithm is deterministic. For a given key, the 
 
 Another issue is that RSA is malleable. An attacker can induce predictable transformations in plaintext by modifying ciphertext in specific ways.
 
-For example, suppose Bob sends Alice an encrypted message `c = m^e mod n` using Alice’s public key, `{e, n}`. The attacker intercepts `c` and performs the transformation `c' = s^e * c`. When Alice receives this ciphertext, the decrypted result is `m' = s * m`.
+For example, suppose Bob sends Alice an encrypted message `c = m^e mod n` using Alice's public key, `{e, n}`. The attacker intercepts `c` and performs the transformation `c' = s^e * c`. When Alice receives this ciphertext, the decrypted result is `m' = s * m`.
 
 In practice, the standard is to prepend `m` with [padding](https://en.wikipedia.org/wiki/Optimal_asymmetric_encryption_padding), a step which addresses the issues described above.
 
@@ -161,7 +161,7 @@ The values of `X_A` and `X_B` are private while `α`, `q`, `Y_A`, and `Y_B` are 
 The security of Diffie-Hellman lies in the fact that it is infeasible to compute discrete logarithms for large primes such as `q` using modern computers.
 
 ## Diffie-Hellman Example
-Let’s walk through the Diffie-Hellman key exchange using `q = 353` and `α = 3`.
+Let's walk through the Diffie-Hellman key exchange using `q = 353` and `α = 3`.
 
 First, user `A` selects a random number, `X_A < q = 97`, which they keep secret, and they compute `Y_A = 3^97 mod 353 = 40`. Similarly, user `B` selects a random number `X_B < q = 233`, which they also keep secret, and they compute `Y_B = 3^233 mod 353 = 248`. Next, `A` sends 40 to `B` and `B` sends 248 to `A`.
 
@@ -184,7 +184,7 @@ In Diffie-Hellman, neither party ever transmits the shared secret encryption key
 
 We assume that an attacker can access `Y_A`, `Y_B`, `q`, and `α`, since these values are transmitted. The value of local secret `X_A` is equal to the discrete logarithm `dlog(α,q)(Y_A)`. The security assumption in Diffie-Hellman is that finding the discrete logarithm is infeasible given a very large, prime `q`.
 
-Of course, if this conjecture is not valid, then an adversary knowing `Y_A`, `q`, and `α ` can easily compute `X_A`. With `X_A` in hand, they can compute `S` and effectively eavesdrop on communication between `A` and `B`.Let’s walk through the Diffie-Hellman key exchange using `q = 353` and `α = 3`.
+Of course, if this conjecture is not valid, then an adversary knowing `Y_A`, `q`, and `α ` can easily compute `X_A`. With `X_A` in hand, they can compute `S` and effectively eavesdrop on communication between `A` and `B`.Let's walk through the Diffie-Hellman key exchange using `q = 353` and `α = 3`.
 
 ## Diffie-Hellman Limitations
 Suppose that Alice tells Bob to use Diffie-Hellman. The first thing that Bob has to do is compute  `Y_B` from his local secret `X_B`, and this computation involves a very CPU-intensive exponentiation calculation.

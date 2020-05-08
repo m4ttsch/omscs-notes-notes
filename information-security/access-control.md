@@ -163,9 +163,9 @@ Because of this, accountability is more transparent with ACLs.
 ### Revocation
 Revocation refers to removing access to a given object for a given user after some initial access has been granted.
 
-Alice can easily revoke Bob’s access to file `foo` if ACLs are used. She can simply make a system call, and the system will locate the ACL for `foo`, find the ACE corresponding to Bob, and remove the appropriate permission.
+Alice can easily revoke Bob's access to file `foo` if ACLs are used. She can simply make a system call, and the system will locate the ACL for `foo`, find the ACE corresponding to Bob, and remove the appropriate permission.
 
-For C-lists, Alice can’t remove permissions from Bob’s catalogue at will.
+For C-lists, Alice can't remove permissions from Bob's catalogue at will.
 
 Revocation is easier to perform using ACLs.
 
@@ -183,9 +183,9 @@ The presentation of the ticket is sufficient to gain access to the theater. No o
 ## ACE Access Quiz Solution
 ![](https://assets.omscs.io/0D94E256-D8D9-4BCE-9E83-F7BFD18F7E20.png)
 
-Negative access rights supersede positive access rights, so you can’t terminate as soon as you find a positive access right. You can terminate as soon as you find a negative access right, though.
+Negative access rights supersede positive access rights, so you can't terminate as soon as you find a positive access right. You can terminate as soon as you find a negative access right, though.
 
-NB: The third option can’t be true if the second option is true.
+NB: The third option can't be true if the second option is true.
 
 ## Revocation of Rights Quiz
 ![](https://assets.omscs.io/99C6BB65-DB67-42A9-A133-484EAEC0498C.png)
@@ -219,12 +219,12 @@ Alice wants to allow any user to execute the game file, but wants to restrict wr
 
 We can solve this problem with the **setuid** bit. If this bit is set on an executable file, a process executing this file takes on the *effective user id* of the owner of the file - not the current user - for the duration of the execution.
 
-In other words, when Bob runs Alice’s game, the process that is created by Bob has Alice’s UID associated with it. This means that Bob can access the score file - which Alice owns - while he plays the game so he can record his scores.
+In other words, when Bob runs Alice's game, the process that is created by Bob has Alice's UID associated with it. This means that Bob can access the score file - which Alice owns - while he plays the game so he can record his scores.
 
 Since the effective UID is set on a per-process basis, this temporary privilege will go away once Bob closes the game.
 
 ## Access Control Implementation Part 2
-A file can be opened with the `open` system call. If the file doesn’t exist, this call will create the file and then open it.
+A file can be opened with the `open` system call. If the file doesn't exist, this call will create the file and then open it.
 
 The `open` system call takes two arguments: the name of the file and the mode in which you want to access the file. The mode can be read or write, for example.
 
@@ -299,7 +299,7 @@ A user can have more than one role. The employees described above might take on 
 [Security-Enhanced Linux](https://en.wikipedia.org/wiki/Security-Enhanced_Linux) (SELinux) supports RBAC.
 
 ### RBAC Benefits
-Since the policy defines which roles have access to which resources, the policy doesn’t need to change when any one user leaves the organization.
+Since the policy defines which roles have access to which resources, the policy doesn't need to change when any one user leaves the organization.
 
 In addition, a new employee can easily be set up. Instead of having to assign them individual privileges one by one, a system administrator can assign them to one or more roles and instantly grant the appropriate amount of access.
 
@@ -308,7 +308,7 @@ In these regards, RBAC makes policy administration simpler.
 ### Least Privilege
 Remember, *least privilege* is the idea that a user should always execute with the smallest number of privileges or access rights needed to complete a task.
 
-The point of least privilege is really damage containment. If something goes wrong, a user can’t damage resources that they had no business accessing in the first place.
+The point of least privilege is really damage containment. If something goes wrong, a user can't damage resources that they had no business accessing in the first place.
 
 In RBAC, a user can start in one role and access a subset of the files that are only available to that role. At a later point, the user can switch roles and access a different set of files associated with the new role.
 

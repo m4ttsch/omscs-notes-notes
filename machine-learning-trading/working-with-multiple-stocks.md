@@ -46,7 +46,7 @@ When we compare `df1` and `dfSPY`, we notice two interesting things.
 
 First, there are many more dates in `dfSPY` than there are in the target `df`. `dfSPY` contains all of the data for SPY, and we need a way to retrieve data from only the dates we are considering.
 
-Second, there are dates present in `df` that are not present in `dfSPY`. When we constructed our index, we didn’t skip weekends or holidays. Obviously, SPY did not trade on those dates since the market was not open. We will need to deal with this alignment issue.
+Second, there are dates present in `df` that are not present in `dfSPY`. When we constructed our index, we didn't skip weekends or holidays. Obviously, SPY did not trade on those dates since the market was not open. We will need to deal with this alignment issue.
 
 ## Joining DataFrames
 We now need to combine `df` and `dfSPY` into a single DataFrame. Thankfully, pandas has several different strategies for doing just that. We are going to look at an operation called a **join**.
@@ -67,8 +67,8 @@ Before we start joining in our stock data, we first need to create our empty Dat
 We can create a date range `dates` that will serve as the index of our DataFrame with the following code:
 
 ```python
-start_date = ’2010-01-22’
-end_date = ‘2010-01-26’
+start_date = '2010-01-22'
+end_date = '2010-01-26'
 
 dates = pd.date_range(start_date, end_date)
 ```
@@ -105,7 +105,7 @@ We can see that `df` is an empty DataFrame, with no columns, that uses `dates` a
 With `df` in place, we can now read SPY data into a temporary DataFrame, `dfSPY`, with the following code:
 
 ```python
-dfSPY = pd.read_csv(‘data/SPY.csv')
+dfSPY = pd.read_csv('data/SPY.csv')
 ```
 
 We can attempt to join the two DataFrames with the following code:
@@ -129,7 +129,7 @@ The issue here is that while `df` has an index of `DatetimeIndex` objects, `dfSP
 We can rectify this by telling pandas that the `Date` column of the SPY CSV should be used as the index column and that the values in this column should be interpreted as dates. We accomplish this with the following code:
 
 ```python
-dfSPY = pd.read_csv(‘data/SPY.csv', index_col="Date", parse_dates=True)
+dfSPY = pd.read_csv('data/SPY.csv', index_col="Date", parse_dates=True)
 ```
 
 If we print `dfSPY` now, we see the following, correct DataFrame. 
@@ -143,7 +143,7 @@ Additionally, we can replace textual values representing null or absent values w
 The full initialization of `dfSPY` is demonstrated by the following code:
 
 ```python
-dfSPY = pd.read_csv(‘data/SPY.csv', index_col="Date", parse_dates=True, usecols=["Date", "Adj Close"], na_values=[‘nan’])
+dfSPY = pd.read_csv('data/SPY.csv', index_col="Date", parse_dates=True, usecols=["Date", "Adj Close"], na_values=['nan'])
 ```
 
 If we again print `df`, the result of the join, we see the following DataFrame.
@@ -168,7 +168,7 @@ If we print out `df`, we see the following, correct DataFrame.
 ## Types of Joins Quiz
 ![](https://assets.omscs.io/C6F35EA2-BEB7-44C2-914E-73C3F8A4414F.png)
 
-We can avoid having to explicitly call `dropna` on line 22 by passing a certain value for the ‘how’ parameter of the `join` call on line 19. 
+We can avoid having to explicitly call `dropna` on line 22 by passing a certain value for the 'how' parameter of the `join` call on line 19. 
 
 What is the value of that parameter?
 
@@ -183,7 +183,7 @@ We want to read in data about three more stocks - GOOG, IBM, and GLD - and creat
 
 ```python
 for symbol in symbols:
-	df_temp = pd.read_csv(‘data/{}.csv'.format(symbol), index_col="Date", parse_dates=True, usecols=["Date", "Adj Close"], na_values=[‘nan’])
+	df_temp = pd.read_csv('data/{}.csv'.format(symbol), index_col="Date", parse_dates=True, usecols=["Date", "Adj Close"], na_values=['nan'])
 
 	df = df.join(df_temp)
 ```
@@ -194,10 +194,10 @@ However, when we try to print `df`, we see an error.
 
 The issue here is that we have multiple DataFrames that each has a column name "Adj Close". Pandas complains that it does not know how to resolve the overlap when joining DataFrames with identical column names. In other words, column names must be unique.
 
-Instead of having four columns with the same name, we’d like to name each column after the symbol whose data it contains. We can accomplish that with the following code:
+Instead of having four columns with the same name, we'd like to name each column after the symbol whose data it contains. We can accomplish that with the following code:
 
 ```python
-df_temp = df_temp.rename(columns={'Adj Close’: symbol})
+df_temp = df_temp.rename(columns={'Adj Close': symbol})
 ```
 
 If we print `df` now, we see the following, correct output.
@@ -240,19 +240,19 @@ Suppose we want to focus on a subset, or a **slice** or this data; for instance,
 Pandas exposes a syntax for creating such a slice. Given a DataFrame `df`, we can retrieve the data for all columns between these two dates with the following expression:
 
 ```python
-df[‘2010-2-13’:’2010-2-15’]
+df['2010-2-13':'2010-2-15']
 ```
 
 We can further scope this slice to include information about only GOOG and GLD with the following expression:
 
 ```python
-df[‘2010-2-13’:’2010-2-15’, [‘GOOG', 'GLD’]]
+df['2010-2-13':'2010-2-15', ['GOOG', 'GLD']]
 ```
 
 Note that neither the rows nor the columns that we slice must be contiguous in `df`. The following slice of nonadjacent columns IBM and GLD is just as valid as our original slice:
 
 ```python
-df[‘2010-2-13’:’2010-2-15’, [‘IBM', 'GLD’]]
+df['2010-2-13':'2010-2-15', ['IBM', 'GLD']]
 ```
 
 ### Documentation
@@ -262,8 +262,8 @@ df[‘2010-2-13’:’2010-2-15’, [‘IBM', 'GLD’]]
 Our original DataFrame only contained data for four days. We can read in data for the whole year of 2010 by changing the dates of the `DatetimeIndex` object we built at the beginning of this lesson:
 
 ```python
-start_date = ’2010-01-01’
-end_date = ‘2010-12-31’
+start_date = '2010-01-01'
+end_date = '2010-12-31'
 
 dates = pd.date_range(start_date, end_date)
 ```
@@ -279,32 +279,32 @@ Pandas offers several different options for slicing DataFrames.
 If we want to retrieve data for all of the symbols during January, for example, we can use the following code:
 
 ```python
-df.ix[‘2010-01-01’:’2010-01-31’]
+df.ix['2010-01-01':'2010-01-31']
 ```
 
 Note that this code is equivalent to the following:
 
 ```python
-df[‘2010-01-01’:’2010-01-31’]
+df['2010-01-01':'2010-01-31']
 ```
 
 However, the former is considered to be more pythonic.
 
-> aside: it’s not. The `ix` method has since been deprecated, and users should use either the `loc` or `iloc` methods.  
+> aside: it's not. The `ix` method has since been deprecated, and users should use either the `loc` or `iloc` methods.  
 
 **Column slicing** returns all of the rows for a given column or columns, and is helpful when we want to view just the movement of a subset of stocks over the entire date range.
 
 The following code shows the syntax for retrieving information for just GOOG, as well as for both IBM and GLD.
 
 ```python
-df[‘GOOG’]
-df[[‘IBM’, ‘GLD’]] # Note the second pair of []
+df['GOOG']
+df[['IBM', 'GLD']] # Note the second pair of []
 ```
 
 Finally, we can slice through both rows and columns. For example, we can select information about just SPY and IBM, for just the dates between March 10th and March 15th:
 
 ```python
-df.ix[’2010-03-10’:’2010-03-15’, ['SPY’, ‘IBM’]]
+df.ix['2010-03-10':'2010-03-15', ['SPY', 'IBM']]
 ```
 
 ### Documentation
@@ -313,13 +313,13 @@ df.ix[’2010-03-10’:’2010-03-15’, ['SPY’, ‘IBM’]]
 - [pandas.DataFrame.iloc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.iloc.html)
 
 ## Problems with Plotting
-It’s pretty easy to generate a good-looking plot from a DataFrame; in fact, we merely have to call the `plot` method.
+It's pretty easy to generate a good-looking plot from a DataFrame; in fact, we merely have to call the `plot` method.
 
 ![](https://assets.omscs.io/8B3F14A5-5FBF-4C3B-AE57-298310D72D65.png)
 
-One feature that we can immediately notice about this plot is that GOOG is priced quite higher than the other stocks. It’s often the case that different stocks are priced at significantly different levels.
+One feature that we can immediately notice about this plot is that GOOG is priced quite higher than the other stocks. It's often the case that different stocks are priced at significantly different levels.
 
-As a result, it can be hard to compare these stocks objectively. We’d like to adjust the absolute prices so that they all start from a single point - such as 1.0 - and move from there.
+As a result, it can be hard to compare these stocks objectively. We'd like to adjust the absolute prices so that they all start from a single point - such as 1.0 - and move from there.
 
 ![](https://assets.omscs.io/6B0D8B98-E393-4E7F-A14C-43FB50B2F9F6.png)
 
@@ -399,7 +399,7 @@ df.ix[start_index:end_index, columns]
 - [pandas.DataFrame.iloc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.iloc.html)
 
 ## Normalizing
-Let’s take another look at the plot we have created.
+Let's take another look at the plot we have created.
 
 ![](https://assets.omscs.io/CE3C9B28-2BCC-4919-8A9E-16DC3E6283D3.png)
 

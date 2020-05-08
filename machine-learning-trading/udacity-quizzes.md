@@ -27,7 +27,7 @@ Your task is to calculate the mean volume for each of the given symbols.
 Given a DataFrame `df` containing a "Volume" column, the following code returns the mean of the values in that column.
 
 ```python
-df[‘Values’].mean()
+df['Values'].mean()
 ```
 
 #### Documentation
@@ -44,13 +44,13 @@ Your task is to plot the high prices for IBM.
 First, we need to make sure that we read in the right CSV, which we can accomplish with:
 
 ```python
-df = pd.read_csv(‘data/IBM.csv’)
+df = pd.read_csv('data/IBM.csv')
 ```
 
 Next, we can retrieve the "High" column and plot it:
 
 ```python
-df[‘High’].plot()
+df['High'].plot()
 ```
 
 ## Working With Multiple Stocks
@@ -65,7 +65,7 @@ See the breakdown [here](https://www.nyse.com/publicdocs/Trading_Days.pdf) (for 
 ### Types of Joins Quiz
 ![](https://assets.omscs.io/C6F35EA2-BEB7-44C2-914E-73C3F8A4414F.png)
 
-We can avoid having to explicitly call `dropna` on line 22 by passing a certain value for the ‘how’ parameter of the `join` call on line 19. 
+We can avoid having to explicitly call `dropna` on line 22 by passing a certain value for the 'how' parameter of the `join` call on line 19. 
 
 What is the value of that parameter?
 
@@ -134,9 +134,9 @@ We need to move data from the last two rows and the last two columns of `nd2` to
 ### Replace a Slice Quiz Solution
 ![](https://assets.omscs.io/60DEA1EE-99C0-4CC6-95F7-B01B9681CD59.png)
 
-Let’s first look at how we can slice `nd2` to extract the data we want. We can slice the last two rows using negative indexing: `-2:`. We can slice the last two columns as `2:4`. Remember that NumPy indexing is upper-bound exclusive.
+Let's first look at how we can slice `nd2` to extract the data we want. We can slice the last two rows using negative indexing: `-2:`. We can slice the last two columns as `2:4`. Remember that NumPy indexing is upper-bound exclusive.
 
-Now let’s see how we can transplant that data into `nd1`. We can select the first two rows of `nd1` as `0:2`, and we can select the first two columns as `0:2`.
+Now let's see how we can transplant that data into `nd1`. We can select the first two rows of `nd1` as `0:2`, and we can select the first two columns as `0:2`.
 
 The complete data transfer can be accomplished with the following code:
 

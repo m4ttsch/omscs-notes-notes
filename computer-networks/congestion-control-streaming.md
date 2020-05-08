@@ -8,7 +8,7 @@ lecture: congestion-control-streaming
 # Congestion Control & Streaming
 
 ## Congestion Control
-What is congestion control and why do we need it? Simply put, the goal of congestion control is to fill the internet’s "pipes" without "overflowing" them.
+What is congestion control and why do we need it? Simply put, the goal of congestion control is to fill the internet's "pipes" without "overflowing" them.
 
 ## Congestion
 Suppose that we have the following network.
@@ -30,7 +30,7 @@ This decrease is known as **congestion collapse**.
 
 There are many possible causes for congestion collapse.
 
-One possibility is the **spurious retransmission** of packets that are still in flight. When senders don’t receive acknowledgements for packets in a timely fashion, they can spuriously retransmit those packets, thus resulting in many copies of the same packets being outstanding in the network at any one time.
+One possibility is the **spurious retransmission** of packets that are still in flight. When senders don't receive acknowledgements for packets in a timely fashion, they can spuriously retransmit those packets, thus resulting in many copies of the same packets being outstanding in the network at any one time.
 
 Another cause of congestion collapse is undelivered packets, where packets consume resources and are dropped elsewhere in the network.
 
@@ -52,7 +52,7 @@ TCP takes the end-to-end approach to congestion control.
 
 In network-assisted congestion control, routers provide explicit feedback about rates that end systems should be sending at.
 
-A router might set a single bit indicating congestion, as is the case in TCP’s Explicit Congestion Notification ([ECN](https://en.wikipedia.org/wiki/Explicit_Congestion_Notification)) extensions. Alternatively, a router may just explicitly specify the rate that a sender should be sending at.
+A router might set a single bit indicating congestion, as is the case in TCP's Explicit Congestion Notification ([ECN](https://en.wikipedia.org/wiki/Explicit_Congestion_Notification)) extensions. Alternatively, a router may just explicitly specify the rate that a sender should be sending at.
 
 ## TCP Congestion Control
 In TCP congestion control, senders continue to increase their sending rate until they see packet drops in the network.
@@ -75,7 +75,7 @@ One approach is a **window-based** algorithm. In this approach, a sender can onl
 
 The sender uses acknowledgements from the receiver to clock the retransmission of new data.
 
-Suppose the sender’s window is four packets.
+Suppose the sender's window is four packets.
 
 ![](https://assets.omscs.io/F4A84FD2-7D9A-413E-B55E-710C8B1BB0FD.png)
 
@@ -93,7 +93,7 @@ This is called **additive increase**.
 
 If a packet is not acknowledged, the window size is cut in half. This is called **multiplicative decrease**.
 
-TCP’s congestion control is called **additive increase, multiplicative decrease** (AIMD).
+TCP's congestion control is called **additive increase, multiplicative decrease** (AIMD).
 
 ### Rate Based
 Another approach is a **rate-based** algorithm. In this case, the sender monitors the loss rate, and uses a timer to modulate the transmission rate.
@@ -103,9 +103,9 @@ The two goals of congestion control are fairness and efficiency.
 
 Fairness means that everyone gets their fair share of the network resources.
 
-Efficiency means that the network resources are used well. We shouldn’t have a case where there is spare capacity in the network and senders have data to send but are unable to do so.
+Efficiency means that the network resources are used well. We shouldn't have a case where there is spare capacity in the network and senders have data to send but are unable to do so.
 
-We can represent fairness and efficiency in terms of a phase plot where each axis represents a particular sender’s allocation.
+We can represent fairness and efficiency in terms of a phase plot where each axis represents a particular sender's allocation.
 
 Suppose we have two users in the network, and their sending rates are `x1` and `x2`. If the capacity of the network is `C`, then we can represent the full utilization of the network as the line `x1 + x2 = C`.
 
@@ -121,7 +121,7 @@ The optimal network resource allocation in this case is the intersection of the 
 
 We can use this phase diagram to understand why senders who use AIMD converge to the optimal operating point.
 
-Let’s suppose that we start at the following operating point.
+Let's suppose that we start at the following operating point.
 
 ![](https://assets.omscs.io/04E043CB-E549-4C5B-9CBA-6A8FF52A1CD4.png)
 
@@ -146,7 +146,7 @@ Every time that additive increase is applied, the senders move toward efficiency
 ## AIMD
 The additive increase, multiplicative decrease algorithm is distributed, fair and efficient.
 
-To visualize the sender’s sending rate over time, we can look at a **TCP sawtooth**, which plots the congestion window over time.
+To visualize the sender's sending rate over time, we can look at a **TCP sawtooth**, which plots the congestion window over time.
 
 This particular diagram plots the congestion window (in packets) over time (in RTTs).
 
@@ -224,7 +224,7 @@ One challenge is that there is a large volume of data. Each sample is a sound or
 
 Sometimes, because of the way the data is compressed, the volume of data that is being sent may vary over time. The data may not be sent at a constant rate, yet in streaming we want smooth layout.
 
-Users typically have a very low tolerance for delay variation. It’s very annoying for a video to stop after it has started playing.
+Users typically have a very low tolerance for delay variation. It's very annoying for a video to stop after it has started playing.
 
 Users might have a low tolerance for delay, period. Consider your tolerance for delay when playing an online game or using a VoIP application.
 
@@ -257,17 +257,17 @@ A common video compression format used on the internet is MPEG.
 ## Streaming Video
 In a streaming video system, the streaming server stores the audio and video files, and the client requests the files and plays them as they download.
 
-It’s important to play the data at the right time.
+It's important to play the data at the right time.
 
 The server can divide the data into segments and then label each segment with a timestamp indicating the time at which that particular segment should be played. This ensures that the client knows when to play that segment.
 
-The data must arrive at the client quickly enough; otherwise, the client can’t keep playing.
+The data must arrive at the client quickly enough; otherwise, the client can't keep playing.
 
 The solution is to have the client use a **playout buffer** where the client stores data as it arrives from the server, and plays the data for the user in a continuous fashion.
 
 Data might arrive more slowly or more quickly from the server, but as long as the client is playing data out of the buffer at a continuous rate, the user sees a smooth playout.
 
-A client may typically wait a few seconds before playing a stream to allow data to be built up in the buffer. This helps to account for times when the server is not sending data at a rate that is sufficient to satisfy the client’s playout rate.
+A client may typically wait a few seconds before playing a stream to allow data to be built up in the buffer. This helps to account for times when the server is not sending data at a rate that is sufficient to satisfy the client's playout rate.
 
 ## Playout Delay
 The rate at which packets are generated does not necessarily equal the rate at which packets are received.
@@ -340,19 +340,19 @@ Consider a VoIP application and an FTP application that are sharing the same lin
 
 ![](https://assets.omscs.io/7B403D41-688C-4390-AF69-8EBE5DE1A60C.png)
 
-We’d like the audio packets to receive priority over the file transfer packets since the user’s experience can be significantly degraded by lost or delayed audio packets.
+We'd like the audio packets to receive priority over the file transfer packets since the user's experience can be significantly degraded by lost or delayed audio packets.
 
 We want to mark the audio packets as they arrive at the router so that they receive a higher priority than the file transfer packets.
 
 You could imagine implementing this using priority queues, with the VoIP packets being placed in a higher priority queue than the FTP packets.
 
-An alternative to priority queueing is to allocate fixed bandwidth per application. The problem with this alternative is that it can result in inefficiency if one of the flows doesn’t fully utilize its fixed allocation.
+An alternative to priority queueing is to allocate fixed bandwidth per application. The problem with this alternative is that it can result in inefficiency if one of the flows doesn't fully utilize its fixed allocation.
 
 In addition to marking and policing, the router must apply scheduling.
 
 One strategy for scheduling is *weighted fair queueing*, where the queue containing the VoIP packets is served more frequently than the queue containing the FTP packets.
 
-Another alternative is to use **admission control**, whereby an application declares its needs in advance and the network may block the application’s traffic if the network can’t satisfy the application’s needs.
+Another alternative is to use **admission control**, whereby an application declares its needs in advance and the network may block the application's traffic if the network can't satisfy the application's needs.
 
 A busy signal on a telephone network is an example of admission control.
 

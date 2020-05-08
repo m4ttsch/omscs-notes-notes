@@ -8,7 +8,7 @@ lecture: ipsec-and-tls
 # IPSec and TLS
 
 ## Goals of IPSec
-If Alice receives a packet with Bob’s source IP address, she cannot be sure that the packet is really from Bob. Since IPv4 does not enforce source IP address authentication, IP spoofing - forging a packet’s source IP address - is a commonly used technique in cyber attacks.
+If Alice receives a packet with Bob's source IP address, she cannot be sure that the packet is really from Bob. Since IPv4 does not enforce source IP address authentication, IP spoofing - forging a packet's source IP address - is a commonly used technique in cyber attacks.
 
 For example, bots in a botnet can use source IP spoofing and DNS to mount a denial of service attack at a victim website. The bots query many different DNS servers requesting the full TXT record of a domain, which often contains many bytes of information. By spoofing the source IP address of their traffic to point to a victim website, the bots can direct the aggregate DNS response, which can be massive, to the victim website, overwhelming its servers.
 
@@ -37,9 +37,9 @@ Tunnel mode is the more commonly used operation mode. Suppose we have two end ho
 
 ![](https://assets.omscs.io/E8EE4DC2-4B60-4D3C-BE51-FB34B5847565.png)
 
-`A` emits unencrypted packets, and the gateway encrypts them before they leave the LAN. On the receiving side, the gateway to `B`’s LAN decrypts the packets and forwards them to `B`.
+`A` emits unencrypted packets, and the gateway encrypts them before they leave the LAN. On the receiving side, the gateway to `B`'s LAN decrypts the packets and forwards them to `B`.
 
-The gateway of `A`’s network encapsulates traffic from `A` to `B` by adding a new IP header that specifies its IP as the source IP and the IP of `B`s gateway as the destination IP to make sure the protected packet is delivered to `B`’s gateway first.
+The gateway of `A`'s network encapsulates traffic from `A` to `B` by adding a new IP header that specifies its IP as the source IP and the IP of `B`s gateway as the destination IP to make sure the protected packet is delivered to `B`'s gateway first.
 
 ![](https://assets.omscs.io/9A599212-0357-4B7A-98AA-29869A72E7CB.png)
 
@@ -141,16 +141,16 @@ Recall that transport mode provides end to end traffic protection, while tunnel 
 ### Transport Mode
 Suppose a policy dictates that all traffic from `A` to `B` must be authenticated using HMAC with MD5 as the embedded hash function.
 
-`A`’s SPD stores this policy, and both `A` and `B` store an SA in their SADB containing the negotiated paramters for the policy. For example, `A`’s SA stores the secret key for HMAC and the SPI to index the SA in `B`’s SADB.
+`A`'s SPD stores this policy, and both `A` and `B` store an SA in their SADB containing the negotiated paramters for the policy. For example, `A`'s SA stores the secret key for HMAC and the SPI to index the SA in `B`'s SADB.
 
 ![](https://assets.omscs.io/AB73C33F-AAF8-47F3-BF2D-5D20241F8C30.png)
 
 When `A` sends traffic to `B`, it includes the SPI in the IPSec header so that `B` can use it to look up its SA and then process the traffic appropriately.
 
 ### Tunnel Mode
-Suppose a policy states that any traffic from `A`’s subnet to `B`’s subnet must be sent to `B`’s gateway `D`, and must be processed using ESP with 3DES.
+Suppose a policy states that any traffic from `A`'s subnet to `B`'s subnet must be sent to `B`'s gateway `D`, and must be processed using ESP with 3DES.
 
-Since `C` is the gateway of the `A`’s subnet, `C`’s SPD stores this policy, and its SADB stores the SA that has the 3DES key and the SPI for looking up the SA in `D`’s SADB.
+Since `C` is the gateway of the `A`'s subnet, `C`'s SPD stores this policy, and its SADB stores the SA that has the 3DES key and the SPI for looking up the SA in `D`'s SADB.
 
 ![](https://assets.omscs.io/44BDBF46-EF1B-4E64-8062-CC61D76FBDCD.png)
 
@@ -171,7 +171,7 @@ To utilize sequence numbers, a host `H` must maintain a sliding window of size `
 
 Suppose `H` maintains a window where `n = 50`, which contains the sequence numbers from 100 to 149.
 
-If a packet arrives with a sequence number less than 100, `H` rejects the packet. If a packet arrives with a sequence number greater than 149, `H` accepts the packet and adjusts the window to cover this packet’s sequence number. For example, if `H` receives a packet with sequence number 199, `H` adjusts its window to cover 150 through 199.
+If a packet arrives with a sequence number less than 100, `H` rejects the packet. If a packet arrives with a sequence number greater than 149, `H` accepts the packet and adjusts the window to cover this packet's sequence number. For example, if `H` receives a packet with sequence number 199, `H` adjusts its window to cover 150 through 199.
 
 If a packet arrives with a sequence number between 100 and 149, `H` checks the number to see if it has already been seen. If yes, `H` rejects the packet; otherwise, `H` accepts the packet and records the sequence number as having been seen.
 
@@ -194,11 +194,11 @@ First, both sides negotiate the protection mechanism to use - AH or ESP - and al
 Then, they establish a shared secret key using a protocol such as Diffie-Hellman. Both sides can use either a pre-shared key, digital signatures, or public-key encryption to authenticate the key exchange.
 
 ## IKE Phase I Example
-Let’s look at an example of phase one of the IKE protocol. For this example, we assume that both sides have a pre-shared secret key.
+Let's look at an example of phase one of the IKE protocol. For this example, we assume that both sides have a pre-shared secret key.
 
 ![](https://assets.omscs.io/896968E8-497D-453A-9342-A249EA63A196.png)
 
-First, the initiator sends the cryptographic algorithm it proposes, along with a cookie, to the responder. The cookie is a value that the initiator can easily compute, and the responder can easily verify, such as a hash over the initiator’s IP address and the current timestamp together.
+First, the initiator sends the cryptographic algorithm it proposes, along with a cookie, to the responder. The cookie is a value that the initiator can easily compute, and the responder can easily verify, such as a hash over the initiator's IP address and the current timestamp together.
 
 The cookie proves that the initiator has done some computation and is serious about following through with the protocol. In general, cookies help to mitigate denial of service attacks where an initiator can send many requests to a responder at little to no cost.
 
@@ -232,7 +232,7 @@ Both parties compute the keys for IKE message authentication and encryption in a
 ![](https://assets.omscs.io/D3DCDF23-F2F5-451C-A06A-E13EF32A6829.png)
 
 ## Authentication of the Key Exchange
-Now let’s take a look at how the initiator and responder authenticate the key exchange. Both parties hash the information they have exchanged, using `PRF` with `SKEYID` as the key.
+Now let's take a look at how the initiator and responder authenticate the key exchange. Both parties hash the information they have exchanged, using `PRF` with `SKEYID` as the key.
 
 The input data block passed to `PRF` contains the public components of the Diffie-Hellman exchange, the cookies, the offered cryptographic algorithms, and the identities of the initiator and responder.
 
@@ -252,7 +252,7 @@ To summarize, if host `A` and host `B` want to communicate, the typical IPSec wo
 
 ![](https://assets.omscs.io/3142EBB7-04DF-45C7-BD06-0F98E0BFED77.png)
 
-Suppose this is the first time that `A` sends data to `B` that, according to policy, requires protection. The gateway of `A`’s network and the gateway of `B`’s network first use the IKE protocol to negotiate the IKE SA and then use that IKE SA to negotiate the IPSec SAs.
+Suppose this is the first time that `A` sends data to `B` that, according to policy, requires protection. The gateway of `A`'s network and the gateway of `B`'s network first use the IKE protocol to negotiate the IKE SA and then use that IKE SA to negotiate the IPSec SAs.
 
 Then, the routers can use the SAs to create an IPSec tunnel between them, which protects the traffic from `A` to `B`. For example, the packet data can be encrypted and, optionally, the header information and packet data can be authenticated, depending on the SAs used.
 
@@ -303,7 +303,7 @@ In phase one, the client and server share their respective security capabilities
 
 ![](https://assets.omscs.io/3857F12D-FEAD-41FD-8E6F-07EB9811BEE5.png)
 
-After sending the `client_hello` message, the client waits for the `server_hello` message, which contains the same parameters. Therefore, at the end of phase one, both client and server know each other’s security capabilities.
+After sending the `client_hello` message, the client waits for the `server_hello` message, which contains the same parameters. Therefore, at the end of phase one, both client and server know each other's security capabilities.
 
 ![](https://assets.omscs.io/DACA89D1-C0E1-41BD-87A5-A942AE1EE5A6.png)
 
@@ -315,9 +315,9 @@ The details of phase two depend on the underlying public-key encryption scheme i
 
 
 ### Phase Three
-In phase three, the client should first verify the server’s certificate. For example, the client should be able to validate that a reputable certificate authority signed the certificate.
+In phase three, the client should first verify the server's certificate. For example, the client should be able to validate that a reputable certificate authority signed the certificate.
 
-After verification, the client can send key exchange information to the server. For example, the client can generate a secret key, encrypt it using the server’s public key, and send it to the server.
+After verification, the client can send key exchange information to the server. For example, the client can generate a secret key, encrypt it using the server's public key, and send it to the server.
 
 Depending on the application requirements, the client may send a certificate to the server to authenticate itself. If a website is public-facing, then the authentication is typically one-way; that is, the client needs to authenticate the server, but the server need not authenticate the client. On the other hand, internal or private web servers may require mutual authentication.
 

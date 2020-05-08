@@ -8,7 +8,7 @@ lecture: internet-worms
 # Internet Worms
 
 ## Types of Viruses and Worm Overview
-A **virus** is an "infection" of an existing program that results in the modification of the original program’s behavior.
+A **virus** is an "infection" of an existing program that results in the modification of the original program's behavior.
 
 A **worm** is code that propagates and replicates itself across the network.
 
@@ -56,7 +56,7 @@ First, the worm has to scan other machines on the network to find more potential
 The summer of 2001 saw three major worm outbreaks: Code Red 1 v2,  Code Red 2, and Nimda.
 
 ### Code Red 1
-[Code Red 1](https://malware.wikia.org/wiki/CodeRed) - the first "modern" worm - was released on July 13, 2001. This worm exploited a buffer overflow in Microsoft’s IIS server.
+[Code Red 1](https://malware.wikia.org/wiki/CodeRed) - the first "modern" worm - was released on July 13, 2001. This worm exploited a buffer overflow in Microsoft's IIS server.
 
 From the 1st through the 20th of each month, the worm would spawn 99 threads which generated IP addresses at random, and would then look for vulnerable instances of IIS on the hosts at those IP addresses. If the vulnerability was found, the worm would spread to that host.
 
@@ -64,7 +64,7 @@ Version 2 of Code Red 1 was released six days later and fixed the random scannin
 
 After the scanning bug was fixed, the worm was able to compromise 350k hosts in only 14 hours. By most estimates, that was the complete set of hosts running the vulnerable version of IIS on the entire internet.
 
-The payload of this worm was to mount a denial of service attack on whitehouse.gov, but a bug in the worm’s software caused it to die on the 20th of each month. If the victim’s clock was wrong, however, the worm would resurrect itself on the 1st.
+The payload of this worm was to mount a denial of service attack on whitehouse.gov, but a bug in the worm's software caused it to die on the 20th of each month. If the victim's clock was wrong, however, the worm would resurrect itself on the 1st.
 
 Fortunately in this case, the denial of service attack launched at whitehouse.gov was actually launched at a particular IP address instead of the domain name. The operators of the website needed only to move the web server to a different IP address to defend against the DoS attack.
 
@@ -86,9 +86,9 @@ The payload of this worm was an IIS backdoor and was completely dead by design b
 
 Nimda could spread via bulk email as an attachment. It copied itself across network shares. It installed an exploit code on webpages served by the web server running on the machine so that any browser that visited that webpage would become infected. It also scanned for the Code Red 2 backdoors.
 
-The interesting thing about the multimodal nature of the nimda worm is that signature-based defenses don’t necessarily help.
+The interesting thing about the multimodal nature of the nimda worm is that signature-based defenses don't necessarily help.
 
-For example, most of the firewalls passed the emails carrying nimda completely untouched. It was a brand new infection with an unknown signature, so scanners couldn’t detect it.
+For example, most of the firewalls passed the emails carrying nimda completely untouched. It was a brand new infection with an unknown signature, so scanners couldn't detect it.
 
 This was the first instance of a worm that exploited a **zero-day attack**, which is when a worm first appears in the wild and the signature of the worm is not extracted until minutes or hours later.
 
@@ -104,7 +104,7 @@ At some later point infections slow, and the infection rate ultimately plateaus,
 
 We can model the spread of these worms using the **random constant spread** model.
 
-Let’s assume that `K` is the initial compromise rate, `N` is the number of vulnerable hosts, and `a` is the fraction of hosts that are already compromised.
+Let's assume that `K` is the initial compromise rate, `N` is the number of vulnerable hosts, and `a` is the fraction of hosts that are already compromised.
 
 We can use these parameters to express the number of hosts infected in a particular timeslice.
 
@@ -127,9 +127,9 @@ If we start by performing stealthy scans to construct a list of vulnerable hosts
 
 The second approach is to use **permutation scanning** whereby every compromised host has a shared permutation of an IP address list to scan for vulnerabilities.
 
-If the list is randomly permuted and a particular host starts scanning from its own IP address in the list and works down, different infected hosts will start scanning from different parts of the list, ensuring that compromised hosts don’t duplicate each other’s work.
+If the list is randomly permuted and a particular host starts scanning from its own IP address in the list and works down, different infected hosts will start scanning from different parts of the list, ensuring that compromised hosts don't duplicate each other's work.
 
-One worm that exploited these techniques to spread particularly quickly was the [Slammer](https://en.wikipedia.org/wiki/SQL_Slammer) worm, which spread in January of 2003, exploiting a buffer overflow in Microsoft’s SQL server.
+One worm that exploited these techniques to spread particularly quickly was the [Slammer](https://en.wikipedia.org/wiki/SQL_Slammer) worm, which spread in January of 2003, exploiting a buffer overflow in Microsoft's SQL server.
 
 In addition to using fast scanning techniques, the entire Slammer code fit into a single UDP packet. The UDP packet contained the worm binary followed by an overflow pointer back to itself.
 
@@ -140,7 +140,7 @@ Since the Slammer worm was spread via a single UDP packet, the transmission of t
 The majority of the damage from Slammer was inflicted in just 30 minutes.
 
 The worm caused $1.2 billion in damage and temporarily knocked out many elements of critical infrastructure, including:
-- Bank of America’s ATM network
+- Bank of America's ATM network
 - A cellphone network in South Korea
 - Five root DNS servers
 - Continental Airlines ticket processing software

@@ -59,7 +59,7 @@ Since data breaches involve the disclosure of information to unauthorized partie
 
 Since `allow_login`, `pwdstr` and `targetpwd` are all local variables to `main`, any access of them will access memory locations inside the stack frame for `main`.
 
-The only lines of code that don’t access the stack frame for `main` are the calls to `printf`, (which create a new stack frame), and `else`.
+The only lines of code that don't access the stack frame for `main` are the calls to `printf`, (which create a new stack frame), and `else`.
 
 ### Attacker Code Quiz
 ![](https://assets.omscs.io/4E905E4F-F658-4D3E-8A95-BC7BD589593A.png)
@@ -81,9 +81,9 @@ Since login will succeed if `allow_login` is anything but 0 (i.e. not a fail-saf
 ### Buffer Overflow Quiz Solution
 ![](https://assets.omscs.io/07B11C34-5DB8-4233-BC74-E2075631A2E1.png)
 
-The first answer is wrong. The target password can be as long as you’d like, but if the attacker submits a longer password, the overflow will still happen.
+The first answer is wrong. The target password can be as long as you'd like, but if the attacker submits a longer password, the overflow will still happen.
 
-The third answer is also wrong. Besides the fact that you shouldn’t ever really add useless variables, these variables will only provide a finite amount of distance between the user-filled buffer and the return address. With a long enough password, the attacker can still overwrite the return address.
+The third answer is also wrong. Besides the fact that you shouldn't ever really add useless variables, these variables will only provide a finite amount of distance between the user-filled buffer and the return address. With a long enough password, the attacker can still overwrite the return address.
 
 Only the second answer is correct. The overflow happens precisely because input larger than the space allocated for that input is not rejected by the program.
 
@@ -162,7 +162,7 @@ Processes run on behalf of users. Users must login to the system to run applicat
 ### TCB Requirements Quiz Solution
 ![](https://assets.omscs.io/449C3685-5396-4F92-A070-F09425449193.png)
 
-In this case, we have tampered with the TCB by turning off the check. The access still proceeds through the operating system, and is still technically correct (i.e. the access wasn’t permitted because of a bug).
+In this case, we have tampered with the TCB by turning off the check. The access still proceeds through the operating system, and is still technically correct (i.e. the access wasn't permitted because of a bug).
 
 ### Size of Security Code
 ![](https://assets.omscs.io/D40FCB93-786B-464E-B73E-ED5EAE001FE2.png)
@@ -318,9 +318,9 @@ The presentation of the ticket is sufficient to gain access to the theater. No o
 ### ACE Access Quiz Solution
 ![](https://assets.omscs.io/0D94E256-D8D9-4BCE-9E83-F7BFD18F7E20.png)
 
-Negative access rights supersede positive access rights, so you can’t terminate as soon as you find a positive access right. You can terminate as soon as you find a negative access right, though.
+Negative access rights supersede positive access rights, so you can't terminate as soon as you find a positive access right. You can terminate as soon as you find a negative access right, though.
 
-NB: The third option can’t be true if the second option is true.
+NB: The third option can't be true if the second option is true.
 
 ### Revocation of Rights Quiz
 ![](https://assets.omscs.io/99C6BB65-DB67-42A9-A133-484EAEC0498C.png)
@@ -373,7 +373,7 @@ From a security standpoint, denying access is a fail-safe default. It never fail
 ### DAC Quiz Solution
 ![](https://assets.omscs.io/CC4FCC5B-CC40-4ADC-8AC7-B14CEA595009.png)
 
-DAC can’t control information flow, so we must use MAC.
+DAC can't control information flow, so we must use MAC.
 
 ### Health Data Quiz
 ![](https://assets.omscs.io/B190798D-AB66-4B7B-938B-ED38D21FBB4C.png)
@@ -415,7 +415,7 @@ While `secret < top-secret` , `{Asia, Europe}` cannot be compared with `{Europe,
 
 In order for `D1` to dominate `D2`, `D1` must have a higher sensitivity level than `D2`.
 
-In addition, the compartment of `D1` must contain the compartment of `D2` in order to be ‘greater’ (based on the ordering rules for sets). For this to be the case, the compartment of `D2` must be a subset of ("narrower" than) the compartment of `D1`.
+In addition, the compartment of `D1` must contain the compartment of `D2` in order to be 'greater' (based on the ordering rules for sets). For this to be the case, the compartment of `D2` must be a subset of ("narrower" than) the compartment of `D1`.
 
 ### Unclassified Documents Quiz
 ![](https://assets.omscs.io/EA4A6F50-B773-4345-BD3C-28CFB3AEA7D4.png)
@@ -507,7 +507,7 @@ A fail-safe default is one that provides security unless otherwise specified. In
 ### Testing TCB Quiz Solution
 ![](https://assets.omscs.io/5F87B5BC-DB54-413C-8348-BF6973C787F5.png)
 
-Testing can’t show the absence of problems.
+Testing can't show the absence of problems.
 
 ### Model Checking Quiz
 ![](https://assets.omscs.io/1DD38815-AC14-4050-8BE4-CD4B6545DE3B.png)
@@ -913,7 +913,7 @@ Since "A" maps to "D", "B" maps to "E", and so forth, we can just "rewind" each 
 ### Hash Function Quiz Solution
 ![](https://assets.omscs.io/9FCFF378-D376-46B5-8734-E5DB63549DCA.png)
 
-The **avalanche effect** states that a small change in the input to a hash function causes a large change to the output. We want this in place as a way to obscure similar passwords. Without the avalanche effect, an attacker may be able to deduce password `A` from its hash value if he knows that the hash of a string `B` is similar to `A`’s hash.
+The **avalanche effect** states that a small change in the input to a hash function causes a large change to the output. We want this in place as a way to obscure similar passwords. Without the avalanche effect, an attacker may be able to deduce password `A` from its hash value if he knows that the hash of a string `B` is similar to `A`'s hash.
 
 ### Symmetric Encryption Quiz
 ![](https://assets.omscs.io/1E31561D-622A-48AB-8B4B-D46F37A11AD1.png)
@@ -1157,7 +1157,7 @@ While transport layer protocols do rely on the IP layer, TLS does not specifical
 ### Operating System Vulnerabilities Quiz Solution
 ![](https://assets.omscs.io/3BB6C671-DF45-44C8-A21D-620C92AF45ED.png)
 
-Betcha thought it was gonna be all Microsoft, didn’t you? Read more [here](https://techtalk.gfi.com/most-vulnerable-operating-systems-and-applications-in-2014/).
+Betcha thought it was gonna be all Microsoft, didn't you? Read more [here](https://techtalk.gfi.com/most-vulnerable-operating-systems-and-applications-in-2014/).
 
 ### Security Quiz
 ![](https://assets.omscs.io/4AA42396-DE28-4F4E-A5E9-19038D09F56B.png)

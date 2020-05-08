@@ -22,13 +22,13 @@ Three different types of defenses against denial of service attacks are
 - SYN cookies (TCP only)
 
 ### Ingress filtering
-Let’s assume we have a stub AS whose IP prefix is `204.69.207.0/24`.
+Let's assume we have a stub AS whose IP prefix is `204.69.207.0/24`.
 
 If there are no other networks connected to this AS, and this is the only IP address space that the AS owns, then the router that is immediately upstream can simply drop all traffic for which the source IP address is not in `204.69.207.0/24`.
 
 This technique is fool-proof and works at the edges of the internet where it is very easy to determine the IP address range that is owned by a downstream stub AS.
 
-Unfortunately it doesn’t work well in the core, where a router might have a lot of difficulty determining whether packets from a particular source IP address could allowed on a particular incoming interface.
+Unfortunately it doesn't work well in the core, where a router might have a lot of difficulty determining whether packets from a particular source IP address could allowed on a particular incoming interface.
 
 ### uRPF
 In the core, it can be useful to use routing tables to determine whether a packet could feasibly arrive on an incoming interface.
@@ -56,7 +56,7 @@ The client has no accountability and no obligation to return to send the final A
 
 The solution to this problem is **SYN cookies**. In the TCP SYN cookie approach, the server keeps no state when it receives a SYN from the client.
 
-Instead, the server picks an initial sequence number for the connection that is a function of the client’s IP address and port, and the server’s IP address and port, as well as a random nonce (to prevent replay attacks).
+Instead, the server picks an initial sequence number for the connection that is a function of the client's IP address and port, and the server's IP address and port, as well as a random nonce (to prevent replay attacks).
 
 An honest client that returns can then reply with an ACK with the sequence number in the packet. The server can check the sequence number by rehashing the address/port information and determine if the incoming ACK corresponds to the previous SYN-ACK that it had sent the client, all without requiring the server to store any state.
 

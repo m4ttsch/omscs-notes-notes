@@ -8,7 +8,7 @@ lecture: intrusion-detection
 # Intrusion Detection
 
 ## Defense in Depth
-Recall the *defense in depth* principle: we need multiple layers of defense mechanisms. We typically deploy prevention systems to block attacks, but some intrusion attempts are always going to get through. If we can’t stop an attack, at the very least, we need to detect it. Specifically, we need to deploy intrusion detection systems to inform us when an attack occurs.
+Recall the *defense in depth* principle: we need multiple layers of defense mechanisms. We typically deploy prevention systems to block attacks, but some intrusion attempts are always going to get through. If we can't stop an attack, at the very least, we need to detect it. Specifically, we need to deploy intrusion detection systems to inform us when an attack occurs.
 
 ## Intrusion Examples
 An intrusion is any attack that aims to compromise the security goals of an organization. The following activities are all examples of intrusion.
@@ -139,7 +139,7 @@ However, this approach was too crude to detect intrusions effectively. Later sta
 
 More recent systems incorporate time-series models that consider the order and timing between observed events. For example, these systems might examine the amount of time elapsed between when a user logs into a workstation and when that workstation sends an email.
 
-The main advantage of statistical approaches is that they are relatively simple, easy to compute, and they don’t have to make many assumptions about behavior. On the other hand, the effectiveness of these approaches relies on selecting the right set of metrics to examine and correlate, which is a difficult task. Additionally, there are complex behaviors that are beyond the capability of these models.
+The main advantage of statistical approaches is that they are relatively simple, easy to compute, and they don't have to make many assumptions about behavior. On the other hand, the effectiveness of these approaches relies on selecting the right set of metrics to examine and correlate, which is a difficult task. Additionally, there are complex behaviors that are beyond the capability of these models.
 
 ## Knowledge Based Approach
 Knowledge-based approaches require experts to develop a set of rules that describe the normal, legitimate behaviors observed during training. These rules can separate activities into different classes; for example, a rule might state that a secretary *normally* only uses office productivity programs, like web browsers, email, calendar, and Microsoft office.
@@ -166,7 +166,7 @@ IDS can use a variety of machine learning algorithms.
 
 **Markov models** are sets of states connected by transitional probabilities. For example, a system can use Markov models to model legitimate website names. The transitional probabilities from one letter to the next in a URL should be similar to that of real dictionary words.
 
-On the other hand, a randomly-spelled website name is anomalous and might indicate a botnet C&C server, since bots don’t have to type out URLs.
+On the other hand, a randomly-spelled website name is anomalous and might indicate a botnet C&C server, since bots don't have to type out URLs.
 
 **Neural networks** simulate how human brains perform reasoning and learning and are one of the most powerful machine learning approaches.
 
@@ -225,7 +225,7 @@ The IDS matches the observed activities using a set of attack signatures or patt
 
 ![](https://assets.omscs.io/442FE44B-A994-48BC-909C-1DCF6161F7E4.png)
 
-For example, the system may raise an alarm if it spots the so-called "land attack" defined in the picture above. Again, such a simple approach cannot detect new attacks since they don’t have signatures.
+For example, the system may raise an alarm if it spots the so-called "land attack" defined in the picture above. Again, such a simple approach cannot detect new attacks since they don't have signatures.
 
 ## Attacks Quiz
 ![](https://assets.omscs.io/F5CFF1A9-853F-4258-9A6A-C5ACDD8C643A.png)
@@ -236,7 +236,7 @@ For example, the system may raise an alarm if it spots the so-called "land attac
 ## Monitoring Networks and Hosts
 An IDS typically performs passive monitoring; that is, it records and analyzes data about system and network activities while these activities continue to take place.
 
-The IDS doesn’t affect activities directly, but rather only outputs alerts. In response to these alerts, the system can intervene and alter activity by, for example, blocking a network connection or terminating a program.
+The IDS doesn't affect activities directly, but rather only outputs alerts. In response to these alerts, the system can intervene and alter activity by, for example, blocking a network connection or terminating a program.
 
 ## Network IDS
 We can deploy an intrusion detection system at the perimeter of a network or subnet to monitor inbound and outbound network traffic. Such a system is called a **network intrusion detection system** (NIDS).
@@ -253,11 +253,11 @@ A NIDS can include several sensors, each of which typically monitors the traffic
 Additionally, a NIDS may provide one or more management consoles for use by human analysts needing visibility into network activity.
 
 ## Host IDS
-We can also deploy an IDS in an end host. Most host-based IDS’s use `ptrace`  to obtain the system calls made by a program as a way to monitor program behavior.
+We can also deploy an IDS in an end host. Most host-based IDS's use `ptrace`  to obtain the system calls made by a program as a way to monitor program behavior.
 
 System call data is crucial for security monitoring because the operating system manages critical system resources. Therefore, whenever a program requests a resource, such as memory allocation or access to the filesystems, networks, or I/O devices, it must make a system call to the operating system.
 
-For example, If a user’s browser receives a page containing malicious javascript that breaks the protection in the browser and attempts to overwrite a Windows registry file, the IDS will observe a write system call to the registry file and can generate an alert.
+For example, If a user's browser receives a page containing malicious javascript that breaks the protection in the browser and attempts to overwrite a Windows registry file, the IDS will observe a write system call to the registry file and can generate an alert.
 
 ## NIDS Quiz
 ![](https://assets.omscs.io/6B45119B-AA0A-47F6-822D-A5FC37269B12.png)
@@ -271,7 +271,7 @@ One way to configure a network IDS is by using *inline sensors*. The primary mot
 We must place the sensor at a network point where traffic must pass through it for this strategy to be effective. We can deploy an inline sensor as a combination of a network IDS and a firewall in a single piece of hardware, or we can deploy the inline sensor as a standalone inline network IDS.
 
 ## Passive Sensors
-More commonly, we deploy network IDS’s as passive sensors. A *passive sensor* only receives a copy of live traffic, and therefore cannot provide any intrusion protection; however, from a network performance perspective, this approach is much more efficient.
+More commonly, we deploy network IDS's as passive sensors. A *passive sensor* only receives a copy of live traffic, and therefore cannot provide any intrusion protection; however, from a network performance perspective, this approach is much more efficient.
 
 The following diagram illustrates a typical passive sensor configuration.
 
@@ -453,7 +453,7 @@ We can more formally summarize these metrics, using the probability `A` of an al
 
 The detection rate is the probability of `A`, given `I`. The false negative rate is the probability of not `A`, given `I`. The false alarm rate is the probability of `A`, given not `I`. The true negative rate is the probability of not `A`, given not `I`. The Bayesian detection rate is the probability of `I` given `A`.
 
-In addition to the detection algorithms, we can also evaluate IDS’s in terms of their system architecture. We want a scalable IDS that can function in high-speed networks. Additionally, we want a resilient IDS that is not easily disabled by attacks that target the IDS.
+In addition to the detection algorithms, we can also evaluate IDS's in terms of their system architecture. We want a scalable IDS that can function in high-speed networks. Additionally, we want a resilient IDS that is not easily disabled by attacks that target the IDS.
 
 ## Bayesian Detection Rate
 The following formula defines the Bayesian detection rate, given probability `A` of an alert and prior probability `I` of an intrusion.
@@ -470,12 +470,12 @@ This low base rate may or may not be realistic, depending on where you measure i
 
 One way we can mitigate the base rate fallacy is to reduce the false alarm rate to zero, or as close to zero as possible; indeed, this is one of the main goals of modern IDS vendors.
 
-Alternatively, we can deploy the IDS to the appropriate layer such that, at that layer, the base rate is sufficiently high. Modern-day IDS’s use a hierarchical architecture to achieve this high base rate.
+Alternatively, we can deploy the IDS to the appropriate layer such that, at that layer, the base rate is sufficiently high. Modern-day IDS's use a hierarchical architecture to achieve this high base rate.
 
 We can also use multiple independent models. This approach is similar to medical diagnosis, where multiple tests are used to reduce the overall false positive rate and increase the Bayesian detection rate.  
 
 ## Architecture of Network IDS
-With the Bayesian detection rate and the base-rate fallacy in mind, let’s discuss the system architecture of a network IDS.
+With the Bayesian detection rate and the base-rate fallacy in mind, let's discuss the system architecture of a network IDS.
 
 Typically, the volume of packet data in a network is enormous - on the order of tens of millions of packets per day - and only a few might involve any activity related to intrusion. Therefore, according to the base-rate fallacy, if we apply detection algorithms at the packet level, we will see meager Bayesian detection rates.
 
@@ -494,7 +494,7 @@ The system decreases the volume of packet data at each step. Therefore, as long 
 ![](https://assets.omscs.io/67B4C307-4630-470A-9E6E-EDB4C4FDC0D8.png)
 
 ## Eluding Network IDS
-Now let’s talk about how an attacker can evade an IDS so that their attack can proceed undetected.
+Now let's talk about how an attacker can evade an IDS so that their attack can proceed undetected.
 
 Recall that a network IDS performs passive monitoring; that is, it takes a copy of the network traffic destined for the end host and analyzes it. Therefore, for the IDS to detect the intrusion happening at the end host, it must see the same traffic as the end host.
 
@@ -507,7 +507,7 @@ For example, options such as time-to-live (TTL), or error conditions associated 
 By exploiting these differences, the attacker can slip attack traffic past the IDS undetected while still impacting the destination end host.
 
 ## Insertion Attack
-An attacker can insert misleading data into the packet stream to cause the IDS to miss an attack. For example, an attacker might include a packet with a bad checksum value into an otherwise malicious stream of packets. The IDS may accept this packet, but the end host might reject it. As a result, the end host receives the attack, and yet the IDS doesn’t detect it.
+An attacker can insert misleading data into the packet stream to cause the IDS to miss an attack. For example, an attacker might include a packet with a bad checksum value into an otherwise malicious stream of packets. The IDS may accept this packet, but the end host might reject it. As a result, the end host receives the attack, and yet the IDS doesn't detect it.
 
 Here is an illustration of this **insertion attack**.
 
@@ -522,7 +522,7 @@ Here is an illustration of this **evasion attack**.
 
 ![](https://assets.omscs.io/759DCECB-7802-4BF0-ABFC-A160B7C81552.png)
 
-The attacker sends the out-of-order packets that both the IDS and the end host reassemble according to sequence numbers. In this scenario, the two `A`’s contain overlapping fragments; as a result, the IDS drops the second `A`, and so it only sees the stream `ATTCK`. On the other hand, the end host accepts both fragments, even though they overlap. Therefore, the end host sees the `ATTACK`.
+The attacker sends the out-of-order packets that both the IDS and the end host reassemble according to sequence numbers. In this scenario, the two `A`'s contain overlapping fragments; as a result, the IDS drops the second `A`, and so it only sees the stream `ATTCK`. On the other hand, the end host accepts both fragments, even though they overlap. Therefore, the end host sees the `ATTACK`.
 
 ## DOS Attacks on Network IDS
 Attackers can also use denial of service (DOS) attacks to disrupt the network intrusion detection process. Similar to DOSing a network server, an attacker can send a lot of traffic to an IDS to process, which results in the exhaustion of resources such as CPU, memory, and network bandwidth.

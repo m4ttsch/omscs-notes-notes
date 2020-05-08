@@ -26,9 +26,9 @@ There is a significant need for big, fast routers:
 ## Basic Router Architecture
 The basic I/O component of a router architecture is a **line card**, which is the interface by which the router sends and receives data.
 
-When a packet arrives, the line card looks at the header to determine the destination, and then looks in the forwarding table to determine the output interface. It then updates the packet header - decrementing the packet’s TTL, for example - and sends the packet to the appropriate output interface.
+When a packet arrives, the line card looks at the header to determine the destination, and then looks in the forwarding table to determine the output interface. It then updates the packet header - decrementing the packet's TTL, for example - and sends the packet to the appropriate output interface.
 
-When a packet is sent to the output interface, it must traverse the router’s **interconnection fabric** to be sent to the appropriate output port.
+When a packet is sent to the output interface, it must traverse the router's **interconnection fabric** to be sent to the appropriate output port.
 
 ![](https://assets.omscs.io/4637A139-27A9-496A-BA0D-18EC3DF0CE11.png)
 
@@ -88,7 +88,7 @@ A solution is to create virtual output queues. Instead of creating one queue at 
 ## Scheduling and Fairness
 The decision about which ports should be matched in any particular time slot is called **scheduling**.
 
-One goal of scheduling is *efficiency*. If there is traffic at input ports destined for output ports, the crossbar switch should schedule inputs and outputs so traffic isn’t sitting idly at the input ports if some traffic could be sent to the available output ports.
+One goal of scheduling is *efficiency*. If there is traffic at input ports destined for output ports, the crossbar switch should schedule inputs and outputs so traffic isn't sitting idly at the input ports if some traffic could be sent to the available output ports.
 
 Another scheduling consideration is *fairness*. Given demands at the inputs, each queue at the input should be scheduled fairly, for some definition of fairness.
 
@@ -97,21 +97,21 @@ Defining fairness is tricky, and there are multiple possible definitions of fair
 ## Max-Min Fairness
 One type of fairness is **max-min fairness**.
 
-To define max-min fairness, let’s first assume that we have some allocation of rates `{x1, x2 … xn }` across flows. We say that this allocation is "max-min fair" if increasing any rate `xi` implies that some other rate `xj`, where `xj < xi`, must be decreased to accommodate for the increase in `xi`.
+To define max-min fairness, let's first assume that we have some allocation of rates `{x1, x2 … xn }` across flows. We say that this allocation is "max-min fair" if increasing any rate `xi` implies that some other rate `xj`, where `xj < xi`, must be decreased to accommodate for the increase in `xi`.
 
-Put another way, the allocation is max-min fair if we can’t make any rate better off without making an already worse off rate even worse.
+Put another way, the allocation is max-min fair if we can't make any rate better off without making an already worse off rate even worse.
 
 The benefit of max-min fairness is that small demands being met in full, while large demands split the remaining capacity amongst themselves equally.
 
 ### Example
 
-Let’s consider the following example.
+Let's consider the following example.
 
 ![](https://assets.omscs.io/DCB9D368-DB79-47C8-B281-70D3E9E3F99D.png)
 
 Obviously, the demands exceed the capacity, so we need to figure a way of allocating rates to each of these demands that is max-min fair.
 
-To start, let’s divide the capacity by the number of demands to achieve a completely fair allocation of rates.
+To start, let's divide the capacity by the number of demands to achieve a completely fair allocation of rates.
 
 Our initial distribution is `{2.5, 2.5, 2.5, 2.5}`.
 

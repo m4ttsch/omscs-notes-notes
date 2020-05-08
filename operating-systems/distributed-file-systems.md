@@ -10,7 +10,7 @@ lecture: distributed-file-systems
 ## Distributed File Systems
 Modern operating systems export a high-level filesystem interface to abstract all of the (potentially) different types of storage devices present on a machine and unify them under a common API.
 
-The OS can hide the fact that there isn’t even local physical storage on a machine; rather, the files are maintained on a remote filesystem that is being accessed over the network.
+The OS can hide the fact that there isn't even local physical storage on a machine; rather, the files are maintained on a remote filesystem that is being accessed over the network.
 
 Environments that involve multiple machines for the delivery of the filesystem service are called **distributed filesystems** (DFS).
 
@@ -24,7 +24,7 @@ In replicated systems, all the files are replicated and available on every serve
 In partitioned systems, each server holds only some subset of the total files.
 If you need to support more files, you can just partition across more machines. In the replicated model, you will need to upgrade your hardware. This makes partitioned systems more **scalable**.
 
-It’s common to see a DFS that utilizes both partitioning and replication; for example, partitioning all the files, and replicating each partition.
+It's common to see a DFS that utilizes both partitioning and replication; for example, partitioning all the files, and replicating each partition.
 
 Finally, files can be stored on and served from all machines. This blurs the line between servers and clients, because all the nodes in the system are **peers**. Every node is responsible for maintaining the files and providing the filesystem service. Each peer will take some portion of the load by servicing some of the requests, often those that for files local to that peer.
 
@@ -83,7 +83,7 @@ On failure, however, all that state needs to be recovered so that the filesystem
 ## Caching State in a DFS
 Caching state in a DFS involves allowing clients to locally maintain a portion of the state - a file block, for example - and also allows them to perform operations on this cached state: `open`/`read`/`write`,etc.
 
-Keeping the cached portions of the file consistent with the server’s representation of the file requires cache coherence mechanisms.
+Keeping the cached portions of the file consistent with the server's representation of the file requires cache coherence mechanisms.
 
 For example, two clients may cache the same portion of file. If one client modifies their local portion, and sends the update to the file server, how does the other client become aware of those changes?
 
@@ -91,7 +91,7 @@ For client/server systems, these coherence mechanisms may be trigged in differen
 
 ## File Sharing Semantics in DFS
 ### Single Node, UNIX
-Whenever a file is modified by any process, that change is immediately visible to any other process in the system. This will be the case even if the change isn’t pushed out to disk because both processes have access to the same buffer cache.
+Whenever a file is modified by any process, that change is immediately visible to any other process in the system. This will be the case even if the change isn't pushed out to disk because both processes have access to the same buffer cache.
 
 ![](https://assets.omscs.io/78F61AEB-F700-4CEE-8D92-14B7D8E0FC26.png)
 
@@ -107,7 +107,7 @@ In **session semantics**, the client writes back whatever data was modified on `
 
 With session semantics, it is very possible for a client to be reading a stale version of a file. However, we know that when we close a file or open a file that we are consistent with the rest of the filesystem at that moment.
 
-Session semantics are easy to reason about, but they are not great for situations where clients want to concurrently share a file. For example, for two clients to be able to write to a file and see each other’s updates, they will constantly need to `close` and re-`open` the file. Also, files that stay open for longer periods of time may become severely inconsistent.
+Session semantics are easy to reason about, but they are not great for situations where clients want to concurrently share a file. For example, for two clients to be able to write to a file and see each other's updates, they will constantly need to `close` and re-`open` the file. Also, files that stay open for longer periods of time may become severely inconsistent.
 
 ### Periodic Updates
 In order to avoid long periods of inconsistency, the client may write back changes periodically to the server. In addition, the server can send invalidation notifications periodically, which can enforce time bounds on inconsistency. Once the server notification is received, a client has to sync with the most recent version of the file.
@@ -167,7 +167,7 @@ The periods, by default, are 3 seconds for files and 30 seconds for directories.
 
 NFSv4 incorporates a delegation mechanism where the server delegates to the client all rights to manage a file for a given period of time. This avoids the periodic update checks mentioned above.
 
-With server-side state, NFS can support locking. NFS uses a lease-based mechanism to support locking. When a client acquires a lock, the server assigns a certain time period to the client during which the lock is valid. It is then the clients responsibility to either release the lock within the specified time frame or explicitly extend the lock. If the client goes down, the server isn’t locked forever.
+With server-side state, NFS can support locking. NFS uses a lease-based mechanism to support locking. When a client acquires a lock, the server assigns a certain time period to the client during which the lock is valid. It is then the clients responsibility to either release the lock within the specified time frame or explicitly extend the lock. If the client goes down, the server isn't locked forever.
 
 NFSv4 also supports a reader/writer lock called "share reservation". It also support mechanisms for upgrading from being a reader to a writer, and vice versa.
 
@@ -183,16 +183,16 @@ Session semantics may have been a good strategy, but the authors also noticed th
 
 They also observed that 20-30% of new data was deleted within 30 seconds, with 50% of new data being deleted within 5 minutes. The also observed that file sharing in their system is rare. As a result, the authors decided that write-back on close was not really necessary.
 
-Of course, the authors needed to support concurrent access even though they didn’t need to optimize for it.
+Of course, the authors needed to support concurrent access even though they didn't need to optimize for it.
 
 ## Sprint DFS from Analysis to Design
 The authors decided that Sprite should support caching, and use a write-back policy to send changes to the server.
 
 Every 30 seconds, a client will write back all of the blocks that have not been modified within the last 30 seconds. Note that a file may be opened and closed multiple times by the client before any data is sent to the server.
 
-The intuition behind this is that blocks that have been more recently modified will continue to be modified. It doesn’t make sense to force write-backs on blocks that are likely to be worked on more. This strategy avoids sending the same blocks to the server over and over.
+The intuition behind this is that blocks that have been more recently modified will continue to be modified. It doesn't make sense to force write-backs on blocks that are likely to be worked on more. This strategy avoids sending the same blocks to the server over and over.
 
-Note that this 30 second threshold is directly related to authors’ observation that 20-30% of new data was deleted within 30 seconds.
+Note that this 30 second threshold is directly related to authors' observation that 20-30% of new data was deleted within 30 seconds.
 
 When a client comes along and wants to open a file that is being written by another client, the server will contact the writer and collect all of the outstanding dirty blocks.
 
@@ -207,7 +207,7 @@ All `open` operations will go through the server.
 
 All of the clients will be allowed to cache blocks. The writer will also have to keep timestamps on each modified block in order to enforce the 30 second write-back policy.
 
-When the writer `close`s the file, the contents will be stored in the writers’ cache. Of course, the next `open` will still have to go through the server. This means that the server and the client need to keep some sort of version number in order to stay in sync.
+When the writer `close`s the file, the contents will be stored in the writers' cache. Of course, the next `open` will still have to go through the server. This means that the server and the client need to keep some sort of version number in order to stay in sync.
 
 On a per file basis, the client keeps track of:
 - cache (overall yes/no)
@@ -220,15 +220,15 @@ On a per file basis, the server keeps track of:
 - writer
 - version
 
-Let’s assume that a new writer comes along after the first writer has closed the file. This is referred to as a **sequential writer**.
+Let's assume that a new writer comes along after the first writer has closed the file. This is referred to as a **sequential writer**.
 
 In this case, the server contacts the old writer to gather all of the dirty blocks, which is convenient given that the client keeps track of all dirty blocks.
 
 If the old writer has closed the file, the server will update the value of the writer it holds to point to the new writer. At this point, the new writer can proceed and cache the file.
 
-Let’s assume that a third writer comes along and wants to write to the file concurrently with the current writer. This is concurrent sharing.
+Let's assume that a third writer comes along and wants to write to the file concurrently with the current writer. This is concurrent sharing.
 
-When the write request comes, the server contacts the current writer to gather the dirty blocks. When the server realizes that this writer hasn’t closed the file, it will disable the caching of the file for both writers.
+When the write request comes, the server contacts the current writer to gather the dirty blocks. When the server realizes that this writer hasn't closed the file, it will disable the caching of the file for both writers.
 
 To enable/disable caching, it makes sense for the server to maintain a cacheable flag on a per file basis.
 

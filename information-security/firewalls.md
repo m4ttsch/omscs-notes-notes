@@ -17,7 +17,7 @@ Detection and response mechanisms make up the second line of defense. These mech
 The third line of defense consists of the attack-resilient technologies that enable the most valuable system components to survive attacks. For example, a server is a collection of diversified subsystems with different implementations. At least one of these subsystems will not be susceptible to an attack since an attack typically exploits specific vulnerabilities that may be present on some, but not all, components.
 
 ## What is a Firewall?
-To motivate the need for firewalls, let’s first take a high-level tour of a typical enterprise network.
+To motivate the need for firewalls, let's first take a high-level tour of a typical enterprise network.
 
 An enterprise network is part of the Internet. It typically has an internal, trusted intranet that only the employees can access. At a bank, for example, the trusted part of the network holds the internal email server and the systems that process financial transactions.
 
@@ -79,7 +79,7 @@ The firewall may define rules that look at many different packet headers. For ex
 
 A firewall with multiple interfaces may also match packets based on which interface the packet was received on or which interface the packet is being sent to. This approach is useful when there are multiple ports in an enterprise network that require multiple security policies.
 
-If a packet doesn’t match any of the rules defined in the firewall, then a default action must be taken. There are two default policies: the default discard policy and the default forward policy.
+If a packet doesn't match any of the rules defined in the firewall, then a default action must be taken. There are two default policies: the default discard policy and the default forward policy.
 
 The **default discard policy** says that if no rule matches the packet, then the packet will be discarded. This is a more secure policy because it provides more control over the traffic that is allowed in the network. However, it can be a hindrance to users who wish to engage with new network services and must tell the sysadmin to enable such traffic.
 
@@ -103,7 +103,7 @@ The port numbers below 1024 are the [well-known port numbers](https://www.webope
 A packet-filtering firewall that wants to support clients of well-known services must permit inbound network traffic on all these high-numbered ports for TCP-based connections. A firewall that wants to support servers of well-known services must permit inbound network traffic on the well-known port or port ranges associated with those services.
 
 ## Packet Filtering Examples
-Let’s look at a simplified rule set for SMTP traffic where the goal is to allow only inbound and outbound email traffic while denying all other traffic.
+Let's look at a simplified rule set for SMTP traffic where the goal is to allow only inbound and outbound email traffic while denying all other traffic.
 
 ![](https://assets.omscs.io/756F8FCF-2E3E-4D64-8D5C-C114B81B6610.png)
 
@@ -113,7 +113,7 @@ The first two rules are required to permit SMTP traffic to flow between an exter
 
 Rules three and four are required to permit SMTP traffic to flow between an internal host and an external provider. Rule three allows outbound SMTP traffic from an internal client. Rule four allows inbound traffic over higher-numbered ports. In other words, the third rule allows the internal client to make an SMTP request, and the fourth rule allows the external server to respond.
 
-The final rule is an explicit statement of the default policy, which is to deny packets that don’t match any of the previous rules.
+The final rule is an explicit statement of the default policy, which is to deny packets that don't match any of the previous rules.
 
 ## Modifying the Rules on Source Ports
 There are several problems with the ruleset shown above. For example, rule four allows inbound traffic to any destination port above 1023, whereas the original intent is to only allow inbound traffic that is part of an established SMTP connection. We can make our forwarding rules less permissive by looking at the source port in addition to the destination port.
@@ -127,19 +127,19 @@ We can make these rules even more precise. When a TCP connection is established,
 ![](https://assets.omscs.io/8BD6C2F2-39BC-4795-B4E8-B469D9C1286B.png)
 
 ## Packet Filtering Advantages
-The main advantage of packet-filtering firewalls is their simplicity and ease of implementation. Packet-filtering firewalls are also very efficient and impose very little overhead. Finally, the rules for packet-filtering firewalls can be very general, since they don’t have to take higher-level applications into account.
+The main advantage of packet-filtering firewalls is their simplicity and ease of implementation. Packet-filtering firewalls are also very efficient and impose very little overhead. Finally, the rules for packet-filtering firewalls can be very general, since they don't have to take higher-level applications into account.
 
 ## Packet Filtering Weaknesses
 Since packet-filtering firewalls do not examine upper-layer application data, they cannot prevent attacks that exploit application-specific vulnerabilities. If a packet-filtering firewall allows traffic to a given application, it allows all traffic to flow to that application indiscriminately.
 
-Additionally, the logging capabilities of packet-filtering firewalls are limited. A firewall cannot log information about packet data that it doesn’t examine. For example, a firewall may allow FTP traffic over port 21, and it may log the presence of FTP traffic,  but it cannot log the actual FTP data, such as which files are being transmitted.
+Additionally, the logging capabilities of packet-filtering firewalls are limited. A firewall cannot log information about packet data that it doesn't examine. For example, a firewall may allow FTP traffic over port 21, and it may log the presence of FTP traffic,  but it cannot log the actual FTP data, such as which files are being transmitted.
 
-Since packet-filtering firewalls make decisions on a per-packet basis, they can’t defend against attacks that span multiple packets.
+Since packet-filtering firewalls make decisions on a per-packet basis, they can't defend against attacks that span multiple packets.
 
 Finally, our SMTP example shows that packet-filtering rules tend to have a small number of conditions, which may be too permissive. An attacker might craft traffic that exploits these misconfigurations.
 
 ## Packet Filtering Firewall Countermeasures
-Let’s discuss some attacks on packet-filtering firewalls and the appropriate countermeasures.
+Let's discuss some attacks on packet-filtering firewalls and the appropriate countermeasures.
 
 In a **source IP address spoofing** attack, the attacker sends packets from an outside host but with a falsified source IP address matching an internal host. Since firewalls are typically configured to forward traffic from one internal host to another, the attacker hopes that using a spoofed internal source IP address will make untrusted external traffic look like safe internal traffic.
 
@@ -197,7 +197,7 @@ Application-level gateways typically reside on a dedicated machine called a **ba
 
 Bastion hosts execute a secure version of the operating system and are configured to allow only essential network traffic, such as web and DNS traffic. Additionally, they can require user authentication, even for traffic originating from an internal host.
 
-Each proxy running on the bastion host is configured to allow access only to specific host systems on the internal network. This configuration ensures that compromised proxies don’t lead to attacks on the entire internal network.
+Each proxy running on the bastion host is configured to allow access only to specific host systems on the internal network. This configuration ensures that compromised proxies don't lead to attacks on the entire internal network.
 
 Each proxy module installed on the bastion host is a very small software package designed with simplicity and security in mind. For example, a typical Unix email application may contain over 100,000 lines of code while an email proxy might contain fewer than 1,000.
 
@@ -257,7 +257,7 @@ Compared with the external firewall in the diagram above, the internal firewall 
 
 The internal firewall protects the remainder of the enterprise network from attacks launched from the DMZ. For example, if a public-facing web server is compromised, the internal firewall can block attack traffic originating from that server.
 
-Additionally, the internal firewall controls access to the DMZ from the internal network. Only authorized traffic from the internal network can reach the DMZ to change, say, a setting on a public-facing web server. For example, such traffic may be limited to having a source IP address of a sysadmin’s workstation.
+Additionally, the internal firewall controls access to the DMZ from the internal network. Only authorized traffic from the internal network can reach the DMZ to change, say, a setting on a public-facing web server. For example, such traffic may be limited to having a source IP address of a sysadmin's workstation.
 
 Multiple internal firewalls can be used to protect different parts of the internal network from each other; that is, even if one part of the internal network has been compromised, the other parts are still being protected by their local firewalls.
 

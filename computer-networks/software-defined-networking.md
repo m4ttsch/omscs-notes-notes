@@ -16,7 +16,7 @@ Network management is the process of configuring the network to achieve a variet
 The key aspect to network management is network configuration, and many things can go wrong if the network is configured incorrectly.
 
 ### Network Configuration Errors
-Persistent oscillations can occur when routers can’t agree on a route to a destination.
+Persistent oscillations can occur when routers can't agree on a route to a destination.
 
 Loops occur when packets get stuck traveling between two or more routers and never make it to the destination.
 
@@ -43,11 +43,11 @@ Second, SDN provides the ability to satisfy network-level objectives, such as lo
 
 Third, SDN provides the network operator direct control. Rather than requiring network operators to configure each device individually with indirect configuration, SDN allows an operator to write a control program that directly affects the data plane.
 
-This doesn’t mean that routers are no longer important!
+This doesn't mean that routers are no longer important!
 
 Routers should still forward traffic since router hardware is specialized to forward traffic at very high rates. In addition, routers should still collect measurements such as a traffic statistics and topology information.
 
-However, there is no inherent reason that a router needs to compute routes. Even though routing has conventionally operated as a distributed computation of forwarding tables, that computation doesn’t need to run on the routers.
+However, there is no inherent reason that a router needs to compute routes. Even though routing has conventionally operated as a distributed computation of forwarding tables, that computation doesn't need to run on the routers.
 
 Rather, the computation could be logically centralized and controlled from a centralized control program.
 
@@ -228,7 +228,7 @@ However, the performance of POX is not as good as the performance of NOX.
 
 All of the controllers are still relatively hard to use because they involve interacting directly with OpenFlow flow table modifications, which operate on a very low level.
 
-It’s possible to develop programming languages on top of these controllers that make it much easier for a network operator to reason about network behavior.
+It's possible to develop programming languages on top of these controllers that make it much easier for a network operator to reason about network behavior.
 
 ## Customizing Control
 ### Hubs

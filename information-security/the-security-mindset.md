@@ -8,7 +8,7 @@ lecture: the-security-mindset
 # The Security Mindset
 
 ## Why Cyber Security?
-Before considering why we care about cyber security, it’s important to understand why we would care about security in general.
+Before considering why we care about cyber security, it's important to understand why we would care about security in general.
 
 Essentially, we worry about security when we have something of value which is at risk of being harmed.
 
@@ -82,7 +82,7 @@ The threat source was cybercriminals wishing to profit off of this information.
 
 In this case, the vulnerability was human.
 
-The attack began with a [phishing](https://en.wikipedia.org/wiki/Phishing) message sent to a member of the HVAC company that was contracting for Target. Through the phishing attacks, the criminals were able to get credentials to get onto Target’s network, at which point they were able to install malware on the point-of-sale systems in order to siphon off the credit card numbers.
+The attack began with a [phishing](https://en.wikipedia.org/wiki/Phishing) message sent to a member of the HVAC company that was contracting for Target. Through the phishing attacks, the criminals were able to get credentials to get onto Target's network, at which point they were able to install malware on the point-of-sale systems in order to siphon off the credit card numbers.
 
 ## Black Market Prices Quiz
 ![](https://assets.omscs.io/E8C3B157-9CC2-43BB-B761-89A237C8A7E5.png)
@@ -141,7 +141,7 @@ Since prevention is not guaranteed, we want to *detect* the inevitable compromis
 
 After detection, we must make sure that we *respond* to the compromise, which may include *recovery* of lost or corrupted data.
 
-Finally, we must provide some *remediation* to ensure that the same attack doesn’t happen again.
+Finally, we must provide some *remediation* to ensure that the same attack doesn't happen again.
 
 Cybersecurity consists of *policies*, which describe what needs to be done on each of these fronts, and *mechanisms*, which describe how the policies will be carried out.
 

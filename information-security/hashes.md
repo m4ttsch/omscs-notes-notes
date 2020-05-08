@@ -38,7 +38,7 @@ The **strong collision-resistant property** states that it should be computation
 
 The strong collision-resistant property implies the weak collision-resistant property; that is, while the latter only requires that a hash function is collision-resistant regarding a specific input message, the former requires collision resistance for any pair of given messages. Thus, a hash function cannot meet the strong collision-resistant property without also satisfying the weak collision-resistant property.
 
-Suppose that Bob does some work for Alice, and he wants her to pay him later. He can draft an IOU message and ask Alice to digitally sign it as a way of agreeing to pay it. To sign the IOU, Alice first hashes it and then signs the hash using her private key. Later, Bob can present this IOU message, along with the signature, to Alice or Alice’s bank to retrieve the payment.
+Suppose that Bob does some work for Alice, and he wants her to pay him later. He can draft an IOU message and ask Alice to digitally sign it as a way of agreeing to pay it. To sign the IOU, Alice first hashes it and then signs the hash using her private key. Later, Bob can present this IOU message, along with the signature, to Alice or Alice's bank to retrieve the payment.
 
 If the strong collision-resistant property is not present, Bob can find two different messages that have the same hash code: one requesting Alice to pay a small amount `X`, and another requesting her to pay a more substantial amount `XXX`.
 
@@ -67,9 +67,9 @@ We can reframe the problem to ask instead: how many people do we need in a room 
 
 When we place the first person `f` in the room, `p = 1`. Since there are no other people in the room, `f` is guaranteed to have a unique birthday.
 
-When we place the second person `s` in the room, there are only 364 unique days left, since `f` has already taken one day. The probability that `s` doesn’t share `f`’s birthday is `364 / 365`, and thus the overall probability `p` drops from 1 to `364 / 365`.
+When we place the second person `s` in the room, there are only 364 unique days left, since `f` has already taken one day. The probability that `s` doesn't share `f`'s birthday is `364 / 365`, and thus the overall probability `p` drops from 1 to `364 / 365`.
 
-The third person, `t`, is in a similar situation. Since two people precede them, there are only 363 available birthdays left. As a result, `p` drops to `364 / 365 * 363 / 365`. We multiply the probabilities because we need to make sure that `s` doesn’t violate the uniqueness constraint *and* `t` doesn’t either. Technically, this is a conditional probability.
+The third person, `t`, is in a similar situation. Since two people precede them, there are only 363 available birthdays left. As a result, `p` drops to `364 / 365 * 363 / 365`. We multiply the probabilities because we need to make sure that `s` doesn't violate the uniqueness constraint *and* `t` doesn't either. Technically, this is a conditional probability.
 
 Generally, for `k` possible birthdays and `n` individuals in the room, we can calculate the `p` as:
 
@@ -92,7 +92,7 @@ Once we understand the pigeonhole principle and the birthday paradox, we see tha
 
 Remember, a hash function produces a fixed-size output from an input of arbitrary size. Since there are an infinite number of arbitrarily-sized inputs, and a finite number of fixed-size hash codes, many inputs can be mapped to the same output hash value. In other words, we have many more pigeons than pigeonholes.
 
-This setup seems to violate the property of collision resistance. However, the collision resistance properties only speak to computational infeasibility, not mathematical impossibility. From a security perspective, a collision that is infeasible to find is as good as one that doesn’t exist.
+This setup seems to violate the property of collision resistance. However, the collision resistance properties only speak to computational infeasibility, not mathematical impossibility. From a security perspective, a collision that is infeasible to find is as good as one that doesn't exist.
 
 The larger the number of output hash values, the harder it is to find a collision. We can reduce the probability of a collision by increasing the length of the hash code.
 
@@ -174,7 +174,7 @@ Furthermore, compared with a cryptographic hash function, it is much harder to l
 
 For example, suppose the attacker obtains the HMAC of message `m1` and wants to find another message `m2` such that `HMAC(m2) = HMAC(m1)` .
 
-Without the secret key, there is no way the attacker can compute the correct HMAC value for `m2`. Thus, the attacker can’t determine whether `m1` and `m2` have collision in HMAC.
+Without the secret key, there is no way the attacker can compute the correct HMAC value for `m2`. Thus, the attacker can't determine whether `m1` and `m2` have collision in HMAC.
 
 In summary, because of the use of the secret key, HMAC is much more secure than a cryptographic hash function alone.
 

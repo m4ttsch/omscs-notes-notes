@@ -16,7 +16,7 @@ Every request for every resource must be monitored, and the trusted computing ba
 
 In order to make this decision, the TCB has to know the source of such requests, and **authentication** is the mechanism by which these sources are identified.
 
-The first step in authentication is identification. Of course, a requestor cannot just claim whatever identity they’d like. As a result, the second step in authentication is identity verification.
+The first step in authentication is identification. Of course, a requestor cannot just claim whatever identity they'd like. As a result, the second step in authentication is identity verification.
 
 For a concrete example, we identify ourselves when we supply our username to a login form, and we verify that identity when we supply our (secret) password.
 
@@ -41,11 +41,11 @@ When a legitimate user tries to authenticate herself, the system can demand some
 
 This is called **availability**. The system is available to the user who is able to provide the sufficient evidence to support their claim to their identity.
 
-In other words, we don’t want to have any *false negatives*. This means that we don’t want to have the situation where we deny access to a user who has provided sufficient evidence that they are who they claim to be.
+In other words, we don't want to have any *false negatives*. This means that we don't want to have the situation where we deny access to a user who has provided sufficient evidence that they are who they claim to be.
 
-On the other hand, we don’t want to have a system that allows a malicious user to successfully impersonate a valid user.
+On the other hand, we don't want to have a system that allows a malicious user to successfully impersonate a valid user.
 
-In other words, we don’t want to have any *false positives*. This means that we don’t want to have a situation where we grant access to someone who is not who they claim to be.
+In other words, we don't want to have any *false positives*. This means that we don't want to have a situation where we grant access to someone who is not who they claim to be.
 
 Authentication systems that have low false positive rates are said to have **authenticity**. That is, these systems ensure that they only authenticate users with authentic claims to their identity.
 
@@ -76,9 +76,9 @@ The operating system can take the supplied authentication information check it a
 
 If there is a match between what the system knows and what a user provides, then the user is authenticated, and a user shell is created.
 
-If the check fails, then the system believes that the user has not provided the correct information. If so, the identity being claimed probably doesn’t belong to the user who is asking for authentication.
+If the check fails, then the system believes that the user has not provided the correct information. If so, the identity being claimed probably doesn't belong to the user who is asking for authentication.
 
-In this case, the system doesn’t have the right match and authentication fails.
+In this case, the system doesn't have the right match and authentication fails.
 
 ## Login Attacks Quiz
 ![](https://assets.omscs.io/5A9CA9D1-FD6A-413F-9DF6-43B0D94BBE71.png)
@@ -97,7 +97,7 @@ Remember, the positive event is gaining access to the system. A false positive i
 ## Threat Modeling of the Password Method
 How can we attack password-based authentication?
 
-A password is a secret shared between a legitimate user and the system, but that doesn’t mean an attacker can’t try to guess it. As obvious as it may seem, using common or weak passwords presents a real vulnerability in authentication systems.
+A password is a secret shared between a legitimate user and the system, but that doesn't mean an attacker can't try to guess it. As obvious as it may seem, using common or weak passwords presents a real vulnerability in authentication systems.
 
 When you authenticate with a computer system, how do you know that you are really talking to the system instead of a program that is impersonating the system? A hacker can create a fake login program and then steal your credentials as you type them in.
 
@@ -108,7 +108,7 @@ When using a trusted path, a user can have confidence that there is no applicati
 
 The hardware and the operating system work in tandem to provide a trusted path.
 
-For example, to login to windows systems you have to press the key sequence CTRL-ALT-DEL. This sequence can’t be trapped by any other program besides the operating system. Thus, you can be confident that you are communicating directly with the operating system after pressing this sequence.
+For example, to login to windows systems you have to press the key sequence CTRL-ALT-DEL. This sequence can't be trapped by any other program besides the operating system. Thus, you can be confident that you are communicating directly with the operating system after pressing this sequence.
 
 In addition, the display and keyboard must be connected to the CPU on which the operating system is running, in a way in which there is no one in between. As I/O devices, they need to be using their own trusted path to the OS.
 
@@ -123,11 +123,11 @@ Sometimes, visual feedback can be provided to assure the user that they are usin
 If we are attacking systems, we might get the best bang for our buck trying these passwords.
 
 ## Implementing Password Authentication
-When a user authenticates with a computer system, they must supply their identity and some verification of that identity. In password-based systems, this verification is the user’s password.
+When a user authenticates with a computer system, they must supply their identity and some verification of that identity. In password-based systems, this verification is the user's password.
 
 When a user supplies their password to a computer system, the system then has the task of verifying that this is the correct password for this user.
 
-How does the system know the user’s password? One solution is to ask users to share their password with the system when they create their account. This is known as **enrollment**.
+How does the system know the user's password? One solution is to ask users to share their password with the system when they create their account. This is known as **enrollment**.
 
 After enrollment, how does the system store the password?
 
@@ -136,14 +136,14 @@ The system can persist user passwords in  plaintext in a system file. All the sy
 
 As a basic security measure, the file should only be readable by the root/admin user, which is the user on whose behalf the login program runs.
 
-What if permissions are set incorrectly? If so, someone else may be able to read that file and learn everyone’s password.
+What if permissions are set incorrectly? If so, someone else may be able to read that file and learn everyone's password.
 
 Even if the permissions are set correctly, why should the admin know the passwords? If an attacker can impersonate the root user, they can learn all the passwords.
 
-It’s clear that something about the secret has to be shared with the system, but storing those secrets in a file as plaintext - even with access control - is not a good idea.
+It's clear that something about the secret has to be shared with the system, but storing those secrets in a file as plaintext - even with access control - is not a good idea.
 
 ### Method 2
-Alternatively, the system don’t store the passwords themselves, but rather stores something derived from them.
+Alternatively, the system don't store the passwords themselves, but rather stores something derived from them.
 
 We can pass the password through a **one-way hash function** to create this derived value.
 
@@ -153,14 +153,14 @@ A one-way hash function means that it is easy to compute the hash value given th
 
 During enrollment, the system applies the hash function to the supplied password and writes this value to the file. When a user later comes to authenticate, the system hashes the supplied password and checks that value against the persisted hash value.
 
-The benefit of this approach is that if an attacker steals this file they cannot compromise any user accounts because they can’t recreate the original passwords.
+The benefit of this approach is that if an attacker steals this file they cannot compromise any user accounts because they can't recreate the original passwords.
 
 Even so, these password files should still only be readable by the root user.
 
 ## Hash Functions
 A hash function takes a variable length password and outputs a fixed-length hash value.
 
-A hash function is a one-way function, which means that it is very difficult to invert. In other words, it’s easy to compute a hash given an input, but it’s very difficult to recreate an input given a hash.
+A hash function is a one-way function, which means that it is very difficult to invert. In other words, it's easy to compute a hash given an input, but it's very difficult to recreate an input given a hash.
 
 ### Hash Functions and Threats
 We assume that the one-way property of hash functions holds, so hash function inversion is not a threat.
@@ -171,7 +171,7 @@ Since the hash functions being used are well-known (remember security by obscuri
 
 If the attacker can get ahold of the system password file, they can hash common passwords and check the hashes against the file.
 
-For example, if the password file contains the hash value ‘abcdef’ for Bob’s account, and the attacker determine that passing ‘123456’ through the hash function yields ‘abcdef’, then the attacker knows that Bob’s password is ‘123456’.
+For example, if the password file contains the hash value 'abcdef' for Bob's account, and the attacker determine that passing '123456' through the hash function yields 'abcdef', then the attacker knows that Bob's password is '123456'.
 
 In a **dictionary attack**, a malicious user passes a large dictionary of common passwords - with some common mutations - to a series of hash functions in order to match against a stolen password file.
 
@@ -215,11 +215,11 @@ Regardless, this is not an unfeasible amount of time for a hacker to wait while 
 As a fun aside: increasing the password length to nine random characters increases the search time to 4.29 years, and increasing it to ten random characters increases the search time to 266 years.
 
 ## Passwords are not Really Random
-Passwords are not really random, so when an attacker is trying a brute force attack, they don’t have to search for things in a completely random manner.
+Passwords are not really random, so when an attacker is trying a brute force attack, they don't have to search for things in a completely random manner.
 
 A smart attacker will try popular passwords first - for example, "password" and "123456" - in order to reduce the amount of work that they have to do.
 
-An attacker can create a **rainbow table** mapping potential passwords to their hash values. With this table, the attacker doesn’t even need to perform the hashing directly. Instead they can just lookup hash values from the password file and see what password maps to those hash values.
+An attacker can create a **rainbow table** mapping potential passwords to their hash values. With this table, the attacker doesn't even need to perform the hashing directly. Instead they can just lookup hash values from the password file and see what password maps to those hash values.
 
 What if two users pick the same password? This is not an unlikely occurrence, given the popularity of a relatively small set of common passwords.
 
@@ -292,11 +292,11 @@ We can authenticate users based on something they have - such as a smart card or
 
 How is authentication implemented with a smart card?
 
-Often, the authentication flow will include a **challenge-response**. In challenge-response the system may send some sequence of characters to the token, and the token will send back a response based on this challenge. This response can be the same sequence encrypted with the token’s private key, for example.
+Often, the authentication flow will include a **challenge-response**. In challenge-response the system may send some sequence of characters to the token, and the token will send back a response based on this challenge. This response can be the same sequence encrypted with the token's private key, for example.
 
 Thus, the system can authenticate the smart card and, by proxy, the user in possession of the smart card.
 
-One obvious ramification of this approach is that the users must be in physical possession of the smart card in order to authenticate. If you leave your smart card at home, you’ll have to go back at get it.
+One obvious ramification of this approach is that the users must be in physical possession of the smart card in order to authenticate. If you leave your smart card at home, you'll have to go back at get it.
 
 In addition, a smart card needs special hardware - such as a card reader - installed in order to communicate with the system. This added requirement adds cost to the implementation of this type of authentication system.
 
@@ -305,7 +305,7 @@ Another problem with this approach is misplaced trust. For example, the [RSA Sec
 ## Something You Are Authentication
 Finally, authentication can be based on **biometrics** or, more colloquially, "something you are".
 
-For example, a system can look at the pattern of ridges and grooves in a supplied fingerprint to verify a user’s identity.
+For example, a system can look at the pattern of ridges and grooves in a supplied fingerprint to verify a user's identity.
 
 Alternatively, a system can analyze keystroke dynamics, such as how fast a user types or how long it takes a user to transition from certain keys to others. This data can be synthesized to create a representation of a specific user.
 
@@ -349,7 +349,7 @@ Multi-factor authentication makes it harder for attackers to impersonate users.
 ### Authentication over a Network
 When we are authenticating with services over the open Internet, we no longer have the trusted path to the OS authenticating us.
 
-Cryptography helps secure network communication through encryption and shared secrets. Of course, this doesn’t help against certain *man-in-the-middle* attacks.
+Cryptography helps secure network communication through encryption and shared secrets. Of course, this doesn't help against certain *man-in-the-middle* attacks.
 
 ## Multi-factor Authentication Quiz
 ![](https://assets.omscs.io/41CFA250-2487-4089-A2D7-D01CC482495F.png)

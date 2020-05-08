@@ -32,9 +32,9 @@ Behind the load balancer, we can have one or two different setups. In a **homoge
 ## Homogenous Architectures
 Any node in a functionally homogenous setup can process any type of request and can perform any of the processing actions that is required in the end-to-end request processing.
 
-The benefit of this is that the front-end (load balancer) can be kept very simple. It doesn’t have to keep track of which node can service which type of request; instead, it can assign requests in a round-robin manner to the next available node.
+The benefit of this is that the front-end (load balancer) can be kept very simple. It doesn't have to keep track of which node can service which type of request; instead, it can assign requests in a round-robin manner to the next available node.
 
-This design doesn’t mean that every node has all of the data. Instead, data may somehow be replicated or distributed across the nodes. Importantly, every node is able to get to any type of information that is necessary for the execution of the service.
+This design doesn't mean that every node has all of the data. Instead, data may somehow be replicated or distributed across the nodes. Importantly, every node is able to get to any type of information that is necessary for the execution of the service.
 
 One downside of this approach is that there is little opportunity to benefit from caching. A simple front-end will not keep enough to understand the locality of each task on a node by node basis.
 
@@ -51,7 +51,7 @@ One downside of this approach is that the front-end needs to be more complex. Th
 
 In addition, the overall management of this system becomes more complex. When a machine fails, or requests increases, it is important to understand which types of servers need to be scaled out.  
 
-Also, if something changes fundamentally in the workload pattern, the server layout needs to be reconfigured. It’s not as easy as scaling up or down.
+Also, if something changes fundamentally in the workload pattern, the server layout needs to be reconfigured. It's not as easy as scaling up or down.
 
 ## Cloud Computing Poster Child: Animoto
 Amazon was a dominant online retailer in the early 2000s. However, the workload that they needed to handle was imbalanced. The bulk of their traffic was received during the holiday shopping season, and much of the hardware they provisioned sat idle outside of that window.
@@ -68,7 +68,7 @@ In 2008, Animoto became available to Facebook users. Within three days, Animoto 
 
 In a week, Animoto had scaled up the number of servers it used by two orders of magnitude.
 
-There’s no way they would have been able to respond to this demand if they had gone the traditional route of owning and managing their own infrastructure.
+There's no way they would have been able to respond to this demand if they had gone the traditional route of owning and managing their own infrastructure.
 
 ## Cloud Computing Requirements
 Traditionally, business would need to buy and configure the resources that were needed for their services. The number of resources to buy/configure would be based on the peak expected demand for those services.
@@ -85,7 +85,7 @@ The scaling should be instantaneous: as soon as the demand increases, so does th
 
 All of this scaling should be able to happen automatically, and the provisioned resources should be accessible anywhere, anytime.
 
-Note that you wouldn’t potentially own these resources, but this may be a fair compromise.
+Note that you wouldn't potentially own these resources, but this may be a fair compromise.
 
 Goals of cloud computing, summarized:
 - On-demand, elastic resources and services
@@ -102,7 +102,7 @@ Providers offer different types of billing and accounting services. Some marketp
 
 Billing is often not done by raw usage, as overheads with monitoring at that level of fine-grained control are pretty high. Instead, billing is done based on some discrete step function. For example, compute resources may be billed according to "size": tiny, medium, extra-large.
 
-All of this is managed by the cloud provider. Common software stacks more managing cloud resources include the open source OpenStack and VMware’s vSphere software stack.
+All of this is managed by the cloud provider. Common software stacks more managing cloud resources include the open source OpenStack and VMware's vSphere software stack.
 
 ## Why Does Cloud Computing Work?
 Two basic principles provide the fundamental theory behind the cloud computing approach.
@@ -116,7 +116,7 @@ The second is **economies of scale**.  A cloud provider is able to leverage a la
 
 Based on this vision, cloud computing should turn the IT resource into a fungible utility.
 
-We shouldn’t need to care about which hardware resources are used, or where they are. Virtualization technology is definitely an enabler in this process.
+We shouldn't need to care about which hardware resources are used, or where they are. Virtualization technology is definitely an enabler in this process.
 
 Unfortunately, some limitations exist. For example, even with virtualization, they are some hardware dependencies that cannot be masked. In addition, different providers support different APIs; thus, we cannot seamlessly switch amongst providers without rewriting code. In addition, there are privacy/security concerns associated with putting core business code in the hands of an external provider.
 
@@ -142,7 +142,7 @@ A **Platform as a Service** (PaaS) provides you with certain APIs to allow you t
 
 At the lowest level, clouds can provide infrastructure instances, like compute instances that consist of the CPUs with accompanying memory, storage and network infrastructure. Amazon EC2 is a such a model of this **Infrastructure as a Service** (IaaS).
 
-These types of clouds still don’t provide access to the physical resources directly, rather only the virtualized resources. It is often the case that you are sharing the physical resources with other tenants. That being said, Amazon does provide high-performance instances that are single tenant.
+These types of clouds still don't provide access to the physical resources directly, rather only the virtualized resources. It is often the case that you are sharing the physical resources with other tenants. That being said, Amazon does provide high-performance instances that are single tenant.
 
 ## Requirements for the Cloud
 Clouds must provide **fungible** resources. This means that the resources can easily be repurposed to support different customers with different types of requirements. Without fungibility, the economic opportunity for cloud providers disappears.
@@ -155,7 +155,7 @@ Once scale is introduced, failures become inevitable. The probability of system 
 
 Clouds are shared resources, so cloud management has to provide mechanisms that guarantee performance and  isolation across these multi-tenant environments. Misbehaving tenants should not be able to wreak havoc on other tenants and/or the entire system.
 
-Clouds must also make guarantees with regards to the safety of their client’s data and the security of the execution environment that they provide to their clients.
+Clouds must also make guarantees with regards to the safety of their client's data and the security of the execution environment that they provide to their clients.
 
 ## Cloud Enabling Technologies
 A number of technologies are needed in order for cloud computing to be performed correctly and efficiently.
@@ -164,7 +164,7 @@ Virtualization technologies is needed to provide fungible resources that can be 
 
 In addition, resource-provisioning and -scheduling technologies are required to make sure that cloud resources can be spun up quickly, consistently, and efficiently. **mesos** and **yarn** are technologies that address this issue.
 
-In order to address customers’ needs for scale, cloud technologies need to provide abilities to process and store large amounts of data. **Hadoop MapReduce** and **Spark** are popular technologies for big data.
+In order to address customers' needs for scale, cloud technologies need to provide abilities to process and store large amounts of data. **Hadoop MapReduce** and **Spark** are popular technologies for big data.
 
 Regarding data storage, cloud computing platforms incorporate distributed filesystems - that typically operate in some "append only" mode. In addition, NoSQL databases and distributed in-memory caches can also help with accessing and manipulating data at scale.
 
