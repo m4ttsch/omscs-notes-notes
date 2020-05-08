@@ -184,7 +184,7 @@ In Diffie-Hellman, neither party ever transmits the shared secret encryption key
 
 We assume that an attacker can access $Y_A$, $Y_B$, $q$, and $\alpha$, since these values are transmitted. The value of local secret $X_A$ is equal to the discrete logarithm $dlog(\alpha,q)(Y_A)$. The security assumption in Diffie-Hellman is that finding the discrete logarithm is infeasible given a very large, prime $q$.
 
-Of course, if this conjecture is not valid, then an adversary knowing $Y_A$, $q$, and $\alpha $ can easily compute $X_A$. With $X_A$ in hand, they can compute $S$ and effectively eavesdrop on communication between $A$ and $B$.
+Of course, if this conjecture is not valid, then an adversary knowing $Y_A$, $q$, and $\alpha$ can easily compute $X_A$. With $X_A$ in hand, they can compute $S$ and effectively eavesdrop on communication between $A$ and $B$.
 
 ## Diffie-Hellman Limitations
 Suppose that Alice tells Bob to use Diffie-Hellman. The first thing that Bob has to do is compute  $Y_B$ from his local secret $X_B$, and this computation involves a very CPU-intensive exponentiation calculation.
