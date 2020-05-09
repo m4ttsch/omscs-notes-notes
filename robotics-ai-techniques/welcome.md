@@ -13,7 +13,13 @@ Here are my notes from when I took RAIT in OMSCS during Summer 2020.
 
 Each document in "Lecture Notes" corresponds to a lesson in [Udacity](https://classroom.udacity.com/courses/cs373). Within each document, the headings correspond to the videos within that lesson. Usually, I omit any introductory or summary videos.
 
-There is a lot of information in these documents. I hope you find it helpful!
+## Textbook Information
+
+The following textbook may be helpful:
+- [Probabilistic Robotics (Intelligent Robotics and Autonomous Agents series)](https://amzn.to/3fFW6bR)
+- [Linear Algebra Done Right (Undergraduate Texts in Mathematics)](https://amzn.to/2ztcQC8)
+
+## Contact
 
 If you have any questions, comments, concerns, or improvements, don't hesitate to reach out to me. You can find me at:
 

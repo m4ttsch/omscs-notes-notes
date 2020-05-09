@@ -20,7 +20,13 @@ Each document in "Lecture Notes" corresponds to a lesson in [Udacity](https://cl
 
 Each document in "Exam Review" corresponds to a completed list of questions that were provided ahead of the two exams.
 
-There is a lot of information in these documents. I hope you find it helpful!
+## Textbook Information
+
+The following textbooks helped me get an **A** in this course:
+- [The Linux Programming Interface: A Linux and UNIX System Programming Handbook](https://amzn.to/2Wgn8Pg)
+- [Operating Systems: Three Easy Pieces](https://amzn.to/35NiXh6)
+
+## Contact
 
 If you have any questions, comments, concerns, or improvements, don't hesitate to reach out to me. You can find me at:
 

@@ -21,7 +21,12 @@ Each document in "Lecture Notes" corresponds to a lesson in [Udacity](https://cl
 The "Exam Review" section contains student-generated study guides for both the midterm and the final exam,
 as well as a complete list of the Udacity quizzes and answers.
 
-There is a lot of information in these documents. I hope you find it helpful!
+## Textbook Information
+
+The following textbook helped me get an **A** in this course:
+- [Computer Security: Principles and Practice](https://amzn.to/2Wgif8Q)
+
+## Contact
 
 If you have any questions, comments, concerns, or improvements, don't hesitate to reach out to me. You can find me at:
 
