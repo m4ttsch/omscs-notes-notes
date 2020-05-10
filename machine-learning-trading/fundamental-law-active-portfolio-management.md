@@ -46,11 +46,11 @@ Let's consider two different ways to bet.
 
 One approach is to put all 1000 tokens on one table and zero tokens on the other 999 tables. Another approach is to put one coin on each of the 1000 tables. Which of these approaches is better, or is it the case that they are equivalent?
 
-![](https://assets.omscs.io/2020-03-09-16-15-37.png)
+![](https://assets.omscs.io/notes/2020-03-09-16-15-37.png)
 
 ## Which Bet is Better Quiz Solution
 
-![](https://assets.omscs.io/2020-03-09-16-20-13.png)
+![](https://assets.omscs.io/notes/2020-03-09-16-20-13.png)
 
 The first bet is very risky; that is, there is a 49% chance that we are going to lose all of our money with the single flip of a coin. The second bet is much less risky. By distributing our tokens across all one thousand tables, we only lose all of our money if we lose all 1000 bets: a very low probability indeed. 
 
@@ -78,11 +78,11 @@ $$
 
 What is the expected return in the multi-bet case, where we bet 1000 tokens across 1000 different tables?
 
-![](https://assets.omscs.io/2020-03-09-18-33-21.png)
+![](https://assets.omscs.io/notes/2020-03-09-18-33-21.png)
 
 ## Coin-Flip Casino: Reward Quiz Solution
 
-![](https://assets.omscs.io/2020-03-09-18-59-26.png)
+![](https://assets.omscs.io/notes/2020-03-09-18-59-26.png)
 
 In this case, we have the same chances of winning and losing - 51% and 49%, respectively - but the amount we stand to win or lose on any bet is only one dollar. Since we are placing 1000 bets, our overall expected value is 1000 times the expected value of any individual bet.
 
@@ -132,11 +132,11 @@ Let's look at the single-bet case first. In this case, the expected reward is $2
 
 What is the risk-adjusted reward calculation for the multi-bet case?
 
-![](https://assets.omscs.io/2020-03-10-23-48-24.png)
+![](https://assets.omscs.io/notes/2020-03-10-23-48-24.png)
 
 ## Coin-Flip Casino: Reward/Risk Quiz Solution
 
-![](https://assets.omscs.io/2020-03-10-23-50-00.png)
+![](https://assets.omscs.io/notes/2020-03-10-23-50-00.png)
 
 In the multi-bet case, the reward was the same - $20 - but the risk was much smaller: $1. Thus, the risk-adjusted reward for this scenario is 20, which is much higher than that of the single-bet scenario.
 
@@ -228,11 +228,11 @@ For this problem, let's assume that Simons and Buffett both have the same inform
 
 If Buffett trades 120 times a year, how many times must Simons trade to maintain the same information ratio as Buffett?
 
-![](https://assets.omscs.io/2020-03-11-16-13-08.png)
+![](https://assets.omscs.io/notes/2020-03-11-16-13-08.png)
 
 ## Simons vs. Buffet Quiz Solution
 
-![](https://assets.omscs.io/2020-03-11-16-13-16.png)
+![](https://assets.omscs.io/notes/2020-03-11-16-13-16.png)
 
 If Buffett trades only 120 times per year, Simons has to trade 120,000,000 times to match Buffett's performance.
 

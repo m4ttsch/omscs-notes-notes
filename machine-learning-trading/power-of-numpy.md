@@ -13,11 +13,11 @@ lecture: power-of-numpy
 ## Relationship to Pandas
 Let's look back at our DataFrame `df`.
 
-![](https://assets.omscs.io/D38A6927-FF9C-4865-83D8-32FED6A19B63.png)
+![](https://assets.omscs.io/notes/D38A6927-FF9C-4865-83D8-32FED6A19B63.png)
 
 Just as NumPy is a wrapper around C and Fortran code, pandas is a wrapper of sorts around NumPy. 
 
-![](https://assets.omscs.io/37569F60-C8EC-4B64-A5C3-EE1F2AD9B8C0.png)
+![](https://assets.omscs.io/notes/37569F60-C8EC-4B64-A5C3-EE1F2AD9B8C0.png)
 
 As the picture above illustrates, pandas builds `df` on top of an ndarray. We can retrieve the internal ndarray directly from a DataFrame `df` with the following code:
 
@@ -85,12 +85,12 @@ Note that negative indexing is *not* zero-based. The last row/column is referenc
 - [Indexing](https://docs.scipy.org/doc/numpy/user/basics.indexing.html)
 
 ## Replace a Slice Quiz
-![](https://assets.omscs.io/1E2BC0CC-EADA-4431-ABDF-AE07857CF80D.png)
+![](https://assets.omscs.io/notes/1E2BC0CC-EADA-4431-ABDF-AE07857CF80D.png)
 
 We need to move data from the last two rows and the last two columns of `nd2` to the first two rows and the first two columns of `nd1`. 
 
 ## Replace a Slice Quiz Solution
-![](https://assets.omscs.io/60DEA1EE-99C0-4CC6-95F7-B01B9681CD59.png)
+![](https://assets.omscs.io/notes/60DEA1EE-99C0-4CC6-95F7-B01B9681CD59.png)
 
 Let's first look at how we can slice `nd2` to extract the data we want. We can slice the last two rows using negative indexing: `-2:`. We can slice the last two columns as `2:4`. Remember that NumPy indexing is upper-bound exclusive.
 
@@ -115,7 +115,7 @@ nd = np.array([2, 3, 4])
 
 If we print `nd` we see the following.
 
-![](https://assets.omscs.io/2354DAFA-F1C6-4C1F-8EAF-68361CEE0BE9.png)
+![](https://assets.omscs.io/notes/2354DAFA-F1C6-4C1F-8EAF-68361CEE0BE9.png)
 
 We can create a two-dimensional array by passing in a list of lists:
 
@@ -125,7 +125,7 @@ nd = np.array([(2, 3, 4),(5, 6, 7)])
 
 If we print `nd` we see the following.
 
-![](https://assets.omscs.io/D3EFFDD6-24C4-48CA-88FE-55FCC2E870F3.png)
+![](https://assets.omscs.io/notes/D3EFFDD6-24C4-48CA-88FE-55FCC2E870F3.png)
 
 ### Documentation
 - [numpy.array](https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html)
@@ -154,7 +154,7 @@ np.empty((5, 4, 3))
 
 If we print the two-dimensional array created by `np.empty((5, 4))`, we see the following.
 
-![](https://assets.omscs.io/29648C43-7BB5-47C7-99A7-79283F30C9B6.png)
+![](https://assets.omscs.io/notes/29648C43-7BB5-47C7-99A7-79283F30C9B6.png)
 
 Interestingly, the empty array is not actually empty; instead, the array is filled with whatever values are present in memory at the time of array creation. Note that all of the values in the empty array are floating-point numbers.
 
@@ -166,19 +166,19 @@ np.ones((5, 4))
 
 Indeed, we see the following array when we print.
 
-![](https://assets.omscs.io/09666E20-37ED-4A8A-AB87-1E278D9487E3.png)
+![](https://assets.omscs.io/notes/09666E20-37ED-4A8A-AB87-1E278D9487E3.png)
 
 ### Documentation
 - [numpy.empty](https://docs.scipy.org/doc/numpy/reference/generated/numpy.empty.html)
 - [numpy.ones](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ones.html)
 
 ## Specify the Data Type Quiz
-![](https://assets.omscs.io/1A04EA50-3DE1-4BA2-85E6-B852F298AB7B.png)
+![](https://assets.omscs.io/notes/1A04EA50-3DE1-4BA2-85E6-B852F298AB7B.png)
 
 We saw that the elements in an array created by `np.ones` are floats by default. Our task here is to update the call to `np.ones` and pass in a parameter that tells NumPy to give us integers instead of floats.
 
 ## Specify the Data Type Quiz Solution
-![](https://assets.omscs.io/29CA699E-4950-4B22-948D-A38910E9A9EA.png)
+![](https://assets.omscs.io/notes/29CA699E-4950-4B22-948D-A38910E9A9EA.png)
 
 We can accomplish this change with the following code:
 
@@ -203,7 +203,7 @@ np.random.random((5,4))
 
 If we print this ndarray, we see the following.
 
-![](https://assets.omscs.io/768AFDB2-5982-43F2-B150-6702C274B722.png)
+![](https://assets.omscs.io/notes/768AFDB2-5982-43F2-B150-6702C274B722.png)
 
 A slight variant of the `random` method is the `rand` method, which, instead of accepting a tuple corresponding to the shape, accepts a sequence of numbers describing the dimensions of the ndarray. 
 
@@ -225,7 +225,7 @@ np.random.normal(size=(2,3))
 
 If we print this ndarray, we see the following.
 
-![](https://assets.omscs.io/14C3149A-6447-4541-814C-CA099328CE48.png)
+![](https://assets.omscs.io/notes/14C3149A-6447-4541-814C-CA099328CE48.png)
 
 By default, the `normal` method samples from a Gaussian distribution with a mean of 0 and a standard deviation of 1. We can also sample from normal distributions parameterized by different means and standard deviations.
 
@@ -237,7 +237,7 @@ np.random.normal(50, 10, size=(2,3))
 
 If we print this ndarray, we see the following.
 
-![](https://assets.omscs.io/84B46E3D-1B72-4239-AD47-4F3A039FDA49.png)
+![](https://assets.omscs.io/notes/84B46E3D-1B72-4239-AD47-4F3A039FDA49.png)
 
 We can generate random integers using the `randint` method, like so:
 
@@ -258,7 +258,7 @@ np.random.randint(0, 10, size=(2, 3))
 
 If we print the previous four examples, we see the following.
 
-![](https://assets.omscs.io/BFB422D8-4C0E-4D71-8F89-4E756F148793.png)
+![](https://assets.omscs.io/notes/BFB422D8-4C0E-4D71-8F89-4E756F148793.png)
 
 ### Documentation
 - [Random sampling](https://docs.scipy.org/doc/numpy-1.14.0/reference/routines.random.html)
@@ -278,7 +278,7 @@ a.shape
 
 If we print out `a` and `a.shape`, we see the following.
 
-![](https://assets.omscs.io/DB3F6598-09CE-4A56-A8EB-A3189DE9DD87.png)
+![](https://assets.omscs.io/notes/DB3F6598-09CE-4A56-A8EB-A3189DE9DD87.png)
 
 Since the shape is a Python tuple, which supports zero-based indexing, we can access just the number of rows or columns in `a` by indexing into the shape:
 
@@ -301,7 +301,7 @@ a.size
 
 If we print the size, we see the product of five rows and four columns.
 
-![](https://assets.omscs.io/FA013BE1-625B-4A7B-8A1A-2A0EA4AE23E3.png)
+![](https://assets.omscs.io/notes/FA013BE1-625B-4A7B-8A1A-2A0EA4AE23E3.png)
 
 Attributes like size and shape are useful when you need to iterate over the elements in an ndarray to perform some computation.
 
@@ -313,7 +313,7 @@ a.dtype
 
 If we print the dtype of `a`, we see the following. 
 
-![](https://assets.omscs.io/8A6A2B68-72B1-460A-B9D4-5DDE5C59F3F9.png)
+![](https://assets.omscs.io/notes/8A6A2B68-72B1-460A-B9D4-5DDE5C59F3F9.png)
 
 We can see that the elements of `a` are all 64-bit floating-point numbers.
 
@@ -331,7 +331,7 @@ a = np.random.randint(0, 10, size=(5,4))
 
 If we print `a`, we see the following.
 
-![](https://assets.omscs.io/ABB8CBB0-68CB-4A99-A6BD-24222E9C9819.png)
+![](https://assets.omscs.io/notes/ABB8CBB0-68CB-4A99-A6BD-24222E9C9819.png)
 
 Summing all of the elements in `a` is as simple as calling the `sum` method of `a`:
 
@@ -341,7 +341,7 @@ a.sum()
 
 If we print `a` with `a.sum()`, we see the following.
 
-![](https://assets.omscs.io/817D6099-BFFA-49E3-9722-FCEC111A4790.png)
+![](https://assets.omscs.io/notes/817D6099-BFFA-49E3-9722-FCEC111A4790.png)
 
 We can also calculate the sum of `a` in a specific direction. In other words, we can specify that we want to sum across the rows or down the columns of `a`.
 
@@ -354,7 +354,7 @@ a.sum(axis=1) # Sum row
 
 If we print these sums, we see the following.
 
-![](https://assets.omscs.io/7317FDBC-2E43-47DA-AE00-0F90638DC338.png)
+![](https://assets.omscs.io/notes/7317FDBC-2E43-47DA-AE00-0F90638DC338.png)
 
 We can pull some basic statistics from an ndarray with the `min`, `max`, and `mean` methods, which all optionally take an `axis` parameter. for example:
 
@@ -366,7 +366,7 @@ a.mean() # mean of all elements
 
 If we print out these values, we see the following.
 
-![](https://assets.omscs.io/C4608A21-9B38-4FD8-A706-514F0CD1C643.png) 
+![](https://assets.omscs.io/notes/C4608A21-9B38-4FD8-A706-514F0CD1C643.png) 
 
 ### Documentation
 - [numpy.sum](https://docs.scipy.org/doc/numpy/reference/generated/numpy.sum.html#numpy.sum)
@@ -375,12 +375,12 @@ If we print out these values, we see the following.
 - [numpy.mean](https://docs.scipy.org/doc/numpy/reference/generated/numpy.mean.html#numpy.mean)
 
 ## Locate Maximum Value Quiz
-![](https://assets.omscs.io/55FC058B-8B31-4172-8F44-B44502611542.png)
+![](https://assets.omscs.io/notes/55FC058B-8B31-4172-8F44-B44502611542.png)
 
 Our task is to implement the function `get_max_index`, which takes a one-dimensional ndarray `a` and returns the index of the maximum value.
 
 ## Locate Maximum Value Quiz Solution
-![](https://assets.omscs.io/480BE86C-66FF-452B-965F-AD9833D98574.png)
+![](https://assets.omscs.io/notes/480BE86C-66FF-452B-965F-AD9833D98574.png)
 
 We can retrieve the index of the maximum value in `a` with the `argmax` method:
 
@@ -409,7 +409,7 @@ print "The time taken by print statement is ", t2 - t1 ," seconds"
 
 If we run this code, we see the following. 
 
-![](https://assets.omscs.io/5C87242F-82A9-410D-8FAB-06EEDAC2A30C.png)
+![](https://assets.omscs.io/notes/5C87242F-82A9-410D-8FAB-06EEDAC2A30C.png)
 
 ### Documentation
 - [time](https://docs.python.org/3/library/time.html)
@@ -426,15 +426,15 @@ We want this array to be large enough so that the differences between execution 
 
 We then define the two functions that we want to test. The function `numpy_mean` simply calls the `mean` method on the passed in `arr`. The function `manual_mean` iterates over all of the elements, sums them and then divides them by the total number of elements.
 
-![](https://assets.omscs.io/C38100EC-0430-4074-89D6-D6A1D8F682D2.png)
+![](https://assets.omscs.io/notes/C38100EC-0430-4074-89D6-D6A1D8F682D2.png)
 
 Finally, we define a `how_long` function, which itself receives a function `func` and some arguments `args`. The function times the execution of `func(*args)`, and then returns the result along with the duration.
 
-![](https://assets.omscs.io/70BCD191-CE9F-4886-82AF-F67CA83CD58C.png)
+![](https://assets.omscs.io/notes/70BCD191-CE9F-4886-82AF-F67CA83CD58C.png)
 
 Let's check the difference in execution times.
 
-![](https://assets.omscs.io/DAE46E02-6B18-4E82-BA59-755CE5BCD910.png)
+![](https://assets.omscs.io/notes/DAE46E02-6B18-4E82-BA59-755CE5BCD910.png)
 
 NumPy is close to 300 times faster than the simple iterative method!
 
@@ -447,7 +447,7 @@ a[3,2]
 
 If we print out this value, we see the following.
 
-![](https://assets.omscs.io/C04548B7-4979-4580-997B-3445FDBC0CBF.png)
+![](https://assets.omscs.io/notes/C04548B7-4979-4580-997B-3445FDBC0CBF.png)
 
 Additionally, we can access ranges of elements down columns and across rows using slicing. For instance, we can access the elements in the second and third columns of the first row of `a` like so:
 
@@ -457,7 +457,7 @@ a[0, 1:3]
 
 If we print this slice, we see the following.
 
-![](https://assets.omscs.io/DF27096A-2FBC-4359-ACD1-6C9074E7D243.png)
+![](https://assets.omscs.io/notes/DF27096A-2FBC-4359-ACD1-6C9074E7D243.png)
 
 We can combine row and column slicing to select, for example, the elements in the first two rows and first two columns of `a` like so:
 
@@ -467,7 +467,7 @@ a[0:2, 0:2]
 
 If we print this slice, we see the following.
 
-![](https://assets.omscs.io/52A25CBB-C3BC-4ABA-96AB-80047042E742.png)
+![](https://assets.omscs.io/notes/52A25CBB-C3BC-4ABA-96AB-80047042E742.png)
 
 So far, we have only seen slice syntax like `x:y`, which defines a slice starting at row/column `x` and ending at row/column `y - 1`. We can specify a third parameter, `z`, which defines the *step size*. 
 
@@ -479,7 +479,7 @@ a[:, 0:3:2]
 
 If we print this slice, we see the following.
 
-![](https://assets.omscs.io/89F330F0-8D5B-4889-A930-6229D47EC97B.png)
+![](https://assets.omscs.io/notes/89F330F0-8D5B-4889-A930-6229D47EC97B.png)
 
 ### Documentation
 - [Indexing](https://docs.scipy.org/doc/numpy/user/basics.indexing.html)
@@ -493,7 +493,7 @@ a[0, 0] = 1
 
 Let's look at `a` before and after the assignment.
 
-![](https://assets.omscs.io/4155E98C-A86E-4850-9537-9DC8B691AA67.png)
+![](https://assets.omscs.io/notes/4155E98C-A86E-4850-9537-9DC8B691AA67.png)
 
 We can use slicing for assignment as well as access. For example, we can set all of the elements in the first row of `a` like this:
 
@@ -503,7 +503,7 @@ a[0, :] = 2
 
 If we print `a`, we see the following.
 
-![](https://assets.omscs.io/F9E2FC3A-308E-4DFB-AE68-6ECA2C676103.png)
+![](https://assets.omscs.io/notes/F9E2FC3A-308E-4DFB-AE68-6ECA2C676103.png)
 
 We don't have to set all of the elements in a row or column to the same value. If we assign a column or row to a list, each element will be set to the corresponding value in the list.
 
@@ -515,7 +515,7 @@ a[:, 3] = [1, 2, 3, 4, 5]
 
 If we print `a`, we see the following.
 
-![](https://assets.omscs.io/9834AF37-F3E9-4E27-907E-B3C8ECC71576.png)
+![](https://assets.omscs.io/notes/9834AF37-F3E9-4E27-907E-B3C8ECC71576.png)
 
 ### Documentation
 - [Indexing](https://docs.scipy.org/doc/numpy/user/basics.indexing.html)
@@ -541,7 +541,7 @@ a[indices]
 
 This expression is saying the following: for each element in `indices` retrieve the element in `a` at that index.
 
-![](https://assets.omscs.io/3851E9A3-E769-4AD1-8ED1-0077D88D704A.png)
+![](https://assets.omscs.io/notes/3851E9A3-E769-4AD1-8ED1-0077D88D704A.png)
 
 Indeed, we can see that our resulting array contains the elements of `a` at indices 1, 1, 2, and 3.
 
@@ -562,7 +562,7 @@ mean = a.mean()
 
 If we print `a` and `mean`, we see the following.
 
-![](https://assets.omscs.io/DCB7B910-7F1E-4003-8921-BD8E9600887E.png)
+![](https://assets.omscs.io/notes/DCB7B910-7F1E-4003-8921-BD8E9600887E.png)
 
 While we can technically run a `for` loop over the elements in `a` and keep only those values less than 14.2, there is a cleaner way:
 
@@ -574,7 +574,7 @@ We can interpret this expression as: for each value `a_i` in `a`, compare `a_i` 
 
 If we print the output of the expression, we see the following ndarray.
 
-![](https://assets.omscs.io/4AAD096B-B54B-4471-8BD6-5A1E542DC5BA.png)
+![](https://assets.omscs.io/notes/4AAD096B-B54B-4471-8BD6-5A1E542DC5BA.png)
 
 Additionally, we can use this masking technique to set the values of `a` that are less than `mean` to `mean`:
 
@@ -584,7 +584,7 @@ a[a < mean] = mean
 
 If we print `a` now, we see the following.
 
-![](https://assets.omscs.io/55ECA174-CE17-4395-A26E-4775193C04BF.png)
+![](https://assets.omscs.io/notes/55ECA174-CE17-4395-A26E-4775193C04BF.png)
 
 ### Documentation
 - [Indexing](https://docs.scipy.org/doc/numpy/user/basics.indexing.html)
@@ -607,7 +607,7 @@ We can multiply each element in `a` by two:
 
 If we print the result of this multiplication, we see the following.
 
-![](https://assets.omscs.io/398DF573-0F38-4286-9EDD-C9232C7686FE.png)
+![](https://assets.omscs.io/notes/398DF573-0F38-4286-9EDD-C9232C7686FE.png)
 
 We can divide each element in `a` by two:
 
@@ -617,7 +617,7 @@ a / 2
 
 If we print the result of this division, we see the following.
 
-![](https://assets.omscs.io/9F151FEC-7765-4C2F-A3FB-153AA51653CF.png)
+![](https://assets.omscs.io/notes/9F151FEC-7765-4C2F-A3FB-153AA51653CF.png)
 
 Note that both the divisor and the elements in the ndarray are integers. As a result, integer division (rounding down, roughly) is performed, which is why 1 / 2 equals 0.
 
@@ -629,7 +629,7 @@ a / 2.0
 
 If we print the result of this division, we see the following.
 
-![](https://assets.omscs.io/1A8906A1-E16C-43DF-9871-15CA746AA16A.png)
+![](https://assets.omscs.io/notes/1A8906A1-E16C-43DF-9871-15CA746AA16A.png)
 
 Our arithmetic capabilities are not limited to just operations between ndarrays and scalar values. We can also perform operations that combine two ndarrays. Let's create a second ndarray `b`.
 
@@ -648,7 +648,7 @@ a + b
 
 If we print the result of this addition, we see the following.
 
-![](https://assets.omscs.io/E73AD763-5D55-48FA-9F93-C7561BBC9F43.png)
+![](https://assets.omscs.io/notes/E73AD763-5D55-48FA-9F93-C7561BBC9F43.png)
 
 Note that the shape of `a` and `b` should be similar before trying to perform operations that involve both ndarrays; otherwise, NumPy will throw an error.
 
@@ -662,7 +662,7 @@ a * b
 
 If we print the result of this multiplication, we see the following.
 
-![](https://assets.omscs.io/8B333BFA-719A-4D1F-A85E-26F56AD29E64.png)
+![](https://assets.omscs.io/notes/8B333BFA-719A-4D1F-A85E-26F56AD29E64.png)
 
 We can divide `a` by `b`:
 
@@ -672,4 +672,4 @@ a / b
 
 If we print the result of this division, we see the following. Remember that we are doing integer division here.
 
-![](https://assets.omscs.io/A2A00FC6-4BA6-4DD8-B46F-3770DDBA7BDA.png)
+![](https://assets.omscs.io/notes/A2A00FC6-4BA6-4DD8-B46F-3770DDBA7BDA.png)

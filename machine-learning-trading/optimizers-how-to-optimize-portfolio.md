@@ -15,13 +15,13 @@ Given a set of assets and a time period, **portfolio optimization** seeks to fin
 
 Consider this portfolio, which contains equal allocations to four stocks - GOOG, AAPL, GLD, and XOM - held from the beginning to the end of 2010.
 
-![](https://assets.omscs.io/2020-01-21-16-05-44.png)
+![](https://assets.omscs.io/notes/2020-01-21-16-05-44.png)
 
 Note that the performance of this unoptimized portfolio, plotted in blue, outperforms SPY, plotted in green.
 
 Let's optimize this portfolio for Sharpe ratio and see how the returns change.
 
-![](https://assets.omscs.io/2020-01-21-16-08-29.png)
+![](https://assets.omscs.io/notes/2020-01-21-16-08-29.png)
 
 We can see that this optimized portfolio outperforms both SPY and the previous, unoptimized portfolio. 
 
@@ -33,11 +33,11 @@ Of course, it's easy to go into the past and optimize for values that we know. T
 
 Let's assume we have a portfolio of four stocks, and we want to find the optimal allocations that maximize some performance metric. Which of the following metrics would be easiest to optimize for?
 
-![](https://assets.omscs.io/2020-01-21-16-35-00.png)
+![](https://assets.omscs.io/notes/2020-01-21-16-35-00.png)
 
 ## Which Criteria is Easiest to Solve For Quiz Solution
 
-![](https://assets.omscs.io/2020-01-21-16-35-19.png)
+![](https://assets.omscs.io/notes/2020-01-21-16-35-19.png)
 
 It would be easiest to write an optimizer for cumulative return. To do so, all we need to do is allocate 100% of our portfolio into whichever stock had the highest cumulative return.
 

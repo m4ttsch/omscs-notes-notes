@@ -21,7 +21,7 @@ Let's quickly recap the Q-learning algorithm we've been using thus far. We first
 
 When we augment Q-learning with Dyna-Q, we add three new pieces. First, we add logic that enables us to build models of $T$ and $R$. Then, for lack of a better term, we hallucinate a number of experiences. Finally, we update our Q-table according to the experience tuples we generated during the hallucination. We repeat these steps potentially several hundred times for each real experience.
 
-![](https://assets.omscs.io/2020-03-31-16-33-13.png)
+![](https://assets.omscs.io/notes/2020-03-31-16-33-13.png)
 
 When we talk about updating our model, what we want to do is find new values for $T$ and $R$. Remember that $T$ is the probability that if we are in state $s$ and take action $a$ we will end up in state $s'$, while $R$ is our expected reward from taking action $a$ in state $s$.
 
@@ -29,7 +29,7 @@ Before we talk about how we hallucinate an experience, it's essential to underst
 
 We can hallucinate an experience in two steps. First, we randomly select a state, $s$, and an action, $a$. Next, we infer the new state, $s'$, using $T$, and we infer the reward, $r$, using $R$. Using this synthetic experience tuple, we can update our Q-table.
 
-![](https://assets.omscs.io/2020-03-31-16-20-07.png)
+![](https://assets.omscs.io/notes/2020-03-31-16-20-07.png)
 
 ## Learning T
 
@@ -43,11 +43,11 @@ As we iterate through the Q-learning process, we accumulate experience tuples. F
 
 Assume we have been interacting with the real world for a while, and we would like to consult our model of $T$. Can you write an equation for $T$ in terms of $T_c$?
 
-![](https://assets.omscs.io/2020-03-31-22-24-00.png)
+![](https://assets.omscs.io/notes/2020-03-31-22-24-00.png)
 
 ## How to Evaluate T Quiz Solution
 
-![](https://assets.omscs.io/2020-03-31-22-28-58.png)
+![](https://assets.omscs.io/notes/2020-03-31-22-28-58.png)
 
 **NOTE**: The denominator in this equation should reference $T_c$, not $T$.
 
@@ -75,4 +75,4 @@ $$
 
 ## Dyna-Q Recap
 
-![](https://assets.omscs.io/2020-03-31-22-55-45.png)
+![](https://assets.omscs.io/notes/2020-03-31-22-55-45.png)

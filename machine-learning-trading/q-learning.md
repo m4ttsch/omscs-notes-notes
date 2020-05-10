@@ -47,7 +47,7 @@ After we have finished iterating through our training data, we take the policy t
 
 What do we mean by converged? Each time we train and then test our learner, we get some measure of performance. We expect that performance is going to improve with each training session steadily; however, after a point, we reach the best possible policy for our data, and performance ceases to improve with successive trainings. At this point, we say that our policy and the optimal policy have converged.
 
-![](https://assets.omscs.io/2020-03-27-10-20-17.png)
+![](https://assets.omscs.io/notes/2020-03-27-10-20-17.png)
 
 ## Update Rule
 
@@ -83,7 +83,7 @@ Instead of always selecting the action with the highest Q-value for a given stat
 
 A typical way to implement random exploration is to set the probability of choosing a random action to about 0.3 initially; then, over each iteration, we decay that probability steadily until we effectively don't choose random actions at all. 
 
-![](https://assets.omscs.io/2020-03-29-19-33-11.png)
+![](https://assets.omscs.io/notes/2020-03-29-19-33-11.png)
 
 ## The Trading Problem: Actions
 
@@ -93,23 +93,23 @@ The model that we build is going to advise us to take one of three actions: buy,
 
 Let's look at stock XYZ.
 
-![](https://assets.omscs.io/2020-03-29-19-40-05.png)
+![](https://assets.omscs.io/notes/2020-03-29-19-40-05.png)
 
 The state that our model reads in here are various factors - such as technical indicators - concerning this stock. Our model continuously reads in state, advising us to do nothing until something triggers and we see a buy action.
 
-![](https://assets.omscs.io/2020-03-29-19-41-40.png)
+![](https://assets.omscs.io/notes/2020-03-29-19-41-40.png)
 
 After we execute the buy action, our model tells us to do nothing until we enter a state in which it advises us to sell.
 
-![](https://assets.omscs.io/2020-03-29-19-42-06.png)
+![](https://assets.omscs.io/notes/2020-03-29-19-42-06.png)
 
 We can continue this process through the rest of our time series.
 
-![](https://assets.omscs.io/2020-03-29-19-42-26.png)
+![](https://assets.omscs.io/notes/2020-03-29-19-42-26.png)
 
 Let's consider now how these buys and sells affect our portfolio value. Our portfolio value before our first buy corresponds to whatever money we have in the bank. Once we execute a buy action, our portfolio value rises with the price of the stock. Once we sell, our portfolio hovers at the price of the sale. We can see how the value of our portfolio relates to the actions we take below.
 
-![](https://assets.omscs.io/2020-03-29-19-43-32.png)
+![](https://assets.omscs.io/notes/2020-03-29-19-43-32.png)
 
 ## The Trading Problem: Rewards Quiz
 
@@ -119,11 +119,11 @@ On the one hand, we can think about the reward for a position as the daily retur
 
 Which of these approaches results in a faster convergence to the optimal policy?
 
-![](https://assets.omscs.io/2020-03-29-20-05-54.png)
+![](https://assets.omscs.io/notes/2020-03-29-20-05-54.png)
 
 ## The Trading Problem: Rewards Quiz Solution
 
-![](https://assets.omscs.io/2020-03-29-20-18-57.png)
+![](https://assets.omscs.io/notes/2020-03-29-20-18-57.png)
 
 If we choose the delayed paradigm - where the reward is zero until the end of the trade cycle - the learner has to infer the correct sequence of actions leading up to the final action that brought about the large windfall. If we reward a little bit each day, however, the learner can learn much more quickly because it receives much more frequent rewards.
 
@@ -131,11 +131,11 @@ If we choose the delayed paradigm - where the reward is zero until the end of th
 
 Consider the following factors and select which should be part of the state that we examine when selecting an appropriate action.
 
-![](https://assets.omscs.io/2020-03-29-20-25-46.png)
+![](https://assets.omscs.io/notes/2020-03-29-20-25-46.png)
 
 ## The Trading Problem: State Quiz Solution
 
-![](https://assets.omscs.io/2020-03-29-20-35-56.png)
+![](https://assets.omscs.io/notes/2020-03-29-20-35-56.png)
 
 Neither adjusted close nor SMA alone are useful components of the state because they don't particularly mean much as absolute values. For example, if GOOG closes at $1000 per share, and XYZ closes at $5 per share, we cannot determine, based on that information alone, whether we should buy, sell, or hold either of those stocks.
 
@@ -153,7 +153,7 @@ First, we must discretize each factor, which essentially involves mapping a cont
 
 For example, we might have a state containing four different factors, each of which is a number. We pass each of these factors through its discretization function to map its value onto an integer from 0 to 9. Finally, we "stack" the discretized factors, digit by digit, to form the final state.
 
-![](https://assets.omscs.io/2020-03-30-22-50-57.png)
+![](https://assets.omscs.io/notes/2020-03-30-22-50-57.png)
 
 ## Discretizing
 
@@ -167,10 +167,10 @@ Finally, we sort the data and determine the threshold for each bucket based on t
 
 A consequence of this approach is that when the data are sparse, the thresholds are set far apart. When the data is very dense, the thresholds end up being very close together.
 
-![](https://assets.omscs.io/2020-03-30-23-42-44.png)
+![](https://assets.omscs.io/notes/2020-03-30-23-42-44.png)
 
 To discretize an incoming feature value, we simply find which threshold that value passes. For example, a value greater than the fortieth sorted element but less than the fiftieth would have a discretized value of 4. 
 
 ## Q-Learning Recap
 
-![](https://assets.omscs.io/2020-03-31-00-17-18.png)
+![](https://assets.omscs.io/notes/2020-03-31-00-17-18.png)

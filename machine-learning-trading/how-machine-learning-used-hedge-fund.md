@@ -19,17 +19,17 @@ Of course, there are many models that people have built that don't use machine l
 
 Machine learning models are different. The machine learning process involves running historical data through a machine-learning algorithm to derive a model based on that data. Later, when we need to use the model, we pass in new examples and receive fresh predictions.
 
-![](https://assets.omscs.io/2020-01-22-17-53-40.png)
+![](https://assets.omscs.io/notes/2020-01-22-17-53-40.png)
 
 ## What's X and Y Quiz
 
 Let's think about building a model to use in trading. Which of the following factors might be input values ($X$) to the model, and which might be output values ($Y$)?
 
-![](https://assets.omscs.io/2020-01-22-17-57-46.png)
+![](https://assets.omscs.io/notes/2020-01-22-17-57-46.png)
 
 ## What's X and Y Quiz Solution
 
-![](https://assets.omscs.io/2020-01-22-17-58-20.png)
+![](https://assets.omscs.io/notes/2020-01-22-17-58-20.png)
 
 Since we often use models to predict values in the future, both future price and future return make sense as output values. Our model might make these predictions by considering price momentum, current price, and Bollinger values as input.
 
@@ -63,25 +63,25 @@ Let's consider how we can generate the type of data we can feed into a machine l
 
 Assume we have a pandas DataFrame containing historical features of a particular stock, arranged in the usual way: one row for each date with columns representing each metric.
 
-![](https://assets.omscs.io/2020-01-25-14-19-26.png)
+![](https://assets.omscs.io/notes/2020-01-25-14-19-26.png)
 
 We might have many features for each stock, such as Bollinger Bands, momentum, and P/E ratio. We can represent each feature in a DataFrame, and then "stack" the DataFrames one behind the other.
 
-![](https://assets.omscs.io/2020-01-25-14-21-20.png)
+![](https://assets.omscs.io/notes/2020-01-25-14-21-20.png)
 
 These features make up the input values - the $X$ - for the model that the machine learning algorithm synthesizes. In most cases, we want to use our model to produce a future price - the $Y$ - given this historical feature data as input.
 
 To generate the model, we need to supply the machine learning algorithm with training examples containing stock features and the corresponding future price. Since we don't have prices in the future, we have to use historical prices.
 
-![](https://assets.omscs.io/2020-01-25-14-43-01.png)
+![](https://assets.omscs.io/notes/2020-01-25-14-43-01.png)
 
 Let's see how we can generate these examples starting from the first date `d` for which we have data. We can look at the stock features for `d`, and the price at some future date, such as `d + 5`. Note that even though the price is historical, it's in the future relative to `d`.
 
-![](https://assets.omscs.io/2020-01-25-14-46-38.png)
+![](https://assets.omscs.io/notes/2020-01-25-14-46-38.png)
 
 This pairing between features $X$ at `d` and future price $Y$ at `d + 5` comprises our first training example. We can step forward day-by-day to generate subsequent examples mapping $X$ at `d + n` to $Y$ at `d + 5 + n`. Once this process is complete, we will have a large set of examples that we can use to build our model.
 
-![](https://assets.omscs.io/2020-01-25-14-46-45.png)
+![](https://assets.omscs.io/notes/2020-01-25-14-46-45.png)
 
 ## Example at a FinTech Company
 
@@ -111,15 +111,15 @@ We can evaluate the performance of our model through backtesting. **Backtesting*
 
 First, we limit our data to some subset and train a model on just that data. Next, we ask the model for a forecast of some time in the simulated future. Third, we place orders on the basis that the forecast is accurate, shorting or longing stocks as appropriate.
 
-![](https://assets.omscs.io/2020-01-25-17-30-51.png)
+![](https://assets.omscs.io/notes/2020-01-25-17-30-51.png)
 
 We can then roll time forward and see how the performance of our portfolio - measured by Sharpe ratio, daily return, or something similar - changes as the forecast does or does not come to fruition.
 
-![](https://assets.omscs.io/2020-01-25-17-33-43.png)
+![](https://assets.omscs.io/notes/2020-01-25-17-33-43.png)
 
 Finally, we repeat this process. We train a model based on a more recent subset of the data, make a prediction, and plot performance based on orders made in line with the prediction.
 
-![](https://assets.omscs.io/2020-01-25-17-36-06.png)
+![](https://assets.omscs.io/notes/2020-01-25-17-36-06.png)
 
 We can backtest our strategy against historical data to simulate the performance of our portfolio according to the strategy. Ultimately, the performance informs us whether the strategy is worth adopting.
 
@@ -139,4 +139,4 @@ For the rest of this class, we are going to look at data from a specific period,
 
 For example, we can use data from 2009 to train our models. Then, throughout 2010 and 2011, we can use our models to generate orders based on forecasts. As time passes, we can watch the performance of our portfolio change as the forecasts do or do not come true.
 
-![](https://assets.omscs.io/2020-01-25-19-19-35.png)
+![](https://assets.omscs.io/notes/2020-01-25-19-19-35.png)

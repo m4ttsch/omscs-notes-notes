@@ -19,16 +19,16 @@ It's important to think about how these laws should be applicable in the context
 A third area we can think about is our privacy as Internet users. We spend a lot of time online, visiting different websites, using different services, and searching for different things. It's very easy for entities that we interact with digitally to collect a lot information about us. A lot of people worry about the concept of Big Brother watching everything they do, and would like some protection.
 
 ## Legal Deterrents Quiz
-![](https://assets.omscs.io/2762F482-BE0A-4124-B408-52E8CF242DA8.png)
+![](https://assets.omscs.io/notes/2762F482-BE0A-4124-B408-52E8CF242DA8.png)
 
 ## Legal Deterrents Quiz Solution
-![](https://assets.omscs.io/C646AE0D-9888-4239-97C1-3A1146256E8E.png)
+![](https://assets.omscs.io/notes/C646AE0D-9888-4239-97C1-3A1146256E8E.png)
 
 ## Cost of Cybercrime Quiz
-![](https://assets.omscs.io/057806B3-A791-476B-86A5-038EE90E5789.png)
+![](https://assets.omscs.io/notes/057806B3-A791-476B-86A5-038EE90E5789.png)
 
 ## Cost of Cybercrime Quiz Solution
-![](https://assets.omscs.io/6D22EA68-A8BE-4C7B-A409-DE34882F3328.png)
+![](https://assets.omscs.io/notes/6D22EA68-A8BE-4C7B-A409-DE34882F3328.png)
 
 ## US Computer Fraud and Abuse Act (CFAA)
 The first U.S. law related to cybercrime and illegal online activities is the **U.S Computer Fraud and Abuse Act** (CFAA). The goal of this act was to define what types of online actions constitute criminal activity and then outline sanctions against those actions.
@@ -63,22 +63,22 @@ To make matters worse, the Internet has no national boundaries. Attackers that d
 Additionally, lawmaking is a slow process, and the stakes are high for focussed attackers. As a result, cybercriminals evolve quickly and continue to work around the laws that we put in place. Technology and creativity proceed more quickly than legislation.
 
 ## Melissa Virus Quiz
-![](https://assets.omscs.io/1E28C362-6E6A-4677-A362-568C16915225.png)
+![](https://assets.omscs.io/notes/1E28C362-6E6A-4677-A362-568C16915225.png)
 
 ## Melissa Virus Quiz Solution
-![](https://assets.omscs.io/12204048-15EC-4A75-89EE-83966EC45C6D.png)
+![](https://assets.omscs.io/notes/12204048-15EC-4A75-89EE-83966EC45C6D.png)
 
 ## Unauthorized Access Quiz
-![](https://assets.omscs.io/0E4D483F-7A30-44CE-BF76-1BFC3C06BB0B.png)
+![](https://assets.omscs.io/notes/0E4D483F-7A30-44CE-BF76-1BFC3C06BB0B.png)
 
 ## Unauthorized Access Quiz Solution
-![](https://assets.omscs.io/56C7B39C-4F63-4C1A-A02A-863642EC8401.png)
+![](https://assets.omscs.io/notes/56C7B39C-4F63-4C1A-A02A-863642EC8401.png)
 
 ## DMCA Exclusions Quiz
-![](https://assets.omscs.io/C3F16DFB-FD7A-4E37-8D5C-B49D85D292A9.png)
+![](https://assets.omscs.io/notes/C3F16DFB-FD7A-4E37-8D5C-B49D85D292A9.png)
 
 ## DMCA Exclusions Quiz Solution
-![](https://assets.omscs.io/BACA7BA9-90D0-4402-81DF-724AB70FEB5A.png)
+![](https://assets.omscs.io/notes/BACA7BA9-90D0-4402-81DF-724AB70FEB5A.png)
 
 ## Ethical Issues
 Laws are manifestations of what we, as a society, determine to be right and wrong. Laws are not subjective on an individual level, and external entities, such as police officers and judges, enforce and arbitrate laws on behalf of society at large.
@@ -90,16 +90,16 @@ Consider finding a vulnerability in a widely-used software product. What is the 
 Situations like this are present throughout the digital world, and handling them with finesse requires thoughtfulness and a desire to do the right thing.
 
 ## Computer Ethics Quiz
-![](https://assets.omscs.io/2D3BCFF6-7747-4664-B3BD-037CB1DAA9D2.png)
+![](https://assets.omscs.io/notes/2D3BCFF6-7747-4664-B3BD-037CB1DAA9D2.png)
 
 ## Computer Ethics Quiz Solution
-![](https://assets.omscs.io/7C9A2833-34E5-4F26-8E01-E81F4ECC0B0F.png)
+![](https://assets.omscs.io/notes/7C9A2833-34E5-4F26-8E01-E81F4ECC0B0F.png)
 
 ## Responsible Disclosure Quiz
-![](https://assets.omscs.io/DD897D09-0FCE-487F-9E2A-AE7B1BED3CD0.png)
+![](https://assets.omscs.io/notes/DD897D09-0FCE-487F-9E2A-AE7B1BED3CD0.png)
 
 ## Responsible Disclosure Quiz Solution
-![](https://assets.omscs.io/63AB025B-A11C-43E2-80B2-74825F271520.png)
+![](https://assets.omscs.io/notes/63AB025B-A11C-43E2-80B2-74825F271520.png)
 
 ## Privacy Definition
 Justice Louis Brandeis made his famous statement about the "[right to be let alone](https://en.wikipedia.org/wiki/Louis_Brandeis#Olmstead_v._United_States_(1928)_%E2%80%93_Right_of_privacy)" almost 100 years ago; clearly, concerns about privacy are not new. That being said, privacy in the digital era looks different than privacy in the early twentieth century. When we talk about privacy online, we are primarily referring to a user's ability to control how data about him or her is collected, used, and shared by someone else.
@@ -108,27 +108,27 @@ Justice Louis Brandeis made his famous statement about the "[right to be let alo
 People have always worried about what others - friends, family, adversaries, the government - know about them, whether it be their whereabouts, activities, or preferences. In the modern, digital context, websites and other software capture use and distribute our information at an unprecedented scale.
 
 ## What is Private
-![](https://assets.omscs.io/40BAD00E-8C37-48A7-8D03-A07A050E8404.png)
+![](https://assets.omscs.io/notes/40BAD00E-8C37-48A7-8D03-A07A050E8404.png)
 
 ## What is Not Private
-![](https://assets.omscs.io/926229E1-84F7-45BB-BBC2-C715979D0B6D.png)
+![](https://assets.omscs.io/notes/926229E1-84F7-45BB-BBC2-C715979D0B6D.png)
 
 ## Institutional Privacy
 Privacy refers to the ability of an individual to control the data about them that is collected and shared. Of course, privacy doesn't have to only apply to individuals. Indeed, there may be reasons that universities, hospitals, charities, and even political action committees may want to keep information private.
 
 ## Privacy Quiz
-![](https://assets.omscs.io/6222EA4E-3B0D-472F-991C-FBEEFACF61A5.png)
+![](https://assets.omscs.io/notes/6222EA4E-3B0D-472F-991C-FBEEFACF61A5.png)
 
 ## Privacy Quiz Solution
-![](https://assets.omscs.io/1F9A054B-54D7-423A-979A-609AFF05841F.png)
+![](https://assets.omscs.io/notes/1F9A054B-54D7-423A-979A-609AFF05841F.png)
 
 Read more [here](https://www.pewresearch.org/internet/2015/05/20/americans-attitudes-about-privacy-security-and-surveillance/).
 
 ## Right to Be Forgotten Quiz
-![](https://assets.omscs.io/CCE71B10-21D1-492A-A2E5-7EDF4CAD7CC4.png)
+![](https://assets.omscs.io/notes/CCE71B10-21D1-492A-A2E5-7EDF4CAD7CC4.png)
 
 ## Right to Be Forgotten Quiz Solution
-![](https://assets.omscs.io/B5ADC3E6-8457-4465-93F3-56D856A5E848.png)
+![](https://assets.omscs.io/notes/B5ADC3E6-8457-4465-93F3-56D856A5E848.png)
 
 ## Threats to Privacy Part 1
 While we have some idea of what types of information we believe should be private in an online context, we should realize that our desires for privacy are not always respected.
@@ -202,24 +202,24 @@ Many Google services use HTTPS for encryption of data transmission, as well as e
 Google also provides transparency around changes to its privacy policy. Basically, its stance on privacy policy changes is that you have to explicitly consent to any changes that may reduce your rights concerning your privacy. In other words, any changes that make the privacy more lax require your agreement before those changes go into effect with your data.
 
 ## EFF Quiz
-![](https://assets.omscs.io/D70E4126-197A-493A-BA09-CC58D8168CEF.png)
+![](https://assets.omscs.io/notes/D70E4126-197A-493A-BA09-CC58D8168CEF.png)
 
 ## EFF Quiz Solution
-![](https://assets.omscs.io/348B6806-8887-4721-BE27-1A1404BAA50A.png)
+![](https://assets.omscs.io/notes/348B6806-8887-4721-BE27-1A1404BAA50A.png)
 
 Read more [here](https://www.eff.org/who-has-your-back-government-data-requests-2015)
 
 ## Google Privacy Policy Quiz
-![](https://assets.omscs.io/64E48411-D40C-4D92-83B3-38F2EFA1B704.png)
+![](https://assets.omscs.io/notes/64E48411-D40C-4D92-83B3-38F2EFA1B704.png)
 
 ## Google Privacy Policy Quiz Solution
-![](https://assets.omscs.io/4C61BFC4-01BA-4D4F-B9D0-BE25ED2BCEC5.png)
+![](https://assets.omscs.io/notes/4C61BFC4-01BA-4D4F-B9D0-BE25ED2BCEC5.png)
 
 ## Legal Deterrents Quiz
-![](https://assets.omscs.io/432B96FF-19C1-405F-A90E-302E9828A709.png)
+![](https://assets.omscs.io/notes/432B96FF-19C1-405F-A90E-302E9828A709.png)
 
 ## Legal Deterrents Quiz Solution
-![](https://assets.omscs.io/27460EF1-8AF8-4584-A28B-017A21AF6522.png)
+![](https://assets.omscs.io/notes/27460EF1-8AF8-4584-A28B-017A21AF6522.png)
 
 ## Facebook Privacy Policies
 Now that we have discussed what a particular privacy policy might address, we can talk about how well a company adheres to its policy. For this example, we are going to look at Facebook.
@@ -249,7 +249,7 @@ One of the privacy threats that we discussed was traffic analysis. Through traff
 
 If we don't want anyone to see this information, we can use a technology called **TOR**. Using a TOR client, a user can route their traffic through a random path of TOR nodes to their destination. Each node only knows its immediate predecessor and successor and cannot tell where a packet originated or where it is ultimately headed.
 
-![](https://assets.omscs.io/F9C377F0-175D-4510-BDE0-A599B417A717.png)
+![](https://assets.omscs.io/notes/F9C377F0-175D-4510-BDE0-A599B417A717.png)
 
 Because of this setup, we can use TOR to implement anonymous communication and prevent attackers from learning about the parties with whom we communicate.
 
@@ -272,13 +272,13 @@ Additionally, you can tell your browser that you don't want to be tracked. Many 
 You can also delete your cookies periodically, block popups, and use private browsing. Each of these activities helps to reduce the amount of information an entity can capture about you.
 
 ## Fandango Quiz
-![](https://assets.omscs.io/F0D3B2E7-12CD-439C-AE8A-5A181E96F01C.png)
+![](https://assets.omscs.io/notes/F0D3B2E7-12CD-439C-AE8A-5A181E96F01C.png)
 
 ## Fandango Quiz Solution
-![](https://assets.omscs.io/2DF69546-F0D9-44EC-9646-6C087EFF93F9.png)
+![](https://assets.omscs.io/notes/2DF69546-F0D9-44EC-9646-6C087EFF93F9.png)
 
 ## Tracking Quiz
-![](https://assets.omscs.io/AA9789FF-1BD5-42A4-91C5-7894D1E4F442.png)
+![](https://assets.omscs.io/notes/AA9789FF-1BD5-42A4-91C5-7894D1E4F442.png)
 
 ## Tracking Quiz Solution
-![](https://assets.omscs.io/C431A102-4377-4BB8-9C40-BA2D6CA46F6B.png)
+![](https://assets.omscs.io/notes/C431A102-4377-4BB8-9C40-BA2D6CA46F6B.png)

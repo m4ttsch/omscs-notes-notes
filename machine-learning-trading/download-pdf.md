@@ -17,4 +17,4 @@ for download:
 
 ## ML4T Complete ($20)
 
-[![ML4T Complete](https://assets.omscs.io/ebooks/ml4t-full.jpg)](https://gum.co/ml4t-full?wanted=true)
+[![ML4T Complete](https://assets.omscs.io/notes/ebooks/ml4t-full.jpg)](https://gum.co/ml4t-full?wanted=true)

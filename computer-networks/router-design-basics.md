@@ -10,11 +10,11 @@ lecture: router-design-basics
 ## Router Design
 Here are two modern router chassis.
 
-![](https://assets.omscs.io/D2CB1400-70FD-42E7-89D4-EE5AD042B9EB.png)
+![](https://assets.omscs.io/notes/D2CB1400-70FD-42E7-89D4-EE5AD042B9EB.png)
 
 A chassis houses line cards, which actually perform the routing.
 
-![](https://assets.omscs.io/CC40D8FA-679D-4B72-A391-3D270081B272.png)
+![](https://assets.omscs.io/notes/CC40D8FA-679D-4B72-A391-3D270081B272.png)
 
 While these cards look like standard network interface cards, they are much larger and terminate with high capacity fiber instead of Ethernet.
 
@@ -30,7 +30,7 @@ When a packet arrives, the line card looks at the header to determine the destin
 
 When a packet is sent to the output interface, it must traverse the router's **interconnection fabric** to be sent to the appropriate output port.
 
-![](https://assets.omscs.io/4637A139-27A9-496A-BA0D-18EC3DF0CE11.png)
+![](https://assets.omscs.io/notes/4637A139-27A9-496A-BA0D-18EC3DF0CE11.png)
 
 ## Each Line Card Has Its Own Forward Table Copy
 One important decision in the design of modern routers was to place a copy of the forwarding table on each line card in the router.
@@ -39,7 +39,7 @@ While this introduces some complications in making copies of the forwarding tabl
 
 Early router architectures did not place a copy of the lookup table on each line card. As a result, when packets arrived at an individual line card, it would induce a lookup in a shared buffer memory which could be accessed over a shared bus.
 
-![](https://assets.omscs.io/6A0B05D8-8AF8-4DC3-81F0-BD1036602D30.png)
+![](https://assets.omscs.io/notes/6A0B05D8-8AF8-4DC3-81F0-BD1036602D30.png)
 
 The shared bus introduces contention amongst all of the line cards that may be attempting to perform lookups at the same time to the same shared memory.
 
@@ -52,7 +52,7 @@ One possibility is to use a shared bus. However, the disadvantage of a bus is th
 
 We would like to enable non-competing input/output pairs to send traffic from input to output during the same time slot.
 
-![](https://assets.omscs.io/764E9042-C9C3-4261-9ECE-D45680FE0CD0.png)
+![](https://assets.omscs.io/notes/764E9042-C9C3-4261-9ECE-D45680FE0CD0.png)
 
 This solution is called crossbar switching.
 
@@ -107,7 +107,7 @@ The benefit of max-min fairness is that small demands being met in full, while l
 
 Let's consider the following example.
 
-![](https://assets.omscs.io/DCB9D368-DB79-47C8-B281-70D3E9E3F99D.png)
+![](https://assets.omscs.io/notes/DCB9D368-DB79-47C8-B281-70D3E9E3F99D.png)
 
 Obviously, the demands exceed the capacity, so we need to figure a way of allocating rates to each of these demands that is max-min fair.
 

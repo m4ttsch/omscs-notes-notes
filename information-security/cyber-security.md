@@ -30,16 +30,16 @@ Additionally, organizations must perform a cost-benefit analysis before deployin
 Finally, a business must understand how the employees operate within the organization and the various workflows that a new security implementation can impact. Employees are likely to skirt security measures that drastically hinder their productivity.
 
 ## Network Use Policy Quiz
-![](https://assets.omscs.io/C4EF0BE1-E7EB-4EF2-95C7-6C350AE5378A.png)
+![](https://assets.omscs.io/notes/C4EF0BE1-E7EB-4EF2-95C7-6C350AE5378A.png)
 
 ## Network Use Policy Quiz Solution
-![](https://assets.omscs.io/66481383-5E3B-41E1-8872-16C2F922D983.png)
+![](https://assets.omscs.io/notes/66481383-5E3B-41E1-8872-16C2F922D983.png)
 
 ## Botnet Quiz
-![](https://assets.omscs.io/87796EC7-942D-4C51-A88A-D795E1D08008.png)
+![](https://assets.omscs.io/notes/87796EC7-942D-4C51-A88A-D795E1D08008.png)
 
 ## Botnet Quiz Solution
-![](https://assets.omscs.io/BDBF525E-38FC-4589-B8F9-5D60D9BFC8ED.png)
+![](https://assets.omscs.io/notes/BDBF525E-38FC-4589-B8F9-5D60D9BFC8ED.png)
 
 ## Security Planning
 So far, we've identified the assets that need protection, determined the parties responsible for understanding the security needs of the organization, examined the technical controls at our disposal, and understood the impact of different implementations on user workflow.
@@ -58,18 +58,18 @@ The organization must concern themselves with the data stored in the system, whe
 Assets only require security if they are at risk, so a business needs to understand who they are securing their assets from before implementing security controls. These threat actors could be external cybercriminals, passionate hacktivists, or even disgruntled employees.
 
 ## Security Audit Quiz
-![](https://assets.omscs.io/A0ACD1BC-3257-4E9D-B658-A38F2341B6D9.png)
+![](https://assets.omscs.io/notes/A0ACD1BC-3257-4E9D-B658-A38F2341B6D9.png)
 
 ## Security Audit Quiz Solution
-![](https://assets.omscs.io/955B7AA6-8925-4060-90FD-B15F77C7640A.png)
+![](https://assets.omscs.io/notes/955B7AA6-8925-4060-90FD-B15F77C7640A.png)
 
 NOTE: answers 1 and 3 are correct.
 
 ## CISO Quiz
-![](https://assets.omscs.io/44C4B128-D47A-4F43-AEFB-8AC2A7DF7355.png)
+![](https://assets.omscs.io/notes/44C4B128-D47A-4F43-AEFB-8AC2A7DF7355.png)
 
 ## CISO Quiz Solution
-![](https://assets.omscs.io/6739A49C-41D1-4773-AB37-B79A90468145.png)
+![](https://assets.omscs.io/notes/6739A49C-41D1-4773-AB37-B79A90468145.png)
 
 ## Security Planning: Controls
 Security planning involves understanding which security controls make the most sense for a given organization's assets and threat posture. Let's take a look at a few of these controls.
@@ -115,22 +115,22 @@ An organization must define responsibility and accountability when creating a se
 The GT policy defines a distributed model of responsibility. The centralized [Office of Information Technology](https://oit.gatech.edu/) is responsible for the overall university network. Individual devices, such as workstations, are the responsibility of particular units - the College of Computing, for example - or the individual in possession of the devices.
 
 ## Computer Use Policy Quiz
-![](https://assets.omscs.io/9771E45D-9638-4E05-82F6-A1C10CB72D05.png)
+![](https://assets.omscs.io/notes/9771E45D-9638-4E05-82F6-A1C10CB72D05.png)
 
 ## Computer Use Policy Quiz Solution
-![](https://assets.omscs.io/6CEB54B3-7C84-476C-A25E-048670C9DFE2.png)
+![](https://assets.omscs.io/notes/6CEB54B3-7C84-476C-A25E-048670C9DFE2.png)
 
 ## Student Privacy Quiz
-![](https://assets.omscs.io/0AB2ABF9-9651-4AB1-A084-C5A26D7833A4.png)
+![](https://assets.omscs.io/notes/0AB2ABF9-9651-4AB1-A084-C5A26D7833A4.png)
 
 ## Student Privacy Quiz Solution
-![](https://assets.omscs.io/44B358FC-1EB0-42D2-AC0E-9129A51A793C.png)
+![](https://assets.omscs.io/notes/44B358FC-1EB0-42D2-AC0E-9129A51A793C.png)
 
 ## Anthem Breach Quiz
-![](https://assets.omscs.io/D3870811-2400-4AAC-80EC-F6DF688E235F.png)
+![](https://assets.omscs.io/notes/D3870811-2400-4AAC-80EC-F6DF688E235F.png)
 
 ## Anthem Breach Quiz Solution
-![](https://assets.omscs.io/8785FC32-D688-48B9-935A-B03C867CF522.png)
+![](https://assets.omscs.io/notes/8785FC32-D688-48B9-935A-B03C867CF522.png)
 
 Read more [here](http://blogs.wsj.com/riskandcompliance/2015/03/02/crisis-of-the-week-anthems-breach-response/) and [here](http://www.latimes.com/business/hiltzik/la-fi-mh-anthem-is-warning-consumers-20150306-column.html).
 
@@ -162,22 +162,22 @@ After a business performs a risk assessment, they have three choices concerning 
 Occasionally, a company may decide that both the probability and impact of an attack are so low that they are comfortable with the risk as is. Alternatively, a business may choose to transfer their risk by taking out an insurance policy; that way, if something bad happens, the cost is borne by someone else. Finally, an organization can reduce its risk by deploying new technology solutions, educating their employees, and providing security awareness training.
 
 ## Security Breach Quiz
-![](https://assets.omscs.io/9978A76B-E7AB-47DE-892A-639CCA8A15ED.png)
+![](https://assets.omscs.io/notes/9978A76B-E7AB-47DE-892A-639CCA8A15ED.png)
 
 ## Security Breach Quiz Solution
-![](https://assets.omscs.io/CF8998BF-BD44-4ADC-9DCC-4C71DF43014B.png)
+![](https://assets.omscs.io/notes/CF8998BF-BD44-4ADC-9DCC-4C71DF43014B.png)
 
 ## Reducing Exposure Quiz
-![](https://assets.omscs.io/3F8AD3EE-7E5F-46F3-8662-D86A7381C385.png)
+![](https://assets.omscs.io/notes/3F8AD3EE-7E5F-46F3-8662-D86A7381C385.png)
 
 ## Reducing Exposure Quiz Solution
-![](https://assets.omscs.io/6EEC39B8-9C40-473C-B2ED-6547F696CFAF.png)
+![](https://assets.omscs.io/notes/6EEC39B8-9C40-473C-B2ED-6547F696CFAF.png)
 
 ## Cyber Insurance Quiz
-![](https://assets.omscs.io/E2BF4801-6F74-4CD9-8E2A-142E405723DE.png)
+![](https://assets.omscs.io/notes/E2BF4801-6F74-4CD9-8E2A-142E405723DE.png)
 
 ## Cyber Insurance Quiz Solution
-![](https://assets.omscs.io/A2F22984-714E-452C-8801-507291A5711A.png)
+![](https://assets.omscs.io/notes/A2F22984-714E-452C-8801-507291A5711A.png)
 
 ## Enterprise Cyber Security Posture Part 1
 The whole point of security planning and security management is to become better prepared when it comes to cybersecurity. **Cybersecurity posture** captures this level of preparation; roughly, it refers to how "good" an organization is at cybersecurity. A cybersecurity posture can either be reactive or proactive.
@@ -210,18 +210,18 @@ The primary economic argument for cybersecurity is based on return on investment
 Of course, demonstrating this sort of cost-benefit analysis to upper management is difficult. While a CISO would like to quantify risk and risk reduction precisely, exact numbers are notoriously hard to derive. They can present their analyses based on their experience and perception but should be prepared for other leaders to question what they perceive as unsubstantiated opinions.
 
 ## Security Planning and Management
-![](https://assets.omscs.io/13B63BD1-85AB-4CDD-80A8-AC8B0BA0086C.png)
+![](https://assets.omscs.io/notes/13B63BD1-85AB-4CDD-80A8-AC8B0BA0086C.png)
 
 ## Cyber Security Budgets Quiz
-![](https://assets.omscs.io/1C6C0BDF-579C-4B4A-89B2-5AE53DE6E845.png)
+![](https://assets.omscs.io/notes/1C6C0BDF-579C-4B4A-89B2-5AE53DE6E845.png)
 
 ## Cyber Security Budgets Quiz Solution
-![](https://assets.omscs.io/5F82F572-BDB4-46BD-BC15-382A67CD15C8.png)
+![](https://assets.omscs.io/notes/5F82F572-BDB4-46BD-BC15-382A67CD15C8.png)
 
 Read more [here](https://www.partnerre.com/assets/uploads/docs/cyber-survey-results.pdf).
 
 ## Proactive Security Quiz
-![](https://assets.omscs.io/4BEB9B1D-801B-4C94-BDA2-7547458C7620.png)
+![](https://assets.omscs.io/notes/4BEB9B1D-801B-4C94-BDA2-7547458C7620.png)
 
 ## Proactive Security Quiz Solution
-![](https://assets.omscs.io/C3D071BA-435F-43EA-ABC8-A3D3D8C417E7.png)
+![](https://assets.omscs.io/notes/C3D071BA-435F-43EA-ABC8-A3D3D8C417E7.png)

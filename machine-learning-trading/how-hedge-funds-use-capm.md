@@ -59,17 +59,17 @@ Let's consider another scenario now.
 
 Instead of staying flat, suppose that the market went up 10%. What are the relative and absolute returns for both stocks, and what is our total return, both relative and absolute?
 
-![](https://assets.omscs.io/2020-02-21-22-10-17.png)
+![](https://assets.omscs.io/notes/2020-02-21-22-10-17.png)
 
 Let's also consider the scenario where the market goes down 10%. What are the relative and absolute returns for both stocks, and what is our total return, both relative and absolute?
 
-![](https://assets.omscs.io/2020-02-21-22-21-24.png)
+![](https://assets.omscs.io/notes/2020-02-21-22-21-24.png)
 
 ## Two Stock Scenario Quiz Solution
 
 Let's first look at the case where the market rises by 10%.
 
-![](https://assets.omscs.io/2020-02-21-22-13-24.png)
+![](https://assets.omscs.io/notes/2020-02-21-22-13-24.png)
 
 Consider stock A, which has a $\beta$ of 1.0 and an $\alpha$ of 0.01. A $\beta$ of 1.0 tells us that for every percentage point that the market moves, stock A moves one percent. An $\alpha$ of 0.01 tells us that stock A will move 1% above its movement with the market.
 
@@ -85,7 +85,7 @@ Calculating the relative return is a little tricky; that is, we can't just add 1
 
 Now, let's look at the case where the market falls 10%.
 
-![](https://assets.omscs.io/2020-02-21-22-25-50.png)
+![](https://assets.omscs.io/notes/2020-02-21-22-25-50.png)
 
 In this case, stock A falls with the market, but does 1% better, for a total relative loss of 9%, which equates to a $4.50 loss on a $50 investment.
 
@@ -151,11 +151,11 @@ $$
 
 Let's look at our two stocks again. Stock A has a $\beta$ of 1.0 and an $\alpha$ of 0.01. Stock B has a $\beta$ of 2.0 and an $\alpha$ of -0.01. What should the weights be for stock A and stock B so that we can minimize market risk?
 
-![](https://assets.omscs.io/2020-02-22-12-44-41.png)
+![](https://assets.omscs.io/notes/2020-02-22-12-44-41.png)
 
 ## Allocations Remove Market Risk Quiz Solution
 
-![](https://assets.omscs.io/2020-02-22-12-45-05.png)
+![](https://assets.omscs.io/notes/2020-02-22-12-45-05.png)
 
 We need to solve the following equation.
 

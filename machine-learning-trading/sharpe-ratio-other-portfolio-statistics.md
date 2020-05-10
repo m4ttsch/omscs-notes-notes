@@ -51,7 +51,7 @@ port_val = pos_vals.sum(axis=1) # Sum across columns
 
 The first row of `port_val` is simply the sum of the initial allocations: $1 million. Each subsequent row reflects the new value of the portfolio as the value of our positions changes as a result of stock price movement.
 
-![](https://assets.omscs.io/2020-01-17-14-32-24.png)
+![](https://assets.omscs.io/notes/2020-01-17-14-32-24.png)
 
 ## Portfolio Statistics
 
@@ -100,11 +100,11 @@ The Sharpe ratio allows us to consider our returns in the context of *risk*: the
 
 With this in mind, let's look at three comparisons of two stocks, ABC and XYZ, and decide which is better.
 
-![](https://assets.omscs.io/2020-01-17-16-16-52.png)
+![](https://assets.omscs.io/notes/2020-01-17-16-16-52.png)
 
 ## Which Portfolio is Better Quiz Solution
 
-![](https://assets.omscs.io/2020-01-17-16-21-44.png)
+![](https://assets.omscs.io/notes/2020-01-17-16-21-44.png)
 
 For the first comparison, ABC is better. ABC and XYZ have similar amounts of volatility, but ABC has double the return of XYZ.
 
@@ -118,7 +118,7 @@ We need a qualitative measure to compare ABC and XYZ in this third example, and 
 
 The **Sharpe ratio**, named for [William Sharpe](https://en.wikipedia.org/wiki/William_F._Sharpe), is a metric that adjusts return for risk, and it enables us, quantitatively, to assess and compare the portfolios from the quiz above.
 
-![](https://assets.omscs.io/2020-01-17-16-16-52.png)
+![](https://assets.omscs.io/notes/2020-01-17-16-16-52.png)
 
 We would assume that all else being equal, lower risk is better, and higher return is better. Indeed, the Sharpe ratio validates these assumptions.
 
@@ -130,15 +130,15 @@ Lately, however, the risk-free rate of return is about 0. If you were to put you
 
 Consider the following three factors.
 
-![](https://assets.omscs.io/2020-01-18-10-33-20.png)
+![](https://assets.omscs.io/notes/2020-01-18-10-33-20.png)
 
 How would you combine these three factors into a simple equation to create a metric that provides a measure of risk-adjusted return?
 
-![](https://assets.omscs.io/2020-01-18-10-34-58.png)
+![](https://assets.omscs.io/notes/2020-01-18-10-34-58.png)
 
 ## Form of the Sharpe Ratio Quiz Solution
 
-![](https://assets.omscs.io/2020-01-18-10-35-43.png)
+![](https://assets.omscs.io/notes/2020-01-18-10-35-43.png)
 
 Only the third choice meets the two criteria we described earlier; all else being equal, higher returns increase our metric, and lower risk increases our metric. Additionally, a higher rate of risk-free return decreases our metric.
 
@@ -232,13 +232,13 @@ Assume we have been trading a strategy for 60 days now. On average, our strategy
 
 What is the Sharpe ratio of this strategy?
 
-![](https://assets.omscs.io/2020-01-18-14-34-48.png)
+![](https://assets.omscs.io/notes/2020-01-18-14-34-48.png)
 
 > In financial terminology, one one-hundredth of one percent is known as a **basis point**, or "bip". Instead of saying, for example, that our strategy returns one-tenth of one percent per day, we could say it returns 10 bps per day.
 
 ## What is the Sharpe Ratio Quiz Solution
 
-![](https://assets.omscs.io/2020-01-18-14-38-32.png)
+![](https://assets.omscs.io/notes/2020-01-18-14-38-32.png)
 
 Let's recall our formula for the Sharpe ratio:
 

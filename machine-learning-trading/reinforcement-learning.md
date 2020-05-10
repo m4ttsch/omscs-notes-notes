@@ -17,19 +17,19 @@ When we talk about reinforcement learning, we are talking about a problem, not a
 
 To demonstrate one possible algorithm, let's consider a robot interacting with the environment.
 
-![](https://assets.omscs.io/2020-03-23-22-15-02.png)
+![](https://assets.omscs.io/notes/2020-03-23-22-15-02.png)
 
 First, the robot observes the environment; more specifically, it reads in some representation of the environment. We call this representation the **state**, which we denote as $S$.
 
-![](https://assets.omscs.io/2020-03-23-22-17-51.png)
+![](https://assets.omscs.io/notes/2020-03-23-22-17-51.png)
 
 The robot has to process $S$ to determine what action to take and does so by consulting a **policy**, which we denote as $\pi$. The robot considers $S$ with regard to $\pi$ and outputs an action $a$.
 
-![](https://assets.omscs.io/2020-03-23-22-19-29.png)
+![](https://assets.omscs.io/notes/2020-03-23-22-19-29.png)
 
 The action $a$ changes the environment in some way, and we can use a **transition function**, denoted as $T$, to derive a new environment from the current environment and a particular action.
 
-![](https://assets.omscs.io/2020-03-23-22-21-06.png)
+![](https://assets.omscs.io/notes/2020-03-23-22-21-06.png)
 
 Naturally, the robot reads in the updated environment as a new $S$, against which it consults $\pi$ to generate a new $a$. We refer to this circular process as the **sense, think, act cycle**.
 
@@ -39,11 +39,11 @@ As an example, if a navigation robot senses a cliff ahead and chooses to acceler
 
 In our case, we can imagine that our robot has a little wallet where it keeps its cash. The reward for a particular action might be how much cash that action adds to the wallet. The objective of this robot is to execute actions that maximize this reward.
 
-![](https://assets.omscs.io/2020-03-23-22-23-54.png)
+![](https://assets.omscs.io/notes/2020-03-23-22-23-54.png)
 
 Somewhere within the robot, there is an algorithm that synthesizes information about $S$, $r$, and $a$ over time to generate $\pi$.
 
-![](https://assets.omscs.io/2020-03-23-22-24-50.png)
+![](https://assets.omscs.io/notes/2020-03-23-22-24-50.png)
 
 To recap, $S$ is the state of the environment that the robot "senses", and it uses a policy $\pi$ to determine which action $a$ to take. Each action comes with an associated reward $r$, and the robot tries to refine $\pi$ over time to maximize $r$.
 
@@ -55,11 +55,11 @@ We want to use reinforcement learning algorithms to trade; to do so, we have to 
 
 Consider the following items. For each item, select whether the item corresponds to a component of the external state $S$, an action $a$ we might take within the environment, or a reward $r$ that we might use to inform our policy $\pi$.
 
-![](https://assets.omscs.io/2020-03-23-23-28-54.png)
+![](https://assets.omscs.io/notes/2020-03-23-23-28-54.png)
 
 ## Trading as an RL Problem Quiz Solution
 
-![](https://assets.omscs.io/2020-03-23-23-38-35.png)
+![](https://assets.omscs.io/notes/2020-03-23-23-38-35.png)
 
 Buying and selling stock are both actions that we execute upon our environment.
 
@@ -110,7 +110,7 @@ The second set of approaches is model-free reinforcement learning. **Model-free 
 
 We haven't gone into much detail about what exactly we are trying to optimize; currently, we have a vague idea that we are trying to maximize the sum of our rewards. To make our discussion of optimization more concrete, consider our robot navigating the following maze.
 
-![](https://assets.omscs.io/2020-03-25-21-43-07.png)
+![](https://assets.omscs.io/notes/2020-03-25-21-43-07.png)
 
 This maze has a reward of $1 two spaces away and a much higher reward of $1 million eight spaces away. The $1 reward is unique in that the robot can receive it multiple times; for instance, entering, exiting, and re-entering the $1 square results in a $2 reward. The robot can only receive the $1 million reward once.
 
@@ -146,11 +146,11 @@ The value of $\gamma$ is greater than zero and less than or equal to one. The cl
 
 Which of the following approaches leads our robot to a policy that causes it to reach the $1 million reward?
 
-![](https://assets.omscs.io/2020-03-25-22-05-58.png)
+![](https://assets.omscs.io/notes/2020-03-25-22-05-58.png)
 
 ## Which Approach Gets $1M Quiz Solution
 
-![](https://assets.omscs.io/2020-03-25-22-13-18.png)
+![](https://assets.omscs.io/notes/2020-03-25-22-13-18.png)
 
 With an infinite horizon, the robot may exclusively grab the $1 ad infinitum, or it might first grab the $1 million before returning to the $1. As a result, obtaining the $1 million is possible with infinite horizon, but not guaranteed.
 

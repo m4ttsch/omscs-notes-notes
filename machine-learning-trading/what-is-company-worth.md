@@ -11,25 +11,25 @@ lecture: what-is-company-worth
 
 Suppose there is a company that consistently generates $1 per year. What is that company worth?
 
-![](https://assets.omscs.io/2020-02-16-12-35-39.png)
+![](https://assets.omscs.io/notes/2020-02-16-12-35-39.png)
 
 ## What Is a Company Worth Quiz Solution
 
-![](https://assets.omscs.io/2020-02-16-12-36-13.png)
+![](https://assets.omscs.io/notes/2020-02-16-12-36-13.png)
 
 ## Why Company Value Matters
 
 In general, the fundamental value of a company increases [monotonically](https://en.wikipedia.org/wiki/Monotonic_function) over time, as seen by the following plot.
 
-![](https://assets.omscs.io/2020-02-16-12-42-52.png)
+![](https://assets.omscs.io/notes/2020-02-16-12-42-52.png)
 
 This fundamental value is distinct from the value as estimated by the market. In other words, what the stock market says a company is worth is often different than what a company is actually worth. On one particular day, the stock market might overvalue a company; on another, it might undervalue the company.
 
-![](https://assets.omscs.io/2020-02-16-12-44-50.png)
+![](https://assets.omscs.io/notes/2020-02-16-12-44-50.png)
 
 Many trading strategies focus on identifying where the current stock price diverges from the true value of the company. For example, if we see a stock price that surpasses this value, we know to sell the stock. Conversely, a stock price that falls below this value signals that we should buy the stock.
 
-![](https://assets.omscs.io/2020-02-16-12-46-53.png)
+![](https://assets.omscs.io/notes/2020-02-16-12-46-53.png)
 
 There are many different ways we can estimate the true value of a company, such as intrinsic value, book value, and market capitalization.
 
@@ -47,11 +47,11 @@ The first asset is a $1 bill: cold, hard cash. The second asset is a Tucker Balc
 
 Which of these assets would you rather receive? Rank the choices from 1 (best) to 3 (worst).
 
-![](https://assets.omscs.io/2020-02-16-13-34-02.png)
+![](https://assets.omscs.io/notes/2020-02-16-13-34-02.png)
 
 ## The Balch Bond Quiz Solution
 
-![](https://assets.omscs.io/2020-02-16-13-49-15.png)
+![](https://assets.omscs.io/notes/2020-02-16-13-49-15.png)
 
 The most valuable asset among these three is the $1 delivered right now because you can spend it right now. The other two are promises for a reward at some point in the future. Among these two bonds, the one backed by the US government is likely more valuable than the one backed by the professor.
 
@@ -107,7 +107,7 @@ In other words, if Professor Balch wants to attract us to buy his $1 bond, he co
 
 We can plot the present value of a \$1 bond backed by both the US government and Tucker Balch, as a function of $i$.
 
-![](https://assets.omscs.io/2020-02-17-20-17-04.png)
+![](https://assets.omscs.io/notes/2020-02-17-20-17-04.png)
 
 Here we see two curves demonstrating exponential decay. As our above calculations have confirmed, the present value of the less trustworthy bond, with the higher interest rate, is always worth less than the present value of the more trustworthy bond, with the lower interest rate, for any value of $i$.
 
@@ -153,11 +153,11 @@ $$
 
 Consider a company that pays a dividend of $2 per year. Given a discount rate of 4%, what is the intrinsic value of this company?
 
-![](https://assets.omscs.io/2020-02-17-20-35-00.png)
+![](https://assets.omscs.io/notes/2020-02-17-20-35-00.png)
 
 ## Intrinsic Value Quiz Solution
 
-![](https://assets.omscs.io/2020-02-17-20-36-55.png)
+![](https://assets.omscs.io/notes/2020-02-17-20-36-55.png)
 
 The present value, $PV$, of a company is equal to the future value, $FV$, divided by the discount rate, $DR$. Given $FV = 2$ and $DR = 0.04$,
 
@@ -205,11 +205,11 @@ This company pays $1 million per year in dividends. Assuming a 5% discount rate,
 
 This company has one million shares of stock outstanding. Given a stock price of $75 per share, what is the market capitalization of this company?
 
-![](https://assets.omscs.io/2020-02-17-21-08-46.png)
+![](https://assets.omscs.io/notes/2020-02-17-21-08-46.png)
 
 ## Compute Company Value Quiz Solution
 
-![](https://assets.omscs.io/2020-02-17-21-09-03.png)
+![](https://assets.omscs.io/notes/2020-02-17-21-09-03.png)
 
 To calculate book value, we take the value of the total assets and subtract the intangible assets, like the brand, and the liabilities. Given $110,000,000 in total assets, a $10,000,000 intangible asset, and a $20,000,000 liability, the book value for this company is $80,000,000.
 
@@ -221,11 +221,11 @@ To compute the market capitalization, we take the product of the share price, $7
 
 Since this company has a market capitalization of $75,000,000, we could buy all of the shares and, effectively the company, for $75,000,000. Should we?
 
-![](https://assets.omscs.io/2020-02-17-21-12-47.png)
+![](https://assets.omscs.io/notes/2020-02-17-21-12-47.png)
 
 ## Would you Buy this Stock Quiz Solution
 
-![](https://assets.omscs.io/2020-02-18-01-10-10.png)
+![](https://assets.omscs.io/notes/2020-02-18-01-10-10.png)
 
 It might seem like a tricky question, given such a relatively low intrinsic value, but it's not. We should buy this company for $75,000,000 and then break it apart and sell the individual assets for $80,000,000 to get an immediate $5,000,000 profit.
 

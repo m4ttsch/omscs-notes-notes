@@ -39,11 +39,11 @@ Consider a portfolio consisting of two stocks: Stock A and Stock B. 75% of the p
 
 Assume that, today, the price of Stock A increases by 1%, while the price of Stock B decreases by 2%. What is the return on this portfolio?
 
-![](https://assets.omscs.io/2020-02-18-21-39-14.png)
+![](https://assets.omscs.io/notes/2020-02-18-21-39-14.png)
 
 ## Portfolio Return Quiz Solution
 
-![](https://assets.omscs.io/2020-02-18-22-02-13.png)
+![](https://assets.omscs.io/notes/2020-02-18-22-02-13.png)
 
 Remember the formula to calculate portfolio return.
 
@@ -107,21 +107,21 @@ How do we arrive at values for $\alpha$ and $\beta$ for a particular stock? Prim
 
 For example, consider the following plot of the S&P 500 daily returns alongside the daily returns for fictional stock XYZ.
 
-![](https://assets.omscs.io/2020-02-19-00-09-54.png)
+![](https://assets.omscs.io/notes/2020-02-19-00-09-54.png)
 
 For each day, it looks like XYZ is more reactive than the S&P 500; in other words, when the S&P 500 goes up a little bit, XYZ goes up a lot. Additionally, XYZ appears to have a higher absolute return, on average, than the S&P 500.
 
 We can create a scatterplot of the returns for XYZ against the returns for the S&P 500.
 
-![](https://assets.omscs.io/2020-02-19-00-11-31.png)
+![](https://assets.omscs.io/notes/2020-02-19-00-11-31.png)
 
 We could potentially fit the following line to this scatterplot.
 
-![](https://assets.omscs.io/2020-02-19-00-12-27.png)
+![](https://assets.omscs.io/notes/2020-02-19-00-12-27.png)
 
 Like any line, the line above can be described by two parameters: slope and y-intercept. The slope is $\beta$, and the y-intercept is $\alpha$.
 
-![](https://assets.omscs.io/2020-02-19-00-12-56.png)
+![](https://assets.omscs.io/notes/2020-02-19-00-12-56.png)
 
 Note that this calculation of $\alpha$ and $\beta$ is after-the-fact. Just because a particular stock had a certain $\alpha$ historically doesn't mean that we can expect that value to remain in the future. Again, CAPM says that we should expect $\alpha$ to be zero; in reality, though, $\alpha$ is not always zero.
 
@@ -131,11 +131,11 @@ Consider the following two scatterplots. The plot on the left shows the daily re
 
 Given these two plots, which asset has a higher $\alpha$ and which has a higher $\beta$?
 
-![](https://assets.omscs.io/2020-02-19-00-16-19.png)
+![](https://assets.omscs.io/notes/2020-02-19-00-16-19.png)
 
 ## Compare Alpha and Beta Quiz Solution
 
-![](https://assets.omscs.io/2020-02-19-00-17-07.png)
+![](https://assets.omscs.io/notes/2020-02-19-00-17-07.png)
 
 Recall that $\beta$ is the slope of the fit line, and $\alpha$ is the y-intercept of the fit line. We can tell from the plots that ABC has both a higher $\alpha$ and a higher $\beta$.
 
@@ -197,11 +197,11 @@ $$
 
 If we are in an upward market, do we want a portfolio with a larger $\beta_p$ or a smaller $\beta_p$? How about if we are in a downward market?
 
-![](https://assets.omscs.io/2020-02-19-20-48-30.png)
+![](https://assets.omscs.io/notes/2020-02-19-20-48-30.png)
 
 ## Implications of CAPM Quiz Solution
 
-![](https://assets.omscs.io/2020-02-19-20-50-34.png)
+![](https://assets.omscs.io/notes/2020-02-19-20-50-34.png)
 
 In upward markets, we want a portfolio with a larger $\beta_p$. For example, a portfolio with a $\beta_p$ greater than one rises even higher than the market, while a portfolio with a $\beta_p$ smaller than one won't be able to take full advantage of market performance.
 
@@ -231,4 +231,4 @@ For example, a particular stock, $i$, might have exposure to the financial secto
 
 We can continue this process, computing an individual $\beta$ for each sector that impacts the stock. By breaking out the overall $\beta$ into these sector components, we can get a more accurate forecast of returns.
 
-![](https://assets.omscs.io/2020-02-20-08-52-26.png)
+![](https://assets.omscs.io/notes/2020-02-20-08-52-26.png)

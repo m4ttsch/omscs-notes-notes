@@ -17,13 +17,13 @@ for download:
 
 ## IIS Complete ($20)
 
-[![IIS Complete](https://assets.omscs.io/ebooks/iis-full.jpg)](https://gum.co/iis-full?wanted=true)
+[![IIS Complete](https://assets.omscs.io/notes/ebooks/iis-full.jpg)](https://gum.co/iis-full?wanted=true)
 
 
 ## IIS Lecture Notes ($20)
 
-[![IIS Complete](https://assets.omscs.io/ebooks/iis-lecture.jpg)](https://gum.co/iis-lecture?wanted=true)
+[![IIS Complete](https://assets.omscs.io/notes/ebooks/iis-lecture.jpg)](https://gum.co/iis-lecture?wanted=true)
 
 ## IIS Exam Review ($10)
 
-[![IIS Complete](https://assets.omscs.io/ebooks/iis-exam.jpg)](https://gum.co/iis-exam?wanted=true)
+[![IIS Complete](https://assets.omscs.io/notes/ebooks/iis-exam.jpg)](https://gum.co/iis-exam?wanted=true)

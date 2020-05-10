@@ -17,7 +17,7 @@ Generally, a decline in barometric pressure indicates that bad weather and rain 
 
 Let's look at the following scatterplot, where each point maps a change in barometric pressure on the $x$-axis to the corresponding amount of rainfall on the $y$-axis.
 
-![](https://assets.omscs.io/2020-01-31-10-49-29.png)
+![](https://assets.omscs.io/notes/2020-01-31-10-49-29.png)
 
 We can see a general trend here, and indeed it follows our intuition: as barometric pressure increases, rainfall tends to decrease.
 
@@ -25,19 +25,19 @@ We want to create a model, based on this data, that we can query for any change 
 
 The classic solution to this problem is to fit a line to the data, and we've plotted one such line below.
 
-![](https://assets.omscs.io/2020-01-31-10-59-05.png)
+![](https://assets.omscs.io/notes/2020-01-31-10-59-05.png)
 
 This approach is called **linear regression**, and the resulting model can be described using the equation for a line: $y = mx + b$. In this model, $x$ is the observed change in barometric pressure, $y$ is the predicted amount of rainfall, and $m$ and $b$ are the parameters that we must learn.
 
 Once we learn $m$ and $b$, we can query our model for any $x$ and get a corresponding $y$.
 
-![](https://assets.omscs.io/2020-01-31-11-03-25.png)
+![](https://assets.omscs.io/notes/2020-01-31-11-03-25.png)
 
 This model is decent, but it doesn't accurately track the behavior of the data. As we can see, the data "curves" up and then back down, and a linear model can't capture this type of movement.
 
 So, we can generate a more complex model. Instead of fitting a line, we can fit a polynomial: $y = m_2x^2 + mx + b$. With this model, we have to learn three parameters, whereas we only had to learn two with the simpler linear model.
 
-![](https://assets.omscs.io/2020-01-31-11-06-50.png)
+![](https://assets.omscs.io/notes/2020-01-31-11-06-50.png)
 
 Notice that this polynomial model fits the data much better than the linear model for $x > 0$. However, the model fits the data for $x < 0$ pretty poorly. As you might imagine, we could add an $x^3$ term to our model to help better fit that portion of the data.
 
@@ -49,25 +49,25 @@ Instead of using a parametric approach, we can use an **instance-based regressio
 
 Let's recall our scatterplot from before, which demonstrates a relationship between change in barometric pressure and rainfall.
 
-![](https://assets.omscs.io/2020-01-31-10-49-29.png)
+![](https://assets.omscs.io/notes/2020-01-31-10-49-29.png)
 
 Suppose we want to query our model to predict how much rainfall we should expect for a change in barometric pressure of -5mm.
 
-![](https://assets.omscs.io/2020-01-31-15-39-09.png)
+![](https://assets.omscs.io/notes/2020-01-31-15-39-09.png)
 
 With KNN, we find the $K$ nearest historical data points to our query and use them to estimate the prediction. In this case, $K = 3$.
 
-![](https://assets.omscs.io/2020-01-31-15-40-10.png)
+![](https://assets.omscs.io/notes/2020-01-31-15-40-10.png)
 
 ## How to Predict Quiz
 
 We've identified that, in KNN, for a particular query $Q$, we want to utilize the $K$ nearest data points to $Q$ to come up with a prediction. What should we do with those neighboring data points to find that prediction?
 
-![](https://assets.omscs.io/2020-01-31-15-53-54.png)
+![](https://assets.omscs.io/notes/2020-01-31-15-53-54.png)
 
 ## How to Predict Quiz Solution
 
-![](https://assets.omscs.io/2020-01-31-15-58-08.png)
+![](https://assets.omscs.io/notes/2020-01-31-15-58-08.png)
 
 Remember that we want to predict a $y$-value for the queried $x$-value. As a result, it doesn't make sense to take the average of the $x$-values of the nearest neighbors. Additionally, we don't want to take the largest $y$-value; otherwise, the other neighbors have no influence on the prediction. The correct approach here is to take the mean of their $y$-values.
 
@@ -75,7 +75,7 @@ Remember that we want to predict a $y$-value for the queried $x$-value. As a res
 
 We said that the correct method of combining nearest neighbors to make a prediction is to take the average of their $y$-values. If we repeated this process at many points along the $x$-axis, we would generate a model that looks like the following.
 
-![](https://assets.omscs.io/2020-01-31-16-08-20.png)
+![](https://assets.omscs.io/notes/2020-01-31-16-08-20.png)
 
 Besides KNN, there are several other instance-based regression methods, such as **kernel regression**. Whereas in KNN, we take an unweighted average of the nearest neighbors, in kernel regression, we weight the contributions of each neighbor according to its distance from the query.
 
@@ -85,21 +85,21 @@ Let's consider the relationship between variables in two different scenarios.
 
 The first scenario involves firing a cannon. The independent variable is the value of the angle that the cannon makes with the ground, and the dependent variable is the horizontal distance the cannonball travels.
 
-![](https://assets.omscs.io/2020-01-31-16-39-33.png)
+![](https://assets.omscs.io/notes/2020-01-31-16-39-33.png)
 
 The second scenario involves attracting bees to a food source. The independent variable is the richness of the food source, and the dependent variable is the number of bees attracted to that source.
 
-![](https://assets.omscs.io/2020-01-31-16-42-14.png)
+![](https://assets.omscs.io/notes/2020-01-31-16-42-14.png)
 
 Note that this scenario is slightly different than the first because it's not clear that the number of bees always increases as richness increases.
 
 Given these two scenarios, which, if any, is better modeled using a parametric model, and which, if any, is better modeled using a non-parametric model?
 
-![](https://assets.omscs.io/2020-01-31-16-43-44.png)
+![](https://assets.omscs.io/notes/2020-01-31-16-43-44.png)
 
 ## Parametric vs Non-Parametric Quiz Solution
 
-![](https://assets.omscs.io/2020-01-31-16-48-54.png)
+![](https://assets.omscs.io/notes/2020-01-31-16-48-54.png)
 
 In the first scenario, we can start with an estimate of the underlying behavior of the system in terms of a mathematical equation that expresses how it behaves. This equation is just the equation of trajectory, which we can find online. We can then learn the parameters of this equation such that it describes the relationship between our variables.
 

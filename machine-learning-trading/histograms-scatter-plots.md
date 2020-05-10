@@ -19,7 +19,7 @@ Given a series of stock prices, the daily return on day `d` is equal to the pric
 
 Let's look at a plot of daily return data.
 
-![](https://assets.omscs.io/2020-01-14-21-39-55.png)
+![](https://assets.omscs.io/notes/2020-01-14-21-39-55.png)
 
 It's hard to draw any exciting conclusions by looking at this data on a day-to-day basis. There are more illustrative ways to visualize this data, and this lesson considers two types of visualizations: histograms and scatter plots.
 
@@ -31,11 +31,11 @@ Suppose that we've taken all of the SPY pricing data from over the years, genera
 
 Which of the following shapes would the histogram most likely have?
 
-![](https://assets.omscs.io/2020-01-14-21-45-58.png)
+![](https://assets.omscs.io/notes/2020-01-14-21-45-58.png)
 
 ## What Would it Look Like Quiz Solution
 
-![](https://assets.omscs.io/2020-01-14-21-46-20.png)
+![](https://assets.omscs.io/notes/2020-01-14-21-46-20.png)
 
 ## Histogram of Daily Return
 
@@ -45,7 +45,7 @@ For example, we might be interested in the mean, which tells us the average retu
 
 Another significant statistic is kurtosis. **Kurtosis** describes the tails of our distribution; specifically, kurtosis gives us a measure of how much the tails of our distribution differ from those of a Gaussian, or normal, distribution.
 
-![](https://assets.omscs.io/2020-01-15-00-15-22.png)
+![](https://assets.omscs.io/notes/2020-01-15-00-15-22.png)
 
 In our case, we have "fat tails", which means that our data contains more values further from the mean than we would see if the distribution was completely normal. If we were to measure the kurtosis, we would get a positive value.
 
@@ -55,7 +55,7 @@ On the other hand, a negative kurtosis indicates that there are fewer occurrence
 
 Let's look at the daily returns for SPY from 2009 through 2012.
 
-![](https://assets.omscs.io/2020-01-14-22-05-05.png)
+![](https://assets.omscs.io/notes/2020-01-14-22-05-05.png)
 
 We want to turn this data into a histogram. Of course, we can't create any plots without matplotlib:
 
@@ -71,7 +71,7 @@ df.hist()
 
 Let's see the plot.
 
-![](https://assets.omscs.io/2020-01-14-22-06-22.png)
+![](https://assets.omscs.io/notes/2020-01-14-22-06-22.png)
 
 Note that we did not specify the number of bins that we wanted to use in our histogram, so we were given ten, the default. Of course, pandas is flexible and lets us supply the number of bins using the `bins` keyword:
 
@@ -81,7 +81,7 @@ df.hist(bins=20)
 
 Let's see our new histogram.
 
-![](https://assets.omscs.io/2020-01-14-22-08-41.png)
+![](https://assets.omscs.io/notes/2020-01-14-22-08-41.png)
 
 Notice that the width of each bar has decreased, and the number of bars has increased.
 
@@ -99,7 +99,7 @@ df['SPY'].std()
 
 If we print out these values, we see the following.
 
-![](https://assets.omscs.io/2020-01-14-22-15-03.png)
+![](https://assets.omscs.io/notes/2020-01-14-22-15-03.png)
 
 We want to add these values to our daily returns histogram plot. Thankfully, matplotlib exposes an `axvline` method that allows us to draw vertical lines on the current graph.
 
@@ -113,7 +113,7 @@ This method call instructs matplotlib to draw a white, dashed line of width two 
 
 Let's see how it looks.
 
-![](https://assets.omscs.io/2020-01-14-22-18-52.png)
+![](https://assets.omscs.io/notes/2020-01-14-22-18-52.png)
 
 We can draw a vertical line at the x-values of positive `std` and negative `std` like so:
 
@@ -132,7 +132,7 @@ These method calls instruct matplotlib to draw a red, dashed line of width two a
 
 If we plot these lines, we see the following figure.
 
-![](https://assets.omscs.io/2020-01-14-22-21-46.png)
+![](https://assets.omscs.io/notes/2020-01-14-22-21-46.png)
 
 We can retrieve the kurtosis of our daily returns data using the `kurtosis` method:
 
@@ -154,7 +154,7 @@ A common practice in finance is to plot histograms of the daily returns of diffe
 
 Below are the daily returns histograms for SPY and XYZ, as well as three statements describing the relationship between the two.
 
-![](https://assets.omscs.io/2020-01-14-22-30-14.png)
+![](https://assets.omscs.io/notes/2020-01-14-22-30-14.png)
 
 Which statement do you think is correct?
 
@@ -162,7 +162,7 @@ Which statement do you think is correct?
 
 ## Compare Two Histograms Quiz Solution
 
-![](https://assets.omscs.io/2020-01-14-22-31-49.png)
+![](https://assets.omscs.io/notes/2020-01-14-22-31-49.png)
 
 We can see that the mean of SPY is slightly higher than the mean of XYZ, indicating that SPY outperforms XYZ.
 
@@ -182,7 +182,7 @@ daily_returns.hist(bins=20)
 
 If we print the histograms, we see the following.
 
-![](https://assets.omscs.io/2020-01-15-20-22-51.png)
+![](https://assets.omscs.io/notes/2020-01-15-20-22-51.png)
 
 Notice that we have two distinct subplots. Instead, we want the histograms to share an x- and y-axis so that we can more easily compare the data. We can accomplish this like so:
 
@@ -196,7 +196,7 @@ The `label` parameter we pass to the `hist` method helps us differentiate the pl
 
 Let's take a look at the histograms.
 
-![](https://assets.omscs.io/2020-01-15-20-26-13.png)
+![](https://assets.omscs.io/notes/2020-01-15-20-26-13.png)
 
 Now that the histograms are on the same axes, we can compare their peaks and tails more easily.
 
@@ -208,7 +208,7 @@ Now that the histograms are on the same axes, we can compare their peaks and tai
 
 Let's compare the daily returns of SPY and XYZ.
 
-![](https://assets.omscs.io/2020-01-15-20-37-44.png)
+![](https://assets.omscs.io/notes/2020-01-15-20-37-44.png)
 
 We can see that XYZ frequently moves in the same direction as SPY, although sometimes it moves further. Occasionally, SPY and XYZ move in different directions.
 
@@ -216,19 +216,19 @@ We can use a scatterplot to visualize the relationship between SPY and XYZ bette
 
 In our case, we plot the daily returns of SPY against the daily returns of XYZ. Each day in our original data becomes a point in our scatterplot: the value of the x-coordinate is the SPY return, and the value of the y-coordinate is the XYZ return.
 
-![](https://assets.omscs.io/2020-01-15-20-44-10.png) 
+![](https://assets.omscs.io/notes/2020-01-15-20-44-10.png) 
 
 Let's consider the daily returns circled above. On this day, the return of SPY was about 1%, while the return of XYZ was slightly higher. These returns map to a point of (1, ~1.05) on our scatterplot.
 
 Let's consider another example.
 
-![](https://assets.omscs.io/2020-01-15-21-06-50.png)
+![](https://assets.omscs.io/notes/2020-01-15-21-06-50.png)
 
 On the second day circled above, SPY and XYZ were moving in different directions. SPY was in positive territory, while XYZ was in negative territory. These returns map to a point near (1, -1) on our scatterplot.
 
 We can continue this process to fill out our scatterplot.
 
-![](https://assets.omscs.io/2020-01-15-20-46-33.png)
+![](https://assets.omscs.io/notes/2020-01-15-20-46-33.png)
 
 Even though the data points are somewhat scattered, we do see a relationship between the daily returns of SPY and XYZ.
 
@@ -236,11 +236,11 @@ Even though the data points are somewhat scattered, we do see a relationship bet
 
 It's relatively common practice to take this scatterplot of daily return data and fit a line to it using linear regression.
 
-![](https://assets.omscs.io/2020-01-15-21-52-05.png)
+![](https://assets.omscs.io/notes/2020-01-15-21-52-05.png)
 
 We can look at some properties of this best-fit line. One property we might be interested in is the *slope*. Let's assume for this example that the slope is 1.
 
-![](https://assets.omscs.io/2020-01-15-21-52-31.png)
+![](https://assets.omscs.io/notes/2020-01-15-21-52-31.png)
 
 In financial terminology, the slope is usually referred to as beta. **Beta** indicates how reactive a stock is to the market.
 
@@ -266,11 +266,11 @@ Correlation values run from zero to one, where zero means no correlation and one
 
 Given what we just learned about correlation and slope (beta), let's look at two scatterplots with their best-fit lines, and choose the most accurate statement.
 
-![](https://assets.omscs.io/2020-01-15-22-13-09.png)
+![](https://assets.omscs.io/notes/2020-01-15-22-13-09.png)
 
 ## Correlation vs. Slope Quiz Solution
 
-![](https://assets.omscs.io/2020-01-15-22-15-24.png)
+![](https://assets.omscs.io/notes/2020-01-15-22-15-24.png)
 
 The best-fit line in the SPY vs. ABC scatterplot has a higher beta because that line has a larger slope than the corresponding line in the SPY vs. XYZ plot.
 
@@ -290,7 +290,7 @@ Note that because we have more than two columns in `daily_returns`, we have to s
 
 Let's look at our first scatterplot.
 
-![](https://assets.omscs.io/2020-01-15-23-48-23.png)
+![](https://assets.omscs.io/notes/2020-01-15-23-48-23.png)
 
 Similarly, we can create a scatterplot of SPY vs. GLD from the same DataFrame:
 
@@ -300,7 +300,7 @@ daily_returns.plot(kind='scatter', x='SPY', y='GLD')
 
 Let's look at the scatterplots side by side.
 
-![](https://assets.omscs.io/2020-01-15-23-51-13.png)
+![](https://assets.omscs.io/notes/2020-01-15-23-51-13.png)
 
 With our two plots in hand, we now want to fit a line to the data in each plot. For that, we need NumPy.
 
@@ -334,11 +334,11 @@ Note that we include the last two parameters to get a red line plot.
 
 Let's look at the best-fit line.
 
-![](https://assets.omscs.io/2020-01-16-00-07-46.png)
+![](https://assets.omscs.io/notes/2020-01-16-00-07-46.png)
 
 If we print out the alpha and beta values for the XOM line and the GLD line, we see the following.
 
-![](https://assets.omscs.io/2020-01-16-00-12-14.png)
+![](https://assets.omscs.io/notes/2020-01-16-00-12-14.png)
 
 Remember that the beta value shows how a stock moves with respect to SPY. We can see that the beta value for XOM is greater than that for GLD, which means that XOM is more reactive to the market than GLD.
 
@@ -346,7 +346,7 @@ Remember also that the alpha value shows how well a stock performs with respect 
 
 The following graph of prices confirms that GLD outperforms SPY, and SPY outperforms XOM.
 
-![](https://assets.omscs.io/2020-01-16-00-17-27.png)
+![](https://assets.omscs.io/notes/2020-01-16-00-17-27.png)
 
 Finally, we can find the correlation between the daily returns of SPY, XOM, and GLD with one method call:
 
@@ -358,13 +358,13 @@ We can specify the method by which we want to calculate the correlation. We choo
 
 If we print out the correlation, we see the following table.
 
-![](https://assets.omscs.io/2020-01-16-00-29-05.png)
+![](https://assets.omscs.io/notes/2020-01-16-00-29-05.png)
 
 We can see that SPY and XOM are highly correlated, while SPY and GLD have a very low correlation.
 
 Let's check the SPY vs. GLD scatterplot and best-fit line to verify.
 
-![](https://assets.omscs.io/2020-01-16-00-30-11.png)
+![](https://assets.omscs.io/notes/2020-01-16-00-30-11.png)
 
 Indeed, we see that the data points do not fit the line tightly.
 

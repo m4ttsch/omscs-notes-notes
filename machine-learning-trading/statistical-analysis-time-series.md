@@ -13,7 +13,7 @@ In this lesson, we are going to look at the various types of statistics that we 
 
 Let's consider our old DataFrame `df` from a previous lecture.
 
-![](https://assets.omscs.io/2020-01-12-13-57-26.png)
+![](https://assets.omscs.io/notes/2020-01-12-13-57-26.png)
 
 We can take the mean of each column in `df` like this:
 
@@ -23,7 +23,7 @@ df1.mean()
 
 This statement will create a new one-dimensional ndarray whose elements are the means of the columns in `df`.
 
-![](https://assets.omscs.io/2020-01-12-14-00-11.png)
+![](https://assets.omscs.io/notes/2020-01-12-14-00-11.png)
 
 DataFrames contain many helpful statistical methods, and some common ones are listed below.
 
@@ -50,7 +50,7 @@ df.mean()
 
 If we print the means, we see the following.
 
-![](https://assets.omscs.io/2020-01-12-15-52-34.png)
+![](https://assets.omscs.io/notes/2020-01-12-15-52-34.png)
 
 Similarly, we can compute the median price of each stock:
 
@@ -62,7 +62,7 @@ Recall that while the mean is the average value - the sum of all elements divide
 
 If we print out the median price for each stock, we see the following.
 
-![](https://assets.omscs.io/2020-01-12-15-55-46.png)
+![](https://assets.omscs.io/notes/2020-01-12-15-55-46.png)
 
 Additionally, we can compute the standard deviation of the prices of each stock:
 
@@ -74,7 +74,7 @@ Mathematically, the standard deviation is the square root of the [variance](http
 
 If we print out the standard deviation of the prices of each stock, we see the following.
 
-![](https://assets.omscs.io/2020-01-12-15-56-58.png)
+![](https://assets.omscs.io/notes/2020-01-12-15-56-58.png)
 
 We can see that GOOG has the highest standard deviation among the stocks. This means the price of GOOG has varied more over time than the price of the other stocks.
 
@@ -89,35 +89,35 @@ Let's talk about a new kind of statistics: **rolling statistics**. Instead of co
 
 Consider the following graph of SPY price data.
 
-![](https://assets.omscs.io/2020-01-12-16-14-15.png)
+![](https://assets.omscs.io/notes/2020-01-12-16-14-15.png)
 
 We can compute the *global* mean of this data set, which is a single value described by the line below.
 
-![](https://assets.omscs.io/2020-01-12-16-15-05.png)
+![](https://assets.omscs.io/notes/2020-01-12-16-15-05.png)
 
 We can also compute an `n`-day rolling mean. For a given day `d`, the `n`-day rolling mean is equal to the mean of the `d - (n - 1)` through `d` days. The **window** is the parameter `n`.
 
 For example, we can compute a 20-day rolling mean as follows. For a given day `d`, the 20-day rolling mean is equal to the mean of the `d - 19` through `d` days. The window here is 20.
 
-![](https://assets.omscs.io/2020-01-12-16-43-42.png)
+![](https://assets.omscs.io/notes/2020-01-12-16-43-42.png)
 
 We can calculate the 20-day rolling mean for day `d' = d + 1` as the mean of the `d - 18` through `d + 1` days. Generally, we can imagine "sliding" the window through the data set and computing the rolling mean at each data point.
 
 Note that our sliding mean calculations form a curve that begins 20 data points after the beginning of the SPY data.
 
-![](https://assets.omscs.io/2020-01-12-16-28-59.png)
+![](https://assets.omscs.io/notes/2020-01-12-16-28-59.png)
 
 We can see that this rolling mean line follows the day-to-day values of the SPY price data, but it lags slightly as it has to incorporate the past twenty days into its calculation.
 
 The rolling mean is referred to as a [simple moving average](https://www.investopedia.com/terms/s/sma.asp) (SMA) by [technical analysts](https://www.investopedia.com/terms/t/technical-analyst.asp). Technical analysts utilize SMAs by looking at points where the price crosses over the SMA.
 
-![](https://assets.omscs.io/2020-01-12-16-32-07.png)
+![](https://assets.omscs.io/notes/2020-01-12-16-32-07.png)
 
 A hypothesis that many technical analysts abide by is that the rolling mean may be a good representation of the true, underlying price of the stock and that significant deviations from that mean eventually result in a return to the mean.
 
 As a result, if you can spot significant deviations from the mean, you might be able to spot a buying opportunity.
 
-![](https://assets.omscs.io/2020-01-12-16-34-15.png)
+![](https://assets.omscs.io/notes/2020-01-12-16-34-15.png)
 
 A challenge to this strategy, though, is understanding when a deviation is significant enough to warrant attention. Small deviations may be noise more often than not.
 
@@ -127,11 +127,11 @@ Assume we are using a rolling mean to track the movement of a stock. We are look
 
 Which statistic might we use to discover if the price has diverged significantly enough?
 
-![](https://assets.omscs.io/2020-01-12-17-51-42.png)
+![](https://assets.omscs.io/notes/2020-01-12-17-51-42.png)
 
 ## Which Statistic to Use Quiz Solution
 
-![](https://assets.omscs.io/2020-01-12-17-52-03.png)
+![](https://assets.omscs.io/notes/2020-01-12-17-52-03.png)
 
 Standard deviation gives us a measure of divergence from the mean. Therefore, if the price breaches the standard deviation, we may conclude that the price has moved significantly enough for us to consider buying or selling the stock.
 
@@ -143,11 +143,11 @@ Bollinger reasoned that we ought to consider the recent volatility of a stock be
 
 His idea was to add two bands to the graph of price movement: one that was two standard deviations above the rolling mean, and one that was two standard deviations below the rolling mean.
 
-![](https://assets.omscs.io/2020-01-12-18-23-12.png)
+![](https://assets.omscs.io/notes/2020-01-12-18-23-12.png)
 
 With lower band `L` and upper band `H` in place, we can devise a simple trading strategy as follows. Price movement below `L` followed by price movement above `L` signals a buy. Conversely, price movement above `H` followed by price movement below `H` signals a sell.
 
-![](https://assets.omscs.io/2020-01-12-18-26-02.png)
+![](https://assets.omscs.io/notes/2020-01-12-18-26-02.png)
 
 ## Computing Rolling Statistics
 
@@ -163,7 +163,7 @@ df.rolling(window).mean()
 
 Let's look at some starter code for reading SPY data into a DataFrame `df` and plotting it.
 
-![](https://assets.omscs.io/2020-01-12-18-55-00.png)
+![](https://assets.omscs.io/notes/2020-01-12-18-55-00.png)
 
 We can generate an ndarray `rm_SPY` containing the values of a 20-day rolling mean over the SPY data:
 
@@ -194,7 +194,7 @@ ax.legend(loc='upper left')
 
 If we display the plot, we see the following.
 
-![](https://assets.omscs.io/2020-01-12-19-01-54.png)
+![](https://assets.omscs.io/notes/2020-01-12-19-01-54.png)
 
 Observe that the rolling mean line has missing initial values. Since we defined a 20-day window, we can't actually compute the rolling mean until we have at least 20 days worth of pricing data.
 
@@ -213,7 +213,7 @@ Computing Bollinger bands consists of three main steps: first, computing the rol
 
 Our goal is to implement the three functions below to accomplish these tasks.
 
-![](https://assets.omscs.io/2020-01-12-19-11-03.png)
+![](https://assets.omscs.io/notes/2020-01-12-19-11-03.png)
 
 ## Calculate Bollinger Bands Quiz Solution
 
@@ -233,7 +233,7 @@ Given a rolling mean `rm` and a rolling standard deviation `rstd`, we can calcul
 rm + (2 * rstd), rm - (2 * rstd)
 ```
 
-![](https://assets.omscs.io/2020-01-12-19-22-39.png)
+![](https://assets.omscs.io/notes/2020-01-12-19-22-39.png)
 
 ### Documentation
 - [pandas.DataFrame.rolling](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.rolling.html)
@@ -254,27 +254,27 @@ For example, let's suppose that yesterday a stock closed at $100 and today the s
 
 Here's how a chart for daily returns might look.
 
-![](https://assets.omscs.io/2020-01-12-22-29-20.png)
+![](https://assets.omscs.io/notes/2020-01-12-22-29-20.png)
 
 We can see the daily returns "zigzag" above and below zero, indicating that the stock finished above its previous close on some days and finished below on others.
 
 We can also take the average over the daily return values, which, since the stock seems to have risen more days than it fell, would be slightly above zero.
 
-![](https://assets.omscs.io/2020-01-12-22-33-22.png)
+![](https://assets.omscs.io/notes/2020-01-12-22-33-22.png)
 
 Daily returns can be a helpful tool for comparing two different stocks, such as XOM (Exxon) and SPY. The following plot of daily returns reveals an unusual feature: a day where SPY had a positive daily return, and XOM had a negative daily return.
 
-![](https://assets.omscs.io/2020-01-12-22-37-21.png)
+![](https://assets.omscs.io/notes/2020-01-12-22-37-21.png)
 
 ## Compute Daily Returns Quiz
 
-![](https://assets.omscs.io/2020-01-12-22-45-10.png)
+![](https://assets.omscs.io/notes/2020-01-12-22-45-10.png)
 
 Our task is to implement a function `compute_daily_returns` that receives a DataFrame `df` and returns a DataFrame consisting of the daily return values. The returned DataFrame must have the same number of rows as `df`, and any rows with missing data must be filled with zeroes.
 
 ## Compute Daily Returns Solution
 
-![](https://assets.omscs.io/2020-01-12-22-50-41.png)
+![](https://assets.omscs.io/notes/2020-01-12-22-50-41.png)
 
 Given a DataFrame `df` with `n` rows, we can create a new DataFrame with `n + m` rows where each row is shifted down `m` rows with the following code:
 
@@ -318,7 +318,7 @@ daily_returns.iloc[0] = 0
 
 Let's look at a chart of SPY prices for the year 2012.
 
-![](https://assets.omscs.io/2020-01-12-23-06-40.png)
+![](https://assets.omscs.io/notes/2020-01-12-23-06-40.png)
 
 This stock started 2012 at  $125 and finished at $142. However, when we hear about a stock on the news, we don't usually hear beginning and end prices, but rather something like: "SPY gained 13.6% in 2012."
 
@@ -338,6 +338,6 @@ If we set `t` equal to the last day in 2012, we can calculate the cumulative ret
 
 We can calculate and chart cumulative returns for the entire time period, just like we did with other statistics, such as the rolling mean.
 
-![](https://assets.omscs.io/2020-01-12-23-15-16.png)
+![](https://assets.omscs.io/notes/2020-01-12-23-15-16.png)
 
 Note that the shape of this chart is identical to the price chart but just normalized. In fact, the expression for cumulative return is identical to the expression for normalization we saw in a previous lecture.

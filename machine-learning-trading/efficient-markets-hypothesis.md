@@ -51,7 +51,7 @@ If the semi-strong version of the EMH is true, then we cannot make money using f
 
 Unfortunately, the **strong form of the EMH** says that prices reflect *all* information, public and private, thus ruling out insider information as a means of making money.
 
-![](https://assets.omscs.io/2020-03-08-21-48-24.png)
+![](https://assets.omscs.io/notes/2020-03-08-21-48-24.png)
 
 If the strong form of the EMH is true, then it is virtually impossible to make money by holding a portfolio other than the market portfolio. 
 
@@ -59,11 +59,11 @@ If the strong form of the EMH is true, then it is virtually impossible to make m
 
 Consider the three forms of the efficient markets hypothesis: weak, semi-strong, and strong. Which forms prohibit which of the following different analyses?
 
-![](https://assets.omscs.io/2020-03-08-22-25-06.png)
+![](https://assets.omscs.io/notes/2020-03-08-22-25-06.png)
 
 ## The EMH Prohibits Quiz Solution
 
-![](https://assets.omscs.io/2020-03-08-22-31-43.png)
+![](https://assets.omscs.io/notes/2020-03-08-22-31-43.png)
 
 The weak version of the EMH prohibits us from profiting using technical analysis but is silent on fundamental analysis and insider knowledge. The semi-strong version prohibits technical and fundamental analysis but is silent on insider knowledge. The strong version prohibits all three.
 
@@ -77,7 +77,7 @@ The strong version of the EMH, which says that we can't profit from insider info
 
 Let's look at a dataset that would seem to refute the semi-strong version of the EMH.
 
-![](https://assets.omscs.io/2020-03-09-09-13-16.png)
+![](https://assets.omscs.io/notes/2020-03-09-09-13-16.png)
 
 Here we see a plot of P/E - price to earnings - ratios against twenty year annualized returns. Recall that lower P/E ratios are generally a better buy, as we expect a stock that has a relatively lower price and relatively higher earnings to increase in price in the future.
 

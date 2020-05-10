@@ -19,4 +19,4 @@ for download:
 
 **Note**: I know this course has changed significantly since I took it, so I've permanently marked down the PDF from $20 to $5. Enjoy.
 
-[![CN Complete](https://assets.omscs.io/ebooks/cn-full.jpg)](https://gum.co/cn-full?wanted=true)
+[![CN Complete](https://assets.omscs.io/notes/ebooks/cn-full.jpg)](https://gum.co/cn-full?wanted=true)

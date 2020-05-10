@@ -15,7 +15,7 @@ The finest resolution of data is a tick. A **tick** represents a successful matc
 
 Consider the following plot, which shows share price along with share volume over time.
 
-![](https://assets.omscs.io/2020-02-24-22-24-50.png)
+![](https://assets.omscs.io/notes/2020-02-24-22-24-50.png)
 
 Keep in mind that none of these transactions happens at a specific time or during a specific time slice. There is no guarantee regarding the number of ticks during any particular minute or hour. An exchange only records a tick when a successful transaction occurs.
 
@@ -23,23 +23,23 @@ Each exchange provides its own data feed regarding these transactions, and we ca
 
 Let's add in the ticks from another exchange, shown in red, to our plot. Remember that all of these transactions are happening simultaneously, and prices at different exchanges aren't guaranteed to be the same.
 
-![](https://assets.omscs.io/2020-02-24-22-27-07.png)
+![](https://assets.omscs.io/notes/2020-02-24-22-27-07.png)
 
 Highly liquid stocks might experience hundreds of thousands of transactions occurring every second. Collecting ticks across all of the exchanges over a long period of time for stocks like these might result in an incomprehensible amount of data.
 
 As a result, exchanges usually consolidate tick data into time slices - minute-by-minute or hour-by-hour, for example - and we can see such slices, demarcated by the dotted lines, in our plot.
 
-![](https://assets.omscs.io/2020-02-24-22-31-08.png)
+![](https://assets.omscs.io/notes/2020-02-24-22-31-08.png)
 
 We can describe each chunk using five data points: open, high, low, close, and volume. Let's consider the first chunk.
 
 The **open** is the price of the first transaction within the chunk, which is $100.00. The **high** is the highest transaction price within the chunk, which is also $100.00. The **low** is the lowest transaction price within the chunk, which is $99.05. The **close** is the price of the last transaction within the chunk, which is $95.50. Finally, the **volume** represents the total number of shares transacted within the chunk, which is 600.
 
-![](https://assets.omscs.io/2020-02-24-22-38-26.png)
+![](https://assets.omscs.io/notes/2020-02-24-22-38-26.png)
 
 We can similarly consolidate the next chunk. Both the open and the low are $99.00, while the high and the close are $99.95. The volume is 300.
 
-![](https://assets.omscs.io/2020-02-24-22-39-33.png)
+![](https://assets.omscs.io/notes/2020-02-24-22-39-33.png)
 
 The data that we are going to work with is daily data; in other words, we are working with chunks that aggregate ticks on a daily frequency.
 
@@ -49,17 +49,17 @@ All of the concepts that we discuss apply to finer time slices, such as millisec
 
 Consider the following plot of IBM stock prices over time.
 
-![](https://assets.omscs.io/2020-02-24-22-42-38.png)
+![](https://assets.omscs.io/notes/2020-02-24-22-42-38.png)
 
 Notice the sudden drops in price. In one example, the price drops from $300 per share to $75 per share; in another, the price drops from $250 per share to $125 per share. These drops represent a 75% and a 50% price decline, respectively.
 
 Undoubtedly, the value of IBM did not drop that much in one day, so, which of the following reasons might explain the sudden drop in stock price?
 
-![](https://assets.omscs.io/2020-02-24-22-45-08.png)
+![](https://assets.omscs.io/notes/2020-02-24-22-45-08.png)
 
 ## Price Anomaly Quiz Solution
 
-![](https://assets.omscs.io/2020-02-24-22-51-28.png)
+![](https://assets.omscs.io/notes/2020-02-24-22-51-28.png)
 
 What we see here is a **stock split**, whereby a single share becomes $n$ shares, and the price of each share is divided by $n$.
 
@@ -75,7 +75,7 @@ As well, investors often strive to build portfolios with finely-tuned proportion
 
 Let's look at two stock splits.
 
-![](https://assets.omscs.io/2020-02-26-16-53-05.png)
+![](https://assets.omscs.io/notes/2020-02-26-16-53-05.png)
 
 Here we see a 4:1 stock split, whereby one share becomes four, and the resulting stock price is quartered. As well, we see a 2:1 stock split, which involves a doubling of the share count and a halving of the share price.
 
@@ -87,7 +87,7 @@ The solution to this problem is to use **adjusted close** instead of close. Adju
 
 Here's how it works. We walk back in time, day by day, setting adjusted close equal to actual close until we encounter the most recent $n$:1 stock split. From that point back to the beginning of time, we set the adjusted close equal to the actual close divided by $n$.
 
-![](https://assets.omscs.io/2020-02-26-17-02-03.png)
+![](https://assets.omscs.io/notes/2020-02-26-17-02-03.png)
 
 For our example, we divide all close prices leading up to the 2:1 split by two and all close prices leading up to the 4:1 split by four. Notice that the values leading up to the 4:1 split are effectively divided by eight, to account for both splits.
 
@@ -97,11 +97,11 @@ By computing the adjusted close, we now have a smooth line representing the spli
 
 Consider the following plot of close prices for a particular stock over time. Notice the 2:1 stock split. For each of the three days identified below, what is the adjusted close price for this stock?
 
-![](https://assets.omscs.io/2020-02-26-15-37-31.png)
+![](https://assets.omscs.io/notes/2020-02-26-15-37-31.png)
 
 ## Split Adjustment Quiz Solution
 
-![](https://assets.omscs.io/2020-02-26-15-42-44.png)
+![](https://assets.omscs.io/notes/2020-02-26-15-42-44.png)
 
 For each day since the stock split, the adjusted close is equivalent to the actual close. As a result, the adjusted close for the most recent of the three days is $100.
 
@@ -117,17 +117,17 @@ Many companies regularly pay dividends to their shareholders. For example, a com
 
 Dividend payments can have significant effects on a stock's price. Consider a company whose stock is currently trading at around $100 per share and for which investors have derived a fundamental value of exactly $100 per share. Let's suppose that this stock has an upcoming dividend payment of $1.
 
-![](https://assets.omscs.io/2020-02-27-16-10-25.png)
+![](https://assets.omscs.io/notes/2020-02-27-16-10-25.png)
 
 ## Dividends Quiz
 
 What share price do we expect to see the day before the dividend is paid? How about after the dividend is paid?
 
-![](https://assets.omscs.io/2020-02-27-16-11-51.png)
+![](https://assets.omscs.io/notes/2020-02-27-16-11-51.png)
 
 ## Dividends Quiz Solution
 
-![](https://assets.omscs.io/2020-02-27-16-12-15.png)
+![](https://assets.omscs.io/notes/2020-02-27-16-12-15.png)
 
 The day before the dividend is paid, we should expect to see the stock price rise to $101. A share price of $101 reflects the underlying value of $100 per share, for which there is consensus, plus the expected $1 dividend payment.
 
@@ -139,7 +139,7 @@ Note that the overall value for investors who bought before the dividend was pai
 
 Let's recall the dividend scenario we were just describing.
 
-![](https://assets.omscs.io/2020-03-06-15-47-37.png)
+![](https://assets.omscs.io/notes/2020-03-06-15-47-37.png)
 
 Between the date that the dividend is announced and the date it is paid, we see the share price generally rise from the consensus price - $100 - to accommodate the value of the dividend. After the dividend is paid, we see the share price immediately drop back $100.
 
@@ -147,7 +147,7 @@ Let's consider now how we might adjust historical prices to account for dividend
 
 Once we encounter a dividend, we adjust all of the preceding prices downward by the proportion of the dividend payment. In this case, with a 1% dividend - $1 paid on a $100 share - we reduce all prices before the dividend date by 1%.
 
-![](https://assets.omscs.io/2020-03-06-15-53-10.png)
+![](https://assets.omscs.io/notes/2020-03-06-15-53-10.png)
 
 To double-check this adjustment, consider buying and holding a stock through the dividend payment. We would see an increase in the value of our holding by about $1: the dividend payment.
 
@@ -167,18 +167,18 @@ A very common mistake that people make is to use the membership of that universe
 
 We can see the strong performance of such a biased strategy below in blue.
 
-![](https://assets.omscs.io/2020-03-06-16-07-44.png)
+![](https://assets.omscs.io/notes/2020-03-06-16-07-44.png)
 
 The problem here is that we are selecting from a collection of stocks in the relative past that we know exists in the relative future. Since all of these stocks survived the trading period, any trading strategy exclusively considering them is likely to show unrealistically optimistic results. In other words, there is a built-in **survivorship bias** in our selection. 
 
 What if we used the S&P 500 universe as it existed in 2007? The performance of our strategy now is less biased and might look like the red line below.
 
-![](https://assets.omscs.io/2020-03-06-16-15-35.png)
+![](https://assets.omscs.io/notes/2020-03-06-16-15-35.png)
 
 If we consider the universe of stocks as it existed in 2007, we are considering those stocks that didn't make it to the present day. 
 Specifically, our strategy might advise investments in one of the sixty-eight stocks that disappeared from the S&P 500 between 2007 and 2009.
 
-![](https://assets.omscs.io/2020-03-06-16-16-26.png)
+![](https://assets.omscs.io/notes/2020-03-06-16-16-26.png)
 
 If this is the case, our strategy is likely to show much worse performance than had we just considered the biased universe. However, the performance of our strategy using the unbiased universe is going to be more realistic, which is what matters.
 

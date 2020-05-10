@@ -29,7 +29,7 @@ The edges between PoPs are typically constrained by the location of fiber paths 
 
 Below is the Abilene Network, an autonomous system.
 
-![](https://assets.omscs.io/B343D361-5290-4D58-8F1B-88CD3D21B191.png)
+![](https://assets.omscs.io/notes/B343D361-5290-4D58-8F1B-88CD3D21B191.png)
 
 After understanding the topology of an autonomous system, the next step is to compute paths over that topology.
 
@@ -60,7 +60,7 @@ The solution to this equation for all destinations `y` in the topology is `x`'s 
 ### Example 1
 Suppose that we have the following three node network, with nodes `x`, `y`, and `z` and route costs of 1, 2, and 5.
 
-![](https://assets.omscs.io/CD2C0B11-C177-48A4-8C02-005020DD1BD1.png)
+![](https://assets.omscs.io/notes/CD2C0B11-C177-48A4-8C02-005020DD1BD1.png)
 
 Initially, each node has a single distance vector representing the shortest cost to each other incident node in the graph.
 
@@ -79,15 +79,15 @@ This process - comparing distance vectors and potentially updating routing table
 ### Example 2
 Suppose that we have the following three node network, with nodes `x`, `y`, and `z` and route costs of 1, 2, and 50.
 
-![](https://assets.omscs.io/84BF45E8-239B-4F34-8C5F-E335E5072833.png)
+![](https://assets.omscs.io/notes/84BF45E8-239B-4F34-8C5F-E335E5072833.png)
 
 Eventually, after running the distance vector protocol, the tables would converge.
 
-![](https://assets.omscs.io/7DE3551E-F064-42F8-B833-E3D0DCC9A9EB.png)
+![](https://assets.omscs.io/notes/7DE3551E-F064-42F8-B833-E3D0DCC9A9EB.png)
 
 Suppose, however, that the cost of the link from `x` to `y` increased from 1 to 60.
 
-![](https://assets.omscs.io/4F6180C2-19F3-4EE1-ADAE-AD7A51F69E1D.png)
+![](https://assets.omscs.io/notes/4F6180C2-19F3-4EE1-ADAE-AD7A51F69E1D.png)
 
 In this case, `y` would need to update its view of the shortest path between `y` and `x`.
 
@@ -145,7 +145,7 @@ In a backbone network, the network's routers may be divided into levels or areas
 
 In OSPF, the backbone area is called area 0, and each area in the backbone that is not area 0 has an area 0 router.
 
-![](https://assets.omscs.io/39197210-E4AA-460C-B24E-0460D26C7A5B.png)
+![](https://assets.omscs.io/notes/39197210-E4AA-460C-B24E-0460D26C7A5B.png)
 
 
 In each area, the nodes in that area perform the shortest-path computation to all other nodes within that area.
@@ -191,7 +191,7 @@ iBGP - an interdomain protocol - disseminates routes inside an AS to external de
 Suppose a router in AS `A` is trying to reach a router in AS `B`.  A border router in `A`  learns the route via eBGP, and learns that the next hop to the destination is a border router in `B`.  The router inside `A`  learns the route to `B` via iBGP, and would learn that the next hop is the border router of `A`.
 The router in `A` will need to utilize IGP to reach its iBGP next hop.
 
-![](https://assets.omscs.io/02714684-9E46-4F9E-9F58-F2551DEEB50D.png)
+![](https://assets.omscs.io/notes/02714684-9E46-4F9E-9F58-F2551DEEB50D.png)
 
 ## BGP Route Selection
 It is often the case that a router in an autonomous system might learn multiple routes to the same destination. In this situation, the router must select a *single* best route to the destination among the choices. This process is known as the **BGP route selection process**.
@@ -237,7 +237,7 @@ Local preference values allow an operator to configure a router to assign differ
 
 The default local preference value is 100, with higher values indicating that a route is more highly preferred.
 
-![](https://assets.omscs.io/5DB63856-880C-4AD3-904D-2F224E23BC0A.png)
+![](https://assets.omscs.io/notes/5DB63856-880C-4AD3-904D-2F224E23BC0A.png)
 
 An operator can adjust local preference values on incoming routes to control outbound traffic.
 
@@ -254,7 +254,7 @@ This type of arrangement requires prior agreement between `A`, `B`, and `C`. `B`
 ## Multiple Exit Discriminator
 Suppose that two ASes connect in two different cities: San Francisco and New York.
 
-![](https://assets.omscs.io/2346524C-FE0D-4F77-8C05-8B119B148B4A.png)
+![](https://assets.omscs.io/notes/2346524C-FE0D-4F77-8C05-8B119B148B4A.png)
 
 Also suppose that AS 1 wants traffic to destination `d` to enter via NYC rather than via the link in SF.
 
@@ -264,7 +264,7 @@ This means that some routers in AS 2 might select the SF egress, and others migh
 
 To override this default *hot potato routing* behavior, AS 1 might advertise its BGP routes to AS 2 with MED values.
 
-![](https://assets.omscs.io/58AAF6AC-EDBE-42C1-9A2B-D983386C0A7F.png)
+![](https://assets.omscs.io/notes/58AAF6AC-EDBE-42C1-9A2B-D983386C0A7F.png)
 
 If the NYC route is advertised with a lower MED value than SF route, then all of the routers in AS 2 that would have chosen the SF route will now choose the NYC route.
 
@@ -310,31 +310,31 @@ Nope!
 ## Interdomain Routing Can Oscillate!
 Consider the following topology where each AS specifies preferred paths to AS 0, presumably by local preference.
 
-![](https://assets.omscs.io/FA429550-5E52-4802-8243-1FAAA9F1DD37.png)
+![](https://assets.omscs.io/notes/FA429550-5E52-4802-8243-1FAAA9F1DD37.png)
 
 Each AS prefers the AS in the clock-wise direction, instead of the shorter, direct path to AS 0.
 
 Suppose that we start off with everyone selecting the direct path.
 
-![](https://assets.omscs.io/7106D861-CE32-4AE3-BDA9-91CA9DA4B966.png)
+![](https://assets.omscs.io/notes/7106D861-CE32-4AE3-BDA9-91CA9DA4B966.png)
 
 In this case, any one of these ASes would notice that it had a more preferred path.
 
 For example, AS 1 would see that since AS 3 has chosen the direct path, it can choose its preferred path, 1->3->0.
 
-![](https://assets.omscs.io/0A882F0B-BDAF-46CC-9A8E-F8441C86C3AC.png)
+![](https://assets.omscs.io/notes/0A882F0B-BDAF-46CC-9A8E-F8441C86C3AC.png)
 
 AS 3 sees that it has a more preferred path available - 3->2->0 - so it might switch to that.
 
-![](https://assets.omscs.io/58AB9118-6F84-4F54-8153-DE2D20E4023D.png)
+![](https://assets.omscs.io/notes/58AB9118-6F84-4F54-8153-DE2D20E4023D.png)
 
 In doing so, however, the path from AS 1 to AS 0 is broken. AS 1 now has to switch to its less-preferred direct path.
 
-![](https://assets.omscs.io/4BBFAD9C-9E0D-43B6-84E3-675E58876452.png)
+![](https://assets.omscs.io/notes/4BBFAD9C-9E0D-43B6-84E3-675E58876452.png)
 
 Now AS 2 sees that its preferred path is available, which now breaks the path from AS 3 to AS 0. This causes AS 3 to switch to its less-preferred direct path.
 
-![](https://assets.omscs.io/B2F32D94-6AFA-45E0-A7EE-ABAB107D9B95.png)
+![](https://assets.omscs.io/notes/B2F32D94-6AFA-45E0-A7EE-ABAB107D9B95.png)
 
 These oscillations continue ad infinitum.
 

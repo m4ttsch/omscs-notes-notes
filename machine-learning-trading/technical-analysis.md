@@ -31,11 +31,11 @@ Additionally, while we know that heuristics cannot guarantee outcomes, we also k
 
 Now that we know some differences between the types of data used for fundamental and technical analysis, let's look at the following four factors. Which of these are fundamental, and which are technical?
 
-![](https://assets.omscs.io/2020-02-23-07-01-59.png)
+![](https://assets.omscs.io/notes/2020-02-23-07-01-59.png)
 
 ## Potential Indicators Quiz Solution
 
-![](https://assets.omscs.io/2020-02-23-07-07-55.png)
+![](https://assets.omscs.io/notes/2020-02-23-07-07-55.png)
 
 Remember that technical analysis considers only price and volume data, whereas fundamental analysis incorporates other types of data.
 
@@ -73,7 +73,7 @@ For a very short trading horizon, however, technical analysis can shine. In the 
 
 For a trading horizon of days, technical factors may have some value; in general, the longer the trading horizon, the less valuable technical factors are.
 
-![](https://assets.omscs.io/2020-02-23-18-17-10.png)
+![](https://assets.omscs.io/notes/2020-02-23-18-17-10.png)
 
 Let's consider the value of decision complexity and decision speed across the range of trading horizons.
 
@@ -91,7 +91,7 @@ Over a longer trading horizon, where decision speed is less of a factor, and the
 
 Let's think about the different types of hedge funds we might find in the wild. On the one hand, we might see an HFT-based fund using technical analysis to trade over a millisecond horizon. On the other hand, we might find an insight-driven, human-based hedge fund holding positions for much longer. In between, we often see humans and computers working together.
 
-![](https://assets.omscs.io/2020-02-23-18-29-05.png)
+![](https://assets.omscs.io/notes/2020-02-23-18-29-05.png)
 
 ## A Few Indicators: Momentum
 
@@ -99,11 +99,11 @@ The first technical indicator that we are going to consider is momentum. **Momen
 
 If we consider the two points on the price chart below, we can see positive momentum.
 
-![](https://assets.omscs.io/2020-02-23-21-03-18.png)
+![](https://assets.omscs.io/notes/2020-02-23-21-03-18.png)
 
 If we consider these two points, we can see negative momentum.
 
-![](https://assets.omscs.io/2020-02-23-21-21-56.png)
+![](https://assets.omscs.io/notes/2020-02-23-21-21-56.png)
 
 The slope of the line connecting the two points indicates the strength of the momentum, either positive or negative.
 
@@ -127,13 +127,13 @@ Our next indicator is **simple moving average** (SMA), which, given $n$, compute
 
 We don't have to compute the SMA for only a single day. Instead, we can repeatedly slide our window forward one day to compute the $n$-day SMA for every day from $n$ to today. The plot of such an SMA is shown below.
 
-![](https://assets.omscs.io/2020-02-23-22-00-39.png)
+![](https://assets.omscs.io/notes/2020-02-23-22-00-39.png)
 
 Note that the SMA plot essentially looks like a smoothed version of the price chart. Also, notice that the movement of the SMA data lags that of the pricing data; in other words, the peaks and troughs that appear in the pricing data don't appear in the SMA data for several days.
 
 There are at least two different ways that technicians use simple moving averages in their trading strategies. First, they look for places where the current price crosses through the SMA, as seen below.
 
-![](https://assets.omscs.io/2020-02-23-22-02-21.png)
+![](https://assets.omscs.io/notes/2020-02-23-22-02-21.png)
 
 Such crossovers tend to be significant events, especially when $n$ is quite large. Coupled with supporting momentum, a crossover might constitute a strong buy or sell signal.
 
@@ -143,7 +143,7 @@ If we see a large excursion from such a simple moving average, we should expect 
 
 For example, we can uncover one potential buy signal and two potential sell signals below by looking at such excursions.
 
-![](https://assets.omscs.io/2020-02-23-22-05-57.png)
+![](https://assets.omscs.io/notes/2020-02-23-22-05-57.png)
 
 Just as we saw with momentum, a visual representation of simple moving averages is not enough. We need a quantitative representation of SMAs if we are to use them in our machine learning algorithms.
 
@@ -170,11 +170,11 @@ Similar to momentum, values for SMA typically range from -0.5 to 0.5.
 
 Suppose we have the following plot demonstrating the price of a stock over time.
 
-![](https://assets.omscs.io/2020-02-24-08-26-37.png)
+![](https://assets.omscs.io/notes/2020-02-24-08-26-37.png)
 
 We want to leverage simple moving averages to inform us of potential buying and selling opportunities. Let's add the simple moving average to the plot.
 
-![](https://assets.omscs.io/2020-02-24-08-27-30.png)
+![](https://assets.omscs.io/notes/2020-02-24-08-27-30.png)
 
 We are trying to decide how much of an excursion from the simple moving average we should use as a trading signal. We might choose a fixed percentage of, say, 1%.
 
@@ -182,13 +182,13 @@ However, as we step forward in time, we see that most of the price movement is a
 
 Our pricing chart shows two distinct regions: one of low volatility and one of high volatility.
 
-![](https://assets.omscs.io/2020-02-24-08-30-21.png)
+![](https://assets.omscs.io/notes/2020-02-24-08-30-21.png)
 
 [John Bollinger](https://en.wikipedia.org/wiki/John_Bollinger) observed that, for a stock experiencing low volatility, we should use a relatively smaller value for our signal, and, for a stock experiencing high volatility, we should use a relatively larger value.
 
 We can accomplish such dynamic signaling using a statistic, derived from the pricing data itself, that captures volatility. Specifically, that statistic is standard deviation. For each day, we can take the standard deviation of the prices that constitute the simple moving average for that day. Given this standard deviation, we typically create Bollinger Bands two standard deviations above and below the simple moving average.
 
-![](https://assets.omscs.io/2020-02-24-08-32-32.png)
+![](https://assets.omscs.io/notes/2020-02-24-08-32-32.png)
 
 These bands provide a dynamic measure for how much of a deviation we want to see before we respond. The bands are tighter for periods of low volatility, and a relatively smaller excursion is enough to break out of the bands. In periods of higher volatility, the bands are much wider, and we only see crossovers for more aggressive deviations.
 
@@ -196,7 +196,7 @@ We can use Bollinger Bands in our trading strategies. A general rule of thumb is
 
 For example, observe the following sell signal.
 
-![](https://assets.omscs.io/2020-02-24-08-35-39.png)
+![](https://assets.omscs.io/notes/2020-02-24-08-35-39.png)
 
 Here we see a large positive excursion from the simple moving average, followed by a Bollinger Band crossover in the direction of the moving average.
 
@@ -204,7 +204,7 @@ From our discussion on moving averages, we said that we expect prices to regress
 
 Conversely, when we see price crossing over from the outside to the inside of the bottom band, we might consider buying.
 
-![](https://assets.omscs.io/2020-02-24-08-37-30.png)
+![](https://assets.omscs.io/notes/2020-02-24-08-37-30.png)
 
 Generally, if we want to calculate the Bollinger Bands, $BB$, on a given day, $t$, from a sequence of prices, $p$, using an $n$-day moving average, $SMA$, we can use the following formula. Note that $\sigma$ refers to the standard deviation.
 
@@ -235,11 +235,11 @@ $$
 
 Let's consider how we might trade using Bollinger Bands. Consider the four events below, each of which involves the price of a stock crossing over a Bollinger Band. For each event, determine if the event demonstrates a buying opportunity, a selling opportunity, or no opportunity at all.
 
-![](https://assets.omscs.io/2020-02-23-08-23-45.png)
+![](https://assets.omscs.io/notes/2020-02-23-08-23-45.png)
 
 ## Buy or Sell Quiz Solution
 
-![](https://assets.omscs.io/2020-02-23-08-28-28.png)
+![](https://assets.omscs.io/notes/2020-02-23-08-28-28.png)
 
 For the first event, we see the price crossing from the outside to the inside of the upper Bollinger Band. This event indicates that the price is moving back towards the moving average after a strong upward excursion. This is a sell signal.
 

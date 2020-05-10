@@ -17,13 +17,13 @@ for download:
 
 ## GIOS Complete ($20)
 
-[![GIOS Complete](https://assets.omscs.io/ebooks/gios-full.jpg)](https://gum.co/gios-full?wanted=true)
+[![GIOS Complete](https://assets.omscs.io/notes/ebooks/gios-full.jpg)](https://gum.co/gios-full?wanted=true)
 
 
 ## GIOS Lecture Notes ($20)
 
-[![GIOS Complete](https://assets.omscs.io/ebooks/gios-lecture.jpg)](https://gum.co/gios-lecture?wanted=true)
+[![GIOS Complete](https://assets.omscs.io/notes/ebooks/gios-lecture.jpg)](https://gum.co/gios-lecture?wanted=true)
 
 ## GIOS Exam Review ($10)
 
-[![GIOS Complete](https://assets.omscs.io/ebooks/gios-exam.jpg)](https://gum.co/gios-exam?wanted=true)
+[![GIOS Complete](https://assets.omscs.io/notes/ebooks/gios-exam.jpg)](https://gum.co/gios-exam?wanted=true)

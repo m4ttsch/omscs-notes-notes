@@ -21,7 +21,7 @@ A **limit order** means that we don't want to do any worse than a specific price
 
 If we are issuing a limit order, we must specify the corresponding limit price. If we are issuing a market order, we don't specify a price, as the market determines the price for us.
 
-![](https://assets.omscs.io/2020-02-10-22-09-40.png)
+![](https://assets.omscs.io/notes/2020-02-10-22-09-40.png)
 
 An order to buy 100 shares of IBM for no more than $99.95 a share might look like this.
 
@@ -82,11 +82,11 @@ BID 99.85  50
 
 Consider the following order book. Do you think the price of this equity is likely to go up or down in the near future?
 
-![](https://assets.omscs.io/2020-02-10-22-23-32.png)
+![](https://assets.omscs.io/notes/2020-02-10-22-23-32.png)
 
 ## Up or Down Quiz Solution
 
-![](https://assets.omscs.io/2020-02-10-22-23-51.png)
+![](https://assets.omscs.io/notes/2020-02-10-22-23-51.png)
 
 The price is likely to drop in the near future because there is more selling pressure than buying pressure.
 
@@ -144,7 +144,7 @@ BID 99.85  25
 
 Here is a screenshot of a real-life order book.
 
-![](https://assets.omscs.io/2020-02-11-20-52-28.png)
+![](https://assets.omscs.io/notes/2020-02-11-20-52-28.png)
 
 On the right-hand side, we can see different sell and buy orders and the corresponding execution prices. On the left-hand side, we see a chart depicting the price movement over time as the exchange fulfills these orders.
 
@@ -156,7 +156,7 @@ Suppose that we have just issued an order from our laptop to buy some stock. The
 
 Our broker has a computer located at each exchange and queries each computer to read the prices from the corresponding order book. The broker gathers all of that information and then routes our order to the exchange that offers the best price: NYSE, in this case.
 
-![](https://assets.omscs.io/2020-02-11-21-45-33.png)
+![](https://assets.omscs.io/notes/2020-02-11-21-45-33.png)
 
 At any given time, there are hundreds of thousands, if not millions of orders entering exchanges. If the prices differed significantly between exchanges, investors would move their orders to the exchanges that offered more favorable prices.
 
@@ -168,7 +168,7 @@ Fulfilling the order in-house can be advantageous for the broker since they can 
 
 At the end of the trading day, the brokerage has to register the transaction with one of the exchanges. As a rule of thumb, the brokerage usually records the transaction at the exchange where the particular stock is homed.
 
-![](https://assets.omscs.io/2020-02-11-21-50-58.png)
+![](https://assets.omscs.io/notes/2020-02-11-21-50-58.png)
 
 Let's consider another example. In this case, Lisa also wants to sell some stock, but she uses a different brokerage firm than us.
 
@@ -178,7 +178,7 @@ Dark pools are often making predictions about which direction stocks are going t
 
 In this example, Lisa's sell order might be routed from her broker through the dark pool to our broker and connect with our buy order without ever making it to the exchanges.
 
-![](https://assets.omscs.io/2020-02-11-21-55-08.png)
+![](https://assets.omscs.io/notes/2020-02-11-21-55-08.png)
 
 These days, 80-90% of retail traders' orders never make it to the exchanges; instead, they are either executed internally within a brokerage or filled using a dark pool.
 
@@ -188,7 +188,7 @@ Let's suppose that Joe is an investor living in Seattle, and he is currently loo
 
 His order travels across the country and, since he is using [Etrade](https://us.etrade.com/home) as his broker, stops in Atlanta before being routed to the New York Stock Exchange (NYSE) in New York City.
 
-![](https://assets.omscs.io/2020-02-15-11-48-10.png)
+![](https://assets.omscs.io/notes/2020-02-15-11-48-10.png)
 
 For each stock, NYSE maintains an order book, which is visible to investors like Joe as well as trading computers colocated in the exchange.
 
@@ -196,7 +196,7 @@ Suppose our hedge fund owns one of these colocated computers. This computer migh
 
 The distance between the exchange and Joe, on the other hand, is about 2500 miles. As a result, changes in the order book take at least 12 milliseconds to reach  Joe, and Joe's subsequent order takes at least 12 milliseconds to reach the exchange.
 
-![](https://assets.omscs.io/2020-02-15-11-54-04.png)
+![](https://assets.omscs.io/notes/2020-02-15-11-54-04.png)
 
 Our hedge fund is continually observing the order book, and, based on what it sees, it thinks that the price is going to rise. As a result, we buy some stock.
 
@@ -212,7 +212,7 @@ Because of the distance between the two exchanges, the prices for a given securi
 
 Our hedge fund will immediately buy shares in New York and sell shares in London. Note that the bought shares and the sold shares don't have to be the same set of shares; instead, we might buy one set and sell another set. The point is that we exploit the difference in prices, a strategy known as **arbitrage**, to net a small profit.
 
-![](https://assets.omscs.io/2020-02-15-12-17-28.png)
+![](https://assets.omscs.io/notes/2020-02-15-12-17-28.png)
 
 Because hedge funds monitor the price differences across exchanges all over the world, these sorts of differences are rarely greater than a fraction of a cent. But, such differences do occasionally arise, because there are inefficiencies in the market, and there are hedge funds ready to pick those pennies up off the ground.
 
@@ -242,11 +242,11 @@ After everything settles, we have $10,000 in our brokerage account, but we also 
 
 Suppose we've been watching IBM, and we decide to short it when it reaches $100 because we think that it is going to go down. If we short 100 shares at $100 per share and submit an order to buy back the shares at $90 per share to close out our position, what is our net return?
 
-![](https://assets.omscs.io/2020-02-12-20-36-56.png)
+![](https://assets.omscs.io/notes/2020-02-12-20-36-56.png)
 
 ## Short Selling Quiz Solution
 
-![](https://assets.omscs.io/2020-02-12-20-37-14.png)
+![](https://assets.omscs.io/notes/2020-02-12-20-37-14.png)
 
 Each time IBM drops $1 in price, we make $100 because we are shorting 100 shares. Altogether, the stock dropped $10, so we made $1000.
 

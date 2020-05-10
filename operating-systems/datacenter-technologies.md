@@ -75,13 +75,13 @@ Traditionally, business would need to buy and configure the resources that were 
 
 If the demand exceeded the expected capacity, the business would into a situation where requests have to be dropped, which would result in lost opportunity.
 
-![](https://assets.omscs.io/57336766-5450-410E-A7EA-44AD6A68CEEC.png)
+![](https://assets.omscs.io/notes/57336766-5450-410E-A7EA-44AD6A68CEEC.png)
 
 Ideally, we would like the capacity of the available resources to scale elastically with the demand.
 
 The scaling should be instantaneous: as soon as the demand increases, so does the capacity, and vice versa. This means that the cost to support this service should be directly proportional to the demand.
 
-![](https://assets.omscs.io/17DAC6A2-5849-4D9C-83AC-4A5CE3E1FD76.png)
+![](https://assets.omscs.io/notes/17DAC6A2-5849-4D9C-83AC-4A5CE3E1FD76.png)
 
 All of this scaling should be able to happen automatically, and the provisioned resources should be accessible anywhere, anytime.
 
@@ -132,7 +132,7 @@ Finally, **community clouds** are public clouds that are used by certain types o
 ## Cloud Service Models
 Clouds are often differentiated based on the service model that they provide.
 
-![](https://assets.omscs.io/81DBAA16-6AF2-4CEB-9840-665F49F5001B.png)
+![](https://assets.omscs.io/notes/81DBAA16-6AF2-4CEB-9840-665F49F5001B.png)
 
 Without the use of cloud computing, you run your application on premises, which means you have to take care of everything yourself.
 
@@ -188,8 +188,8 @@ Finally, the data being analyzed with these platforms is often continuously bein
 ## Example Big Data Stacks
 ### Hadoop
 
-![](https://assets.omscs.io/690C46E9-31A8-4841-BA34-660234AE758A.png)
+![](https://assets.omscs.io/notes/690C46E9-31A8-4841-BA34-660234AE758A.png)
 
 ### Berkeley Data Analytics Stack (BDAS)
 
-![](https://assets.omscs.io/686C631F-E544-4048-AF40-A21BB31E7427.png)
+![](https://assets.omscs.io/notes/686C631F-E544-4048-AF40-A21BB31E7427.png)

@@ -13,13 +13,13 @@ Recall the *defense in depth* principle: we need multiple layers of defense mech
 ## Intrusion Examples
 An intrusion is any attack that aims to compromise the security goals of an organization. The following activities are all examples of intrusion.
 
-![](https://assets.omscs.io/A81B7CB1-5D34-4455-926E-A6E8F4F47C05.png)
+![](https://assets.omscs.io/notes/A81B7CB1-5D34-4455-926E-A6E8F4F47C05.png)
 
 ## Intrusion Detection Quiz
-![](https://assets.omscs.io/6FCC8EA1-D76B-4CD2-A7B2-C959F599631A.png)
+![](https://assets.omscs.io/notes/6FCC8EA1-D76B-4CD2-A7B2-C959F599631A.png)
 
 ## Intrusion Detection Quiz Solution
-![](https://assets.omscs.io/D8BA0592-C705-4DEA-8677-C198872DAD54.png)
+![](https://assets.omscs.io/notes/D8BA0592-C705-4DEA-8677-C198872DAD54.png)
 
 ## Intrusion Detection System (IDS)
 An **intrusion detection system** (IDS) can be quite effective against well-known or less sophisticated attacks, such as large scale email phishing attacks.
@@ -28,7 +28,7 @@ However, as attack techniques become more sophisticated, IDS's become less effec
 
 The most sophisticated attackers, such as state-sponsored individuals, may use new, zero-day exploits. IDS's are not effective against brand new types of attacks.
 
-![](https://assets.omscs.io/273BDEC1-5082-48B8-AF4B-63F124572832.png)
+![](https://assets.omscs.io/notes/273BDEC1-5082-48B8-AF4B-63F124572832.png)
 
 Since IDS's are not completely effective, they need to be part of the broader defense-in-depth strategy for an organization.
 
@@ -43,7 +43,7 @@ The techniques and behavioral patterns of intruders are continually evolving to 
 
 The following diagram illustrates these steps.
 
-![](https://assets.omscs.io/FA43CDAE-2AD3-46FF-9FB1-FAD88B9BB62E.png)
+![](https://assets.omscs.io/notes/FA43CDAE-2AD3-46FF-9FB1-FAD88B9BB62E.png)
 
 The first step is target acquisition and information gathering. An attacker identifies the target systems using publicly available technical and non-technical information.
 
@@ -60,16 +60,16 @@ The fifth step is maintaining access. An attack might not be a one-time action; 
 Finally, the attacker must cover their tracks. They can edit or disable the system audit logs to remove evidence of attack activities. Alternatively, they might install rootkits to hide any installed malware.
 
 ## Intruder Quiz
-![](https://assets.omscs.io/62299D09-AF06-4DCC-8C70-37251796390A.png)
+![](https://assets.omscs.io/notes/62299D09-AF06-4DCC-8C70-37251796390A.png)
 
 ## Intruder Quiz Solution
-![](https://assets.omscs.io/BE79FB0F-8998-4A34-9B1D-89C3DF2DFA2E.png)
+![](https://assets.omscs.io/notes/BE79FB0F-8998-4A34-9B1D-89C3DF2DFA2E.png)
 
 ## Types of Backdoors Quiz
-![](https://assets.omscs.io/7BB48E4A-080C-41DF-BDFF-981789BA55DC.png)
+![](https://assets.omscs.io/notes/7BB48E4A-080C-41DF-BDFF-981789BA55DC.png)
 
 ## Types of Backdoors Quiz Solution
-![](https://assets.omscs.io/72F9A46A-F7C2-43E0-84F0-BC956FF413A6.png)
+![](https://assets.omscs.io/notes/72F9A46A-F7C2-43E0-84F0-BC956FF413A6.png)
 
 Read more [here](http://www.infoworld.com/article/2606776/hacking/155947-Biggest-baddest-boldest-software-backdoors-of-all-time.html#slide3), [here](https://www.gnu.org/philosophy/proprietary-back-doors.html), and [here](https://www.eecs.berkeley.edu/~daw/teaching/cs261-f07/scribenotes/1025-brian.pdf).
 
@@ -91,7 +91,7 @@ The **detection engine** analyzes the activity records using detection models pa
 
 The **decision engine** responds to the alert and decides the appropriate action according to a *decision table*. In one case, an action might be tearing down a particular network connection while, in another case, the action might be sending a report to the security admin.
 
-![](https://assets.omscs.io/2F43AC16-2FBD-49ED-A24C-48CA492E8E7A.png)
+![](https://assets.omscs.io/notes/2F43AC16-2FBD-49ED-A24C-48CA492E8E7A.png)
 
 Again, for the IDS to work correctly, we must be able to assume that system activities are observable and that ordinary and intrusive activities have distinguishable features.
 
@@ -108,16 +108,16 @@ Anomaly detection consists primarily of two phases. In an initial training/profi
 Misuse or signature-based detection involves first encoding known attacks into patterns or rules and then comparing current system activity against these patterns to determine if there is a match. Obviously, this approach can only detect known attacks.
 
 ## Analysis Detection Quiz
-![](https://assets.omscs.io/F83D983E-10A9-4BFC-9007-006DA276551C.png)
+![](https://assets.omscs.io/notes/F83D983E-10A9-4BFC-9007-006DA276551C.png)
 
 ## Analysis Detection Quiz Solution
-![](https://assets.omscs.io/3804546D-535E-4812-99F9-68C4039BA79A.png)
+![](https://assets.omscs.io/notes/3804546D-535E-4812-99F9-68C4039BA79A.png)
 
 ## Signature Detection Quiz
-![](https://assets.omscs.io/54F22B6A-68FA-478A-9A18-6697555EE8C2.png)
+![](https://assets.omscs.io/notes/54F22B6A-68FA-478A-9A18-6697555EE8C2.png)
 
 ## Signature Detection Quiz Solution
-![](https://assets.omscs.io/45F0F4C2-AE2D-4F2E-9598-779B6D797F58.png)
+![](https://assets.omscs.io/notes/45F0F4C2-AE2D-4F2E-9598-779B6D797F58.png)
 
 ## A Variety of Classification Approaches
 In the training phase, an anomaly-based IDS develops a model of normal or legitimate behaviors by collecting data from the normal operations of the monitored system or network. In the detection phase, the IDS compares observed behavior against the model and categorizes it as either legitimate or anomalous.
@@ -127,10 +127,10 @@ IDS developers can use a variety of approaches to construct these models. The st
 When we compare these approaches, we need to consider both efficiency - how quickly can a system learn and apply a model - and cost - how much data and computation power we need to build that model.
 
 ## Anomaly Quiz
-![](https://assets.omscs.io/B557672F-381D-4AA9-B3E0-79D35CA0CA65.png)
+![](https://assets.omscs.io/notes/B557672F-381D-4AA9-B3E0-79D35CA0CA65.png)
 
 ## Anomaly Quiz Solution
-![](https://assets.omscs.io/EFCDDFD7-05BB-4564-8CD3-6CA8FBF651E7.png)
+![](https://assets.omscs.io/notes/EFCDDFD7-05BB-4564-8CD3-6CA8FBF651E7.png)
 
 ## Statistical Approaches
 Statistical approaches use captured system data as training input to develop a model of normal behavior. The earliest approaches used univariate models, where each metric - the CPU utilization of a program, for example - was treated as an independent random variable.
@@ -147,10 +147,10 @@ Knowledge-based approaches require experts to develop a set of rules that descri
 These rules can be quite robust, and systems built with this approach are relatively easy to update and improve. On the other hand, these approaches rely on manual efforts of experts, and these experts must have strong knowledge of the data and the domain.
 
 ## Statistical & Knowledge Based Approaches Quiz
-![](https://assets.omscs.io/FD8DAA8E-9BDA-49E7-B155-99D4ED73C602.png)
+![](https://assets.omscs.io/notes/FD8DAA8E-9BDA-49E7-B155-99D4ED73C602.png)
 
 ## Statistical & Knowledge Based Approaches Quiz Solution
-![](https://assets.omscs.io/795F294B-48FC-4667-89FB-BEFB856FF9B3.png)
+![](https://assets.omscs.io/notes/795F294B-48FC-4667-89FB-BEFB856FF9B3.png)
 
 ## Machine Learning Approaches
 Machine learning approaches can build a model automatically using the labeled, normal training data. A machine learning algorithm takes as input examples of normal data and outputs a model that is then able to classify subsequently observed data as either normal or anomalous.
@@ -175,10 +175,10 @@ On the other hand, a randomly-spelled website name is anomalous and might indica
 For example, legitimate traffic from an internal network to an internal web server shares common characteristics that can be grouped into clusters based on the web pages visited. On the other hand, an attack may access data on the web server that is rarely visited, making it an outlier.
 
 ## Machine Learning Quiz
-![](https://assets.omscs.io/F832A03B-6CE6-465D-87EB-1766FA05D423.png)
+![](https://assets.omscs.io/notes/F832A03B-6CE6-465D-87EB-1766FA05D423.png)
 
 ## Machine Learning Quiz Solution
-![](https://assets.omscs.io/B66DFC3A-5CAF-4FBF-ACCC-B2EE1F2F0F1E.png)
+![](https://assets.omscs.io/notes/B66DFC3A-5CAF-4FBF-ACCC-B2EE1F2F0F1E.png)
 
 ## Limitations of Anomaly Detection
 A fundamental limitation of anomaly detection models is that they train using only normal or legitimate data. Since these models do not see any intrusion data during training, they cannot be sure that a general anomaly is evidence specifically of an intrusion.
@@ -186,7 +186,7 @@ A fundamental limitation of anomaly detection models is that they train using on
 ## Anomaly Detection Example
 Here is an example of a straightforward anomaly detection approach.
 
-![](https://assets.omscs.io/95F46611-4D5A-4750-B2EE-B3580E4659A3.png)
+![](https://assets.omscs.io/notes/95F46611-4D5A-4750-B2EE-B3580E4659A3.png)
 
 First, the system establishes a normal, statistical runtime profile of a program. The system generates this profile by running the program many times, recording important metrics - CPU utilization and memory size, for example - each time, and then computing the mean and variance for each captured metric.
 
@@ -198,10 +198,10 @@ Again, the main drawback of the anomaly detection approach is that it can produc
 Misuse or signature-detection systems surface intrusions by comparing activity data against a local database of known intrusion patterns. If they detect a match in activity patterns, they can conclude that an intrusion has occurred; otherwise, the system is likely functioning normally.
 
 ## Anomalous Behavior Quiz
-![](https://assets.omscs.io/73D531B9-DAB0-4B29-93CE-057BE5A1F4B0.png)
+![](https://assets.omscs.io/notes/73D531B9-DAB0-4B29-93CE-057BE5A1F4B0.png)
 
 ## Anomalous Behavior Quiz Solution
-![](https://assets.omscs.io/9E4397E7-D80E-4A34-8B6F-5F22F297369E.png)
+![](https://assets.omscs.io/notes/9E4397E7-D80E-4A34-8B6F-5F22F297369E.png)
 
 ## Signature Approaches
 Many misuse detection approaches use **signatures**,  known patterns of malicious activity data, to categorize current system activity as malicious or benign. To maximize the detection rate and minimize the false-positive rate, the set of signatures against which these systems compare activity needs to be as large as possible. Signature-based approaches are most commonly found in anti-virus software and network intrusion detection systems.
@@ -210,10 +210,10 @@ Many misuse detection approaches use **signatures**,  known patterns of maliciou
 Signatures are typically straightforward to understand, and signature matching is very efficient; therefore, signature-based approaches are widely used. On the other hand, significant manual effort must be spent to create new signatures every time a new malware or attack method appears. Additionally, these approaches cannot detect zero-day attacks because those attacks are new and do not yet have known signatures.
 
 ## Zero Day Market Place Quiz
-![](https://assets.omscs.io/60C770A8-12A9-4FA4-A475-CECF25987C9D.png)
+![](https://assets.omscs.io/notes/60C770A8-12A9-4FA4-A475-CECF25987C9D.png)
 
 ## Zero Day Market Place Quiz Solution
-![](https://assets.omscs.io/2AE76DB1-1D8B-448A-8256-C61796C19DE4.png)
+![](https://assets.omscs.io/notes/2AE76DB1-1D8B-448A-8256-C61796C19DE4.png)
 
 ## Rule Based Detection
 In addition to signature-based strategies, a misuse detection system can also use a more sophisticated, rule-based approach. This approach uses rules to represent known intrusions, which typically match multiple signatures.
@@ -223,15 +223,15 @@ These rules are not only specific to known intrusions but can also be tweaked to
 ## Misuse Signature Intruder Detection
 The IDS matches the observed activities using a set of attack signatures or patterns. If there is a match, the IDS outputs an alert.
 
-![](https://assets.omscs.io/442FE44B-A994-48BC-909C-1DCF6161F7E4.png)
+![](https://assets.omscs.io/notes/442FE44B-A994-48BC-909C-1DCF6161F7E4.png)
 
 For example, the system may raise an alarm if it spots the so-called "land attack" defined in the picture above. Again, such a simple approach cannot detect new attacks since they don't have signatures.
 
 ## Attacks Quiz
-![](https://assets.omscs.io/F5CFF1A9-853F-4258-9A6A-C5ACDD8C643A.png)
+![](https://assets.omscs.io/notes/F5CFF1A9-853F-4258-9A6A-C5ACDD8C643A.png)
 
 ## Attacks Quiz Solution
-![](https://assets.omscs.io/4D15090A-E7EB-4230-BD11-E816124BDA06.png)
+![](https://assets.omscs.io/notes/4D15090A-E7EB-4230-BD11-E816124BDA06.png)
 
 ## Monitoring Networks and Hosts
 An IDS typically performs passive monitoring; that is, it records and analyzes data about system and network activities while these activities continue to take place.
@@ -260,10 +260,10 @@ System call data is crucial for security monitoring because the operating system
 For example, If a user's browser receives a page containing malicious javascript that breaks the protection in the browser and attempts to overwrite a Windows registry file, the IDS will observe a write system call to the registry file and can generate an alert.
 
 ## NIDS Quiz
-![](https://assets.omscs.io/6B45119B-AA0A-47F6-822D-A5FC37269B12.png)
+![](https://assets.omscs.io/notes/6B45119B-AA0A-47F6-822D-A5FC37269B12.png)
 
 ## NIDS Quiz Solution
-![](https://assets.omscs.io/05B818DD-0EA3-4203-B87D-3DE4FD93663C.png)
+![](https://assets.omscs.io/notes/05B818DD-0EA3-4203-B87D-3DE4FD93663C.png)
 
 ## Inline Sensors
 One way to configure a network IDS is by using *inline sensors*. The primary motivation for using inline sensors is to enable them to block an attack upon detection. In such cases, an inline sensor performs both intrusion detection and intrusion prevention.
@@ -275,7 +275,7 @@ More commonly, we deploy network IDS's as passive sensors. A *passive sensor* on
 
 The following diagram illustrates a typical passive sensor configuration.
 
-![](https://assets.omscs.io/AEC5210B-16A2-42E4-85A8-FDC2647DD69E.png)
+![](https://assets.omscs.io/notes/AEC5210B-16A2-42E4-85A8-FDC2647DD69E.png)
 
 The sensor connects to the network transmission medium, such as an ethernet cable, through a direct physical tap that provides the sensor with a copy of all network traffic carried by the medium.
 
@@ -291,20 +291,20 @@ A firewall performs active filtering. All traffic must pass through the firewall
 A large volume of traffic can overload a firewall as well. When this happens, it prevents all traffic from passing through. We call this *fail-close*, meaning that when a firewall fails, the internal network is closed to the external network, and is safe from intrusion.
 
 ## IDS Quiz
-![](https://assets.omscs.io/30738940-A839-4656-B153-027BD6CF97A0.png)
+![](https://assets.omscs.io/notes/30738940-A839-4656-B153-027BD6CF97A0.png)
 
 ## IDS Quiz Solution
-![](https://assets.omscs.io/8FB406A3-4B50-49BB-AA37-C33F19784845.png)
+![](https://assets.omscs.io/notes/8FB406A3-4B50-49BB-AA37-C33F19784845.png)
 
 
 ## NIDS Sensor Deployment
 Here is an example of an enterprise network configuration. The internal network has multiple subnets, and the enterprise has public-facing services, such as a public web server.
 
-![](https://assets.omscs.io/68732232-8261-426E-BC69-10055BE2AFE2.png)
+![](https://assets.omscs.io/notes/68732232-8261-426E-BC69-10055BE2AFE2.png)
 
 Recall our lecture on firewalls. We typically want to place an external firewall to protect the entire enterprise network. Additionally, we want to protect the internal network from the public-facing servers. We place these servers in a DMZ, and we use internal firewalls to monitor traffic between the DMZ and the internal subnets. The internal firewalls also monitor traffic between the subnets.
 
-![](https://assets.omscs.io/8E0416F9-8E58-43EC-A25E-B721A786C746.png)
+![](https://assets.omscs.io/notes/8E0416F9-8E58-43EC-A25E-B721A786C746.png)
 
 A common location for an IDS sensor is just inside the external firewall, a position which has several advantages.
 
@@ -324,13 +324,13 @@ As well as protecting a subnet, an IDS can also protect the workstations or netw
 
 Compared with an IDS at the network perimeter, which must examine traffic across the whole network, an IDS at this location can instead focus exclusively on traffic to high-value systems.
 
-![](https://assets.omscs.io/764D22DC-D141-4A48-AAC3-AE83FF81C10C.png)
+![](https://assets.omscs.io/notes/764D22DC-D141-4A48-AAC3-AE83FF81C10C.png)
 
 ## NIDS Sensor Deployment Quiz
-![](https://assets.omscs.io/599591ED-6BDC-4FCF-BA83-BBC590E815E7.png)
+![](https://assets.omscs.io/notes/599591ED-6BDC-4FCF-BA83-BBC590E815E7.png)
 
 ## NIDS Sensor Deployment Quiz Solution
-![](https://assets.omscs.io/63258409-141A-434F-B9CD-8DF34C46C864.png)
+![](https://assets.omscs.io/notes/63258409-141A-434F-B9CD-8DF34C46C864.png)
 
 ## Snort
 **Snort** is an open-source, easily configurable, lightweight network IDS that can be easily deployed on most nodes of a network, including end hosts, servers, and even routers.
@@ -348,7 +348,7 @@ The **detection engine** performs the actual work of intrusion detection and che
 
 Each rule specifies what **logging** or **alerting** steps the system should take. The logger stores the detected packet in a human-readable format. A sysadmin can then use the log files for later analysis. Alternatively, the system can send alerts to a file, database, or email, among other options.
 
-![](https://assets.omscs.io/257640DB-55BF-4CE2-976C-DEFE66F72F9B.png)
+![](https://assets.omscs.io/notes/257640DB-55BF-4CE2-976C-DEFE66F72F9B.png)
 
 ## Snort Configuration
 Snort can be configured as inline or passive. In passive mode, it merely copies and monitors traffic, and the traffic does not pass through it directly. In other words, in passive mode, Snort is configured for intrusion detection only.
@@ -356,7 +356,7 @@ Snort can be configured as inline or passive. In passive mode, it merely copies 
 ## Snort Rules
 Snort uses a simple and flexible rule definition language. Each rule consists of a row header and a number of options.
 
-![](https://assets.omscs.io/7F70B878-2CA1-4400-B42A-F491DBB3CE79.png)
+![](https://assets.omscs.io/notes/7F70B878-2CA1-4400-B42A-F491DBB3CE79.png)
 
 ## Snort Rules Options
 We specify our intrusion detection logic in the rule options, of which there are four main categories.
@@ -372,28 +372,28 @@ The most important field in the Snort rule header is the **action** field, which
 
 The following table describes the possible actions, the last three of which are only available in inline mode.
 
-![](https://assets.omscs.io/96AC6825-D319-4B58-AD38-C74D47C375F9.png)
+![](https://assets.omscs.io/notes/96AC6825-D319-4B58-AD38-C74D47C375F9.png)
 
 To summarize, a Snort rule includes a header and multiple options. Each option consists of an option keyword, which defines the option, followed by arguments, which specify the details of the option.
 
-![](https://assets.omscs.io/EB24765E-CB29-4A24-8F8B-13F7179341F5.png)
+![](https://assets.omscs.io/notes/EB24765E-CB29-4A24-8F8B-13F7179341F5.png)
 
 ## Snort Rule Example
 Typically, the root user account is only used for specific privileged operations, such as backing up filesystems and setting up subnetworks. A root account rarely sends email, and such an event should trigger an alert.
 
 Here is an example of how Snort can capture and respond to this event.
 
-![](https://assets.omscs.io/1F19DBF9-0CB7-4E44-909A-42B098E4A7C4.png)
+![](https://assets.omscs.io/notes/1F19DBF9-0CB7-4E44-909A-42B098E4A7C4.png)
 
 It looks for traffic to the SMTP port on any host in the /24 subnet and checks if the content of the email contains "mail from root", which indicates that a root user is attempting to send email. Snort then sends an alert with the following message: "root user attempts to send an email".
 
 The content keyword used above is one of the more important features of Snort. It allows sysadmins to set rules that search for specific content in the packet payload and then trigger responses based on that data.
 
 ## Snort Quiz
-![](https://assets.omscs.io/73F79545-4C3F-44B2-A4EC-DA4D4E300729.png)
+![](https://assets.omscs.io/notes/73F79545-4C3F-44B2-A4EC-DA4D4E300729.png)
 
 ## Snort Quiz Solution
-![](https://assets.omscs.io/207F97E0-2041-461C-864F-27A2D73B4924.png)
+![](https://assets.omscs.io/notes/207F97E0-2041-461C-864F-27A2D73B4924.png)
 
 ## Honeypots
 Honeypots are another component of the intrusion detection architecture. **Honeypots** are decoy systems designed to lure attackers away from critical systems.
@@ -422,7 +422,7 @@ On the other hand, making a honeypot look like a real server or workstation is q
 ## Honeypot Deployment
 We can deploy honeypots to a variety of locations within a network.
 
-![](https://assets.omscs.io/29FCE3CC-C998-4CAF-8E4F-388CF06B73ED.png)
+![](https://assets.omscs.io/notes/29FCE3CC-C998-4CAF-8E4F-388CF06B73ED.png)
 
 A honeypot placed outside of the external firewall is useful for checking attempts to scan or attack the internal network. The main advantages of placing the honeypot at this location are that first, it has no side effects, and second, it reduces the amount of attack traffic the firewall has to process. However, a honeypot at this location cannot trap internal attackers.
 
@@ -435,10 +435,10 @@ On the other hand, unless we can trap the attacker entirely in the honeypot, the
 As well, if we want to continue to attract and trap an attacker, we must continue to allow attack traffic from the Internet to reach the honeypot. This step might involve opening up the external firewall to allow this attack traffic to enter, which carries a considerable security risk.
 
 ## Honeypot Quiz
-![](https://assets.omscs.io/6BBDB4A2-6E49-4DD1-B761-1BED24EB3322.png)
+![](https://assets.omscs.io/notes/6BBDB4A2-6E49-4DD1-B761-1BED24EB3322.png)
 
 ## Honeypot Quiz Solution
-![](https://assets.omscs.io/C6889A78-B3F7-4738-B4CF-B81149D61644.png)
+![](https://assets.omscs.io/notes/C6889A78-B3F7-4738-B4CF-B81149D61644.png)
 
 ## Evaluating IDS
 We typically use accuracy metrics to evaluate the detection algorithm. We use **detection rate** or **true positive rate** to measure how well an IDS can detect an intrusion. More specifically, the detection rate measures how likely the IDS outputs an alert, given that an intrusion is present. We can also use the **false negative rate**, the probability that, given an intrusion, an alert is not triggered.
@@ -449,7 +449,7 @@ We might also want to know the **Bayesian detection rate** of an IDS; that is, t
 
 We can more formally summarize these metrics, using the probability `A` of an alarm being raised and the probability     `I` of an intrusion occurring.
 
-![](https://assets.omscs.io/57BBCA28-01CA-4BFA-917B-BF8CC3D42C11.png)
+![](https://assets.omscs.io/notes/57BBCA28-01CA-4BFA-917B-BF8CC3D42C11.png)
 
 The detection rate is the probability of `A`, given `I`. The false negative rate is the probability of not `A`, given `I`. The false alarm rate is the probability of `A`, given not `I`. The true negative rate is the probability of not `A`, given not `I`. The Bayesian detection rate is the probability of `I` given `A`.
 
@@ -458,7 +458,7 @@ In addition to the detection algorithms, we can also evaluate IDS's in terms of 
 ## Bayesian Detection Rate
 The following formula defines the Bayesian detection rate, given probability `A` of an alert and prior probability `I` of an intrusion.
 
-![](https://assets.omscs.io/0AB889A0-22E4-46AA-8D55-3E4D565664BB.png)
+![](https://assets.omscs.io/notes/0AB889A0-22E4-46AA-8D55-3E4D565664BB.png)
 
 We can calculate `I` by counting the number of packets that flow through our network during a particular time period and taking the percentage of packets that contain evidence of intrusion activities.
 
@@ -483,15 +483,15 @@ Instead, we should apply detection models to a set of data that has a higher bas
 
 First, we can apply filters to the packet data by, for example, instructing `libpcap`  to only capture packets destined for certain services. Second, an event engine analyzes the filtered packet data and summarizes them into security-related events, such as failed logins. Finally, the system applies detection models to the data contained in each security-related event.
 
-![](https://assets.omscs.io/CB6269B9-AA5D-47D0-813D-B34B9C7E0BAB.png)
+![](https://assets.omscs.io/notes/CB6269B9-AA5D-47D0-813D-B34B9C7E0BAB.png)
 
 The system decreases the volume of packet data at each step. Therefore, as long as we capture the intrusion evidence in the event data, the base rate is going to be much higher because the total number of packets is going to be much lower. As a result, the IDS model applied to the event data will yield a higher Bayesian detection rate.
 
 ## IDS Quiz
-![](https://assets.omscs.io/EE0009BB-048C-4192-8372-0752194F9C8F.png)
+![](https://assets.omscs.io/notes/EE0009BB-048C-4192-8372-0752194F9C8F.png)
 
 ## IDS Quiz Solution
-![](https://assets.omscs.io/67B4C307-4630-470A-9E6E-EDB4C4FDC0D8.png)
+![](https://assets.omscs.io/notes/67B4C307-4630-470A-9E6E-EDB4C4FDC0D8.png)
 
 ## Eluding Network IDS
 Now let's talk about how an attacker can evade an IDS so that their attack can proceed undetected.
@@ -511,7 +511,7 @@ An attacker can insert misleading data into the packet stream to cause the IDS t
 
 Here is an illustration of this **insertion attack**.
 
-![](https://assets.omscs.io/4C4B5117-A854-4C05-BFCF-65CA01BE6169.png)
+![](https://assets.omscs.io/notes/4C4B5117-A854-4C05-BFCF-65CA01BE6169.png)
 
 The attacker sends the out-of-order packets that both the IDS and the end host reassemble according to sequence numbers. One of the packets `X` has a bad checksum value. The IDS accepts `X`, and sees the packet stream `ATXTACK`, which looks benign. On the other hand, the end host rejects `X` and, as a result, sees the `ATTACK`.
 
@@ -520,7 +520,7 @@ The attacker can also hide part of the attack to evade IDS detection. An IDS may
 
 Here is an illustration of this **evasion attack**.
 
-![](https://assets.omscs.io/759DCECB-7802-4BF0-ABFC-A160B7C81552.png)
+![](https://assets.omscs.io/notes/759DCECB-7802-4BF0-ABFC-A160B7C81552.png)
 
 The attacker sends the out-of-order packets that both the IDS and the end host reassemble according to sequence numbers. In this scenario, the two `A`'s contain overlapping fragments; as a result, the IDS drops the second `A`, and so it only sees the stream `ATTCK`. On the other hand, the end host accepts both fragments, even though they overlap. Therefore, the end host sees the `ATTACK`.
 
@@ -543,7 +543,7 @@ An IPS also uses similar detection algorithms as an IDS. For example, it can use
 The main difference between an IPS and a firewall is that while a firewall typically only uses simple signatures of attacks to block traffic, an IPS can use very sophisticated detection algorithms.
 
 ## IDS Attack Quiz
-![](https://assets.omscs.io/85CA9C14-3D97-4B61-BCCE-F2C703BCDC0D.png)
+![](https://assets.omscs.io/notes/85CA9C14-3D97-4B61-BCCE-F2C703BCDC0D.png)
 
 ## IDS Attack Quiz Solution
-![](https://assets.omscs.io/B0C3AD98-1CF0-4438-9A0E-81511D82D085.png)
+![](https://assets.omscs.io/notes/B0C3AD98-1CF0-4438-9A0E-81511D82D085.png)

@@ -9,20 +9,20 @@ lecture: udacity-quizzes
 
 ## Reading and Plotting Stock Data
 ### Which Fields Should Be In A CSV File Quiz
-![](https://assets.omscs.io/BED27ABE-D85D-4358-A2A3-FAE24EEDE5F6.png)
+![](https://assets.omscs.io/notes/BED27ABE-D85D-4358-A2A3-FAE24EEDE5F6.png)
 
 ### Which Fields Should Be In A CSV File Quiz Solution
-![](https://assets.omscs.io/EFB7C1BB-0A52-4357-83E9-D5BCCB262559.png)
+![](https://assets.omscs.io/notes/EFB7C1BB-0A52-4357-83E9-D5BCCB262559.png)
 
 We want to include data that changes frequently; otherwise, we are wasting space including redundant data. Of the options given, both "date/time" and "price of the stock" are good fits. The other data points are either static or change relatively infrequently.
 
 ### Compute Mean Volume Quiz
-![](https://assets.omscs.io/9C27B65A-7816-42FF-880F-93D981E0A193.png)
+![](https://assets.omscs.io/notes/9C27B65A-7816-42FF-880F-93D981E0A193.png)
 
 Your task is to calculate the mean volume for each of the given symbols.
 
 ### Compute Mean Volume Quiz Solution
-![](https://assets.omscs.io/99A66C8E-4B8E-413B-9713-22E7762069D9.png)
+![](https://assets.omscs.io/notes/99A66C8E-4B8E-413B-9713-22E7762069D9.png)
 
 Given a DataFrame `df` containing a "Volume" column, the following code returns the mean of the values in that column.
 
@@ -34,12 +34,12 @@ df['Values'].mean()
 - [pandas.DataFrame.mean](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.mean.html)
 
 ### Plot High Prices for IBM Quiz
-![](https://assets.omscs.io/6217684A-EBD2-4031-9155-E2306FB95161.png)
+![](https://assets.omscs.io/notes/6217684A-EBD2-4031-9155-E2306FB95161.png)
 
 Your task is to plot the high prices for IBM.
 
 ### Plot High Prices for IBM Quiz Solution
-![](https://assets.omscs.io/D4229E90-CE7E-4317-AC11-555F0D1701ED.png)
+![](https://assets.omscs.io/notes/D4229E90-CE7E-4317-AC11-555F0D1701ED.png)
 
 First, we need to make sure that we read in the right CSV, which we can accomplish with:
 
@@ -55,22 +55,22 @@ df['High'].plot()
 
 ## Working With Multiple Stocks
 ### NYSE Trading Days Quiz
-![](https://assets.omscs.io/5A7D6772-A997-4543-BFBF-5DC11F911F1F.png)
+![](https://assets.omscs.io/notes/5A7D6772-A997-4543-BFBF-5DC11F911F1F.png)
 
 ### NYSE Trading Days Quiz Solution
-![](https://assets.omscs.io/1569B3C1-4D74-44D9-895F-57F66260BDCD.png)
+![](https://assets.omscs.io/notes/1569B3C1-4D74-44D9-895F-57F66260BDCD.png)
 
 See the breakdown [here](https://www.nyse.com/publicdocs/Trading_Days.pdf) (for 2018 and 2019).
 
 ### Types of Joins Quiz
-![](https://assets.omscs.io/C6F35EA2-BEB7-44C2-914E-73C3F8A4414F.png)
+![](https://assets.omscs.io/notes/C6F35EA2-BEB7-44C2-914E-73C3F8A4414F.png)
 
 We can avoid having to explicitly call `dropna` on line 22 by passing a certain value for the 'how' parameter of the `join` call on line 19. 
 
 What is the value of that parameter?
 
 ### Types of Joins Quiz Solution
-![](https://assets.omscs.io/24945379-86BC-488E-85FD-C9E88E049F00.png)
+![](https://assets.omscs.io/notes/24945379-86BC-488E-85FD-C9E88E049F00.png)
 
 #### Documentation
 - [pandas.DataFrame.join](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.join.html)
@@ -78,16 +78,16 @@ What is the value of that parameter?
 ### Utility Functions for Reading Data Quiz
 If we look at the code we have written so far, we see some duplication.
 
-![](https://assets.omscs.io/B6F23728-810F-4698-8918-B0753B06C098.png)
+![](https://assets.omscs.io/notes/B6F23728-810F-4698-8918-B0753B06C098.png)
 
 Your task is to consolidate this code into one location: the utility function `get_data`.
 
-![](https://assets.omscs.io/967D338A-969A-4343-A6BC-63A9269C4486.png)
+![](https://assets.omscs.io/notes/967D338A-969A-4343-A6BC-63A9269C4486.png)
 
 ### Utility Functions for Reading Data Quiz Solution
 We have consolidated both the DataFrame initialization code and the joining code. 
 
-![](https://assets.omscs.io/7BB55353-D82C-4369-AFFC-3CFB0A873D21.png)
+![](https://assets.omscs.io/notes/7BB55353-D82C-4369-AFFC-3CFB0A873D21.png)
 
 Additionally, since we are using SPY as our baseline, we drop all rows from `df` where SPY has not traded - that is, where the SPY column has `NaN` values - with the following code:
 
@@ -99,20 +99,20 @@ df = df.dropna(subset=["SPY"])
 - [pandas.DataFrame.dropna](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.dropna.html)
  
 ### How to Plot on "Equal Footing" Quiz
-![](https://assets.omscs.io/533F01B4-36B8-4898-A860-8B735E1ADA08.png)
+![](https://assets.omscs.io/notes/533F01B4-36B8-4898-A860-8B735E1ADA08.png)
 
 ### How to Plot on "Equal Footing" Quiz Solution
-![](https://assets.omscs.io/EF3D7A60-CF3B-4769-A3F8-D5157B461134.png)
+![](https://assets.omscs.io/notes/EF3D7A60-CF3B-4769-A3F8-D5157B461134.png)
 
 While both of these are technically correct, the second approach leverages *vectorization* which is must faster than the iterative approach. Read more about vectorization [here](https://engineering.upside.com/a-beginners-guide-to-optimizing-pandas-code-for-speed-c09ef2c6a4d6).
 
 ### Slice and Plot Two Stocks Quiz
-![](https://assets.omscs.io/5E5020D1-2E8C-422B-8867-733B8E88945C.png)
+![](https://assets.omscs.io/notes/5E5020D1-2E8C-422B-8867-733B8E88945C.png)
 
 Your task is to write code that first slices `df` along the rows bounded by `start_index` and `end_index` and across `columns`, and then passes the slice to the `plot_selected` method.
 
 ### Slice and Plot Two Stocks Quiz Solution
-![](https://assets.omscs.io/B76701D9-2822-4191-9B93-E49454905AD8.png)
+![](https://assets.omscs.io/notes/B76701D9-2822-4191-9B93-E49454905AD8.png)
 
 We can create our slice using the following code, which we then pass to the `plot_data` method:
 
@@ -127,12 +127,12 @@ df.ix[start_index:end_index, columns]
 
 ## The Power of NumPy
 ### Replace a Slice Quiz
-![](https://assets.omscs.io/1E2BC0CC-EADA-4431-ABDF-AE07857CF80D.png)
+![](https://assets.omscs.io/notes/1E2BC0CC-EADA-4431-ABDF-AE07857CF80D.png)
 
 We need to move data from the last two rows and the last two columns of `nd2` to the first two rows and the first two columns of `nd1`. 
 
 ### Replace a Slice Quiz Solution
-![](https://assets.omscs.io/60DEA1EE-99C0-4CC6-95F7-B01B9681CD59.png)
+![](https://assets.omscs.io/notes/60DEA1EE-99C0-4CC6-95F7-B01B9681CD59.png)
 
 Let's first look at how we can slice `nd2` to extract the data we want. We can slice the last two rows using negative indexing: `-2:`. We can slice the last two columns as `2:4`. Remember that NumPy indexing is upper-bound exclusive.
 
@@ -148,12 +148,12 @@ nd1[0:2, 0:2] = nd2[-2:, 2:4]
 - [Indexing](https://docs.scipy.org/doc/numpy-1.13.0/reference/arrays.indexing.html)
  
 ### Specify the Data Type Quiz
-![](https://assets.omscs.io/1A04EA50-3DE1-4BA2-85E6-B852F298AB7B.png)
+![](https://assets.omscs.io/notes/1A04EA50-3DE1-4BA2-85E6-B852F298AB7B.png)
 
 We saw that the elements in an array created by `np.ones` are floats by default. Our task here is to update the call to `np.ones` and pass in a parameter that tells NumPy to give us integers instead of floats.
 
 ### Specify the Data Type Quiz Solution
-![](https://assets.omscs.io/29CA699E-4950-4B22-948D-A38910E9A9EA.png)
+![](https://assets.omscs.io/notes/29CA699E-4950-4B22-948D-A38910E9A9EA.png)
 
 We can accomplish this change with the following code:
 
@@ -166,12 +166,12 @@ np.ones((5, 4), dtype=np.int_)
 - [Data types](https://docs.scipy.org/doc/numpy/user/basics.types.html#data-types)
 
 ### Locate Maximum Value Quiz
-![](https://assets.omscs.io/55FC058B-8B31-4172-8F44-B44502611542.png)
+![](https://assets.omscs.io/notes/55FC058B-8B31-4172-8F44-B44502611542.png)
 
 Our task is to implement the function `get_max_index`, which takes a one-dimensional ndarray `a` and returns the index of the maximum value.
 
 ### Locate Maximum Value Quiz Solution
-![](https://assets.omscs.io/480BE86C-66FF-452B-965F-AD9833D98574.png)
+![](https://assets.omscs.io/notes/480BE86C-66FF-452B-965F-AD9833D98574.png)
 
 We can retrieve the index of the maximum value in `a` with the `argmax` method:
 
@@ -191,11 +191,11 @@ Assume we are using a rolling mean to track the movement of a stock. We are look
 
 Which statistic might we use to discover if the price has diverged significantly enough?
 
-![](https://assets.omscs.io/2020-01-12-17-51-42.png)
+![](https://assets.omscs.io/notes/2020-01-12-17-51-42.png)
 
 ### Which Statistic to Use Quiz Solution
 
-![](https://assets.omscs.io/2020-01-12-17-52-03.png)
+![](https://assets.omscs.io/notes/2020-01-12-17-52-03.png)
 
 Standard deviation gives us a measure of divergence from the mean. Therefore, if the price breaches the standard deviation, we may conclude that the price has moved significantly enough for us to consider buying or selling the stock.
 
@@ -205,7 +205,7 @@ Computing Bollinger bands consists of three main steps: first, computing the rol
 
 Our goal is to implement the three functions below to accomplish these tasks.
 
-![](https://assets.omscs.io/2020-01-12-19-11-03.png)
+![](https://assets.omscs.io/notes/2020-01-12-19-11-03.png)
 
 ### Calculate Bollinger Bands Quiz Solution
 
@@ -225,20 +225,20 @@ Given a rolling mean `rm` and a rolling standard deviation `rstd`, we can calcul
 rm + (2 * rstd), rm - (2 * rstd)
 ```
 
-![](https://assets.omscs.io/2020-01-12-19-22-39.png)
+![](https://assets.omscs.io/notes/2020-01-12-19-22-39.png)
 
 #### Documentation
 - [pandas.DataFrame.rolling](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.rolling.html)
 
 ### Compute Daily Returns Quiz
 
-![](https://assets.omscs.io/2020-01-12-22-45-10.png)
+![](https://assets.omscs.io/notes/2020-01-12-22-45-10.png)
 
 Our task is to implement a function `compute_daily_returns` that receives a DataFrame `df` and returns a DataFrame consisting of the daily return values. The returned DataFrame must have the same number of rows as `df`, and any rows with missing data must be filled with zeroes.
 
 ### Compute Daily Returns Solution
 
-![](https://assets.omscs.io/2020-01-12-22-50-41.png)
+![](https://assets.omscs.io/notes/2020-01-12-22-50-41.png)
 
 Given a DataFrame `df` with `n` rows, we can create a new DataFrame with `n + m` rows where each row is shifted down `m` rows with the following code:
 
@@ -282,13 +282,13 @@ daily_returns.iloc[0] = 0
 
 ### Pandas fillna() Quiz
 
-![](https://assets.omscs.io/2020-01-14-00-38-50.png)
+![](https://assets.omscs.io/notes/2020-01-14-00-38-50.png)
 
 Our task is to find the parameter that we need to pass to `fillna` to fill forward missing values.
 
 ### Pandas fillna() Quiz Solution
 
-![](https://assets.omscs.io/2020-01-14-00-40-02.png)
+![](https://assets.omscs.io/notes/2020-01-14-00-40-02.png)
 
 #### Documentation
 - [pandas.DataFrame.fillna](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.fillna.html)
@@ -297,13 +297,13 @@ Our task is to find the parameter that we need to pass to `fillna` to fill forwa
 
 If we look at the following plot of stock price data, we can see several gaps.
 
-![](https://assets.omscs.io/2020-01-14-00-50-55.png)
+![](https://assets.omscs.io/notes/2020-01-14-00-50-55.png)
 
 Our task is to use the `fillna` method to fill these gaps.
 
 ### Fill Missing Values Solution
 
-![](https://assets.omscs.io/2020-01-14-00-52-39.png)
+![](https://assets.omscs.io/notes/2020-01-14-00-52-39.png)
 
 We can use forward filling for gaps that have a definitive start date, and backward filling for gaps that have no beginning or begin before our date range.
 
@@ -318,11 +318,11 @@ Suppose that we've taken all of the SPY pricing data from over the years, genera
 
 Which of the following shapes would the histogram most likely have?
 
-![](https://assets.omscs.io/2020-01-14-21-45-58.png)
+![](https://assets.omscs.io/notes/2020-01-14-21-45-58.png)
 
 ### What Would it Look Like Quiz Solution
 
-![](https://assets.omscs.io/2020-01-14-21-46-20.png)
+![](https://assets.omscs.io/notes/2020-01-14-21-46-20.png)
 
 ### Compare Two Histograms Quiz
 
@@ -330,7 +330,7 @@ A common practice in finance is to plot histograms of the daily returns of diffe
 
 Below are the daily returns histograms for SPY and XYZ, as well as three statements describing the relationship between the two.
 
-![](https://assets.omscs.io/2020-01-14-22-30-14.png)
+![](https://assets.omscs.io/notes/2020-01-14-22-30-14.png)
 
 Which statement do you think is correct?
 
@@ -338,7 +338,7 @@ Which statement do you think is correct?
 
 ### Compare Two Histograms Quiz Solution
 
-![](https://assets.omscs.io/2020-01-14-22-31-49.png)
+![](https://assets.omscs.io/notes/2020-01-14-22-31-49.png)
 
 We can see that the mean of SPY is slightly higher than the mean of XYZ, indicating that SPY outperforms XYZ.
 
@@ -350,11 +350,11 @@ In summary, XYZ has both lower returns and higher volatility than SPY.
 
 Given what we just learned about correlation and slope (beta), let's look at two scatterplots with their best-fit lines, and choose the most accurate statement.
 
-![](https://assets.omscs.io/2020-01-15-22-13-09.png)
+![](https://assets.omscs.io/notes/2020-01-15-22-13-09.png)
 
 ### Correlation vs. Slope Quiz Solution
 
-![](https://assets.omscs.io/2020-01-15-22-15-24.png)
+![](https://assets.omscs.io/notes/2020-01-15-22-15-24.png)
 
 The best-fit line in the SPY vs. ABC scatterplot has a higher beta because that line has a larger slope than the corresponding line in the SPY vs. XYZ plot.
 
@@ -368,11 +368,11 @@ The Sharpe ratio allows us to consider our returns in the context of *risk*: the
 
 With this in mind, let's look at three comparisons of two stocks, ABC and XYZ, and decide which is better.
 
-![](https://assets.omscs.io/2020-01-17-16-16-52.png)
+![](https://assets.omscs.io/notes/2020-01-17-16-16-52.png)
 
 ### Which Portfolio is Better Quiz Solution
 
-![](https://assets.omscs.io/2020-01-17-16-21-44.png)
+![](https://assets.omscs.io/notes/2020-01-17-16-21-44.png)
 
 For the first comparison, ABC is better. ABC and XYZ have similar amounts of volatility, but ABC has double the return of XYZ.
 
@@ -386,15 +386,15 @@ We need a qualitative measure to compare ABC and XYZ in this third example, and 
 
 Consider the following three factors.
 
-![](https://assets.omscs.io/2020-01-18-10-33-20.png)
+![](https://assets.omscs.io/notes/2020-01-18-10-33-20.png)
 
 How would you combine these three factors into a simple equation to create a metric that provides a measure of risk-adjusted return?
 
-![](https://assets.omscs.io/2020-01-18-10-34-58.png)
+![](https://assets.omscs.io/notes/2020-01-18-10-34-58.png)
 
 ### Form of the Sharpe Ratio Quiz Solution
 
-![](https://assets.omscs.io/2020-01-18-10-35-43.png)
+![](https://assets.omscs.io/notes/2020-01-18-10-35-43.png)
 
 Only the third choice meets the two criteria we described earlier; all else being equal, higher returns increase our metric, and lower risk increases our metric. Additionally, a higher rate of risk-free return decreases our metric.
 
@@ -404,13 +404,13 @@ Assume we have been trading a strategy for 60 days now. On average, our strategy
 
 What is the Sharpe ratio of this strategy?
 
-![](https://assets.omscs.io/2020-01-18-14-34-48.png)
+![](https://assets.omscs.io/notes/2020-01-18-14-34-48.png)
 
 > In financial terminology, one one-hundredth of one percent is known as a **basis point**, or "bip". Instead of saying, for example, that our strategy returns one-tenth of one percent per day, we could say it returns 10 bps per day.
 
 ### What is the Sharpe Ratio Quiz Solution
 
-![](https://assets.omscs.io/2020-01-18-14-38-32.png)
+![](https://assets.omscs.io/notes/2020-01-18-14-38-32.png)
 
 Let's recall our formula for the Sharpe ratio:
 
@@ -442,11 +442,11 @@ $$
 
 Which of the following functions would be hard for the minimizer to solve?
 
-![](https://assets.omscs.io/2020-01-20-00-40-15.png)
+![](https://assets.omscs.io/notes/2020-01-20-00-40-15.png)
 
 ### How to Defeat a Minimizer Quiz Solution
 
-![](https://assets.omscs.io/2020-01-20-00-40-46.png)
+![](https://assets.omscs.io/notes/2020-01-20-00-40-46.png)
 
 The first graph is hard because of the "flat" areas on either side of the parabola. A minimizer testing a point in the middle of this area wouldn't be able to find any gradient to follow, so it wouldn't know how to adjust the value it was currently testing.
 
@@ -458,11 +458,11 @@ The fourth graph is challenging  both because of the "flat" area and the discont
 
 Let's assume that a point $p_i$ has an error $e_i$, which is the vertical distance between $p_i$ and the best-fit line currently under consideration. Given a number of such errors $e_0, e_1, ..., e_n$, which of the following expressions describes the metric we want to minimize?
 
-![](https://assets.omscs.io/2020-01-20-14-11-22.png)
+![](https://assets.omscs.io/notes/2020-01-20-14-11-22.png)
 
 ### What is a Good Error Metric Quiz Solution
 
-![](https://assets.omscs.io/2020-01-20-14-13-28.png)
+![](https://assets.omscs.io/notes/2020-01-20-14-13-28.png)
 
 We want to minimize the sum of the errors, but we want to ensure that errors above and below the line do not cancel out. To accomplish this, we need to make each error positive by either squaring it or taking its absolute value.
 
@@ -472,11 +472,11 @@ We want to minimize the sum of the errors, but we want to ensure that errors abo
 
 Let's assume we have a portfolio of four stocks, and we want to find the optimal allocations that maximize some performance metric. Which of the following metrics would be easiest to optimize for?
 
-![](https://assets.omscs.io/2020-01-21-16-35-00.png)
+![](https://assets.omscs.io/notes/2020-01-21-16-35-00.png)
 
 ### Which Criteria is Easiest to Solve For Quiz Solution
 
-![](https://assets.omscs.io/2020-01-21-16-35-19.png)
+![](https://assets.omscs.io/notes/2020-01-21-16-35-19.png)
 
 It would be easiest to write an optimizer for cumulative return. To do so, all we need to do is allocate 100% of our portfolio into whichever stock had the highest cumulative return.
 
@@ -488,11 +488,11 @@ Optimizing for minimum volatility or Sharpe ratio involves evaluating various co
 
 Let's think about building a model to use in trading. Which of the following factors might be input values ($X$) to the model, and which might be output values ($Y$)?
 
-![](https://assets.omscs.io/2020-01-22-17-57-46.png)
+![](https://assets.omscs.io/notes/2020-01-22-17-57-46.png)
 
 ### What's X and Y Quiz Solution
 
-![](https://assets.omscs.io/2020-01-22-17-58-20.png)
+![](https://assets.omscs.io/notes/2020-01-22-17-58-20.png)
 
 Since we often use models to predict values in the future, both future price and future return make sense as output values. Our model might make these predictions by considering price momentum, current price, and Bollinger values as input.
 
@@ -502,11 +502,11 @@ Since we often use models to predict values in the future, both future price and
 
 We've identified that, in KNN, for a particular query $Q$, we want to utilize the $K$ nearest data points to $Q$ to come up with a prediction. What should we do with those neighboring data points to find that prediction?
 
-![](https://assets.omscs.io/2020-01-31-15-53-54.png)
+![](https://assets.omscs.io/notes/2020-01-31-15-53-54.png)
 
 ### How to Predict Quiz Solution
 
-![](https://assets.omscs.io/2020-01-31-15-58-08.png)
+![](https://assets.omscs.io/notes/2020-01-31-15-58-08.png)
 
 Remember that we want to predict a $y$-value for the queried $x$-value. As a result, it doesn't make sense to take the average of the $x$-values of the nearest neighbors. Additionally, we don't want to take the largest $y$-value; otherwise, the other neighbors have no influence on the prediction. The correct approach here is to take the mean of their $y$-values.
 
@@ -516,21 +516,21 @@ Let's consider the relationship between variables in two different scenarios.
 
 The first scenario involves firing a cannon. The independent variable is the value of the angle that the cannon makes with the ground, and the dependent variable is the horizontal distance the cannonball travels.
 
-![](https://assets.omscs.io/2020-01-31-16-39-33.png)
+![](https://assets.omscs.io/notes/2020-01-31-16-39-33.png)
 
 The second scenario involves attracting bees to a food source. The independent variable is the richness of the food source, and the dependent variable is the number of bees attracted to that source.
 
-![](https://assets.omscs.io/2020-01-31-16-42-14.png)
+![](https://assets.omscs.io/notes/2020-01-31-16-42-14.png)
 
 Note that this scenario is slightly different than the first because it's not clear that the number of bees always increases as richness increases.
 
 Given these two scenarios, which, if any, is better modeled using a parametric model, and which, if any, is better modeled using a non-parametric model?
 
-![](https://assets.omscs.io/2020-01-31-16-43-44.png)
+![](https://assets.omscs.io/notes/2020-01-31-16-43-44.png)
 
 ### Parametric vs Non-Parametric Quiz Solution
 
-![](https://assets.omscs.io/2020-01-31-16-48-54.png)
+![](https://assets.omscs.io/notes/2020-01-31-16-48-54.png)
 
 In the first scenario, we can start with an estimate of the underlying behavior of the system in terms of a mathematical equation that expresses how it behaves. This equation is just the equation of trajectory, which we can find online. We can then learn the parameters of this equation such that it describes the relationship between our variables.
 
@@ -542,13 +542,13 @@ In the second scenario, we have no initial estimate for the underlying mathemati
 
 Consider the following three models, each generated using a different value for $K$.
 
-![](https://assets.omscs.io/2020-01-27-16-18-46.png)
+![](https://assets.omscs.io/notes/2020-01-27-16-18-46.png)
 
 Our first task is to match the value of $K$ with the corresponding plot. Our second task is to decide whether we increase the chances of overfitting as we increase $K$. An **overfit** model matches the training set very well but fails to generalize to new examples.
 
 ### What Happens as K Varies Quiz Solution
 
-![](https://assets.omscs.io/2020-01-27-16-36-13.png)
+![](https://assets.omscs.io/notes/2020-01-27-16-36-13.png)
 
 Let's consider the case where $K = 1$. In this case, the model passes through every point $P$ directly, since near $P$, the only point that has any influence is $P$.
 
@@ -562,13 +562,13 @@ As a result, we see that increases in $K$ decrease the probability of overfittin
 
 Consider the following three polynomial models. The difference between each model is the [degree of the polynomial](https://en.wikipedia.org/wiki/Degree_of_a_polynomial) $d$.
 
-![](https://assets.omscs.io/2020-01-27-17-08-58.png)
+![](https://assets.omscs.io/notes/2020-01-27-17-08-58.png)
 
 Our first task is to match the value of $d$ with the corresponding plot. Our second task is to decide whether we increase the chances of overfitting as we increase $d$.
 
 ### What Happens as D Varies Quiz Solution
 
-![](https://assets.omscs.io/2020-01-27-17-23-47.png)
+![](https://assets.omscs.io/notes/2020-01-27-17-23-47.png)
 
 A polynomial of degree one matches the equation $y = m_1x + b$, which is the equation of a line and corresponds to the third plot.
 
@@ -584,23 +584,23 @@ Notice that for each of these models, we can extrapolate beyond the data given. 
 
 Suppose we just built a model. Which error would you expect to be larger: in-sample or out-of-sample?
 
-![](https://assets.omscs.io/2020-01-28-23-28-25.png)
+![](https://assets.omscs.io/notes/2020-01-28-23-28-25.png)
 
 ### Which is Worse Quiz Solution
 
 In general, the out-of-sample error is worse than the in-sample error.
 
-![](https://assets.omscs.io/2020-01-28-23-29-18.png)
+![](https://assets.omscs.io/notes/2020-01-28-23-29-18.png)
 
 ### Correlation and RMS Error Quiz
 
 Let's think about the relationship between RMS error and the correlation between $Y_{test}$ and $Y_{predict}$. Which of the following statements is true?
 
-![](https://assets.omscs.io/2020-01-29-22-15-19.png)
+![](https://assets.omscs.io/notes/2020-01-29-22-15-19.png)
 
 ### Correlation and RMS Error Quiz Solution
 
-![](https://assets.omscs.io/2020-01-29-22-16-21.png)
+![](https://assets.omscs.io/notes/2020-01-29-22-16-21.png)
 
 In most cases, correlation decreases as RMS error increases. However, it is possible to construct examples where correlation increases as RMS error increases.
 
@@ -610,11 +610,11 @@ Let's consider overfitting in KNN and how in-sample and out-of-sample error chan
 
 Which of the following plots correctly represents the shape of the error curves that we would expect for both types of error as we increase $K$?
 
-![](https://assets.omscs.io/2020-01-30-20-56-43.png)
+![](https://assets.omscs.io/notes/2020-01-30-20-56-43.png)
 
 ### Overfitting Quiz Solution
 
-![](https://assets.omscs.io/2020-01-30-21-00-06.png)
+![](https://assets.omscs.io/notes/2020-01-30-21-00-06.png)
 
 Remember that KNN models are least generalized when $K = 1$. In other words, when $K = 1$, the model predicts each training point in the data set perfectly but fails to predict testing points accurately. As a result, KNN models overfit when $K$ is small.
 
@@ -622,11 +622,11 @@ Remember that KNN models are least generalized when $K = 1$. In other words, whe
 
 There are a few other factors worth considering when evaluating a learning algorithm. For each of the following factors, which of the two models has better performance?
 
-![](https://assets.omscs.io/2020-01-30-21-11-49.png)
+![](https://assets.omscs.io/notes/2020-01-30-21-11-49.png)
 
 ### A Few Other Considerations Quiz Solution
 
-![](https://assets.omscs.io/2020-01-30-21-12-14.png)
+![](https://assets.omscs.io/notes/2020-01-30-21-12-14.png)
 
 Linear regression models require less space for persistence than KNN models. A linear regression model of degree four can be described in as few as four integers, while a KNN model must retain every single data point ever seen.
 
@@ -642,11 +642,11 @@ Adding new data is quicker in KNN than in linear regression. Incorporating new d
 
 How might we go about building an ensemble of learners?
 
-![](https://assets.omscs.io/2020-02-02-18-16-45.png)
+![](https://assets.omscs.io/notes/2020-02-02-18-16-45.png)
 
 ### How to Build an Ensemble Quiz Solution
 
-![](https://assets.omscs.io/2020-02-02-18-18-42.png)
+![](https://assets.omscs.io/notes/2020-02-02-18-18-42.png)
 
 We can create an ensemble by training several parameterized polynomials of differing degrees (A) or by training several KNN models using different subsets of data (B).
 
@@ -660,21 +660,21 @@ Which of these two models is least likely to overfit?
 
 > Aside: the screenshot says "most likely to overfit", but he selects the model that is least likely to overfit.
 
-![](https://assets.omscs.io/2020-02-02-20-19-46.png)
+![](https://assets.omscs.io/notes/2020-02-02-20-19-46.png)
 
 ### Overfitting Quiz Solution
 
-![](https://assets.omscs.io/2020-02-02-20-20-05.png)
+![](https://assets.omscs.io/notes/2020-02-02-20-20-05.png)
 
 ### Overfitation Quiz
 
 As we increase the number of models $m$ in our ensemble, which of the following strategies is more likely to overfit?
 
-![](https://assets.omscs.io/2020-02-02-22-55-14.png)
+![](https://assets.omscs.io/notes/2020-02-02-22-55-14.png)
 
 ### Overfitation Quiz Solution
 
-![](https://assets.omscs.io/2020-02-02-22-55-46.png)
+![](https://assets.omscs.io/notes/2020-02-02-22-55-46.png)
 
 AdaBoost focuses primarily on improving the system for specific data points; in other words, it strives to fit. As a result, it is more susceptible to overfitting than is simple bagging.
 
@@ -684,11 +684,11 @@ AdaBoost focuses primarily on improving the system for specific data points; in 
 
 For each of the following five funds, determine if the fund is an ETF, mutual fund, or hedge fund. Use [Google Finance](https://www.google.com/finance) or [Yahoo Finance](https://finance.yahoo.com/) for help.
 
-![](https://assets.omscs.io/2020-02-03-22-32-48.png)
+![](https://assets.omscs.io/notes/2020-02-03-22-32-48.png)
 
 ### What Type of Fund is it Quiz Solution
 
-![](https://assets.omscs.io/2020-02-03-22-36-01.png)
+![](https://assets.omscs.io/notes/2020-02-03-22-36-01.png)
 
 Typically, symbols for ETFs have three or four letters, while mutual fund symbols usually have five. Hedge funds don't have symbols; instead, we refer to them by their full name.
 
@@ -696,11 +696,11 @@ Typically, symbols for ETFs have three or four letters, while mutual fund symbol
 
 So far, we've looked at two different incentive structures: expense ratios and the two and twenty rule. Which of the following actions might these compensation mechanisms incentivize?
 
-![](https://assets.omscs.io/2020-02-04-22-29-02.png)
+![](https://assets.omscs.io/notes/2020-02-04-22-29-02.png)
 
 ### Incentives Quiz Solution
 
-![](https://assets.omscs.io/2020-02-04-22-29-24.png)
+![](https://assets.omscs.io/notes/2020-02-04-22-29-24.png)
 
 The expense ratio, which is derived entirely from AUM, primarily incentivizes AUM accumulation. Additionally, since the "two" of two and twenty is based on AUM, that incentive structure overall slightly incentivizes AUM accumulation.
 
@@ -716,11 +716,11 @@ Additionally, fund managers under the two and twenty rule are insulated from ris
 
 Consider the following order book. Do you think the price of this equity is likely to go up or down in the near future?
 
-![](https://assets.omscs.io/2020-02-10-22-23-32.png)
+![](https://assets.omscs.io/notes/2020-02-10-22-23-32.png)
 
 ### Up or Down Quiz Solution
 
-![](https://assets.omscs.io/2020-02-10-22-23-51.png)
+![](https://assets.omscs.io/notes/2020-02-10-22-23-51.png)
 
 The price is likely to drop in the near future because there is more selling pressure than buying pressure.
 
@@ -732,11 +732,11 @@ On the other hand, suppose we issue a market order to buy 200 shares. We would r
 
 Suppose we've been watching IBM, and we decide to short it when it reaches $100 because we think that it is going to go down. If we short 100 shares at $100 per share and submit an order to buy back the shares at $90 per share to close out our position, what is our net return?
 
-![](https://assets.omscs.io/2020-02-12-20-36-56.png)
+![](https://assets.omscs.io/notes/2020-02-12-20-36-56.png)
 
 ### Short Selling Quiz Solution
 
-![](https://assets.omscs.io/2020-02-12-20-37-14.png)
+![](https://assets.omscs.io/notes/2020-02-12-20-37-14.png)
 
 Each time IBM drops $1 in price, we make $100 because we are shorting 100 shares. Altogether, the stock dropped $10, so we made $1000.
 
@@ -746,11 +746,11 @@ Each time IBM drops $1 in price, we make $100 because we are shorting 100 shares
 
 Suppose there is a company that consistently generates $1 per year. What is that company worth?
 
-![](https://assets.omscs.io/2020-02-16-12-35-39.png)
+![](https://assets.omscs.io/notes/2020-02-16-12-35-39.png)
 
 ### What Is a Company Worth Quiz Solution
 
-![](https://assets.omscs.io/2020-02-16-12-36-13.png)
+![](https://assets.omscs.io/notes/2020-02-16-12-36-13.png)
 
 ### The Balch Bond Quiz
 
@@ -760,11 +760,11 @@ The first asset is a $1 bill: cold, hard cash. The second asset is a Tucker Balc
 
 Which of these assets would you rather receive? Rank the choices from 1 (best) to 3 (worst).
 
-![](https://assets.omscs.io/2020-02-16-13-34-02.png)
+![](https://assets.omscs.io/notes/2020-02-16-13-34-02.png)
 
 ### The Balch Bond Quiz Solution
 
-![](https://assets.omscs.io/2020-02-16-13-49-15.png)
+![](https://assets.omscs.io/notes/2020-02-16-13-49-15.png)
 
 The most valuable asset among these three is the $1 delivered right now because you can spend it right now. The other two are promises for a reward at some point in the future. Among these two bonds, the one backed by the US government is likely more valuable than the one backed by the professor.
 
@@ -772,11 +772,11 @@ The most valuable asset among these three is the $1 delivered right now because 
 
 Consider a company that pays a dividend of $2 per year. Given a discount rate of 4%, what is the intrinsic value of this company?
 
-![](https://assets.omscs.io/2020-02-17-20-35-00.png)
+![](https://assets.omscs.io/notes/2020-02-17-20-35-00.png)
 
 ### Intrinsic Value Quiz Solution
 
-![](https://assets.omscs.io/2020-02-17-20-36-55.png)
+![](https://assets.omscs.io/notes/2020-02-17-20-36-55.png)
 
 The present value, $PV$, of a company is equal to the future value, $FV$, divided by the discount rate, $DR$. Given $FV = 2$ and $DR = 0.04$,
 
@@ -794,11 +794,11 @@ This company pays $1 million per year in dividends. Assuming a 5% discount rate,
 
 This company has one million shares of stock outstanding. Given a stock price of $75 per share, what is the market capitalization of this company?
 
-![](https://assets.omscs.io/2020-02-17-21-08-46.png)
+![](https://assets.omscs.io/notes/2020-02-17-21-08-46.png)
 
 ### Compute Company Value Quiz Solution
 
-![](https://assets.omscs.io/2020-02-17-21-09-03.png)
+![](https://assets.omscs.io/notes/2020-02-17-21-09-03.png)
 
 To calculate book value, we take the value of the total assets and subtract the intangible assets, like the brand, and the liabilities. Given $110,000,000 in total assets, a $10,000,000 intangible asset, and a $20,000,000 liability, the book value for this company is $80,000,000.
 
@@ -810,11 +810,11 @@ To compute the market capitalization, we take the product of the share price, $7
 
 Since this company has a market capitalization of $75,000,000, we could buy all of the shares and, effectively the company, for $75,000,000. Should we?
 
-![](https://assets.omscs.io/2020-02-17-21-12-47.png)
+![](https://assets.omscs.io/notes/2020-02-17-21-12-47.png)
 
 ### Would you Buy this Stock Quiz Solution
 
-![](https://assets.omscs.io/2020-02-18-01-10-10.png)
+![](https://assets.omscs.io/notes/2020-02-18-01-10-10.png)
 
 It might seem like a tricky question, given such a relatively low intrinsic value, but it's not. We should buy this company for $75,000,000 and then break it apart and sell the individual assets for $80,000,000 to get an immediate $5,000,000 profit.
 
@@ -828,11 +828,11 @@ Consider a portfolio consisting of two stocks: Stock A and Stock B. 75% of the p
 
 Assume that, today, the price of Stock A increases by 1%, while the price of Stock B decreases by 2%. What is the return on this portfolio?
 
-![](https://assets.omscs.io/2020-02-18-21-39-14.png)
+![](https://assets.omscs.io/notes/2020-02-18-21-39-14.png)
 
 ### Portfolio Return Quiz Solution
 
-![](https://assets.omscs.io/2020-02-18-22-02-13.png)
+![](https://assets.omscs.io/notes/2020-02-18-22-02-13.png)
 
 Remember the formula to calculate portfolio return.
 
@@ -860,11 +860,11 @@ Consider the following two scatterplots. The plot on the left shows the daily re
 
 Given these two plots, which asset has a higher $\alpha$ and which has a higher $\beta$?
 
-![](https://assets.omscs.io/2020-02-19-00-16-19.png)
+![](https://assets.omscs.io/notes/2020-02-19-00-16-19.png)
 
 ### Compare Alpha and Beta Quiz Solution
 
-![](https://assets.omscs.io/2020-02-19-00-17-07.png)
+![](https://assets.omscs.io/notes/2020-02-19-00-17-07.png)
 
 Recall that $\beta$ is the slope of the fit line, and $\alpha$ is the y-intercept of the fit line. We can tell from the plots that ABC has both a higher $\alpha$ and a higher $\beta$.
 
@@ -872,11 +872,11 @@ Recall that $\beta$ is the slope of the fit line, and $\alpha$ is the y-intercep
 
 If we are in an upward market, do we want a portfolio with a larger $\beta_p$ or a smaller $\beta_p$? How about if we are in a downward market?
 
-![](https://assets.omscs.io/2020-02-19-20-48-30.png)
+![](https://assets.omscs.io/notes/2020-02-19-20-48-30.png)
 
 ### Implications of CAPM Quiz Solution
 
-![](https://assets.omscs.io/2020-02-19-20-50-34.png)
+![](https://assets.omscs.io/notes/2020-02-19-20-50-34.png)
 
 In upward markets, we want a portfolio with a larger $\beta_p$. For example, a portfolio with a $\beta_p$ greater than one rises even higher than the market, while a portfolio with a $\beta_p$ smaller than one won't be able to take full advantage of market performance.
 
@@ -890,17 +890,17 @@ Let's consider another scenario now.
 
 Instead of staying flat, suppose that the market went up 10%. What are the relative and absolute returns for both stocks, and what is our total return, both relative and absolute?
 
-![](https://assets.omscs.io/2020-02-21-22-10-17.png)
+![](https://assets.omscs.io/notes/2020-02-21-22-10-17.png)
 
 Let's also consider the scenario where the market goes down 10%. What are the relative and absolute returns for both stocks, and what is our total return, both relative and absolute?
 
-![](https://assets.omscs.io/2020-02-21-22-21-24.png)
+![](https://assets.omscs.io/notes/2020-02-21-22-21-24.png)
 
 ### Two Stock Scenario Quiz Solution
 
 Let's first look at the case where the market rises by 10%.
 
-![](https://assets.omscs.io/2020-02-21-22-13-24.png)
+![](https://assets.omscs.io/notes/2020-02-21-22-13-24.png)
 
 Consider stock A, which has a $\beta$ of 1.0 and an $\alpha$ of 0.01. A $\beta$ of 1.0 tells us that for every percentage point that the market moves, stock A moves one percent. An $\alpha$ of 0.01 tells us that stock A will move 1% above its movement with the market.
 
@@ -916,7 +916,7 @@ Calculating the relative return is a little tricky; that is, we can't just add 1
 
 Now, let's look at the case where the market falls 10%.
 
-![](https://assets.omscs.io/2020-02-21-22-25-50.png)
+![](https://assets.omscs.io/notes/2020-02-21-22-25-50.png)
 
 In this case, stock A falls with the market, but does 1% better, for a total relative loss of 9%, which equates to a $4.50 loss on a $50 investment.
 
@@ -928,11 +928,11 @@ Overall, this market scenario nets us 6%, or $6 on a $100 investment.
 
 Let's look at our two stocks again. Stock A has a $\beta$ of 1.0 and an $\alpha$ of 0.01. Stock B has a $\beta$ of 2.0 and an $\alpha$ of -0.01. What should the weights be for stock A and stock B so that we can minimize market risk?
 
-![](https://assets.omscs.io/2020-02-22-12-44-41.png)
+![](https://assets.omscs.io/notes/2020-02-22-12-44-41.png)
 
 ### Allocations Remove Market Risk Quiz Solution
 
-![](https://assets.omscs.io/2020-02-22-12-45-05.png)
+![](https://assets.omscs.io/notes/2020-02-22-12-45-05.png)
 
 We need to solve the following equation.
 
@@ -1002,11 +1002,11 @@ $$
 
 Now that we know some differences between the types of data used for fundamental and technical analysis, let's look at the following four factors. Which of these are fundamental, and which are technical?
 
-![](https://assets.omscs.io/2020-02-23-07-01-59.png)
+![](https://assets.omscs.io/notes/2020-02-23-07-01-59.png)
 
 ### Potential Indicators Quiz Solution
 
-![](https://assets.omscs.io/2020-02-23-07-07-55.png)
+![](https://assets.omscs.io/notes/2020-02-23-07-07-55.png)
 
 Remember that technical analysis considers only price and volume data, whereas fundamental analysis incorporates other types of data.
 
@@ -1018,11 +1018,11 @@ P/E ratio considers both price and earnings, making it a fundamental factor, as 
 
 Let's consider how we might trade using Bollinger Bands. Consider the four events below, each of which involves the price of a stock crossing over a Bollinger Band. For each event, determine if the event demonstrates a buying opportunity, a selling opportunity, or no opportunity at all.
 
-![](https://assets.omscs.io/2020-02-23-08-23-45.png)
+![](https://assets.omscs.io/notes/2020-02-23-08-23-45.png)
 
 ### Buy or Sell Quiz Solution
 
-![](https://assets.omscs.io/2020-02-23-08-28-28.png)
+![](https://assets.omscs.io/notes/2020-02-23-08-28-28.png)
 
 For the first event, we see the price crossing from the outside to the inside of the upper Bollinger Band. This event indicates that the price is moving back towards the moving average after a strong upward excursion. This is a sell signal.
 
@@ -1036,17 +1036,17 @@ For the third and fourth events, we see the price crossing from the outside to t
 
 Consider the following plot of IBM stock prices over time.
 
-![](https://assets.omscs.io/2020-02-24-22-42-38.png)
+![](https://assets.omscs.io/notes/2020-02-24-22-42-38.png)
 
 Notice the sudden drops in price. In one example, the price drops from $300 per share to $75 per share; in another, the price drops from $250 per share to $125 per share. These drops represent a 75% and a 50% price decline, respectively.
 
 Undoubtedly, the value of IBM did not drop that much in one day, so, which of the following reasons might explain the sudden drop in stock price?
 
-![](https://assets.omscs.io/2020-02-24-22-45-08.png)
+![](https://assets.omscs.io/notes/2020-02-24-22-45-08.png)
 
 ### Price Anomaly Quiz Solution
 
-![](https://assets.omscs.io/2020-02-24-22-51-28.png)
+![](https://assets.omscs.io/notes/2020-02-24-22-51-28.png)
 
 What we see here is a **stock split**, whereby a single share becomes $n$ shares, and the price of each share is divided by $n$.
 
@@ -1056,11 +1056,11 @@ For example, consider the drop in price from $300 per share to $75 per share. Th
 
 Consider the following plot of close prices for a particular stock over time. Notice the 2:1 stock split. For each of the three days identified below, what is the adjusted close price for this stock?
 
-![](https://assets.omscs.io/2020-02-26-15-37-31.png)
+![](https://assets.omscs.io/notes/2020-02-26-15-37-31.png)
 
 ### Split Adjustment Quiz Solution
 
-![](https://assets.omscs.io/2020-02-26-15-42-44.png)
+![](https://assets.omscs.io/notes/2020-02-26-15-42-44.png)
 
 For each day since the stock split, the adjusted close is equivalent to the actual close. As a result, the adjusted close for the most recent of the three days is $100.
 
@@ -1074,11 +1074,11 @@ Note that using the adjusted close accurately reflects this quadrupling of value
 
 What share price do we expect to see the day before the dividend is paid? How about after the dividend is paid?
 
-![](https://assets.omscs.io/2020-02-27-16-11-51.png)
+![](https://assets.omscs.io/notes/2020-02-27-16-11-51.png)
 
 ### Dividends Quiz Solution
 
-![](https://assets.omscs.io/2020-02-27-16-12-15.png)
+![](https://assets.omscs.io/notes/2020-02-27-16-12-15.png)
 
 The day before the dividend is paid, we should expect to see the stock price rise to $101. A share price of $101 reflects the underlying value of $100 per share, for which there is consensus, plus the expected $1 dividend payment.
 
@@ -1092,11 +1092,11 @@ Note that the overall value for investors who bought before the dividend was pai
 
 Consider the three forms of the efficient markets hypothesis: weak, semi-strong, and strong. Which forms prohibit which of the following different analyses?
 
-![](https://assets.omscs.io/2020-03-08-22-25-06.png)
+![](https://assets.omscs.io/notes/2020-03-08-22-25-06.png)
 
 ### The EMH Prohibits Quiz Solution
 
-![](https://assets.omscs.io/2020-03-08-22-31-43.png)
+![](https://assets.omscs.io/notes/2020-03-08-22-31-43.png)
 
 The weak version of the EMH prohibits us from profiting using technical analysis but is silent on fundamental analysis and insider knowledge. The semi-strong version prohibits technical and fundamental analysis but is silent on insider knowledge. The strong version prohibits all three.
 
@@ -1108,11 +1108,11 @@ Let's consider two different ways to bet.
 
 One approach is to put all 1000 tokens on one table and zero tokens on the other 999 tables. Another approach is to put one coin on each of the 1000 tables. Which of these approaches is better, or is it the case that they are equivalent?
 
-![](https://assets.omscs.io/2020-03-09-16-15-37.png)
+![](https://assets.omscs.io/notes/2020-03-09-16-15-37.png)
 
 ### Which Bet is Better Quiz Solution
 
-![](https://assets.omscs.io/2020-03-09-16-20-13.png)
+![](https://assets.omscs.io/notes/2020-03-09-16-20-13.png)
 
 The first bet is very risky; that is, there is a 49% chance that we are going to lose all of our money with the single flip of a coin. The second bet is much less risky. By distributing our tokens across all one thousand tables, we only lose all of our money if we lose all 1000 bets: a very low probability indeed. 
 
@@ -1132,11 +1132,11 @@ $$
 
 What is the expected return in the multi-bet case, where we bet 1000 tokens across 1000 different tables?
 
-![](https://assets.omscs.io/2020-03-09-18-33-21.png)
+![](https://assets.omscs.io/notes/2020-03-09-18-33-21.png)
 
 ### Coin-Flip Casino: Reward Quiz Solution
 
-![](https://assets.omscs.io/2020-03-09-18-59-26.png)
+![](https://assets.omscs.io/notes/2020-03-09-18-59-26.png)
 
 In this case, we have the same chances of winning and losing - 51% and 49%, respectively - but the amount we stand to win or lose on any bet is only one dollar. Since we are placing 1000 bets, our overall expected value is 1000 times the expected value of any individual bet.
 
@@ -1154,11 +1154,11 @@ Let's look at the single-bet case first. In this case, the expected reward is $2
 
 What is the risk-adjusted reward calculation for the multi-bet case?
 
-![](https://assets.omscs.io/2020-03-10-23-48-24.png)
+![](https://assets.omscs.io/notes/2020-03-10-23-48-24.png)
 
 ### Coin-Flip Casino: Reward/Risk Quiz Solution
 
-![](https://assets.omscs.io/2020-03-10-23-50-00.png)
+![](https://assets.omscs.io/notes/2020-03-10-23-50-00.png)
 
 In the multi-bet case, the reward was the same - $20 - but the risk was much smaller: $1. Thus, the risk-adjusted reward for this scenario is 20, which is much higher than that of the single-bet scenario.
 
@@ -1172,11 +1172,11 @@ For this problem, let's assume that Simons and Buffett both have the same inform
 
 If Buffett trades 120 times a year, how many times must Simons trade to maintain the same information ratio as Buffett?
 
-![](https://assets.omscs.io/2020-03-11-16-13-08.png)
+![](https://assets.omscs.io/notes/2020-03-11-16-13-08.png)
 
 ### Simons vs. Buffet Quiz Solution
 
-![](https://assets.omscs.io/2020-03-11-16-13-16.png)
+![](https://assets.omscs.io/notes/2020-03-11-16-13-16.png)
 
 If Buffett trades only 120 times per year, Simons has to trade 120,000,000 times to match Buffett's performance.
 
@@ -1222,17 +1222,17 @@ $$
 
 Let's consider the three following portfolios.
 
-![](https://assets.omscs.io/2020-03-13-09-34-02.png)
+![](https://assets.omscs.io/notes/2020-03-13-09-34-02.png)
 
 Each green dot represents an asset held in the portfolio, and the size of the dot represents the weight of that asset.
 
 If we were to aggregate the risk and return of the individual stocks into one value, which of the following plots - in orange below - would match which portfolio?
 
-![](https://assets.omscs.io/2020-03-13-09-36-44.png)
+![](https://assets.omscs.io/notes/2020-03-13-09-36-44.png)
 
 ### Building a Portfolio Quiz Solution
 
-![](https://assets.omscs.io/2020-03-13-09-50-25.png)
+![](https://assets.omscs.io/notes/2020-03-13-09-50-25.png)
 
 The first portfolio emphasizes two high-risk stocks: one with low return and one with high return. Of the three plots, B looks best-aligned for this allocation.
 
@@ -1248,11 +1248,11 @@ We want to use reinforcement learning algorithms to trade; to do so, we have to 
 
 Consider the following items. For each item, select whether the item corresponds to a component of the external state $S$, an action $a$ we might take within the environment, or a reward $r$ that we might use to inform our policy $\pi$.
 
-![](https://assets.omscs.io/2020-03-23-23-28-54.png)
+![](https://assets.omscs.io/notes/2020-03-23-23-28-54.png)
 
 ### Trading as an RL Problem Quiz Solution
 
-![](https://assets.omscs.io/2020-03-23-23-38-35.png)
+![](https://assets.omscs.io/notes/2020-03-23-23-38-35.png)
 
 Buying and selling stock are both actions that we execute upon our environment.
 
@@ -1264,11 +1264,11 @@ The return from a trade is our reward. If our return is positive, so is our rewa
 
 Which of the following approaches leads our robot to a policy that causes it to reach the $1 million reward?
 
-![](https://assets.omscs.io/2020-03-25-22-05-58.png)
+![](https://assets.omscs.io/notes/2020-03-25-22-05-58.png)
 
 ### Which Approach Gets $1M Quiz Solution
 
-![](https://assets.omscs.io/2020-03-25-22-13-18.png)
+![](https://assets.omscs.io/notes/2020-03-25-22-13-18.png)
 
 With an infinite horizon, the robot may exclusively grab the $1 ad infinitum, or it might first grab the $1 million before returning to the $1. As a result, obtaining the $1 million is possible with infinite horizon, but not guaranteed.
 
@@ -1286,11 +1286,11 @@ On the one hand, we can think about the reward for a position as the daily retur
 
 Which of these approaches results in a faster convergence to the optimal policy?
 
-![](https://assets.omscs.io/2020-03-29-20-05-54.png)
+![](https://assets.omscs.io/notes/2020-03-29-20-05-54.png)
 
 ### The Trading Problem: Rewards Quiz Solution
 
-![](https://assets.omscs.io/2020-03-29-20-18-57.png)
+![](https://assets.omscs.io/notes/2020-03-29-20-18-57.png)
 
 If we choose the delayed paradigm - where the reward is zero until the end of the trade cycle - the learner has to infer the correct sequence of actions leading up to the final action that brought about the large windfall. If we reward a little bit each day, however, the learner can learn much more quickly because it receives much more frequent rewards.
 
@@ -1298,11 +1298,11 @@ If we choose the delayed paradigm - where the reward is zero until the end of th
 
 Consider the following factors and select which should be part of the state that we examine when selecting an appropriate action.
 
-![](https://assets.omscs.io/2020-03-29-20-25-46.png)
+![](https://assets.omscs.io/notes/2020-03-29-20-25-46.png)
 
 ### The Trading Problem: State Quiz Solution
 
-![](https://assets.omscs.io/2020-03-29-20-35-56.png)
+![](https://assets.omscs.io/notes/2020-03-29-20-35-56.png)
 
 Neither adjusted close nor SMA alone are useful components of the state because they don't particularly mean much as absolute values. For example, if GOOG closes at $1000 per share, and XYZ closes at $5 per share, we cannot determine, based on that information alone, whether we should buy, sell, or hold either of those stocks.
 
@@ -1318,11 +1318,11 @@ Finally, our return since we entered a position might be a piece of our state. F
 
 Assume we have been interacting with the real world for a while, and we would like to consult our model of $T$. Can you write an equation for $T$ in terms of $T_c$?
 
-![](https://assets.omscs.io/2020-03-31-22-24-00.png)
+![](https://assets.omscs.io/notes/2020-03-31-22-24-00.png)
 
 ### How to Evaluate T Quiz Solution
 
-![](https://assets.omscs.io/2020-03-31-22-28-58.png)
+![](https://assets.omscs.io/notes/2020-03-31-22-28-58.png)
 
 **NOTE**: The denominator in this equation should reference $T_c$, not $T$.
 

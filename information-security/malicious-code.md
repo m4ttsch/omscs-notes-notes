@@ -8,10 +8,10 @@ lecture: malicious-code
 # Malicious Code
 
 ## What is Malware Quiz
-![](https://assets.omscs.io/40637903-CAAE-402C-9F8D-DC289CB7EC62.png)
+![](https://assets.omscs.io/notes/40637903-CAAE-402C-9F8D-DC289CB7EC62.png)
 
 ## What is Malware Quiz Solution
-![](https://assets.omscs.io/07625575-7DE3-4F7F-AEF7-5E0B1178E7A7.png)
+![](https://assets.omscs.io/notes/07625575-7DE3-4F7F-AEF7-5E0B1178E7A7.png)
 
 ## Types of Malware
 There are two major types of malware.
@@ -73,23 +73,23 @@ In the *triggering* phase,  the virus is activated for execution. A user clickin
 The final phase is the *execution* phase. In this phase, the virus actually performs its malicious work. For example, an executing virus might delete all of the files on disk.
 
 ## Host Required Malware Quiz 1
-![](https://assets.omscs.io/A4EDCDB2-1BCA-44CE-82D9-F9F87A38CED2.png)
+![](https://assets.omscs.io/notes/A4EDCDB2-1BCA-44CE-82D9-F9F87A38CED2.png)
 
 ## Host Required Malware Quiz 1 Solution
-![](https://assets.omscs.io/5FECA411-7C95-4E9C-B485-2FB274E512F5.png)
+![](https://assets.omscs.io/notes/5FECA411-7C95-4E9C-B485-2FB274E512F5.png)
 
 ## Host Required Malware Quiz 2
-![](https://assets.omscs.io/21C54A27-F1F6-4A37-969F-A29DE164F9F5.png)
+![](https://assets.omscs.io/notes/21C54A27-F1F6-4A37-969F-A29DE164F9F5.png)
 
 ## Host Required Malware Quiz 2 Solution
-![](https://assets.omscs.io/049C97B7-000C-4F42-8755-89BDE3A06DB9.png)
+![](https://assets.omscs.io/notes/049C97B7-000C-4F42-8755-89BDE3A06DB9.png)
 
 ## Virus Structure
 A virus infects a program by modifying the program code. In order to achieve this, the virus code has to be physically inserted into the program file.
 
 When an infected program runs, the virus code runs first. The virus code then runs the original program so that the user doesn't suspect that the program has been infected. Finally, the virus code runs again, often to perform some cleanup to avoid detection.
 
-![](https://assets.omscs.io/28595BDF-E52D-41AB-9E4D-19C299539E78.png)
+![](https://assets.omscs.io/notes/28595BDF-E52D-41AB-9E4D-19C299539E78.png)
 
 The first line of the infected program must ensure that the virus runs immediately. This can be achieved with an instruction that calls the `main` function of the virus.
 
@@ -121,7 +121,7 @@ Any of these viruses can be polymorphic.
 ## Boot Sector Virus
 In order to understand a boot sector virus, we need to understand how the boot sector works.
 
-![](https://assets.omscs.io/D45893B7-A8E1-43B1-99FC-8276CC5145A1.png)
+![](https://assets.omscs.io/notes/D45893B7-A8E1-43B1-99FC-8276CC5145A1.png)
 
 A **boot sector** is a special sector on the hard drive of a system. When a system is booted, the code in the boot sector - called the **bootstrap loader** - always runs first.
 
@@ -133,7 +133,7 @@ During system boot, the virus performs its malicious functions,  such as infecti
 
 After the virus executes, it transfers control to the original bootstrap loader in order to give the appearance that the system is functioning normally.
 
-![](https://assets.omscs.io/A9F823EB-31F6-4E93-8D78-1AD37DEE40C3.png)
+![](https://assets.omscs.io/notes/A9F823EB-31F6-4E93-8D78-1AD37DEE40C3.png)
 
 ## Macro Viruses
 A **macro** is a program embedded in a document, such as a Microsoft Word document. A macro typically contains instructions for some useful functions, such as opening a file or starting a new application.
@@ -149,10 +149,10 @@ The macro virus can perform malicious activities such as sending the infected do
 A macro virus can also copy its macro to the global macro file. Whenever a user opens a new document, this now global macro will be copied into the new document, meaning that all new documents on the user's system will be infected.
 
 ## Types of Viruses Quiz
-![](https://assets.omscs.io/133BBEDD-CE14-4ED3-A8ED-48F539E3E52B.png)
+![](https://assets.omscs.io/notes/133BBEDD-CE14-4ED3-A8ED-48F539E3E52B.png)
 
 ## Types of Viruses Quiz Solution
-![](https://assets.omscs.io/6294734B-447D-4C84-9F5E-C80BD8923832.png)
+![](https://assets.omscs.io/notes/6294734B-447D-4C84-9F5E-C80BD8923832.png)
 
 Macro viruses run when an infected document is opened with a given application. Boot sector viruses run before the operating system is loaded.
 
@@ -167,31 +167,31 @@ Similarly, when the user executes the `ps` command to see what programs are runn
 
 Here is the functional flow for listing files using the windows command `dir`.
 
-![](https://assets.omscs.io/9474681E-8F39-4A87-B7A7-191C40CF07C0.png)
+![](https://assets.omscs.io/notes/9474681E-8F39-4A87-B7A7-191C40CF07C0.png)
 
 Before the rootkit has been embedded, here is what an operating system will typically return when the user lists the files in a directory.
 
-![](https://assets.omscs.io/16203A74-AC28-4BD8-9E31-9A74AF188A49.png)
+![](https://assets.omscs.io/notes/16203A74-AC28-4BD8-9E31-9A74AF188A49.png)
 
 The installed rootkit intercepts any call to the operating system and then determines whether the call will reveal the malware. If so, the rootkit alters the result to hide the malware; otherwise, it passes the result to the caller unmodified.
 
-![](https://assets.omscs.io/E559CAC9-6FCA-4ED3-AEF0-DBAD9ADDCE39.png)
+![](https://assets.omscs.io/notes/E559CAC9-6FCA-4ED3-AEF0-DBAD9ADDCE39.png)
 
 For example, the rootkit can intercept the directory listing from the `dir` command and remove the malware entry.
 
-![](https://assets.omscs.io/E9070948-A413-4C12-9C50-22D1DDFD6A18.png)
+![](https://assets.omscs.io/notes/E9070948-A413-4C12-9C50-22D1DDFD6A18.png)
 
 ## Rootkit Quiz
-![](https://assets.omscs.io/F9D17F35-7B72-4538-9425-77C62F298C1D.png)
+![](https://assets.omscs.io/notes/F9D17F35-7B72-4538-9425-77C62F298C1D.png)
 
 ## Rootkit Quiz Solution
-![](https://assets.omscs.io/F4D927F4-F0EF-4056-9F9C-3979A28E1375.png)
+![](https://assets.omscs.io/notes/F4D927F4-F0EF-4056-9F9C-3979A28E1375.png)
 
 ## Truth and Misconceptions Quiz
-![](https://assets.omscs.io/C55A0FCE-82C4-4243-83F9-9FE14B9B1982.png)
+![](https://assets.omscs.io/notes/C55A0FCE-82C4-4243-83F9-9FE14B9B1982.png)
 
 ## Truth and Misconceptions Quiz Solution
-![](https://assets.omscs.io/FE1571D1-8225-4963-ABEA-379773BD8D9A.png)
+![](https://assets.omscs.io/notes/FE1571D1-8225-4963-ABEA-379773BD8D9A.png)
 
 ## Worms
 Worms are independent malicious programs that typically use network connections to spread from one system to another.
@@ -235,10 +235,10 @@ We also learned that we need to have a fast and coordinated response to a major 
 
 
 ## Worm Quiz
-![](https://assets.omscs.io/63C5BA47-1177-48B3-8C53-AB4B8BD90395.png)
+![](https://assets.omscs.io/notes/63C5BA47-1177-48B3-8C53-AB4B8BD90395.png)
 
 ## Worm Quiz Solution
-![](https://assets.omscs.io/60DAF027-9368-40B6-AE36-FC6EA78B32B8.png)
+![](https://assets.omscs.io/notes/60DAF027-9368-40B6-AE36-FC6EA78B32B8.png)
 
 ## Malware Prevention & Detection Approaches
 We can prevent malware from infecting our computer systems  by limiting our contact with the outside world. In other words, if we don't accept documents or programs from any external source, we can greatly reduce our chance of infection.
@@ -278,15 +278,15 @@ This strategy can also include a sandbox-based analysis. A **sandbox** is typica
 We can observe a suspicious executable in a sandbox first to ensure that it will not cause any damage to the system or network before allowing it to run outside of the sandbox.
 
 ## Malware Prevention & Detection Quiz
-![](https://assets.omscs.io/36682CCE-48D2-43A0-B174-A5558BA230E6.png)
+![](https://assets.omscs.io/notes/36682CCE-48D2-43A0-B174-A5558BA230E6.png)
 
 ## Malware Prevention & Detection Quiz Solution
-![](https://assets.omscs.io/919A3EB0-92AE-4221-BFC5-D339E835C7E6.png)
+![](https://assets.omscs.io/notes/919A3EB0-92AE-4221-BFC5-D339E835C7E6.png)
 
 ## Most Expensive Worm Quiz
-![](https://assets.omscs.io/8C469D3D-9061-45F2-8B2F-53D35CBD5A30.png)
+![](https://assets.omscs.io/notes/8C469D3D-9061-45F2-8B2F-53D35CBD5A30.png)
 
 ## Most Expensive Worm Quiz Solution
-![](https://assets.omscs.io/38A65997-26BC-4D80-A560-169AF0930940.png)
+![](https://assets.omscs.io/notes/38A65997-26BC-4D80-A560-169AF0930940.png)
 
 [Source](https://encyclopedia2.thefreedictionary.com/Top+10+Worst+Computer+Worms+of+All+Time)

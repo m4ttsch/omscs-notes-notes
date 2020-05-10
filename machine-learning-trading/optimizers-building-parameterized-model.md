@@ -34,17 +34,17 @@ Finally, we call the optimizer, passing in the function and the initial argument
 
 Let's take a look at the function $f(x) = (x - 1.5)^2 + 0.5$, which is graphed below.
 
-![](https://assets.omscs.io/2020-01-19-23-18-30.png)
+![](https://assets.omscs.io/notes/2020-01-19-23-18-30.png)
 
 From the graph, we can see that the function is centered horizontally about the line $x = 1.5$ with a global minimum at $(1.5, 0.5)$. While we can find this minimum fairly intuitively, a minimizer, of course, cannot.
 
 We must supply the minimizer with an initial value of $x$ and let it iteratively move closer to the minimum. Let's suppose we tell the minimizer to start with a value of $x=2$.
 
-![](https://assets.omscs.io/2020-01-19-23-19-22.png)
+![](https://assets.omscs.io/notes/2020-01-19-23-19-22.png)
 
 The first thing the minimizer does is evaluate $f(2)$, which equals 0.75. It then tests two very nearby values - one greater than 2 and one smaller than 2 - and computes the slope of the line connecting those two points.
 
-![](https://assets.omscs.io/2020-01-19-23-22-39.png)
+![](https://assets.omscs.io/notes/2020-01-19-23-22-39.png)
 
 The slope of the line connecting the two points gives the minimizer insight into how to adjust $x$. Since the slope is positive, increases in $x$ result in increases in $f(x)$. Since the minimizer wants to minimize $f(x)$, it knows to decrease $x$.
 
@@ -92,13 +92,13 @@ minimized.fun # f(x)
 
 If we run our optimizer and print out our minimized values, we see the following output.
 
-![](https://assets.omscs.io/2020-01-20-00-24-06.png)
+![](https://assets.omscs.io/notes/2020-01-20-00-24-06.png)
 
 We see the iterative progress of the minimizer thanks to the print statements we placed in `f`. We see some additional output - a result of the `{'disp': True}` option - that provides information on the number of iterations and function evaluations required during the minimization process. Finally, we see the minimum.
 
 To visually verify that the minimizer found the correct value, we can plot `f` and place a point at the value of `(minimized.x, minimized.fun)`.
 
-![](https://assets.omscs.io/2020-01-20-00-28-53.png)
+![](https://assets.omscs.io/notes/2020-01-20-00-28-53.png)
 
 ### Documentation
 - [scipy.optimize.minimize](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html)
@@ -107,11 +107,11 @@ To visually verify that the minimizer found the correct value, we can plot `f` a
 
 Which of the following functions would be hard for the minimizer to solve?
 
-![](https://assets.omscs.io/2020-01-20-00-40-15.png)
+![](https://assets.omscs.io/notes/2020-01-20-00-40-15.png)
 
 ## How to Defeat a Minimizer Quiz Solution
 
-![](https://assets.omscs.io/2020-01-20-00-40-46.png)
+![](https://assets.omscs.io/notes/2020-01-20-00-40-46.png)
 
 The first graph is hard because of the "flat" areas on either side of the parabola. A minimizer testing a point in the middle of this area wouldn't be able to find any gradient to follow, so it wouldn't know how to adjust the value it was currently testing.
 
@@ -129,7 +129,7 @@ In other words, pick two points on the graph of a function and draw a line conne
 
 Let's look at three examples.
 
-![](https://assets.omscs.io/2020-01-20-00-54-52.png)
+![](https://assets.omscs.io/notes/2020-01-20-00-54-52.png)
 
 We can see that the first function is convex between the two points we have selected (actually, it's convex everywhere).
 
@@ -141,7 +141,7 @@ If the function you want to minimize is convex, the algorithms we examine will f
 
 So far, we have looked at functions that only have one dimension in $x$, such as the parabola we minimized previously. Consider the following graph, which depicts a function that has two dimensions in $x$.
 
-![](https://assets.omscs.io/2020-01-20-01-03-15.png)
+![](https://assets.omscs.io/notes/2020-01-20-01-03-15.png)
 
 The good news is that minimizers can solve these multi-dimensional problems with gradient descent just as effectively as they can solve one-dimensional problems.
 
@@ -159,23 +159,23 @@ This function, which is also the equation for a line, has one argument, $x$, and
 
 Now let's look at some data points. Let's say we are budding meteorologists and want to understand the relationship between humidity and rainfall. We collect daily humidity measurements and observe how much it rains, and we create the following plot.
 
-![](https://assets.omscs.io/2020-01-20-12-32-35.png)
+![](https://assets.omscs.io/notes/2020-01-20-12-32-35.png)
 
 We can see a relationship between humidity and rainfall, and our intuition is that we might be able to model this relationship with a line. The line might look something like this.
 
-![](https://assets.omscs.io/2020-01-20-12-34-14.png)
+![](https://assets.omscs.io/notes/2020-01-20-12-34-14.png)
 
 Our task is to find the parameters $C_0$ and $C_1$ that describe the line that best fits our data. Since we are working with minimizers, we need to reframe this problem as a minimization problem.
 
  What is it we are trying to minimize? Let's look at a simpler example.
 
-![](https://assets.omscs.io/2020-01-20-12-35-54.png)
+![](https://assets.omscs.io/notes/2020-01-20-12-35-54.png)
 
 Looking at the graph above, suppose we've collected the data points plotted in green, and we are trying to evaluate how the blue line fits these points.
 
 We can evaluate the line by examining the vertical distance between each point and the candidate line.
 
-![](https://assets.omscs.io/2020-01-20-12-38-01.png)
+![](https://assets.omscs.io/notes/2020-01-20-12-38-01.png)
 
 It is these vertical distances, or **errors**, that we want to minimize.
 
@@ -183,11 +183,11 @@ It is these vertical distances, or **errors**, that we want to minimize.
 
 Let's assume that a point $p_i$ has an error $e_i$, which is the vertical distance between $p_i$ and the best-fit line currently under consideration. Given a number of such errors $e_0, e_1, ..., e_n$, which of the following expressions describes the metric we want to minimize?
 
-![](https://assets.omscs.io/2020-01-20-14-11-22.png)
+![](https://assets.omscs.io/notes/2020-01-20-14-11-22.png)
 
 ## What is a Good Error Metric Quiz Solution
 
-![](https://assets.omscs.io/2020-01-20-14-13-28.png)
+![](https://assets.omscs.io/notes/2020-01-20-14-13-28.png)
 
 We want to minimize the sum of the errors, but we want to ensure that errors above and below the line do not cancel out. To accomplish this, we need to make each error positive by either squaring it or taking its absolute value.
 
@@ -195,7 +195,7 @@ We want to minimize the sum of the errors, but we want to ensure that errors abo
 
 Let's look at the following data.
 
-![](https://assets.omscs.io/2020-01-20-14-20-37.png)
+![](https://assets.omscs.io/notes/2020-01-20-14-20-37.png)
 
 We want to use a minimizer to find the line that best fits this data, so we first have to define a function to minimize. We are going to use the *sum of squared error* function we saw above, namely:
 
@@ -246,7 +246,7 @@ np.sum((data[:, 1] - (line[0] * data[:, 0] + line[1])) ** 2)
 
 Now that we have `error`, the function we want to minimize, let's test our minimizer. Our test consists of three steps, shown in Python below.
 
-![](https://assets.omscs.io/2020-01-21-00-13-55.png)
+![](https://assets.omscs.io/notes/2020-01-21-00-13-55.png)
 
 First, we define the line that we want the minimizer to discover. The variable `l_org` holds the parameters of this line, which has a slope of 4 and a y-intercept of 2. We create an array of evenly-spaced x-values `Xorig` using `np.linspace` and an array of the corresponding y-values `Yorig`. We plot `Xorig` against `Yorig` to draw our line.
 
@@ -277,7 +277,7 @@ Additionally, we specify the `method` and pass in some verbosity `options`.
 
 We can finally run our test, and we see the following chart.
 
-![](https://assets.omscs.io/2020-01-20-23-01-22.png)
+![](https://assets.omscs.io/notes/2020-01-20-23-01-22.png)
 
 Our original line is the blue line, and the green dots are the noisy data we generated from points on that line. The purple line is the original guess that we passed to the minimizer. The minimizer fit the red line to the data, and, indeed, it is quite close to the blue line.
 
@@ -289,11 +289,11 @@ Our original line is the blue line, and the green dots are the noisy data we gen
 
 We can fit even more complicated functions to data, such as the polynomial we fit to the data below.
 
-![](https://assets.omscs.io/2020-01-21-00-55-32.png)
+![](https://assets.omscs.io/notes/2020-01-21-00-55-32.png)
 
 Let's look at the output from the minimizer that generated this polynomial.
 
-![](https://assets.omscs.io/2020-01-21-00-56-53.png)
+![](https://assets.omscs.io/notes/2020-01-21-00-56-53.png)
 
 We can see that the coefficients of the fitted polynomial are very similar to those of the original polynomial.
 
