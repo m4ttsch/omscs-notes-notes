@@ -11,7 +11,7 @@ lecture: welcome
 
 Here are my notes from when I took RAIT in OMSCS during Summer 2020.
 
-Each document in "Lecture Notes" corresponds to a lesson in [Udacity](https://classroom.udacity.com/courses/cs373). Within each document, the headings correspond to the videos within that lesson. Usually, I omit any introductory or summary videos.
+Each document in "Lecture Notes" corresponds to a lesson in [Udacity](https://classroom.udacity.com/courses/cs373). Within each document, the headings correspond to the videos within that lesson. Usually, I omit any introductory or summary videos, as well the as office hours lessons.
 
 ## Textbook Information
 
