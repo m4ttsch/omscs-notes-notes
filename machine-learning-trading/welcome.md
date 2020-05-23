@@ -20,6 +20,12 @@ The following textbooks helped me get an **A** in this course:
 - [What Hedge Funds Really Do: An Introduction to Portfolio Management](https://amzn.to/2xORzT7)
 - [Machine Learning](https://amzn.to/2A91p2V)
 
+## Environment Setup
+
+This class requires some environment setup. I have recorded the following YouTube walkthroughs, which may be helpful:
+
+- [Accessing Buffet Servers and Moving Code with Git](https://www.youtube.com/watch?v=PcAZ1qn4lGo)
+
 ## Contact
 
 If you have any questions, comments, concerns, or improvements, don't hesitate to reach out to me. You can find me at:

@@ -25,6 +25,14 @@ Each document in "Exam Review" corresponds to a completed list of questions that
 The following textbooks helped me get an **A** in this course:
 - [The Linux Programming Interface: A Linux and UNIX System Programming Handbook](https://amzn.to/2Wgn8Pg)
 - [Operating Systems: Three Easy Pieces](https://amzn.to/35NiXh6)
+  
+## Environment Setup
+
+This class requires some environment setup. I have recorded the following YouTube walkthroughs, which may be helpful:
+
+- [Vagrant/VirtualBox installation on Mac OSX High Sierra](https://www.youtube.com/watch?v=m21YykIAPCA)
+- [File transfer from host to VM via Vagrant](https://www.youtube.com/watch?v=qDodZdtoK40)
+- [Bonnie JWT Host Vagrant](https://www.youtube.com/watch?v=CZ-fX2G5c0c)
 
 ## Contact
 

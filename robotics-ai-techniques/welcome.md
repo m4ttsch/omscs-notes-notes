@@ -19,6 +19,13 @@ The following textbook may be helpful:
 - [Probabilistic Robotics (Intelligent Robotics and Autonomous Agents series)](https://amzn.to/3fFW6bR)
 - [Linear Algebra Done Right (Undergraduate Texts in Mathematics)](https://amzn.to/2ztcQC8)
 
+## Environment Setup
+
+This class requires some environment setup. I have recorded the following YouTube walkthroughs, which may be helpful:
+
+- [Up and Running with Anaconda](https://www.youtube.com/watch?v=sgHIPgi6LRo)
+- [Configuring PyCharm and Conda](https://www.youtube.com/watch?v=NhpCHv7kuoo)
+
 ## Contact
 
 If you have any questions, comments, concerns, or improvements, don't hesitate to reach out to me. You can find me at:
