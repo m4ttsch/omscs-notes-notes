@@ -16,8 +16,8 @@ Each document in "Lecture Notes" corresponds to a lesson in [Udacity](https://cl
 ## Textbook Information
 
 The following textbook may be helpful:
-- [Probabilistic Robotics (Intelligent Robotics and Autonomous Agents series)](https://amzn.to/3fFW6bR)
-- [Linear Algebra Done Right (Undergraduate Texts in Mathematics)](https://amzn.to/2ztcQC8)
+- [Probabilistic Robotics (Intelligent Robotics and Autonomous Agents series)](https://amzn.to/3cZIUwo)
+- [Linear Algebra Done Right (Undergraduate Texts in Mathematics)](https://amzn.to/2WWOjPa)
 
 ## Environment Setup
 

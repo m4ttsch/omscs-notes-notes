@@ -24,7 +24,7 @@ as well as a complete list of the Udacity quizzes and answers.
 ## Textbook Information
 
 The following textbook helped me get an **A** in this course:
-- [Computer Security: Principles and Practice](https://amzn.to/2Wgif8Q)
+- [Computer Security: Principles and Practice](https://amzn.to/3d8YPc9)
 
 ## Contact
 

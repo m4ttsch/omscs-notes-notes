@@ -16,8 +16,8 @@ Each document in "Lecture Notes" corresponds to a lesson in [Udacity](https://cl
 ## Textbook Information
 
 The following textbooks helped me get an **A** in this course:
-- [Computer Networking: A Top-Down Approach](https://amzn.to/3dtlgs4)
-- [Computer Networks](https://amzn.to/2SL0Piv)
+- [Computer Networking: A Top-Down Approach](https://amzn.to/3bTL2o3)
+- [Computer Networks](https://amzn.to/3gjF0km)
 
 ## Contact
 

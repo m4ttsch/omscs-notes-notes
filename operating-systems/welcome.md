@@ -23,8 +23,8 @@ Each document in "Exam Review" corresponds to a completed list of questions that
 ## Textbook Information
 
 The following textbooks helped me get an **A** in this course:
-- [The Linux Programming Interface: A Linux and UNIX System Programming Handbook](https://amzn.to/2Wgn8Pg)
-- [Operating Systems: Three Easy Pieces](https://amzn.to/35NiXh6)
+- [The Linux Programming Interface: A Linux and UNIX System Programming Handbook](https://amzn.to/36pvc3J)
+- [Operating Systems: Three Easy Pieces](https://amzn.to/2zYwNRV)
   
 ## Environment Setup
 

@@ -16,9 +16,9 @@ Each document in "Lecture Notes" corresponds to a lesson in [Udacity](https://cl
 ## Textbook Information
 
 The following textbooks helped me get an **A** in this course:
-- [Python for Finance: Analyze Big Financial Data](https://amzn.to/2xPaYDB)
-- [What Hedge Funds Really Do: An Introduction to Portfolio Management](https://amzn.to/2xORzT7)
-- [Machine Learning](https://amzn.to/2A91p2V)
+- [Python for Finance: Analyze Big Financial Data](https://amzn.to/3gm1l0H)
+- [What Hedge Funds Really Do: An Introduction to Portfolio Management](https://amzn.to/3cXFLgK)
+- [Machine Learning](https://amzn.to/36sMbSv)
 
 ## Environment Setup
 
