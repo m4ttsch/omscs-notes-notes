@@ -67,7 +67,7 @@ A key advantage of particle filters is that they are straightforward to program.
 
 The animation below shows a robot performing global localization using sensor measurements. This robot has range sensors, as indicated by the blue stripes, which use sonar - sound - to determine the distance of nearby obstacles. The robot uses these range sensors to build an accurate posterior distribution of its location.
 
-![](particle-filters.gif)
+![](https://assets.omscs.io/notes/particle-filters.gif)
  
 
 The **particle filter** uses particles - shown in red above - to represent the robot's best belief about its current location. In this example, each particle is represented with an x-coordinate, a y-coordinate, and a heading direction. These three values together comprise a single location estimate. 
