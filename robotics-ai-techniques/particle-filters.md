@@ -5,6 +5,8 @@ course: robotics-ai-techniques
 lecture: particle-filters
 ---
 
+# Particle Filters
+
 ## State Space Quiz
 
 Before we start learning about particle filters, let's first review what we learned about histogram filters and Kalman filters from lessons one and two, respectively. Are histogram filters used with a continuous state space or a discrete state space? What about Kalman filters?
