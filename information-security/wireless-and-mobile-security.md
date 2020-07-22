@@ -99,7 +99,7 @@ Every file is a member of one or more file classes, and each class is associated
 
 The metadata of all files in the filesystem is encrypted using the same random key: the *filesystem key*. The system generates this key when iOS is first installed, or when a user wipes and restarts the device.
 
-When a file is opened, it's metadata is decrypted first using the filesystem key, which reveals the encrypted file key. Next, the file key is decrypted using one or more class keys. Finally, the file is used to decrypt the file as it is read from flash memory.
+When a file is opened, it's metadata is decrypted first using the filesystem key, which reveals the encrypted file key. Next, the file key is decrypted using one or more class keys. Finally, the file key is used to decrypt the file as it is read from flash memory.
 
 ## Security Quiz
 ![](https://assets.omscs.io/notes/4AA42396-DE28-4F4E-A5E9-19038D09F56B.png)
