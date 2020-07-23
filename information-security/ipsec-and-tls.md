@@ -173,6 +173,8 @@ Suppose `H` maintains a window where `n = 50`, which contains the sequence numbe
 
 If a packet arrives with a sequence number less than 100, `H` rejects the packet. If a packet arrives with a sequence number greater than 149, `H` accepts the packet and adjusts the window to cover this packet's sequence number. For example, if `H` receives a packet with sequence number 199, `H` adjusts its window to cover 150 through 199.
 
+Suppose `H` maintains a window where `n = 50`, which contains the sequence numbers from 100 to 149.
+
 If a packet arrives with a sequence number between 100 and 149, `H` checks the number to see if it has already been seen. If yes, `H` rejects the packet; otherwise, `H` accepts the packet and records the sequence number as having been seen.
 
 ## IPSec Quiz
