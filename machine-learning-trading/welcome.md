@@ -20,6 +20,13 @@ The following textbooks helped me get an **A** in this course:
 - [What Hedge Funds Really Do: An Introduction to Portfolio Management](https://amzn.to/3cXFLgK)
 - [Machine Learning](https://amzn.to/36sMbSv)
 
+## Download These Notes
+
+Some students have asked for PDF versions of the notes for a simpler, more portable
+studying experience. The following PDFs are available for download.
+
+- [Machine Learning for Trading - Complete](https://payhip.com/b/h5Pv "The complete set of ML4T notes, including lecture notes and Udacity quizzes.")
+
 ## Environment Setup
 
 This class requires some environment setup. I have recorded the following YouTube walkthroughs, which may be helpful:

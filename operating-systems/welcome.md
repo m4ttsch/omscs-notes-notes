@@ -25,6 +25,15 @@ Each document in "Exam Review" corresponds to a completed list of questions that
 The following textbooks helped me get an **A** in this course:
 - [The Linux Programming Interface: A Linux and UNIX System Programming Handbook](https://amzn.to/36pvc3J)
 - [Operating Systems: Three Easy Pieces](https://amzn.to/2zYwNRV)
+
+## Download These Notes
+
+Some students have asked for PDF versions of the notes for a simpler, more portable
+studying experience. The following PDFs are available for download.
+
+- [Graduate Introduction to Operating Systems - Complete](https://payhip.com/b/9I1Q "The complete set of GIOS notes, including lecture notes and exam review materials.")
+- [Graduate Introduction to Operating Systems - Lecture Notes](https://payhip.com/b/VJ40 "The complete set of GIOS lecture notes, covering content from all fifteen lectures.")
+- [Graduate Introduction to Operating Systems - Exam Review](https://payhip.com/b/BCoS "The complete set of GIOS exam review notes, containing study material for the midterm and final exams.")
   
 ## Environment Setup
 

@@ -19,6 +19,14 @@ The following textbooks helped me get an **A** in this course:
 - [Computer Networking: A Top-Down Approach](https://amzn.to/3bTL2o3)
 - [Computer Networks](https://amzn.to/3gjF0km)
 
+## Download These Notes
+
+Some students have asked for PDF versions of the notes for a simpler, more portable
+studying experience. The following PDFs are available for download.
+
+- [Computer Networks - Complete](https://payhip.com/b/9UGM "The complete set of CN lecture notes, covering content from all sixteen lectures.")
+
+
 ## Contact
 
 If you have any questions, comments, concerns, or improvements, don't hesitate to reach out to me. You can find me at:
