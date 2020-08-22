@@ -34,7 +34,7 @@ The following program - which roughly resembles a standard password checking pro
 int main(int argc, char *argv[]) {
 	int allow_login = 0;
 	char pwdstr[12];
-	char targetpwd[12] = 'MyPwd123";
+	char targetpwd[12] = "MyPwd123";
 
 	gets(pwdstr);
 	if(strncmp(pwdstr, targtpwd, 12) == 0)
