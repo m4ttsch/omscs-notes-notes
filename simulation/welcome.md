@@ -11,6 +11,8 @@ lecture: welcome
 
 Here are my notes for Simulation, which I am taking in Fall 2020.
 
+Each document in "Lecture Notes" corresponds to a module in Canvas. Within each document, the headings correspond to the videos within that module. Usually, I omit any introductory or administrative content.
+
 ## Textbook Information
 
 The following textbooks may be helpful for getting **A** in this course:
