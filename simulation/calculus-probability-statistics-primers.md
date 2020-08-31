@@ -994,11 +994,11 @@ print(next(gen)) # 0.762040194478836
 
 Alternatively, we can use this Fortran implementation.
 
-![](2020-08-28-16-37-30.png)
+![](https://assets.omscs.io/notes/2020-08-28-16-37-30.png)
 
 ### Exercises
 
-![](2020-08-28-17-01-39.png)
+![](https://assets.omscs.io/notes/2020-08-28-17-01-39.png)
 
 ## Great Expectations
 
