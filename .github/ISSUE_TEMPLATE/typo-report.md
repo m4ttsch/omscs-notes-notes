@@ -1,0 +1,10 @@
+---
+name: Typo Report
+about: This template is for reporting and tracking typo fixes
+title: "[TYPO]"
+labels: typo
+assignees: m4ttsch
+
+---
+
+
