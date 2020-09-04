@@ -252,7 +252,7 @@ Since this value is positive, $f(x_0)$ is a minimum. Furthermore, since $e^x > 0
 
 Suppose we have a function, $g(x)$, and suppose that we can find two values, $x_1$ and $x_2$, such that $g(x_1) < 0$ and $g(x_2) > 0$. Given these conditions, we know, via the [intermediate value theorem](https://en.wikipedia.org/wiki/Intermediate_value_theorem), that there must be a solution in between $x_1$ and $x_2$. In other words, there exists $x^* \in [x_1, x_2]$ such that $g(x^*) = 0$.
 
-To find $x^*$, we first compute $x_3 = \frac{x_1 + x_2}{2}$. If $g(x_3) < 0$, then we know that $x^*$ exists on $[x_3, x_2]$. Otherwise, if $g(x_3) > 0$, then $x^*$ exists on $[x_1, x_2]$. We call this method **bisection** because we bisect the search interval - we cut it in half - on each round. We continue bisecting until the length of the search interval is as small as desired. See [binary search](https://en.wikipedia.org/wiki/Binary_search_algorithm).
+To find $x^*$, we first compute $x_3 = \frac{x_1 + x_2}{2}$. If $g(x_3) < 0$, then we know that $x^*$ exists on $[x_3, x_2]$. Otherwise, if $g(x_3) > 0$, then $x^*$ exists on $[x_1, x_3]$. We call this method **bisection** because we bisect the search interval - we cut it in half - on each round. We continue bisecting until the length of the search interval is as small as desired. See [binary search](https://en.wikipedia.org/wiki/Binary_search_algorithm).
 
 ### Example
 
@@ -831,7 +831,7 @@ For instance, what is $P(X \leq 5)$? To calculate this, we need to integrate $f(
 
 Notice that our function describes a rectangle of width $4$ and height $1/4$. If we take the area under the curve of this function - if we integrate it - we get 1.
 
-Some other well-known discrete random variables include Uniform($a$, $b$), Exponential($\lambda$) and Normal($\mu$, $\sigma^2$). We will talk about each of these types of random variables as we need them.
+Some other well-known continuous random variables include Uniform($a$, $b$), Exponential($\lambda$) and Normal($\mu$, $\sigma^2$). We will talk about each of these types of random variables as we need them.
 
 ### Notation
 
