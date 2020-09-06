@@ -314,7 +314,10 @@ $$
 If we enumerate the $y$-values, we have:
 
 $$
-E[Y | X = x] = 0(f_Y(Y = 0|X= x)) + 1(f_Y(Y = 1|X = x)) = f_Y(Y = 1|X = x)
+\begin{alignedat}{1}
+E[Y | X = x] & = 0(f_Y(Y = 0|X= x)) + 1(f_Y(Y = 1|X = x)) \\[2ex]
+& = f_Y(Y = 1|X = x)
+\end{alignedat}
 $$
 
 Since we know that $f(Y = 1) = P(A)$, then:
@@ -585,25 +588,37 @@ $$
 The right-hand side of this equation looks daunting, so let's see if we can simplify it. We can first expand the product:
 
 $$
-E[(X-E[X])(Y - E[Y])] = E[XY - XE[Y] - YE[X] + E[Y]E[X]]
+\begin{alignedat}{1}
+& E[(X-E[X])(Y - E[Y]) = \\
+& E[XY - XE[Y] - YE[X] + E[Y]E[X]]
+\end{alignedat}
 $$
 
 Since expectation is linear, we can rewrite the right-hand side as a difference of expected values:
 
 $$
-E[(X-E[X])(Y - E[Y])] = E[XY] - E[XE[Y]] - E[YE[X]] + E[E[Y]E[X]]
+\begin{alignedat}{1}
+& E[(X-E[X])(Y - E[Y]) = \\
+& E[XY] - E[XE[Y]] - E[YE[X]] + E[E[Y]E[X]]
+\end{alignedat}
 $$
 
 Note that both $E[X]$ and $E[Y]$ are just numbers: the expected values of the corresponding random variables. As a result, we can apply two principles here: $E[aX] = aE[X]$ and $E[a] = a$. Consider the following rearrangement:
 
 $$
-E[(X-E[X])(Y - E[Y])] = E[XY] - E[Y]E[X] - E[X]E[Y] + E[Y]E[X]
+\begin{alignedat}{1}
+& E[(X-E[X])(Y - E[Y]) = \\
+& E[XY] - E[Y]E[X] - E[X]E[Y] + E[Y]E[X]
+\end{alignedat}
 $$
 
 The last three terms are the same, they and sum to $-E[Y]E[X]$. Thus:
 
 $$
-\text{Cov}(X,Y) \equiv E[(X-E[X])(Y - E[Y])] = E[XY] - E[Y]E[X]
+\begin{alignedat}{1}
+\text{Cov}(X,Y) & \equiv E[(X-E[X])(Y - E[Y])] \\[2ex]
+& = E[XY] - E[Y]E[X]
+\end{alignedat}
 $$
 
 This equation is much easier to work with; namely, $h(X,Y) = XY$ is a much simpler function than $h(X,Y) = (X-E[X])(Y - E[Y])$ when it comes time to apply LOTUS.
@@ -611,7 +626,11 @@ This equation is much easier to work with; namely, $h(X,Y) = XY$ is a much simpl
 Let's understand what happens when we take the covariance of $X$ with itself:
 
 $$
-\text{Cov}(X,X) = E[X * X] - E[X]E[X] = E[X^2] - (E[X])^2 = \text{Var}(X)
+\begin{alignedat}{1}
+\text{Cov}(X,X) & = E[X * X] - E[X]E[X] \\[2ex]
+& = E[X^2] - (E[X])^2 \\[2ex]
+& = \text{Var}(X)
+\end{alignedat}
 $$
 
 ### Theorem
