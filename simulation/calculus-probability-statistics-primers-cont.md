@@ -7,7 +7,7 @@ lecture: calculus-probability-statistics-primers-cont
 
 # Calculus, Probability, and Statistics Primers, Continued
 
-## Conditional Expectation
+## Conditional Expectation [OPTIONAL]
 
 In this lesson, we are going to continue our exploration of conditional expectation and look at several cool applications. This lesson will likely be the toughest one for the foreseeable future, but don't panic!
 
@@ -1330,7 +1330,7 @@ Not bad.
 
 ![](https://assets.omscs.io/notes/2020-09-04-16-16-36.png)
 
-## Introduction to Estimation
+## Introduction to Estimation [OPTIONAL]
 
 In this lesson, we are going to start our review of basic statistics. In particular, we are going to talk about unbiased estimation and mean squared error.
 
@@ -1626,7 +1626,7 @@ $$
 
 The relative efficiency is greater than one for all $n > 1$, so $Y_2$ is the better estimator just about all the time.
 
-## Maximum Likelihood Estimation
+## Maximum Likelihood Estimation [OPTIONAL]
 
 In this lesson, we are going to talk about maximum likelihood estimation, which is perhaps the most important point estimation method. It's a very flexible technique that many software packages use to help estimate parameters from various distributions.
 
@@ -1749,7 +1749,7 @@ $$
 \hat{\bar{F}}(x) = e^{-\hat{\lambda}x} = e^{-x / \bar{X}}
 $$
 
-## Confidence Intervals
+## Confidence Intervals [OPTIONAL]
 
 In this lesson, we are going to expand on the idea of point estimators for parameters and look at confidence intervals. We will use confidence intervals through this course, especially when we look at output analysis.
 
