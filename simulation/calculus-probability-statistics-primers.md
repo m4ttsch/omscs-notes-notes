@@ -1732,41 +1732,41 @@ Note that since $x^2 \leq y \leq 1$, $f_X(x)$ is only defined for $-1 \leq x \le
 Now, let's find $f_Y(y)$:
 
  $$
-f_Y(x) = \int_\R f(x,y)dx
+f_Y(y) = \int_\R f(x,y)dx
 $$
 
 Note that, since we are integrating with respect to $x$, the limits of integration become the limits of $x$. In other words, since $x^2 \leq y$, then $-\sqrt{y} \leq x \leq \sqrt{y}$, which become our new limits of integration:
 
 $$
-f_Y(x) = \int_{-\sqrt{y}}^{\sqrt{y}} \frac{21}{4}x^2ydx
+f_Y(y) = \int_{-\sqrt{y}}^{\sqrt{y}} \frac{21}{4}x^2ydx
 $$
 
 Because we are integrating with respect to $x$, the expression $21y / 4$ is a constant, which can move outside the integral: 
 
 $$
-f_Y(x) = \frac{21}{4}y \int_{-\sqrt{y}}^{\sqrt{y}} x^2dx
+f_Y(y) = \frac{21}{4}y \int_{-\sqrt{y}}^{\sqrt{y}} x^2dx
 $$
 
 Let's complete the integration:
 
 $$
-f_Y(x) = \frac{21}{4}y \frac{x^3}{3}\Big|_{-\sqrt{y}}^{\sqrt{y}}
+f_Y(y) = \frac{21}{4}y \frac{x^3}{3}\Big|_{-\sqrt{y}}^{\sqrt{y}}
 $$
 
 $$
-f_Y(x) = \frac{21}{4}y \left(\frac{(\sqrt{y})^3}{3} - \frac{(-\sqrt{y})^3}{3}\right)
+f_Y(y) = \frac{21}{4}y \left(\frac{(\sqrt{y})^3}{3} - \frac{(-\sqrt{y})^3}{3}\right)
 $$
 
 $$
-f_Y(x) = \frac{21}{4}y \left(\frac{y^{3/2}}{3} + \frac{y^{3/2}}{3}\right)
+f_Y(y) = \frac{21}{4}y \left(\frac{y^{3/2}}{3} + \frac{y^{3/2}}{3}\right)
 $$
 
 $$
-f_Y(x) = \frac{21}{4}y \left(\frac{2y^{3/2}}{3}\right)
+f_Y(y) = \frac{21}{4}y \left(\frac{2y^{3/2}}{3}\right)
 $$
 
 $$
-f_Y(x) = \frac{42}{12}y^{5/2} = \frac{7}{2}y^{5/2}
+f_Y(y) = \frac{42}{12}y^{5/2} = \frac{7}{2}y^{5/2}
 $$
 
 Remember the limits: $x^2 \leq y \leq 1$. Since $x^2$ cannot be negative, and $y$ cannot be greater than one, $f_Y(y)$ is only defined for $0 \leq y \leq 1$.
