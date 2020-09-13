@@ -758,7 +758,7 @@ Of course, stock prices can't dip below zero. As a result, we have to take the m
 
 To generate a normal random variable in Excel, we can use the following command:
 
-```excel
+```bash
 NORM.INV(RAND(), mu, sigma)
 ```
 
