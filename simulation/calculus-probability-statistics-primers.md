@@ -958,7 +958,7 @@ All of the examples that we have looked at so far require us to generate "practi
 
 How do we do that? For the less programmatically savvy, one way is to use the `RAND()` function in Excel.
 
-Alternatively, we can use an algorithm to generate *psuedo-random numbers* (PRNs); in other words, a series $R_1, R_2, ...$ of *deterministic* numbers that *appear* to be iid $\text{Unif}(0,1)$. Pick a *seed* integer, $X_0$, and calculate:
+Alternatively, we can use an algorithm to generate *pseudo-random numbers* (PRNs); in other words, a series $R_1, R_2, ...$ of *deterministic* numbers that *appear* to be iid $\text{Unif}(0,1)$. Pick a *seed* integer, $X_0$, and calculate:
 
 $$
 X_i = 16087X_{i - 1} \bmod{2^{31} - 1}, \quad i = 1, 2,...
