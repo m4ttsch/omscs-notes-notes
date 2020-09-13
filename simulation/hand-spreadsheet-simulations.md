@@ -712,7 +712,7 @@ print(next(gen)) # 0.762040194478836
 
 Alternatively, we can use this Fortran implementation.
 
-![](https://assets.omscs.io/notes/https://assets.omscs.io/notes/2020-08-28-16-37-30.png)
+![](https://assets.omscs.io/notes/2020-08-28-16-37-30.png)
 
 ### Demo
 
