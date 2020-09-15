@@ -70,7 +70,7 @@ This table defines the following columns:
 - Department ID
 - Salary Code
 - Employee ID
-- Employee phone umber
+- Employee phone number
 
 Each employee will occupy one row in this table and will have data for each of the columns.
 
@@ -219,7 +219,7 @@ If the user submits "Redmond" on the form, the SQL query sent to the database be
 SELECT * from OrdersTable where Shipcity = 'Redmond';
 ```
 
-What if the user submits "'Redmond; DROP table OrdersTable;"?
+What if the user submits "Redmond'; DROP table OrdersTable;"?
 
 This SQL query will be sent to the database:
 
@@ -291,7 +291,7 @@ A junior might execute `Q-junior` as a way to compare themselves with their peer
 Of course, a problem arises when there are only two juniors present in the class. One junior executing `Q-junior` can easily deduce the score of the other junior.
 
 ## Defenses Against Inference Attacks
-One way that we can guard against inference attacks is by preventing the access of aggregate information about a set of tuples when the size of that set is too small.
+One way that we can guard against inference attacks is by preventing the access of aggregate information about a set of tuples when the size of that set is too small or too large.
 
 In the most extreme case, aggregate information about a set containing one tuple is simply just the data present in that tuple.
 
