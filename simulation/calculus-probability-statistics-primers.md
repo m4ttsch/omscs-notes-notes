@@ -351,7 +351,7 @@ $$
 
 Note that $C$ is a constant value. Consider a function $f(x)$. Since the derivative of a constant value is zero, $f'(x) = \left[f(x) + C\right]'$. When we integrate $f'(x)$, we need to re-include this constant expression: $\int f'(x) = f(x) + C$.
 
-Let's look at some well-known properties of definite integrals:
+Let's look at some well-known properties of definite integrals.
 
 The integral of a function from $a$ to $a$ is zero:
 
@@ -649,7 +649,6 @@ $$
 
 Note that this looks a lot like the Reimann integral summation. The difference is that these rectangles are not adjacent, but rather scattered randomly between $a$ and $b$. As $n \to \infty$, the approximation converges to an equality, and it does so about as quickly as the Reimann approach.
 
-
 ### Example
 Suppose we have a function, $f(x) = \sin((\pi x) / 2)$, which we would like to integrate from $0$ to $1$. In other words, we want to compute:
 
@@ -902,11 +901,14 @@ We can't use a die toss to simulate this random variable. Instead, we have to us
 
 Consider the following table:
 
-| $x$  | $f(x)$ | $P(X \leq x)$ | $\text{Unif(0,1)}$ |
-|------|--------|---------------|--------------------|
-| $-2$ | $0.25$ | $0.25$        | $[0.00, 0.25]$     |
-| $3$  | $0.10$ | $0.35$        | $(0.25, 0.35]$     |
-| $4.2$| $0.65$ | $1.00$        | $(0.35, 1.00)$     |
+$$
+\begin{array}{c|c|c|c}
+x & f(x) & P(X \leq x) & \text{Unif}(0,1) \\ \hline
+-2 & 0.25 & 0.25 & [0.00, 0.25] \\
+3 & 0.1 & 0.35 & (0.25, 0.35] \\
+4.2 & 0.65 & 1.00 & (0.35, 1.00) \\
+\end{array}
+$$
 
 In this first column, we see the three discrete values that $X$ can take: $\{-2, 3, 4.2\}$. In the second column, we see the values for $f(x) = P(X = x)$ as defined by the pmf above. In the third column, we see the cdf, $F(x) = P(X \leq x)$, which we obtain by accumulating the pmf.
 
@@ -1047,7 +1049,7 @@ Suppose that we have a random variable $X \sim \text{Unif}(a, b)$. This random v
 $$
 f(x) = \left\{
         \begin{array}{ll}
-            \frac{1}{b-a} \quad \text{if} a < x < b \\
+            \frac{1}{b-a} \quad \text{if } a < x < b \\
             0 \quad\quad \text{otherwise}
         \end{array}
     \right. 

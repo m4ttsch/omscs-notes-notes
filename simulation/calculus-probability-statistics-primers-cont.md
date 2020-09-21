@@ -579,7 +579,7 @@ We can observe that as $n$ increases, $E[\bar{X_n}]$ is unaffected, but $\text{V
 
 ### Covariance
 
-**Covariance** is one of the most fundamental measures of non-independence between two random variables. The **covariance** between $X$ and $Y$, $\text{Cov}(X, Y)$ is defined as:
+Covariance is one of the most fundamental measures of non-independence between two random variables. The **covariance** between $X$ and $Y$, $\text{Cov}(X, Y)$ is defined as:
 
 $$
 \text{Cov}(X,Y) \equiv E[(X-E[X])(Y - E[Y])]
@@ -635,7 +635,7 @@ $$
 
 ### Theorem
 
-If $X$ and $Y$ are independents random variables, then $\text{Cov}(X, Y) = 0$. On the other hand, a covariance of $0$ does **not** mean that $X$ and $Y$ are independent.
+If $X$ and $Y$ are independent random variables, then $\text{Cov}(X, Y) = 0$. On the other hand, a covariance of $0$ does **not** mean that $X$ and $Y$ are independent.
 
 For example, consider two random variables, $X \sim \text{Unif}(-1,1)$ and $Y = X^2$. Since $Y$ is a function of $X$, the two random variables are dependent: if you know $X$, you know $Y$. However, take a look at the covariance:
 
