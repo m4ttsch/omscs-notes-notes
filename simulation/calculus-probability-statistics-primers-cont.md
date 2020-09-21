@@ -945,7 +945,7 @@ $$
 $$
 
 $$
-M_Y(t) = (pet^t + q)^n
+M_Y(t) = (pe^t + q)^n
 $$
 
 Note that the variance and the expected value are equal to $n$ times the variance and the expected value of the Bernoulli random variable. This relationship makes sense: a binomial random variable is the sum of $n$ Bernoulli's. The moment-generating function looks a little bit different. As it turns out, we multiply the moment-generating functions when we sum the random variables.
