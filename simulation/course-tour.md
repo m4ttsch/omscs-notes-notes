@@ -612,8 +612,3 @@ There are many different methods for dealing with steady-state data, which we wi
 - regeneration
 
 The method of batch means involves slicing a long-running simulation - excluding the initial observations from the "warm up" - into contiguous, adjacent batches. We calculate the sample mean from each batch, again assuming that these values are approximately i.i.d. With this assumption in hand, we can again analyze the means using classical statistical techniques.
-
-### DEMO
-
-## Resource-Schedule-Queue Spreadsheets
-### DEMO
