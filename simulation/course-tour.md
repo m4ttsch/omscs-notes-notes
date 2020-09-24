@@ -601,7 +601,7 @@ This conventional statistical treatment only works because we assume that the sa
 
 In steady-state simulations, we first have to deal with **initialization bias**. In other words, we have to account for the fact that the state of the system at the beginning of the simulation is not indicative of the steady state.
 
-For example, when we open a store for the day, there are no lines, and no one has to wait. However, if we example the store at any time after that, we are likely to find folks waiting in line.
+For example, when we open a store for the day, there are no lines, and no one has to wait. However, if we examine the store at any time after that, we are likely to find folks waiting in line.
 
 Usually, people "warm up" the simulation before collecting data. In our example, we might simulate the store for an hour before recording any observations. Failure to remove this initialization bias can ruin subsequent statistical analyses.
 
@@ -612,3 +612,8 @@ There are many different methods for dealing with steady-state data, which we wi
 - regeneration
 
 The method of batch means involves slicing a long-running simulation - excluding the initial observations from the "warm up" - into contiguous, adjacent batches. We calculate the sample mean from each batch, again assuming that these values are approximately i.i.d. With this assumption in hand, we can again analyze the means using classical statistical techniques.
+
+### DEMO
+
+## Resource-Schedule-Queue Spreadsheets
+### DEMO

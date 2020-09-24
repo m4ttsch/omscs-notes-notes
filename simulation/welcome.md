@@ -19,6 +19,12 @@ The following textbooks may be helpful for getting **A** in this course:
 - [Simulation Modeling and Analysis](https://amzn.to/3au4zN5)
 - [Simulation with Arena](https://amzn.to/2E4zTWo)
 
+## Environment Setup
+
+This class requires some environment setup. I have recorded the following YouTube walkthroughs, which may be helpful:
+
+- [Running Arena in GT Virtual Lab](https://www.youtube.com/watch?v=fmDfofNywkg)
+
 ## Contact
 
 If you have any questions, comments, concerns, or improvements, don't hesitate to reach out to me. You can find me at:
