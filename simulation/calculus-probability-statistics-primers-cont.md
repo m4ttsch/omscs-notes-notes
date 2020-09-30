@@ -1035,7 +1035,7 @@ E[X] = \frac{a + b}{2}
 $$
 
 $$
-\text{Var}(X) = \frac{a + b}{2}
+\text{Var}(X) = \frac{(b-a)^2}{12}
 $$
 
 $$
