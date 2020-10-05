@@ -200,7 +200,7 @@ Let's take a look at the histograms.
 
 Now that the histograms are on the same axes, we can compare their peaks and tails more easily.
 
-### Documetation
+### Documentation
 - [pandas.DataFrame.hist](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.hist.html)
 - [matplotlib.pyplot.legend](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.legend.html)
 
