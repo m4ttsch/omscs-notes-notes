@@ -1462,7 +1462,7 @@ G(y) = \frac{-x^2}{2} \Big|_{-\sqrt{y}}^0 + \frac{x^2}{2} \Big|_{0}^{\sqrt{y}}
 $$
 
 $$
-G(y) = 0 - \frac{y}{2} + \frac{y}{2} - 0 = y, \quad 0 < y < 1 
+G(y) = 0 + \frac{y}{2} + \frac{y}{2} - 0 = y, \quad 0 < y < 1 
 $$
 
 Note that since $x$ is constrained to $[-1, 1]$, $y = x^2$ is constrained to $(0, 1)$.
