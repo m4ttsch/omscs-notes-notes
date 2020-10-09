@@ -116,7 +116,7 @@ We said that momentum refers to the relative price change over a certain number 
 Generally, if we want to calculate the $n$-day momentum, $m$, at day $t$, using a sequence of prices, $p$, we can use the following formula.
 
 $$
-m_t = \frac{p_t}{p_{t-n}}
+m_t = \frac{p_t}{p_{t-n}} - 1
 $$
 
 This formula gives us a number indicating how much the price of a stock has risen or fallen between day $t - n$ and day $t$. We typically see numbers for momentum between -0.5, for a significant price drop, and 0.5, for a significant price jump.
