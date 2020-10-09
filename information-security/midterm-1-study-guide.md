@@ -1038,7 +1038,6 @@ According to RFC 4949 there are four kinds of threats which threat consequence i
 - B.) Deception
 - C.) Usurpation
 - D.) Corruption
-- E.) Usurpation
 
 <details>
 <summary>Answer</summary> D. corruption is a type of disruption where disruption is a threat consequence and and corruption is the threat attack.
