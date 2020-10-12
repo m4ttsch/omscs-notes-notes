@@ -19,6 +19,13 @@ The following textbooks may be helpful for getting **A** in this course:
 - [Simulation Modeling and Analysis](https://amzn.to/3au4zN5)
 - [Simulation with Arena](https://amzn.to/2E4zTWo)
 
+## Download These Notes
+
+Some students have asked for PDF versions of the notes for a simpler, more portable
+studying experience. The following PDFs are available for download.
+
+- [Simulation - Exam 1 Cheat Sheet](https://payhip.com/b/Lk14 "A two-page PDF cheat sheet for Simulation Exam 1. The source .tex file is included for easy editing.")
+
 ## Environment Setup
 
 This class requires some environment setup. I have recorded the following YouTube walkthroughs, which may be helpful:
