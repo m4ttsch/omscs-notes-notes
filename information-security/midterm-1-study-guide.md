@@ -505,7 +505,7 @@ The Trusted Computing Base or TCB has 3 main requirements which of the following
 
 - A.) Complete mediation between the OS and the hardware resources and applications. In addition the OS must make sure the application has the necessary authorizations.
 - B.) The OS must be tamperproof.
-- C.) The OS must must be able to go from user to kernel mode without erros
+- C.) The OS must must be able to go from user to kernel mode without errors
 - D.)The OS must be correct­­ the protected resources are used properly
 
 <details>
