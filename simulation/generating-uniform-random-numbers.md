@@ -137,7 +137,7 @@ If we seed this sequence with an odd number, we only see odd numbers. Similarly,
 Let's look at a much better generator, which we have seen before:
 
 $$
-X_i = 16807X_{i-1} \bmod 2^{31}
+X_i = 16807X_{i-1} \bmod 2^{31}-1
 $$
 
 This particular generator has a full-period (greater than two billion) cycle length, except when $X_0 = 0$.
@@ -309,7 +309,7 @@ As crazy as this generator looks, it only requires simple mathematical operation
 
 Matsumoto and Nishimura have developed the "Mersenne Twister" generator, which has a period of $2^{19937} - 1$. This period is beyond sufficient for any modern application; we will often need several billion PRNs, but never more than even $2^{100}$. All standard packages - Excel, Python, Arena, etc. - use one of these "good" generators.
 
-### Choosing a Good Generator - Theory
+## Choosing a Good Generator - Theory
 
 In this lesson, we will discuss some PRN generator properties from a theoretical perspective, and we'll look at an amalgamation of typical results to aid our discussion.
 
@@ -544,7 +544,7 @@ In independence testing, our null hypothesis is that the PRNs $R_1, R_2,...,R_n$
 Consider the following PRNs:
 
 $$
-.41 \quad .68 \quad .84 \quad .74 \quad .91 \quad .55 \quad .71 \quad .36 \quad .30 \quad .09
+.41 \quad .68 \quad .89 \quad .84 \quad .74 \quad .91 \quad .55 \quad .71 \quad .36 \quad .30 \quad .09
 $$
 
 In the **"up and down" runs test**, we look to see whether we go "up" or "down" as we move from PRN to PRN. Going from $.41$ to $.68$, we go up. Going from $.68$ to $0.89$, we go up. Going from $0.89$ to $0.84$, we go down. From $0.84$ to $0.74$, we go down again.
@@ -614,7 +614,7 @@ If $\alpha = 0.05$, then $z_{\alpha/2} = 1.96$ and we reject $H_0$, thereby reje
 Let's look at the same sequence of PRNs:
 
 $$
-.41 \quad .68 \quad .84 \quad .74 \quad .91 \quad .55 \quad .71 \quad .36 \quad .30 \quad .09
+.41 \quad .68 \quad .89 \quad .84 \quad .74 \quad .91 \quad .55 \quad .71 \quad .36 \quad .30 \quad .09
 $$
 
 Let's transform our sequence of PRNs into one of plusses and minuses, where a plus sign indicates that $R_i \geq 0.5$, and a minus sign indicates that $R_i < 0.5$:
