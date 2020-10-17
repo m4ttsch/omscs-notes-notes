@@ -648,8 +648,8 @@ Again, we reject $H_0$ if the absolute value of $Z_0$ is greater than the $\alph
 $$
 f(Z_0) = \left\{
   \begin{matrix}
-    \text{Accept } H_0 & |Z_0| > z_{\alpha/2} \\
-    \text{Reject } H_0 & |Z_0| \leq z_{\alpha/2}
+    \text{Reject } H_0 & |Z_0| > z_{\alpha/2} \\
+    \text{Accept } H_0 & |Z_0| \leq z_{\alpha/2}
   \end{matrix}
 \right. 
 $$
@@ -710,8 +710,8 @@ We reject $H_0$ if the absolute value of $Z_0$ is greater than the $\alpha/2$ st
 $$
 f(Z_0) = \left\{
   \begin{matrix}
-    \text{Accept } H_0 & |Z_0| > z_{\alpha/2} \\
-    \text{Reject } H_0 & |Z_0| \leq z_{\alpha/2}
+    \text{Reject } H_0 & |Z_0| > z_{\alpha/2} \\
+    \text{Accept } H_0 & |Z_0| \leq z_{\alpha/2}
   \end{matrix}
 \right.
 $$
