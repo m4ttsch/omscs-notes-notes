@@ -567,7 +567,7 @@ $$
 
 There are more sophisticated methods available, such as the [Box-Muller method](https://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform) for generating normally distributed random variables, and we will explore other such techniques as the course proceeds.
 
-## Simulation Output Analysis [OPTIONAL]
+## Simulation Output Analysis (OPTIONAL)
 
 In this lesson, we are going to talk about simulation output. Random input means random output, and random output requires careful analysis. Simulation output is never independent or normal, so we need new methods for interpreting this output.
 

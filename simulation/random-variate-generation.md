@@ -451,7 +451,7 @@ $$
 
 For example, if $U = 0.313$, then $X = 1$.
 
-## Inverse Transform Method - Empirical Distributions [OPTIONAL]
+## Inverse Transform Method - Empirical Distributions (OPTIONAL)
 
 In this lesson, we will look at how to apply the inverse transform method to *unknown*, empirical, continuous distributions. Here, we don't know $F(x)$, so we have to approximate it. We will blend continuous and discrete strategies to transform these random variables.
 
@@ -577,7 +577,7 @@ In the Tria(0,1,2) distribution, values close to either end of the range are qui
 
 This result should remind us of dice toss outcomes. Suppose we toss two six-sided dice. It's highly unlikely for us to see a two or a twelve, each of which occurs with probability $1/36$, but it's much more common to see a seven, which occurs with probability $1/6$. There are just more ways to roll a seven.
 
-### Erlang Exmaple
+### Erlang Example
 
 Suppose $X_1,..., X_n \overset{\text{iid}}{\sim} \text{Exp}(\lambda)$. By definition, the sum of these exponential random variables forms an Erlang$_n$($\lambda$) random variable:
 
@@ -777,7 +777,7 @@ Let's generate a point, $Y$, uniformly under $t(x)$. We accept that point with p
 
 ![](https://assets.omscs.io/notes/2020-10-18-19-36-52.png)
 
-## Proof of Acceptance-Rejection Method [OPTIONAL]
+## Proof of Acceptance-Rejection Method (OPTIONAL)
 
 In this lesson, we will prove the acceptance-rejection method.
 

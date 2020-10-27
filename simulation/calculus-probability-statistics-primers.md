@@ -7,7 +7,7 @@ lecture: calculus-probability-statistics-primers
 
 # Calculus, Probability, and Statistics Primers
 
-## Calculus Primer [OPTIONAL]
+## Calculus Primer (OPTIONAL)
 
 In this lesson, we are going to take a quick review of calculus. If you are already familiar with basic calculus, there is nothing new here; regardless, it may be helpful to revisit these concepts.
 
@@ -176,7 +176,7 @@ $$
 
 Since this value is positive, $f(x_0)$ is a minimum. Furthermore, since $e^x > 0$ for all $x$, $f^{\prime\prime}(x) > 0$ for all $x$. This means that $f(x_0)$ is not only a *local* minimum, but specifically is the *global* minimum of $f(x)$.
 
-## Saved By Zero! Solving Equations [OPTIONAL]
+## Saved By Zero! Solving Equations (OPTIONAL)
 
 In this lesson, we are going to look at formal ways to find solutions to nonlinear equations. We will use these techniques several times throughout the course, as solving equations is useful in a lot of different methodologies within simulation.
 
@@ -311,7 +311,7 @@ $$
 
 After just three iterations, we have approximated $\sqrt{2}$ to four decimal places!
 
-## Integration [OPTIONAL]
+## Integration (OPTIONAL)
 
 What goes up, must come down. A few lessons ago, we looked at derivatives. In this lesson, we will focus on integration.
 
@@ -541,7 +541,7 @@ $$
 \lim_{x \to 0}\frac{\sin(x)}{x} = \lim_{x \to 0}\frac{\cos(x)}{1} = 1
 $$
 
-## Integration Computer Exercises [OPTIONAL]
+## Integration Computer Exercises (OPTIONAL)
 
 In this lesson, we will demonstrate several numerical techniques that we might need to use if we can't find a closed-form solution to a function we are integrating. One of these techniques incorporates simulation! 
 

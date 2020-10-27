@@ -677,7 +677,7 @@ $$
 
 If $\alpha = 0.05$, then $z_{\alpha/2} = 1.96$, and we fail to reject $H_0$. Therefore, we can treat the observations in this sequence as being independent.
 
-## Choosing a Good Generator - Independence Tests II [OPTIONAL]
+## Choosing a Good Generator - Independence Tests II (OPTIONAL)
 
 In this lesson, we'll look at another class of tests, autocorrelation tests, that we can use to evaluate whether pseudo-random numbers are independent.
 
