@@ -103,7 +103,7 @@ Intuitively, this result makes perfect sense. If we take a Unif(0,1) random vari
 Consider the $\text{Exp}(\lambda)$ distribution, which has the following cdf:
 
 $$
-F(x) = \frac{x - a}{b - a}, \quad a \leq x \leq b
+F(x) = 1 - e^{-\lambda x}, x \geq 0
 $$
 
 Let's set $F(X) = U$ and solve for $X$:
