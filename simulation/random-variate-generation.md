@@ -305,7 +305,7 @@ for i=1:m
   X(i) = norminv(rand, 0, 1);
   i = i + 1;
 end
-histogram(X) 
+histogram(X)
 ```
 
 First, we initialize an empty array, `X`, and then we iterate one hundred times. On each iteration, we first sample a Unif(0,1) random variable with the `rand` function. Next, we transform it into a Nor(0,1) random variable using the `norminv` function, which receives a real number, a mean, and a standard deviation and returns the transformed value. Finally, we store the result in `X`. After we finish iterating, we plot a histogram of the elements in `X`.
@@ -387,7 +387,7 @@ We can think of this random variable as an $n$-sided die toss. How do we transfo
 
 Now let's look at the geometric distribution. Intuitively, this distribution represents the number of Bern($p$) trials until the first success. Therefore, the pmf, $f(k)$, represents the probability that the first success occurs on the $k$-th try: $k - 1$ failures, with probability $q^{k-1}$, followed by a single success, with probability $p$.
 
-Accordingly, this distribution has the following pmf and cdf: 
+Accordingly, this distribution has the following pmf and cdf:
 
 $$
 f(k) = q^{k-1}p, \quad F(k) = 1 - q^k, k = 1,2,...,
@@ -753,7 +753,7 @@ $$
 
 ### Theorem
 
-Let's define a function $g(x) \equiv f(x)/t(x)$. We can notice that, since $f(x) \leq t(x)$, $0 \leq g(x) \leq 1$ for all $x$. Additionally, let's sample $U \sim \mathcal U(0,1)$, and let $Y$ be a random variable (independent of $U$), with the pdf we defined earlier: $h(y) \equiv t(y) / c$. 
+Let's define a function $g(x) \equiv f(x)/t(x)$. We can notice that, since $f(x) \leq t(x)$, $0 \leq g(x) \leq 1$ for all $x$. Additionally, let's sample $U \sim \mathcal U(0,1)$, and let $Y$ be a random variable (independent of $U$), with the pdf we defined earlier: $h(y) \equiv t(y) / c$.
 
 If $U \leq g(Y)$, then the conditional distribution of $Y$ has pdf $f(y)$. Remember, the random variable we are trying to generate has pdf $f(y)$. In other words, we accept that $Y$ has the pdf of the random variable we want when $U \leq g(Y)$.
 
@@ -923,9 +923,9 @@ We can't invert this pdf analytically, so we cannot use the inverse transform me
 
 ![](https://assets.omscs.io/notes/2020-10-19-22-15-11.png)
 
-Remember that we said we wanted $c$ to be as close to one as possible so that we accept samples from $h(y)$ with high probability. We know that $c$ equals the integral of $t(x)$ from zero to one, so, in this case, $c = 2.7036$. All this to say, $t(x)$ is a relatively inefficient majorizer.
+Remember that we said we wanted $c$ to be as close to one as possible so that we accept samples from $h(y)$ with high probability. We know that $c$ equals the integral of $t(x)$ from zero to one, so, in this case, $c = 2.0736$. All this to say, $t(x)$ is a relatively inefficient majorizer.
 
-Like we said, $h(x) = t(x)/c$. In this case, $h(x) = 1$, since $t(x) = 2.7036 = c$. This result means that $Y$ is a Unif(0,1) random variable, since it's pdf is one.
+Like we said, $h(x) = t(x)/c$. In this case, $h(x) = 1$, since $t(x) = 2.0736 = c$. This result means that $Y$ is a Unif(0,1) random variable, since it's pdf is one.
 
 ![](https://assets.omscs.io/notes/2020-10-19-22-20-29.png)
 
@@ -1120,7 +1120,7 @@ $$
 
 Let's walk through the above expression. The term $\sqrt \lambda Z$ turns our Nor(0,1) random variable into a Nor(0, $\lambda$) random variable. If we add $\lambda$, we get a Nor($\lambda$, $\lambda$) random variable.
 
-Remember that the normal distribution is continuous, and the Poisson distribution is discrete. We need to discretize our real-valued transformation of $Z$, which we accomplish by rounding down. However, if we always round down, then we will underestimate $X$, on average. 
+Remember that the normal distribution is continuous, and the Poisson distribution is discrete. We need to discretize our real-valued transformation of $Z$, which we accomplish by rounding down. However, if we always round down, then we will underestimate $X$, on average.
 
 We perform a **continuity correction** by adding $0.5$ before we round, which means that if $\lambda + \sqrt \lambda Z$ is between two numbers, we choose the larger number with probability $0.5$ and the lower number with probability $0.5$.
 
