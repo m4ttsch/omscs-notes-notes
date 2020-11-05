@@ -197,7 +197,7 @@ U &= 1 - (X-2)^2 / 2 \\
 \end{alignedat}
 $$
 
-Technically, we could have a $pm$ in front of the square root, but it doesn't make sense to consider the positive root since $X$ must be between one and two. In this case, we only consider the negative root to keep $X$ within bounds.
+Technically, we could have a $\pm$ in front of the square root, but it doesn't make sense to consider the positive root since $X$ must be between one and two. In this case, we only consider the negative root to keep $X$ within bounds.
 
 Be aware that we cannot replace $1-U$ with $U$ in this example. We need $1-U$ to keep $X$ bounded appropriately. For example, suppose we made the replacement and drew $U = 1$. Then, $X = 2 - \sqrt{2} < 1$, which doesn't make sense since we know that $X$ must be between one and two.
 
@@ -629,7 +629,7 @@ $$
 If $Z_1,..., Z_n$ are iid Nor(0, 1) random variables, then sum of the squares of the $Z_i$'s is a $\chi^2$ random variable:
 
 $$
-\sum_{i=1}^{n} Z_i \sim \chi^2(n)
+\sum_{i=1}^{n} Z_i^2 \sim \chi^2(n)
 $$
 
 If $X_i,...,X_n$ are iid Cauchy random variables, then the sample mean, $\bar X$, is also a Cauchy random variable. We might think that $\bar X$ is normal for large $n$, but this is not the case as the Cauchy distribution violates the central limit theorem.
@@ -1071,7 +1071,7 @@ $$
 Let's multiply through by $-\lambda$ - make sure to flip the inequalities when multiplying by a negative - and raise the whole thing by $e$:
 
 $$
-X = n \iff \prod_{i=1}^nU_i \leq e^{-\lambda} < \prod_{i=1}^{n+1}U_i
+X = n \iff \prod_{i=1}^nU_i \geq e^{-\lambda} > \prod_{i=1}^{n+1}U_i
 $$
 
 To generate a Pois($\lambda$) random variable, we will generate $n+1$ uniforms until the above inequality holds, and then we'll set $X=n$.

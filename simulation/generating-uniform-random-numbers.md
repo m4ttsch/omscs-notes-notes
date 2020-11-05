@@ -578,8 +578,8 @@ Now we can finally quantify "too large" and "too small". Specifically, we reject
 $$
 f(Z_0) = \left\{
   \begin{matrix}
-    \text{Accept } H_0 & |Z_0| > z_{\alpha/2} \\
-    \text{Reject } H_0 & |Z_0| \leq z_{\alpha/2}
+    \text{Reject } H_0 & |Z_0| > z_{\alpha/2} \\
+    \text{Accept } H_0 & |Z_0| \leq z_{\alpha/2}
   \end{matrix}
 \right. 
 $$
@@ -632,7 +632,7 @@ $$
 If $n$ is large (say, $\geq 20$), and the $R_j$'s are indeed independent, then the number of runs, $B$, is again approximately normal, with the following parameters:
 
 $$
-B \approx \text{Nor}\left(\frac{2n_1n_2}{n} + \frac{1}{2}, \frac{2n_1n2(2n_1n_2 - n)}{n^2(n-1)}\right)
+B \approx \text{Nor}\left(\frac{2n_1n_2}{n} + \frac{1}{2}, \frac{2n_1n_2(2n_1n_2 - n)}{n^2(n-1)}\right)
 $$
 
 Note that $n_1$ refers to the number of observations greater than or equal to the mean and $n_2 = n - n_1$.
