@@ -25,6 +25,7 @@ Some students have asked for PDF versions of the notes for a simpler, more porta
 studying experience. The following PDFs are available for download.
 
 - [Simulation - Exam 1 Cheat Sheet](https://payhip.com/b/Lk14 "A two-page PDF cheat sheet for Simulation Exam 1. The source .tex file is included for easy editing.")
+- [Simulation - Exam 2 Cheat Sheet](https://payhip.com/b/POqp "A two-page PDF cheat sheet for Simulation Exam 2. The source .tex file is included for easy editing.")
 
 ## Environment Setup
 
