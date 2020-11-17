@@ -561,7 +561,7 @@ $$
 
 As a result, the $95\%$ confidence interval for the quantile is $[W_{(881)}, W_{(920)}]$, and the point estimator is $W_{(900)}$.
 
-### Simulation Initialization Issues
+## Simulation Initialization Issues
 
 In this lesson, we will look at how to start a simulation and when to start keeping data for steady-state analysis.
 
