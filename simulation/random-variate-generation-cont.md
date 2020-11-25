@@ -1018,6 +1018,142 @@ $$
 
 Customer $i+1$ has to wait until customer $i$ clears out of the system, which occurs in $W_i - I_{i+1}$ time. Then, customer $i+1$ must remain in the system for their service time, $S_{i+1}$.
 
-## Brownian Motion (Coming Soon!)
+## Brownian Motion
 
-Ran out of time this week. Will add notes when I have a free moment.
+In this lesson, we'll look at generating Brownian motion, as well as a few applications. Brownian motion is probably the most important stochastic process out there.
+
+### Brownian Motion
+
+Robert Brown discovered Brownian motion when he looked at pollen under a microscope and noticed the grains moving around randomly. Brownian motion was analyzed rigorously by Einstein, who did a physics formulation of the process and subsequently won a Nobel prize for his work. Norbert Wiener establishes mathematical rigor for Brownian motion: Brownian motion is sometimes called a Wiener process.
+
+Brownian motion is used everywhere, from financial analysis to queueing theory to chaos theory to statistics to many other operations research and industrial engineering domains.
+
+The stochastic process, $\{\mathcal{W}(t), t \geq 0 \}$, is **standard Brownian motion** if:
+- $\mathcal{W}(0) = 0$
+- $\mathcal{W}(t) \sim \text{Nor}(0,t)$
+- $\{\mathcal{W}(t), t \geq 0 \}$ has stationary and independent increments.
+
+Let's talk about the first two points. A standard Brownian motion process always initializes at zero, and the distribution of the process, evaluated at any point, $t$, is Nor(0, $t$). This result means that a Brownian motion process has a correlation structure.
+
+An increment describes how much the process changes between two points. For example, $\mathcal{W}(b) - \mathcal{W}(a)$ describes the increment from time $a$ to time $b$. If a process has stationary increments, then the distribution of how much the process changes over an interval from $t$ to $t + h$ only depends on the length of the interval, $h$.
+
+We can recall our discussion of stationary increments from when we talked about arrivals. For example, if the number of customers arriving at a restaurant between 2 a.m and 5 a.m has the same distribution as the number of customers arriving between 12 p.m and 3 p.m, we would say that the customer arrival process has stationary increments.
+
+Now let's talk about independent increments. A process has independent increments if, for $a < b < c < d$, $\mathcal{W}(d) - \mathcal{W}(c)$ is independent of $\mathcal{W}(b) - \mathcal{W}(a)$.
+
+How do we get Brownian motion? Let's let $Y_1, Y_2,...,Y_n$ be any sequence of iid random variables with mean zero and variance one. [Donsker's Central Limit Theorem](https://en.wikipedia.org/wiki/Donsker%27s_theorem) says that:
+
+$$
+\frac{1}{\sqrt{n}} \sum_{i=1}^{\lfloor nt \rfloor} Y_i \overset{\text d}{\to} \mathcal{W}(t), \text{ as } n \to \infty
+$$
+
+> Remember that $\overset{\text d}{\to}$ denotes convergence in distribution as $n$ gets big and $\lfloor \cdot \rfloor$ denotes the floor or "round down" function: $\lfloor 3.7 \rfloor = 3$.
+
+When we learned the standard central limit theorem, $t$ was equal to one, and the $Y_i$'s converged to a Nor(0,1) random variable. Note that $\mathcal{W}(1) \sim \text{Nor}(0,1)$. As we can see, Donsker's central limit theorem is a generalization of the standard central limit theorem, as it works for all $t$. Not only that, but this central limit theorem also mimics the correlation structure of all the $\mathcal{W}$'s. Instead of converging to a single random variable, this sum converges to an entire stochastic process for arbitrary $t$.
+
+Let's look at an easy way to construct Brownian motion. To construct $Y_i$'s that have mean zero and variance one, we can take a [random walk](https://en.wikipedia.org/wiki/Random_walk). Let's take $Y_i = \pm 1$, each with probability $1/2$. Let's take $n$ of at least 100 observations. Then, let $t=1/n, 2/n, ...,n/n$ and calculate $\mathcal{W} (1/n), \mathcal{W} (2/n), ..., \mathcal{W} (n/n)$, according to the summation above. Another choice is to simply sample $Y_i \sim \text{Nor}(0,1)$.
+
+Let's construct some Brownian motion. First, we pick some "large" value of $n$ and start with $\mathcal{W}(0)=0$. Then:
+
+$$
+\mathcal{W}\left(\frac{i}{n}\right) = \mathcal{W}\left(\frac{i - 1}{n}\right) + \frac{Y_i}{\sqrt{n}}
+$$
+
+### Miscellaneous Properties of Brownian Motion
+
+As it turns out, Brownian motion is continuous everywhere but is differentiable nowhere.
+
+The covariance between two points in a Brownian motion is the minimum of the two times: $\text{Cov}(\mathcal{W}(s), \mathcal{W}(t)) = \min(s,t)$. We can use this result to prove that the area under $\mathcal{W}(t)$ from zero to one is normal:
+
+$$
+\int_0^1 \mathcal{W}(t)dt \sim \text{Nor}(0, \frac{1}{3})
+$$
+
+A **Brownian bridge**, $\mathcal{B}(t)$, is conditioned Brownian motion such that $\mathcal{W}(0) = \mathcal{W}(1) = 0$. Brownian bridges are useful in financial analysis. The covariance structure for a Brownian bridge is $\text{Cov}(\mathcal{B}(s), \mathcal{B}(t)) = \min(s,t) - st$. Finally, the area under $\mathcal{B}(t)$ from zero to one is normal:
+
+$$
+\int_0^1 \mathcal{B}(t)dt \sim \text{Nor}(0, \frac{1}{12})
+$$
+
+### Geometric Brownian Motion
+
+Now let's talk about geometric Brownian motion, which is particularly useful in financial analysis. We can model a stock price, for example, with the following process:
+
+$$
+S(t) = S(0)\exp\left\{\left(\mu - \frac{\sigma^2}{2}\right)t + \sigma\mathcal{W}(t)\right\}, \quad t \geq 0
+$$
+
+Let's unpack some of these terms. Of course, $\mathcal{W}(t)$ is the Brownian motion, which provides the randomness in the stock price. The term $\sigma$ refers to the stock's volatility, and $\mu$ is related to the "drift" of the stock's price. Long story short: don't buy a stock unless it is drifting upward. The quantity $\mu - \sigma^2 / 2$ relates the stock's drift to its volatility, and we want this quantity to be positive. Finally, $S(0)$ is the initial price.
+
+Additionally, we can use a geometric Brownian motion to estimate option prices. The simplest type of option is a European call option, which permits the owner to purchase the stock at a pre-agreed strike price, $k$, at pre-determined expiry date, $T$. The owner pays an up-front fee for the privilege to exercise this option.
+
+Let's look at an example. Say that we believe that IBM will sell for $120 per share in a few months. Currently, it's selling for $100 per share. It would be nice to buy 1000 shares of IBM at $100 per share today, but perhaps we don't have $100,000 on hand to make that purchase. Instead, we can buy an option today, for maybe $1.50, that allows us to buy IBM at $105 per share in a few months. If IBM does go to $120 per share, we can exercise our option, instantaneously buying IBM for $105 and selling for $120, netting a $13.50 profit ($15 minus the option price, $1.50).
+
+If the stock drops to, say, $95 per share, then we would choose simply not to exercise the option. Obviously, it doesn't make sense to buy IBM for $105 per share using the option when we can just go to the market and buy it for less.
+
+The question then becomes: what is a fair price to pay for an option? The value, $V$ of an option is:
+
+$$
+V = e^{-rT}E[(S(T) - k)^+]
+$$
+
+The expression $S(T) - k$ is the profit we make from exercising an option at time $T$, which we bought for $k$ dollars. Since we never consider taking a loss, we only consider the difference when it is positive: $S(T) - k^+ = \max\{0,S(T) - k\}$.
+
+Instead of buying the option, we could have put the money we spent, \$1.50, into a bank, where it would make interest. In purchasing the option, we have to pay a penalty of $e^{-rT}$, where $r$ is the "risk-free" interest rate that the government is currently guaranteeing.
+
+We can calculate $V$ to determine what the option is worth. For example, if we determine that the option is worth $1.50, and we can buy it for $1.30, then perhaps we stand to make some profit. 
+
+Alternatively, we can use the option merely for an insurance policy. Southwest airlines bought options on fuel prices many years ago. The fuel prices went way up, and Southwest made a fortune because they could buy fuel at a much lower price.
+
+To estimate the expected value of the option, we can run multiple simulation replications of $\mathcal{W}(t)$ and $(S(T) - k)^+$ and then take the sample average of all the $V_i$'s. All we need to do is select our favorite values of $r$, $\sigma$, $T$, and $k$, and we are off to the races.
+
+Alternatively, we can just simulate the distribution of $S(T)$ directly. Since $\mathcal{W}(t) \sim \text{Nor}(0, t)$, we can use a lognormal distribution to simulate $S(T)$ directly. Furthermore, we can look up the answer directly using the Black-Sholes equation.
+
+### How to Win a Nobel Prize
+
+Let $\phi(\cdot)$ and $\Phi(\cdot)$ denote the Nor(0,1) pdf and cdf respectively. Moreover, let's define a constant, $b$:
+
+$$
+b \equiv \frac{rT - \frac{\sigma^2 T}{2} - \ln(k / S(0))}{\sigma\sqrt T}
+$$
+
+The Black-Sholes European call option value is:
+
+$$
+\begin{alignedat}{1}
+& e^{-rT}E[S(T) - k]^+ \\
+& = e^{-rT}E\left[S(0)\exp\left\{\left(\mu - \frac{\sigma^2}{2})T + \sigma\mathcal{W}(T)\right\} - k\right)\right]^+ \\
+& = e^{-rT}\int_{-\infty}^\infty \left[S(0)\exp\left\{\left(r - \frac{\sigma^2}{2})T + \sigma\sqrt T z \right\} - k\right)\right]^+ \phi(z)dz \\ 
+&= S(0) \Phi(b+\sigma\sqrt{T}) - ke^{-rT}\Phi(b)
+\end{alignedat}
+$$
+
+### DEMO
+
+In this demo, we will generate some Brownian motion. Here's ten steps of Brownian motion in one dimension.
+
+![](https://assets.omscs.io/notes/2020-11-25-13-17-12.png)
+
+Here's another sample path.
+
+![](https://assets.omscs.io/notes/2020-11-25-13-17-32.png)
+
+Let's take 1000 steps.
+
+![](https://assets.omscs.io/notes/2020-11-25-13-17-50.png)
+
+Let's generate ten steps of two-dimensional Brownian motion. 
+
+![](https://assets.omscs.io/notes/2020-11-25-13-18-30.png)
+
+Here's 1000 steps.
+
+![](https://assets.omscs.io/notes/2020-11-25-13-19-08.png)
+
+Here's 10000 steps.
+
+![](https://assets.omscs.io/notes/2020-11-25-13-19-28.png)
+
+Finally, let's look at Brownian motion in three dimensions.
+
+![](https://assets.omscs.io/notes/2020-11-25-13-20-08.png)
