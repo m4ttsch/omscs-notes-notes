@@ -145,7 +145,7 @@ Note that we can't use the pooled variance estimator in this case because the va
 This confidence interval is not quite exact, since it uses an approximate degrees of freedom, $\nu$, where:
 
 $$
-\nu \equiv \frac{\left(\frac{S^2_X}{n} + \frac{S^2_Y}{m} \right)}{\frac{(S^2_X / n)^2}{n+1} + \frac{(S^2_Y / m)^2}{m+1}} - 2
+\nu \equiv \frac{\left(\frac{S^2_X}{n} + \frac{S^2_Y}{m} \right)^2}{\frac{(S^2_X / n)^2}{n+1} + \frac{(S^2_Y / m)^2}{m+1}} - 2
 $$
 
 ### Example
@@ -231,7 +231,7 @@ Ideally, we want the covariance between $X_i$ and $Y_i$ to be very positive, as 
 Now the problem reduces to the old single-sample case of iid normal observations with unknown mean, $\mu$, and variance, $\sigma^2$. Let's calculate the sample mean and sample variance as before:
 
 $$
-\bar D \equiv \frac{1}{n} \sum_{i=1}^n \sim \text{Nor}(\mu_D, \sigma^2_D / n) \newline
+\bar D \equiv \frac{1}{n} \sum_{i=1}^n D_i \sim \text{Nor}(\mu_D, \sigma^2_D / n) \newline
 S^2_D \equiv \frac{1}{n-1} \sum_{i=1}^n (D_i - \bar D)^2 \sim \frac{\sigma^2_D \chi^2(n-1)}{n-1}
 $$
 
