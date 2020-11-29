@@ -249,7 +249,7 @@ $$
 
 Then we select population two as best.
 
-## Bernoulli Extensions
+## Bernoulli Extensions (OPTIONAL)
 
 In this lesson, we will look at extensions of the Bernoulli procedure from the previous lesson. These extensions will save us many observations.
 
