@@ -200,7 +200,7 @@ Note that $E[X_i^2]$ is the same for all $X_i$, so the sum is just $nE[X_1^2]$:
 $$
 \begin{alignedat}{1}
 E[S^2] & = \frac{n E[X_1^2] - nE[\bar{X}^2]}{n-1} \\[2ex]
-& = \frac{1}{n-1} \left(E[X_1^2] - E[\bar{X}^2]\right)
+& = \frac{n}{n-1} \left(E[X_1^2] - E[\bar{X}^2]\right)
 \end{alignedat}
 $$
 
@@ -208,7 +208,7 @@ We know that $\text{Var}(X) = E[X^2] - (E[X])^2$, so $E[X^2] = \text{Var}(X) + (
 
 $$
 \begin{alignedat}{1}
-E[S^2] & = \frac{1}{n-1} \left(\text{Var}(X_1) + (E[X_1]^2) - \text{Var}(\bar{X}) - (E[\bar{X}]^2)\right)
+E[S^2] & = \frac{n}{n-1} \left(\text{Var}(X_1) + (E[X_1]^2) - \text{Var}(\bar{X}) - (E[\bar{X}]^2)\right)
 \end{alignedat}
 $$
 
@@ -216,7 +216,7 @@ Remember that $E[X_1] = E[\bar{X}]$, so:
 
 $$
 \begin{alignedat}{1}
-E[S^2] & = \frac{1}{n-1} \left(\text{Var}(X_1) - \text{Var}(\bar{X}) \right) \\[3ex]
+E[S^2] & = \frac{n}{n-1} \left(\text{Var}(X_1) - \text{Var}(\bar{X}) \right) \\[3ex]
 \end{alignedat}
 $$
 

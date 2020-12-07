@@ -148,7 +148,7 @@ For a probability `P` and impact `I`, we can define **risk exposure** `R = PI`. 
 
 An organization wants to reduce their risk exposure, and they can achieve this reduction by implementing security controls. Since every control comes at a cost, an organization is smart to choose those controls that bring the most significant risk reduction relative to the implementation cost.
 
-Given a pre-implementation risk `pre` and a post-implementation risk `post` and an implementation cost `cost` for a particular security measure, we can define **risk leverage** `L = (post - pre) / cost`.
+Given a pre-implementation risk `pre` and a post-implementation risk `post` and an implementation cost `cost` for a particular security measure, we can define **risk leverage** `L = (pre - post) / cost`.
 
 Naturally, a business wants to choose controls that maximize their risk leverage. Any control under consideration should have a risk leverage higher than one; otherwise, the cost of the control is higher than the amount of risk it reduces.
 

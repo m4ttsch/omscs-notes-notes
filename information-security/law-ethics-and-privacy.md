@@ -60,7 +60,7 @@ First, connecting malicious computer activity with an attacker can be difficult.
 
 To make matters worse, the Internet has no national boundaries. Attackers that digitally cross borders - hacking into a computer in the United States using a computer in Russia, for example - can only be brought to justice through transnational coordination. Many countries are unable or simply unwilling to cooperate with other countries in this context.
 
-Additionally, lawmaking is a slow process, and the stakes are high for focussed attackers. As a result, cybercriminals evolve quickly and continue to work around the laws that we put in place. Technology and creativity proceed more quickly than legislation.
+Additionally, lawmaking is a slow process, and the stakes are high for focused attackers. As a result, cybercriminals evolve quickly and continue to work around the laws that we put in place. Technology and creativity proceed more quickly than legislation.
 
 ## Melissa Virus Quiz
 ![](https://assets.omscs.io/notes/1E28C362-6E6A-4677-A362-568C16915225.png)
@@ -105,7 +105,7 @@ Situations like this are present throughout the digital world, and handling them
 Justice Louis Brandeis made his famous statement about the "[right to be let alone](https://en.wikipedia.org/wiki/Louis_Brandeis#Olmstead_v._United_States_(1928)_%E2%80%93_Right_of_privacy)" almost 100 years ago; clearly, concerns about privacy are not new. That being said, privacy in the digital era looks different than privacy in the early twentieth century. When we talk about privacy online, we are primarily referring to a user's ability to control how data about him or her is collected, used, and shared by someone else.
 
 ## Privacy is Not a New Problem
-People have always worried about what others - friends, family, adversaries, the government - know about them, whether it be their whereabouts, activities, or preferences. In the modern, digital context, websites and other software capture use and distribute our information at an unprecedented scale.
+People have always worried about what others - friends, family, adversaries, the government - know about them, whether it be their whereabouts, activities, or preferences. In the modern, digital context, websites and other software capture, use and distribute our information at an unprecedented scale.
 
 ## What is Private
 ![](https://assets.omscs.io/notes/40BAD00E-8C37-48A7-8D03-A07A050E8404.png)
