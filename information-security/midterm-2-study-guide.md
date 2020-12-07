@@ -762,7 +762,7 @@ Intrusion Detection systems
 
 What is the correct order for how an attacker behaves during intrusion:
 
-- A. Marinating Access this is important because an attack may not be a onetime action they may install backdoors or other malicious software on a target system so they can continue to access.
+- A. Maintaining Access this is important because an attack may not be a onetime action they may install backdoors or other malicious software on a target system so they can continue to access.
 
 - B. Information Gathering System Exploit this is when an attacker has already gained sufficient privilege on a system and he or she can find out more about the network and the organization or even move to another target system to further exploit on the network.
 
@@ -1639,7 +1639,7 @@ In a public-key system using RSA, you intercept the ciphertext C=10 sent to a us
 
 B
 
-n=35, so p = 7 and q = 5, so phi(n) = 6x4 = 24, so d = e^-1 mod phi(n) = 5, since 5x5 = 25 = 1 mod 24, M = C^d (mod N) = 10^5 mod 35 = 25
+n=35, so p = 7 and q = 5, so phi(n) = 6x4 = 24, so d = e^-1 mod phi(n) = 5, since 5x5 = 25 = 1 mod 24, M = C^d (mod N) = 10^5 mod 35 = 5
 
 **Source**
 
