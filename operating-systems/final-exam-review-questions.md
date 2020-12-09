@@ -108,7 +108,7 @@ In shared-memory IPC, the benefit is the relatively low cost. While the shared m
 
 The cost associated with copying data - in the case of message-based IPC - is two-fold. The data has to be copied, into and out of the kernel's address space - since the kernel manages the channel - and during this process, we have to context switch to the kernel from the user process and back again. This means that a request-response cycle will take four context switches and four data copies. The cost associated with mapping memory is still large, but it's a one-time cost. It may even be amortized across one request-response cycle if the data is large enough.
 
-### What are different ways you can implement synchronization between different processes (think what kids of options you had in Project 3).
+### What are different ways you can implement synchronization between different processes (think what kind of options you had in Project 3).
 
 Synchronization can be implemented across different processes with mutexes. Just like we can control access to shared resources across threads with mutexes and condition variables, we can control access to shared resources across processes with the same synchronization constructs. We have to set a few additional flags to make sure that these constructs work across processes.
 
@@ -233,7 +233,7 @@ We can choose to have a stateful server or a stateless server. Stateless servers
 
 Finally, we can choose what type of semantics we want to have when it comes to updates. In session semantics, updates to a file are pushed to the server when a file is closed. When a file is opened, the cache is skipped and the file content is pulled from the server. Alternatively, we can have periodic updates. In this case, the client will either write back data to the server periodically, or the server will send cache invalidation messages to the client periodically.
 
-### The Sprite caching paper motivates its design based on empirical data about how users access and share files. Do you understand how the empirical data translated in specific design decisions? Do you understand what type of data structures were needed at the servers' and at the clients' side to support the operation of the Sprite system (i.e., what kind of information did they need to keep track of, what kids of fields did they need to include for their per-file/per-client/per-server data structures).
+### The Sprite caching paper motivates its design based on empirical data about how users access and share files. Do you understand how the empirical data translated in specific design decisions? Do you understand what type of data structures were needed at the servers' and at the clients' side to support the operation of the Sprite system (i.e., what kind of information did they need to keep track of, what kind of fields did they need to include for their per-file/per-client/per-server data structures).
 
 The empirical data was as follows. The authors noticed that 33% of file access were writes, and 66% were reads. 75% of files were open less than 0.5 seconds, and 90% of files were open less 10 seconds. 20-30% of data was deleted within 30 seconds, and 50% of data was deleted within five minutes. They also noticed that concurrent writes (file sharing) was relatively rare.
 
