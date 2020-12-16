@@ -92,6 +92,7 @@ Our task is to find the parameter that we need to pass to `fillna` to fill forwa
 ![](https://assets.omscs.io/notes/2020-01-14-00-40-02.png)
 
 ### Documentation
+
 - [pandas.DataFrame.fillna](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.fillna.html)
 
 ## Using fillna()  
@@ -115,6 +116,7 @@ Let's plot the FAKE2 prices again.
 We can see the horizontal lines where we have forward filled the gaps in the data. However, we are still missing values at the beginning of the range.
 
 ### Documentation
+
 - [pandas.DataFrame.fillna](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.fillna.html)
 
 ## Fill Missing Values Quiz
@@ -132,4 +134,5 @@ Our task is to use the `fillna` method to fill these gaps.
 We can use forward filling for gaps that have a definitive start date, and backward filling for gaps that have no beginning or begin before our date range.
 
 ### Documentation
+
 - [pandas.DataFrame.fillna](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.fillna.html)

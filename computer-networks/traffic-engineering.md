@@ -11,6 +11,7 @@ lecture: traffic-engineering
 Traffic engineering is the process of reconfiguring the network in response to changing traffic loads in order to achieve some operational goal.
 
 A network operator may want to reconfigure the network in order to
+
 - maintain traffic ratios with peers
 - relieve congestion on certain links
 - balance load more evenly
@@ -39,6 +40,7 @@ Suppose that the operator of this network above would like to shift traffic off 
 By changing the link weight from 1 to 3, the shortest path between the two nodes now takes an alternate route.
 
 In practice, link weights can be set in a variety of ways:
+
 - inversely proportional to capacity
 - proportional to propagation delay
 - according to some network-wide traffic optimization goal
@@ -85,6 +87,7 @@ Interdomain routing concerns routing between autonomous systems and involves the
 Changing BGP policies at the edge routers can cause routers inside an AS to direct traffic towards or away from certain edge links.
 
 An operator might with wish to use interdomain traffic engineering if
+
 - a link is congested
 - a link is upgraded
 - a peering agreement is violated
@@ -152,6 +155,7 @@ To achieve this, the router would multiple forwarding table entries with differe
 
 ## Data Center Networking
 Data center networks have three main characteristics:
+
 - multi-tenancy
 - elastic resources
 - flexible service management
@@ -168,6 +172,7 @@ A key enabling technology in data center networking was server virtualization, w
 
 ## Data Center Networking Challenges
 Data center networking challenges include
+
 - load balancing traffic
 - migrating VMs in response to changing demands
 - adjusting server and traffic placement to save power

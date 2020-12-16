@@ -94,6 +94,7 @@ Security planning requires that a business develops a security policy. A **secur
 A security policy often incorporates legal, compliance, and business rationale for the rules it chooses to implement. Security policies may concern prevention and detection, as well as recovery and response.
 
 An organization might have many security goals, such as
+
 - preventing unauthorized data disclosure
 - ensuring system availability
 - guarding against data corruption

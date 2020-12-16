@@ -113,6 +113,7 @@ To make this work, we have to rely on hardware-supported atomic instructions.
 
 ## Atomic Instructions
 Each type of hardware will support a number of atomic instructions. Some examples include
+
 - `test_and_set`
 - `read_and_increment`
 - `compare_and_swap`

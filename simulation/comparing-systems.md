@@ -18,6 +18,7 @@ However, if we want to analyze more than two systems, we need to use more sophis
 ### Confidence Intervals
 
 We can take confidence intervals for:
+
 - means
 - variances
 - quantiles
@@ -577,6 +578,8 @@ One example we will look at is determining which of ten fertilizers produces the
 Ranking and selection methods select the best system, or a subset of systems that includes the best, guaranteeing a probability of correct selection that we specify.
 
 Ranking and selection methods are relevant in simulation:
+
 - Normally distributed data by batching
 - Independence by controlling random numbers
 - Multiple-stage sampling by retaining the seeds
+ 

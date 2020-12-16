@@ -98,6 +98,7 @@ If we print `df`, we see the following.
 We can see that `df` is an empty DataFrame, with no columns, that uses `dates` as its index.
 
 ### Documentation
+
 - [pandas.date_range](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.date_range.html)
 - [pandas.DataFrame](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html)
 
@@ -161,6 +162,7 @@ If we print out `df`, we see the following, correct DataFrame.
 ![](https://assets.omscs.io/notes/E9D31ABE-B4FB-4A7D-A428-7905A65E6245.png)
 
 ### Documentation
+
 - [pandas.read_csv](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html)
 - [pandas.DataFrame.join](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.join.html)
 - [pandas.DataFrame.dropna](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.dropna.html)
@@ -176,6 +178,7 @@ What is the value of that parameter?
 ![](https://assets.omscs.io/notes/24945379-86BC-488E-85FD-C9E88E049F00.png)
 
 ### Documentation
+
 - [pandas.DataFrame.join](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.join.html)
 
 ## Read in More Stocks
@@ -205,6 +208,7 @@ If we print `df` now, we see the following, correct output.
 ![](https://assets.omscs.io/notes/F0226617-C4AC-40BF-BCF2-75685A84FEC2.png)
 
 ### Documentation
+
 - [pandas.DataFrame.rename](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.rename.html)
 
 ## Utility Functions for Reading Data Quiz
@@ -228,6 +232,7 @@ df = df.dropna(subset=["SPY"])
 ```
 
 ### Documentation
+
 - [pandas.DataFrame.dropna](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.dropna.html)
 
 ## Obtaining a Slice of Data
@@ -256,6 +261,7 @@ df['2010-2-13':'2010-2-15', ['IBM', 'GLD']]
 ```
 
 ### Documentation
+
 - [Slicing ranges](https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#slicing-ranges)
 
 ## More Slicing
@@ -308,6 +314,7 @@ df.ix['2010-03-10':'2010-03-15', ['SPY', 'IBM']]
 ```
 
 ### Documentation
+
 - [pandas.DataFrame.ix - DEPRECATED](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.ix.html)
 - [pandas.DataFrame.loc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.loc.html)
 - [pandas.DataFrame.iloc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.iloc.html)
@@ -326,6 +333,7 @@ As a result, it can be hard to compare these stocks objectively. We'd like to ad
 If we can **normalize** the stock prices in this manner, we can more easily compare them on an "apples to apples" basis.
 
 ### Documentation
+
 - [Plotting](https://pandas.pydata.org/pandas-docs/stable/reference/frame.html#plotting)
 
 ## How to Plot on "Equal Footing" Quiz
@@ -375,6 +383,7 @@ If we run this function now, we see a more informative graph.
 ![](https://assets.omscs.io/notes/4F717591-7158-4536-AA3B-D3148C500C82.png)
 
 ### Documentation
+
 - [Plotting](https://pandas.pydata.org/pandas-docs/stable/reference/frame.html#plotting)
 - [matplotlib.axes.Axes.set_xlabel](https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.set_xlabel.html#matplotlib.axes.Axes.set_xlabel)
 - [matplotlib.axes.Axes.set_ylabel](https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.set_ylabel.html#matplotlib.axes.Axes.set_ylabel)
@@ -394,6 +403,7 @@ df.ix[start_index:end_index, columns]
 ```
 
 ### Documentation
+
 - [pandas.DataFrame.ix - DEPRECATED](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.ix.html)
 - [pandas.DataFrame.loc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.loc.html)
 - [pandas.DataFrame.iloc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.iloc.html)

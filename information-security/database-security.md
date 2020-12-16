@@ -45,6 +45,7 @@ A relational database consists of **relations**. Relations are also referred to 
 The columns of a given table describe the attributes of the data to be stored in that table. A database **schema** defines these columns.
 
 For example, we may define the following columns for a table of employees:
+
 - name
 - DOB
 - salary
@@ -53,6 +54,7 @@ For example, we may define the following columns for a table of employees:
 Tables also have rows. A given row contains a value for each of the attributes as defined by the schema. These rows are called **tuples**.
 
 For example, the tuple for an employee named Bob might look like:
+
 - Bob
 - 1/1/1970
 - 57,000
@@ -66,6 +68,7 @@ Let's look at an example of a relation that contains information about employees
 ![](https://assets.omscs.io/notes/66526878-6A01-4729-B187-6E1EB0FAC626.png)
 
 This table defines the following columns:
+
 - Employee name
 - Department ID
 - Salary Code
@@ -255,6 +258,7 @@ In addition, the Open Web Application Security Project (OWASP)  defines a list o
 
 ## Inference Attacks on Databases Part 2
 Consider a database of students with the following schema:
+
 - student ID
 - student standing (junior/senior)
 - exam 1 score

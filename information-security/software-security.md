@@ -152,9 +152,9 @@ The execution of the shellcode creates a shell which allows the attacker to exec
 You can write the shellcode in C, like this:
 ```c
 int main (int argc, char *argv[]) {
-	char *sh; 	char *args[2];
+	char *sh;	char *args[2];
 
-	sh = "/bin/sh"; 	args[0] = sh; 	args[1] = NULL; 
+	sh = "/bin/sh";	args[0] = sh;	args[1] = NULL;
 	execve(sh, args, NULL);
 }
 ```
@@ -217,6 +217,7 @@ Naturally, we shouldn't write code with buffer overflow vulnerabilities, but if 
 For instance, choice of programming language is crucial. There are languages where buffer overflows are not possible.
 
 These languages:
+
 - are strongly typed
 - perform automatic bounds checking
 - perform automatic memory management

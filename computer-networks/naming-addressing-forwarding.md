@@ -47,6 +47,7 @@ We needed more flexible IP address allocation. The solution is  classless interd
 At the top of IP address allocation hierarchy is an organization called the **Internet Assigned Numbers Authority** ([IANA](https://www.iana.org/))
 
 IANA has the authority to allocate address space to **regional routing registries**
+
 - [AfriNIC](https://afrinic.net/) for Africa
 - [APNIC](https://www.apnic.net/) for Asia and Australia
 - [ARIN](https://www.arin.net/) for North America
@@ -190,6 +191,7 @@ More commonly, we use a data structure called a **trie** to perform address look
 In a trie, prefixes are "spelled out" by following a path from the root. To find the best prefix, we simply spell out the address in the trie.
 
 Lets suppose we had the prefixes in our routing table
+
 - P1: 111*
 - P2: 10*
 - P3: 1010*
@@ -321,6 +323,7 @@ The top 48 bits can be broken down even further. The top three bits are for aggr
 Note that there are13 bits in the address that directly map to the tier-1 ISP, meaning that addresses are purely provider-based. This means that changing ISPs would require renumbering.
 
 IPv6 has many claimed benefits:
+
 - more addresses
 - simpler header
 - easier multihoming

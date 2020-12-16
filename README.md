@@ -8,7 +8,6 @@ If you prefer, you can also view the notes on [OMSCS Notes](https://www.omscs-no
 
 ### Current Courses
 
-- Simulation
 
 ### Completed Courses
 
@@ -16,6 +15,7 @@ If you prefer, you can also view the notes on [OMSCS Notes](https://www.omscs-no
 - CN
 - IIS
 - ML4T
+- Simulation
 
 If you notice any grammatical errors or flagrantly confusing sentences, please open a PR and point them out. I proofread my notes after taking them, but mistakes do slip through.
 

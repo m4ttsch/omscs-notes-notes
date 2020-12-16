@@ -33,6 +33,7 @@ This function takes the thread to be joined as well as a status variable. The st
 `pthread_join` returns an `int` which indicates whether the join was a success or a failure.
 
  The `pthread_attr_t` data structure allows us to define features of the new thread we are creating, such as:
+
 - stack size
 - scheduling policy
 - priority
@@ -51,7 +52,9 @@ pthread_attr_{set/get}{attribute};
 ```
 
 These functions can be used, respectively, to allocate space for a `pthread_attr_t`, to deallocate space for that `pthread_attr_t` and to set/get various attributes of that structure.
-- - - -
+
+---
+
 One mechanism not considered by Birrell is **detachable threads**.  In pthreads, the default behavior for thread creation is joinable threads. For a joinable (child) thread, the parent will not terminate until the child has completed their execution. If the parent thread exits early, the child threads may turn into zombies.
 
 In pthreads, it is possible to allow child threads to become detached. Detached threads cannot be joined back into the parent, allowing the parent to exit early and the child threads to continue their execution.
@@ -150,6 +153,7 @@ int pthread_mutex_destroy(pthread_mutex_t *mutex);
 ```
 
 ### Mutex Safety Tips
+
 - shared data should always be accessed through single mutex
 - mutex scope must be global
 - globally order locks
@@ -187,6 +191,7 @@ int pthread_cond_destroy(pthread_cond_t *cond);
 `pthread_cond_init` takes some attributes that can further specify the behavior of the condition variable (much like we saw with `pthread_create` and `pthread_mutex_init`). As before, setting this value to `NULL` gives us the default behavior.
 
 ### Condition Variable Safety Tips
+
 - Don't forget to notify waiting threads!
 	- When a condition changes, make sure to signal/broadcast the correct condition variable
 - When in doubt use broadcast!

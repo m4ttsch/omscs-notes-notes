@@ -101,6 +101,7 @@ To visually verify that the minimizer found the correct value, we can plot `f` a
 ![](https://assets.omscs.io/notes/2020-01-20-00-28-53.png)
 
 ### Documentation
+
 - [scipy.optimize.minimize](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html)
 
 ## How to Defeat a Minimizer Quiz
@@ -282,6 +283,7 @@ We can finally run our test, and we see the following chart.
 Our original line is the blue line, and the green dots are the noisy data we generated from points on that line. The purple line is the original guess that we passed to the minimizer. The minimizer fit the red line to the data, and, indeed, it is quite close to the blue line.
 
 ### Documentation
+
 - [numpy.linspace](https://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html)
 - [scipy.optimize.minimize](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html)
 
@@ -322,5 +324,6 @@ def fit_poly(data, error, degree=3)
 Notably, our initial guess is no longer an array containing two parameters, but rather an array of all ones, of length `degree + 1`. Additionally, we turn this array into an object representing the polynomial it parameterizes using `np.poly1d`.
 
 ### Documentation
+
 - [numpy.polyval](https://docs.scipy.org/doc/numpy/reference/generated/numpy.polyval.html)
 - [numpy.poly1d](https://docs.scipy.org/doc/numpy/reference/generated/numpy.poly1d.html)

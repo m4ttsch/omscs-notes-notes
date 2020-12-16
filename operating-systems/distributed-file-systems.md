@@ -61,6 +61,7 @@ The downside with this compromise is that the server becomes more complex. The s
 A **stateless** server keeps no state.
 
 It has no notion of:
+
 - which files/blocks are being accessed
 - which operations are being performed
 - how many clients are accessing how many files
@@ -70,6 +71,7 @@ As a result, every request has to be completely self-contained. This type of ser
 One positive of this approach is that since there is no state on the server, there is no CPU/memory utilization required to manage that state. Another positive is that this design is very resilient. Since requests cannot rely on any internal state, the server can be restarted if it fails at no detriment to the client.
 
 A **stateful** server maintains information about:
+
 - the clients in the system
 - which files are being accessed
 - which types of accesses are being performed
@@ -210,12 +212,14 @@ All of the clients will be allowed to cache blocks. The writer will also have to
 When the writer `close`s the file, the contents will be stored in the writers' cache. Of course, the next `open` will still have to go through the server. This means that the server and the client need to keep some sort of version number in order to stay in sync.
 
 On a per file basis, the client keeps track of:
+
 - cache (overall yes/no)
 - cached blocks
 - timer for each dirty block
 - version number
 
 On a per file basis, the server keeps track of:
+
 - readers
 - writer
 - version

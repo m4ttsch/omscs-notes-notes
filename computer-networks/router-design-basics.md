@@ -19,6 +19,7 @@ A chassis houses line cards, which actually perform the routing.
 While these cards look like standard network interface cards, they are much larger and terminate with high capacity fiber instead of Ethernet.
 
 There is a significant need for big, fast routers:
+
 - Links are getting faster
 - Traffic demands are increasing - particularly with the rise of streaming video applications
 - Networks are getting larger, in terms of hosts, routers and users

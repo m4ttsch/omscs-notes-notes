@@ -50,6 +50,7 @@ Any procedure that guarantees equation $(1)$ above is said to be employing the i
 ### So Many Procedures
 
 There are hundreds of different procedures we can use that implement this approach. Of note are the following:
+
 - [Bechhofer's Single-Stage procedure](https://projecteuclid.org/euclid.aoms/1177728845)
 - [Rinott's Two-Stage procedure](http://pluto.huji.ac.il/~rinott/publications/two-stage-selection.pdf)
 - [Kim and Nelson's Sequential procedure](http://users.iems.northwestern.edu/~nelsonb/Publications/KimNelsonKN.pdf)
@@ -129,19 +130,19 @@ $$
 We know that the right-hand side of the inequality is a standard normal random variable. Let's call that $x$ now.  We can condition it out by integrating over all $x$. Notice that we have to include the standard normal pdf, $\phi(x)$, in this integration:
 
 $$
-P^* = \int_\mathbb{R} P\left\{\frac{\bar Y_i - \mu_k}{\sqrt{\sigma^2 / n}} < x, i = 1,...,k-1 \Big| \text{LF} \right\}\phi(x) dx
+P^* = \int_{\mathbb{R}} P\left\{\frac{\bar Y_i - \mu_k}{\sqrt{\sigma^2 / n}} < x, i = 1,...,k-1 \Big| \text{LF} \right\}\phi(x) dx
 $$
 
 Now, let's standardize the right-hand side of the inequality. We can't just subtract by $\mu_i$ since we are already subtracting by $\mu_k$, so we have to add an adjustment factor on the right-hand side:
 
 $$
-P^* = \int_\mathbb{R} P\left\{\frac{\bar Y_i - \mu_i}{\sqrt{\sigma^2 / n}} < x + \frac{\sqrt{n}\delta^*}{\sigma}, i = 1,...,k-1 \right\}\phi(x) dx
+P^* = \int_{\mathbb{R}} P\left\{\frac{\bar Y_i - \mu_i}{\sqrt{\sigma^2 / n}} < x + \frac{\sqrt{n}\delta^*}{\sigma}, i = 1,...,k-1 \right\}\phi(x) dx
 $$
 
 Now we are dealing with the cdf of a standard normal random variable, by definition. Therefore:
 
 $$
-P^* = \int_\mathbb{R} \Phi^{k-1}\left(x + \frac{\sqrt{n}\delta^*}{\sigma}\right)\phi(x) dx
+P^* = \int_{\mathbb{R}} \Phi^{k-1}\left(x + \frac{\sqrt{n}\delta^*}{\sigma}\right)\phi(x) dx
 $$
 
 Since the observations are independent, and we have $k-1$ of them, we have to multiply the expression together $k-1$ times. That's why we have the $\Phi^{k-1}$ notation.
@@ -149,7 +150,7 @@ Since the observations are independent, and we have $k-1$ of them, we have to mu
 If we set $h = (\sqrt{n} + \delta^*) / \sigma$, then:
 
 $$
-P^* = \int_\mathbb{R} \Phi^{k-1}(x+h)\phi(x) dx
+P^* = \int_{\mathbb{R}} \Phi^{k-1}(x+h)\phi(x) dx
 $$
 
 Finally, we solve numerically for $h$ and set $n = \lceil (h\sigma / \delta^*)^2\rceil$.
@@ -201,11 +202,13 @@ In this lesson, we'll talk about selecting the Bernoulli population with the lar
 ### Bernoulli Selection - Introduction
 
 Our goal is to select the Bernoulli population with the largest success parameter from several competing systems. For example, we might want to select:
+
 - the most effective anti-cancer drug
 - the simulated system that is most likely to meet a design specification
 - the (s,S) inventory policy with the highest profit probability
 
 There are hundreds of such procedures for selecting the correct Bernoulli population. Of note are:
+
 - [Single-Stage Procedure](https://onlinelibrary.wiley.com/doi/abs/10.1002/j.1538-7305.1957.tb02411.x) (Sobel and Huyett 1957)
 - [Sequential Procedure](https://projecteuclid.org/euclid.aoms/1177692660) (Bechhofer, Kiefer, and Sobel 1968)
 - [Optimal Procedures](https://onlinelibrary.wiley.com/doi/abs/10.1002/nav.3800320413) (Bechhofer et al., 1980's)
@@ -326,6 +329,7 @@ In this lesson, we will talk about the multinomial selection problem, which corr
 ### Multinomial Selection - Intro
 
 We want to select the **multinomial cell** (category) having the largest probability. For example:
+
 - Who is the most popular political candidate?
 - Which television show is most-watched during a particular time slot?
 - Which simulated warehouse configuration is most likely to maximize throughput?

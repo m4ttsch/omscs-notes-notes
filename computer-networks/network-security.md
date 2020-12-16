@@ -91,6 +91,7 @@ This is referred to as a [Man in the Middle](https://en.wikipedia.org/wiki/Man-i
 
 ## Negative Impact of Attacks
 These attacks can have serious negative effects, including
+
 - theft of confidential information
 - unauthorized use of network bandwidth
 - spread of false information

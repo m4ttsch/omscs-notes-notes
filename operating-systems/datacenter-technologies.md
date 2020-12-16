@@ -88,6 +88,7 @@ All of this scaling should be able to happen automatically, and the provisioned 
 Note that you wouldn't potentially own these resources, but this may be a fair compromise.
 
 Goals of cloud computing, summarized:
+
 - On-demand, elastic resources and services
 - Fine-grained pricing based on usage
 - Professionally managed and hosted

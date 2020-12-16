@@ -74,6 +74,7 @@ A **system** is a collection of **entities** - people, machines, *things* - that
 ### Model
 
 A **model** is an abstract representation of a system. Usually, the model contains certain mathematical or logical relationships that describe the system in terms of:
+
 - the entities involved in the system
 - the various states and state transitions of the system
 - the events that can occur in the system
@@ -155,6 +156,7 @@ In any case, we might have to update the FEL. For example, when we process an ar
 ### Updating the FEL
 
 Any time the simulation processes an event, it might have to update the FEL. Here are several different operations the simulation might perform on the FEL:
+
 - appending/inserting new events
 - deleting events
 - rearranging events
@@ -314,6 +316,7 @@ Furthermore, we can compare packages based on their worldviews. We already discu
 Finally, we have to think about which features we need. Different packages have different random variate generators, statistics collection capabilities, debugging aids, graphics packages, and user communities.
 
 Where can you learn about simulation languages?
+
 - A simulation class (like this!)
 - Textbooks, especially in conjunction with a course
 - Conferences such as Winter Simulation Conference

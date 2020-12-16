@@ -158,6 +158,7 @@ np.corrcoef(n1, n2)
 ```
 
 ### Documentation
+
 - [numpy.corrcoef](https://docs.scipy.org/doc/numpy/reference/generated/numpy.corrcoef.html)
 
 ## Correlation and RMS Error Quiz

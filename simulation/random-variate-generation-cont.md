@@ -136,8 +136,10 @@ In this lesson, we will talk about the Box-Muller method, which is a special-cas
 If $U_1, U_2$ are iid $\mathcal (0,1)$, then the following quantities are iid Nor(0,1):
 
 $$
-Z_1 = \sqrt{-2\ln{(U_1)}}\cos(2\pi U_2) \\
-Z_2 = \sqrt{-2\ln{(U_1)}}\sin(2\pi U_2)
+\begin{alignedat}{1}
+Z_1 &= \sqrt{-2\ln{(U_1)}}\cos(2\pi U_2) \\
+Z_2 &= \sqrt{-2\ln{(U_1)}}\sin(2\pi U_2)
+\end{alignedat}
 $$
 
 > Note that we must perform the trig calculations in radians! In degrees, $2\pi U$ is a very small quantity, and resulting $Z_1$ and $Z_2$ will *not* be iid Nor(0,1).
@@ -199,8 +201,10 @@ We can also use the polar method to generate standard normals, and this method i
 First, we generate two uniforms, $U_1, U_2 \overset{\text{iid}}{\sim} \mathcal U(0,1)$. Next, let's perform the following transformation:
 
 $$
-V_i = 2U_i - 1, i = 1,2 \\
-W = V_1^2 + V_2^2
+\begin{alignedat}{1}
+V_i &= 2U_i - 1, i = 1,2 \\
+W &= V_1^2 + V_2^2
+\end{alignedat}
 $$
 
 Finally, we use the acceptance-rejection method. If $W > 1$, we reject and return to sampling uniforms. Otherwise:
@@ -502,8 +506,10 @@ $$
 Here's how we generate $\bold X$. Since $\bold X = \boldsymbol \mu + C \bold Z$, if we carry the vector addition and matrix multiplication out, we have:
 
 $$
-X_1 = \mu_1 + \sqrt{\sigma_{11}}Z_1 + 0Z_1 \\
-X_2 = \mu_2 +  \frac{\sigma_{12}}{\sqrt{\sigma_{11}}}Z_1 + \sqrt{\sigma_{22} - \frac{\sigma^2_{12}}{\sigma_{11}}}Z_2
+\begin{alignedat}{1}
+X_1 &= \mu_1 + \sqrt{\sigma_{11}}Z_1 + 0Z_1 \\
+X_2 &= \mu_2 +  \frac{\sigma_{12}}{\sqrt{\sigma_{11}}}Z_1 + \sqrt{\sigma_{22} - \frac{\sigma^2_{12}}{\sigma_{11}}}Z_2
+\end{alignedat}
 $$
 
 Here's the algorithm for computing a $k$-dimensional Cholesky matrix, $C$.
@@ -1029,6 +1035,7 @@ Robert Brown discovered Brownian motion when he looked at pollen under a microsc
 Brownian motion is used everywhere, from financial analysis to queueing theory to chaos theory to statistics to many other operations research and industrial engineering domains.
 
 The stochastic process, $\{\mathcal{W}(t), t \geq 0 \}$, is **standard Brownian motion** if:
+
 - $\mathcal{W}(0) = 0$
 - $\mathcal{W}(t) \sim \text{Nor}(0,t)$
 - $\{\mathcal{W}(t), t \geq 0 \}$ has stationary and independent increments.

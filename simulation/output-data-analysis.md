@@ -665,6 +665,7 @@ $$
 As another example, consider an AR(1) process, $Y_{i+1} = \phi Y_i + \epsilon_{i+1}$, where the $\epsilon_i$'s are iid $\text{Nor}(0, 1-\phi^2)$, $-1 < \phi < 1$, and $Y_0 \sim \text{Nor}(0,1)$. For this process, $R_k = \phi^{|k|}$. We determined that $\sigma^2 = (1+\phi) / (1- \phi)$, so $\sigma^2 \to \infty$ as $\phi \to 1$.
 
 Many methods exist for estimating $\sigma^2$ and conducting steady-state output analysis in general, such as:
+
 - batch means
 - independent replications
 - standardized time series

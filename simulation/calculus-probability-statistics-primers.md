@@ -32,6 +32,7 @@ Note that we also refer to the derivative at $x$ as the instantaneous slope at $
 ### Some Old Friends
 
 Let's revisit the derivative of some common expressions.
+
 - The derivative of a constant, $a$, is $0$. 
 - The derivative of a polynomial term, $x^k$, is $kx^{k-1}$. 
 - The derivative of $e^x$ is $e^x$.
@@ -185,6 +186,7 @@ In this lesson, we are going to look at formal ways to find solutions to nonline
 When we talk about solving a nonlinear equation, $f$, what we mean is finding a value, $x$, such that $f(x) = 0$.
 
 There are a few methods by which we might find such an $x$:
+
 - trial and error (not so good)
 - bisection (divide and conquer)
 - [Newton's method](https://en.wikibooks.org/wiki/Calculus/Newton%27s_Method) or some variation
@@ -762,7 +764,7 @@ Because of this equality, we can conclude that $A$ and $B$ are independent event
 
 ### Random Variables
 
-A **random variable**, $X$, is a function that maps the sample space, $\Omega$, to the real line: $X: \Omega \to \R$.
+A **random variable**, $X$, is a function that maps the sample space, $\Omega$, to the real line: $X: \Omega \to \mathbb{R}$.
 
 For example, let $X$ be the sum of two dice rolls. What is the sample space? Well, it's the set of all possible combinations of two dice rolls: $\{ (1,1), (1,2), ..., (6,5), (6,6)\}$. What is the output of $X$? It's a real number: the sum of the two rolls. Thus, the function $X$ maps an element from the sample space to a real number. As a concrete example, $X((4,6)) = 10$.
 
@@ -809,7 +811,7 @@ Some other well-known discrete random variables include Bernoulli($p$), Binomial
 
 ### Continuous Random Variables
 
-We are also interested in continuous random variables. A **continuous random variable** is one that has probability zero for every individual point, and for which there exists a **probability density function** (pdf), $f(x)$, such that $P(X \in A) = \int_A f(x)dx$ for every set $A$. Note that, necessarily, $\int_\R f(x) = 1$.
+We are also interested in continuous random variables. A **continuous random variable** is one that has probability zero for every individual point, and for which there exists a **probability density function** (pdf), $f(x)$, such that $P(X \in A) = \int_A f(x)dx$ for every set $A$. Note that, necessarily, $\int_{\mathbb{R}} f(x) = 1$.
 
 To reiterate, the pdf does not provide probabilities directly like the pmf; instead, we integrate the pdf over the set of events $A$ to determine $P(X \in A)$.
 
@@ -1014,12 +1016,12 @@ $$
 E[X] = \left\{
         \begin{array}{ll}
             \sum_x x f(x) \quad \text{ if X is discrete}\\
-            \int_{\R} x f(x) \quad \text{ if X is continuous}
+            \int_{\mathbb{R}} x f(x) \quad \text{ if X is continuous}
         \end{array}
     \right.
 $$
 
-For discrete random variables, the expected value is the sum of $x P(X = x)$ for all possible values of $x$. Likewise, for continuous random variables, the expected value is the integral of $x f(x)dx$ over the real line, $\R$.
+For discrete random variables, the expected value is the sum of $x P(X = x)$ for all possible values of $x$. Likewise, for continuous random variables, the expected value is the integral of $x f(x)dx$ over the real line, $\mathbb{R}$.
 
 In either case, we can think of the expected value as the weighted average of the possible values of $X$, where $x$ is the value and $f(x)$ is the weight given to that value.
 
@@ -1057,10 +1059,10 @@ $$
 
 > If this looks foreign to you, recall the example where we generated the pdf for $X \sim \text{Unif}(3,7)$
 
-If we integrate $f(x)$ over $\R$, we get $E[X]$. Note that we really only need to integrate over $(a, b)$ because $f(x)$ evaluates to 0 everywhere else:
+If we integrate $f(x)$ over $\mathbb{R}$, we get $E[X]$. Note that we really only need to integrate over $(a, b)$ because $f(x)$ evaluates to 0 everywhere else:
 
 $$
-E[X] = \int_{\R}x f(x)dx
+E[X] = \int_{\mathbb{R}}x f(x)dx
 $$
 
 $$
@@ -1114,10 +1116,10 @@ f(x) = \left\{
     \right. 
 $$
 
-If we integrate $f(x)$ over $\R$, we get $E[X]$. Note that we really only need to integrate over $(0, \infty)$ because $f(x)$ is undefined for $x \leq 0$:
+If we integrate $f(x)$ over $\mathbb{R}$, we get $E[X]$. Note that we really only need to integrate over $(0, \infty)$ because $f(x)$ is undefined for $x \leq 0$:
 
 $$
-E[X] = \int_{\R} x f(x)dx = \int_0^{\infty} x \lambda e^{-\lambda x}dx = \frac{1}{\lambda}
+E[X] = \int_{\mathbb{R}} x f(x)dx = \int_0^{\infty} x \lambda e^{-\lambda x}dx = \frac{1}{\lambda}
 $$
 
 Computing this integral is left as an exercise to the reader. I am not typing out this whole thing.
@@ -1130,7 +1132,7 @@ $$
 E[h(X)] = \left\{
         \begin{array}{ll}
             \sum_x h(x)f(x) \quad \text{ if X is discrete}\\
-            \int_{\R} h(x)f(x) \quad \text{ if X is continuous}
+            \int_{\mathbb{R}} h(x)f(x) \quad \text{ if X is continuous}
         \end{array}
     \right.
 $$
@@ -1174,7 +1176,7 @@ $$
 Suppose we have a function $h(X) = X^n$. We can calculate $E[h(X)] = E[X^n]$ by integrating $h(x)f(x)dx$ over the real line, although since we are dealing with a uniform distribution, we only need to integrate from 0 to 2:
 
 $$
-E[X^n] = \int_\R x^n f(x)dx
+E[X^n] = \int_{\mathbb{R}} x^n f(x)dx
 $$
 
 $$
@@ -1291,7 +1293,7 @@ $$
 Consider a random variable $X \sim \text{Exp}(\lambda)$, which has a pdf $f(x) = \lambda e^{-\lambda x}, x > 0$. Again we can use LOTUS to find $M_X(t)$:
 
 $$
-M_X(t) = \int_\R e^{tx}f(x)dx
+M_X(t) = \int_{\mathbb{R}} e^{tx}f(x)dx
 $$
 
 $$
@@ -1385,6 +1387,7 @@ In this lesson, we will explore functions of random variables. In particular, we
 Suppose we have a random variable, $X$, and we know the pmf/pdf, $f(x)$. Now, let's look at a new random variable, which is a function of $X$, $Y = h(X)$. Our task is to find $g(y)$, the pmf/pdf of Y.
 
 Here are some basic examples, which we won't prove now: 
+
 - If $X \sim \text{Normal}(0, 1)$, then $Y = X^2 \sim \chi^2(1)$, where $\chi^2(k)$ refers to a [chi-square distribution](https://en.wikipedia.org/wiki/Chi-square_distribution). 
 - If $U \sim \text{Unif}(0, 1)$, then $Y = -\ln(U) / \lambda \sim \text{Exp}(\lambda)$. We have seen this transformation before.
 
@@ -1605,7 +1608,7 @@ Since the pdf has to be greater than or equal to zero, we have to take the absol
 Armed with this result, we can prove LOTUS. Remember the definition for the expected value of a random variable, $Y$:
 
 $$
-E[Y] = \int_\R y f_Ydy
+E[Y] = \int_{\mathbb{R}} y f_Ydy
 $$
 
 Remember, we have an expression for $f_Y$:
@@ -1617,19 +1620,19 @@ $$
 Thus:
 
 $$
-E[Y] = \int_\R y f_X(h^{-1}(y)) \Big|\frac{d}{dy}h^{-1}(y)\Big| dy
+E[Y] = \int_{\mathbb{R}} y f_X(h^{-1}(y)) \Big|\frac{d}{dy}h^{-1}(y)\Big| dy
 $$
 
 Take it on faith that this expression simplifies to:
 
 $$
-E[Y] = \int_\R y f_X(h^{-1}(y)) dh^{-1}(y)
+E[Y] = \int_{\mathbb{R}} y f_X(h^{-1}(y)) dh^{-1}(y)
 $$
 
 If we set $x = h^{-1}(y)$, then you get LOTUS:
 
 $$
-E[Y] = \int_\R h(x) f_X(x)dx
+E[Y] = \int_{\mathbb{R}} h(x) f_X(x)dx
 $$
 
 ## Jointly Distributed Random Variables
@@ -1677,12 +1680,12 @@ Let's look at the marginal pmf for $Y$, $f_Y(y)$. For $Y = 4$, $f_Y(4) = \sum_x 
 
 ### Joint PDF
 
-If $X$ and $Y$ are continuous, then the **joint pdf** of $X$ and $Y$ is the second partial derivative of the cdf: $f(x, y) \equiv \partial^2 / \partial x \partial y F(x, y)$. Note that if we take the double integral of the pdf over the real line, we get 1, as per the definition of the pdf: $\int_\R \int_\R f(x, y)dxdy = 1$. Note that since our pdf is two-dimensional, we need to integrate in both dimensions to sum the probabilities for all possible $(x, y)$ pairs.
+If $X$ and $Y$ are continuous, then the **joint pdf** of $X$ and $Y$ is the second partial derivative of the cdf: $f(x, y) \equiv \partial^2 / \partial x \partial y F(x, y)$. Note that if we take the double integral of the pdf over the real line, we get 1, as per the definition of the pdf: $\int_{\mathbb{R}} \int_{\mathbb{R}} f(x, y)dxdy = 1$. Note that since our pdf is two-dimensional, we need to integrate in both dimensions to sum the probabilities for all possible $(x, y)$ pairs.
 
 Just as we saw with the marginal pmfs previously, we can calculate the **marginal pdfs** of $X$ and $Y$ as:
 
 $$
-f_X(x) = \int_\R f(x,y)dy, \quad f_Y(y) = \int_\R f(x,y)dx
+f_X(x) = \int_{\mathbb{R}} f(x,y)dy, \quad f_Y(y) = \int_{\mathbb{R}} f(x,y)dx
 $$
 
 Note that this construction matches the marginal pmf for the discrete variables. The marginal pdf for $X$, $f_X(x)$ equals the sum of the probabilities of $f(x, y)$, over all values of $y$. Similarly, the marginal pdf for $Y$, $f_Y(y)$ equals the sum of the probabilities of $f(x, y)$, over all values of $x$.
@@ -1700,7 +1703,7 @@ Note the limits of $x$ and $y$: $x^2 \leq y \leq 1$. Limits like these have rami
 Let's take a look at the marginal pdfs, $f_X(x)$ and $f_Y(y)$. First, $f_X(x)$:
 
 $$
-f_X(x) = \int_\R f(x,y)dy
+f_X(x) = \int_{\mathbb{R}} f(x,y)dy
 $$
 
 Note that, since we are integrating with respect to $y$, the limits of integration become the limits of $y$. In other words, we integrate from $x^2$ to 1:
@@ -1734,7 +1737,7 @@ Note that since $x^2 \leq y \leq 1$, $f_X(x)$ is only defined for $-1 \leq x \le
 Now, let's find $f_Y(y)$:
 
  $$
-f_Y(y) = \int_\R f(x,y)dx
+f_Y(y) = \int_{\mathbb{R}} f(x,y)dx
 $$
 
 Note that, since we are integrating with respect to $x$, the limits of integration become the limits of $x$. In other words, since $x^2 \leq y$, then $-\sqrt{y} \leq x \leq \sqrt{y}$, which become our new limits of integration:
@@ -1787,7 +1790,7 @@ As a final example, consider $f(x, y) = c/(x + y)$ for $1 \leq x \leq 2, 1 \leq 
 
 ### Conditional PDF/PMF
 
-The **conditional pdf** (or **pmf**) of $Y$ given $X = x$ is $f(y | x) \equiv f(x,y) / f_X(x)$, assuming $f_X(x) > 0$. This is a legit pdf/pmf. For example, in the continuous case, $\int_\R f(y|x)dy = 1$, for any $x$.
+The **conditional pdf** (or **pmf**) of $Y$ given $X = x$ is $f(y | x) \equiv f(x,y) / f_X(x)$, assuming $f_X(x) > 0$. This is a legit pdf/pmf. For example, in the continuous case, $\int_{\mathbb{R}} f(y|x)dy = 1$, for any $x$.
 
 ### Example
 
@@ -1817,7 +1820,7 @@ Note that the final equation contains both the variables $x$ and $y$. We are que
 
 ### Theorem
 
-If $X$ and $Y$ are independent, then $f(y|x) = f_Y(y)$ for all $x,y$. In other words, information about $X$ contributes nothing to the distribution of $Y$. For example, let $X$ equal the current IBM stock price, and $Y$ equal the current temperature on Mars. The information $Y = 30\degree$ gives us no information regarding IBM stock.
+If $X$ and $Y$ are independent, then $f(y|x) = f_Y(y)$ for all $x,y$. In other words, information about $X$ contributes nothing to the distribution of $Y$. For example, let $X$ equal the current IBM stock price, and $Y$ equal the current temperature on Mars. The information $Y = 30^{\circ}$ gives us no information regarding IBM stock.
 
 Let's prove this theorem. Remember the formula for the conditional pdf, $f(y | x)$:
 
@@ -1838,7 +1841,7 @@ If we can compute the conditional pdf/pmf $f(y|x)$, then we can compute the **co
 $$
 E[Y|X = x] = \left\{\begin{matrix}
 	\sum_yyf(y|x) & \text{discrete} \\
-	\int_\R yf(y|x)dy & \text{continuous}
+	\int_{\mathbb{R}} yf(y|x)dy & \text{continuous}
 \end{matrix}\right.
 $$
 
@@ -1849,7 +1852,7 @@ Conditional expectation is very important as it allows us to update our expectat
 Let $f(x,y) = 21x^2y/4$, if $x^2 \leq y \leq 1$. Then:
 
 $$
-E[Y|X] = \int_\R yf(y|x)dy
+E[Y|X] = \int_{\mathbb{R}} yf(y|x)dy
 $$
 
 $$

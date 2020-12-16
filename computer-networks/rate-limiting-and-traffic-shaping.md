@@ -9,6 +9,7 @@ lecture: rate-limiting-and-traffic-shaping
 
 ## Traffic Classification and Shaping
 This lesson focuses on ways to classify traffic as well as several traffic shaping strategies, including
+
 - leaky bucket
 - (r, T) traffic shaper
 - token bucket
@@ -194,6 +195,7 @@ The delay that a packet arriving in a buffer will see is the amount of data ahea
 These large buffers can introduce delays that ruin the performance for time-critical applications such as voice and video applications.
 
 These larger buffers can be found in
+
 - home routers
 - home access points
 - hosts on device drivers
@@ -228,6 +230,7 @@ There are two types of network measurement.
 In **passive measurement**, we collect packets and flow statistics from traffic that is already being sent on the network.
 
 This might include
+
 - packet traces
 - flow metrics
 - application logs
@@ -235,6 +238,7 @@ This might include
 In **active measurement**, we inject additional traffic into the network to measure various characteristics of the network.
 
 Common active measurements tools include
+
 - [ping](https://linux.die.net/man/8/ping)
 - [traceroute](https://linux.die.net/man/8/traceroute)
 
@@ -254,6 +258,7 @@ This means that the customer might be able to occasionally burst at higher rates
 Network operators may also want to know the type of traffic being sent on the network so they can detect rogue behavior.
 
 A network operator may want to detect
+
 - compromised hosts
 - botnets
 - denial of service attacks
@@ -277,6 +282,7 @@ Two other ways to measure passively are by monitoring at a packet-level granular
 In **packet monitoring**, the monitor may see the full packet contents - or at least the packet headers - for packets that traverse a particular link.
 
 Common packet monitoring tools include
+
 - [tcpdump](https://www.tcpdump.org/)
 - [ethereal](https://www.itprotoday.com/security/ethereal-packet-sniffer)
 - [wireshark](https://www.wireshark.org/)
@@ -297,6 +303,7 @@ The disadvantage of packet monitoring is that there is relatively high overhead.
 
 ## Flow Monitoring
 A flow consists of packets that share a common
+
 - source/destination IP address
 - source/destination port
 - protocol type
@@ -306,6 +313,7 @@ A flow consists of packets that share a common
 A **flow monitor** can record statistics for a flow that is defined by the group of packets that share these features.
 
 Flow records may also contain additional information, often related to routing, such as
+
 - next-hop IP
 - source/destination AS
 - prefix

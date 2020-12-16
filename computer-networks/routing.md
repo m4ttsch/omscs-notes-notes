@@ -36,6 +36,7 @@ After understanding the topology of an autonomous system, the next step is to co
 This process is called **routing**. Routing is the process by which nodes discover where to forward traffic so that it reaches a certain node.
 
 There are two types of intradomain routing:
+
 - distance vector routing
 - link state routing
 
@@ -109,6 +110,7 @@ This would thus prevent `z` from routing back through `y`, allowing `z` to immed
 An example of a distance vector routing protocol is the **routing information protocol** (RIP).
 
 In RIP
+
 - edges have unit cost
 - 'infinity' is 16
 - table refreshes occur every thirty seconds

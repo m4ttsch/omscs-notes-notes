@@ -54,6 +54,7 @@ The NICs are involved in all aspects of the memory management, access and consis
 While it's very convenient to rely on hardware to do everything, this type of hardware is typically very expensive and as a result is reserved for very high-end machines.
 
 Instead, DSM is often realized in software. The software will have to
+
 - detect local vs remote memory accesses
 - create and send messages to the appropriate node
 - accept messages from other nodes and perform the encoded memory operations
@@ -67,6 +68,7 @@ In SMP systems, the granularity of sharing is the **cache line**. The hardware t
 For DSM, generating coherence traffic at the granularity of the cache line will be too expensive, given that this traffic has to travel over the network and incur network cost.
 
 Instead, we can look at larger granularities for sharing:
+
 - variable granularity
 - page granularity
 - object granularity
@@ -115,6 +117,7 @@ One way to control the consistency overhead is to limit the number of replicas t
 Once we permit multiple copies of the same data page to be stored in multiple locations, it becomes important to think about maintaining consistency.
 
 DSM systems are expected to behave similar to SMP systems. Remember that SMP manages consistency via two strategies:
+
 - write-invalidate
 - write-update
 
@@ -125,6 +128,7 @@ These coherence operations are triggered by the shared memory support in the har
 One option is to push invalidation messages when data is written to. This is similar to the server-based approach that we talked about in the DFS lecture.
 
 This approach is referred to as
+
 - proactive
 - eager
 - pessimistic
@@ -132,6 +136,7 @@ This approach is referred to as
 Another option is for one node to poll periodically for modification information regarding certain memory regions in the system. This can be done periodically or on-demand.
 
 This approach is referred to as
+
 - reactive
 - lazy
 - optimistic
@@ -156,6 +161,7 @@ In order for this system to be performant and achieve low latency, the DSM layer
 The home node for a page will be responsible for driving all of the coherence operations related to that page. As a result, all of the nodes in the system are responsible for some part of the management of the overall distributed memory.
 
 The home node will have to keep track of the state for its memory pages:
+
 - pages accessed
 - modifications
 - caching enabled/disabled

@@ -121,6 +121,7 @@ Let's suppose that we have a collection of iid random variables, $X_1,...,X_n$. 
 For example, $\bar{X}$ is usually a point estimator for the true mean, $\mu = E[X_i]$, and $S^2$  is often a point estimator for the true variance, $\sigma^2 = \text{Var}(X)$.
 
 $T(\bold{X})$ should have specific properties:
+
 - Its expected value should equal the parameter it's trying to estimate. This property is known as *unbiasedness*.
 - It should have a low variance. It doesn't do us any good if $T(\bold{X})$ is bouncing around depending on the sample we take.
 
@@ -239,6 +240,7 @@ In this lesson, we'll look at mean squared error, a performance measure that eva
 ### Bias and Variance
 
 We want to choose an estimator with the following properties:
+
 - Low bias (defined as the difference between the estimator's expected value and the true parameter value)
 - Low variance
 
@@ -617,11 +619,11 @@ $$
 We can set the expression on the right equal to zero and solve for $\widehat{\sigma^2}$:
 
 $$
-\begin{alignedat}
+\begin{alignedat}{1}
 -\frac{n}{2\widehat{\sigma^2}} + \frac{1}{2\widehat{\sigma^4}}\sum_{i=1}^n (x_i - \widehat\mu)^2 &= 0 \\
 \frac{1}{2\widehat{\sigma^4}}\sum_{i=1}^n (x_i - \widehat\mu)^2 &= \frac{n}{2\widehat{\sigma^2}} \\
 \frac{1}{n}\sum_{i=1}^n (x_i - \widehat\mu)^2 &= \frac{2\widehat{\sigma^4}}{2\widehat{\sigma^2}} \\
-\frac{\sum_{i=1}^n(X_i - \bar X)^2}{n} = \widehat{\sigma^2}
+\frac{\sum_{i=1}^n(X_i - \bar X)^2}{n} &= \widehat{\sigma^2}
 \end{alignedat}
 $$
 
@@ -770,7 +772,7 @@ The $k$th **moment** of a random variable $X$ is:
 $$
 E[X^k] = \begin{cases}
 \sum_x x^k f(x) & \text{if X is discrete} \\
-\int_\mathbb{R} x^k f(x)dx & \text{if X is continuous} 
+\int_{\mathbb{R}} x^k f(x)dx & \text{if X is continuous} 
 \end{cases}
 $$
 
@@ -837,8 +839,10 @@ $$
 After much algebra, it turns out that:
 
 $$
-E[X] = \frac{a}{a+b} \\[2ex]
-\text{Var}(X) = \frac{ab}{(a+b)^2(a+b+1)} = \frac{E[X]b}{(a+b)(a+b+1)}
+\begin{alignedat}{1}
+E[X] &= \frac{a}{a+b} \\[2ex]
+\text{Var}(X) &= \frac{ab}{(a+b)^2(a+b+1)} = \frac{E[X]b}{(a+b)(a+b+1)}
+\end{alignedat}
 $$
 
 Let's find MOM estimators for $a$ and $b$. Given the expected value above, let's solve for $a$:
@@ -1442,6 +1446,7 @@ That being said, we encountered several small numbers in our sample, leading us 
 ### Other Tests
 
 There are many other goodness-of-fit tests, such as:
+
 - Anderson-Darling
 - Cramér-von Mises
 - Shapiro-Wilk (especially appropriate for testing normality)
@@ -1514,6 +1519,7 @@ Let's hop over to Arena. First, we click *Tools > Input Analyzer*. Next, we sele
 ![](https://assets.omscs.io/notes/2020-11-05-11-13-00.png)
 
 We can see that Arena gives us several pieces of information about our data, such as:
+
 - number of observations (5000)
 - minimum value (0.284)
 - maximum value (7.29)

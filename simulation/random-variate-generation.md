@@ -251,18 +251,20 @@ $$
 Here's a more accurate, albeit significantly more complicated, approximation, which has an absolute error $\leq 0.45 \times 10^{-3}$:
 
 $$
-Z = \text{sign}(U - 1/2)\left(t-  \frac{c_0 + c_1t + c_2t^2}{1 + d_1t + d_2t^2 + d_3t^3}\right) \\[2ex]
-\text{where} \\[2ex]
-\text{sign}(x) = \left\{
+\begin{aligned}
+& Z = \text{sign}(U - 1/2)\left(t-  \frac{c_0 + c_1t + c_2t^2}{1 + d_1t + d_2t^2 + d_3t^3}\right) \\[2ex]
+& \text{where} \\[2ex]
+& \text{sign}(x) = \left\{
     \begin{matrix}
     -1 & x < 0 \\
     0 & x = 0 \\
     1 & x > 0
     \end{matrix}
-  \right., \\[3ex]
-t = \sqrt{-\ln[\min(U, 1-U)]^2}, \\[3ex]
-c_0 = 2.515517, \quad c_1 = 0.802853, \quad 0.010328 \\
-d_1 = 1.432788, \quad d_2 = 0.189269 \quad d_3 = 0.001308
+  \right., \\[5ex]
+& t = \sqrt{-\ln[\min(U, 1-U)]^2}, \\[2ex]
+&c_0 = 2.515517, \quad c_1 = 0.802853, \quad 0.010328 \\
+&d_1 = 1.432788, \quad d_2 = 0.189269 \quad d_3 = 0.001308
+\end{aligned}
 $$
 
 ### Transforming Standard Normals to Other Normals
@@ -748,7 +750,7 @@ Note that only $h(x)$, not $t(x)$, is a pdf. Since $t(x) \geq f(x)$, and the int
 Let's look at the constant, $c$. We define $c$, which we assume to be finite, as the integral of $t(x)$ over the real line, which we just said was greater than or equal to the corresponding integral of $f(x)$:
 
 $$
-c \equiv \int_\mathbb R t(x)dx \geq \int_\mathbb R f(x)dx = 1, \quad c < \infty
+c \equiv \int_{\mathbb{R}} t(x)dx \geq \int_{\mathbb{R}} f(x)dx = 1, \quad c < \infty
 $$
 
 ### Theorem

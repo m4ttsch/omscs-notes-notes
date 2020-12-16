@@ -15,7 +15,8 @@ Each document in "Lecture Notes" corresponds to a module in Canvas. Within each 
 
 ## Textbook Information
 
-The following textbooks may be helpful for getting **A** in this course:
+The following textbooks helped me get an **A** in this course:
+
 - [Simulation Modeling and Analysis](https://amzn.to/3au4zN5)
 - [Simulation with Arena](https://amzn.to/2E4zTWo)
 

@@ -108,6 +108,7 @@ This ordering is *total*, which means that if you pick any two sensitivity level
 Labels also have compartments, which comprise sets of different topics.
 
 Two sets `S1` and `S2` can be oriented such that
+
 - `S1` is contained in `S2`
 - `S2` is contained in `S1`
 - Neither set contains the other
@@ -118,6 +119,7 @@ When we want to order labels, we must look at both the sensitivity level and the
 
 ## Comparing Labels Example
 Based on the comparison rules just described, the following chart depicts the circumstances under which
+
 - one label dominates another
 - two labels are equal
 - two labels are not comparable

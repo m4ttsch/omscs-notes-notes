@@ -15,6 +15,7 @@ lecture: architecture-and-principles
 ![](https://assets.omscs.io/notes/54A8AD53-4B1B-4F60-9A97-E67B2A80ACC5.png)
 
 Other networks included:
+
 - SAT Networks (Satellite)
 - Packet radio networks
 - Ethernet local area networks (LANs)
@@ -23,6 +24,7 @@ Other networks included:
 ![](https://assets.omscs.io/notes/3E697E92-D6E9-4945-8555-FFE5B2BDB8D7.png)
 
 Growth markers include:
+
 - DNS (1982)
 - TCP congestion control (1988)
 - BGP inter-domain routing (1989)
@@ -41,6 +43,7 @@ Another problem is congestion control. The goal of congestion control is to matc
 A third major problem is routing. Routing is the process by which nodes on the internet discover paths to take to reach another destination.
 
 Today's inter-domain routing protocol - BGP - suffers from
+
 - no security
 - easy misconfiguration
 - poor convergence
@@ -132,6 +135,7 @@ No single entity needs to be in charge, which allows for organic growth and stab
 On the downside, the internet has no single "owner". In such a network where management is distributed, it can often be very difficult to determine who or what is causing a problem.
 
 Other goals of the internet include:
+
 - Cost effectiveness
 - Ease of attachment
 - Accountability
@@ -143,6 +147,7 @@ Ease of attachment is essentially a huge success. Any device that speaks IP can 
 Accountability really wasn't prioritized. Packet-switched networks can make accountability really challenging. Payments and billing for internet usage is much less precise than that for phone network usage.
 
 ## What's Missing?
+
 - Security
 - Availability
 - Mobility
@@ -152,6 +157,7 @@ Accountability really wasn't prioritized. Packet-switched networks can make acco
 The intelligence required to implement a particular application on the communication system should be placed at the endpoints rather than in the middle of the network.
 
 Commonly used examples of the end to end argument include:
+
 - error handling in file transfer
 - end-to-end encryption
 - TCP/IP split in error handling
@@ -177,6 +183,7 @@ For example, if the application involves internet routing, the ends might be rou
 
 ## End to End Argument Violations
 There are many things that violate the end to end argument:
+
 - NAT
 - VPN tunnels
 - TCP splitting

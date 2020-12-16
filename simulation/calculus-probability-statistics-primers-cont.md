@@ -18,7 +18,7 @@ Let's revisit the conditional expectation of $Y$ given $X = x$. The definition o
 $$
 E[Y|X = x] = \left\{\begin{matrix}
 \sum_y y f(y|x) & \text{discrete} \\
-\int_\R y f(y|x)dy & \text{continuous}
+\int_{\mathbb{R}} y f(y|x)dy & \text{continuous}
 \end{matrix}\right.
 $$
 
@@ -37,7 +37,7 @@ $$
 Given $f(y|x)$, we can now compute $E[Y | X = x]$:
 
 $$
-E[Y | X = x] = \int_\R y * \left(\frac{2y}{1 - x^4}\right)dy
+E[Y | X = x] = \int_{\mathbb{R}} y * \left(\frac{2y}{1 - x^4}\right)dy
 $$
 
 We adjust the limits of integration to match the limits of $y$:
@@ -95,13 +95,13 @@ $$
 We now have to calculate $E[h(X)]$, which we can accomplish using the definition of LOTUS:
 
 $$
-E[h(X)] = \int_\R h(x)f_X(x)dx
+E[h(X)] = \int_{\mathbb{R}} h(x)f_X(x)dx
 $$
 
 Let's substitute in for $h(x)$ and $h(X)$:
 
 $$
-E[E[Y|X]] = \int_\R E(Y|x)f_X(x)dx
+E[E[Y|X]] = \int_{\mathbb{R}} E(Y|x)f_X(x)dx
 $$
 
 Remember the definition for $E[Y|X = x]$:
@@ -109,20 +109,20 @@ Remember the definition for $E[Y|X = x]$:
 $$
 E[Y|X = x] = \left\{\begin{matrix}
 \sum_y y f(y|x) & \text{discrete} \\
-\int_\R y f(y|x)dy & \text{continuous}
+\int_{\mathbb{R}} y f(y|x)dy & \text{continuous}
 \end{matrix}\right.
 $$
 
 Thus:
 
 $$
-E[E[Y|X]] = \int_\R \left(\int_\R y f(y|x)dy\right)f_X(x)dx
+E[E[Y|X]] = \int_{\mathbb{R}} \left(\int_{\mathbb{R}} y f(y|x)dy\right)f_X(x)dx
 $$
 
 We can rearrange the right-hand side. Note that we can move $y$ outside of the first integral since it is a constant value when we integrate with respect to $dx$:
 
 $$
-E[E[Y|X]] = \int_\R \int_\R y f(y|x)f_X(x)dx dy = \int_\R y \int_\R f(y|x)f_X(x)dx dy
+E[E[Y|X]] = \int_{\mathbb{R}} \int_{\mathbb{R}} y f(y|x)f_X(x)dx dy = \int_{\mathbb{R}} y \int_{\mathbb{R}} f(y|x)f_X(x)dx dy
 $$
 
 Remember now the definition for the conditional pdf:
@@ -134,25 +134,25 @@ $$
 We can substitute in $f(x,y)$ for $f(y|x)f_X(x)$:
 
 $$
-E[E[Y|X]] = \int_\R y \int_\R f(x,y)dx dy
+E[E[Y|X]] = \int_{\mathbb{R}} y \int_{\mathbb{R}} f(x,y)dx dy
 $$
 
 Let's remember the definition for the marginal pdf of $Y$:
 
 $$
-f_Y(y) = \int_\R f(x,y)dx
+f_Y(y) = \int_{\mathbb{R}} f(x,y)dx
 $$
 
 Let's substitute:
 
 $$
-E[E[Y|X]] = \int_\R y f_Y(y)dy
+E[E[Y|X]] = \int_{\mathbb{R}} y f_Y(y)dy
 $$
 
 Of course, the expected value of $Y$, $E[Y]$ equals:
 
 $$
-E[Y] = \int_\R y f_Y(y) dy
+E[Y] = \int_{\mathbb{R}} y f_Y(y) dy
 $$
 
 Thus:
@@ -180,7 +180,7 @@ $$
 We are going to look at two ways to compute $E[Y]$. First, we can just use the definition of expected value and integrate the product $yF_Y(y)dy$ over the real line:
 
 $$
-E[Y] = \int_\R y f_Y(y)dy
+E[Y] = \int_{\mathbb{R}} y f_Y(y)dy
 $$
 
 $$
@@ -202,7 +202,7 @@ $$
 Now, let's calculate $E[Y]$ using the double expectation theorem we just learned:
 
 $$
-E[Y] = E[E(Y|X)] = \int_\R E(Y|x) f_X(x)dx
+E[Y] = E[E(Y|X)] = \int_{\mathbb{R}} E(Y|x) f_X(x)dx
 $$
 
 $$
@@ -335,13 +335,13 @@ $$
 Using LOTUS:
 
 $$
-P[A] = \int_\R E[Y|X=x]dF_X(x)
+P[A] = \int_{\mathbb{R}} E[Y|X=x]dF_X(x)
 $$
 
 Since we saw that $E[Y|X=x] = P(A|X=x)$, then:
 
 $$
-P[A] = \int_\R P(A|X=x)dF_X(x)
+P[A] = \int_{\mathbb{R}} P(A|X=x)dF_X(x)
 $$
 
 ### Theorem
@@ -349,29 +349,29 @@ $$
 The result above implies that, if $X$ and $Y$ are independent, continuous random variables, then:
 
 $$
-P(Y < X) = \int_\R P(Y < x)f_X(x)dx
+P(Y < X) = \int_{\mathbb{R}} P(Y < x)f_X(x)dx
 $$
 
 To prove, let $A = \{Y < X\}$. Then:
 
 $$
-P[A] = \int_\R P(A|X=x)dF_X(x)
+P[A] = \int_{\mathbb{R}} P(A|X=x)dF_X(x)
 $$
 
 Substitute $A = \{Y < X\}$:
 
 $$
-P[A] = \int_\R P(Y < X|X=x)dF_X(x)
+P[A] = \int_{\mathbb{R}} P(Y < X|X=x)dF_X(x)
 $$
 
 What's $P(Y < X|X=x)$? In other words, for a given $X = x$, what's the probability that $Y < X$? That's a long way of saying $P(Y < x)$:
 
 $$
-P[A] = \int_\R P(Y < x)dF_X(x)
+P[A] = \int_{\mathbb{R}} P(Y < x)dF_X(x)
 $$
 
 $$
-P[A] = P[Y < X] = \int_\R P(Y < x)f_X(x)dx, \quad F_x'(x) = f_X(x)dx
+P[A] = P[Y < X] = \int_{\mathbb{R}} P(Y < x)f_X(x)dx, \quad F_x'(x) = f_X(x)dx
 $$
 
 ### Example
@@ -379,13 +379,13 @@ $$
 Suppose we have two random variables, $X \sim \text{Exp}(\mu)$ and $Y \sim \text{Exp}(\lambda)$. Then:
 
 $$
-P(Y < X) = \int_\R P(Y < x)f_X(x)dx
+P(Y < X) = \int_{\mathbb{R}} P(Y < x)f_X(x)dx
 $$
 
 Note that $P(Y < x)$ is the cdf of $Y$ at $x$: $F_Y(x)$. Thus:
 
 $$
-P(Y < X) = \int_\R F_Y(x)f_X(x)dx
+P(Y < X) = \int_{\mathbb{R}} F_Y(x)f_X(x)dx
 $$
 
 Since $X$ and $Y$ are both exponentially distributed, we know that they have the following pdf and cdf, by definition:
@@ -527,7 +527,7 @@ Suppose that $h(X,Y)$ is some function of two random variables, $X$ and $Y$. The
 $$
 E[h(X,Y)] = \left\{\begin{matrix}
 \sum_x \sum_y h(x,y)f(x,y) & \text{if (X,Y) is discrete} \\
-\int_\R \int_\R h(x,y)f(x,y)dx dy & \text{if (X,Y) is continuous} \\
+\int_{\mathbb{R}} \int_{\mathbb{R}} h(x,y)f(x,y)dx dy & \text{if (X,Y) is continuous} \\
 \end{matrix}\right.
 $$
 
@@ -963,15 +963,15 @@ We can see that this equation directly corresponds to the probability of $x - 1$
 Additionally, $X$ has the following properties:
 
 $$
-E[X] = \frac{1}{p} \\
+E[X] = \frac{1}{p}
 $$
 
 $$
-\text{Var}(X) = \frac{q}{p^2} \\
+\text{Var}(X) = \frac{q}{p^2}
 $$
 
 $$
-M_X(t) = \frac{pe^t}{1-qe^t} \\
+M_X(t) = \frac{pe^t}{1-qe^t}
 $$
 
 ### Negative Binomial (Discrete)
@@ -1155,16 +1155,17 @@ $$
 Suppose we have a random variable, $X \sim \text{Normal}(\mu, \sigma^2)$. $X$ has the following pdf, which, when graphed, produces the famous bell curve:
 
 $$
-f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left[\frac{-(x - \mu)^2}{2\sigma^2}\right], \quad x \in \R \\[2ex]
-\text{where } \exp(x) = e^x
+f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left[\frac{-(x - \mu)^2}{2\sigma^2}\right], \quad x \in \mathbb{R}, \quad \text{ where } \exp(x) = e^x
 $$
 
 Additionally, $X$ has the following properties:
 
 $$
-E[X] = \mu \\[2ex]
-\text{Var}(X) = \sigma^2 \\[2ex]
-M_X(t) = \exp\left(\mu t + \frac{1}{2}\sigma^2t^2\right)
+\begin{alignedat}{1}
+E[X] &= \mu \\[2ex]
+\text{Var}(X) &= \sigma^2 \\[2ex]
+M_X(t) &= \exp\left(\mu t + \frac{1}{2}\sigma^2t^2\right)
+\end{alignedat}
 $$
 
 ### Theorem
@@ -1244,7 +1245,7 @@ $$
 We can simplify this expression. Let's first split the sum:
 
 $$
-Z_n \equiv \frac{\sum_{i=1}^n X_i}{\sqrt{n}\sigma} - \frac{n\mu}{\sqrt{n}\sigma} \\[3ex]
+Z_n \equiv \frac{\sum_{i=1}^n X_i}{\sqrt{n}\sigma} - \frac{n\mu}{\sqrt{n}\sigma}s
 $$
 
 Let's work on the first term:
@@ -1356,6 +1357,7 @@ Let's suppose that we have a collection of iid random variables, $X_1,...,X_n$. 
 For example, $\bar{X}$ is usually a point estimator for the true mean, $\mu = E[X_i]$, and $S^2$  is often a point estimator for the true variance, $\sigma^2 = \text{Var}(X)$.
 
 $T(\bold{X})$ should have specific properties:
+
 - Its expected value should equal the parameter it's trying to estimate. This property is known as *unbiasedness*.
 - It should have a low variance. It doesn't do us any good if $T(\bold{X})$ is bouncing around depending on the sample we take.
 

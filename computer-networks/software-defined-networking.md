@@ -9,6 +9,7 @@ lecture: software-defined-networking
 
 ## Network Management Overview
 Network management is the process of configuring the network to achieve a variety of tasks, such as
+
 - balancing traffic load
 - achieving security goals
 - satisfying business relationships
@@ -86,6 +87,7 @@ Suddenly there was an emergence of cheap switches that were built based on open 
 
 ## Advantages of SDN
 Some of the main benefits of SDN are
+
 - easier coordination of behavior across network devices
 - easier evolution of network behavior
 - easier to reason about network behavior
@@ -107,6 +109,7 @@ Openflow is one standard that defines a set of control commands by which a contr
 
 ### Applications
 SDN has many applications, including
+
 - data centers
 - backbone networks
 - enterprise networks
@@ -115,6 +118,7 @@ SDN has many applications, including
 
 ## Control and Data Planes
 The control plane contains the logic that controls forwarding behavior. Control plane functions include
+
 - routing protocols
 - configuration for network middle-boxes
 
@@ -179,6 +183,7 @@ A final challenge is security/robustness. In particular, we want to make sure th
 [NOX](noxrepo.org) is a first-generation OpenFlow controller. It is open-source, stable and widely used.
 
 There are two flavors of NOX
+
 - "classic" NOX (C++/Python, no longer supported)
 - "new" NOX (C++ only, fast, clean codebase)
 
@@ -202,6 +207,7 @@ When a switch receives a packet it updates its counters for packets belonging to
 The basic programmatic interface for the NOX controller is based on events.
 
 A controller knows how to process different types of a events, such as
+
 - switch join/leave
 - packet received
 - various statistical events

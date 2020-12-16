@@ -22,6 +22,7 @@ To think about consistency properly, we first need a notion of a high-level prog
 The first step that a controller needs to take is to read and monitor network state as well as respond to various events that may be occurring in the network.
 
 These events may include
+
 - failures
 - topology changes
 - security events
@@ -79,6 +80,7 @@ This could be used to indicate that the application should only see the first pa
 
 ## Writing Network Policy
 There are many reasons that a controller might want to write policy to change the state in the network switches, including
+
 - maintenance
 - unexpected failure
 - traffic engineering
@@ -86,6 +88,7 @@ There are many reasons that a controller might want to write policy to change th
 Any of these network tasks require updating state in the network switches. When that state transition happens, we want to make sure that forwarding remains correct and consistent.
 
 In particular, we'd like to maintain the following invariants
+
 - no forwarding loops
 - no black holes
 - no intermittent security violations
@@ -203,6 +206,7 @@ The physical nodes themselves must be virtualized, and a popular strategy for vi
 The hypervisor - or whatever is managing the virtual environment - can effectively slice the underlying physical hardware to provide the illusion of multiple guest nodes.
 
 Examples of node virtualization include
+
 - [Xen](https://xenproject.org/)
 - [VMWare](https://www.vmware.com/)
 - [Vservers](http://linux-vserver.org/Welcome_to_Linux-VServer.org)

@@ -21,6 +21,7 @@ The first type of malware embeds itself in a host program and executes on the sy
 The second type of malware interacts with systems as independent programs that can run by themselves.
 
 Malware can embed itself in a host through
+
 - trap doors
 - logic bombs
 - Trojan horses
@@ -28,6 +29,7 @@ Malware can embed itself in a host through
 - browser plugins/extensions
 
 Examples of independent malware include
+
 - worms
 - botnets
 - advanced persistent threats (APTs)

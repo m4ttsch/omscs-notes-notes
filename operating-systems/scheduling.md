@@ -30,6 +30,7 @@ How do we decide which task to be selected? This depends on the scheduling polic
 For the purposes of discussion, it's necessary to make some assumptions. First, we can assume that we have a group of tasks that need to be scheduled. Second, we can assume that we know the execution times of the tasks. Third, we can assume that there is no preemption in the system. Fourth, assume that there is a single CPU.
 
 When it comes to comparing schedulers, some common metrics include:
+
 - throughput
 - average job completion time
 - average job wait time
@@ -281,6 +282,7 @@ The reason why we have to context switch among threads is because the CPU only h
 We call this **hyperthreading**. In hyperthreading, we have multiple hardware-supported execution context. We still have one CPU - so only one of these threads will execute at a given time - but context switching amongst the threads is very fast.
 
 This mechanism is referred to by many names:
+
 - hardware multithreading
 - hyperthreading
 - chip multithreading (CMT)
@@ -339,11 +341,13 @@ When we looked previously at determining whether a process was more interactive 
 We need some hardware-level information in order to help make our decision.
 
 Most modern platforms contain **hardware counters** that get updated as the processor executes and keep information about various aspects of execution, like
+
 - L1, L2 … LLC cache misses
 - Instructions Per Cycle (IPC) metrics
 - Power/Energy usage data
 
 There are a number of software interfaces for accessing these hardware counters, such as
+
 - oprofile
 - Linux perf tool
 

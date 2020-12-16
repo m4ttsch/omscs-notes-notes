@@ -101,6 +101,7 @@ print df.tail()
 ```
 
 ### Documentation 
+
 - [pandas.read_csv](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html)
 - [pandas.DataFrame.head](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.head.html)
 - [pandas.DataFrame.tail](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.tail.html)
@@ -127,6 +128,7 @@ df[n:m + 1]
 Note that the range is upper-bound exclusive, which means it won't include the `m`-th row by default. Thus, we must slice up to, but not including, `m + 1`. 
 
 ### Documentation
+
 - [Slicing ranges](https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#slicing-ranges)
 
 ## Compute Max Closing Price
@@ -143,6 +145,7 @@ close.max()
 ```
 
 ### Documentation
+
 - [Indexing Basics](https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#basics)
 * [pandas.DataFrame.max](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.max.html)
 
@@ -161,6 +164,7 @@ df['Values'].mean()
 ```
 
 ### Documentation
+
 - [pandas.DataFrame.mean](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.mean.html)
 
 ## Plotting Stock Price Data
@@ -182,6 +186,7 @@ The generated plot looks like this.
 Note how simple this graph is: there is no x-axis label, no y-axis label, no legend, and no title.
 
 ### Documentation
+
 - [Plotting DataFrames](https://pandas.pydata.org/pandas-docs/stable/reference/frame.html#plotting)
 - [matplotlib.axes.Axes.plot](https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib-axes-axes-plot) 
 

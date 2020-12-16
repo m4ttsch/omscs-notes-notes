@@ -38,6 +38,7 @@ df.prod() # Column-wise product of elements
 ```
 
 ### Documentation
+
 - [Computations / descriptive stats](https://pandas.pydata.org/pandas-docs/stable/reference/series.html#computations-descriptive-stats)
 
 ## Compute Global Statistics
@@ -79,6 +80,7 @@ If we print out the standard deviation of the prices of each stock, we see the f
 We can see that GOOG has the highest standard deviation among the stocks. This means the price of GOOG has varied more over time than the price of the other stocks.
 
 ### Documentation
+
 - [pandas.DataFrame.mean](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.mean.html)
 - [pandas.DataFrame.median](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.median.html)
 - [pandas.DataFrame.std](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.std.html)
@@ -201,6 +203,7 @@ Observe that the rolling mean line has missing initial values. Since we defined 
 Also observe that the rolling mean appears to track the price data, but is much smoother than the raw data.
 
 ### Documentation
+
 - [pandas.DataFrame.rolling](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.rolling.html)
 - [pandas.DataFrame.plot](https://pandas.pydata.org/pandas-docs/version/0.23.4/generated/pandas.DataFrame.plot.html)
 - [matplotlib.axes.Axes.set_xlabel](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.axes.Axes.set_xlabel.html)
@@ -236,6 +239,7 @@ rm + (2 * rstd), rm - (2 * rstd)
 ![](https://assets.omscs.io/notes/2020-01-12-19-22-39.png)
 
 ### Documentation
+
 - [pandas.DataFrame.rolling](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.rolling.html)
 
 ## Daily Returns
@@ -309,6 +313,7 @@ daily_returns.iloc[0] = 0
 ```
 
 ### Documentation
+
 - [pandas.DataFrame.shift](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.shift.html)
 - [pandas.DataFrame.ix - DEPRECATED](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.ix.html)
 - [pandas.DataFrame.loc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.loc.html)

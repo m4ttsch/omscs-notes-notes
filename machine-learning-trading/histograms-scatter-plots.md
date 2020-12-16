@@ -86,6 +86,7 @@ Let's see our new histogram.
 Notice that the width of each bar has decreased, and the number of bars has increased.
 
 ### Documentation
+
 - [pandas.DataFrame.hist](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.hist.html)
 
 ## Computing Histogram Statistics
@@ -143,6 +144,7 @@ df.kurtosis()
 If we print the kurtosis, we get a positive value, which confirms that we have the "fat tails" described above.
 
 ### Documentation
+
 - [pandas.Series.mean](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.mean.html)
 - [pandas.Series.std](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.std.html)
 - [matplotlib.axes.Axes.axvline](https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.axvline.html)
@@ -201,6 +203,7 @@ Let's take a look at the histograms.
 Now that the histograms are on the same axes, we can compare their peaks and tails more easily.
 
 ### Documentation
+
 - [pandas.DataFrame.hist](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.hist.html)
 - [matplotlib.pyplot.legend](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.legend.html)
 

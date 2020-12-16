@@ -74,6 +74,7 @@ Finally, a trusted system is a correct system. If you are going to rely on the O
 How does the operating system mediate requests for protected resources?
 
 A request always has two main components:
+
 - the entity making the request
 - the target resource being requested
 

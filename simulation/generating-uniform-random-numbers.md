@@ -17,6 +17,7 @@ The goal is to produce an algorithm that can generate a sequence of pseudo-rando
 Such an algorithm has a few desired properties. As we said, we need to produce output that appears to be i.i.d Unif(0,1). We also need the algorithm to execute quickly because we might want to generate billions of PRNs. Moreover, we need the algorithm to be able to reproduce any sequence it generates. This property allows us to replicate experiments and simulation runs that rely on streams of random numbers.
 
 In the next few lessons, we will look at different classes of Unif(0,1) generators. We'll start with some lousy generators, such as
+
 - the output of a random device
 - a table of random numbers
 - the mid-square method
@@ -124,7 +125,7 @@ Does this generator achieve full cycle? Let's find out:
 
 $$
 \begin{array}{c|cccc|c}
-i & 0 & 1 & 2 & 3 & 4 & \\ \hline
+i & 0 & 1 & 2 & 3 & 4 \\ \hline
 X_i & 0 & 2 & 4 & 6 & 0  \\ \hline
 R_i & 0 & 2/8 & 4/8 & 6/8 & 0  \\
 \end{array}
@@ -283,6 +284,7 @@ Generators of this form can have extremely large periods - up to $m^q - 1$ if we
 ### Combinations of Generators
 
 We can combine two generators, $X_1, X_2, ...$ and $Y_1, Y_2,...$, to construct a third generator, $Z_1, Z_2,...$. We might use one of the following techniques to construct the $Z_i$'s:
+
 - Set $Z_i$ equal to $(X_i + Y_i) \bmod m$
 - Shuffling the $X_i$'s and $Y_i$'s
 - Set $Z_i$ conditionally equal to $X_i$ or $Y_i$
@@ -294,13 +296,12 @@ However, the properties for these composite generators are challenging to prove,
 The following is a very strong combined generator. First, we initialize $X_{1,0}, X_{1,1}, X_{1,2}, X_{2,0}, X_{2,1}, X_{2,2}$. Next, for $i \geq 3$:
 
 $$
-\begin{alignedat}{0}
+\begin{aligned}
 & X_{1,i} = (1,403,580X_{1, i-2} - 810,728X_{1,i-3}) \bmod (2^{32} - 209) \\
 & X_{2,i} = (527,612X_{2, i-1} - 1,370,589X_{2,i-3}) \bmod (2^{32} - 22,853) \\
 & Y_i = (X_{1,i} - X_{2,i}) \bmod(2^{32} - 209) \\
 & R_i = Y_i / (2^{32} - 209)
-
-\end{alignedat}
+\end{aligned}
 $$
 
 As crazy as this generator looks, it only requires simple mathematical operations. It works well, it's easy to implement, and it has an amazing cycle length of about $2^{191}$.
@@ -368,6 +369,7 @@ X_i = (aX_{i-1} + c) \mod m, \quad c > 0
 $$
 
 This generator has full cycle if the following three conditions hold:
+
 - $c$ and $m$ are [relatively prime](https://en.wikipedia.org/wiki/Coprime_integers)
 - $a - 1$ is a multiple of every prime which divides $m$
 - $a - 1$ is a multiple of $4$ if $4$ divides $m$
@@ -389,6 +391,7 @@ X_i = aX_{i=1} \bmod m, \quad m \text{ is prime}
 $$
 
 This generator has full period ($m - 1$, in this case), if and only if the following two conditions hold:
+
 - $m$ divides $a^{m-1} - 1$
 - for all integers $i < m - 1$, $m$ does not divide $a^i - 1$
 
@@ -401,6 +404,7 @@ For $m = 2^{31} - 1$, it can be shown that $534,600,000$ multipliers yield full 
 Let's look at $k$ consecutive PRNs, $(R_i,...,R_{i+k-1}), i \geq 1$, generated from a multiplicative generator. As it turns out, these $k$-tuples lie on parallel hyperplanes in a $k$-dimensional unit cube.
 
 We might be interested in the following geometric optimizations:
+
 - maximizing the minimum number of hyperplanes in all directions 
 - minimizing the maximum distance between parallel hyperplanes 
 - maximizing the minimum Euclidean distance between adjacent $k$-tuples
@@ -528,9 +532,11 @@ Interestingly, we find ourselves in something of a catch-22: the independence te
 Let's consider three different sequences of coin tosses:
 
 $$
+\begin{aligned}
 \text{A. H,T,H,T,H,T,H,T,H,T} \\
 \text{B. H,H,H,H,H,T,T,T,T,T} \\
 \text{C. H,H,H,T,T,H,T,T,H,T} \\
+\end{aligned}
 $$
 
 In example A, we have a high negative correlation between the coin tosses since tails always follows heads and vice versa. In example B, we have a high positive correlation, since similar outcomes tend to follow one another. We can't see a discernible pattern among the coin tosses in example C, so observations might be independent in this sequence.
@@ -659,8 +665,10 @@ $$
 Consider the following $+/-$ sequence of $n=40$ observations:
 
 $$
+\begin{aligned}
 -+++++++---++-+----- \\
 --++----++--+-+--++-
+\end{aligned}
 $$
 
 In this case, we have $n_1 = 18$ observations above the mean and $n_2 = 22$ observations below the mean, as well as $B=17$ runs. Without walking through the algebra, we can compute that $B \approx \text{Nor}(20.3, 9.54)$.
@@ -721,9 +729,11 @@ $$
 Consider the following $n=30$ PRNs:
 
 $$
+\begin{aligned}
 0.29 \quad 0.38 \quad 0.46 \quad 0.29 \quad 0.69 \quad 0.73 \quad 0.80 \quad 0.74 \quad 0.99 \quad 0.74 \\
 0.88 \quad 0.66 \quad 0.56 \quad 0.41 \quad 0.35 \quad 0.22 \quad 0.18 \quad 0.05 \quad 0.25 \quad 0.36 \\
 0.39 \quad 0.45 \quad 0.50 \quad 0.62 \quad 0.76 \quad 0.81 \quad 0.97 \quad 0.72 \quad 0.11 \quad 0.55 \\
+\end{aligned}
 $$
 
 After some algebra, we get $\hat\rho = 0.950$ and $\text{Var}(\hat\rho) = 0.441$. Notice how high our correlation estimator is; we might expect a robust rejection of the null hypothesis.

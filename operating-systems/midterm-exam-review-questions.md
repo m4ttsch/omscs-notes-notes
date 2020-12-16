@@ -9,6 +9,7 @@ lecture: midterm-exam-review-questions
 
 ## What are the key roles of an operating system?
 The operating system has three main roles:
+
 - hide hardware complexity
 - manage underlying hardware resources
 - provide isolation and protection
@@ -28,6 +29,7 @@ With multiple applications running concurrently, the operating system must make 
 **Abstractions** are entities that represent other entities, often in a simplified manner. For example, all of the complexity of reading and manipulating physical storage is abstracted out into the **file**, an abstraction the operating system exposes to layers above. We can interact with the file interface, and let the operating system handle the complexities involved in the implementation. Apart from simplicity, another benefit of abstractions is their portability. Operating systems are free to swap out their implementations to suit different hardware resources, and as long as their API remains constant, programs will still run.
 
 Example of abstractions include:
+
 - process/thread (application abstractions)
 - file, socket, memory page (hardware abstractions)
 
@@ -42,6 +44,7 @@ That being said, certain policies may occur more frequently than others, so it m
 
 ## What does the principle optimize for the common case mean?
 Optimizing for the common case means ensuring that the most frequent path of execution operates as performantly as possible. This is valuable for two reasons:
+
 - it's simpler than trying to optimize across all possible cases
 - it leads to the largest performance gains as you are optimizing the flow that by definition is executed the most often
 
@@ -67,6 +70,7 @@ This context switch takes CPU cycles to perform which is real overhead on the sy
 Basically, user/kernel mode crossing occurs any time any application needs access to underlying hardware, be it physical memory, storage, or I/O devices.
 
 User/kernel cross may occur if an application wishes to
+
 - read from a file
 - write to a file
 - listen on a socket
@@ -256,6 +260,7 @@ Spurious wake ups can often be avoided by placing signal/broadcast calls outside
 
 ## Do you understand the need for using a while() look for the predicate check in the critical section entry code examples in the lessons?
 When a condition variable is signaled on, and a thread is to be "woken up", two things occur:
+
 - The thread is removed from the wait queue
 - The thread reacquires the mutex
 

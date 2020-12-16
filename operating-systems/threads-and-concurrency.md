@@ -208,6 +208,7 @@ Let's make our previous discussion concrete with an example.
 In this example, we can see that our reading and writing operations exist outside of a locked mutex, but are preceded and followed by a mutex enforced update to the shared variable, `resource_counter`.
 
 Our program will require four things:
+
 - `resource_counter` - a proxy variable for the state of the shared resource
 - `counter_mutex` - a mutex which controls access to `resource_counter`
 - `read_phase`  - a condition variable signifying that the resource is ready for reading

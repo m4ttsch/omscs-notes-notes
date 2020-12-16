@@ -119,6 +119,7 @@ From text pg 327.
 ## Access control mechanisms
 
 An access control mechanism mediates between a user (or a process executing on behalf of a user) and system resources, such as:
+
 - a) firewalls
 - b) routers
 - c) applications
@@ -537,6 +538,7 @@ Source: book p.159
 
 
 Question: Which of the following are proper measures to defend against SQLi attacks?
+
 - a) user input validation
 - b) parameterized query insertion
 - c) SQL DOM

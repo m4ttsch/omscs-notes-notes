@@ -13,6 +13,7 @@ If Alice receives a packet with Bob's source IP address, she cannot be sure that
 For example, bots in a botnet can use source IP spoofing and DNS to mount a denial of service attack at a victim website. The bots query many different DNS servers requesting the full TXT record of a domain, which often contains many bytes of information. By spoofing the source IP address of their traffic to point to a victim website, the bots can direct the aggregate DNS response, which can be massive, to the victim website, overwhelming its servers.
 
 IPSec provides security services at the IP layer, including
+
 - authentication of source IP addresses
 - confidentiality and integrity protection of packet data
 - authenticity of packet data; in particular, preventing packet replay

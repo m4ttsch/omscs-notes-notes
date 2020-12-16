@@ -33,6 +33,7 @@ The most sophisticated attackers, such as state-sponsored individuals, may use n
 Since IDS's are not completely effective, they need to be part of the broader defense-in-depth strategy for an organization.
 
 Other standard security strategies include:
+
 - encrypting sensitive information
 - providing detailed activity audit trails
 - using robust authentication and access control practices
@@ -79,6 +80,7 @@ For intrusion detection to be possible, we need to make some important assumptio
 When building an intrusion detection algorithm, we must consider the following. First, we need to identify the behavioral *features* and activities that we want to capture from the system. Second, we must synthesize our detection *models*; that is, we need to stitch together the evidence we collect to determine whether a pattern of activity represents an intrusion.
 
 An IDS typically includes several modules, including:
+
 - an audit data preprocessor
 - a knowledge base
 - a decision engine

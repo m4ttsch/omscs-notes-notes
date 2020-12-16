@@ -140,6 +140,7 @@ Since the Slammer worm was spread via a single UDP packet, the transmission of t
 The majority of the damage from Slammer was inflicted in just 30 minutes.
 
 The worm caused $1.2 billion in damage and temporarily knocked out many elements of critical infrastructure, including:
+
 - Bank of America's ATM network
 - A cellphone network in South Korea
 - Five root DNS servers

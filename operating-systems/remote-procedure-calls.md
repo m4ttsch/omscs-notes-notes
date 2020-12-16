@@ -299,6 +299,7 @@ The return from this function is the client handle that will be used in every su
 All of the types defined in the XDR file must be XDR-supported data types.
 
 Some of the default XDR data types include:
+
 - char
 - byte
 - int
@@ -342,6 +343,7 @@ All data types are encoded in multiples of four bytes. Encoding a single byte ar
 Big endian is used as the transmission standard. Regardless of the endianness of the client or the server, every communication will require that the data be converted to the big endian representation prior to transmission.
 
 Other encoding rules include:
+
 - two's complement representation of integers
 - IEEE format for floating point numbers
 

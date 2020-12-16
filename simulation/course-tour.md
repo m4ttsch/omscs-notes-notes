@@ -186,6 +186,7 @@ For example, we can use simulation to determine how much value a particular fore
 ### More Applications
 
 Here are some of the domains in which we can use simulation:
+
 - inventory and supply chain analysis
 - financial analysis
   - portfolio analysis
@@ -322,7 +323,7 @@ $$
 
 However, we are going to use simulation to approximate the integral using a pre-calculus methodology: rectangles. With this technique, we draw $n$ rectangles of width $\frac{1}{n}$, where each rectangle is centered about a point, $x$, along the x-axis and has a height of $f(x)$.
 
-The idea here is that, as $n$ approaches $\infin$, the sum of the triangles' areas approaches the integral of $f(x)$.
+The idea here is that, as $n$ approaches $\infty$, the sum of the triangles' areas approaches the integral of $f(x)$.
 
 To approximate the integral via simulation, we are going to follow this same strategy. We sample $n$ points randomly from $[0, 1]$, and, for each point, $x$, we construct a rectangle, centered about $x$, with width $\frac{1}{n}$ and height $f(x)$.
 
@@ -383,6 +384,7 @@ Now we will take a look at a queueing problem.
 Suppose we go to McWendy's, a popular burger joint, and we encounter a single-server queue: there is one line, with one server, and people get served first-in-first-out.
 
 What happens as the arrival rate approaches the service rate?
+
 - Nothing much
 - The line gets pretty long
 - Hamburgers start to taste better
@@ -606,6 +608,7 @@ For example, when we open a store for the day, there are no lines, and no one ha
 Usually, people "warm up" the simulation before collecting data. In our example, we might simulate the store for an hour before recording any observations. Failure to remove this initialization bias can ruin subsequent statistical analyses.
 
 There are many different methods for dealing with steady-state data, which we will learn more about in due time:
+
 - batch means
 - overlapping batch means / spectral analysis
 - standardized time series

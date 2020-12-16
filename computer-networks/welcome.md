@@ -16,6 +16,7 @@ Each document in "Lecture Notes" corresponds to a lesson in [Udacity](https://cl
 ## Textbook Information
 
 The following textbooks helped me get an **A** in this course:
+
 - [Computer Networking: A Top-Down Approach](https://amzn.to/3bTL2o3)
 - [Computer Networks](https://amzn.to/3gjF0km)
 
@@ -25,7 +26,6 @@ Some students have asked for PDF versions of the notes for a simpler, more porta
 studying experience. The following PDFs are available for download.
 
 - [Computer Networks - Complete](https://payhip.com/b/9UGM "The complete set of CN lecture notes, covering content from all sixteen lectures.")
-
 
 ## Contact
 

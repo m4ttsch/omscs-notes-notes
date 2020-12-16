@@ -20,12 +20,14 @@ HTTP is typically layered on top of a byte stream protocol, which is almost alwa
 
 ## HTTP Requests
 An HTTP request consists of multiple components, such as
+
 - request line
 - headers
 - request body (not described in this video)
 
 ### Request Line
 The request line contains
+
 - request method
 - request path
 - HTTP version
@@ -33,6 +35,7 @@ The request line contains
 The request method indicates which type of request is to be performed.
 
 Typical request methods include
+
 - GET (fetch data from server)
 - POST (send data to server)
 - HEAD (fetch headers from server)
@@ -66,6 +69,7 @@ The `Host` specifies the domain to which the request is being made, which can be
 
 ## HTTP Response
 An HTTP response includes
+
 - status line
 - headers
 - response body (not shown in this video)
@@ -371,6 +375,7 @@ Let's construct the finger table for node 10.
 ![](https://assets.omscs.io/notes/5E9E22A6-66E1-4CCB-A958-696F9A3BB6D0.png)
 
 The fingers of node 10 would be
+
 - 10 + 2^0 = 10 + 1 = 11
 - 10 + 2^1 = 10 + 2 = 12
 - 10 + 2^2 = 10 + 4 = 14

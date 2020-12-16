@@ -209,12 +209,14 @@ Another way to reduce the network load is to have the client acknowledge every o
 
 ## Multimedia and Streaming
 In this section we will talk about
+
 - digital audio and video data
 - multimedia applications
 - multimedia transfers over best-effort networks
 - quality of service
 
 Some multimedia applications that we use today include
+
 - youtube
 - skype
 - google hangouts

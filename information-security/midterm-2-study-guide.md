@@ -248,6 +248,7 @@ Text pg 237
 **Multiple Choice**
 
 When it comes to defense against attacks one of the most important principle is what?
+
 - A.	Authorization
 - B.	Authentication
 - C.	Defense-in-depth
@@ -266,6 +267,7 @@ Defense in Depth in lecture
 **Multiple Choice**
 
 Firewalls are what type of mechanisms?
+
 - A.	Prevention
 - B.	Botnet
 - C.	Attack
@@ -298,6 +300,7 @@ What is a Firewall
 **Multiple Choice**
 
 A _____ is a device that provide secure connectivity between networks
+
 - A.	Enterprise intranet
 - B.	Trusted Users
 - C.	Firewall
@@ -316,6 +319,7 @@ What is a Firewall
 **Multiple Choice**
 
 Firewalls as a prevention mechanism should be designed to enforce what?
+
 - A.	User safety
 - B.	Security Policy
 - C.	Organizational Policy
@@ -348,6 +352,7 @@ Firewall
 **Multiple Choice**
 
 The critical component of planning and implementation of a firewall is specifying a suitable ____ policy?
+
 - A.	Security
 - B.	Access
 - C.	Network
@@ -366,6 +371,7 @@ Firewall Access Policy
 **Multiple Choice**
 
 At a high level the types of traffic that are allowed through the access policy is what?
+
 - A.	Address ranges (Machines, protocols, the applications and the contents)
 - B.	IPSec & TLS
 - C.	Intranet
@@ -430,6 +436,7 @@ Additional Convenient Firewall Features
 **Multiple Choice**
 
 What is firewall filtering?
+
 - A.	Firewall filtering is when policies are defined for the firewall
 - B.	Firewalls authenticate users into the system
 - C.	Firewall filtering means the firewall decides whether to let the traffic through or not
@@ -517,6 +524,7 @@ IP or TCP header information that a firewall can use to filter a packet
 •	Interface this is with three or more ports with which interface the packet came or where it is going to.
 
 What policies for packet filtering firewalls are used?
+
 - A.Default Discard Policy
 - B. Default forward policy
 - C. Default Isolation Policy
@@ -541,6 +549,7 @@ Forward policy is easier to use and manage and use but less secure it just lets 
 **Multiple Choice**
 
 What are the weaknesses to packet filtering?
+
 - A. Limited logging functionality
 - B. Vulnerable to attacks that take advantage of TCP/IP
 - C. Can't Prevent attacks that employ application specific vulnerabilities or functions
@@ -607,6 +616,7 @@ Firewalls can be a set of two or more systems (Page 290)
 **Multiple Choice**
 
 The goals of a firewall are all the following except which?
+
 - A.	All traffic from inside to outside and vice versa must pass through the firewall. This is achieved by physically blocking all access to the local network except via the firewall.
 - B.	Only authorized traffic as defined by the local security policy will be allowed to pass.
 - C.	Only unauthorized users are defined by the local security policy and will be allowed to pass.
@@ -639,6 +649,7 @@ True
 **Multiple Choice**
 
 A firewall access policy would use which of the following to filter traffic?
+
 - A.	IP Address and Protocol values
 - B.	Application Protocol
 - C.	User Identity
@@ -662,6 +673,7 @@ Network Activity- Controls the access based on: time or request such as only dur
 **Multiple Choice**
 
 The following are all in the scope of a firewall except which?
+
 - A.	Firewalls are a single choke point that attempts to keep unauthorized users out of the network, prohibit potential vulnerable services from entering or leaving the network and provide protection from various kinds of IP spoofing or routing attacks.
 - B.	Firewalls provide a location for monitoring security-related events
 - C.	Firewalls fully protect against internal threats which include disgruntled employee.
@@ -822,6 +834,7 @@ Elements of Intrusion Detection
 **Multiple Choice**
 
 Which of the components is not part of an Intrusion detection system?
+
 - A. Data preprocessor
 - B. Detection Models
 - C. Detection Engines
@@ -871,6 +884,7 @@ Lectures & PG 252
 **Multiple Choice**
 
 An IDS is comprised of three logical components which of the following is not a component:
+
 - A. Analyzers
 - B. User interface
 - C. Deep Learning
@@ -896,6 +910,7 @@ Page 256
 **Multiple Choice**
 
 In an IDS system the sensors do what?
+
 - A. Determine if an intrusion has occurred
 - B. Allow users to view the output of the system
 - C. Provide guidance about what actions to take when the intrusion occurs.

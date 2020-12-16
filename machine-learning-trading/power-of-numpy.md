@@ -31,6 +31,7 @@ In other words, functionality that is available to the internal ndarray is avail
 Of course, we create DataFrames because pandas builds a lot of great functionality on top of these ndarrays. For example, pandas provides expressive ways to access data in the array, such as symbol-based column indexing and date-based row indexing in the case of `df`.
 
 ### Documentation
+
 - [pandas.DataFrame.values](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.values.html)
 - [pandas.DataFrame.to_numpy](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_numpy.html#pandas.DataFrame.to_numpy)
 
@@ -82,6 +83,7 @@ nd[:, 0:-1] # select all rows, all columns except last
 Note that negative indexing is *not* zero-based. The last row/column is referenced by -1, not -0.
 
 ### Documentation
+
 - [Indexing](https://docs.scipy.org/doc/numpy/user/basics.indexing.html)
 
 ## Replace a Slice Quiz
@@ -103,6 +105,7 @@ nd1[0:2, 0:2] = nd2[-2:, 2:4]
 ```
 
 ### Documentation
+
 - [Indexing](https://docs.scipy.org/doc/numpy/user/basics.indexing.html)
 
 ## Creating NumPy Arrays
@@ -128,6 +131,7 @@ If we print `nd` we see the following.
 ![](https://assets.omscs.io/notes/D3EFFDD6-24C4-48CA-88FE-55FCC2E870F3.png)
 
 ### Documentation
+
 - [numpy.array](https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html)
 
 ## Arrays with Initial Values
@@ -169,6 +173,7 @@ Indeed, we see the following array when we print.
 ![](https://assets.omscs.io/notes/09666E20-37ED-4A8A-AB87-1E278D9487E3.png)
 
 ### Documentation
+
 - [numpy.empty](https://docs.scipy.org/doc/numpy/reference/generated/numpy.empty.html)
 - [numpy.ones](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ones.html)
 
@@ -187,6 +192,7 @@ np.ones((5, 4), dtype=np.int_)
 ```
 
 ### Documentation
+
 - [numpy.ones](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ones.html)
 - [Data types](https://docs.scipy.org/doc/numpy/user/basics.types.html#data-types)
 
@@ -261,6 +267,7 @@ If we print the previous four examples, we see the following.
 ![](https://assets.omscs.io/notes/BFB422D8-4C0E-4D71-8F89-4E756F148793.png)
 
 ### Documentation
+
 - [Random sampling](https://docs.scipy.org/doc/numpy-1.14.0/reference/routines.random.html)
 - [numpy.random.random](https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.random.random.html#numpy.random.random)
 - [numpy.random.rand](https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.random.rand.html#numpy.random.rand)
@@ -318,6 +325,7 @@ If we print the dtype of `a`, we see the following.
 We can see that the elements of `a` are all 64-bit floating-point numbers.
 
 ### Documentation
+
 - [numpy.ndarray.shape](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.shape.html)
 - [numpy.ndarray.size](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.size.html)
 - [numpy.ndarray.dtype](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.dtype.html)
@@ -369,6 +377,7 @@ If we print out these values, we see the following.
 ![](https://assets.omscs.io/notes/C4608A21-9B38-4FD8-A706-514F0CD1C643.png) 
 
 ### Documentation
+
 - [numpy.sum](https://docs.scipy.org/doc/numpy/reference/generated/numpy.sum.html#numpy.sum)
 - [numpy.ndarray.min](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.min.html)
 - [numpy.ndarray.max](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.max.html)
@@ -390,6 +399,7 @@ def get_max_index(a):
 ```
 
 ### Documentation
+
 - [numpy.argmax](https://docs.scipy.org/doc/numpy/reference/generated/numpy.argmax.html#numpy.argmax)
 
 ## Timing Python Operations
@@ -412,6 +422,7 @@ If we run this code, we see the following.
 ![](https://assets.omscs.io/notes/5C87242F-82A9-410D-8FAB-06EEDAC2A30C.png)
 
 ### Documentation
+
 - [time](https://docs.python.org/3/library/time.html)
 - [time.time](https://docs.python.org/3/library/time.html#time.time)
 
@@ -482,6 +493,7 @@ If we print this slice, we see the following.
 ![](https://assets.omscs.io/notes/89F330F0-8D5B-4889-A930-6229D47EC97B.png)
 
 ### Documentation
+
 - [Indexing](https://docs.scipy.org/doc/numpy/user/basics.indexing.html)
 
 ## Modifying Array Elements
@@ -518,6 +530,7 @@ If we print `a`, we see the following.
 ![](https://assets.omscs.io/notes/9834AF37-F3E9-4E27-907E-B3C8ECC71576.png)
 
 ### Documentation
+
 - [Indexing](https://docs.scipy.org/doc/numpy/user/basics.indexing.html)
 
 ## Indexing an Array with Another Array
@@ -546,6 +559,7 @@ This expression is saying the following: for each element in `indices` retrieve 
 Indeed, we can see that our resulting array contains the elements of `a` at indices 1, 1, 2, and 3.
 
 ### Documentation
+
 - [Indexing](https://docs.scipy.org/doc/numpy/user/basics.indexing.html)
 
 ## Boolean or "Mask" Index Arrays
@@ -587,6 +601,7 @@ If we print `a` now, we see the following.
 ![](https://assets.omscs.io/notes/55ECA174-CE17-4395-A26E-4775193C04BF.png)
 
 ### Documentation
+
 - [Indexing](https://docs.scipy.org/doc/numpy/user/basics.indexing.html)
 
 ## Arithmetic Operations

@@ -57,6 +57,7 @@ To evaluate some solution, and determine whether it is useful or not, it is impo
 A metric is a measurable or quantifiable property of a system that we are interested in that can be used to evaluate the system's behavior. For example, a metric can be the execution time (measurable property) of a software implementation to a problem (component of system we are interested in) which can be used to see if the implementation being analyzed is more performant than other implementations (system behavior evaluation).
 
 So far, we have discussed many useful metrics, such as:
+
 - execution time
 - throughput
 - request rate
@@ -134,6 +135,7 @@ An event driven application is implemented in a single address space, with a sin
 ![](https://assets.omscs.io/notes/8070F398-66E2-46AB-9C66-DF1727B257C1.png)
 
 Events (in the case of a web server application)  can correspond to:
+
 - receipt of request
 - completion of send
 - completion a disk read
@@ -248,6 +250,7 @@ Finally, how will you measure performance? Will you look at execution time, thro
 ### What systems are you comparing?
 
 The authors compared their implementation against
+
 - a multiprocess, single threaded implementation
 - a multithreaded implementation using the boss/workers pattern
 - a single process event-driven (SPED) implementation
@@ -338,6 +341,7 @@ What is the baseline performance of the system you are improving? You want to be
 
 ## Advice on Running Experiments
 Here is the easy part:
+
 - Run test cases N times
 - Compute metrics
 - Represent results

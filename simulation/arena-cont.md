@@ -163,7 +163,7 @@ In this lesson, we will add to our arsenal of modules and spreadsheets by introd
 
 ### Advanced Process Template
 
-We can access this template by clicking the *File > Template Panel > Attach* menu option and then selecting the template file from the *Rockwell Software\Arena\Template* directory on our local machine.
+We can access this template by clicking the *File > Template Panel > Attach* menu option and then selecting the template file from the *Rockwell Software\\Arena\\Template* directory on our local machine.
 
 Here's what the template looks like. As we saw in the Basic Process template, this template has several modules and spreadsheets. In the next few lessons, we will focus specifically on the Seize, Delay, and Release modules and the Expression and Failure spreadsheets.
 
@@ -207,7 +207,7 @@ Before we go, let's look at how to import the Advanced Template panel. We start 
 
 ![](https://assets.omscs.io/notes/2020-09-29-19-58-10.png)
 
-We might have to do some hunting, but we should end up in a *Rockwell Software\Arena\Template* subdirectory on our local machine. Here we can select from several different templates.
+We might have to do some hunting, but we should end up in a *Rockwell Software\\Arena\\Template* subdirectory on our local machine. Here we can select from several different templates.
 
 ![](https://assets.omscs.io/notes/2020-09-29-19-59-19.png)
 
@@ -275,7 +275,7 @@ In this lesson, we'll add to our ever-growing bag of tricks by learning about th
 
 ### Blocks Template
 
-Just as we did with the Advanced Process template, we can access the Blocks template by clicking the *File > Template Panel > Attach* menu option and then selecting the template file from the *Rockwell Software\Arena\Template* directory on our local machine.
+Just as we did with the Advanced Process template, we can access the Blocks template by clicking the *File > Template Panel > Attach* menu option and then selecting the template file from the *Rockwell Software\\Arena\\Template* directory on our local machine.
 
 Here's what the Blocks template looks like. There are many blocks in this template, and altogether they sort of form a self-contained language related to SIMAN, the predecessor of Arena.
 
@@ -352,6 +352,7 @@ In this lesson, we're going to learn how to use sets to enhance our modeling abi
 ### Sets
 
 A set is just a group of elements. Elements are allowed to belong to more than one set. Elements can be anything in Arena, and, as a result, Arena has many different types of sets, such as:
+
 - Resource Sets
 - Counter Sets
 - Tally Sets
@@ -473,6 +474,7 @@ This investigation takes an EXPO(60) amount of time. After the investigation is 
 ### Tech Support Info
 
 The tech support staff work for 8-hour days with thirty minutes for lunch, and every server has a different schedule. Additionally, the support staff all have different product expertise. Here are the preferred orders for servers on a per-product basis:
+
 - Product 1: Charity, Noah, Molly, Anna, Sammy
 - Product 2: Tierney, Sean, Emma, Anna, Sammy
 - Product 3: Shelley, Jenny, Christie, Anna, Sammy
@@ -797,6 +799,7 @@ In this lesson, we will look at a model of a re-entrant queue. As it turns out, 
 In this example, customers will visit server one, followed by server two, server one, server two, and finally server one again. We call the queues associated with these servers "re-entrant" because customers re-enter them after receiving service. We depict this flow in Arena with five separate Process modules, each with a Seize-Delay-Release trio that grabs the appropriate server. As a reminder, it is legal to seize the same server in different Process modules.
 
 All service times are exponential. Here are the means:
+
 - 1 (0.1)
 - 2 (0.5)
 - 1 (0.1)
@@ -804,6 +807,7 @@ All service times are exponential. Here are the means:
 - 1 (0.5)
 
 Here are the customer priorities:
+
 - 1 (low)
 - 2 (high)
 - 1 (medium)
@@ -889,6 +893,7 @@ In this demo, we'll be looking at the manufacturing cell we just described. Here
 ![](https://assets.omscs.io/notes/2020-10-04-13-07-54.png)
 
 Let's take a look at the demo in action. We can see three different colors of marbles - red, green, and blue - which correspond to the three products that our cell can make. Each type of product traverses a different path through the system:
+
 - Blue: one, two, three, four
 - Red: one, two, four, two, three
 - Green: two, one, three

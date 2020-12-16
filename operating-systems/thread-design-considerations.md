@@ -84,6 +84,7 @@ When a thread is created, the library returns a thread id. This id is not a dire
 The nice thing about this is that if there is a problem with the thread, the value at the index can change to say -1 instead of the pointer just pointing to some corrupt memory.
 
 The thread data structure contains different fields for:
+
 - execution context
 - registers
 - signal mask
@@ -103,12 +104,14 @@ The solution is to separate information about each thread by a **red zone**. The
 
 ## Kernel Level Structures in Solaris 2.0
 For each process, the kernel maintains a bunch of information, such as:
+
 - list of kernel level threads
 - virtual address space
 - user credentials
 - signal handlers
 
 The kernel also maintains a light-weight process (LWP), which contains data that is relevant for some subset of the user threads in a given process. The data contained in an LWP includes:
+
 - user level registers
 - system call arguments
 - resource usage info
@@ -117,6 +120,7 @@ The kernel also maintains a light-weight process (LWP), which contains data that
 The data contained in the LWP is similar to the data contained in the ULT, but the LWP is visible to the kernel. When the kernel needs to make scheduling decisions, they can look at the LWP to help make decisions.
 
 The kernel level thread contains:
+
 - kernel-level registers
 - stack pointer
 - scheduling info
@@ -125,6 +129,7 @@ The kernel level thread contains:
 The kernel level thread has information about an execution context that is always needed. There are operating system services (for example, scheduler) that need to access information about a thread even when the thread is not active. As a result, the information in the kernel level thread is **not swappable**. The LWP data does not have to be present when a process is not running, so its data can be swapped out.
 
 The CPU data structure contains:
+
 - current thread
 - list of kernel level threads
 - dispatching & interrupt handling information
@@ -152,11 +157,13 @@ Generally, the problem is that the user level library and the kernel have no ins
 
 ## Thread Management Visibility and Design
 The kernel sees:
+
 - Kernel level threads
 - CPUs
 - Kernel level scheduler
 
 The user level library sees:
+
 - User level threads
 - Available kernel level threads
 
@@ -169,6 +176,7 @@ The user level library will make scheduling changes that the kernel is not aware
 We should look at 1:1 ULT:KLT models.
 
 The process jumps to the user level library scheduler when:
+
 - ULTs explicitly yield
 - Timer set by the by UL library expires
 - ULTs call library functions like lock/unlock
@@ -215,6 +223,7 @@ When a thread exits, the data structures are not immediately freed. Instead, the
 Interrupts are events that are generated **externally** by components other than the CPU to which the interrupt is delivered. Interrupts are notifications that some external event has occurred.
 
 Components that may deliver interrupts can include:
+
 - I/O devices
 - Timers
 - Other CPUs
@@ -259,6 +268,7 @@ For each process, the OS maintains a mapping where the keys correspond to the si
 ![](https://assets.omscs.io/notes/5F7DBAFC-B0F5-422D-B6B3-F29660E99E97.png)
 
 The process may specify how a signal can be handled, or the operating system default may be used. Some default signal responses include:
+
 - Terminate
 - Ignore
 - Terminate and Core Dump
@@ -268,11 +278,13 @@ The process may specify how a signal can be handled, or the operating system def
 For most signals, processes can install its custom handling routine, usually through a system call like `signal` or `sigaction` although there are some signals which cannot be caught.
 
 Some synchronous signals include:
+
 - SIGSEGV
 - SIGFPE (divide by zero)
 - SIGKILL (from one process to another)
 
 Some asynchronous signals include:
+
 - SIGKILL (as the receiver)
 - SIGALARM (timeout from timer expiration)
 

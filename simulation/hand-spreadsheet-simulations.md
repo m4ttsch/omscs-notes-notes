@@ -181,13 +181,13 @@ $$
 Remember the Law of The Unconscious Statistician:
 
 $$
-E[h(X)] = \int_{\R} h(x)f(x)
+E[h(X)] = \int_{\mathbb{R}} h(x)f(x)
 $$
 
 Therefore:
 
 $$
-E[\bar{I}_n] = (b-a)\int_\R g(a+(b-a)u)f(u)du
+E[\bar{I}_n] = (b-a)\int_{\mathbb{R}} g(a+(b-a)u)f(u)du
 $$
 
 Notice that $f(u)$ is the pdf of the $\text{Unif}(0,1)$ distribution. This pdf is only defined over $[0,1]$ and is equal to $1$. So:
@@ -335,6 +335,7 @@ In this lesson, we will simulate the line that forms in front of the single serv
 Suppose that customers arrive at a single-server queue with iid interarrival times and receive service according to iid service times. Customers must wait in a FIFO (first-in-first-out) line if the server is busy. As the server processes customers, the line advances one customer at a time.
 
 We will simulate this single-server queue setup and then estimate particular performance characteristics of the system, such as:
+
 - the expected customer waiting time
 - the expected number of people in the system
 -  the expected server utilization (proportion of time server spends serving)

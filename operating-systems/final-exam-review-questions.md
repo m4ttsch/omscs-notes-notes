@@ -240,12 +240,14 @@ The empirical data was as follows. The authors noticed that 33% of file access w
 As a result, the authors decided to support caching, and leverage a write-back policy. Every 30 seconds, the client would write-back the blocks that it hasn't modified in the past 30 seconds. Every write operation must go to the server. Every close operation does not write-back to the server: session semantics are not observed. This is because files are open for such short amounts of time that session semantics will still incur overheads that are too high. In the case of concurrent file access (file-sharing), caching is disabled. All operations are serialized server side. Since this doesn't happen often, the cost isn't significant.
 
 On a per file basis, the client keeps track of:
+
 - cache (overall yes/no)
 - cached blocks
 - timer for each dirty block
 - version number
 
 On a per file basis, the server keeps track of:
+
 - readers
 - writer
 - version

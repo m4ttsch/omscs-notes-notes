@@ -11,6 +11,7 @@ lecture: io-management
 The execution of applications doesn't rely on only the CPU and memory, but other hardware components as well. Some of these components are specifically tied to receiving inputs or directing outputs, and these are referred to as **I/O devices**.
 
 Examples of I/O devices include
+
 - keyboards
 - microphones
 - displays
@@ -216,11 +217,13 @@ The rest of the partition is divided into block groups. The size of these block 
 Each block group contains several blocks.
 
 The first block is the super block, which contains information about the overall block group:
-- number of inodes,
+
+- number of inodes
 - number of disk blocks
 - start of free blocks
 
 The overall state of the block group is further described by the group descriptor, which contains information about:
+
 - bitmaps
 - number of free nodes
 - number of directories

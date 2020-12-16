@@ -17,6 +17,7 @@ Alternatively, a denial of service attack might attempt to exhaust various serve
 Before 2000, denial of service attacks were typically single-source. After 2000, with the rise of internet worms, these attacks became distributed, effectively being coordinated and launched from many different hosts simultaneously.
 
 Three different types of defenses against denial of service attacks are
+
 - Ingress filtering
 - uRPF checks
 - SYN cookies (TCP only)

@@ -30,6 +30,7 @@ No one right solution. I think the important thing to understand here is that no
 
 ## Cyber Assets at Risk
 In order to define the security mindset, we need to consider:
+
 - Threats (who are the bad actors?)
 - Vulnerabilities (what weaknesses can they exploit?)
 - Attack (how will the bad actors exploit the weaknesses?)
@@ -72,6 +73,7 @@ We never realized that we had to protect more than just the wheel.
 The [Target data breach](https://en.wikipedia.org/wiki/History_of_Target_Corporation#2013_security_breach) of 2013 is one of the most widely publicized security breaches.
 
 When thinking about security breaches there are different questions to ask:
+
 - What is of value?
 - What is the threat source?
 - What vulnerability was exploited?

@@ -31,6 +31,7 @@ df['Values'].mean()
 ```
 
 #### Documentation
+
 - [pandas.DataFrame.mean](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.mean.html)
 
 ### Plot High Prices for IBM Quiz
@@ -73,6 +74,7 @@ What is the value of that parameter?
 ![](https://assets.omscs.io/notes/24945379-86BC-488E-85FD-C9E88E049F00.png)
 
 #### Documentation
+
 - [pandas.DataFrame.join](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.join.html)
 
 ### Utility Functions for Reading Data Quiz
@@ -96,6 +98,7 @@ df = df.dropna(subset=["SPY"])
 ```
 
 #### Documentation
+
 - [pandas.DataFrame.dropna](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.dropna.html)
  
 ### How to Plot on "Equal Footing" Quiz
@@ -121,6 +124,7 @@ df.ix[start_index:end_index, columns]
 ```
 
 #### Documentation
+
 - [pandas.DataFrame.ix - DEPRECATED](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.ix.html)
 - [pandas.DataFrame.loc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.loc.html)
 - [pandas.DataFrame.iloc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.iloc.html)
@@ -145,6 +149,7 @@ nd1[0:2, 0:2] = nd2[-2:, 2:4]
 ```
 
 #### Documentation
+
 - [Indexing](https://docs.scipy.org/doc/numpy-1.13.0/reference/arrays.indexing.html)
  
 ### Specify the Data Type Quiz
@@ -162,6 +167,7 @@ np.ones((5, 4), dtype=np.int_)
 ```
 
 #### Documentation
+
 - [numpy.ones](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ones.html)
 - [Data types](https://docs.scipy.org/doc/numpy/user/basics.types.html#data-types)
 
@@ -181,6 +187,7 @@ def get_max_index(a):
 ```
 
 #### Documentation
+
 - [numpy.argmax](https://docs.scipy.org/doc/numpy/reference/generated/numpy.argmax.html#numpy.argmax)
 
 ## Statistical Analysis of Time Series
@@ -228,6 +235,7 @@ rm + (2 * rstd), rm - (2 * rstd)
 ![](https://assets.omscs.io/notes/2020-01-12-19-22-39.png)
 
 #### Documentation
+
 - [pandas.DataFrame.rolling](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.rolling.html)
 
 ### Compute Daily Returns Quiz
@@ -273,6 +281,7 @@ daily_returns.iloc[0] = 0
 ```
 
 #### Documentation
+
 - [pandas.DataFrame.shift](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.shift.html)
 - [pandas.DataFrame.ix - DEPRECATED](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.ix.html)
 - [pandas.DataFrame.loc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.loc.html)
@@ -291,6 +300,7 @@ Our task is to find the parameter that we need to pass to `fillna` to fill forwa
 ![](https://assets.omscs.io/notes/2020-01-14-00-40-02.png)
 
 #### Documentation
+
 - [pandas.DataFrame.fillna](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.fillna.html)
 
 ### Fill Missing Values Quiz
@@ -308,7 +318,9 @@ Our task is to use the `fillna` method to fill these gaps.
 We can use forward filling for gaps that have a definitive start date, and backward filling for gaps that have no beginning or begin before our date range.
 
 #### Documentation
+
 - [pandas.DataFrame.fillna](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.fillna.html)
+
 
 ## Histograms and Scatter Plots
 
