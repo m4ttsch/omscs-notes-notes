@@ -17,7 +17,7 @@ Attackers are also interested in the OS because a successful hack can give them 
 
 Why do we have an operating system? The OS makes it easier to build and deploy applications. It is hard to work with the **physical resources** of a machine. The operating system lets you work with **virtual resources** which are abstractions on top of the physical resources, as shown below. For example, a file is a virtual resource that abstracts the disk.
 
-![](images/module1/OS-HW.png)
+![](https://raw.githubusercontent.com/MatthewCaseres/secure-computer-systems/main/assets/module1/topic1vid3.png)
 
 The operating system has access to all the physical resources so that it can implement these virtual resources. Hackers want this access, so they target the OS.
 
@@ -46,7 +46,7 @@ The TCB must have **correctness** meaning that there are no vulnerabilities.
 
 We trust the hardware. There have been security issues in hardware before but this is not the focus of the class. Our focus is using secure hardware to run untrusted applications using our TCB (which is typically the OS).
 
-![](images/module1/TCB-HW.png)
+![](https://raw.githubusercontent.com/MatthewCaseres/secure-computer-systems/main/assets/module1/TCB-HW.png)
 
 ### Reference Monitor Responsibilities
 
