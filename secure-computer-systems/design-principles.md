@@ -75,7 +75,7 @@ The bug Ken Thompson described essentially turns good source code into a bad exe
 
 The defense mechanism described provides an additional layer of security on top of the compiler. You can imagine adding more independent layers for other potential vulnerabilities.
 
-<h2 hid="5ab81562-44e3-49e5-8543-baa4d5f9c237">More Thoughts</h2>
+## More Thoughts
 
 ### Do we actually do this?
 
