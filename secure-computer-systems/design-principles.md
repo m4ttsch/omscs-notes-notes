@@ -82,10 +82,8 @@ The defense mechanism described provides an additional layer of security on top 
 Do people actually follow these practices? Here are some cautionary tales from people that didn't follow best practices.
 
 * The USPS launched a service that let anyone view anyone elses user data, no access control and certainly not least privilege.
-
 * Mirai botnet. A botnet that exploits IOT devices with common default username/passwords. Used to DDOS.
-
-* I am unable to articulate the flaw with the morris worm, request for PR.
+* The morris worm exploited several different vulnerabilities.
 
 Often design principles are followed. 
 
