@@ -1,3 +1,10 @@
+---
+id: secure-computer-systems-welcome
+title: Welcome
+course: secure-computer-systems
+lecture: welcome
+---
+
 # Welcome to SCS
 
 ## Contact
