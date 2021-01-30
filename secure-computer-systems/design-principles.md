@@ -17,7 +17,7 @@ Security exists outside the digital world. We have **assets** (i.e. jewelry) we 
 
 A military is more expensive than a lock and key that keeps jewelry safe. This gets us to the economics of security. We look at what you are securing and how its value relates to your (and your attacker's) budget. This is summarized in the diagram below.
 
-![ll](https://raw.githubusercontent.com/MatthewCaseres/secure-computer-systems/main/assets/module2/security-economics.png)
+![](https://gitcdn.xyz/cdn/MatthewCaseres/secure-computer-systems/ec2a83fe32d3baa4d281f32b06395350e4051dc8/assets/module2/security-economics.png)
 
 The operating region is where the security makes economic sense for the defender. Too much security and V<sub>d</sub> < C<sub>D</sub>, we are spending more on security than the secured item is worth. Too little security and C<sub>A</sub> < V<sub>a</sub>, the attacker can make a profit on stealing the thing. The operating region is then when neither of these problematic inequalities hold, as shown in the diagram above.
 
