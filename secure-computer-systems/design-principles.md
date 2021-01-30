@@ -7,6 +7,8 @@ lecture: design-principles
 
 # Design Principles for Secure Computer Systems
 
+## Why Design Principles?
+
 There is an asymmetry in security, the attackers only need to find a single error but you need to prevent many. There are security best practices and design principles to help developers build secure systems.
 
 ## Security Economics
