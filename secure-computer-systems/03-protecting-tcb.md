@@ -105,5 +105,63 @@ The diagram below shows access that is not allowed with dashed lines and allowed
 
 ## More Memory Protection Details
 
+### Conforming vs non-conforming code segments. 
+
+For conforming code segments when transfering from one code segment to another code segment (that potentially has different privileges) we can continue execution at the current privilege level. Useful for system utilities.
+
+For non-conforming code segments we get a protection fault unless call or task gate is specified. Call gates can be used to transfer to different privilege levels (or through system call instructions). All data segments are non-conforming.
+
+### Page Level Protection
+
+* Page Protection Level (PPL) is either 0 or  1. 0 is privileged level and 1 is non-privileged level.
+* If the CPL is 3 we can only access PPL of 1.
+* There are read-write protections on pages as well.
+* You can also disable execution of a page.
+
+Segment and page protections can be combined.
+
+## Changing Privilege Level and System Calls
+
+If you are trying to access code from a higher privilege level (i.e. the OS) you can come to the OS from a special entry point called a **call gate**. The call gate will specify the code you want to access as well as the privilege level that you can come from.
+
+In the case that the code segment is conforming we can continue running at the same privilege level we came from and no stack switch occurs. If it is nonconforming we have to switch the stack.
+
+![](images/module3/access-data.png)
+
+## SYSENTER and SYSEXIT
+
+There are now instructions for system calls, SYSENTER for transferring from level 3 to level 0, and SYSEXIT for transferring from level 0 to level 3.
+
+In the diagram below see the registers that are used to create the necessary execution context.
+
+![](images/module3/sysenter-sysexit.png)
+
+## Privileged Instructions
+
+A big list of privileged instructions is given. Notably, the GDT register and LDT register control what physical memory we have access to. By making the loading of these privileged instructions we can ensure isolation.
+
+![](images/module3/privileged-instructions.png)
+
+## Attacks Against Hardware and Operating Systems
+
+### Row Hammer
+
+Although we take precautions to prevent attacks, attacks are still possible. The "row hammer" attack is where we repeatedly read memory from "DRAM" (some memory that we can read) we can cause bit flips in adjacent memory that gives us write access to our page table, allowing us to go where we should not.
+
+### Rootkits
+
+Malicious software that runs in kernel mode and can change OS memory. NVD CVE-2019-6218 (entry in National Vulnerability Database) is that a malicious application can execute arbitrary code with kernel privileges (input validation issue in iOS, macOS, etc.).
+
+## Memory Protection and Software Security
+
+### System Level Software Security Techniques
+
+ASLR is (Address Space Layout Randomization) makes it hard for an attacker to find where some specific variable is. There are some ways to get around this.
+
+A non-executable stack. Never execute (NX) or disable execute (DX) bits. Eliminates vulnerabilities where malicious code is executed from the stack, but there are workaround attacks like return-to-libc attack.
+
+## Summary
+
+Through understanding how physical memory is accessed via address translation, understanding memory protection, and privileged instructions, we can see how the TCB is protected from untrusted applications.
 
 
