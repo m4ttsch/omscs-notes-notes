@@ -45,7 +45,7 @@ This mapping is stored in global and local descriptor tables (GDT and LDT). The 
 
 See that there are different segments of memory (stack, heap, code) for the process.
 
-![](images/module3/address-space.png)
+![](https://assets.omscs.io/secure-computer-systems/images/module3/address-space.png)
 
 ## Logical/Virtual Addresses & Translation
 
@@ -73,13 +73,13 @@ This formula seems to be a simplification, and we actually use the formula sever
 
 For a 32 bit architecture we take the logical address (a.k.a. far pointer) and calculate the linear address, which then allows us to calculate the physical address as shown in the diagram below.
 
-![](images/module3/x86-32.png)
+![](https://assets.omscs.io/secure-computer-systems/images/module3/x86-32.png)
 
 The diagram for 64 bit architectures has no GDT that maps to a linear adddress. The process is very much the same as before though.
 
 PML4 stands for "Page map level 4" and CR3 is a register that points to its location.
 
-![](images/module3/x86-64.png)
+![](https://assets.omscs.io/secure-computer-systems/images/module3/x86-64.png)
 
 ### Address Translation Observations
 
@@ -101,7 +101,7 @@ A protection check happens where max(CPL, RPL) $\leq$ DPL of target.
 
 The diagram below shows access that is not allowed with dashed lines and allowed access with solid lines.
 
-![](images/module3/access-data.png)
+![](https://assets.omscs.io/secure-computer-systems/images/module3/access-data.png)
 
 ## More Memory Protection Details
 
@@ -126,7 +126,7 @@ If you are trying to access code from a higher privilege level (i.e. the OS) you
 
 In the case that the code segment is conforming we can continue running at the same privilege level we came from and no stack switch occurs. If it is nonconforming we have to switch the stack.
 
-![](images/module3/access-data.png)
+![](https://assets.omscs.io/secure-computer-systems/images/module3/access-data.png)
 
 ## SYSENTER and SYSEXIT
 
@@ -134,13 +134,13 @@ There are now instructions for system calls, SYSENTER for transferring from leve
 
 In the diagram below see the registers that are used to create the necessary execution context.
 
-![](images/module3/sysenter-sysexit.png)
+![](https://assets.omscs.io/secure-computer-systems/images/module3/sysenter-sysexit.png)
 
 ## Privileged Instructions
 
 A big list of privileged instructions is given. Notably, the GDT register and LDT register control what physical memory we have access to. By making the loading of these privileged instructions we can ensure isolation.
 
-![](images/module3/privileged-instructions.png)
+![](https://assets.omscs.io/secure-computer-systems/images/module3/privileged-instructions.png)
 
 ## Attacks Against Hardware and Operating Systems
 

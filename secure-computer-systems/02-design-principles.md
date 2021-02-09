@@ -1,8 +1,8 @@
 ---
-id: secure-computer-systems-design-principles
+id: secure-computer-systems-02-design-principles
 title: Design Principles
 course: secure-computer-systems
-lecture: design-principles
+lecture: 02-design-principles
 ---
 
 # Design Principles for Secure Computer Systems
@@ -17,7 +17,7 @@ Security exists outside the digital world. We have **assets** (i.e. jewelry) we 
 
 A military is more expensive than a lock and key that keeps jewelry safe. This gets us to the economics of security. We look at what you are securing and how its value relates to your (and your attacker's) budget. This is summarized in the diagram below.
 
-![](https://gitcdn.xyz/cdn/MatthewCaseres/secure-computer-systems/ec2a83fe32d3baa4d281f32b06395350e4051dc8/assets/module2/security-economics.png)
+![](https://assets.omscs.io/secure-computer-systems/images/module2/security-economics.png)
 
 The operating region is where the security makes economic sense for the defender. Too much security and V<sub>d</sub> < C<sub>D</sub>, we are spending more on security than the secured item is worth. Too little security and C<sub>A</sub> < V<sub>a</sub>, the attacker can make a profit on stealing the thing. The operating region is then when neither of these problematic inequalities hold, as shown in the diagram above.
 
@@ -37,6 +37,8 @@ People are often the weakest link in a system and a system is only as good as it
 
 There are tradeoffs between added features and security. 
 With more features there are more ways to attack the system. If you have **ZERO** features then there is no product, but perfect security. There is a balance that can be achieved between useful features and security assurances that we can achieve.
+
+![](https://assets.omscs.io/secure-computer-systems/images/module2/complexity-vs-security.png)
 
 Windows 10 is an operating system with about 50 million lines of code. How could that possibly be secure? Later in the course there is discussion of a *hypervisor* as a TCB instead of the OS itself. A hypervisor is less feature rich and can be implemented in mere hundreds of thousands of lines of code.
 
