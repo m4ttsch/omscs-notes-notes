@@ -1,0 +1,1 @@
+The License within this folder only applies to files within this folder.
