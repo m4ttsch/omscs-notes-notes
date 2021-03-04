@@ -47,8 +47,8 @@ To change the ACM you perform operations. Here are some examples.
 
 Let *r* be an access right
 
-* r* is the access right when its holder can propagate it
-  * if r* $\in$ ACM[s, o] then r or r* can be granted by s to another subject s'
+* r\* is the access right when its holder can propagate it
+  * if r\* $\in$ ACM[s, o] then r or r* can be granted by s to another subject s'
 * r+ is the access right when its holder can revoke it
   * if r+ $\in$ ACM[s, o] then r or r+ can be deleted by s for a user s' from ACM[s', o]
 
