@@ -24,7 +24,7 @@ Different types of process state in an address space:
 * The data available when process is first initialized (static state)
 * Heap: Dynamically created state (what we create)
 	* Seems contiguous but there are holes filled with garbage (think of C struct not `memset`)
-* Stack: Dynamically created state that grows and shrinks are the program executes
+* Stack: Dynamically created state that grows and shrinks as the program executes
 	* LIFO
 	* Stack frames added and removed as functions are called and return
 
@@ -53,7 +53,7 @@ At any given time the CPU must know where within a program's code a process curr
 
 The program counter is maintained on a CPU's register while the program is executing. Other data related to a current process's state is also stored on CPU registers.
 
-Another piece of state the defines what a process is doing is the process's stack. The top of the stack is defined by the **stack pointer**.
+Another piece of state that defines what a process is doing is the process's stack. The top of the stack is defined by the **stack pointer**.
 
 To maintain all of this useful information for every single process, the operating system maintains a **process control block** or PCB.
 
@@ -71,7 +71,7 @@ Process control block contains:
 
 The PCB is created when the process is initially created, and is also initialized at that time. For example, the program counter will be set to point at the very first instruction.
 
-Certain fields of the PCB may changed when process state changes. For example, virtual/physical memory mappings may be updated when the process requests more memory.
+Certain fields of the PCB may be changed when process state changes. For example, virtual/physical memory mappings may be updated when the process requests more memory.
 
 Some fields can change often, like the program counter. We don't want to waste time on every instruction changing the counter. The CPU maintains a register just for the program counter which it can update (efficiently?) on every new instruction.
 
@@ -95,7 +95,7 @@ This operation is **EXPENSIVE**.
 
 We incur *direct costs*, which are the number of CPU cycles required to load and store a new PCB to and from memory.
 
-We also incur *indirect costs*. When a process is running on the CPU a lot of its data is stored in the processor cache. Accessing data from cache is *very* fast (on the order of cycles) relative to accessing data from memory (on the order of hundreds of cycles). When we data we need is present in the cache, we say that the cache is *hot*. When a process gets swapped out, all of it's data is cleared from cache. The next time it is swapped in, the cache is *cold*. That is, the data is not in the cache and the CPU has to spend many more cycles fetching data from memory.
+We also incur *indirect costs*. When a process is running on the CPU a lot of its data is stored in the processor cache. Accessing data from cache is *very* fast (on the order of cycles) relative to accessing data from memory (on the order of hundreds of cycles). When the data we need is present in the cache, we say that the cache is *hot*. When a process gets swapped out, all of its data is cleared from the cache. The next time it is swapped in, the cache is *cold*. That is, the data is not in the cache and the CPU has to spend many more cycles fetching data from memory.
 
 Basically, we want to limit how often we context switch!
 
@@ -105,7 +105,7 @@ When a process is created, it is in the *new* state. This is when the OS perform
 ![](https://assets.omscs.io/notes/E65850CD-7381-48DB-A3AB-6E2A386428CD.png)
 
 ## Process Life Cycle: Creation
-In operation systems, a process can create one or more *child processes*. The creating process is the parent and the created process is the child. All of the processes that are currently loaded will exist in a tree-like hierarchy.
+In operating systems, a process can create one or more *child processes*. The creating process is the parent and the created process is the child. All of the processes that are currently loaded will exist in a tree-like hierarchy.
 
 Once the operating system is done booting, it will create some *root* processes. The processes have privileged access.
 
@@ -120,11 +120,11 @@ With **exec**, the operating system will take a PCB (created via fork), but will
 For "creating" a new program, you have to call fork to get a new process, and then call exec to load that program's information into the child's PCB.
 
 ## Role of the CPU scheduler
-For the CPU to start executing a process, the process must first be ready. At any given time, there may be many processes that are in the state, so the questions becomes: how does the operating system decide which process to run next on the CPU?
+For the CPU to start executing a process, the process must first be ready. At any given time, there may be many processes that are in the ready state, so the question becomes: how does the operating system decide which process to run next on the CPU?
 
 This is determined by an operating system component known as the **CPU scheduler**. The CPU scheduler manages how processes use the CPU resources. It determines which process will use the CPU next, and how long that process has to run.
 
-The operating system must be able **preempt**; that is, interrupt the current process and save its context. The operating system must then run the scheduler to **schedule**, or select, the next process. Once the process is chosen, the operating system must **dispatch** the process and switch into its context.
+The operating system must be able to **preempt**; that is, interrupt the current process and save its context. The operating system must then run the scheduler to **schedule**, or select, the next process. Once the process is chosen, the operating system must **dispatch** the process and switch into its context.
 
 Since CPU resources are precious, the operating system needs to make sure that it spends the bulk of its time running processes, NOT making scheduling decisions.
 
@@ -173,7 +173,7 @@ Downsides are overhead. Every single piece of information to be transmitted need
 ![](https://assets.omscs.io/notes/0BE38751-7D8F-4DCB-AA5F-D4CF90216EAE.png)
 
 ### Shared Memory IPC
-The operating system establishes a shared memory channel, and then maps it into the address space of both processes. The processes are then allowed to directly read/write to this memory the same way they can read/write from any memory allocated  them in their address space.
+The operating system establishes a shared memory channel, and then maps it into the address space of both processes. The processes are then allowed to directly read/write to this memory the same way they can read/write from any memory allocated to them in their address space.
 
 The operating system is completely out of the picture in this case, which is the main benefit! No overhead to incur.
 
