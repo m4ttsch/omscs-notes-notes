@@ -29,11 +29,11 @@ In addition, a computing system can have higher level applications. These are th
 #### Operating systems hide hardware complexity.
 You don't want to have to worry about the nuts and bolts of interacting with storage devices when you are writing an application. The operating system provides a higher level abstraction, the *file*, with a number of operations - like *read* and *write* - which applications can interact with.
 
-#### Operating systems manages underlying hardware resources.
+#### Operating systems manage underlying hardware resources.
 Operating system allocates memory for applications, schedules them for execution on the CPU, controls access to various network devices and so on.
 
 #### Provides isolation and protection.
-When applications are running concurrently, the operation system has to ensure that they can do what they need to without hurting one another. For example, memory allocated to each application must not be readable/writable from another application.
+When applications are running concurrently, the operating system has to ensure that they can do what they need to without hurting one another. For example, memory allocated to each application must not be readable/writable from another application.
 
 ## Operating System Definition
 An operating system is a layer of systems software that
@@ -61,7 +61,7 @@ For embedded operating systems:
 * Symbian
 
 ## OS Elements
-To achieve its goals, an operating systems provides a number of high level abstractions, as well as a number of mechanisms to operate on these abstractions.
+To achieve its goals, an operating system provides a number of high level abstractions, as well as a number of mechanisms to operate on these abstractions.
 
 Examples of abstractions include:
 
