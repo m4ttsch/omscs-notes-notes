@@ -157,7 +157,7 @@ When a process is in a blocked state, this means that process is currently waiti
 ### What are the pros-and-cons of message-based vs. shared-memory-based IPC?
 
 ### Message Passing IPC
-The benefits of message passing IPC is that the operating system will manage the message passing channel, and already has system calls in place for operations like `read/write` and `recv/send`. The user doesn't need to worry about any go the details.
+The benefits of message passing IPC is that the operating system will manage the message passing channel, and already has system calls in place for operations like `read/write` and `recv/send`. The user doesn't need to worry about any of the details.
 
 The downside of messaged-based IPC is the overhead. Every piece of data that is sent between processes must first be copied from the sending process's address space into memory associated with the kernel and then into the receiving process's address space. There is user/kernel crossing for every message.
 
@@ -195,7 +195,7 @@ In the pipeline pattern, the execution of the task is broken down into stages. T
 
 One of the benefits of this process is locality. Since each thread performs the same (small) task over and over again, it is more likely that the hardware cache will be hot, increasing performance.
 
-On a larger level, this pattern will be bottle necked by the stage that takes the longest to complete. One way to overcome the difference in processing needed for each stage is to allocate a different number of threads to each stage. For example, a stage that takes thread times as long as another stage should have three times the amount of threads.
+On a larger level, this pattern will be bottle necked by the stage that takes the longest to complete. One way to overcome the difference in processing needed for each stage is to allocate a different number of threads to each stage. For example, a stage that takes three times as long as another stage should have three times the amount of threads.
 
 A downside of this approach is that it is difficult to keep the pipeline balanced over time. When the input rate changes, or the resources at a given stage are exhausted, rebalancing may be required.
 
@@ -334,7 +334,7 @@ This tests workloads that become disk-bound very quickly. In this case, AMPED, a
 Looking at connection rate as a result of file size across the various combination of optimizations - pathname lookup caching, response header caching, and mapped file caching - shows that the combination containing all optimizations can handle the highest connection rate.
 
 ### Performance Under WAN
-MT/AMPED/STED all caused stable performance improvements when more clients were added. The per-process overhead of the MP model caused performance to degrade in this model.
+MT/AMPED/SPED all caused stable performance improvements when more clients were added. The per-process overhead of the MP model caused performance to degrade in this model.
 
 ## If you ran your server from the class project for two different traces: (i) many requests for a single file, and (ii) many random requests across a very large pool of very large files, what do you think would happen as you add more threads to your server? Can you sketch a hypothetical graph?
 
