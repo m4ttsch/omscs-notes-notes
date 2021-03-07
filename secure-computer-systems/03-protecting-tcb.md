@@ -25,39 +25,36 @@ The hardware provides two mechanisms for isolating the TCB and applications.
 
 What exactly are we isolating? We are isolating **processes**. Processes are executed by a processor which executes instructions. A processor does the following
 
-* EIP holds a pointer to the next instruction
+* Extended Instruction Pointer (EIP) holds a pointer to the next instruction
 * Operands point to data which is operated on by an instruction
 * Executes next instruction
 
-Addresses are logical, meaning the process uses an address that is not the actual physical address. This logical address is mapped to a physical address to access data. Two processes may reference the same logical address, but each processes logical address maps to a different physical address. Isolation is achieved by ensuring that each process can only access memory that is made available to it.
+Addresses are logical, meaning the process uses an address that is not the actual physical address. This logical address is mapped to a physical address to access data. Two processes may reference the same logical address, but each process's logical address maps to a different physical address. Isolation is achieved by ensuring that each process can only access memory that is made available to it.
 
-You could imagine a simple implementation where the bounds of each process' allocated physical memory is tracked by a bounds register. This bounds register can only be modified by the TCB so that untrusted code cannot give itself access to memory it shouldn't have access to.
+You could imagine a simple implementation where the bounds of each process's allocated physical memory is tracked by a bounds register. This bounds register can only be modified by the TCB so that untrusted code cannot give itself access to memory it shouldn't have access to.
 
 ## Address Spaces on Modern Processor Architectures (Intel x86)
 
-This is not in-depth, we focus on concepts and we focus on the Intel x86 architecture. This architecture had modes real vs. protected on 32 bit and long vs flat modes on 64 bit.
+This is not in-depth, we focus on concepts and we focus on the Intel x86 architecture. This architecture has modes 
 
-Logical address space can be split into variable size logical units called **segments**. There can be different segments for the code, data, stack, etc... Segments can further be divided into pages, which are a fixed size.
+* real vs. protected modes on for 32 bit 
+* long vs. flat modes on 64 bit.
 
-The logical address can be given by (segment number, page number, page offset).
-
-This mapping is stored in global and local descriptor tables (GDT and LDT). The LDT is for the process and the GDT is for the TCB.
-
-See that there are different segments of memory (stack, heap, code) for the process.
+In the diagram below there are different **segments** of memory (stack, heap, code) for the process. These segments are further divided into pages of fixed size, not shown in the diagram. A logical address can be given by the ordered triplet (segment number, page number, page offset), where the page offset if the position within a page.
 
 ![](https://assets.omscs.io/secure-computer-systems/images/module3/address-space.png)
 
 ## Logical/Virtual Addresses & Translation
 
-We have a segment table that translates between logical addresses and physical addresses. How do we compute the physical address?
+We have a segment table that translates between logical addresses and physical addresses. Here is the formula:
 
 SGTBR = Segment Table Base Register, this is where the segment table starts.
 
 STE = Segment Table Entry Number
 
-Physical address = *(SGTBR+STE\*STE Size) + displacement
+Physical address = \*(SGTBR+STE\*STE Size) + displacement
 
-Intuition: We start at the segment table base register, which is just the starting location of the register. We add STE*STE size to calculate the location of the segment within the register. *(SGTBR+STE\*STE Size) is C notation for finding the value at the address, which is a location in physical memory, and we add the displacement to get the exact location in physical memory.
+Intuition: We start at the segment table base register (SGTBR), the starting location of the register. STE\*STE size calculates the location of the segment relative to the register. \*(SGTBR+STE\*STE Size) is C pointer notation for finding the location in physical memory. We add the displacement to find the physical address.
 
 Some checks are performed to ensure we access physical memory belonging to the process, displacement <= segment size.
 
@@ -65,17 +62,11 @@ Segment tables are also called descriptor tables, and there are separate tables 
 
 ## x86 Address Translation
 
-Earlier we gave a formula - 
-
-Physical address = *(SGTBR+STE\*STE Size) + displacement
-
-This formula seems to be a simplification, and we actually use the formula several times. We repeatedly are given an address that contains another address, go to the referenced address and use an offset to find our next value. Ultimately we end up at the physical address space.
-
-For a 32 bit architecture we take the logical address (a.k.a. far pointer) and calculate the linear address, which then allows us to calculate the physical address as shown in the diagram below.
+The *\*(SGTBR+STE\*STE Size) + displacement* formula seems to be a simplification. For a 32 bit architecture we take the logical address (a.k.a. far pointer) and calculate the linear address, which then allows us to calculate the physical address as shown in the diagram below.
 
 ![](https://assets.omscs.io/secure-computer-systems/images/module3/x86-32.png)
 
-The diagram for 64 bit architectures has no GDT that maps to a linear adddress. The process is very much the same as before though.
+The diagram for 64 bit architectures has no GDT that maps to a linear address, we iteratively apply an offset to a memory location that brings us to the next memory location. Ultimately we end up in the physical memory as in 32 bit architectures.
 
 PML4 stands for "Page map level 4" and CR3 is a register that points to its location.
 
@@ -83,42 +74,46 @@ PML4 stands for "Page map level 4" and CR3 is a register that points to its loca
 
 ### Address Translation Observations
 
-We access tables in address translation. These tables determine what phsyical memory we can access. These tables must belong to the portion of memory for the OS so that the user cannot modify them. If the user could modify them there is no isolation.
+The tables used in address translation determine what physical memory we can access. Therefore they must belong to the OS's memory so that the user cannot modify them. If the user can modify the tables there is no isolation.
 
-These lookups would slow down the program, but we have a "translation lookaside buffer" which stores mappings from logical addresses to physical addresses. This is in the hardware.
+Translating logical to physical addresses could really slow down the program, but the hardware has a "translation lookaside buffer" which stores mappings from logical addresses to physical addresses.
 
 ## Protecting Program Memory in the x86 Architecture
 
-Isolation comes from protecting program memory. Each segment contains protection level information about the segment, called the segment **descriptor protection level** (DPL). 
+Each segment contains protection level information about the segment, called the segment descriptor protection level (**DPL**). 
 
-There are 4 protection level specified by 2 bits, going from 0 to 3. 0 is the most privileged.
+There are 4 protection levels specified by 2 bits, going from 0 to 3. 0 is the most privileged.
 
-There is a **current protection level** (CPL) which is the DPL of the code segment being executed.
+The current protection level (**CPL**) is the DPL of the code segment being executed.
 
-Requestor privilege level (RPL) is used to stop privilege escalation attacks. The RPL is stored in the segment selector (an entry of the GDT/LDT).
+Requestor privilege level (**RPL**) is used to stop privilege escalation attacks. The RPL is stored in the segment selector (the entries of the GDT/LDT).
 
-A protection check happens where max(CPL, RPL) $\leq$ DPL of target.
+Before granting access we make sure that 
 
-The diagram below shows access that is not allowed with dashed lines and allowed access with solid lines.
+$$ \text{max}(CPL, RPL) \leq DPL $$
 
 ![](https://assets.omscs.io/secure-computer-systems/images/module3/access-data.png)
+
+Dotted lines are for rejected access, solid lines are for successful access.
 
 ## More Memory Protection Details
 
 ### Conforming vs non-conforming code segments. 
 
-For conforming code segments when transfering from one code segment to another code segment (that potentially has different privileges) we can continue execution at the current privilege level. Useful for system utilities.
+Code segments are either conforming or non-conforming. This determines their behavior when transferring to another code segment of a different privilege level.
 
-For non-conforming code segments we get a protection fault unless call or task gate is specified. Call gates can be used to transfer to different privilege levels (or through system call instructions). All data segments are non-conforming.
+For **conforming code segments** we can continue execution at the current privilege level, this is useful for system utilities.
+
+For **non-conforming code segments** we get a protection fault unless a call gate or task gate is specified. Call gates can be used to transfer to different privilege levels (or through system call instructions). All data segments are non-conforming.
 
 ### Page Level Protection
 
-* Page Protection Level (PPL) is either 0 or  1. 0 is privileged level and 1 is non-privileged level.
+* Page Protection Level (PPL) is either 0 or 1. 0 is privileged level and 1 is non-privileged level.
 * If the CPL is 3 we can only access PPL of 1.
 * There are read-write protections on pages as well.
 * You can also disable execution of a page.
 
-Segment and page protections can be combined.
+This way you can protect a particular page within a segment.
 
 ## Changing Privilege Level and System Calls
 
