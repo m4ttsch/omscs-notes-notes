@@ -25,7 +25,7 @@ However, they will potentially be running different instructions and accessing d
 
 Each and every thread has its own data structure to represent information specific to its execution context.
 
-A multithreaded process will have a more complex process control block structure, as these thread specific execution contexts needs to be incorporated.
+A multithreaded process will have a more complex process control block structure, as these thread specific execution contexts need to be incorporated.
 
 ![](https://assets.omscs.io/notes/984D3189-6CAC-4EDA-8C68-D0315AD3BED6.png)
 
@@ -34,16 +34,16 @@ At any given time when running a multithreaded process on a multiprocessor machi
 
 As a result, different threads can work in parallel on different components of the program's workload. For example, each thread may be processing a different component of the program's input. By spreading the work from one thread/one processor to multiple threads that can execute in parallel on multiple processors, we have been able to speed up the program's execution.
 
-Another benefit that can achieve through multithreading is specialization. If we designate certain threads to accomplish only certain tasks or certain types of task, we can take a specialized approach with how we choose to manage those threads. For instance, we can give higher priority to tasks that handle more important tasks or service higher paying customers.
+Another benefit that we can achieve through multithreading is specialization. If we designate certain threads to accomplish only certain tasks or certain types of tasks, we can take a specialized approach with how we choose to manage those threads. For instance, we can give higher priority to tasks that handle more important tasks or service higher paying customers.
 
-Performance of a thread depends on how much information can be stored in the processor cache (remember - cache lookups are super fast). By having threads that are more specialized - that work on small subtasks within the main application - we can potentially have each thread keep it's entire state within the processor cache (*hot cache*), further enhancing the speed at the thread continuously performs it task.
+Performance of a thread depends on how much information can be stored in the processor cache (remember - cache lookups are super fast). By having threads that are more specialized - that work on small subtasks within the main application - we can potentially have each thread keep it's entire state within the processor cache (*hot cache*), further enhancing the speed at which the thread continuously performs it task.
 
 #### So why not just write a multiprocess application?
 A multiprocess application requires a new address space for each process, while a multithreaded application requires only one address space. Thus, the memory requirements for a multiprocess application are greater than those of a multithreaded application.
 
-As a result, a multithreaded application is more likely to fit in memory, and not requires as many swaps from disk, which is another performance improvement.
+As a result, a multithreaded application is more likely to fit in memory, and not require as many swaps from disk, which is another performance improvement.
 
-As well, passing data between processes - inter process communication (IPC) - is more costly than inter thread communication, which consists primarily of reading/writing shared variables.
+Also, passing data between processes - inter process communication (IPC) - is more costly than inter thread communication, which consists primarily of reading/writing shared variables.
 
 ## Benefits of Multithreading: Single CPU
 Generally, are threads useful when the number of threads exceeds the number of CPUs?
@@ -64,9 +64,9 @@ When processes run concurrently, they operate within their own address space. Th
 
 Threads share the same virtual to physical address mappings, since they share the same address space. Naturally, this can introduce some problems. For example, one thread can try to read the data while another modifies it, which can lead to inconsistencies. This is an example of a **data race** problem.
 
-To avoid such problems, we need a mechanism that allows threads to operate on data in an exclusive manner. We call this **mutual exclusion**. This is a mechanism by which only thread at a time is granted access to some data. The remaining threads must wait their turn. We accomplish mutual exclusion through the use of a **mutex**.
+To avoid such problems, we need a mechanism that allows threads to operate on data in an exclusive manner. We call this **mutual exclusion**. This is a mechanism by which only one thread at a time is granted access to some data. The remaining threads must wait their turn. We accomplish mutual exclusion through the use of a **mutex**.
 
-As well, it is useful to have a mechanism by a thread can wait on another thread, and to be able to exactly specify what condition the thread is waiting on. For this inter thread communication, we may use a construct called a **condition variable**.
+Also, it is useful to have a mechanism by which a thread can wait on another thread, and to be able to exactly specify what condition the thread is waiting on. For this inter thread communication, we may use a construct called a **condition variable**.
 
 Both *mutexes* and *condition variables* are examples of **synchronization mechanisms**.
 
@@ -85,7 +85,7 @@ When one thread calls `fork` a new thread is created, with a new data structure 
 
 After the fork completes, the process now has two threads both of which can execute concurrently.
 
-When the forked thread completes, we need some mechanism by which it can return its result or communicate its status to the forking thread. On the other hand, we need to ensure that a forking thread doesn't not exit before its forked thread completes work (as child threads exit when parent threads do).
+When the forked thread completes, we need some mechanism by which it can return its result or communicate its status to the forking thread. On the other hand, we need to ensure that a forking thread does not exit before its forked thread completes work (as child threads exit when parent threads do).
 
 One mechanism that can handle this is the `join` mechanism. When the parent thread calls `join` with the thread id of the child it will be blocked until the child thread is finished processing. `join` returns the result of the child's computation. When `join` returns, the child thread exits the system and all resources associated with it are deallocated.
 
@@ -97,7 +97,7 @@ One mechanism that can handle this is the `join` mechanism. When the parent thre
 ## Mutexes
 ![](https://assets.omscs.io/notes/E4DBE552-3589-4160-88E0-257EC1B5D20A.png)
 
-Many steps required to add an element to the list. Think about two threads - A and B - trying to insert elements into the list. Here is a problematic scenario that can occur.
+Many steps are required to add an element to the list. Think about two threads - A and B - trying to insert elements into the list. Here is a problematic scenario that can occur.
 
 1. Thread A reads `list` and `list.p_next`
 2. Thread B reads `list` and `list.p_next`
@@ -108,19 +108,19 @@ Many steps required to add an element to the list. Think about two threads - A a
 
 When Thread A sets the value of `list.p_next` to it's element `e`, Thread B's reference to `list` becomes stale! When Thread B sets the value of `list.p_next` (where `list` does not refer to the new element added by Thread A), B essentially "splices out" the value that A just inserted!
 
-Generally. when reading to shared variables and writing to shared variables occurs in multiple steps (as is often the case), the opportunities for this type of data overwriting increases.
+Generally, when reading and writing to shared variables (in multiple steps, as is often the case), the opportunities for this type of data overwriting increase.
 
 ## Mutual Exclusion
-To support mutual exclusion, operating systems support a construct called a **mutex**. A mutex is like a lock that should be used whenever access data/state that is *shared* among threads. When a thread locks a mutex, it has exclusive access to the shared resource. Other threads attempting to lock the same mutex will not be successful. These threads will be **blocked** on the lock operation, meaning they will not be able to proceed until the mutex owner releases the mutex.
+To support mutual exclusion, operating systems support a construct called a **mutex**. A mutex is like a lock that should be used whenever you access data/state that is *shared* among threads. When a thread locks a mutex, it has exclusive access to the shared resource. Other threads attempting to lock the same mutex will not be successful. These threads will be **blocked** on the lock operation, meaning they will not be able to proceed until the mutex owner releases the mutex.
 
 As a data structure, the mutex should have at least the following information:
 * lock status
 * owner
 * blocked threads
 
-The portion of the code protected by the mutex is called the **critical section**. The critical section code should contain any code that would necessitate restricting access to one thread at a time: commonly, providing read/write access to a shared variable.
+The portion of the code protected by the mutex is called the **critical section**. The critical section should contain any code that would necessitate restricting access to one thread at a time: commonly, providing read/write access to a shared variable.
 
-Threads are mutually exclusive with one another with respect to their execution of the critical section of the code. That is, the critical section will ever only be executed by one thread at a given moment in time.
+Threads are mutually exclusive with respect to their execution of the critical section of the code. That is, the critical section will ever only be executed by one thread at a given moment in time.
 
 ![](https://assets.omscs.io/notes/05F6A738-DE5B-419A-8BCC-79914DA1B6BD.png)
 
@@ -152,7 +152,7 @@ A **condition variable** is a construct that can be used in conjunction with mut
 
 When a consumer sees that it must wait, it makes a call to the **wait** function, passing in a mutex and the condition variable it must wait on.
 
-The wait function must ensure that the mutex is released if the condition is not met (so that the signaling thread may acquire the mutex) and must also ensure that mutex is acquired when the condition is met (since the wait call occurs in the middle of a critical section).
+The wait function must ensure that the mutex is released if the condition is not met (so that the signaling thread may acquire the mutex) and must also ensure that the mutex is acquired when the condition is met (since the wait call occurs in the middle of a critical section).
 
 When the condition becomes true, a thread holding the mutex may call the **signal** function to alert a waiting thread that they may proceed.
 
@@ -184,11 +184,11 @@ Wait(mutex, cond){
 Note that broadcast may not always be super useful. Even though we can wake up all threads in wait, since we immediately lock the mutex when we remove a thread from the wait queue, we can still only execute one thread at a time.
 
 ## Readers/Writer Problem
-Let's look at scenario where there a some subset of threads that want to read from shared state, and one thread that wants to write to shared state. This is commonly known as the **readers/writer** problem.
+Let's look at a scenario where there is some subset of threads that want to read from shared state, and one thread that wants to write to shared state. This is commonly known as the **readers/writer** problem.
 
 At any given point in time, 0 or more readers can access the shared state at a given time, and 0 or 1 writers can access the shared state at a given time. The readers and writer cannot access the shared state at the same time.
 
-One naive approach would be to wrap access to the shared state itself in the mutex. However, this approach is too restrictive. Since mutexes only allow access to shared state one thread at time, we would be able to let multiple readers access state concurrently.
+One naive approach would be to wrap access to the shared state itself in the mutex. However, this approach is too restrictive. Since mutexes only allow access to shared state one thread at time, we would not be able to let multiple readers access state concurrently.
 
 Let's enumerate the conditions in which reading is allowed, writing is allowed, and neither is allowed. We will use a `read_counter` and a `write_counter` to express the number of readers/writers at a given time.
 
@@ -233,7 +233,7 @@ Once the current writer completes, it resets `resource_counter` to 0, and then `
 Even though we call `broadcast` before `signal` we don't really have control over whether a waiting reader or writer will be woken up first. That decision is left up to the thread scheduler, into which we do not usually have insight.
 
 ## Critical Section Structure
-If we consider the reading and writing of the data to be the protected operations of the above application, then those sections of code are really the critical sections of our application, even though the exist outside of a mutex block.
+If we consider the reading and writing of the data to be the protected operations of the above application, then those sections of code are really the critical sections of our application, even though they exist outside of a mutex block.
 
 ![](https://assets.omscs.io/notes/CEC2C229-0849-48E2-A098-58B3E26F5436.png)
 
@@ -241,7 +241,7 @@ The structure of our application is such that even though the critical operation
 
 ![](https://assets.omscs.io/notes/17C45807-015F-4B4B-8457-3403DC414A21.png)
 
-For example, before we can read data, we must first lock the mutex and increment `resource_counter`. As well, after we read data, we must again lock the mutex and decrement `resource_counter`. A similar setup exists for writing data.
+For example, before we can read data, we must first lock the mutex and increment `resource_counter`.After we read data, we must again lock the mutex and decrement `resource_counter`. A similar setup exists for writing data.
 
 Each time we acquire the mutex, we must ensure that a condition is met such that we can proceed safely. If the condition is not met, we must wait. Once the condition is met, we can update our proxy variable. If appropriate, we can signal/broadcast to other threads if some condition has changed. Finally we can unlock the mutex.
 
@@ -254,7 +254,7 @@ The "enter critical section" blocks can be seen as a higher level "lock" operati
 ## Critical Section Structure With Proxy
 ![](https://assets.omscs.io/notes/FC626433-043F-4F39-88FB-54F5F184C381.png)
 
-Again, this structure allows up to implement more complex sharing scenarios than the simple mutual exclusion that mutexes allow.
+Again, this structure allows us to implement more complex sharing scenarios than the simple mutual exclusion that mutexes allow.
 
 ## Common Pitfalls
 Make sure to keep track of the mutex/condition variables that are used with a given shared resource. Comments help!
@@ -329,9 +329,9 @@ This means that the operating system can see the user level threads. It understa
 One downside of this approach is that is it expensive: for every operation we must go to the kernel and pay the cost of a system call. Another downside is that since we are relying on the mechanisms and policies supported by the kernel, we are limited to only those policies and mechanisms. As well, execution of our applications on different operating systems may give different results.
 
 ### Many-to-One Model
-In this model, all of the user level threads for a process are mapped onto a single kernel level thread. At the user level, there is a thread management library to makes decisions about which user level thread to map onto the kernel level thread at any given point in time. That user level thread will still only run once that kernel level thread is scheduled on the CPU by the kernel level scheduler.
+In this model, all of the user level threads for a process are mapped onto a single kernel level thread. At the user level, there is a thread management library to make decisions about which user level thread to map onto the kernel level thread at any given point in time. That user level thread will still only run once that kernel level thread is scheduled on the CPU by the kernel level scheduler.
 
-The benefit of this approach is that it is portable. Everything is done at the user level, which frees us from being reliant on the OS limits and policies. As well, we don't have make system calls for any thread-related decisions.
+The benefit of this approach is that it is portable. Everything is done at the user level, which frees us from being reliant on the OS limits and policies. As well as, we don't have to make system calls for any thread-related decisions.
 
 However, the operating system loses its insight into application needs. It doesn't even know that the process is multithreaded. All it sees is one kernel level thread. If the user level library schedules a thread that performs some blocking operation, the OS will place the associated kernel level thread onto some request queue, which will end up blocking the entire process, even though more work can potentially be done.
 
@@ -342,12 +342,12 @@ The benefit is that we get the best of both worlds. The kernel is aware that the
 
 We can have a situation where a user level thread can be scheduled on any allocated kernel level thread. This is known as an **unbound** thread. Alternatively, we can have the case where a user level thread will always be scheduled atop the same kernel level thread. This is known as a **bound** thread.
 
-One of the downsides of this model is that is requires extra coordination between the user- and kernel-level thread managers.
+One of the downsides of this model is that it requires extra coordination between the user- and kernel-level thread managers.
 
 ## Scope of Multithreading
-At the kernel level, there is system wide thread management, supported by the operating system level thread managers. These managers will look at the entire platform before making decision on how to run its threads.  This is the **system scope**.
+At the kernel level, there is system wide thread management, supported by the operating system level thread managers. These managers will look at the entire platform before making decisions on how to run their threads. This is the **system scope**.
 
-On the other hand,  at the user level, the user level library that manages all of the threads for the given process it is linked to. The user level library thread managers cannot see threads outside of their process, so we say these managers have **process scope**.
+On the other hand, at the user level, the user level library manages all of the threads for the given process it is linked to. The user level library thread managers cannot see threads outside of their process, so we say that these managers have **process scope**.
 
 To understand the consequences of having different scope, let's consider the scenario where we have two processes, A and B. A has twice as many user level threads as B.
 
@@ -366,7 +366,7 @@ The boss/workers pattern is characterized by having one boss thread and some num
 
 The throughput of the system is limited by the boss thread, since the boss has to do some work for every task that comes into the system. As a result it is imperative to keep the boss efficient to keep the overall system moving smoothly. Specifically, the throughput of the system is inversely proportional to the amount of time the boss spends on each task.
 
-How does the boss assign work to the workers? One solution is to keep track of which workers are currently working, and send a direct signal to a worker that is idle.  This means that the boss must do for each worker, since it has to select a worker and then wait for that work to accept the work.
+How does the boss assign work to the workers? One solution is to keep track of which workers are currently working, and send a direct signal to a worker that is idle. This means that the boss must do some work for each worker, since it has to select a worker and then wait for that worker to accept the work.
 
 The positive of this approach is that the workers do not need to synchronize amongst each other. The downside of this approach is that the boss must keep track of every worker, and this extra work will decrease throughput.
 
@@ -403,7 +403,7 @@ One downside of this approach is the load balancing mechanisms and requirements 
 ### Pipeline Pattern
 In a pipeline approach, the overall task is divided into subtasks and each of the subtasks are assigned a different thread. For example, if we have six step process, we will have six kinds of threads, one for each stage in the pipeline.
 
-At any given point in time, we may have multiple tasks being worked on concurrently in the system. For example, we can one have task currently at stage one of completion, two tasks at stage two, and so forth.  
+At any given point in time, we may have multiple tasks being worked on concurrently in the system. For example, we can have one task currently at stage one of completion, two tasks at stage two, and so forth.
 
 The throughput of the pipeline will be dependent on the *weakest link* in the pipeline; that is, the task that takes the longest amount of time to complete. In this case, we can allocate more threads to that given step. For example, if a step takes three times as long as every other step, we can allocate three times the number of threads to that step.
 
