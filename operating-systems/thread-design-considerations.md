@@ -24,7 +24,7 @@ User level threads can be mapped onto kernel level threads via a 1:1, many:1 and
 * stack
 * registers
 
-If the process links in a user level threading library, that library will need some way to represent threads, so that it can track thread resource use and make decisions about thread scheduling a synchronization.
+If the process links in a user level threading library, that library will need some way to represent threads, so that it can track thread resource use and make decisions about thread scheduling and synchronization.
 
 The library will maintain some user level thread data structure containing:
 * thread ids
@@ -74,7 +74,7 @@ Multiple data structures:
 ### SunOS paper
 ![](https://assets.omscs.io/notes/0C4D3FA7-A3C9-4469-B87B-050484774183.png)
 
-The OS is intended for multiple CPU platforms and the kernel itself is multithreaded. At the user level, the processes can single or multithreaded, and both many:many and one:one ULT:KLT mappings are supported.
+The OS is intended for multiple CPU platforms and the kernel itself is multithreaded. At the user level, the processes can be single or multithreaded, and both many:many and one:one ULT:KLT mappings are supported.
 
 Each kernel level thread that is executing on behalf of a user level thread has a **lightweight process** (LWP) data structure associated with it. From the user level library perspective, these LWPs represent the virtual CPUs onto which the user level threads are scheduled. At the kernel level, there will be a kernel level scheduler responsible for scheduling the kernel level threads onto the CPU.
 
@@ -205,7 +205,7 @@ Scenario
 
 T1 holds the mutex and is executing on one CPU. T2 and T3 are blocked. T4 is executing on another CPU and wishes to lock the mutex.
 
-The normal behavior would be to place T4 on the queue associated with the mutex. However, on a multiprocessor system where things can happen in parallel, it may be the case that is the time T4 is placed on the queue, T1 has released the mutex.
+The normal behavior would be to place T4 on the queue associated with the mutex. However, on a multiprocessor system where things can happen in parallel, it may be the case that by the time T4 is placed on the queue, T1 has released the mutex.
 
 If the critical section is very short, the more efficient case for T4 is not to block, but just to spin (trying to acquire the mutex in a loop).  If the critical section is long, it makes more sense to block (that is, be placed on a queue and retrieved at some later point in time). This is because it takes CPU cycles to spin, and we don't want to burn through cycles for a long time.
 
@@ -291,7 +291,7 @@ Some asynchronous signals include:
 ## Why Disable Interrupts or Signals?
 Interrupts and signals are handled in the context of the thread being interrupted/signaled. This means that they are handled on the thread's stack, which can cause certain issues.
 
-When a thread handles a signal, the program counter of the thread will point to the first address of the handler. The stack pointer will remain the same, meaning that whatever the thread was doing before being interrupted with still be on the stack.
+When a thread handles a signal, the program counter of the thread will point to the first address of the handler. The stack pointer will remain the same, meaning that whatever the thread was doing before being interrupted will still be on the stack.
 
 If the handling code needs to access some shared state that can be used by other threads in the system, we will have to use mutexes. If the thread which is being interrupted had already locked the mutex before being interrupted, we are in a **deadlock**. The thread can't unlock its mutex until the handler returns, but the handler can't return until it locks the mutex.
 
