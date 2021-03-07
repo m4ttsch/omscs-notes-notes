@@ -8,7 +8,7 @@ lecture: threads-case-study-pthreads
 # Threads Case Study - PThreads
 
 ## PThread Creation
-To represent threads, pthreads supports a `pthread_t` data type. Variables of this type will by uniquely identified by an identifier and will describe a thread.
+To represent threads, pthreads supports a `pthread_t` data type. Variables of this type will be uniquely identified by an identifier and will describe a thread.
 
 Threads are created by the following function
 
@@ -16,7 +16,7 @@ Threads are created by the following function
 int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void * (*start_routine)(void *), void *arg);
 ```
 
-This function takes as arguments a pointer to a `pthread_t`, a well as a start routine and an argument to pass to that start routine.
+This function takes as arguments a pointer to a `pthread_t`, as well as a start routine and an argument to pass to that start routine.
 
 It also takes an argument which is of the type `pthread_attr_t` which is a data structure that can be used to set various options on the thread during creation.
 
@@ -28,7 +28,7 @@ Child threads can be joined back to a parent thread with
 int pthread_join(pthread_t thread, void **status);
 ```
 
-This function takes the thread to be joined as well as a status variable. The status variable will capture all of the important return information that is returned from the thread to be joined.
+This function takes the thread to be joined as well as a status variable. The status variable will capture all of the important information that is returned from the thread to be joined.
 
 `pthread_join` returns an `int` which indicates whether the join was a success or a failure.
 
@@ -138,7 +138,7 @@ int pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutexattr_t *attr);
 
  The `pthread_mutexattr_t *attr` argument allows us to specify the behavior that we want the mutex to have. Passing `NULL` gives us the default behavior (similar to the case with `pthread_create` and `pthread_attr_t`).
 
-Another interesting operation that can used on mutexes is
+Another interesting operation that can be used on mutexes is
 
 ```c
 int pthread_mutex_trylock(pthread_mutex_t *mutex);
@@ -210,13 +210,13 @@ Our shared buffer is `buffer`. `add` and `rem` refer to the indices at which we 
 
 These shared variables are used in conjunction with our mutex `m` and our condition variables `c_cons` and `c_prod` which are all initialized here.
 
-Finally, we define our two procedures: `producer` which will be operated by the producer thread and `consumer` which will be executed by the consume threads.
+Finally, we define our two procedures: `producer` and `consumer`, which will be executed by the producer and consumer threads respectively.
 
 ### Main
 
 ![](https://assets.omscs.io/notes/BAB41E1C-B65F-4409-948C-8AFBD2203D1C.png)
 
-The first thread that we create will be created to execute the `producer` function, and the second thread we create will execute the `consumer` function.
+The first thread will be created to execute the `producer` function, and the second thread will execute the `consumer` function.
 
 We use the default behavior for these threads (i.e. they are not detachable), so we must make sure to `pthread_join` them before `main` returns.
 
@@ -224,7 +224,7 @@ We use the default behavior for these threads (i.e. they are not detachable), so
 
 ![](https://assets.omscs.io/notes/91CE2BF6-F3DC-4B8A-9F65-BF320C4D2DE6.png)
 
-The producer loops twenty times, and tries to produce an element to the share buffer on each iteration.
+The producer loops twenty times, and tries to produce an element to the shared buffer on each iteration.
 
 It tries to accomplish this by first acquiring `m` with `pthread_mutex_lock`. Once `m` is acquired, the producer will potentially wait on `c_prod` with `pthread_cond_wait` if the shared buffer is full (`num == BUFSIZE`).  Otherwise, the producer will add its element to the buffer, and update the three shared variables to reflect this addition.
 
