@@ -241,7 +241,7 @@ The structure of our application is such that even though the critical operation
 
 ![](https://assets.omscs.io/notes/17C45807-015F-4B4B-8457-3403DC414A21.png)
 
-For example, before we can read data, we must first lock the mutex and increment `resource_counter`.After we read data, we must again lock the mutex and decrement `resource_counter`. A similar setup exists for writing data.
+For example, before we can read data, we must first lock the mutex and increment `resource_counter`. After we read data, we must again lock the mutex and decrement `resource_counter`. A similar setup exists for writing data.
 
 Each time we acquire the mutex, we must ensure that a condition is met such that we can proceed safely. If the condition is not met, we must wait. Once the condition is met, we can update our proxy variable. If appropriate, we can signal/broadcast to other threads if some condition has changed. Finally we can unlock the mutex.
 
