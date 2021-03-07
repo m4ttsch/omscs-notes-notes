@@ -39,7 +39,7 @@ df.prod() # Column-wise product of elements
 
 ### Documentation
 
-- [Computations / descriptive stats](https://pandas.pydata.org/pandas-docs/stable/reference/series.html#computations-descriptive-stats)
+* [Computations / descriptive stats](https://pandas.pydata.org/pandas-docs/stable/reference/series.html#computations-descriptive-stats)
 
 ## Compute Global Statistics
 
@@ -81,9 +81,9 @@ We can see that GOOG has the highest standard deviation among the stocks. This m
 
 ### Documentation
 
-- [pandas.DataFrame.mean](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.mean.html)
-- [pandas.DataFrame.median](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.median.html)
-- [pandas.DataFrame.std](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.std.html)
+* [pandas.DataFrame.mean](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.mean.html)
+* [pandas.DataFrame.median](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.median.html)
+* [pandas.DataFrame.std](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.std.html)
 
 ## Rolling Statistics
 
@@ -93,7 +93,7 @@ Consider the following graph of SPY price data.
 
 ![](https://assets.omscs.io/notes/2020-01-12-16-14-15.png)
 
-We can compute the *global* mean of this data set, which is a single value described by the line below.
+We can compute the _global_ mean of this data set, which is a single value described by the line below.
 
 ![](https://assets.omscs.io/notes/2020-01-12-16-15-05.png)
 
@@ -111,7 +111,7 @@ Note that our sliding mean calculations form a curve that begins 20 data points 
 
 We can see that this rolling mean line follows the day-to-day values of the SPY price data, but it lags slightly as it has to incorporate the past twenty days into its calculation.
 
-The rolling mean is referred to as a [simple moving average](https://www.investopedia.com/terms/s/sma.asp) (SMA) by [technical analysts](https://www.investopedia.com/terms/t/technical-analyst.asp). Technical analysts utilize SMAs by looking at points where the price crosses over the SMA.
+The rolling mean is referred to as a [simple moving average](https://www.investopedia.com/terms/s/sma.asp) \(SMA\) by [technical analysts](https://www.investopedia.com/terms/t/technical-analyst.asp). Technical analysts utilize SMAs by looking at points where the price crosses over the SMA.
 
 ![](https://assets.omscs.io/notes/2020-01-12-16-32-07.png)
 
@@ -204,11 +204,11 @@ Also observe that the rolling mean appears to track the price data, but is much 
 
 ### Documentation
 
-- [pandas.DataFrame.rolling](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.rolling.html)
-- [pandas.DataFrame.plot](https://pandas.pydata.org/pandas-docs/version/0.23.4/generated/pandas.DataFrame.plot.html)
-- [matplotlib.axes.Axes.set_xlabel](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.axes.Axes.set_xlabel.html)
-- [matplotlib.axes.Axes.set_ylabel](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.axes.Axes.set_ylabel.html)
-- [matplotlib.axes.Axes.legend](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.axes.Axes.legend.html)
+* [pandas.DataFrame.rolling](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.rolling.html)
+* [pandas.DataFrame.plot](https://pandas.pydata.org/pandas-docs/version/0.23.4/generated/pandas.DataFrame.plot.html)
+* [matplotlib.axes.Axes.set\_xlabel](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.axes.Axes.set_xlabel.html)
+* [matplotlib.axes.Axes.set\_ylabel](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.axes.Axes.set_ylabel.html)
+* [matplotlib.axes.Axes.legend](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.axes.Axes.legend.html)
 
 ## Calculate Bollinger Bands Quiz
 
@@ -240,7 +240,7 @@ rm + (2 * rstd), rm - (2 * rstd)
 
 ### Documentation
 
-- [pandas.DataFrame.rolling](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.rolling.html)
+* [pandas.DataFrame.rolling](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.rolling.html)
 
 ## Daily Returns
 
@@ -266,7 +266,7 @@ We can also take the average over the daily return values, which, since the stoc
 
 ![](https://assets.omscs.io/notes/2020-01-12-22-33-22.png)
 
-Daily returns can be a helpful tool for comparing two different stocks, such as XOM (Exxon) and SPY. The following plot of daily returns reveals an unusual feature: a day where SPY had a positive daily return, and XOM had a negative daily return.
+Daily returns can be a helpful tool for comparing two different stocks, such as XOM \(Exxon\) and SPY. The following plot of daily returns reveals an unusual feature: a day where SPY had a positive daily return, and XOM had a negative daily return.
 
 ![](https://assets.omscs.io/notes/2020-01-12-22-37-21.png)
 
@@ -314,10 +314,10 @@ daily_returns.iloc[0] = 0
 
 ### Documentation
 
-- [pandas.DataFrame.shift](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.shift.html)
-- [pandas.DataFrame.ix - DEPRECATED](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.ix.html)
-- [pandas.DataFrame.loc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.loc.html)
-- [pandas.DataFrame.iloc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.iloc.html)
+* [pandas.DataFrame.shift](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.shift.html)
+* [pandas.DataFrame.ix - DEPRECATED](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.ix.html)
+* [pandas.DataFrame.loc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.loc.html)
+* [pandas.DataFrame.iloc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.iloc.html)
 
 ## Cumulative Returns
 
@@ -325,7 +325,7 @@ Let's look at a chart of SPY prices for the year 2012.
 
 ![](https://assets.omscs.io/notes/2020-01-12-23-06-40.png)
 
-This stock started 2012 at  $125 and finished at $142. However, when we hear about a stock on the news, we don't usually hear beginning and end prices, but rather something like: "SPY gained 13.6% in 2012."
+This stock started 2012 at $125 and finished at $142. However, when we hear about a stock on the news, we don't usually hear beginning and end prices, but rather something like: "SPY gained 13.6% in 2012."
 
 That 13.6% is the **cumulative return** for SPY in 2012. In other words, the cumulative return for a stock is the total return for the stock over a given range.
 
@@ -346,3 +346,4 @@ We can calculate and chart cumulative returns for the entire time period, just l
 ![](https://assets.omscs.io/notes/2020-01-12-23-15-16.png)
 
 Note that the shape of this chart is identical to the price chart but just normalized. In fact, the expression for cumulative return is identical to the expression for normalization we saw in a previous lecture.
+

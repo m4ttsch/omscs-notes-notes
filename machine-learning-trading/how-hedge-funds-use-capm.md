@@ -35,7 +35,7 @@ $$
 r_A = \alpha_A
 $$
 
-Since $\alpha_A$ is 0.01, our return is 1% of $50, or $0.50.
+Since $\alpha\_A$ is 0.01, our return is 1% of $50, or $0.50.
 
 Now, consider the returns of stock B, using the CAPM equation.
 
@@ -49,7 +49,7 @@ $$
 r_B = \alpha_B
 $$
 
-Since both $\alpha_B$ and our investment in stock B are negative, we actually made a profit: -1% of -$50, or $0.50.
+Since both $\alpha\_B$ and our investment in stock B are negative, we actually made a profit: -1% of -$50, or $0.50.
 
 Altogether we made $1, a 1% return on our total investment.
 
@@ -95,7 +95,7 @@ Overall, this market scenario nets us 6%, or $6 on a $100 investment.
 
 ## Two Stock CAPM Math
 
-Recall how we use the CAPM to represent the return, $r_p$, for our overall portfolio. For each individual stock, $i$, we compute return, $r_i$, as the product of $\beta_i$ and the return on the market, $r_m$, plus $\alpha_i$. The value of $r_p$ is the sum of each $r_i$ multiplied by its corresponding weight, $w_i$.
+Recall how we use the CAPM to represent the return, $r\_p$, for our overall portfolio. For each individual stock, $i$, we compute return, $r\_i$, as the product of $\beta\_i$ and the return on the market, $r\_m$, plus $\alpha\_i$. The value of $r\_p$ is the sum of each $r\_i$ multiplied by its corresponding weight, $w\_i$.
 
 $$
 r_p = \sum_iw_i(\beta_ir_m + \alpha_i)
@@ -139,9 +139,9 @@ $$
 
 Remember how we arrived at the 1% portfolio $\alpha$. We researched the stocks that we selected for our portfolio and found information that led us to believe that one would outperform the market by 1% and that the other would underperform the market by 1%.
 
-On the other hand, we don't have any knowledge about what is going to happen in the market overall; that is, we have no control over the component of CAPM that incorporates market return. If we can eliminate this component, we can guarantee our 1% return, *regardless* of market movement.
+On the other hand, we don't have any knowledge about what is going to happen in the market overall; that is, we have no control over the component of CAPM that incorporates market return. If we can eliminate this component, we can guarantee our 1% return, _regardless_ of market movement.
 
-We can eliminate market risk by making $\beta_p = 0$. Since we can't change the individual $\beta_A$ and $\beta_B$ values to make this happen, we need to adjust our allocations instead. Essentially, we need to solve the following equation for $w_A$ and $w_B$.
+We can eliminate market risk by making $\beta\_p = 0$. Since we can't change the individual $\beta\_A$ and $\beta\_B$ values to make this happen, we need to adjust our allocations instead. Essentially, we need to solve the following equation for $w\_A$ and $w\_B$.
 
 $$
 0 = w_A\beta_A + w_B\beta_B
@@ -167,13 +167,13 @@ $$
 w_A = -2w_B
 $$
 
-We also know that the sum of the absolute values $w_A$ and $w_B$ should equal one.
+We also know that the sum of the absolute values $w\_A$ and $w\_B$ should equal one.
 
 $$
 |w_A| + |w_B| = 1
 $$
 
-If we substitute $-2w_B$ for $w_A$, we can solve for $w_B$.
+If we substitute $-2w\_B$ for $w\_A$, we can solve for $w\_B$.
 
 $$
 |-2w_B| + |w_B| = 1
@@ -187,7 +187,7 @@ $$
 |w_B| = \frac{1}{3}
 $$
 
-However, since we want to short B, $w_B$ is actually $\frac{-1}{3}$, not $\frac{1}{3}$. We can now solve for $w_A$.
+However, since we want to short B, $w\_B$ is actually $\frac{-1}{3}$, not $\frac{1}{3}$. We can now solve for $w\_A$.
 
 $$
 |w_A| + |w_B| = 1
@@ -201,7 +201,7 @@ $$
 |w_A| = \frac{2}{3}
 $$
 
-If we plug these two weights back into our original equation, we can verify that we do get an overall $\beta_p$ of 0.
+If we plug these two weights back into our original equation, we can verify that we do get an overall $\beta\_p$ of 0.
 
 $$
 \beta_p = 0.01w_A + 0.02w_B
@@ -223,7 +223,7 @@ $$
 
 Now that we have calculated weights for stock A and stock B that eliminate market risk let's see how they work using the market conditions we have been examining.
 
-Let's look at the scenario where the market goes up 10%. Using weights $w_A = 0.66$ and $w_B = -0.33$, we can use the CAPM to compute portfolio return.
+Let's look at the scenario where the market goes up 10%. Using weights $w\_A = 0.66$ and $w\_B = -0.33$, we can use the CAPM to compute portfolio return.
 
 $$
 r_p = w_A\beta_Ar_m + w_A\alpha_A + w_B\beta_Br_m + w_B\alpha_B
@@ -245,6 +245,7 @@ $$
 r_p = 0.01
 $$
 
-We can see that the expected return for our portfolio is 1%, *irrespective* of market movement.
+We can see that the expected return for our portfolio is 1%, _irrespective_ of market movement.
 
-We need to add some caveats here. Specifically, the values of $\beta$ and $\alpha$ that we calculated using historical data are *not* guaranteed to carry into the future. This portfolio is not a guaranteed investment, by any means, but rather an example of how we can use long-short investing to reduce overall exposure to the market.
+We need to add some caveats here. Specifically, the values of $\beta$ and $\alpha$ that we calculated using historical data are _not_ guaranteed to carry into the future. This portfolio is not a guaranteed investment, by any means, but rather an example of how we can use long-short investing to reduce overall exposure to the market.
+

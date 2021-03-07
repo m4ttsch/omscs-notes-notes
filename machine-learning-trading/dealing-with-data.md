@@ -169,17 +169,17 @@ We can see the strong performance of such a biased strategy below in blue.
 
 ![](https://assets.omscs.io/notes/2020-03-06-16-07-44.png)
 
-The problem here is that we are selecting from a collection of stocks in the relative past that we know exists in the relative future. Since all of these stocks survived the trading period, any trading strategy exclusively considering them is likely to show unrealistically optimistic results. In other words, there is a built-in **survivorship bias** in our selection. 
+The problem here is that we are selecting from a collection of stocks in the relative past that we know exists in the relative future. Since all of these stocks survived the trading period, any trading strategy exclusively considering them is likely to show unrealistically optimistic results. In other words, there is a built-in **survivorship bias** in our selection.
 
 What if we used the S&P 500 universe as it existed in 2007? The performance of our strategy now is less biased and might look like the red line below.
 
 ![](https://assets.omscs.io/notes/2020-03-06-16-15-35.png)
 
-If we consider the universe of stocks as it existed in 2007, we are considering those stocks that didn't make it to the present day. 
-Specifically, our strategy might advise investments in one of the sixty-eight stocks that disappeared from the S&P 500 between 2007 and 2009.
+If we consider the universe of stocks as it existed in 2007, we are considering those stocks that didn't make it to the present day. Specifically, our strategy might advise investments in one of the sixty-eight stocks that disappeared from the S&P 500 between 2007 and 2009.
 
 ![](https://assets.omscs.io/notes/2020-03-06-16-16-26.png)
 
 If this is the case, our strategy is likely to show much worse performance than had we just considered the biased universe. However, the performance of our strategy using the unbiased universe is going to be more realistic, which is what matters.
 
 The lesson learned here is to use survivor-bias-free data, which is available for purchase from several different providers.
+

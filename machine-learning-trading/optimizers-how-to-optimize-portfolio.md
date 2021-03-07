@@ -1,6 +1,6 @@
 ---
 id: machine-learning-trading-optimizers-how-to-optimize-portfolio
-title: "Optimizers: How to Optimize a Portfolio"
+title: 'Optimizers: How to Optimize a Portfolio'
 course: machine-learning-trading
 lecture: optimizers-how-to-optimize-portfolio
 ---
@@ -23,7 +23,7 @@ Let's optimize this portfolio for Sharpe ratio and see how the returns change.
 
 ![](https://assets.omscs.io/notes/2020-01-21-16-08-29.png)
 
-We can see that this optimized portfolio outperforms both SPY and the previous, unoptimized portfolio. 
+We can see that this optimized portfolio outperforms both SPY and the previous, unoptimized portfolio.
 
 Note the blend of asset allocations required for this performance. Whereas before we had equal allocations between assets, here we have a 40/60 split between AAPL and GLD, with GOOG and XOM receiving no allocation.
 
@@ -47,11 +47,11 @@ Optimizing for minimum volatility or Sharpe ratio involves evaluating various co
 
 As we've said, we want to optimize our portfolio such that we maximize Sharpe ratio. We've solved optimization problems using minimizers in the past, and so we need to reframe our Sharpe ratio maximization task as a minimization problem.
 
-Recall that using a minimizer involves three steps. First, we define a function $f(x)$ that we want to minimize. Second, we define an initial guess for $x$. Finally, we pass $f(x)$ and $x$ to the optimizer and let it find the value of $x$ that minimizes $f(x)$.
+Recall that using a minimizer involves three steps. First, we define a function $f\(x\)$ that we want to minimize. Second, we define an initial guess for $x$. Finally, we pass $f\(x\)$ and $x$ to the optimizer and let it find the value of $x$ that minimizes $f\(x\)$.
 
-In this case, $x$ is a list of the asset allocations in our portfolio. We want the optimizer to vary these values to discover the set of allocations that minimizes $f(x)$.
+In this case, $x$ is a list of the asset allocations in our portfolio. We want the optimizer to vary these values to discover the set of allocations that minimizes $f\(x\)$.
 
-We might think to set $f(x)$ equal to the Sharpe ratio expression, but this is incorrect. Remember that the minimizer *minimizes* $f(x)$, so setting $f(x)$ equal to the Sharpe ratio results in an allocation that produces the smallest Sharpe ratio. We can fix this by instead setting $f(x)$ equal to the negative Sharpe ratio.
+We might think to set $f\(x\)$ equal to the Sharpe ratio expression, but this is incorrect. Remember that the minimizer _minimizes_ $f\(x\)$, so setting $f\(x\)$ equal to the Sharpe ratio results in an allocation that produces the smallest Sharpe ratio. We can fix this by instead setting $f\(x\)$ equal to the negative Sharpe ratio.
 
 ## Ranges and Constraints
 
@@ -62,3 +62,4 @@ We need to tell the optimizer that it should only look for candidate values of $
 Limiting the range of values the optimizer has to search over allows the optimizer to converge much more quickly to the solution.
 
 Additionally, we can give the optimizer constraints: properties of $x$ that must be true for that $x$ to be considered a solution. In our case, we have the constraint that the sum of our allocations - the values in $x$ - must equal 1.
+

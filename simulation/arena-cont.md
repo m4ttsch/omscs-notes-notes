@@ -1,6 +1,6 @@
 ---
 id: simulation-arena-cont
-title: Arena, Continued
+title: 'Arena, Continued'
 course: simulation
 lecture: arena-cont
 ---
@@ -21,9 +21,9 @@ Let's look at a flowchart representing this model.
 
 ![](https://assets.omscs.io/notes/2020-09-28-21-16-17.png)
 
-We generate Part A from an exponential distribution with a mean of five minutes. We generate Part B in batches of four from an exponential distribution with a mean of thirty minutes. Part A goes to a Prep server with service times generated from a triangular(1,4,8) distribution, while Part B goes to Prep server with service times generated from a triangular(3,5,10) distribution.
+We generate Part A from an exponential distribution with a mean of five minutes. We generate Part B in batches of four from an exponential distribution with a mean of thirty minutes. Part A goes to a Prep server with service times generated from a triangular\(1,4,8\) distribution, while Part B goes to Prep server with service times generated from a triangular\(3,5,10\) distribution.
 
-Both parts then head to the Sealer server, and Part A receives service according to a triangular(1,3,4) distribution, while Part B receives service according to a Weibull(2.5,5.3) distribution.
+Both parts then head to the Sealer server, and Part A receives service according to a triangular\(1,3,4\) distribution, while Part B receives service according to a Weibull\(2.5,5.3\) distribution.
 
 In any event, 91% of all parts coming out of the Sealer can be shipped immediately. The other 9% need to be reworked and head over to the Rework server. This server generates service times from an exponential distribution with a mean service time of 45 minutes. Of those reworked pieces, 20% are scrapped, and 80% are salvaged and shipped.
 
@@ -33,7 +33,7 @@ Is there another way to model the processing time at the Sealer without having t
 
 Here is what that expression looks like: `((Entity.Type == Part A) * TRIA(1,3,4)) + ((Entity.Type == Part B) * WEIB(2.5,5.3))`. Since the expression `X == Y` equals one if it is true and zero if it is false, we are essentially zeroing out the effect of the distribution of the complementary part when a part arrives. For example, if `Entity.Type == Part A` then the expression above reduces to `1 * TRIA(1,3,4) + 0`, which equals `TRIA(1,3,4)`.
 
-We can also use the Assign module to store each customer's arrival time as an attribute (Arrival Time). We can use the Arena internal variable `TNOW` to retrieve the current time. 
+We can also use the Assign module to store each customer's arrival time as an attribute \(Arrival Time\). We can use the Arena internal variable `TNOW` to retrieve the current time.
 
 We can also record departure times just before parts get disposed. The difference between the arrival time and the departure time is the cycle time. We can calculate the average cycle times for any of the three categories of parts - those that pass on the first try, the second try, or those that fail on both.
 
@@ -47,23 +47,23 @@ In this demo, we will walk through the two-channel manufacturing system we just 
 
 ![](https://assets.omscs.io/notes/2020-10-04-15-39-10.png)
 
-Notice that we have two different products, each with their own arrivals. Part A arrivals are generated from an EXPO(5) distribution, and the parts show up one at a time. Note as well that the *Entity Type* for these parts is "Part A".
+Notice that we have two different products, each with their own arrivals. Part A arrivals are generated from an EXPO\(5\) distribution, and the parts show up one at a time. Note as well that the _Entity Type_ for these parts is "Part A".
 
 ![](https://assets.omscs.io/notes/2020-10-04-15-45-45.png)
 
-The arrivals for part B, on the other hand, are generated from an EXPO(30) distribution, and these parts show up four at a time. Correspondingly, the *Entity Type* for these parts is "Part B".
+The arrivals for part B, on the other hand, are generated from an EXPO\(30\) distribution, and these parts show up four at a time. Correspondingly, the _Entity Type_ for these parts is "Part B".
 
 ![](https://assets.omscs.io/notes/2020-10-04-15-46-33.png)
 
-After the parts arrive, they immediately pass through an Assign block. Below is the configuration for the Assign block for part A. Here, we set two attributes: 'Sealer Time', which takes a value of TRIA(1,3,4), and 'Arrival Time', which takes a value of `TNOW`.
+After the parts arrive, they immediately pass through an Assign block. Below is the configuration for the Assign block for part A. Here, we set two attributes: 'Sealer Time', which takes a value of TRIA\(1,3,4\), and 'Arrival Time', which takes a value of `TNOW`.
 
 ![](https://assets.omscs.io/notes/2020-10-04-15-51-35.png)
 
-We again set the 'Arrival Time' attribute to `TNOW` for part B, but we set the 'Sealer Time' attribute to WEIB(2.5,5.3).
+We again set the 'Arrival Time' attribute to `TNOW` for part B, but we set the 'Sealer Time' attribute to WEIB\(2.5,5.3\).
 
 ![](https://assets.omscs.io/notes/2020-10-04-15-55-27.png)
 
-Both parts then head to their corresponding prep process. The prep processes for both parts perform a Seize-Delay-Release with service times from a TRIA(1,4,8) distribution.
+Both parts then head to their corresponding prep process. The prep processes for both parts perform a Seize-Delay-Release with service times from a TRIA\(1,4,8\) distribution.
 
 ![](https://assets.omscs.io/notes/2020-10-04-15-58-58.png)
 
@@ -93,13 +93,13 @@ In this lesson, we'll talk about "fake" customers. The idea here is that these c
 
 ### Fake Customers
 
-We can use fake customers to accomplish various tasks in a simulation. As we said, these customers aren't real in the sense that we care about their waiting times or how they use resources. They can use resources, but only for certain reasons, and we don't care if they have to wait. 
+We can use fake customers to accomplish various tasks in a simulation. As we said, these customers aren't real in the sense that we care about their waiting times or how they use resources. They can use resources, but only for certain reasons, and we don't care if they have to wait.
 
 In this demo, we will use fake customers to calculate normal probabilities. In the call center example, we will use fake customers to track which time-period we're in. Furthermore, we can use fake customers as a breakdown demon; that is, we will use fake customers to trigger breakdowns.
 
 ### DEMO
 
-In this demo, we will calculate normal probabilities, based on successes and failures of certain observations, with a little help from fake customers. Specifically, we want to calculate the probability that a Norm(3,1) random variable is negative. Here's our setup.
+In this demo, we will calculate normal probabilities, based on successes and failures of certain observations, with a little help from fake customers. Specifically, we want to calculate the probability that a Norm\(3,1\) random variable is negative. Here's our setup.
 
 ![](https://assets.omscs.io/notes/2020-10-05-18-12-10.png)
 
@@ -107,23 +107,23 @@ First, we will generate one million customer arrivals, one hour at a time, using
 
 ![](https://assets.omscs.io/notes/2020-10-05-18-12-58.png)
 
-Next, we will use an Assign block to assign an attribute called "Normal Observation" - a Norm(3,1) random variable - to each customer.
+Next, we will use an Assign block to assign an attribute called "Normal Observation" - a Norm\(3,1\) random variable - to each customer.
 
 ![](https://assets.omscs.io/notes/2020-10-05-18-13-50.png)
 
-Next, we need to determine whether the attribute is negative or positive, so we need a Decide block. Notice that we have specified a decision of *Type* "2-way by Condition". This condition checks *If* an "Attribute" *Named* "Normal Observation" *Is* ">=" to the *Value* "0", which of course, is the conditional logic we just described in plain English.
+Next, we need to determine whether the attribute is negative or positive, so we need a Decide block. Notice that we have specified a decision of _Type_ "2-way by Condition". This condition checks _If_ an "Attribute" _Named_ "Normal Observation" _Is_ "&gt;=" to the _Value_ "0", which of course, is the conditional logic we just described in plain English.
 
 ![](https://assets.omscs.io/notes/2020-10-05-18-20-53.png)
 
-If the random variable is greater than zero, we record a nonnegative observation. Otherwise, we record a negative observation. Let's look at the Record block for the negative observation. Here, we select a *Type* of "Count" and a *Value* of "1", and we apply it to the counter named "Negative Observations".
+If the random variable is greater than zero, we record a nonnegative observation. Otherwise, we record a negative observation. Let's look at the Record block for the negative observation. Here, we select a _Type_ of "Count" and a _Value_ of "1", and we apply it to the counter named "Negative Observations".
 
 ![](https://assets.omscs.io/notes/2020-10-05-18-23-35.png)
 
-Before we run the simulation, let's make sure we avoid the Crystal reports. If we select *Run > Setup* and the click then *Reports* tab, we can select "SIMAN Summary Report" from the *Default Report* dropdown.
+Before we run the simulation, let's make sure we avoid the Crystal reports. If we select _Run &gt; Setup_ and the click then _Reports_ tab, we can select "SIMAN Summary Report" from the _Default Report_ dropdown.
 
 ![](https://assets.omscs.io/notes/2020-10-05-18-25-55.png)
 
-Let's look at the report. Out of the million observations that we generated, 998591 were positive, and 1409 were negative. If we divided each of those numbers by one million, then we have a .9986 probability of seeing a positive Norm(3,1) random variable and a 0.0014 probability of seeing a negative Norm(3,1) random variable. Indeed, the probability of observing a z-score less than or equal to three is 0.0013.
+Let's look at the report. Out of the million observations that we generated, 998591 were positive, and 1409 were negative. If we divided each of those numbers by one million, then we have a .9986 probability of seeing a positive Norm\(3,1\) random variable and a 0.0014 probability of seeing a negative Norm\(3,1\) random variable. Indeed, the probability of observing a z-score less than or equal to three is 0.0013.
 
 ![](https://assets.omscs.io/notes/2020-10-05-18-26-23.png)
 
@@ -131,19 +131,19 @@ Let's look at another demo. In this example, we are going to use fake customers 
 
 ![](https://assets.omscs.io/notes/2020-10-05-18-30-02.png)
 
-In our first Create block, we create regular customers from an EXPO(0.5) distribution.
+In our first Create block, we create regular customers from an EXPO\(0.5\) distribution.
 
 ![](https://assets.omscs.io/notes/2020-10-05-18-30-35.png)
 
-In our second Create block, we create fake customers from an EXPO(10) distribution.
+In our second Create block, we create fake customers from an EXPO\(10\) distribution.
 
 ![](https://assets.omscs.io/notes/2020-10-05-18-31-03.png)
 
-We assign two attributes to the regular customers: one named "service time", which takes a value of TRIA(0.5,1,1.5), and one named "priority level", which takes a value of "2".
+We assign two attributes to the regular customers: one named "service time", which takes a value of TRIA\(0.5,1,1.5\), and one named "priority level", which takes a value of "2".
 
 ![](https://assets.omscs.io/notes/2020-10-05-18-31-59.png)
 
-We assign the same two attributes to the breakdown demons, but with different values: "service time" takes a value of TRIA(3,4,5), and "priority level" takes a value of "1". Note here that these fake customers will jump ahead of normal customers because of their priority levels, and they will take much longer to serve due to their service time distribution.
+We assign the same two attributes to the breakdown demons, but with different values: "service time" takes a value of TRIA\(3,4,5\), and "priority level" takes a value of "1". Note here that these fake customers will jump ahead of normal customers because of their priority levels, and they will take much longer to serve due to their service time distribution.
 
 ![](https://assets.omscs.io/notes/2020-10-05-18-33-20.png)
 
@@ -151,7 +151,7 @@ Now, in the Process block, we see that we serve customers according to the value
 
 ![](https://assets.omscs.io/notes/2020-10-05-18-35-17.png)
 
-Finally, let's look at the Queue spreadsheet. The queue associated with process one has a *Type* of "Lowest Attribute Value" and an *Attribute Name* of "priority level". These configurations ensure that the queue is effectively priority-ordered. For example, a customer with a priority level of one advances ahead of a customer with a priority level of two.
+Finally, let's look at the Queue spreadsheet. The queue associated with process one has a _Type_ of "Lowest Attribute Value" and an _Attribute Name_ of "priority level". These configurations ensure that the queue is effectively priority-ordered. For example, a customer with a priority level of one advances ahead of a customer with a priority level of two.
 
 ![](https://assets.omscs.io/notes/2020-10-05-18-36-41.png)
 
@@ -163,7 +163,7 @@ In this lesson, we will add to our arsenal of modules and spreadsheets by introd
 
 ### Advanced Process Template
 
-We can access this template by clicking the *File > Template Panel > Attach* menu option and then selecting the template file from the *Rockwell Software\\Arena\\Template* directory on our local machine.
+We can access this template by clicking the _File &gt; Template Panel &gt; Attach_ menu option and then selecting the template file from the _Rockwell Software\Arena\Template_ directory on our local machine.
 
 Here's what the template looks like. As we saw in the Basic Process template, this template has several modules and spreadsheets. In the next few lessons, we will focus specifically on the Seize, Delay, and Release modules and the Expression and Failure spreadsheets.
 
@@ -203,11 +203,11 @@ In the second Process block, we perform a Delay-Release on Resource 2, which we 
 
 ![](https://assets.omscs.io/notes/2020-09-29-19-55-36.png)
 
-Before we go, let's look at how to import the Advanced Template panel. We start by clicking *File > Template Panel > Attach*.
+Before we go, let's look at how to import the Advanced Template panel. We start by clicking _File &gt; Template Panel &gt; Attach_.
 
 ![](https://assets.omscs.io/notes/2020-09-29-19-58-10.png)
 
-We might have to do some hunting, but we should end up in a *Rockwell Software\\Arena\\Template* subdirectory on our local machine. Here we can select from several different templates.
+We might have to do some hunting, but we should end up in a _Rockwell Software\Arena\Template_ subdirectory on our local machine. Here we can select from several different templates.
 
 ![](https://assets.omscs.io/notes/2020-09-29-19-59-19.png)
 
@@ -223,7 +223,7 @@ Let's look at a Resource spreadsheet. Notice that the very last column is called
 
 ![](https://assets.omscs.io/notes/2020-09-29-20-15-57.png)
 
-If we head over to the Failure spreadsheet, we can see the "Drill Failure" we just associated with the "Drill Press" resource. This resource has a *Type* of "Count" and a *Count* of "10", which means that this resource will fail after ten customers have used it.
+If we head over to the Failure spreadsheet, we can see the "Drill Failure" we just associated with the "Drill Press" resource. This resource has a _Type_ of "Count" and a _Count_ of "10", which means that this resource will fail after ten customers have used it.
 
 ![](https://assets.omscs.io/notes/2020-09-29-20-25-07.png)
 
@@ -253,7 +253,7 @@ This system contains one resource, a drill press, which has a fixed capacity of 
 
 ![](https://assets.omscs.io/notes/2020-09-30-23-17-57.png)
 
-We can click into the Advanced Process template and look at the Failure spreadsheet to learn more about this failure. As we can see, the failure has a *Type* of "Count" and a *Count* of "10", which means that this resource fails after every ten uses. Additionally, the downtime for the drill is sampled from an exponential distribution with a mean of 30.
+We can click into the Advanced Process template and look at the Failure spreadsheet to learn more about this failure. As we can see, the failure has a _Type_ of "Count" and a _Count_ of "10", which means that this resource fails after every ten uses. Additionally, the downtime for the drill is sampled from an exponential distribution with a mean of 30.
 
 ![](https://assets.omscs.io/notes/2020-09-30-23-18-39.png)
 
@@ -275,7 +275,7 @@ In this lesson, we'll add to our ever-growing bag of tricks by learning about th
 
 ### Blocks Template
 
-Just as we did with the Advanced Process template, we can access the Blocks template by clicking the *File > Template Panel > Attach* menu option and then selecting the template file from the *Rockwell Software\\Arena\\Template* directory on our local machine.
+Just as we did with the Advanced Process template, we can access the Blocks template by clicking the _File &gt; Template Panel &gt; Attach_ menu option and then selecting the template file from the _Rockwell Software\Arena\Template_ directory on our local machine.
 
 Here's what the Blocks template looks like. There are many blocks in this template, and altogether they sort of form a self-contained language related to SIMAN, the predecessor of Arena.
 
@@ -293,15 +293,15 @@ In this demo, we will look at the use of certain primitive blocks, particularly 
 
 ![](https://assets.omscs.io/notes/2020-10-05-21-57-32.png)
 
-In this example, we create some arrivals, and then we try to seize a resource called "Trunk Line", which represents our bank of telephone lines. If we look at the Resources spreadsheet, we see we have a resource named "Trunk Line", with a *Type* of "Fixed Capacity" and a *Capacity* of "3".
+In this example, we create some arrivals, and then we try to seize a resource called "Trunk Line", which represents our bank of telephone lines. If we look at the Resources spreadsheet, we see we have a resource named "Trunk Line", with a _Type_ of "Fixed Capacity" and a _Capacity_ of "3".
 
 ![](https://assets.omscs.io/notes/2020-10-05-21-59-27.png)
 
-Let's look at the configuration for the Queue block. Notice that we have a *Capacity* of "4", which means that we will allow four customers in the queue.
+Let's look at the configuration for the Queue block. Notice that we have a _Capacity_ of "4", which means that we will allow four customers in the queue.
 
 ![](https://assets.omscs.io/notes/2020-10-05-22-00-19.png)
 
-If we head over to the Queue spreadsheet, we see we have a queue named "Trunk Line.Queue" of *Type* "First In First Out" with a *Capacity* of "4".
+If we head over to the Queue spreadsheet, we see we have a queue named "Trunk Line.Queue" of _Type_ "First In First Out" with a _Capacity_ of "4".
 
 ![](https://assets.omscs.io/notes/2020-10-05-22-01-05.png)
 
@@ -319,7 +319,7 @@ Let's look at another demo. In this example, we use an Alter block, which is res
 
 ![](https://assets.omscs.io/notes/2020-10-05-22-08-43.png)
 
-Let's look at the configuration for this Alter block. This block has an entry under *Resources* called "Barber, 1", which means that we increase the number of servers in the "Barber" resource by one every time we pass a customer through the block.
+Let's look at the configuration for this Alter block. This block has an entry under _Resources_ called "Barber, 1", which means that we increase the number of servers in the "Barber" resource by one every time we pass a customer through the block.
 
 ![](https://assets.omscs.io/notes/2020-10-05-22-09-16.png)
 
@@ -353,11 +353,11 @@ In this lesson, we're going to learn how to use sets to enhance our modeling abi
 
 A set is just a group of elements. Elements are allowed to belong to more than one set. Elements can be anything in Arena, and, as a result, Arena has many different types of sets, such as:
 
-- Resource Sets
-- Counter Sets
-- Tally Sets
-- Entity Type Sets
-- Entity Picture Sets
+* Resource Sets
+* Counter Sets
+* Tally Sets
+* Entity Type Sets
+* Entity Picture Sets
 
 ### Resource Sets
 
@@ -373,7 +373,7 @@ Notice that several servers exist in multiple sets; in other words, they have a 
 
 ### Back to Resource Sets
 
-Let's say we want to define a resource set called "Product 1". To accomplish this, we first go to the Set spreadsheet and select "Resource" from the *Type* dropdown. Next, we click into *Members* and then enter the appropriate servers under *Resource Name*.
+Let's say we want to define a resource set called "Product 1". To accomplish this, we first go to the Set spreadsheet and select "Resource" from the _Type_ dropdown. Next, we click into _Members_ and then enter the appropriate servers under _Resource Name_.
 
 ![](https://assets.omscs.io/notes/2020-09-30-23-52-59.png)
 
@@ -381,19 +381,19 @@ Note that this list of resources is ordered such that when we draw a member from
 
 ### Seize-Delay-Release
 
-When we perform a Seize-Delay-Release with a server in a resource set, we must be cautious. The problem is that we have to make sure that we release the *same* server that we initially seized. If we release a random server, we might be stopping service on some other customer.
+When we perform a Seize-Delay-Release with a server in a resource set, we must be cautious. The problem is that we have to make sure that we release the _same_ server that we initially seized. If we release a random server, we might be stopping service on some other customer.
 
 Let's walk through how we might seize a server from the product one set and then release that same server, using the Seize, Delay, and Release blocks from the Blocks template.
 
-Let's look at the configuration for the Seize block first. As we can see, we are seizing from a *Type* of "Set", where the *Set Name* is "Product 1". We are seizing one server from this set - *Quantity* equals "1" - and we are using "Preferred Order" as the *Selection Rule*. Finally, we are saving the server's index in the set as an attribute called "Tech Agent Index" on the seizing customer.
+Let's look at the configuration for the Seize block first. As we can see, we are seizing from a _Type_ of "Set", where the _Set Name_ is "Product 1". We are seizing one server from this set - _Quantity_ equals "1" - and we are using "Preferred Order" as the _Selection Rule_. Finally, we are saving the server's index in the set as an attribute called "Tech Agent Index" on the seizing customer.
 
 ![](https://assets.omscs.io/notes/2020-10-01-14-19-42.png)
 
-Now let's look at the configuration for the Release block. Here we are releasing one server from the Product 1 set. In this case, the *Release Rule* is "Specific Member", and we are releasing the server whose index in the set is equal to the "Tech Agent Index" attribute on the customer, which we set when the customer seized the server.
+Now let's look at the configuration for the Release block. Here we are releasing one server from the Product 1 set. In this case, the _Release Rule_ is "Specific Member", and we are releasing the server whose index in the set is equal to the "Tech Agent Index" attribute on the customer, which we set when the customer seized the server.
 
 ### Remarks
 
-Various seize selection rules are possible. We can seize servers in a cyclical fashion, ensuring that we don't tire out any one server before the others. Alternatively, we can seize servers randomly. We can also seize servers according to the preferred order like we are doing here, or we could seize a specific member. 
+Various seize selection rules are possible. We can seize servers in a cyclical fashion, ensuring that we don't tire out any one server before the others. Alternatively, we can seize servers randomly. We can also seize servers according to the preferred order like we are doing here, or we could seize a specific member.
 
 We can seize according to the resource with the largest remaining capacity. For example, if there are more manicurists available than barbers, we could seize a manicurist. As well, we could seize the resource with the smallest number of busy servers.
 
@@ -439,7 +439,7 @@ We also have sub-models for sales calls, and order status calls - "Has my order 
 
 ### Arrivals
 
-The call center accepts calls from 8 AM to 6 PM, and calls show up during this period according to a nonhomogenous Poisson process whose arrival rate changes every half hour. Here are the call arrival rates throughout the 20 half-hour increments. Be careful: the rates below are *hourly* rates, even though they change every half-hour.
+The call center accepts calls from 8 AM to 6 PM, and calls show up during this period according to a nonhomogenous Poisson process whose arrival rate changes every half hour. Here are the call arrival rates throughout the 20 half-hour increments. Be careful: the rates below are _hourly_ rates, even though they change every half-hour.
 
 ![](https://assets.omscs.io/notes/2020-10-01-22-35-16.png)
 
@@ -453,31 +453,31 @@ Remember that the Queue and Seize blocks both come from the Blocks template pane
 
 ### Types of Calls
 
-There are three general types of calls, which we'll handle with an "N-way by Chance" Decide module. Each customer hears a telephone recording for a UNIF(0.1, 0.6) amount of time while they make their choice. 76% of the customers go to tech support.
+There are three general types of calls, which we'll handle with an "N-way by Chance" Decide module. Each customer hears a telephone recording for a UNIF\(0.1, 0.6\) amount of time while they make their choice. 76% of the customers go to tech support.
 
-Additionally, 16% of customers go to sales. Sales consists of seven identical, interchangeable resources. In other words, while the tech support servers are part of a resource set, sales is a vanilla type of resource that we have worked with often before. Sales calls take a TRIA(4,15,45) amount of time.
+Additionally, 16% of customers go to sales. Sales consists of seven identical, interchangeable resources. In other words, while the tech support servers are part of a resource set, sales is a vanilla type of resource that we have worked with often before. Sales calls take a TRIA\(4,15,45\) amount of time.
 
-Finally, 8% of the customers go to order status. 85% of these customers can self-serve in a TRIA(2,3,4) amount of time, but 15% need to talk to a sales representative for a TRIA(3,5,10) amount of time.
+Finally, 8% of the customers go to order status. 85% of these customers can self-serve in a TRIA\(2,3,4\) amount of time, but 15% need to talk to a sales representative for a TRIA\(3,5,10\) amount of time.
 
 ### Tech Support
 
-There are three different types of tech support calls, which we'll again handle via a Decide module. 25% of customers need support for product one, 34% for product two, and 41% for product three. Each customer hears another recording for a UNIF(0.1,0.5) amount of time while they make their choice. 
+There are three different types of tech support calls, which we'll again handle via a Decide module. 25% of customers need support for product one, 34% for product two, and 41% for product three. Each customer hears another recording for a UNIF\(0.1,0.5\) amount of time while they make their choice.
 
-All tech support calls require staff for a TRIA(3,6,18) amount of time. We could make each type of call require a different amount of time, but we've had enough complexity thus far.
+All tech support calls require staff for a TRIA\(3,6,18\) amount of time. We could make each type of call require a different amount of time, but we've had enough complexity thus far.
 
 ### Call Backs
 
 Tech support may not be able to handle a customer's call right away, and 4% of tech support calls require additional investigation and a callback. Another group of staff, which we won't worry about, carries out this investigation. The customer's original server is freed up when he or she determines that more research is needed.
 
-This investigation takes an EXPO(60) amount of time. After the investigation is complete, the original tech support server will call the customer back using one of the 26 available phone lines with high priority. That return call takes a TRIA(2,4,9) amount of time.
+This investigation takes an EXPO\(60\) amount of time. After the investigation is complete, the original tech support server will call the customer back using one of the 26 available phone lines with high priority. That return call takes a TRIA\(2,4,9\) amount of time.
 
 ### Tech Support Info
 
 The tech support staff work for 8-hour days with thirty minutes for lunch, and every server has a different schedule. Additionally, the support staff all have different product expertise. Here are the preferred orders for servers on a per-product basis:
 
-- Product 1: Charity, Noah, Molly, Anna, Sammy
-- Product 2: Tierney, Sean, Emma, Anna, Sammy
-- Product 3: Shelley, Jenny, Christie, Anna, Sammy
+* Product 1: Charity, Noah, Molly, Anna, Sammy
+* Product 2: Tierney, Sean, Emma, Anna, Sammy
+* Product 3: Shelley, Jenny, Christie, Anna, Sammy
 
 Here is the schedule for the various tech support staff. As we can see, everyone works at different hours and has different break times.
 
@@ -563,7 +563,7 @@ We can look at the schedule of the sales servers. Notice that throughout the day
 
 ![](https://assets.omscs.io/notes/2020-10-07-22-08-19.png)
 
-Finally, we can look at the call arrivals schedule. Notice that this schedule has a *Type* of "Arrival" instead of "Capacity". This arrival schedule starts small, peaks in the middle of the day, and falls off towards the end of the day. The final two half-hour segments have zero arrivals. This period corresponds to the call center's closing hour when employees are wrapping up calls that began before 6 PM.
+Finally, we can look at the call arrivals schedule. Notice that this schedule has a _Type_ of "Arrival" instead of "Capacity". This arrival schedule starts small, peaks in the middle of the day, and falls off towards the end of the day. The final two half-hour segments have zero arrivals. This period corresponds to the call center's closing hour when employees are wrapping up calls that began before 6 PM.
 
 ![](https://assets.omscs.io/notes/2020-10-07-22-12-18.png)
 
@@ -571,13 +571,13 @@ While we can edit the schedule by clicking on the bars themselves, we can altern
 
 ![](https://assets.omscs.io/notes/2020-10-07-22-15-25.png)
 
-Again, remember: the arrival rates are per-*hour* rates, while the time periods are *half-hour* segments.
+Again, remember: the arrival rates are per-_hour_ rates, while the time periods are _half-hour_ segments.
 
 Now let's turn to the Set spreadsheet. If we click into the "Product 1" set, we see the employees that can assist with product one, listed in the preferred order.
 
 ![](https://assets.omscs.io/notes/2020-10-07-22-22-22.png)
 
-Similarly, if we click into the "Product 2" set, we see the employees that can assist with product two, listed in the preferred order. 
+Similarly, if we click into the "Product 2" set, we see the employees that can assist with product two, listed in the preferred order.
 
 ![](https://assets.omscs.io/notes/2020-10-07-22-23-01.png)
 
@@ -585,7 +585,7 @@ Now let's turn to the Tech Support Calls sub-model. Here's our setup.
 
 ![](https://assets.omscs.io/notes/2020-10-07-22-39-38.png)
 
-Each customer first experiences a Delay where they listen to a recording before randomly choosing one of the three product types. Once they choose their product type, they seize the appropriate support server for that product. 
+Each customer first experiences a Delay where they listen to a recording before randomly choosing one of the three product types. Once they choose their product type, they seize the appropriate support server for that product.
 
 Next, the customer encounters an Assign block where they are assigned an attribute corresponding to their product type as well as an attribute marking the time the call starts. Then, they delay their tech support rep for a random amount of time, after which they release both the rep and the trunk line.
 
@@ -603,7 +603,7 @@ Now let's look at the configuration for the Delay block. Notice that we delay th
 
 ![](https://assets.omscs.io/notes/2020-10-07-22-53-51.png)
 
-If we head over to the Expression spreadsheet and select the "Tech Time" expression, we can see that it refers to a TRIA(3,6,18) distribution. Thus, our service times come from this distribution.
+If we head over to the Expression spreadsheet and select the "Tech Time" expression, we can see that it refers to a TRIA\(3,6,18\) distribution. Thus, our service times come from this distribution.
 
 ![](https://assets.omscs.io/notes/2020-10-07-22-55-18.png)
 
@@ -623,11 +623,11 @@ The customers who require a callback encounter another Decide block, which reads
 
 ![](https://assets.omscs.io/notes/2020-10-08-00-02-43.png)
 
-How do we emulate a callback? We can use a Seize block configured to seize a trunk line and the product support server from the appropriate resource set *with high priority*. Note that, technically, the customer is calling in to the system, but, since the priority is set to high, they will immediately get their server when they become available. This configuration effectively resembles the employee calling out to the customer.
+How do we emulate a callback? We can use a Seize block configured to seize a trunk line and the product support server from the appropriate resource set _with high priority_. Note that, technically, the customer is calling in to the system, but, since the priority is set to high, they will immediately get their server when they become available. This configuration effectively resembles the employee calling out to the customer.
 
 ![](https://assets.omscs.io/notes/2020-10-08-00-06-07.png)
 
-Also, note that we retrieve the same server we spoke to before, as referenced by the "Tech Agent Index" attribute. We do *not* seize the server by preferred order as we did in the previous sub-model.
+Also, note that we retrieve the same server we spoke to before, as referenced by the "Tech Agent Index" attribute. We do _not_ seize the server by preferred order as we did in the previous sub-model.
 
 We then delay the agent according to the "Returned Tech Time" expression.
 
@@ -637,24 +637,23 @@ Finally, we release that particular agent and the trunk line.
 
 ![](https://assets.omscs.io/notes/2020-10-08-00-08-57.png)
 
-The last component we have to look at is the Order-Status Call sub-model. 
-In a nutshell, customers enter this flow, receive some delay, and then take one of two paths. They either perform a Seize-Delay-Release with a salesperson followed by a Record and Dispose, or immediately flow through the Record and Dispose. Here's the setup.
+The last component we have to look at is the Order-Status Call sub-model. In a nutshell, customers enter this flow, receive some delay, and then take one of two paths. They either perform a Seize-Delay-Release with a salesperson followed by a Record and Dispose, or immediately flow through the Record and Dispose. Here's the setup.
 
 ![](https://assets.omscs.io/notes/2020-10-08-00-10-13.png)
 
 ## An Inventory System
 
-In this lesson, we will give a plain-English description of an (s, S) inventory system, followed by a demo in Arena.
+In this lesson, we will give a plain-English description of an \(s, S\) inventory system, followed by a demo in Arena.
 
-### Description of (s, S) Policy
+### Description of \(s, S\) Policy
 
 Here we will simulate the inventory stock of a widget over time using modules from both the Basic and Advanced Process templates.
 
-We generate customer interarrival times via an EXPO(0.1) distribution, so we receive about ten customer arrivals per day. We generate the demand size from a discrete distribution, which we specify with the DISC command. We always meet demand; even if we don't have the inventory on hand, we never turn a customer away.
+We generate customer interarrival times via an EXPO\(0.1\) distribution, so we receive about ten customer arrivals per day. We generate the demand size from a discrete distribution, which we specify with the DISC command. We always meet demand; even if we don't have the inventory on hand, we never turn a customer away.
 
-We "take" (evaluate) inventory at the start of each day, and this is the only time we can notice that we are under-stocked. As per (s, S) semantics, if the inventory is below 's', we order up to 'S'. For example, if 's' is 5, and 'S' is 20, and we start the day with an inventory of 4, we place an order for an additional 16 units.
+We "take" \(evaluate\) inventory at the start of each day, and this is the only time we can notice that we are under-stocked. As per \(s, S\) semantics, if the inventory is below 's', we order up to 'S'. For example, if 's' is 5, and 'S' is 20, and we start the day with an inventory of 4, we place an order for an additional 16 units.
 
-We generate delivery lead times from a UNIF(0.5,1) distribution, which means that we receive stock between half a day and a full day after ordering it. This timing is quick, but, by the time the order arrives, other customers will have also arrived, depleting inventory further. 
+We generate delivery lead times from a UNIF\(0.5,1\) distribution, which means that we receive stock between half a day and a full day after ordering it. This timing is quick, but, by the time the order arrives, other customers will have also arrived, depleting inventory further.
 
 We have multiple costs. First, there are order costs: we pay a flat cost every time we place an order and a unit cost per item. Additionally, we have holding costs - cost on unsold inventory that sits overnight - and penalty costs, which we pay when customers demand more inventory than we have. Using all these various costs, we want to calculate the average total cost per day over 120 days.
 
@@ -662,7 +661,7 @@ Inventory, unit costs, and all of the other parameters are Arena variables. We d
 
 ### DEMO
 
-In this demo, we are going to look at an (s, S) inventory system. Here's our setup.
+In this demo, we are going to look at an \(s, S\) inventory system. Here's our setup.
 
 ![](https://assets.omscs.io/notes/2020-10-08-22-43-42.png)
 
@@ -686,11 +685,11 @@ Sometimes this fake customer places an order. Let's take a look at the first of 
 
 ![](https://assets.omscs.io/notes/2020-10-08-23-01-58.png)
 
-Let's look at the second Decide block, which determines whether we place an order. Here we have a "2-way by Condition" decision, which is true if the variable "Inventory Level" is less than the variable "Little s". If so, we place an order; otherwise, we exit. 
+Let's look at the second Decide block, which determines whether we place an order. Here we have a "2-way by Condition" decision, which is true if the variable "Inventory Level" is less than the variable "Little s". If so, we place an order; otherwise, we exit.
 
 ![](https://assets.omscs.io/notes/2020-10-08-23-05-32.png)
 
-Assuming we place an order, we head next to an Assign block. Here, we update an attribute called "Order Quantity" to the value of "Big S - Inventory Level". Additionally, we update a variable called "Total Ordering Cost" to the value of "Total Ordering Cost + Setup Cost + Incremental Cost * Order Quantity". Finally, we set the "ongoing" variable to "1" to ensure that we don't place multiple orders within two days.
+Assuming we place an order, we head next to an Assign block. Here, we update an attribute called "Order Quantity" to the value of "Big S - Inventory Level". Additionally, we update a variable called "Total Ordering Cost" to the value of "Total Ordering Cost + Setup Cost + Incremental Cost \* Order Quantity". Finally, we set the "ongoing" variable to "1" to ensure that we don't place multiple orders within two days.
 
 ![](https://assets.omscs.io/notes/2020-10-08-23-07-25.png)
 
@@ -702,15 +701,15 @@ After the delivery occurs, we enter another Assign block. Here we set the variab
 
 ![](https://assets.omscs.io/notes/2020-10-08-23-11-23.png)
 
-Let's look at the configuration for the inventory level chart. Notice that our "Inventory on Hand" line corresponds to the expression "MX(Inventory Level, 0)", where "MX" refers to the max. There is another expression that produces the "Inventory Backlogged" line chart (the red one).
+Let's look at the configuration for the inventory level chart. Notice that our "Inventory on Hand" line corresponds to the expression "MX\(Inventory Level, 0\)", where "MX" refers to the max. There is another expression that produces the "Inventory Backlogged" line chart \(the red one\).
 
 ![](https://assets.omscs.io/notes/2020-10-08-23-13-23.png)
 
-Let's look at some of the expressions we have in the Expression spreadsheet in the Advanced Process template panel. The "Interdemand Time" refers to an EXPO(0.1) distribution.
+Let's look at some of the expressions we have in the Expression spreadsheet in the Advanced Process template panel. The "Interdemand Time" refers to an EXPO\(0.1\) distribution.
 
 ![](https://assets.omscs.io/notes/2020-10-08-23-16-28.png)
 
-The "Demand Size" expression refers to a DISC(0.167,1,0.5,2,0.833,3,1.0,4) distribution. Looking at this distribution, we can see that we generate the value "1" with probability 0.167, the value "2" with probability 0.333, the value "3" with probability 0.333, and the value "4" with probability 0.167.
+The "Demand Size" expression refers to a DISC\(0.167,1,0.5,2,0.833,3,1.0,4\) distribution. Looking at this distribution, we can see that we generate the value "1" with probability 0.167, the value "2" with probability 0.333, the value "3" with probability 0.333, and the value "4" with probability 0.167.
 
 ![](https://assets.omscs.io/notes/2020-10-08-23-17-19.png)
 
@@ -718,11 +717,11 @@ The "Evaluation Interval" expression takes a value of "0.5", which means our fak
 
 ![](https://assets.omscs.io/notes/2020-10-08-23-20-16.png)
 
-Finally, the "Delivery Lag" expression takes a value of UNIF(0.5,1.0).
+Finally, the "Delivery Lag" expression takes a value of UNIF\(0.5,1.0\).
 
 ![](https://assets.omscs.io/notes/2020-10-08-23-21-31.png)
 
-We have several variables that we maintain, and we can check those out in the Variable spreadsheet in the Basic Process template panel. For example, we could click into "Little s" and "Big s" and uncover that we are simulating a (30, 60) inventory system.
+We have several variables that we maintain, and we can check those out in the Variable spreadsheet in the Basic Process template panel. For example, we could click into "Little s" and "Big s" and uncover that we are simulating a \(30, 60\) inventory system.
 
 ![](https://assets.omscs.io/notes/2020-10-08-23-22-55.png)
 
@@ -762,11 +761,11 @@ Now we are going to demo this one-line vs. two-line problem. Here's our setup.
 
 ![](https://assets.omscs.io/notes/2020-10-04-14-04-40.png)
 
-After we create our customers, we assign them an attribute called "arrival time", which takes the value `TNOW`: the internal variable that Arena maintains that refers to the current time. Additionally, we assign them an attribute called "ServiceTime", which we pull from an EXPO(9) distribution.
+After we create our customers, we assign them an attribute called "arrival time", which takes the value `TNOW`: the internal variable that Arena maintains that refers to the current time. Additionally, we assign them an attribute called "ServiceTime", which we pull from an EXPO\(9\) distribution.
 
 ![](https://assets.omscs.io/notes/2020-10-04-14-07-12.png)
 
-We then split the customer into two clones using the Separate block. We can see the following configuration, which specifies a *Type* of "Duplicate Original", and that the *# of Duplicates* is "1". This way, we can send identical clones of the customer to each of the two pathways.
+We then split the customer into two clones using the Separate block. We can see the following configuration, which specifies a _Type_ of "Duplicate Original", and that the _\# of Duplicates_ is "1". This way, we can send identical clones of the customer to each of the two pathways.
 
 ![](https://assets.omscs.io/notes/2020-10-04-14-11-05.png)
 
@@ -774,7 +773,7 @@ Here are the two pathways that each customer takes.
 
 ![](https://assets.omscs.io/notes/2020-10-04-14-12-37.png)
 
-For the two-queue path, let's look at the Decide module. As we might have guessed, this block specifies a "2-way by Chance" decision where the *Percent True* field is set to "50%". This configuration corresponds to customers entering one of the two lines at random.
+For the two-queue path, let's look at the Decide module. As we might have guessed, this block specifies a "2-way by Chance" decision where the _Percent True_ field is set to "50%". This configuration corresponds to customers entering one of the two lines at random.
 
 ![](https://assets.omscs.io/notes/2020-10-04-14-13-41.png)
 
@@ -800,21 +799,21 @@ In this example, customers will visit server one, followed by server two, server
 
 All service times are exponential. Here are the means:
 
-- 1 (0.1)
-- 2 (0.5)
-- 1 (0.1)
-- 2 (0.1)
-- 1 (0.5)
+* 1 \(0.1\)
+* 2 \(0.5\)
+* 1 \(0.1\)
+* 2 \(0.1\)
+* 1 \(0.5\)
 
 Here are the customer priorities:
 
-- 1 (low)
-- 2 (high)
-- 1 (medium)
-- 2 (low)
-- 1 (high)
+* 1 \(low\)
+* 2 \(high\)
+* 1 \(medium\)
+* 2 \(low\)
+* 1 \(high\)
 
-For example, on the customer's third visit to server one, he has a high-priority EXPO(0.5) service time.
+For example, on the customer's third visit to server one, he has a high-priority EXPO\(0.5\) service time.
 
 ### DEMO
 
@@ -822,7 +821,7 @@ Here's our demo setup in Arena. As we said, we create customers every once in a 
 
 ![](https://assets.omscs.io/notes/2020-10-04-12-15-45.png)
 
-Let's look at the configuration of the first Process block. Here we see that we are seizing the "Server1" resource for an EXPO(0.1) amount of time with a customer priority of "Low". The remaining Process blocks are configured according to our description above.
+Let's look at the configuration of the first Process block. Here we see that we are seizing the "Server1" resource for an EXPO\(0.1\) amount of time with a customer priority of "Low". The remaining Process blocks are configured according to our description above.
 
 ![](https://assets.omscs.io/notes/2020-10-04-12-17-58.png)
 
@@ -844,7 +843,7 @@ In this lesson, we will look at SMARTS files and Rockwell demos. As a reminder, 
 
 ### SMARTS + Rockwell Demos
 
-SMARTS files are tutorial files, organized by subject area, that can occasionally help us with difficult problems when Arena's basic help menus fail us. For example, there's a SMARTS file to create customers with a time-dependent arrival rate that varies according to an equation. There are hundreds of SMARTS files. Rockwell also has prepared many professional demos. To find these resources, we can look in the *Libraries > Documents > Rockwell Software > Arena* directory path, although the exact location may differ from machine to machine.
+SMARTS files are tutorial files, organized by subject area, that can occasionally help us with difficult problems when Arena's basic help menus fail us. For example, there's a SMARTS file to create customers with a time-dependent arrival rate that varies according to an equation. There are hundreds of SMARTS files. Rockwell also has prepared many professional demos. To find these resources, we can look in the _Libraries &gt; Documents &gt; Rockwell Software &gt; Arena_ directory path, although the exact location may differ from machine to machine.
 
 ### DEMO
 
@@ -852,7 +851,7 @@ In this demo, we will look at an arrival rate that varies by an expression, whic
 
 ![](https://assets.omscs.io/notes/2020-10-04-12-43-10.png)
 
-Here's the configuration for our Create block. Notice that we have selected "Expression" from the *Type* dropdown, and we are using the expression `1/(day_rate(day))` to generate the interarrival times.
+Here's the configuration for our Create block. Notice that we have selected "Expression" from the _Type_ dropdown, and we are using the expression `1/(day_rate(day))` to generate the interarrival times.
 
 ![](https://assets.omscs.io/notes/2020-10-04-12-43-45.png)
 
@@ -860,7 +859,7 @@ Let's check out the "day" variable in the Basic Process template. This variable 
 
 ![](https://assets.omscs.io/notes/2020-10-04-12-46-27.png)
 
-Now, let's look at the "day_rate" variable. This variable is a vector with seven elements, one for each day of the week.
+Now, let's look at the "day\_rate" variable. This variable is a vector with seven elements, one for each day of the week.
 
 ![](https://assets.omscs.io/notes/2020-10-04-12-48-49.png)
 
@@ -894,9 +893,9 @@ In this demo, we'll be looking at the manufacturing cell we just described. Here
 
 Let's take a look at the demo in action. We can see three different colors of marbles - red, green, and blue - which correspond to the three products that our cell can make. Each type of product traverses a different path through the system:
 
-- Blue: one, two, three, four
-- Red: one, two, four, two, three
-- Green: two, one, three
+* Blue: one, two, three, four
+* Red: one, two, four, two, three
+* Green: two, one, three
 
 ![](https://assets.omscs.io/notes/Oct-04-2020-13-09-03.gif)
 
@@ -904,7 +903,7 @@ Let's look at the code. We create parts and then immediately assign them their p
 
 ![](https://assets.omscs.io/notes/2020-10-04-13-11-51.png)
 
-Let's look at the configuration for the Route block named "Start Sequence". This block has a *Route Time* of "Transfer Time", where "Transfer Time" is a variable that we created and set to "2". The *Destination Type* is determined "By Sequence". In short, it takes two minutes to route a part to the next station, as defined by its sequence.
+Let's look at the configuration for the Route block named "Start Sequence". This block has a _Route Time_ of "Transfer Time", where "Transfer Time" is a variable that we created and set to "2". The _Destination Type_ is determined "By Sequence". In short, it takes two minutes to route a part to the next station, as defined by its sequence.
 
 ![](https://assets.omscs.io/notes/2020-10-04-13-17-52.png)
 
@@ -916,10 +915,11 @@ Here we see transporters in use, now in blue, navigating through the system to p
 
 ![](https://assets.omscs.io/notes/2020-10-04-13-24-03.png)
 
-If we need more transporters, we can select the Transporter spreadsheet from the Advanced Transfer template and adjust the *Number of Units* field.
+If we need more transporters, we can select the Transporter spreadsheet from the Advanced Transfer template and adjust the _Number of Units_ field.
 
 ![](https://assets.omscs.io/notes/2020-10-04-13-25-28.png)
 
 Now we can see that we have four transporters instead of two.
 
 ![](https://assets.omscs.io/notes/2020-10-04-13-26-04.png)
+

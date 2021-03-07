@@ -8,6 +8,7 @@ lecture: working-with-multiple-stocks
 # Working with Multiple Stocks
 
 ## Pandas DataFrame Recap
+
 To recap, here is an illustration diagramming the structure and content of a pandas DataFrame.
 
 ![](https://assets.omscs.io/notes/F6C2196F-9F23-4692-8EED-34A168DBE5BF.png)
@@ -15,6 +16,7 @@ To recap, here is an illustration diagramming the structure and content of a pan
 The DataFrame has columns, one for each symbol, and rows, one for each date. Each cell has a value; in this case, it is the closing price of the security represented by the symbol on the corresponding date.
 
 ## Problems to Solve
+
 To build out a DataFrame like the one pictured above, we need to consider a few things first.
 
 For example, you might remember that our CSV file from a previous lecture contains data from 2000 through 2015. Since the DataFrame we want to build contains data from only 2010 to 2012, we need to figure out how to read in data from specific date ranges.
@@ -26,29 +28,33 @@ Additionally, we need a mechanism by which we can align dates. For example, if S
 Finally, we need to undo the problem we discovered in the CSV from the last lecture; specifically, the dates were presented in reverse order. We need to build our DataFrame such that the chronology is as we expect: from past to present.
 
 ## NYSE Trading Days Quiz
+
 ![](https://assets.omscs.io/notes/5A7D6772-A997-4543-BFBF-5DC11F911F1F.png)
 
 ## NYSE Trading Days Quiz Solution
+
 ![](https://assets.omscs.io/notes/1569B3C1-4D74-44D9-895F-57F66260BDCD.png)
 
-See breakdown [here](https://www.nyse.com/publicdocs/Trading_Days.pdf) (for 2018 and 2019).
+See breakdown [here](https://www.nyse.com/publicdocs/Trading_Days.pdf) \(for 2018 and 2019\).
 
 ## Building a DataFrame
+
 We can start constructing our DataFrame by first building an empty DataFrame `df`, which we index by the dates that we want to consider.
 
 ![](https://assets.omscs.io/notes/495B13F3-B902-41DA-8499-B596283A3A94.png)
 
-Since our goal is to load `df` with a column for SPY, IBM, GOOG, and GLD, we begin by reading in SPY data into a DataFrame `dfSPY`. 
+Since our goal is to load `df` with a column for SPY, IBM, GOOG, and GLD, we begin by reading in SPY data into a DataFrame `dfSPY`.
 
 ![](https://assets.omscs.io/notes/33F396F7-0B05-4CE1-90A7-B2FE085BD025.png)
 
-When we compare `df1` and `dfSPY`, we notice two interesting things. 
+When we compare `df1` and `dfSPY`, we notice two interesting things.
 
 First, there are many more dates in `dfSPY` than there are in the target `df`. `dfSPY` contains all of the data for SPY, and we need a way to retrieve data from only the dates we are considering.
 
 Second, there are dates present in `df` that are not present in `dfSPY`. When we constructed our index, we didn't skip weekends or holidays. Obviously, SPY did not trade on those dates since the market was not open. We will need to deal with this alignment issue.
 
 ## Joining DataFrames
+
 We now need to combine `df` and `dfSPY` into a single DataFrame. Thankfully, pandas has several different strategies for doing just that. We are going to look at an operation called a **join**.
 
 There are a few different types of joins, and the names may sound familiar if you have ever taken a databases course. The type of join that we are interested in retains only those rows that have dates present in both `df` and `dfSPY`. Formally, this is known as an **inner join**.
@@ -62,7 +68,8 @@ After we have joined `df` and `dfSPY`, we can repeat the procedure for the other
 ![](https://assets.omscs.io/notes/A06C27B6-DDEE-43AD-85DE-9806B865B1F4.png)
 
 ## Creating an Empty DataFrame
-Before we start joining in our stock data, we first need to create our empty DataFrame using pandas. 
+
+Before we start joining in our stock data, we first need to create our empty DataFrame using pandas.
 
 We can create a date range `dates` that will serve as the index of our DataFrame with the following code:
 
@@ -99,10 +106,11 @@ We can see that `df` is an empty DataFrame, with no columns, that uses `dates` a
 
 ### Documentation
 
-- [pandas.date_range](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.date_range.html)
-- [pandas.DataFrame](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html)
+* [pandas.date\_range](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.date_range.html)
+* [pandas.DataFrame](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html)
 
 ## Join SPY Data
+
 With `df` in place, we can now read SPY data into a temporary DataFrame, `dfSPY`, with the following code:
 
 ```python
@@ -125,7 +133,7 @@ None of the values from `dfSPY` appear in our new `df`. Let's print `dfSPY` to d
 
 ![](https://assets.omscs.io/notes/1C80EB37-25DD-4203-9EA3-DCFE76FD5056.png)
 
-The issue here is that while `df` has an index of `DatetimeIndex` objects, `dfSPY` has a simple, numeric index. 
+The issue here is that while `df` has an index of `DatetimeIndex` objects, `dfSPY` has a simple, numeric index.
 
 We can rectify this by telling pandas that the `Date` column of the SPY CSV should be used as the index column and that the values in this column should be interpreted as dates. We accomplish this with the following code:
 
@@ -133,7 +141,7 @@ We can rectify this by telling pandas that the `Date` column of the SPY CSV shou
 dfSPY = pd.read_csv('data/SPY.csv', index_col="Date", parse_dates=True)
 ```
 
-If we print `dfSPY` now, we see the following, correct DataFrame. 
+If we print `dfSPY` now, we see the following, correct DataFrame.
 
 ![](https://assets.omscs.io/notes/EC031F5E-565F-41A7-ABBA-7577AFDF0D82.png)
 
@@ -163,32 +171,35 @@ If we print out `df`, we see the following, correct DataFrame.
 
 ### Documentation
 
-- [pandas.read_csv](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html)
-- [pandas.DataFrame.join](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.join.html)
-- [pandas.DataFrame.dropna](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.dropna.html)
+* [pandas.read\_csv](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html)
+* [pandas.DataFrame.join](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.join.html)
+* [pandas.DataFrame.dropna](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.dropna.html)
 
 ## Types of Joins Quiz
+
 ![](https://assets.omscs.io/notes/C6F35EA2-BEB7-44C2-914E-73C3F8A4414F.png)
 
-We can avoid having to explicitly call `dropna` on line 22 by passing a certain value for the 'how' parameter of the `join` call on line 19. 
+We can avoid having to explicitly call `dropna` on line 22 by passing a certain value for the 'how' parameter of the `join` call on line 19.
 
 What is the value of that parameter?
 
 ## Types of Joins Quiz Solution
+
 ![](https://assets.omscs.io/notes/24945379-86BC-488E-85FD-C9E88E049F00.png)
 
 ### Documentation
 
-- [pandas.DataFrame.join](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.join.html)
+* [pandas.DataFrame.join](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.join.html)
 
 ## Read in More Stocks
+
 We want to read in data about three more stocks - GOOG, IBM, and GLD - and create our complete DataFrame. We can iterate over the stock symbols, create temporary DataFrames, and join them to `df` with the following code:
 
 ```python
 for symbol in symbols:
-	df_temp = pd.read_csv('data/{}.csv'.format(symbol), index_col="Date", parse_dates=True, usecols=["Date", "Adj Close"], na_values=['nan'])
+    df_temp = pd.read_csv('data/{}.csv'.format(symbol), index_col="Date", parse_dates=True, usecols=["Date", "Adj Close"], na_values=['nan'])
 
-	df = df.join(df_temp)
+    df = df.join(df_temp)
 ```
 
 However, when we try to print `df`, we see an error.
@@ -209,9 +220,10 @@ If we print `df` now, we see the following, correct output.
 
 ### Documentation
 
-- [pandas.DataFrame.rename](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.rename.html)
+* [pandas.DataFrame.rename](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.rename.html)
 
 ## Utility Functions for Reading Data Quiz
+
 If we look at the code we have written so far, we see some duplication.
 
 ![](https://assets.omscs.io/notes/B6F23728-810F-4698-8918-B0753B06C098.png)
@@ -221,7 +233,8 @@ Your task is to consolidate this code into one location: the utility function `g
 ![](https://assets.omscs.io/notes/967D338A-969A-4343-A6BC-63A9269C4486.png)
 
 ## Utility Functions for Reading Data Quiz Solution
-We have consolidated both the DataFrame initialization code and the joining code. 
+
+We have consolidated both the DataFrame initialization code and the joining code.
 
 ![](https://assets.omscs.io/notes/7BB55353-D82C-4369-AFFC-3CFB0A873D21.png)
 
@@ -233,14 +246,15 @@ df = df.dropna(subset=["SPY"])
 
 ### Documentation
 
-- [pandas.DataFrame.dropna](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.dropna.html)
+* [pandas.DataFrame.dropna](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.dropna.html)
 
 ## Obtaining a Slice of Data
+
 Here is our complete DataFrame, containing data from 2010 to 2012 for SPY, IBM, GOOG, and GLD.
 
 ![](https://assets.omscs.io/notes/5225448A-F467-4A2A-B75B-3F95C3976F96.png)
 
-Suppose we want to focus on a subset, or a **slice** or this data; for instance, we might be interested in just values of GOOG and GLD for 2/13/10 through 2/15/10. 
+Suppose we want to focus on a subset, or a **slice** or this data; for instance, we might be interested in just values of GOOG and GLD for 2/13/10 through 2/15/10.
 
 Pandas exposes a syntax for creating such a slice. Given a DataFrame `df`, we can retrieve the data for all columns between these two dates with the following expression:
 
@@ -262,9 +276,10 @@ df['2010-2-13':'2010-2-15', ['IBM', 'GLD']]
 
 ### Documentation
 
-- [Slicing ranges](https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#slicing-ranges)
+* [Slicing ranges](https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#slicing-ranges)
 
 ## More Slicing
+
 Our original DataFrame only contained data for four days. We can read in data for the whole year of 2010 by changing the dates of the `DatetimeIndex` object we built at the beginning of this lesson:
 
 ```python
@@ -296,7 +311,7 @@ df['2010-01-01':'2010-01-31']
 
 However, the former is considered to be more pythonic.
 
-> aside: it's not. The `ix` method has since been deprecated, and users should use either the `loc` or `iloc` methods.  
+> aside: it's not. The `ix` method has since been deprecated, and users should use either the `loc` or `iloc` methods.
 
 **Column slicing** returns all of the rows for a given column or columns, and is helpful when we want to view just the movement of a subset of stocks over the entire date range.
 
@@ -315,11 +330,12 @@ df.ix['2010-03-10':'2010-03-15', ['SPY', 'IBM']]
 
 ### Documentation
 
-- [pandas.DataFrame.ix - DEPRECATED](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.ix.html)
-- [pandas.DataFrame.loc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.loc.html)
-- [pandas.DataFrame.iloc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.iloc.html)
+* [pandas.DataFrame.ix - DEPRECATED](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.ix.html)
+* [pandas.DataFrame.loc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.loc.html)
+* [pandas.DataFrame.iloc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.iloc.html)
 
 ## Problems with Plotting
+
 It's pretty easy to generate a good-looking plot from a DataFrame; in fact, we merely have to call the `plot` method.
 
 ![](https://assets.omscs.io/notes/8B3F14A5-5FBF-4C3B-AE57-298310D72D65.png)
@@ -334,17 +350,20 @@ If we can **normalize** the stock prices in this manner, we can more easily comp
 
 ### Documentation
 
-- [Plotting](https://pandas.pydata.org/pandas-docs/stable/reference/frame.html#plotting)
+* [Plotting](https://pandas.pydata.org/pandas-docs/stable/reference/frame.html#plotting)
 
 ## How to Plot on "Equal Footing" Quiz
+
 ![](https://assets.omscs.io/notes/533F01B4-36B8-4898-A860-8B735E1ADA08.png)
 
 ## How to Plot on "Equal Footing" Quiz Solution
+
 ![](https://assets.omscs.io/notes/EF3D7A60-CF3B-4769-A3F8-D5157B461134.png)
 
-While both of these are technically correct, the second approach leverages *vectorization* which is must faster than the iterative approach. Read more about vectorization [here](https://engineering.upside.com/a-beginners-guide-to-optimizing-pandas-code-for-speed-c09ef2c6a4d6).
+While both of these are technically correct, the second approach leverages _vectorization_ which is must faster than the iterative approach. Read more about vectorization [here](https://engineering.upside.com/a-beginners-guide-to-optimizing-pandas-code-for-speed-c09ef2c6a4d6).
 
 ## Plotting Multiple Stocks
+
 To plot our data, we first need to import `matplotlib`. We can then define a `plot_data` function that receives a DataFrame `df` and calls `plot` on it.
 
 ```python
@@ -352,7 +371,7 @@ import matplotlib.pyplot as plt
 
 def plot_data(df):
     df.plot()
-    plt.show() 
+    plt.show()
 ```
 
 If we run this function, we see the following graph.
@@ -374,7 +393,7 @@ def plot_data(df, title="Stock Prices"):
     ax = df.plot(title=title) # ax for axis
     ax.set_xlabel("Date")
     ax.set_ylabel("Price")
-    
+
     plt.show()
 ```
 
@@ -384,16 +403,18 @@ If we run this function now, we see a more informative graph.
 
 ### Documentation
 
-- [Plotting](https://pandas.pydata.org/pandas-docs/stable/reference/frame.html#plotting)
-- [matplotlib.axes.Axes.set_xlabel](https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.set_xlabel.html#matplotlib.axes.Axes.set_xlabel)
-- [matplotlib.axes.Axes.set_ylabel](https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.set_ylabel.html#matplotlib.axes.Axes.set_ylabel)
+* [Plotting](https://pandas.pydata.org/pandas-docs/stable/reference/frame.html#plotting)
+* [matplotlib.axes.Axes.set\_xlabel](https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.set_xlabel.html#matplotlib.axes.Axes.set_xlabel)
+* [matplotlib.axes.Axes.set\_ylabel](https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.set_ylabel.html#matplotlib.axes.Axes.set_ylabel)
 
 ## Slice and Plot Two Stocks Quiz
+
 ![](https://assets.omscs.io/notes/5E5020D1-2E8C-422B-8867-733B8E88945C.png)
 
 Your task is to write code that first slices `df` along the rows bounded by `start_index` and `end_index` and across `columns`, and then passes the slice to the `plot_selected` method.
 
 ## Slice and Plot Two Stocks Quiz Solution
+
 ![](https://assets.omscs.io/notes/B76701D9-2822-4191-9B93-E49454905AD8.png)
 
 We can create our slice using the following code, which we then pass to the `plot_data` method:
@@ -404,11 +425,12 @@ df.ix[start_index:end_index, columns]
 
 ### Documentation
 
-- [pandas.DataFrame.ix - DEPRECATED](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.ix.html)
-- [pandas.DataFrame.loc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.loc.html)
-- [pandas.DataFrame.iloc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.iloc.html)
+* [pandas.DataFrame.ix - DEPRECATED](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.ix.html)
+* [pandas.DataFrame.loc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.loc.html)
+* [pandas.DataFrame.iloc](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.iloc.html)
 
 ## Normalizing
+
 Let's take another look at the plot we have created.
 
 ![](https://assets.omscs.io/notes/CE3C9B28-2BCC-4919-8A9E-16DC3E6283D3.png)
@@ -424,6 +446,7 @@ def normalize_data(df):
     return df / df.ix[0, :]
 ```
 
-If we graph our normalized DataFrame, we see the following graph. Notice that all the stocks start at 1.0 and move from there. 
+If we graph our normalized DataFrame, we see the following graph. Notice that all the stocks start at 1.0 and move from there.
 
 ![](https://assets.omscs.io/notes/0FFC6A5B-1DCC-4176-8AFE-B10C8CAC2E01.png)
+

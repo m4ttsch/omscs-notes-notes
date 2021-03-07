@@ -17,22 +17,21 @@ Each document in "Lecture Notes" corresponds to a lesson in [Udacity](https://cl
 
 The following textbooks helped me get an **A** in this course:
 
-- [Python for Finance: Analyze Big Financial Data](https://amzn.to/3gm1l0H)
-- [What Hedge Funds Really Do: An Introduction to Portfolio Management](https://amzn.to/3cXFLgK)
-- [Machine Learning](https://amzn.to/36sMbSv)
+* [Python for Finance: Analyze Big Financial Data](https://amzn.to/3gm1l0H)
+* [What Hedge Funds Really Do: An Introduction to Portfolio Management](https://amzn.to/3cXFLgK)
+* [Machine Learning](https://amzn.to/36sMbSv)
 
 ## Download These Notes
 
-Some students have asked for PDF versions of the notes for a simpler, more portable
-studying experience. The following PDFs are available for download.
+Some students have asked for PDF versions of the notes for a simpler, more portable studying experience. The following PDFs are available for download.
 
-- [Machine Learning for Trading - Complete](https://payhip.com/b/h5Pv "The complete set of ML4T notes, including lecture notes and Udacity quizzes.")
+* [Machine Learning for Trading - Complete](https://payhip.com/b/h5Pv)
 
 ## Environment Setup
 
 This class requires some environment setup. I have recorded the following YouTube walkthroughs, which may be helpful:
 
-- [Accessing Buffet Servers and Moving Code with Git](https://www.youtube.com/watch?v=PcAZ1qn4lGo)
+* [Accessing Buffet Servers and Moving Code with Git](https://www.youtube.com/watch?v=PcAZ1qn4lGo)
 
 ## Contact
 
@@ -41,3 +40,4 @@ If you have any questions, comments, concerns, or improvements, don't hesitate t
 * [matt@omscs-notes.com](mailto:matt@omscs-notes.com)
 * [Matt Schlenker \| Linkedin](https://www.linkedin.com/in/matt-schlenker-3457b047/)
 * @mschlenker \(Slack\)
+

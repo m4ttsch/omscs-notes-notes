@@ -17,15 +17,14 @@ Each document in "Lecture Notes" corresponds to a lesson in [Udacity](https://cl
 
 The following textbooks helped me get an **A** in this course:
 
-- [Computer Networking: A Top-Down Approach](https://amzn.to/3bTL2o3)
-- [Computer Networks](https://amzn.to/3gjF0km)
+* [Computer Networking: A Top-Down Approach](https://amzn.to/3bTL2o3)
+* [Computer Networks](https://amzn.to/3gjF0km)
 
 ## Download These Notes
 
-Some students have asked for PDF versions of the notes for a simpler, more portable
-studying experience. The following PDFs are available for download.
+Some students have asked for PDF versions of the notes for a simpler, more portable studying experience. The following PDFs are available for download.
 
-- [Computer Networks - Complete](https://payhip.com/b/9UGM "The complete set of CN lecture notes, covering content from all sixteen lectures.")
+* [Computer Networks - Complete](https://payhip.com/b/9UGM)
 
 ## Contact
 
@@ -34,3 +33,4 @@ If you have any questions, comments, concerns, or improvements, don't hesitate t
 * [matt@omscs-notes.com](mailto:matt@omscs-notes.com)
 * [Matt Schlenker \| Linkedin](https://www.linkedin.com/in/matt-schlenker-3457b047/)
 * @mschlenker \(Slack\)
+

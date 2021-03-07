@@ -186,7 +186,7 @@ These days, 80-90% of retail traders' orders never make it to the exchanges; ins
 
 Let's suppose that Joe is an investor living in Seattle, and he is currently looking at stock prices on his computer. He thinks that prices are going to go up, so he issues a buy order.
 
-His order travels across the country and, since he is using [Etrade](https://us.etrade.com/home) as his broker, stops in Atlanta before being routed to the New York Stock Exchange (NYSE) in New York City.
+His order travels across the country and, since he is using [Etrade](https://us.etrade.com/home) as his broker, stops in Atlanta before being routed to the New York Stock Exchange \(NYSE\) in New York City.
 
 ![](https://assets.omscs.io/notes/2020-02-15-11-48-10.png)
 
@@ -194,7 +194,7 @@ For each stock, NYSE maintains an order book, which is visible to investors like
 
 Suppose our hedge fund owns one of these colocated computers. This computer might sit 100 meters from the central exchange computer that holds the order book. Information about the order book travels from the exchange computer to our computer in about 0.3 microseconds.
 
-The distance between the exchange and Joe, on the other hand, is about 2500 miles. As a result, changes in the order book take at least 12 milliseconds to reach  Joe, and Joe's subsequent order takes at least 12 milliseconds to reach the exchange.
+The distance between the exchange and Joe, on the other hand, is about 2500 miles. As a result, changes in the order book take at least 12 milliseconds to reach Joe, and Joe's subsequent order takes at least 12 milliseconds to reach the exchange.
 
 ![](https://assets.omscs.io/notes/2020-02-15-11-54-04.png)
 
@@ -267,3 +267,4 @@ Let's suppose we haven't yet closed our short position. We owe 100 shares of IBM
 If the price of IBM goes up to, say, $150 a share, instead of down to $90 a share, our short becomes unprofitable. When we go to exit our position, it costs us $15,000 to buy back the shares we sold for $10,000, leaving us with a $5,000 loss.
 
 Generally, if we short a stock and the price of that stock goes up instead of down, we lose money. Since the price of a stock can rise without bound, we can potentially lose significant amounts of money.
+

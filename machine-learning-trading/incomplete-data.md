@@ -13,7 +13,7 @@ People have many misconceptions when it comes to financial data, and one of the 
 
 That's just not the case.
 
-For example, a stock might be traded on multiple exchanges - the New York Stock Exchange, the NASDAQ, and [BATS](/Users/mschlenker/src/omscs-notes/notes/machine-learning-trading/incomplete-data.md), among others. At any particular minute during the day, it may trade at one price on one exchange, and a different price on another.
+For example, a stock might be traded on multiple exchanges - the New York Stock Exchange, the NASDAQ, and [BATS](https://github.com/MatthewCaseres/omscs-notes-notes/tree/f08bd35bc76d949672e1714c59b7f0670b0cb0d2/Users/mschlenker/src/omscs-notes/notes/machine-learning-trading/incomplete-data.md), among others. At any particular minute during the day, it may trade at one price on one exchange, and a different price on another.
 
 As a result, there is no single price for a stock at a particular time, and it's hard to say which exchange is "right" when it comes to pricing a stock. The reality of the data that we get is that it's often an amalgamation from several different sources, and different data providers supply different numbers.
 
@@ -39,7 +39,7 @@ Let's look at another, admittedly fake, stock: FAKE1.
 
 ![](https://assets.omscs.io/notes/2020-01-13-16-31-00.png)
 
-As you can see, FAKE1 didn't exist before a date roughly in the middle of our range. While we see `NaN` values *after* a particular date for JAVA, we see `NaN` values *before* a particular date for FAKE1.
+As you can see, FAKE1 didn't exist before a date roughly in the middle of our range. While we see `NaN` values _after_ a particular date for JAVA, we see `NaN` values _before_ a particular date for FAKE1.
 
 Let's look at a second fake stock: FAKE2.
 
@@ -55,7 +55,7 @@ What do we do when we have significant gaps in our data? Let's take another look
 
 The truth of the matter is that, between the two points on either side of the gap, there simply was no trading; in other words, there was no price for this stock.
 
-However, if we want to compute any sort of statistic over these gaps, we need to fill them with *something* because we can't run statistics of `NaN` values.
+However, if we want to compute any sort of statistic over these gaps, we need to fill them with _something_ because we can't run statistics of `NaN` values.
 
 Our first thought might be to interpolate the data. That is, we could fill in the data between the two points on either side of the gap by drawing a line connecting them.
 
@@ -67,7 +67,7 @@ Suppose we were looking for patterns in the data, and we had rolled back time to
 
 To interpolate the points in the gap, we had to know the points at the beginning and the end of the gap. However, from the perspective of any individual interpolated point, the end of the gap exists in the future.
 
-As a result, we cannot consider any of the interpolated points without conceding that we necessarily baked information from the future (relative to the point) to bring about its existence. Since we can't peek into the future in real life, we *cannot* take this approach in simulation.
+As a result, we cannot consider any of the interpolated points without conceding that we necessarily baked information from the future \(relative to the point\) to bring about its existence. Since we can't peek into the future in real life, we _cannot_ take this approach in simulation.
 
 A better approach is the **fill forward** approach. In this approach, each data point in the gap is given the value of the last-seen data point.
 
@@ -81,21 +81,21 @@ We need to fill in this gap, so we choose to **fill backward** from the first kn
 
 Generally, we fill forward first and fill backward second. This approach helps us avoid peeking into the future as much as possible.
 
-## Pandas fillna() Quiz
+## Pandas fillna\(\) Quiz
 
 ![](https://assets.omscs.io/notes/2020-01-14-00-38-50.png)
 
 Our task is to find the parameter that we need to pass to `fillna` to fill forward missing values.
 
-## Pandas fillna() Quiz Solution
+## Pandas fillna\(\) Quiz Solution
 
 ![](https://assets.omscs.io/notes/2020-01-14-00-40-02.png)
 
 ### Documentation
 
-- [pandas.DataFrame.fillna](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.fillna.html)
+* [pandas.DataFrame.fillna](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.fillna.html)
 
-## Using fillna()  
+## Using fillna\(\)
 
 Let's take another look at the data for FAKE2.
 
@@ -117,7 +117,7 @@ We can see the horizontal lines where we have forward filled the gaps in the dat
 
 ### Documentation
 
-- [pandas.DataFrame.fillna](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.fillna.html)
+* [pandas.DataFrame.fillna](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.fillna.html)
 
 ## Fill Missing Values Quiz
 
@@ -135,4 +135,5 @@ We can use forward filling for gaps that have a definitive start date, and backw
 
 ### Documentation
 
-- [pandas.DataFrame.fillna](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.fillna.html)
+* [pandas.DataFrame.fillna](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.fillna.html)
+

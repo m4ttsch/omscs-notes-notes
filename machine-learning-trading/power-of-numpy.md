@@ -8,14 +8,16 @@ lecture: power-of-numpy
 # The Power of NumPy
 
 ## What is NumPy?
+
 [NumPy](https://numpy.org/) is a numerical library written in Python that focuses on matrix objects called `ndarrays`. NumPy delegates most of its core computation to underlying C and Fortran code, which means that NumPy is very fast. Indeed, many people use Python for financial research because of the functionality provided by NumPy.
 
 ## Relationship to Pandas
+
 Let's look back at our DataFrame `df`.
 
 ![](https://assets.omscs.io/notes/D38A6927-FF9C-4865-83D8-32FED6A19B63.png)
 
-Just as NumPy is a wrapper around C and Fortran code, pandas is a wrapper of sorts around NumPy. 
+Just as NumPy is a wrapper around C and Fortran code, pandas is a wrapper of sorts around NumPy.
 
 ![](https://assets.omscs.io/notes/37569F60-C8EC-4B64-A5C3-EE1F2AD9B8C0.png)
 
@@ -25,17 +27,17 @@ As the picture above illustrates, pandas builds `df` on top of an ndarray. We ca
 df.values
 ```
 
-We don't have to do this explicitly, though; in fact, we can interact with `df` as though it were the underlying ndarray. 
-In other words, functionality that is available to the internal ndarray is available to `df`.
+We don't have to do this explicitly, though; in fact, we can interact with `df` as though it were the underlying ndarray. In other words, functionality that is available to the internal ndarray is available to `df`.
 
 Of course, we create DataFrames because pandas builds a lot of great functionality on top of these ndarrays. For example, pandas provides expressive ways to access data in the array, such as symbol-based column indexing and date-based row indexing in the case of `df`.
 
 ### Documentation
 
-- [pandas.DataFrame.values](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.values.html)
-- [pandas.DataFrame.to_numpy](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_numpy.html#pandas.DataFrame.to_numpy)
+* [pandas.DataFrame.values](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.values.html)
+* [pandas.DataFrame.to\_numpy](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_numpy.html#pandas.DataFrame.to_numpy)
 
 ## Notes on Notation
+
 Let's look at accessing information in an ndarray `nd`. The basic syntax for accessing information about a `row` and `col` looks like this:
 
 ```python
@@ -50,17 +52,17 @@ To access the cell in the fourth row and the third column, for example, we do th
 nd[3, 2]
 ```
 
-NumPy also supports *slicing*. Generally, to retrieve the cells bounded by the (zero-based) index values `start_row` , `end_row`, `start_col` and `end_col`, we do the following:
+NumPy also supports _slicing_. Generally, to retrieve the cells bounded by the \(zero-based\) index values `start_row` , `end_row`, `start_col` and `end_col`, we do the following:
 
 ```python
 nd[start_row:end_row + 1, start_col:end_col + 1]
-``` 
+```
 
 Concretely, if we want to retrieve the cells in `nd` that are in the first three rows and second and third columns, we do the following:
 
 ```python
 nd[0:3, 1:3]
-``` 
+```
 
 Note that NumPy slicing is upper-bound exclusive, which is why we have to add one to the end of our ranges.
 
@@ -80,18 +82,20 @@ nd[-2:, :] # select second-to-last and last row, all columns
 nd[:, 0:-1] # select all rows, all columns except last
 ```
 
-Note that negative indexing is *not* zero-based. The last row/column is referenced by -1, not -0.
+Note that negative indexing is _not_ zero-based. The last row/column is referenced by -1, not -0.
 
 ### Documentation
 
-- [Indexing](https://docs.scipy.org/doc/numpy/user/basics.indexing.html)
+* [Indexing](https://docs.scipy.org/doc/numpy/user/basics.indexing.html)
 
 ## Replace a Slice Quiz
+
 ![](https://assets.omscs.io/notes/1E2BC0CC-EADA-4431-ABDF-AE07857CF80D.png)
 
-We need to move data from the last two rows and the last two columns of `nd2` to the first two rows and the first two columns of `nd1`. 
+We need to move data from the last two rows and the last two columns of `nd2` to the first two rows and the first two columns of `nd1`.
 
 ## Replace a Slice Quiz Solution
+
 ![](https://assets.omscs.io/notes/60DEA1EE-99C0-4CC6-95F7-B01B9681CD59.png)
 
 Let's first look at how we can slice `nd2` to extract the data we want. We can slice the last two rows using negative indexing: `-2:`. We can slice the last two columns as `2:4`. Remember that NumPy indexing is upper-bound exclusive.
@@ -106,9 +110,10 @@ nd1[0:2, 0:2] = nd2[-2:, 2:4]
 
 ### Documentation
 
-- [Indexing](https://docs.scipy.org/doc/numpy/user/basics.indexing.html)
+* [Indexing](https://docs.scipy.org/doc/numpy/user/basics.indexing.html)
 
 ## Creating NumPy Arrays
+
 As we said earlier, we can access the underlying NumPy array from a DataFrame through the `values` property. Alternatively, we can create a NumPy array from scratch:
 
 ```python
@@ -132,12 +137,13 @@ If we print `nd` we see the following.
 
 ### Documentation
 
-- [numpy.array](https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html)
+* [numpy.array](https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html)
 
 ## Arrays with Initial Values
+
 NumPy offers several functions for creating empty arrays with initial values. For certain computations, growing arrays incrementally can be a costly operation, so initializing empty arrays upfront may be more efficient.
 
- We can create an empty array with shape `n` like so:
+We can create an empty array with shape `n` like so:
 
 ```python
 np.empty(n)
@@ -174,15 +180,17 @@ Indeed, we see the following array when we print.
 
 ### Documentation
 
-- [numpy.empty](https://docs.scipy.org/doc/numpy/reference/generated/numpy.empty.html)
-- [numpy.ones](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ones.html)
+* [numpy.empty](https://docs.scipy.org/doc/numpy/reference/generated/numpy.empty.html)
+* [numpy.ones](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ones.html)
 
 ## Specify the Data Type Quiz
+
 ![](https://assets.omscs.io/notes/1A04EA50-3DE1-4BA2-85E6-B852F298AB7B.png)
 
 We saw that the elements in an array created by `np.ones` are floats by default. Our task here is to update the call to `np.ones` and pass in a parameter that tells NumPy to give us integers instead of floats.
 
 ## Specify the Data Type Quiz Solution
+
 ![](https://assets.omscs.io/notes/29CA699E-4950-4B22-948D-A38910E9A9EA.png)
 
 We can accomplish this change with the following code:
@@ -193,13 +201,14 @@ np.ones((5, 4), dtype=np.int_)
 
 ### Documentation
 
-- [numpy.ones](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ones.html)
-- [Data types](https://docs.scipy.org/doc/numpy/user/basics.types.html#data-types)
+* [numpy.ones](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ones.html)
+* [Data types](https://docs.scipy.org/doc/numpy/user/basics.types.html#data-types)
 
 ## Generating Random Numbers
+
 NumPy also comes with a bunch of handy functions for generating ndarrays filled with random values. These functions are defined in NumPy's `random` module.
 
-The `random` method on the `random` module allows us to generate an ndarray filled with random, uniformly sampled floating-point numbers in the range of 0.0 (inclusive) to 1.0 (exclusive).
+The `random` method on the `random` module allows us to generate an ndarray filled with random, uniformly sampled floating-point numbers in the range of 0.0 \(inclusive\) to 1.0 \(exclusive\).
 
 For example, we can generate such an ndarray with five rows and four columns using the following code:
 
@@ -211,7 +220,7 @@ If we print this ndarray, we see the following.
 
 ![](https://assets.omscs.io/notes/768AFDB2-5982-43F2-B150-6702C274B722.png)
 
-A slight variant of the `random` method is the `rand` method, which, instead of accepting a tuple corresponding to the shape, accepts a sequence of numbers describing the dimensions of the ndarray. 
+A slight variant of the `random` method is the `rand` method, which, instead of accepting a tuple corresponding to the shape, accepts a sequence of numbers describing the dimensions of the ndarray.
 
 We can generate the same ndarray as above with `rand` using the following code:
 
@@ -221,7 +230,7 @@ np.random.rand(5, 4)
 
 NumPy exposes this syntax because it matches the more established MatLab syntax. However, we should use the `random` method, as the shape tuple is a consistent construct seen across NumPy.
 
-Both `rand` and `random` sample uniformly from the range `[0.0, 1.0)`. We can instead generate an ndarray with elements sampled from a **Gaussian** (normal) distribution, using the `normal` method.
+Both `rand` and `random` sample uniformly from the range `[0.0, 1.0)`. We can instead generate an ndarray with elements sampled from a **Gaussian** \(normal\) distribution, using the `normal` method.
 
 For instance, we can create such an ndarray with two rows and three columns like so:
 
@@ -268,12 +277,13 @@ If we print the previous four examples, we see the following.
 
 ### Documentation
 
-- [Random sampling](https://docs.scipy.org/doc/numpy-1.14.0/reference/routines.random.html)
-- [numpy.random.random](https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.random.random.html#numpy.random.random)
-- [numpy.random.rand](https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.random.rand.html#numpy.random.rand)
-- [numpy.random.randint](https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.random.randint.html#numpy.random.randint)
+* [Random sampling](https://docs.scipy.org/doc/numpy-1.14.0/reference/routines.random.html)
+* [numpy.random.random](https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.random.random.html#numpy.random.random)
+* [numpy.random.rand](https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.random.rand.html#numpy.random.rand)
+* [numpy.random.randint](https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.random.randint.html#numpy.random.randint)
 
 ## Array Attributes
+
 Any NumPy ndarray has several attributes that describe it, in addition to the elements it contains.
 
 One of the most useful attributes is `shape`, which is essentially a tuple containing the number of rows and columns in the array. Let's create an array and access its shape:
@@ -318,7 +328,7 @@ Finally, you can access the data type of each element using the `dtype` attribut
 a.dtype
 ```
 
-If we print the dtype of `a`, we see the following. 
+If we print the dtype of `a`, we see the following.
 
 ![](https://assets.omscs.io/notes/8A6A2B68-72B1-460A-B9D4-5DDE5C59F3F9.png)
 
@@ -326,11 +336,12 @@ We can see that the elements of `a` are all 64-bit floating-point numbers.
 
 ### Documentation
 
-- [numpy.ndarray.shape](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.shape.html)
-- [numpy.ndarray.size](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.size.html)
-- [numpy.ndarray.dtype](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.dtype.html)
+* [numpy.ndarray.shape](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.shape.html)
+* [numpy.ndarray.size](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.size.html)
+* [numpy.ndarray.dtype](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.dtype.html)
 
 ## Operations on Ndarrays
+
 Now let's look at performing various mathematical operations on ndarrays. Let's start by creating an array `a` with five rows and four columns, whose elements are random integers in `[0, 10)`:
 
 ```python
@@ -353,7 +364,7 @@ If we print `a` with `a.sum()`, we see the following.
 
 We can also calculate the sum of `a` in a specific direction. In other words, we can specify that we want to sum across the rows or down the columns of `a`.
 
-We refer to this "direction" as an *axis*. The rows of an ndarray are aligned along axis zero, and the columns of an ndarray are aligned along axis one. Thus, if we want to sum all of the rows, we must sum along axis one, and if we want to sum all of the columns, we must sum down axis zero:
+We refer to this "direction" as an _axis_. The rows of an ndarray are aligned along axis zero, and the columns of an ndarray are aligned along axis one. Thus, if we want to sum all of the rows, we must sum along axis one, and if we want to sum all of the columns, we must sum down axis zero:
 
 ```python
 a.sum(axis=0) # Sum columns
@@ -374,35 +385,38 @@ a.mean() # mean of all elements
 
 If we print out these values, we see the following.
 
-![](https://assets.omscs.io/notes/C4608A21-9B38-4FD8-A706-514F0CD1C643.png) 
+![](https://assets.omscs.io/notes/C4608A21-9B38-4FD8-A706-514F0CD1C643.png)
 
 ### Documentation
 
-- [numpy.sum](https://docs.scipy.org/doc/numpy/reference/generated/numpy.sum.html#numpy.sum)
-- [numpy.ndarray.min](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.min.html)
-- [numpy.ndarray.max](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.max.html)
-- [numpy.mean](https://docs.scipy.org/doc/numpy/reference/generated/numpy.mean.html#numpy.mean)
+* [numpy.sum](https://docs.scipy.org/doc/numpy/reference/generated/numpy.sum.html#numpy.sum)
+* [numpy.ndarray.min](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.min.html)
+* [numpy.ndarray.max](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.max.html)
+* [numpy.mean](https://docs.scipy.org/doc/numpy/reference/generated/numpy.mean.html#numpy.mean)
 
 ## Locate Maximum Value Quiz
+
 ![](https://assets.omscs.io/notes/55FC058B-8B31-4172-8F44-B44502611542.png)
 
 Our task is to implement the function `get_max_index`, which takes a one-dimensional ndarray `a` and returns the index of the maximum value.
 
 ## Locate Maximum Value Quiz Solution
+
 ![](https://assets.omscs.io/notes/480BE86C-66FF-452B-965F-AD9833D98574.png)
 
 We can retrieve the index of the maximum value in `a` with the `argmax` method:
 
 ```python
 def get_max_index(a):
-	return a.argmax()
+    return a.argmax()
 ```
 
 ### Documentation
 
-- [numpy.argmax](https://docs.scipy.org/doc/numpy/reference/generated/numpy.argmax.html#numpy.argmax)
+* [numpy.argmax](https://docs.scipy.org/doc/numpy/reference/generated/numpy.argmax.html#numpy.argmax)
 
 ## Timing Python Operations
+
 We claimed that NumPy is very fast, and we'd like to confirm this claim. To do so, we first need to understand how to time functions in general.
 
 We can use the `time` module and the `time` function in that library to capture the current time. We compute the time before and after executing a function and take the difference to figure out how long a function took to execute.
@@ -417,16 +431,17 @@ t2 = time.time()
 print "The time taken by print statement is ", t2 - t1 ," seconds"
 ```
 
-If we run this code, we see the following. 
+If we run this code, we see the following.
 
 ![](https://assets.omscs.io/notes/5C87242F-82A9-410D-8FAB-06EEDAC2A30C.png)
 
 ### Documentation
 
-- [time](https://docs.python.org/3/library/time.html)
-- [time.time](https://docs.python.org/3/library/time.html#time.time)
+* [time](https://docs.python.org/3/library/time.html)
+* [time.time](https://docs.python.org/3/library/time.html#time.time)
 
 ## How Fast is NumPy?
+
 Now that we know how to time an operation in Python, let's check how fast NumPy is relative to naive Python code. We start by defining a really large array, `nd1`:
 
 ```python
@@ -450,6 +465,7 @@ Let's check the difference in execution times.
 NumPy is close to 300 times faster than the simple iterative method!
 
 ## Accessing Array Elements
+
 Accessing ndarray elements is straightforward. You can access a particular element by referring to its row and column number inside square brackets. For example, we can access the element in the fourth row and third column of `a` like so:
 
 ```python
@@ -480,7 +496,7 @@ If we print this slice, we see the following.
 
 ![](https://assets.omscs.io/notes/52A25CBB-C3BC-4ABA-96AB-80047042E742.png)
 
-So far, we have only seen slice syntax like `x:y`, which defines a slice starting at row/column `x` and ending at row/column `y - 1`. We can specify a third parameter, `z`, which defines the *step size*. 
+So far, we have only seen slice syntax like `x:y`, which defines a slice starting at row/column `x` and ending at row/column `y - 1`. We can specify a third parameter, `z`, which defines the _step size_.
 
 For example, we can select all rows, but only the first and third columns of `a` like this:
 
@@ -494,9 +510,10 @@ If we print this slice, we see the following.
 
 ### Documentation
 
-- [Indexing](https://docs.scipy.org/doc/numpy/user/basics.indexing.html)
+* [Indexing](https://docs.scipy.org/doc/numpy/user/basics.indexing.html)
 
 ## Modifying Array Elements
+
 As well as accessing elements in ndarrays, we can also assign values to specific locations in ndarrays. As a simple example, we can set the first element in `a` to 1 like this:
 
 ```python
@@ -521,7 +538,7 @@ We don't have to set all of the elements in a row or column to the same value. I
 
 For example, we can set the fourth column of `a` to the values 1 through 5 with the following assignment:
 
-```python 
+```python
 a[:, 3] = [1, 2, 3, 4, 5]
 ```
 
@@ -531,9 +548,10 @@ If we print `a`, we see the following.
 
 ### Documentation
 
-- [Indexing](https://docs.scipy.org/doc/numpy/user/basics.indexing.html)
+* [Indexing](https://docs.scipy.org/doc/numpy/user/basics.indexing.html)
 
 ## Indexing an Array with Another Array
+
 An ndarray can also be indexed with another ndarray. To demonstrate this, let's first create an ndarray `a`:
 
 ```python
@@ -560,15 +578,16 @@ Indeed, we can see that our resulting array contains the elements of `a` at indi
 
 ### Documentation
 
-- [Indexing](https://docs.scipy.org/doc/numpy/user/basics.indexing.html)
+* [Indexing](https://docs.scipy.org/doc/numpy/user/basics.indexing.html)
 
 ## Boolean or "Mask" Index Arrays
+
 Let's see how we can retrieve all of the values from an ndarray that are less than the mean of that array. First, we construct our two-dimensional ndarray `a` and calculate the mean:
 
 ```python
 a = np.array([
-	(20, 25, 10, 23, 26, 32, 10, 5, 0)
-	(0, 2, 50, 20, 0, 1, 28, 5, 0)
+    (20, 25, 10, 23, 26, 32, 10, 5, 0)
+    (0, 2, 50, 20, 0, 1, 28, 5, 0)
 ])
 
 mean = a.mean()
@@ -602,9 +621,10 @@ If we print `a` now, we see the following.
 
 ### Documentation
 
-- [Indexing](https://docs.scipy.org/doc/numpy/user/basics.indexing.html)
+* [Indexing](https://docs.scipy.org/doc/numpy/user/basics.indexing.html)
 
 ## Arithmetic Operations
+
 Arithmetic operations on ndarrays are always applied element-wise. Let's first create an ndarray `a`:
 
 ```python
@@ -634,7 +654,7 @@ If we print the result of this division, we see the following.
 
 ![](https://assets.omscs.io/notes/9F151FEC-7765-4C2F-A3FB-153AA51653CF.png)
 
-Note that both the divisor and the elements in the ndarray are integers. As a result, integer division (rounding down, roughly) is performed, which is why 1 / 2 equals 0.
+Note that both the divisor and the elements in the ndarray are integers. As a result, integer division \(rounding down, roughly\) is performed, which is why 1 / 2 equals 0.
 
 We can cast the resulting array into float values by ensuring that the divisor is a float:
 
@@ -667,13 +687,13 @@ If we print the result of this addition, we see the following.
 
 Note that the shape of `a` and `b` should be similar before trying to perform operations that involve both ndarrays; otherwise, NumPy will throw an error.
 
-The multiplication operator allows us to multiply two ndarrays in an element-wise manner. Note that other languages commonly use the multiplication operator to signify the dot product. NumPy does *not* do this. 
+The multiplication operator allows us to multiply two ndarrays in an element-wise manner. Note that other languages commonly use the multiplication operator to signify the dot product. NumPy does _not_ do this.
 
 We can multiply `a` and `b` in an element-wise fashion:
 
 ```python
 a * b
-``` 
+```
 
 If we print the result of this multiplication, we see the following.
 
@@ -682,9 +702,10 @@ If we print the result of this multiplication, we see the following.
 We can divide `a` by `b`:
 
 ```python
-a / b 
+a / b
 ```
 
 If we print the result of this division, we see the following. Remember that we are doing integer division here.
 
 ![](https://assets.omscs.io/notes/A2A00FC6-4BA6-4DD8-B46F-3770DDBA7BDA.png)
+

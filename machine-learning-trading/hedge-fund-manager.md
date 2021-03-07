@@ -9,11 +9,11 @@ lecture: hedge-fund-manager
 
 ## Types of Funds
 
-There are many different types of funds, but three broad classes that we are going to look at are **exchange-traded funds** (ETFs), **mutual funds**, and **hedge funds**.
+There are many different types of funds, but three broad classes that we are going to look at are **exchange-traded funds** \(ETFs\), **mutual funds**, and **hedge funds**.
 
 ETFs represent baskets of stocks, yet can be bought and sold as if they were individual stocks. ETF prices change throughout the day, and we can buy or sell ETF shares whenever the market is open. In other words, ETFs are very liquid. Additionally, ETF managers are very transparent concerning investment goals - for instance, tracking the S&P 500 - and holdings.
 
-Mutual funds are less liquid than ETFs. At the end of the trading day, a mutual fund adds up all of its holdings to compute a *net asset value*, and it's from this value that the buy/sell price is derived. Unlike ETFs, which investors can trade intraday, mutual funds can only be bought or sold at the end of the day.
+Mutual funds are less liquid than ETFs. At the end of the trading day, a mutual fund adds up all of its holdings to compute a _net asset value_, and it's from this value that the buy/sell price is derived. Unlike ETFs, which investors can trade intraday, mutual funds can only be bought or sold at the end of the day.
 
 Additionally, mutual funds are less transparent then ETFs. Mutual funds only have to disclose their holdings once every quarter. As a result, investing in a mutual fund can be somewhat of a black box in the middle of the quarter, as investors are unsure of the composition of the fund at the time of investment.
 
@@ -29,11 +29,11 @@ Finally, hedge funds don't have to disclose what they are holding, not even to t
 
 ## Liquidity and Capitalization
 
-**Liquidity** refers to the ease with which one can buy or sell shares in a particular holding. Stocks and ETFs, which have hundreds of thousands or even millions of investors, are often very liquid; in other words, you can almost always find someone looking to buy or sell shares. Indeed, we can look up the *trading volume* of stocks and ETFs on platforms like [Google Finance](https://www.google.com/finance) or [Yahoo Finance](https://finance.yahoo.com/) to confirm this liquidity.
+**Liquidity** refers to the ease with which one can buy or sell shares in a particular holding. Stocks and ETFs, which have hundreds of thousands or even millions of investors, are often very liquid; in other words, you can almost always find someone looking to buy or sell shares. Indeed, we can look up the _trading volume_ of stocks and ETFs on platforms like [Google Finance](https://www.google.com/finance) or [Yahoo Finance](https://finance.yahoo.com/) to confirm this liquidity.
 
-**Capitalization** refers to the worth of a company defined as the product of the number of outstanding shares and the share price. Some stocks, like Apple, have capitalizations in the hundreds of billions (trillions) of dollars, and we refer to these stocks are **large-cap** stocks. Correspondingly, **small-cap** stocks are those with smaller capitalizations.
+**Capitalization** refers to the worth of a company defined as the product of the number of outstanding shares and the share price. Some stocks, like Apple, have capitalizations in the hundreds of billions \(trillions\) of dollars, and we refer to these stocks are **large-cap** stocks. Correspondingly, **small-cap** stocks are those with smaller capitalizations.
 
-Note that the price of a stock only relates to the price of one share, not the overall *value* of the company.
+Note that the price of a stock only relates to the price of one share, not the overall _value_ of the company.
 
 ## What Type of Fund is it Quiz
 
@@ -53,7 +53,7 @@ We've discussed differences regarding transparency and liquidity among ETFs, mut
 
 Each type of fund has different rules for how managers receive compensation, and it's essential to investigate these compensation mechanisms because they incentivize managers to act in specific ways.
 
-Before we can discuss these compensation structures, we have to introduce one concept: **assets under management** (AUM). AUM refers to the amount of money managed by the fund and is important because, for each type of fund, part of the compensation is derived from AUM.
+Before we can discuss these compensation structures, we have to introduce one concept: **assets under management** \(AUM\). AUM refers to the amount of money managed by the fund and is important because, for each type of fund, part of the compensation is derived from AUM.
 
 The managers of ETFs are compensated according to an **expense ratio**, which is essentially a percentage of AUM. Expense ratios are typically quite low and vary from 0.01% to 1%.
 
@@ -73,7 +73,7 @@ Consider that we are managing a hedge fund with $100,000,000 AUM. Over a year, o
 
 What's our compensation?
 
-Two percent of AUM comes out to $0.02 * 100,000,000 = 2,000,000$ and twenty percent of profits equals $0.2 * 15,000,000 = 3,000,000$. In total, our compensation for the year would be about $5,000,000.
+Two percent of AUM comes out to $0.02  _100,000,000 = 2,000,000$ and twenty percent of profits equals $0.2_  15,000,000 = 3,000,000$. In total, our compensation for the year would be about $5,000,000.
 
 One question we might ask: when determining our compensation, should we use an AUM of $100,000,000 or $115,000,000? It depends on the hedge fund, of course, and when they take accounting snapshots, but the AUM used for compensation will likely fall somewhere between the two values.
 
@@ -109,7 +109,7 @@ These institutions, often non-profit in nature, have large sums of money that th
 
 Funds of funds group together the funds of many individuals or institutions. For instance, an individual might be wealthy enough to invest in one hedge fund but would like the advantage of investing in several funds. This person might invest their money into a fund of funds, which spreads the investments it receives across several hedge funds.
 
-Besides knowing the types of investors that might be interested in our fund, it's critically important to know *why* they would invest, as this directs how we might present our case to potential investors.
+Besides knowing the types of investors that might be interested in our fund, it's critically important to know _why_ they would invest, as this directs how we might present our case to potential investors.
 
 Some of the most persuasive evidence we can present to potential investors is the track record of our fund, as this serves as an indication that our fund will continue to perform. Indeed, many institutional investors will want to see a track record for at least five years before they will invest in a particular fund.
 
@@ -131,21 +131,21 @@ Funds that strive for absolute returns seek to provide positive returns no matte
 
 The objective of these funds is to make slow, consistent, positive returns. Often, these funds don't make the same percentage gains as the funds that are pegged to a benchmark, but they have lower drawdowns; in other words, when the market takes a big hit, they don't.
 
-How do we measure how well a fund is meeting its goals? We use the metrics that we've discussed previously - cumulative return, volatility, and Sharpe ratio - which we talk about at length [here](../sharpe-ratio-other-portfolio-statistics).
+How do we measure how well a fund is meeting its goals? We use the metrics that we've discussed previously - cumulative return, volatility, and Sharpe ratio - which we talk about at length [here](https://github.com/MatthewCaseres/omscs-notes-notes/tree/f08bd35bc76d949672e1714c59b7f0670b0cb0d2/sharpe-ratio-other-portfolio-statistics/README.md).
 
 ## The Computing Inside a Hedge Fund
 
-Hedge funds are among the most computationally demanding environments, with infrastructural requirements like massive databases, low latency,  high-bandwidth connectivity, and real-time processing.
+Hedge funds are among the most computationally demanding environments, with infrastructural requirements like massive databases, low latency, high-bandwidth connectivity, and real-time processing.
 
 Let's examine the different components of a hedge fund, from both a data-centric and an algorithmic perspective, by working backward from the market.
 
 ![](https://assets.omscs.io/notes/2020-02-08-22-58-20.png)
 
-One component that a hedge fund needs to keep track of is its *live portfolio*. Just like any other investor, a hedge fund has a collection of positive and negative positions in various stocks.
+One component that a hedge fund needs to keep track of is its _live portfolio_. Just like any other investor, a hedge fund has a collection of positive and negative positions in various stocks.
 
-In addition to the live portfolio, which describes currently held stock positions, the hedge fund also maintains a *target portfolio*. The target portfolio describes the positions that the hedge fund would like to hold.
+In addition to the live portfolio, which describes currently held stock positions, the hedge fund also maintains a _target portfolio_. The target portfolio describes the positions that the hedge fund would like to hold.
 
-The *trading algorithm* is one of the most central pieces of the hedge fund. This algorithm interacts with the market, and issues *orders* to move the positions in the live portfolio to match those in the target portfolio.
+The _trading algorithm_ is one of the most central pieces of the hedge fund. This algorithm interacts with the market, and issues _orders_ to move the positions in the live portfolio to match those in the target portfolio.
 
 At first glance, it might seem like a hedge fund doesn't need a sophisticated algorithm to acquire the positions in its target portfolio; instead, they can simply buy what they lack and sell what they have in excess.
 
@@ -155,14 +155,15 @@ Now, let's step back further into the hedge fund and see how we derive the targe
 
 ![](https://assets.omscs.io/notes/2020-02-08-23-03-14.png)
 
-One important piece of data that informs the makeup of a hedge fund's target portfolio is a *forecast*. A forecast predicts prices for a group of stocks some $N$ days into the future and informs a hedge fund as to the optimal positions to take regarding those stocks today.
+One important piece of data that informs the makeup of a hedge fund's target portfolio is a _forecast_. A forecast predicts prices for a group of stocks some $N$ days into the future and informs a hedge fund as to the optimal positions to take regarding those stocks today.
 
-Another valuable set of data to consider is the *historical data* - open, high, low, close, and volume - for the group of stocks under consideration. Historical data can often reveal correlations between individual stocks, which may, in turn, inform buying or selling decisions.
+Another valuable set of data to consider is the _historical data_ - open, high, low, close, and volume - for the group of stocks under consideration. Historical data can often reveal correlations between individual stocks, which may, in turn, inform buying or selling decisions.
 
 The current portfolio is also of critical importance. A hedge fund may be penalized for rapidly opening and closing positions and may want to weigh these penalties against forecast predictions.
 
-These three data sources feed into an algorithm called a *portfolio optimizer* that searches for a portfolio that maximizes rewards given a set of risk constraints. The resulting portfolio then becomes the target portfolio.
+These three data sources feed into an algorithm called a _portfolio optimizer_ that searches for a portfolio that maximizes rewards given a set of risk constraints. The resulting portfolio then becomes the target portfolio.
 
 Let's now look at how to calculate an $N$-day forecast. A hedge fund might train a machine-learning-based forecasting model using a combination of proprietary information alongside public, historical data.
 
 ![](https://assets.omscs.io/notes/2020-02-08-23-09-29.png)
+

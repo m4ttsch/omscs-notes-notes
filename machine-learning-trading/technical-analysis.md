@@ -59,7 +59,7 @@ Finally, technical analysis generally works better over the short term than over
 
 To understand the value of technical analysis as compared to fundamental analysis, we need to consider the **trading horizon**: the amount of time that elapses between buying and selling a stock. Trading horizons can vary from milliseconds to years.
 
-Let's first consider fundamental factors. If we are a high-frequency trading (HFT) fund operating over trading horizons of milliseconds, how much do fundamental factors like P/E ratio and book value contribute to the change in price over these short periods of time?
+Let's first consider fundamental factors. If we are a high-frequency trading \(HFT\) fund operating over trading horizons of milliseconds, how much do fundamental factors like P/E ratio and book value contribute to the change in price over these short periods of time?
 
 When we are rapidly executing trade orders, the only factors that matter are those present on the stock exchange, such as price movement and trading volume. For these very short trading horizons, fundamental factors have quite low value.
 
@@ -123,7 +123,7 @@ This formula gives us a number indicating how much the price of a stock has rise
 
 ## A Few Indicators: Simple Moving Average
 
-Our next indicator is **simple moving average** (SMA), which, given $n$, computes the average price over the previous $n$ days, known as an $n$-day window.
+Our next indicator is **simple moving average** \(SMA\), which, given $n$, computes the average price over the previous $n$ days, known as an $n$-day window.
 
 We don't have to compute the SMA for only a single day. Instead, we can repeatedly slide our window forward one day to compute the $n$-day SMA for every day from $n$ to today. The plot of such an SMA is shown below.
 
@@ -212,7 +212,7 @@ $$
 BB_t = SMA_t \pm 2\sigma(p_{t - n:t})
 $$
 
-Additionally, we can look at the ratio, $r$, of the current price, less $SMA_t$, to the current Bollinger Band, $BB_t$.
+Additionally, we can look at the ratio, $r$, of the current price, less $SMA\_t$, to the current Bollinger Band, $BB\_t$.
 
 $$
 r = \frac{p_t - SMA_t}{BB_t}
@@ -257,8 +257,9 @@ This undue overweighting of a particular factor might be even more visible if we
 
 The solution to this problem is **normalization**, which takes each of these parameters and compresses or stretches them so that they vary, on average, from -1 to 1, with a mean of 0. Effectively, normalization allows for an "apples to apples" comparison of variables that take on different ranges of values.
 
-Normalizing values is simple. Given a set of original values, $vals$, we can calculate the normalized values, $normed$, as follows. Note that $\overline{vals}$ refers to the mean of $vals$, and $\sigma_{vals}$ refers to the standard deviation of $vals$.
+Normalizing values is simple. Given a set of original values, $vals$, we can calculate the normalized values, $normed$, as follows. Note that $\overline{vals}$ refers to the mean of $vals$, and $\sigma\_{vals}$ refers to the standard deviation of $vals$.
 
 $$
 normed = \frac{vals - \overline{vals}}{\sigma_{vals}}
 $$
+

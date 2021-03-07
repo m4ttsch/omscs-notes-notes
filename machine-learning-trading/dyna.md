@@ -33,15 +33,15 @@ We can hallucinate an experience in two steps. First, we randomly select a state
 
 ## Learning T
 
-Remember that $T[s,a,s']$ represents the probability that if we are in state, $s$, and we take action, $a$, we end up in state, $s'$. To learn a model of $T$, we need to observe and record the frequency with which state transitions occur.
+Remember that $T\[s,a,s'\]$ represents the probability that if we are in state, $s$, and we take action, $a$, we end up in state, $s'$. To learn a model of $T$, we need to observe and record the frequency with which state transitions occur.
 
-We can introduce a new table, $T_c$, of dimensions, $(S,A,S)$, where $S$ is the number of total possible states, and $A$ is the number of total possible actions. We initialize the cells in $T_c$ to a very small number to avoid a potential divide-by-zero situation.
+We can introduce a new table, $T\_c$, of dimensions, $\(S,A,S\)$, where $S$ is the number of total possible states, and $A$ is the number of total possible actions. We initialize the cells in $T\_c$ to a very small number to avoid a potential divide-by-zero situation.
 
-As we iterate through the Q-learning process, we accumulate experience tuples. For each $s$, $a$, and $s'$ that we acquire, we increment the count in $T_c[s, a, s']$. In this fashion, we can record the frequency of state transitions, which serves as an empirical model of $T$. 
+As we iterate through the Q-learning process, we accumulate experience tuples. For each $s$, $a$, and $s'$ that we acquire, we increment the count in $T\_c\[s, a, s'\]$. In this fashion, we can record the frequency of state transitions, which serves as an empirical model of $T$.
 
 ## How to Evaluate T Quiz
 
-Assume we have been interacting with the real world for a while, and we would like to consult our model of $T$. Can you write an equation for $T$ in terms of $T_c$?
+Assume we have been interacting with the real world for a while, and we would like to consult our model of $T$. Can you write an equation for $T$ in terms of $T\_c$?
 
 ![](https://assets.omscs.io/notes/2020-03-31-22-24-00.png)
 
@@ -49,13 +49,13 @@ Assume we have been interacting with the real world for a while, and we would li
 
 ![](https://assets.omscs.io/notes/2020-03-31-22-28-58.png)
 
-**NOTE**: The denominator in this equation should reference $T_c$, not $T$.
+**NOTE**: The denominator in this equation should reference $T\_c$, not $T$.
 
 What we want to find here is the probability of a particular resulting state, $s'$, given a current state, $s$ and an action, $a$. Thus, we need a fraction where the numerator is the number of transitions from $s$ to $s'$, by way of $a$, and the denominator is the total number of transitions out of $s$, by way of $a$.
 
-Let's consider the numerator first. The total number of transitions from $s$ to $s'$, as a result of $a$, is simply the recorded value, $T_c[s,a,s']$.
+Let's consider the numerator first. The total number of transitions from $s$ to $s'$, as a result of $a$, is simply the recorded value, $T\_c\[s,a,s'\]$.
 
-Next, let's consider the denominator. The total number of times we transitioned out of $s$ by taking $a$ is the sum $T_c[s,a,s_1] + T_c[s,a,s_2] + ... + T_c[s,a,s_n]$, where $n$ is the size of $S$, the state space.
+Next, let's consider the denominator. The total number of times we transitioned out of $s$ by taking $a$ is the sum $T\_c\[s,a,s\_1\] + T\_c\[s,a,s\_2\] + ... + T\_c\[s,a,s\_n\]$, where $n$ is the size of $S$, the state space.
 
 Altogether, we have the following equation:
 
@@ -65,7 +65,7 @@ $$
 
 ## Learning R
 
-In addition to learning a model of $T$, we also need to learn a model of $R$. Remember that $R[s,a]$ gives us the expected reward for taking an action, $a$, from a state, $s$. Recall also that each experience tuple contains an immediate reward, $r$, for taking the corresponding action from the corresponding state.
+In addition to learning a model of $T$, we also need to learn a model of $R$. Remember that $R\[s,a\]$ gives us the expected reward for taking an action, $a$, from a state, $s$. Recall also that each experience tuple contains an immediate reward, $r$, for taking the corresponding action from the corresponding state.
 
 Given this, we can formulate a simple equation for $R$, which we update after each real experience. Notice that this update equation is very similar to the Q-table update equation, incorporating the same learning rate, $\alpha$, that we used in that equation.
 
@@ -76,3 +76,4 @@ $$
 ## Dyna-Q Recap
 
 ![](https://assets.omscs.io/notes/2020-03-31-22-55-45.png)
+

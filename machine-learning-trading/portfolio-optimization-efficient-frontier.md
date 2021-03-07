@@ -107,7 +107,7 @@ Thus, we have demonstrated at a high level what Markowitz proved: we can take a 
 
 ## Mean Variance Optimization
 
-When Markowitz began to consider the covariance between individual stocks, he discovered that low-risk portfolios were possible by blending together anti-correlated assets. 
+When Markowitz began to consider the covariance between individual stocks, he discovered that low-risk portfolios were possible by blending together anti-correlated assets.
 
 Out of his work grew several algorithms. **Mean-variance optimization** is one such algorithm, which examines the covariance between a potential set of assets to determine how a portfolio manager ought to blend them.
 
@@ -150,3 +150,4 @@ One last thing to note about the efficient frontier is that, if we draw a tangen
 ![](https://assets.omscs.io/notes/2020-03-22-23-06-36.png)
 
 The efficient frontier is primarily a theoretical device; however, some portfolio managers like to plot the frontier so that they can see where their portfolio lies relative to the assets it comprises and the efficiency it might achieve.
+

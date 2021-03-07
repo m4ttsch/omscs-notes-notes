@@ -7,21 +7,20 @@ lecture: generating-uniform-random-numbers
 
 # Generating Uniform Random Numbers
 
-
 ## Introduction
 
-Uniform(0,1) random numbers are the key to all random variate generation and simulation. As we have discussed previously, we transform uniforms to get other random variables - exponential, normal, and so on.
+Uniform\(0,1\) random numbers are the key to all random variate generation and simulation. As we have discussed previously, we transform uniforms to get other random variables - exponential, normal, and so on.
 
-The goal is to produce an algorithm that can generate a sequence of pseudo-random numbers (PRNs) $R_1, R_2, ...$ that "appear" to be i.i.d Uniform(0,1). Of course, these numbers are not truly uniform because they are neither independent of one another, nor are they random. However, they will appear random to humans, and they will have all the statistical properties of i.i.d Uniform(0,1) random numbers, so we are allowed to use them.
+The goal is to produce an algorithm that can generate a sequence of pseudo-random numbers \(PRNs\) $R\_1, R\_2, ...$ that "appear" to be i.i.d Uniform\(0,1\). Of course, these numbers are not truly uniform because they are neither independent of one another, nor are they random. However, they will appear random to humans, and they will have all the statistical properties of i.i.d Uniform\(0,1\) random numbers, so we are allowed to use them.
 
-Such an algorithm has a few desired properties. As we said, we need to produce output that appears to be i.i.d Unif(0,1). We also need the algorithm to execute quickly because we might want to generate billions of PRNs. Moreover, we need the algorithm to be able to reproduce any sequence it generates. This property allows us to replicate experiments and simulation runs that rely on streams of random numbers.
+Such an algorithm has a few desired properties. As we said, we need to produce output that appears to be i.i.d Unif\(0,1\). We also need the algorithm to execute quickly because we might want to generate billions of PRNs. Moreover, we need the algorithm to be able to reproduce any sequence it generates. This property allows us to replicate experiments and simulation runs that rely on streams of random numbers.
 
-In the next few lessons, we will look at different classes of Unif(0,1) generators. We'll start with some lousy generators, such as
+In the next few lessons, we will look at different classes of Unif\(0,1\) generators. We'll start with some lousy generators, such as
 
-- the output of a random device
-- a table of random numbers
-- the mid-square method
-- the Fibonacci method
+* the output of a random device
+* a table of random numbers
+* the mid-square method
+* the Fibonacci method
 
 We will then move on to the more common methods used in practice: the linear congruential generators and the Tausworthe generator. Finally, we'll talk about hybrid models, which most people use today.
 
@@ -45,11 +44,11 @@ While this approach has strong reproducibility and randomness properties, it has
 
 ### Mid-Square Method
 
-The mid-square method was created by the famous mathematician John von Neumann. The main idea here is we take an integer, square it, and then use the middle part of that integer as our next random integer, repeating the process as many times as we need. To generate the Uniform(0,1) random variable, we would divide each generated integer by the appropriate power of ten.
+The mid-square method was created by the famous mathematician John von Neumann. The main idea here is we take an integer, square it, and then use the middle part of that integer as our next random integer, repeating the process as many times as we need. To generate the Uniform\(0,1\) random variable, we would divide each generated integer by the appropriate power of ten.
 
-Let's look at an example. Suppose we have the seed $X_0 = 6632$. If we square $X_0$, we get $6632^2 = 43983424$, and we set $X_1$ equal to the middle four digits: $X_1 = 9834$. We can generate $X_2$ in a similar fashion: $X_1^2 = 9834^2 = 96707556$, so $X_2 = 7075$. Now, since we are taking the middle four integers, we generate the corresponding Uniform(0,1) random variate, $R_i$, by dividing $X_i$ by $10000$. For example, $R_1 = X_1 / 10000 = 9834 / 10000 = 0.9834$, and $R_2 = 0.7075$ by similar arithmetic.
+Let's look at an example. Suppose we have the seed $X\_0 = 6632$. If we square $X\_0$, we get $6632^2 = 43983424$, and we set $X\_1$ equal to the middle four digits: $X\_1 = 9834$. We can generate $X\_2$ in a similar fashion: $X\_1^2 = 9834^2 = 96707556$, so $X\_2 = 7075$. Now, since we are taking the middle four integers, we generate the corresponding Uniform\(0,1\) random variate, $R\_i$, by dividing $X\_i$ by $10000$. For example, $R\_1 = X\_1 / 10000 = 9834 / 10000 = 0.9834$, and $R\_2 = 0.7075$ by similar arithmetic.
 
-Unfortunately, it turns out that there is a positive serial correlation in the $R_i$'s. For example, a very small $X_{i+1}$ often follows a very small $X_i$, more so than we would expect by random chance. More tragically, the sequence occasionally degenerates. For example, if $X_i = 0003$, then the sequence ends up producing only zeros after a certain point.
+Unfortunately, it turns out that there is a positive serial correlation in the $R_i$'s. For example, a very small $X_{i+1}$ often follows a very small $X\_i$, more so than we would expect by random chance. More tragically, the sequence occasionally degenerates. For example, if $X\_i = 0003$, then the sequence ends up producing only zeros after a certain point.
 
 ### Fibonacci and Additive Congruential Generators
 
@@ -64,17 +63,17 @@ R_i &= X_i / m
 \end{alignedat}
 $$
 
-For this sequence, $X_{-1}$ and $X_0$ are seeds, and $m$ is the modulus. Remember that $a = b \bmod m$ if and only if $a$ is the remainder of $b/m$. For example, $6 = 13 \bmod 7$.
+For this sequence, $X\_{-1}$ and $X\_0$ are seeds, and $m$ is the modulus. Remember that $a = b \bmod m$ if and only if $a$ is the remainder of $b/m$. For example, $6 = 13 \bmod 7$.
 
-Like the mid-square method, this generator has a problem where small numbers frequently follow small numbers. Worse, it turns out the one-third of the values for each subsequent uniform are impossible to calculate. Particularly, it is impossible to compute an $X_{i+1}$, such that $X_{i-1} < X_{i+1} < X_i$, or $X_i < X_{i+1} < X_{i-1}$. Those two configurations should occur one-third of the time, which means that this generator does not have strong randomness properties.
+Like the mid-square method, this generator has a problem where small numbers frequently follow small numbers. Worse, it turns out the one-third of the values for each subsequent uniform are impossible to calculate. Particularly, it is impossible to compute an $X_{i+1}$, such that $X_{i-1} &lt; X_{i+1} &lt; X\_i$, or $X\_i &lt; X_{i+1} &lt; X\_{i-1}$. Those two configurations should occur one-third of the time, which means that this generator does not have strong randomness properties.
 
 ## Linear Congruential Generator
 
-In this lesson, we will ditch the lousy pseudo-random number generators and turn to a much better alternative: the **linear congruential generator** (LCG). Variations of LCGs are the most commonly used generators today in practice.
+In this lesson, we will ditch the lousy pseudo-random number generators and turn to a much better alternative: the **linear congruential generator** \(LCG\). Variations of LCGs are the most commonly used generators today in practice.
 
 ### LCGs
 
-Here is the general form for an LCG. Given a modulus, $m$, and the constants $a$ and $c$, we generate a pseudo-random integer, $X_i$, and its corresponding Uniform(0,1) counterpart, $R_i$, using the following equations:
+Here is the general form for an LCG. Given a modulus, $m$, and the constants $a$ and $c$, we generate a pseudo-random integer, $X\_i$, and its corresponding Uniform\(0,1\) counterpart, $R\_i$, using the following equations:
 
 $$
 \begin{alignedat}{1}
@@ -83,7 +82,7 @@ R_i &= X_i / m, \quad i = 1,2,...
 \end{alignedat}
 $$
 
-We choose $a$, $c$, and $m$ carefully to ensure both that the $R_i$'s appear to be i.i.d uniforms and that the generator has long periods or **cycle lengths**: the amount of time until the LCG starts to repeat.
+We choose $a$, $c$, and $m$ carefully to ensure both that the $R\_i$'s appear to be i.i.d uniforms and that the generator has long periods or **cycle lengths**: the amount of time until the LCG starts to repeat.
 
 **Multiplicative generators** are LCGs where $c=0$.
 
@@ -95,7 +94,7 @@ $$
 X_i = (5X_{i-1} + 3) \bmod 8
 $$
 
-Starting with the seed, $X_0 = 0$, we can generate the following sequence of values:
+Starting with the seed, $X\_0 = 0$, we can generate the following sequence of values:
 
 $$
 \begin{array}{c|cccccccc|cc}
@@ -105,9 +104,9 @@ R_i & 0 & 3/8 & 2/8 & 5/8 & 4/8 & 7/8 & 6/8 & 1/8 & 0 & 3/8 \\
 \end{array}
 $$
 
-Notice that this sequence starts repeating with after eight observations: $X_8 = X_0 = 0$. This generator is a **full-period generator** since it has a cycle length equal to $m$. Generally speaking, we prefer full-period generators, but we would never use this particular generator in practice because the modulus is much too small.
+Notice that this sequence starts repeating with after eight observations: $X\_8 = X\_0 = 0$. This generator is a **full-period generator** since it has a cycle length equal to $m$. Generally speaking, we prefer full-period generators, but we would never use this particular generator in practice because the modulus is much too small.
 
-Let's consider the following plot of all $(X_{i-1}, X_i)$ coordinate pairs. For example, the point $(0, 3)$ corresponds to $(X_0, X_1)$. Notice that we also include the point $(-2, 1)$. We can observe that $-2 \bmod 8 = 6 \bmod 8 = 6$.
+Let's consider the following plot of all $\(X\_{i-1}, X\_i\)$ coordinate pairs. For example, the point $\(0, 3\)$ corresponds to $\(X\_0, X\_1\)$. Notice that we also include the point $\(-2, 1\)$. We can observe that $-2 \bmod 8 = 6 \bmod 8 = 6$.
 
 ![](https://assets.omscs.io/notes/2020-10-09-22-14-37.png)
 
@@ -141,9 +140,9 @@ $$
 X_i = 16807X_{i-1} \bmod 2^{31}-1
 $$
 
-This particular generator has a full-period (greater than two billion) cycle length, except when $X_0 = 0$.
+This particular generator has a full-period \(greater than two billion\) cycle length, except when $X\_0 = 0$.
 
-Let's look at the algorithm for generating each $X_i$ and $R_i$:
+Let's look at the algorithm for generating each $X\_i$ and $R\_i$:
 
 $$
 \begin{alignedat}{1}
@@ -154,7 +153,7 @@ $$
 \end{alignedat}
 $$
 
-As an example, if $X_0 = 12345678$, then:
+As an example, if $X\_0 = 12345678$, then:
 
 $$
 \begin{alignedat}{1}
@@ -166,7 +165,7 @@ $$
 
 ### What Can Go Wrong?
 
-As we saw, we can have generators like $X_i = (5X_{i-1} + 2) \bmod 8$, which only produce even integers and are therefore not full-period. Alternatively, the generator $X_i = (X_{i-1} + 1) \bmod 8$ *is* full-period, but it produces very non-random output: $X_1 = 1$, $X_2 = 2$, and so on.
+As we saw, we can have generators like $X_i = \(5X_{i-1} + 2\) \bmod 8$, which only produce even integers and are therefore not full-period. Alternatively, the generator $X_i = \(X_{i-1} + 1\) \bmod 8$ _is_ full-period, but it produces very non-random output: $X\_1 = 1$, $X\_2 = 2$, and so on.
 
 In any case, if the modulus $m$ is "small", we'll get unusably short cycling whether or not the generator is full period. By small, we mean anything less than two billion or so. However, just because $m$ is big, we still have to be careful because subtle problems can arise.
 
@@ -178,9 +177,9 @@ $$
 X_i = 65539 X_{i-1} \bmod 2^{31}
 $$
 
-Unfortunately, the numbers that this LCG generates are provably not i.i.d., even from a statistical point of view. 
+Unfortunately, the numbers that this LCG generates are provably not i.i.d., even from a statistical point of view.
 
-Let's take a sufficiently large $i$ and plot the points $(R_{i-2}, R_{i-1}, R_i)$ within a unit cube. If the numbers generated from this sequence were truly random, we would see a random dispersion of dots within the cube. However, the random numbers fall entirely on fifteen hyperplanes.
+Let's take a sufficiently large $i$ and plot the points $\(R_{i-2}, R_{i-1}, R\_i\)$ within a unit cube. If the numbers generated from this sequence were truly random, we would see a random dispersion of dots within the cube. However, the random numbers fall entirely on fifteen hyperplanes.
 
 ![](https://assets.omscs.io/notes/2020-10-09-22-45-35.png)
 
@@ -194,21 +193,21 @@ In this lesson, we will look at the Tausworthe generator.
 
 ### Tausworthe Generator
 
-Let's take a look at the Tausworthe generator. We will define a sequence of binary digits, $B_1, B_2,...,$ as:
+Let's take a look at the Tausworthe generator. We will define a sequence of binary digits, $B\_1, B\_2,...,$ as:
 
 $$
 B_i = \left(\sum_{j=1}^q c_j B_{i-j}\right) \bmod 2
 $$
 
-In other words, we calculate each $B_i$ by taking the sum of the $q$ previous $c_j B_{i -j}$ products, where $c_j \in \{0,1\}$. We take the entire sum $\bmod 2$, so every $B_i$ is either a one or a zero.
+In other words, we calculate each $B_i$ by taking the sum of the $q$ previous $c\_j B_{i -j}$ products, where $c\_j \in {0,1}$. We take the entire sum $\bmod 2$, so every $B\_i$ is either a one or a zero.
 
-Instead of using the previous $q$ entries in the sequence to compute $B_i$, we can use a shortcut that saves a lot of computational effort, which takes the same amount of time regardless of the size of $q$:
+Instead of using the previous $q$ entries in the sequence to compute $B\_i$, we can use a shortcut that saves a lot of computational effort, which takes the same amount of time regardless of the size of $q$:
 
 $$
 B_i = (B_{i-r} + B_{i-q}) \bmod 2 = B_{i-r} \text{ XOR } B_{i-q} \quad 0 < r < q
 $$
 
-Remember that any $B_i$ can only be either $0$ or $1$. Consider the following table:
+Remember that any $B\_i$ can only be either $0$ or $1$. Consider the following table:
 
 $$
 \begin{array}{cc|cc}
@@ -232,7 +231,7 @@ B_{i-r} & B_{i-q} & B_{i-r} \text{ XOR } B_{i-q}  \\ \hline
 \end{array}
 $$
 
-Thus, we can see that $(B_{i-r} + B_{i-q}) \bmod 2$ and $B_{i-r} \text{ XOR } B_{i-q}$ are indeed equivalent. Of course, we might use an even simpler expression to compute $B_i$, which doesn't involve $\text{XOR}$:
+Thus, we can see that $\(B_{i-r} + B_{i-q}\) \bmod 2$ and $B_{i-r} \text{ XOR } B_{i-q}$ are indeed equivalent. Of course, we might use an even simpler expression to compute $B\_i$, which doesn't involve $\text{XOR}$:
 
 $$
 B_i = \left\{
@@ -243,11 +242,11 @@ B_i = \left\{
   \right.
 $$
 
-To initialize the $B_i$ sequence, we need to specify, $B_1, B_2,..., B_q$.
+To initialize the $B\_i$ sequence, we need to specify, $B\_1, B\_2,..., B\_q$.
 
 ### Example
 
-Let's look at an example. Consider $r=3, q=5; B_1 = \cdots = B_5 = 1$. Thus, for $i > 5$, $B_i = B_{i-3} \text{ XOR } B_{i-5}$. For example, $B_6 = B_3 \text{ XOR } B_1 = 0$ and $B_7 = B_4 \text{ XOR } B_2 = 0$. Let's look at the first 36 values in the sequence:
+Let's look at an example. Consider $r=3, q=5; B_1 = \cdots = B\_5 = 1$. Thus, for $i &gt; 5$, $B\_i = B_{i-3} \text{ XOR } B\_{i-5}$. For example, $B\_6 = B\_3 \text{ XOR } B\_1 = 0$ and $B\_7 = B\_4 \text{ XOR } B\_2 = 0$. Let's look at the first 36 values in the sequence:
 
 $$
 1111 \quad 1000 \quad 1101 \quad 1101 \quad 0100 \quad 0010 \quad 0101 \quad 1111
@@ -257,7 +256,7 @@ Generally, the period of these bit sequences is $2^q - 1$. In our case, $q = 5$,
 
 ### Generating Uniforms
 
-How do we get Unif(0,1) random variables from the $B_i$'s? We can take a sequence of $l$ bits and divide them by $2^l$ to compute a real number between zero and one.
+How do we get Unif\(0,1\) random variables from the $B\_i$'s? We can take a sequence of $l$ bits and divide them by $2^l$ to compute a real number between zero and one.
 
 For example, suppose $l=4$. Given the sequence of bits in the previous sequence, we get the following sequence of randoms:
 
@@ -265,7 +264,7 @@ $$
 1111_2, 1000_2, 1101_2, 1101_2,... \to \frac{15}{16}, \frac{8}{16}, \frac{13}{16}, \frac{13}{16}, ...
 $$
 
-Tausworthe generators have a lot of potential. They have many nice properties, including long periods and fast calculations. Like with the LCGs, we have to make sure to choose our parameters - $q$, $r$, $B_1, \cdots, B_q$, and $l$ - with care.
+Tausworthe generators have a lot of potential. They have many nice properties, including long periods and fast calculations. Like with the LCGs, we have to make sure to choose our parameters - $q$, $r$, $B\_1, \cdots, B\_q$, and $l$ - with care.
 
 ## Generalizations of LCGs
 
@@ -283,11 +282,11 @@ Generators of this form can have extremely large periods - up to $m^q - 1$ if we
 
 ### Combinations of Generators
 
-We can combine two generators, $X_1, X_2, ...$ and $Y_1, Y_2,...$, to construct a third generator, $Z_1, Z_2,...$. We might use one of the following techniques to construct the $Z_i$'s:
+We can combine two generators, $X\_1, X\_2, ...$ and $Y\_1, Y\_2,...$, to construct a third generator, $Z\_1, Z\_2,...$. We might use one of the following techniques to construct the $Z\_i$'s:
 
-- Set $Z_i$ equal to $(X_i + Y_i) \bmod m$
-- Shuffling the $X_i$'s and $Y_i$'s
-- Set $Z_i$ conditionally equal to $X_i$ or $Y_i$
+* Set $Z\_i$ equal to $\(X\_i + Y\_i\) \bmod m$
+* Shuffling the $X\_i$'s and $Y\_i$'s
+* Set $Z\_i$ conditionally equal to $X\_i$ or $Y\_i$
 
 However, the properties for these composite generators are challenging to prove, and we should not use these simple tricks to combine generators.
 
@@ -322,7 +321,7 @@ $$
 X_i = aX_{i-1} \bmod 2^n
 $$
 
-This generator can have a cycle length of at most $2^{n-2}$, which means that this generator is not full-cycle. To make matters worse, we can only achieve this maximum cycle length when $X_0$ is odd and $a = 8k + 3$ or $a = 8k + 5$, for some $k$.
+This generator can have a cycle length of at most $2^{n-2}$, which means that this generator is not full-cycle. To make matters worse, we can only achieve this maximum cycle length when $X\_0$ is odd and $a = 8k + 3$ or $a = 8k + 5$, for some $k$.
 
 For example, suppose $X_i = 13X_{i-1}\bmod64$. Note that $a = 8k + 5, k = 1$ and $n = 2^6 = 64$. Consider the following sequence of values:
 
@@ -333,7 +332,7 @@ X_0 & X_1 & X_2 & X_3 & X_4 & \cdots & X_8 & \cdots & X_{16} \\ \hline
 \end{array}
 $$
 
-We can see that we have cycled after $2^{n-2} = 2^4 = 16$ entries. What happens to the cycle length if $X_0$ is even?
+We can see that we have cycled after $2^{n-2} = 2^4 = 16$ entries. What happens to the cycle length if $X\_0$ is even?
 
 $$
 \begin{array}{c|cccccc}
@@ -342,7 +341,7 @@ X_0 & X_1 & X_2 & X_3 & X_4 & \cdots & X_8  \\ \hline
 \end{array}
 $$
 
-Here, we cycle after $2^{n-3} = 8$ entries. Let's look at the cycle for $X_0 = 3$. As we can see, our cycle length increases back to $2^{n-2}$:
+Here, we cycle after $2^{n-3} = 8$ entries. Let's look at the cycle for $X\_0 = 3$. As we can see, our cycle length increases back to $2^{n-2}$:
 
 $$
 \begin{array}{c|cccccccc}
@@ -351,7 +350,7 @@ X_0 & X_1 & X_2 & X_3 & X_4 & \cdots & X_8 & \cdots & X_{16} \\ \hline
 \end{array}
 $$
 
-Finally, let's look at the sequence when $X_0 = 4$. As we can see, when we seed the generator with this value, our cycle length drops to four.
+Finally, let's look at the sequence when $X\_0 = 4$. As we can see, when we seed the generator with this value, our cycle length drops to four.
 
 $$
 \begin{array}{c|cccc}
@@ -370,9 +369,9 @@ $$
 
 This generator has full cycle if the following three conditions hold:
 
-- $c$ and $m$ are [relatively prime](https://en.wikipedia.org/wiki/Coprime_integers)
-- $a - 1$ is a multiple of every prime which divides $m$
-- $a - 1$ is a multiple of $4$ if $4$ divides $m$
+* $c$ and $m$ are [relatively prime](https://en.wikipedia.org/wiki/Coprime_integers)
+* $a - 1$ is a multiple of every prime which divides $m$
+* $a - 1$ is a multiple of $4$ if $4$ divides $m$
 
 Let's look at a corollary to this theorem. Consider the following special case of the general LCG above:
 
@@ -390,24 +389,24 @@ $$
 X_i = aX_{i=1} \bmod m, \quad m \text{ is prime}
 $$
 
-This generator has full period ($m - 1$, in this case), if and only if the following two conditions hold:
+This generator has full period \($m - 1$, in this case\), if and only if the following two conditions hold:
 
-- $m$ divides $a^{m-1} - 1$
-- for all integers $i < m - 1$, $m$ does not divide $a^i - 1$
+* $m$ divides $a^{m-1} - 1$
+* for all integers $i &lt; m - 1$, $m$ does not divide $a^i - 1$
 
-We define the full period as $m - 1$ in this case because, if we start at $X_0 = 0$, we just cycle at zero.
+We define the full period as $m - 1$ in this case because, if we start at $X\_0 = 0$, we just cycle at zero.
 
 For $m = 2^{31} - 1$, it can be shown that $534,600,000$ multipliers yield full period. In some sense, $a = 950,706,376$ is the "best" multiplier, according to [this paper](https://apps.dtic.mil/dtic/tr/fulltext/u2/a143085.pdf) by Fishman and Moore from 1986.
 
 ### Geometric Considerations
 
-Let's look at $k$ consecutive PRNs, $(R_i,...,R_{i+k-1}), i \geq 1$, generated from a multiplicative generator. As it turns out, these $k$-tuples lie on parallel hyperplanes in a $k$-dimensional unit cube.
+Let's look at $k$ consecutive PRNs, $\(R_i,...,R_{i+k-1}\), i \geq 1$, generated from a multiplicative generator. As it turns out, these $k$-tuples lie on parallel hyperplanes in a $k$-dimensional unit cube.
 
 We might be interested in the following geometric optimizations:
 
-- maximizing the minimum number of hyperplanes in all directions 
-- minimizing the maximum distance between parallel hyperplanes 
-- maximizing the minimum Euclidean distance between adjacent $k$-tuples
+* maximizing the minimum number of hyperplanes in all directions 
+* minimizing the maximum distance between parallel hyperplanes 
+* maximizing the minimum Euclidean distance between adjacent $k$-tuples
 
 Remember that the RANDU generator is particularly bad because the PRNs it generates only lie on 15 hyperplanes.
 
@@ -429,41 +428,41 @@ In this lesson, we'll give an overview of various statistical tests for goodness
 
 ### Statistical Tests Intro
 
-We will look at two general classes of tests because we have a couple of goals we want to accomplish when examining how well pseudo-random number generators perform. 
+We will look at two general classes of tests because we have a couple of goals we want to accomplish when examining how well pseudo-random number generators perform.
 
-We run **goodness-of-fit tests** to ensure that the PRNs are approximately Unif(0,1). Generally speaking, we will look at the **chi-squared test** to measure goodness-of-fit, though there are other tests available. We also run **independence tests** to determine whether the PRNs are approximately independent. If a generator passes both tests, we can assume that it generates approximately i.i.d Unif(0,1) random variables.
+We run **goodness-of-fit tests** to ensure that the PRNs are approximately Unif\(0,1\). Generally speaking, we will look at the **chi-squared test** to measure goodness-of-fit, though there are other tests available. We also run **independence tests** to determine whether the PRNs are approximately independent. If a generator passes both tests, we can assume that it generates approximately i.i.d Unif\(0,1\) random variables.
 
-All the tests that we will look at are hypothesis tests: we will test our **null hypothesis** ($H_0$) against an **alternative hypothesis** ($H_1$). 
+All the tests that we will look at are hypothesis tests: we will test our **null hypothesis** \($H\_0$\) against an **alternative hypothesis** \($H\_1$\).
 
-We regard $H_0$ as the status quo - "that which we currently believe to be true". In this case, $H_0$ refers to the belief that the numbers we are currently generating are, in fact, i.i.d Unif(0,1). 
+We regard $H\_0$ as the status quo - "that which we currently believe to be true". In this case, $H\_0$ refers to the belief that the numbers we are currently generating are, in fact, i.i.d Unif\(0,1\).
 
-If we get substantial, observational evidence that $H_0$ is wrong, then we will reject it in favor of $H_1$. In other words, we are innocent until proven guilty, at least from a statistical point of view.
+If we get substantial, observational evidence that $H\_0$ is wrong, then we will reject it in favor of $H\_1$. In other words, we are innocent until proven guilty, at least from a statistical point of view.
 
-When we design a hypothesis test, we need to set the **level of significance**, $\alpha$, which is the probability that we reject $H_0$, given it is true: $\alpha = P(\text{Reject } H_0 | H_0 \text{ true})$. Typically, we set $\alpha$ equal to $0.05$ or $0.1$. Rejecting a true $H_0$ is known as a **Type I Error**.
+When we design a hypothesis test, we need to set the **level of significance**, $\alpha$, which is the probability that we reject $H\_0$, given it is true: $\alpha = P\(\text{Reject } H\_0 \| H\_0 \text{ true}\)$. Typically, we set $\alpha$ equal to $0.05$ or $0.1$. Rejecting a true $H\_0$ is known as a **Type I Error**.
 
 Selecting a value for $\alpha$ informs us of the number of observations we need to take to achieve the conditional probability to which $\alpha$ refers. For example, if we set $\alpha$ to a very small number, we typically have to draw more observations than if we were more flexible with $\alpha$.
 
-We can also specify the probability of a **Type II Error**, which is the probability, $\beta$, of accepting $H_0$, given that it is false: $\beta = P(\text{Accept } H_0 | H_0 \text{ false})$. We won't focus on $\beta$ much in these lessons.
+We can also specify the probability of a **Type II Error**, which is the probability, $\beta$, of accepting $H\_0$, given that it is false: $\beta = P\(\text{Accept } H\_0 \| H\_0 \text{ false}\)$. We won't focus on $\beta$ much in these lessons.
 
-Usually, we are much more concerned with avoiding incorrect rejections of $H_0$, so $\alpha$ tends to be the more important of the two measures.
+Usually, we are much more concerned with avoiding incorrect rejections of $H\_0$, so $\alpha$ tends to be the more important of the two measures.
 
 For instance, suppose we have a new anti-cancer drug, and it's competing against our current anti-cancer drug, which has average performance. Our null hypothesis would likely be that the current drug is better than the new drug because we want to keep the status quo. It's a big problem if we reject this hypothesis and replace it with a less effective drug; indeed, it's a much worse situation than not replacing it with a superior drug.
 
 ## Choosing a Good Generator - Goodness-of-Fit Tests
 
-In this lesson, we'll look at the chi-squared goodness-of-fit test to check whether or not the PRNs we generate are indeed Unif(0,1). There are many goodness-of-fit tests in the wild, such as the [Kolmogorov-Smirnov](https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test) test and the [Anderson-Darling](https://en.wikipedia.org/wiki/Anderson%E2%80%93Darling_test) test, but chi-squared is the most tried-and-true. We'll look at how to do goodness-of-fit tests for other distributions later.
+In this lesson, we'll look at the chi-squared goodness-of-fit test to check whether or not the PRNs we generate are indeed Unif\(0,1\). There are many goodness-of-fit tests in the wild, such as the [Kolmogorov-Smirnov](https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test) test and the [Anderson-Darling](https://en.wikipedia.org/wiki/Anderson%E2%80%93Darling_test) test, but chi-squared is the most tried-and-true. We'll look at how to do goodness-of-fit tests for other distributions later.
 
 ### Chi-Squared Goodness-of-Fit Test
 
-The first thing we need to consider when designing this test is what our null hypothesis ought to be. In this case, we assume that our PRNs are Unif(0,1). Formally, $H_0$: $R_1, R_2,...,R_n \sim \text{Unif}(0,1)$. As with all hypothesis tests, we assume that $H_0$ is true until we have ample evidence to the contrary, at which point we reject $H_0$.
+The first thing we need to consider when designing this test is what our null hypothesis ought to be. In this case, we assume that our PRNs are Unif\(0,1\). Formally, $H\_0$: $R\_1, R\_2,...,R\_n \sim \text{Unif}\(0,1\)$. As with all hypothesis tests, we assume that $H\_0$ is true until we have ample evidence to the contrary, at which point we reject $H\_0$.
 
-To start, let's divide the unit interval, $[0,1]$, into $k$ adjacent sub-intervals of equal width: $[0, 1/k), [1/k, 2/k),..., [(k-1)/k, 1]$. If our alleged uniforms are truly uniform, then the probability that any one observation $R_j$ will fall in a particular sub-interval is $1/k$.
+To start, let's divide the unit interval, $\[0,1\]$, into $k$ adjacent sub-intervals of equal width: $\[0, 1/k\), \[1/k, 2/k\),..., \[\(k-1\)/k, 1\]$. If our alleged uniforms are truly uniform, then the probability that any one observation $R\_j$ will fall in a particular sub-interval is $1/k$.
 
-Next, we'll draw $n$ observations, $R_1,...,R_n$, and observe how many fall into each of the $k$ cells. Let $O_i$ equal the number of $R_j$'s that fall in sub-interval $i$. Given $n$ trials, and a probability of $1/k$ of landing in sub-interval $i$, we see that each $O_i$ is distributed as a binomial random variable: $O_i \sim \text{Bin}(n, 1/k), i = 1,2,...,k$. Note that we can only describe $O_i$ in this way if we assume that the $R_j$'s are i.i.d.
+Next, we'll draw $n$ observations, $R\_1,...,R\_n$, and observe how many fall into each of the $k$ cells. Let $O\_i$ equal the number of $R\_j$'s that fall in sub-interval $i$. Given $n$ trials, and a probability of $1/k$ of landing in sub-interval $i$, we see that each $O\_i$ is distributed as a binomial random variable: $O\_i \sim \text{Bin}\(n, 1/k\), i = 1,2,...,k$. Note that we can only describe $O\_i$ in this way if we assume that the $R\_j$'s are i.i.d.
 
-Since $O_i$ is a binomial random variable, we can define the expected number of $R_j$'s that will fall in cell $i$ as: $E_i = E[O_i] = n/k, i = 1,2,...,k$. Remember that, by definition, the expected value of a Bin($n,p$) random variable is $np$.
+Since $O\_i$ is a binomial random variable, we can define the expected number of $R\_j$'s that will fall in cell $i$ as: $E\_i = E\[O\_i\] = n/k, i = 1,2,...,k$. Remember that, by definition, the expected value of a Bin\($n,p$\) random variable is $np$.
 
-We reject the null hypothesis that the PRNs are uniform if the $O_i$'s don't match the $E_i$'s well. In other words, if our observations don't match our expectations, under the assumption that $H_0$ is true, then something is wrong. The only thing that could be wrong is the null hypothesis.
+We reject the null hypothesis that the PRNs are uniform if the $O\_i$'s don't match the $E\_i$'s well. In other words, if our observations don't match our expectations, under the assumption that $H\_0$ is true, then something is wrong. The only thing that could be wrong is the null hypothesis.
 
 The goodness-of-fit statistic, $\chi^2$, gives us some insight into how well our observations match our expectations. Here's how we compute $\chi^2$:
 
@@ -471,35 +470,35 @@ $$
 \chi_0^2 = \sum_{i=1}^k \frac{(O_i - E_i)^2}{E_i}
 $$
 
-> Note the subscript of $0$. All this means is that $\chi^2_0$ is a statistic that we collect by observation.
+> Note the subscript of $0$. All this means is that $\chi^2\_0$ is a statistic that we collect by observation.
 
-In layman's terms, we take the sum of the squared differences of each of our observations and expectations, and we standardize each squared difference by the expectation. Note that we square the difference so that negative and positive deviations don't cancel. 
+In layman's terms, we take the sum of the squared differences of each of our observations and expectations, and we standardize each squared difference by the expectation. Note that we square the difference so that negative and positive deviations don't cancel.
 
-If the observations don't match the expectations, then $\chi_0^2$ will be a large number, which indicates a bad fit. When we talk about "bad fit" here, what we are saying is that describing the sequence of PRNs as being approximately Unif(0,1) is inappropriate: the claim doesn't fit the data.
+If the observations don't match the expectations, then $\chi\_0^2$ will be a large number, which indicates a bad fit. When we talk about "bad fit" here, what we are saying is that describing the sequence of PRNs as being approximately Unif\(0,1\) is inappropriate: the claim doesn't fit the data.
 
-As we said, $O_i$ is a binomial random variable. For large values of $n$ and $k$, binomial random variables are [approximately normal](https://en.wikipedia.org/wiki/Binomial_distribution#Normal_approximation). If $E_i$ is the expected value of $O_i$, then $(O_i - E_i) \sim \text{Nor}(0, \sigma^2)$. 
+As we said, $O\_i$ is a binomial random variable. For large values of $n$ and $k$, binomial random variables are [approximately normal](https://en.wikipedia.org/wiki/Binomial_distribution#Normal_approximation). If $E\_i$ is the expected value of $O\_i$, then $\(O\_i - E\_i\) \sim \text{Nor}\(0, \sigma^2\)$.
 
-As it turns out, the quantity $(O_i - E_i)^2$ is a $\chi^2$ random variable, and, by dividing it by $E_i$, we standardize it to a $\chi^2$ random variable with one degree of freedom. If we add up $k$ $\chi^2$ random variables, we get a $\chi^2$ random variable with $k$ degrees of freedom.
+As it turns out, the quantity $\(O\_i - E\_i\)^2$ is a $\chi^2$ random variable, and, by dividing it by $E\_i$, we standardize it to a $\chi^2$ random variable with one degree of freedom. If we add up $k$ $\chi^2$ random variables, we get a $\chi^2$ random variable with $k$ degrees of freedom.
 
-Note that the $O_i$'s are correlated with one another; in other words, if $R_j$ falls in one sub-interval, it cannot fall in another sub-interval. The number of observations that land in one sub-interval is obviously dependent on the number that land in the other sub-intervals. 
+Note that the $O\_i$'s are correlated with one another; in other words, if $R\_j$ falls in one sub-interval, it cannot fall in another sub-interval. The number of observations that land in one sub-interval is obviously dependent on the number that land in the other sub-intervals.
 
-All this to say: we don't actually get $k$ degrees of freedom, in our resulting $\chi^2$ random variable, we only get $k-1$. We have to pay a penalty of one degree of freedom for the correlation. In summary, by the central limit theorem, $\chi^2_0 \sim \chi^2_{k-1}$, if $H_0$ is true.
+All this to say: we don't actually get $k$ degrees of freedom, in our resulting $\chi^2$ random variable, we only get $k-1$. We have to pay a penalty of one degree of freedom for the correlation. In summary, by the central limit theorem, $\chi^2_0 \sim \chi^2_{k-1}$, if $H\_0$ is true.
 
-Now, we can [look up]((https://en.wikipedia.org/wiki/Chi-square_distribution#Table_of_%CF%872_values_vs_p-values)) various $(1-a)$ quantiles for $\chi^2$ distributions with varying degrees of freedom, $n$, where we define a quantile, $\chi^2_{\alpha, n}$ as: $P(\chi^2_n < \chi^2_{\alpha, n}) = 1 - \alpha$. In our case, we reject the null hypothesis if our test statistic, $\chi^2_0$, is larger than $\chi^2_{\alpha, k-1}$, and we fail to reject $H_0$ if $\chi^2_0 \leq \chi^2_{\alpha, k-1}$.
+Now, we can \[look up\]\(\([https://en.wikipedia.org/wiki/Chi-square\_distribution\#Table\_of\_%CF%872\_values\_vs\_p-values](https://en.wikipedia.org/wiki/Chi-square_distribution#Table_of_%CF%872_values_vs_p-values)\)\) various $\(1-a\)$ quantiles for $\chi^2$ distributions with varying degrees of freedom, $n$, where we define a quantile, $\chi^2_{\alpha, n}$ as: $P\(\chi^2\_n &lt; \chi^2_{\alpha, n}\) = 1 - \alpha$. In our case, we reject the null hypothesis if our test statistic, $\chi^2_0$, is larger than $\chi^2_{\alpha, k-1}$, and we fail to reject $H_0$ if $\chi^2\_0 \leq \chi^2_{\alpha, k-1}$.
 
-The usual recommendation from an introductory statistics class for the $\chi^2$ goodness-of-fit test is to pick large values for $k$ and $n$: $E_i = n/k$ should be at least five, and $n$ should be at least 30.
+The usual recommendation from an introductory statistics class for the $\chi^2$ goodness-of-fit test is to pick large values for $k$ and $n$: $E\_i = n/k$ should be at least five, and $n$ should be at least 30.
 
-However, when we test PRN generators, we usually have massive values for both $n$ and $k$. When $k$ is so large we can't find tables with values for $\chi^2_{a,k-1}$, we can approximate the $\chi^2$ quantile using the following expression:
+However, when we test PRN generators, we usually have massive values for both $n$ and $k$. When $k$ is so large we can't find tables with values for $\chi^2\_{a,k-1}$, we can approximate the $\chi^2$ quantile using the following expression:
 
 $$
 \chi^2_{\alpha, k-1} \approx (k-1) \left[1 - \frac{2}{9(k-1)} + z_a \sqrt{\frac{2}{9(k-1)}}\right]^3
 $$
 
-Note that $z_a$ is the appropriate standard normal quantile.
+Note that $z\_a$ is the appropriate standard normal quantile.
 
 ### Illustrative Example
 
-Suppose we draw $n = 1000$ observations, and we've divided the unit interval into $k=5$ equal sub-intervals. The expected number of observations that fall into each interval is $E_i = n/k = 200$. Let's look at the observations we gathered:
+Suppose we draw $n = 1000$ observations, and we've divided the unit interval into $k=5$ equal sub-intervals. The expected number of observations that fall into each interval is $E\_i = n/k = 200$. Let's look at the observations we gathered:
 
 $$
 \begin{array}{c|ccccc}
@@ -519,13 +518,13 @@ $$
 \end{alignedat}
 $$
 
-Since $k=5$, we are looking at a $\chi^2$ distribution with four degrees of freedom. Let's choose $\alpha = 0.05$. Now, we need to look up the $\chi^2_{0.05, 4}$ quantile in a table, which has a value of 9.49. Since our test statistic is less than the quantile, we fail to reject $H_0$. We can assume that these observations are approximately uniform.
+Since $k=5$, we are looking at a $\chi^2$ distribution with four degrees of freedom. Let's choose $\alpha = 0.05$. Now, we need to look up the $\chi^2\_{0.05, 4}$ quantile in a table, which has a value of 9.49. Since our test statistic is less than the quantile, we fail to reject $H\_0$. We can assume that these observations are approximately uniform.
 
 ## Choosing a Good Generator - Independence Tests I
 
 In this lesson, we'll look at the so-called "runs" tests for independence of PRNs. There are many other tests - correlation tests, gap test, poker tests, birthday tests, etc. - but we'll focus specifically on two types of runs tests.
 
-Interestingly, we find ourselves in something of a catch-22: the independence tests all assume that the PRNs are Unif(0,1), while the goodness-of-fit tests all assume that the PRNs are independent.
+Interestingly, we find ourselves in something of a catch-22: the independence tests all assume that the PRNs are Unif\(0,1\), while the goodness-of-fit tests all assume that the PRNs are independent.
 
 ### Independence - Runs Tests
 
@@ -543,7 +542,7 @@ In example A, we have a high negative correlation between the coin tosses since 
 
 A **run** is a series of similar observations. In example A above, there are ten runs: "H", "T", "H", "T", "H", "T", "H", "T", "H", "T". In example B, there are two runs: "HHHHH", "TTTTT". Finally, in example C, there are six runs: "HHH", "TT", "H", "TT", "H", "T".
 
-In independence testing, our null hypothesis is that the PRNs $R_1, R_2,...,R_n$ are independent. A **runs test** rejects the null hypothesis if there are "too many" or "too few" runs, provided we quantify the terms "too many" and "too few". There are several types of runs tests, and we'll look at two of them.
+In independence testing, our null hypothesis is that the PRNs $R\_1, R\_2,...,R\_n$ are independent. A **runs test** rejects the null hypothesis if there are "too many" or "too few" runs, provided we quantify the terms "too many" and "too few". There are several types of runs tests, and we'll look at two of them.
 
 ### Runs Test "Up and Down"
 
@@ -567,19 +566,19 @@ $$
 ++,--,+,-,+,---, ...
 $$
 
-Let $A$ denote the total number of up and down runs out of the $n$ observations. Like we said, $A = 6$ in this example. If $n$ is large (say, $\geq 20$), and the $R_j$'s are indeed independent, then $A$ is approximately normal, with the following parameters:
+Let $A$ denote the total number of up and down runs out of the $n$ observations. Like we said, $A = 6$ in this example. If $n$ is large \(say, $\geq 20$\), and the $R\_j$'s are indeed independent, then $A$ is approximately normal, with the following parameters:
 
 $$
 A \approx \text{Nor}\left(\frac{2n-1}{3}, \frac{16n-29}{90}\right)
 $$
 
-Let's transform $A$ into a standard normal random variable, $Z_0$, which we accomplish with the following manipulation:
+Let's transform $A$ into a standard normal random variable, $Z\_0$, which we accomplish with the following manipulation:
 
 $$
 Z_0 = \frac{A - E[A]}{\sqrt{\text{Var}(A)}}
 $$
 
-Now we can finally quantify "too large" and "too small". Specifically, we reject $H_0$ if the absolute value of $Z_0$ is greater than the $\alpha/2$ standard normal quantile:
+Now we can finally quantify "too large" and "too small". Specifically, we reject $H\_0$ if the absolute value of $Z\_0$ is greater than the $\alpha/2$ standard normal quantile:
 
 $$
 f(Z_0) = \left\{
@@ -587,9 +586,8 @@ f(Z_0) = \left\{
     \text{Reject } H_0 & |Z_0| > z_{\alpha/2} \\
     \text{Accept } H_0 & |Z_0| \leq z_{\alpha/2}
   \end{matrix}
-\right. 
+\right.
 $$
-
 
 ### Up and Down Example
 
@@ -603,7 +601,7 @@ A &\approx \text{Nor}\left(\frac{2(100)-1}{3}, \frac{16(100)-29}{90}\right) \\
 \end{alignedat}
 $$
 
-Let's compute $Z_0$:
+Let's compute $Z\_0$:
 
 $$
 \begin{alignedat}{1}
@@ -613,7 +611,7 @@ Z_0 &= \frac{A - E[A]}{\sqrt{\text{Var}(A)}} \\[3ex]
 \end{alignedat}
 $$
 
-If $\alpha = 0.05$, then $z_{\alpha/2} = 1.96$ and we reject $H_0$, thereby rejecting independence.
+If $\alpha = 0.05$, then $z\_{\alpha/2} = 1.96$ and we reject $H\_0$, thereby rejecting independence.
 
 ### Runs Test "Above and Below the Mean"
 
@@ -623,7 +621,7 @@ $$
 .41 \quad .68 \quad .89 \quad .84 \quad .74 \quad .91 \quad .55 \quad .71 \quad .36 \quad .30 \quad .09
 $$
 
-Let's transform our sequence of PRNs into one of plusses and minuses, where a plus sign indicates that $R_i \geq 0.5$, and a minus sign indicates that $R_i < 0.5$:
+Let's transform our sequence of PRNs into one of plusses and minuses, where a plus sign indicates that $R\_i \geq 0.5$, and a minus sign indicates that $R\_i &lt; 0.5$:
 
 $$
 -+++++++---...
@@ -635,21 +633,21 @@ $$
 -,+++++++,---
 $$
 
-If $n$ is large (say, $\geq 20$), and the $R_j$'s are indeed independent, then the number of runs, $B$, is again approximately normal, with the following parameters:
+If $n$ is large \(say, $\geq 20$\), and the $R\_j$'s are indeed independent, then the number of runs, $B$, is again approximately normal, with the following parameters:
 
 $$
 B \approx \text{Nor}\left(\frac{2n_1n_2}{n} + \frac{1}{2}, \frac{2n_1n_2(2n_1n_2 - n)}{n^2(n-1)}\right)
 $$
 
-Note that $n_1$ refers to the number of observations greater than or equal to the mean and $n_2 = n - n_1$.
+Note that $n\_1$ refers to the number of observations greater than or equal to the mean and $n\_2 = n - n\_1$.
 
-Let's transform $B$ into a standard normal random variable, $Z_0$, which we accomplish with the following manipulation:
+Let's transform $B$ into a standard normal random variable, $Z\_0$, which we accomplish with the following manipulation:
 
 $$
 Z_0 = \frac{B - E[B]}{\sqrt{\text{Var}(B)}}
 $$
 
-Again, we reject $H_0$ if the absolute value of $Z_0$ is greater than the $\alpha/2$ standard normal quantile:
+Again, we reject $H\_0$ if the absolute value of $Z\_0$ is greater than the $\alpha/2$ standard normal quantile:
 
 $$
 f(Z_0) = \left\{
@@ -657,7 +655,7 @@ f(Z_0) = \left\{
     \text{Reject } H_0 & |Z_0| > z_{\alpha/2} \\
     \text{Accept } H_0 & |Z_0| \leq z_{\alpha/2}
   \end{matrix}
-\right. 
+\right.
 $$
 
 ### Above and Below the Mean Example
@@ -671,9 +669,9 @@ $$
 \end{aligned}
 $$
 
-In this case, we have $n_1 = 18$ observations above the mean and $n_2 = 22$ observations below the mean, as well as $B=17$ runs. Without walking through the algebra, we can compute that $B \approx \text{Nor}(20.3, 9.54)$.
+In this case, we have $n\_1 = 18$ observations above the mean and $n\_2 = 22$ observations below the mean, as well as $B=17$ runs. Without walking through the algebra, we can compute that $B \approx \text{Nor}\(20.3, 9.54\)$.
 
-Let's compute $Z_0$:
+Let's compute $Z\_0$:
 
 $$
 \begin{alignedat}{1}
@@ -683,17 +681,17 @@ Z_0 &= \frac{B - E[B]}{\sqrt{\text{Var}(B)}} \\[3ex]
 \end{alignedat}
 $$
 
-If $\alpha = 0.05$, then $z_{\alpha/2} = 1.96$, and we fail to reject $H_0$. Therefore, we can treat the observations in this sequence as being independent.
+If $\alpha = 0.05$, then $z\_{\alpha/2} = 1.96$, and we fail to reject $H\_0$. Therefore, we can treat the observations in this sequence as being independent.
 
-## Choosing a Good Generator - Independence Tests II (OPTIONAL)
+## Choosing a Good Generator - Independence Tests II \(OPTIONAL\)
 
 In this lesson, we'll look at another class of tests, autocorrelation tests, that we can use to evaluate whether pseudo-random numbers are independent.
 
 ### Correlation Test
 
-Given a sequence of PRNs, $R_1, R_2, ... R_n$, and assuming that each $R_i$ is Unif(0,1), we can conduct a **correlation test** against the null hypothesis that the $R_i$'s are indeed independent.
+Given a sequence of PRNs, $R\_1, R\_2, ... R\_n$, and assuming that each $R\_i$ is Unif\(0,1\), we can conduct a **correlation test** against the null hypothesis that the $R\_i$'s are indeed independent.
 
-We define the **lag-1 correlation** of the $R_i$'s by $\rho \equiv \text{Corr}(R_i, R_{i+1})$. In other words, the lag-1 correlation measures the correlation between one PRN and its immediate successor. Ideally, if the PRNs are uncorrelated, $\rho$ should be zero.
+We define the **lag-1 correlation** of the $R_i$'s by $\rho \equiv \text{Corr}\(R\_i, R_{i+1}\)$. In other words, the lag-1 correlation measures the correlation between one PRN and its immediate successor. Ideally, if the PRNs are uncorrelated, $\rho$ should be zero.
 
 A good estimator for $\rho$ is given by:
 
@@ -701,19 +699,19 @@ $$
 \hat\rho \equiv \left(\frac{12}{n-1}\sum_{k=1}^{n-1}R_kR_{1+k}\right) - 3
 $$
 
-In particular, if $n$ is large, and $H_0$ is true:
+In particular, if $n$ is large, and $H\_0$ is true:
 
 $$
 \hat\rho \approx \text{Nor}\left(0, \frac{13n- 19}{(n-1)^2}\right)
 $$
 
-Let's transform $\hat{\rho}$ into a standard normal random variable, $Z_0$, which we accomplish with the following manipulation:
+Let's transform $\hat{\rho}$ into a standard normal random variable, $Z\_0$, which we accomplish with the following manipulation:
 
 $$
 Z_0 = \frac{\hat\rho - E[\hat\rho]}{\sqrt{\text{Var}(\hat\rho)}} = \frac{\hat\rho}{\sqrt{\text{Var}(\hat\rho)}}
 $$
 
-We reject $H_0$ if the absolute value of $Z_0$ is greater than the $\alpha/2$ standard normal quantile:
+We reject $H\_0$ if the absolute value of $Z\_0$ is greater than the $\alpha/2$ standard normal quantile:
 
 $$
 f(Z_0) = \left\{
@@ -736,10 +734,9 @@ $$
 \end{aligned}
 $$
 
-After some algebra, we get $\hat\rho = 0.950$ and $\text{Var}(\hat\rho) = 0.441$. Notice how high our correlation estimator is; we might expect a robust rejection of the null hypothesis.
+After some algebra, we get $\hat\rho = 0.950$ and $\text{Var}\(\hat\rho\) = 0.441$. Notice how high our correlation estimator is; we might expect a robust rejection of the null hypothesis.
 
-
-Let's compute $Z_0$:
+Let's compute $Z\_0$:
 
 $$
 \begin{alignedat}{1}
@@ -748,4 +745,5 @@ Z_0 &= \frac{\hat\rho}{\sqrt{\text{Var}(B)}} \\[3ex]
 \end{alignedat}
 $$
 
-If $\alpha = 0.05$, then $z_{\alpha/2} = 1.96$, and we fail to reject $H_0$. Therefore, we can treat the observations in this sequence as being independent. In this case, $n=30$ observations is quite small, and we might indeed reject $H_0$, given such a high correlation, if we were to collect more observations.
+If $\alpha = 0.05$, then $z\_{\alpha/2} = 1.96$, and we fail to reject $H\_0$. Therefore, we can treat the observations in this sequence as being independent. In this case, $n=30$ observations is quite small, and we might indeed reject $H\_0$, given such a high correlation, if we were to collect more observations.
+

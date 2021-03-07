@@ -6,17 +6,17 @@ Each set of notes for a particular class will live in a subdirectory of the repo
 
 If you prefer, you can also view the notes on [OMSCS Notes](https://www.omscs-notes.com).
 
-### Current Courses
+## Current Courses
 
+## Completed Courses
 
-### Completed Courses
-
-- GIOS
-- CN
-- IIS
-- ML4T
-- Simulation
+* GIOS
+* CN
+* IIS
+* ML4T
+* Simulation
 
 If you notice any grammatical errors or flagrantly confusing sentences, please open a PR and point them out. I proofread my notes after taking them, but mistakes do slip through.
 
-#### Thank you and happy studying!
+### Thank you and happy studying!
+

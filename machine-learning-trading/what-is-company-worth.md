@@ -45,7 +45,7 @@ Assume that we are in a position to receive one of three different assets.
 
 The first asset is a $1 bill: cold, hard cash. The second asset is a Tucker Balch bond; essentially, a promise certified by the professor that he will pay us $1 in one year. The third asset is a US Government bond, which also pays out $1 in one year, but is backed by the United States government.
 
-Which of these assets would you rather receive? Rank the choices from 1 (best) to 3 (worst).
+Which of these assets would you rather receive? Rank the choices from 1 \(best\) to 3 \(worst\).
 
 ![](https://assets.omscs.io/notes/2020-02-16-13-34-02.png)
 
@@ -105,7 +105,7 @@ $$
 
 In other words, if Professor Balch wants to attract us to buy his $1 bond, he could only charge us $0.95.
 
-We can plot the present value of a \$1 bond backed by both the US government and Tucker Balch, as a function of $i$.
+We can plot the present value of a $1 bond backed by both the US government and Tucker Balch, as a function of $i$.
 
 ![](https://assets.omscs.io/notes/2020-02-17-20-17-04.png)
 
@@ -189,9 +189,9 @@ As an example, let's consider an island company whose business is to grow and se
 
 Certainly, this news should drive the stock price downward. The health of the CEO affects the health of the company, which reduces either the size of our dividends, or the likelihood that we will receive them, or both. As a result, the intrinsic value of the company decreases sharply.
 
-Let's consider a different piece of news. Recent reports are showing that the soil on the island is contaminated. This type of news is known as *sector news*; in other words, it affects all of the companies in the business sector of growing coconuts on this island.
+Let's consider a different piece of news. Recent reports are showing that the soil on the island is contaminated. This type of news is known as _sector news_; in other words, it affects all of the companies in the business sector of growing coconuts on this island.
 
-Let's consider a final piece of news. New data comes out demonstrating the sea-level is rising. This type of news is known as *market-wide news* as it affects all companies on all islands.
+Let's consider a final piece of news. New data comes out demonstrating the sea-level is rising. This type of news is known as _market-wide news_ as it affects all companies on all islands.
 
 Any of these stories may reduce an investor's belief in the ability of the coconut company to provide future dividends. This reduction might lead such an investor to sell off their stock, thus driving down the share price.
 
@@ -230,3 +230,4 @@ Since this company has a market capitalization of $75,000,000, we could buy all 
 It might seem like a tricky question, given such a relatively low intrinsic value, but it's not. We should buy this company for $75,000,000 and then break it apart and sell the individual assets for $80,000,000 to get an immediate $5,000,000 profit.
 
 Stock prices very rarely dip below book value for this exact reason; otherwise, predatory buyers swoop in and buy the whole company just to sell it for parts.
+

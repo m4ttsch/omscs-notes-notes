@@ -8,6 +8,7 @@ lecture: security-protocols
 # Security Protocols
 
 ## Why Security Protocols
+
 A network protocol defines the rules and conventions for communications between two parties. A security protocol defines the rules and conventions for secure communications between two parties.
 
 Suppose Alice and Bob want to communicate securely over the Internet. They first need to authenticate each other, so that Alice knows she is communicating with Bob and Bob knows that he is communicating with Alice.
@@ -17,6 +18,7 @@ Further, if they want to communicate securely, they likely want to encrypt their
 The building blocks of these security protocols are the public-key and secret-key algorithms, as well as hash functions, all of which we have previously discussed.
 
 ## Mutual Authentication: Shared Secret
+
 In mutual authentication, Alice needs to prove to Bob that she is Alice, and Bob needs to prove to Alice that he is Bob.
 
 Suppose that Alice and Bob share a secret key `K_AB`, which only they know. Using this secret key, we can envision the following authentication protocol.
@@ -35,7 +37,7 @@ If Alice is a human user, then typically `K_AB` can be derived from a password h
 
 The challenge values `r1` and `r2` should not be easily repeatable or predictable; otherwise, an intruder Trudy can record the challenge and response between Alice and Bob and replay them to impersonate Alice or Bob.
 
-Suppose Trudy has spent time recording the authentication messages between Alice and Bob across multiple sessions, and one of the challenge-response pairs that she recorded is  `{a, b}`. If Bob sends `a` again, Trudy can impersonate Alice by responding with `b`.
+Suppose Trudy has spent time recording the authentication messages between Alice and Bob across multiple sessions, and one of the challenge-response pairs that she recorded is `{a, b}`. If Bob sends `a` again, Trudy can impersonate Alice by responding with `b`.
 
 As another example, suppose that the challenge value always increases. Trudy can first impersonate Bob and send a large challenge value, say `r1 = 1000`, and record the response from Alice. Meanwhile, the real Bob is using a smaller value, such as `r1 = 950`. When the real Bob finally sends `r1 = 1000` sometime in the future, Trudy can replay the response she received earlier from Alice.
 
@@ -44,12 +46,15 @@ We assume that Trudy can intercept any messages delivered over the Internet, and
 Additionally, we need to protect the shared secret key `K_AB`. If Trudy can steal a copy of `K_AB` from either Alice's or Bob's machine, then she can impersonate both Alice and Bob. The security of the endpoints is as important as the security of the communication between the two endpoints.
 
 ## Mutual Authentication Quiz
+
 ![](https://assets.omscs.io/notes/80FD51E1-A56A-41ED-A67C-73513A08A815.png)
 
 ## Mutual Authentication Quiz Solution
+
 ![](https://assets.omscs.io/notes/6F5B4FC5-A864-4ABF-A723-74B86A03E032.png)
 
 ## Mutual Authentication: Simplified
+
 The mutual authentication protocol described above takes five steps. Can we shorten it to require only the following three steps?
 
 ![](https://assets.omscs.io/notes/BEFD76D4-457E-489F-ADDF-4BCBC2972D60.png)
@@ -67,6 +72,7 @@ Remember, Trudy needed the ciphertext for `r1` to complete the authentication ex
 This type of attack is referred to as a reflection attack because Trudy reflects Bob's challenge from the first connection back to him in the second connection.
 
 ### Preventing Reflection Attacks
+
 One strategy to defend against reflection attacks is to use two different shared keys: one for the initiator of the connection and one for the responder.
 
 ![](https://assets.omscs.io/notes/73C4601B-1984-4FDA-839A-09802C1A3D09.png)
@@ -80,28 +86,32 @@ Another way to prevent reflection attacks is to use different challenges for the
 Therefore, when Trudy receives a challenge `r1` from Bob, the challenge is an odd number, and she cannot reflect this challenge back to Bob since he is expecting an even number.
 
 ## Mutual Authentication Public Keys
+
 If Bob and Alice have each other's public key, they can use public-key cryptography for mutual authentication.
 
 ![](https://assets.omscs.io/notes/77941BB4-9E0E-49F8-940F-FCC1DB862272.png)
 
 First, Alice sends Bob a challenge `r2` encrypted with Bob's public key. Upon receiving the challenge, Bob decrypts the ciphertext using his private key, and sends back the plaintext challenge `r2` along with his own challenge `r1`. `r1` is encrypted using Alice's public key.
 
-When Alice receives the response from Bob, the plaintext `r2`  lets Alice know that she is communicating with Bob because only he has the private key that pairs with the public key that encrypted `r2`.
+When Alice receives the response from Bob, the plaintext `r2` lets Alice know that she is communicating with Bob because only he has the private key that pairs with the public key that encrypted `r2`.
 
 Alice also decrypts the ciphertext for `r1` using her private key and sends the plaintext `r1` to Bob. Bob knows that he is communicating with Alice because only Alice has the private key that pairs with the public key used to encrypt `r1`.
 
 This protocol can be modified to use signing with private keys instead of encrypting with public keys.
 
 ## Security Protocols Quiz
+
 ![](https://assets.omscs.io/notes/55902D91-0F5A-4553-829E-34C88755CFFD.png)
 
 ## Security Protocols Quiz Solution
+
 ![](https://assets.omscs.io/notes/183F382E-5822-4207-AAB9-BA9CEC7B898B.png)
 
 ## Session Keys
+
 After authentication, Alice and Bob need to establish a shared secret key for their communication session so they can securely send messages to one another.
 
-Typically, Alice and Bob share a long term secret key - called a *master key* - often derived from a password. Alice can use this master key `K_AB` to encrypt a new key `K_S`, which she and Bob can use for message encryption during their current communication session.
+Typically, Alice and Bob share a long term secret key - called a _master key_ - often derived from a password. Alice can use this master key `K_AB` to encrypt a new key `K_S`, which she and Bob can use for message encryption during their current communication session.
 
 Alice and Bob should establish a new shared key for each session, even though they already share a master key. If the session key is leaked or broken, the impact is limited to the current session.
 
@@ -119,10 +129,11 @@ Alice and Bob can also use public-key cryptography to exchange a shared session 
 
 As a third alternative, Alice and Bob can use the Diffie-Hellman key exchange protocol to generate and exchange their session key.
 
-## Key Distribution Center (KDC)
+## Key Distribution Center \(KDC\)
+
 A major shortcoming of using pairwise key exchange based on a shared secret is that it doesn't scale well. For example, Alice needs to share a master key with Bob, Carol, and every other user with whom she wants to communicate.
 
-A **key distribution center** (KDC) solves this scalability problem. In this setup, each party holds only one master key, which they share with the KDC, and the KDC holds master keys for each enrolled party. For example, Alice may share `K_A` with the KDC, and Bob might share `K_B` with the KDC. Alice and Bob individually hold only one key, while the KDC holds both `K_A` and `K_B`.
+A **key distribution center** \(KDC\) solves this scalability problem. In this setup, each party holds only one master key, which they share with the KDC, and the KDC holds master keys for each enrolled party. For example, Alice may share `K_A` with the KDC, and Bob might share `K_B` with the KDC. Alice and Bob individually hold only one key, while the KDC holds both `K_A` and `K_B`.
 
 If Alice and Bob want to have a secure session, they must first establish a session key `K_S`. The following diagram illustrates the steps involved in this operation.
 
@@ -141,7 +152,8 @@ Next, Bob creates a message containing a nonce `n2` and his ID, encrypts it usin
 Finally, Alice performs an agreed-upon transformation of `n2`, encrypts the result using `K_S`, and sends it back to Bob. This message proves to Bob that he is communicating with Alice because she is the only party that possesses `K_S` beside him.
 
 ## Exchanging Public Key Certificates
-A **certificate authority** (CA) often manages the secure distribution of public keys.
+
+A **certificate authority** \(CA\) often manages the secure distribution of public keys.
 
 First, Alice sends her public key to the CA, which verifies her identification and then sends her a certificate of her public key. The certificate is signed using the CA's private key and contains the certificate creation time and period of validity, as well as Alice's ID and public key.
 
@@ -152,12 +164,15 @@ Likewise, Bob can obtain his certificate from the CA and send it to Alice so tha
 ![](https://assets.omscs.io/notes/B2C43DA5-BABC-4E55-B80D-0B71617D4929.png)
 
 ## Session Key Quiz
+
 ![](https://assets.omscs.io/notes/0A70D994-363F-4512-8333-3D30F130D0C3.png)
 
 ## Session Key Quiz Solution
+
 ![](https://assets.omscs.io/notes/F44F5C79-3691-440B-B5E9-72181E40A834.png)
 
 ## Kerberos
+
 **Kerberos** is a standard protocol used to provide authentication and access control in a networked environment, such as an enterprise network.
 
 Every entity in the network - every user and network resource - has a master key that it shares with the Kerberos servers, which perform both authentication and key distribution. That is, a Kerberos server functions as a KDC.
@@ -168,7 +183,7 @@ The following diagram summarizes the interactions that take place when Bob logs 
 
 ![](https://assets.omscs.io/notes/F30C76D4-1654-4AC1-9CD9-A709BA129ACF.png)
 
-When Bob logs in, his workstation first contacts the KDC with an authentication service request. The KDC generates a per-day session key, `S_B`, and a so-called **ticket-granting ticket** (TGT) that contains `S_B` and Bob's ID. This ticket is encrypted using the KDC's key.
+When Bob logs in, his workstation first contacts the KDC with an authentication service request. The KDC generates a per-day session key, `S_B`, and a so-called **ticket-granting ticket** \(TGT\) that contains `S_B` and Bob's ID. This ticket is encrypted using the KDC's key.
 
 The KDC then sends the authentication service response containing `S_B` and the TGT back to Bob's workstation. This message is encrypted using the master key `K_B` shared between Bob and the KDC.
 
@@ -181,6 +196,7 @@ There are several benefits to this setup. First, Bob's localhost does not need t
 Second, the master key `K_B` that Bob shares with the KDC is only used once every day when Bob initially logs in. As a result, the exposure of `K_B`, which is derived from Bob's password and is subject to password-guessing attacks, is very limited.
 
 ## Accessing the Printer
+
 Suppose Bob wants to send a print job to a printer `hp1`.
 
 ![](https://assets.omscs.io/notes/F3B41699-2CF7-42C2-AF9C-8C47EF41D42E.png)
@@ -214,7 +230,10 @@ The printer then sends a response to authenticate itself to Bob by, say, adding 
 After these authentication steps, Bob's localhost can send the print job to the printer.
 
 ## Kerberos Quiz
+
 ![](https://assets.omscs.io/notes/0327A697-D433-41EE-B0E4-54A3F830AFC7.png)
 
 ## Kerberos Quiz Solution
+
 ![](https://assets.omscs.io/notes/358A47CC-D72F-4BAB-BCCD-590496B92FBF.png)
+

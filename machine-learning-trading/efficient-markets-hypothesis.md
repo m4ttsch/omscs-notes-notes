@@ -17,7 +17,7 @@ The foundational ideas that formed the backbone of the efficient markets hypothe
 
 To understand the efficient markets hypothesis, let's first understand some of the assumptions that it makes.
 
-Probably the most critical assumption is that there are a large number of investors interacting in the market. These investors are looking to make a profit; therefore, they have an incentive to find opportunities where the price of a stock is out of line with its actual value. 
+Probably the most critical assumption is that there are a large number of investors interacting in the market. These investors are looking to make a profit; therefore, they have an incentive to find opportunities where the price of a stock is out of line with its actual value.
 
 The next assumption is that new information arrives randomly. Information about a particular stock arrives at random intervals and random rates.
 
@@ -31,7 +31,7 @@ Information that might impact the price of a stock can come from several differe
 
 For example, the information might come from public data points about the company itself. Price and volume data, which form the basis of technical analysis, can affect the price of a stock. Additionally, quarterly reports on fundamental data, such as earnings, can also have an impact.
 
-The information does not have to come from the company itself; instead, **exogenous** information concerns external factors that might impact a company. 
+The information does not have to come from the company itself; instead, **exogenous** information concerns external factors that might impact a company.
 
 For example, if we are looking at the stock of an airline company, we might see that the stock price rises when the price of oil drops. In this case, the price of oil is an exogenous piece of information.
 
@@ -49,11 +49,11 @@ The **semi-strong form of the EMH** states that prices adjust immediately to new
 
 If the semi-strong version of the EMH is true, then we cannot make money using fundamental analysis. However, we might still be able to make money using private, insider information.
 
-Unfortunately, the **strong form of the EMH** says that prices reflect *all* information, public and private, thus ruling out insider information as a means of making money.
+Unfortunately, the **strong form of the EMH** says that prices reflect _all_ information, public and private, thus ruling out insider information as a means of making money.
 
 ![](https://assets.omscs.io/notes/2020-03-08-21-48-24.png)
 
-If the strong form of the EMH is true, then it is virtually impossible to make money by holding a portfolio other than the market portfolio. 
+If the strong form of the EMH is true, then it is virtually impossible to make money by holding a portfolio other than the market portfolio.
 
 ## The EMH Prohibits Quiz
 
@@ -82,3 +82,4 @@ Let's look at a dataset that would seem to refute the semi-strong version of the
 Here we see a plot of P/E - price to earnings - ratios against twenty year annualized returns. Recall that lower P/E ratios are generally a better buy, as we expect a stock that has a relatively lower price and relatively higher earnings to increase in price in the future.
 
 Each group of colors represents a different decade over which data was sampled. For every decade, we see that low P/E ratios corresponded with higher returns. This consistency shows that P/E ratios are very predictive across many decades of future returns, which would tend to refute the semi-strong version of the EMH.
+

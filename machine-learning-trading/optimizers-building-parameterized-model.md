@@ -1,6 +1,6 @@
 ---
 id: machine-learning-trading-optimizers-building-parameterized-model
-title: "Optimizers: Building a Parameterized Model"
+title: 'Optimizers: Building a Parameterized Model'
 course: machine-learning-trading
 lecture: optimizers-building-parameterized-model
 ---
@@ -13,13 +13,13 @@ An **optimizer** is an algorithm that searches the input space of a target funct
 
 We use optimizers for several different purposes.
 
-For one, we use optimizers to find minimum values for functions. For example, given a function $f(x) = x^2 + x^3 + 5$, we can use an optimizer to find an $x$ such that $f(x)$ is as small as possible.
+For one, we use optimizers to find minimum values for functions. For example, given a function $f\(x\) = x^2 + x^3 + 5$, we can use an optimizer to find an $x$ such that $f\(x\)$ is as small as possible.
 
 Additionally, we use optimizers to find the parameters of models we want to build from data. For example, we might collect data that captures a relationship between two variables, and we can use optimizers to find the coefficients of a polynomial that describes that relationship.
 
 Finally, and from a more practical perspective, we can use optimizers to refine stock allocations in portfolios. In other words, an optimizer can help us decide what percentage of our funds we should allocate to each stock.
 
-Using an optimizer involves three main steps. First, we define the function that we want to optimize. For example, if we want to optimize $f(x) = x^2 + x^3 + 5$, we can define the following function in Python:
+Using an optimizer involves three main steps. First, we define the function that we want to optimize. For example, if we want to optimize $f\(x\) = x^2 + x^3 + 5$, we can define the following function in Python:
 
 ```python
 def func(x):
@@ -32,35 +32,35 @@ Finally, we call the optimizer, passing in the function and the initial argument
 
 ## Minimization Example
 
-Let's take a look at the function $f(x) = (x - 1.5)^2 + 0.5$, which is graphed below.
+Let's take a look at the function $f\(x\) = \(x - 1.5\)^2 + 0.5$, which is graphed below.
 
 ![](https://assets.omscs.io/notes/2020-01-19-23-18-30.png)
 
-From the graph, we can see that the function is centered horizontally about the line $x = 1.5$ with a global minimum at $(1.5, 0.5)$. While we can find this minimum fairly intuitively, a minimizer, of course, cannot.
+From the graph, we can see that the function is centered horizontally about the line $x = 1.5$ with a global minimum at $\(1.5, 0.5\)$. While we can find this minimum fairly intuitively, a minimizer, of course, cannot.
 
 We must supply the minimizer with an initial value of $x$ and let it iteratively move closer to the minimum. Let's suppose we tell the minimizer to start with a value of $x=2$.
 
 ![](https://assets.omscs.io/notes/2020-01-19-23-19-22.png)
 
-The first thing the minimizer does is evaluate $f(2)$, which equals 0.75. It then tests two very nearby values - one greater than 2 and one smaller than 2 - and computes the slope of the line connecting those two points.
+The first thing the minimizer does is evaluate $f\(2\)$, which equals 0.75. It then tests two very nearby values - one greater than 2 and one smaller than 2 - and computes the slope of the line connecting those two points.
 
 ![](https://assets.omscs.io/notes/2020-01-19-23-22-39.png)
 
-The slope of the line connecting the two points gives the minimizer insight into how to adjust $x$. Since the slope is positive, increases in $x$ result in increases in $f(x)$. Since the minimizer wants to minimize $f(x)$, it knows to decrease $x$.
+The slope of the line connecting the two points gives the minimizer insight into how to adjust $x$. Since the slope is positive, increases in $x$ result in increases in $f\(x\)$. Since the minimizer wants to minimize $f\(x\)$, it knows to decrease $x$.
 
-This iterative process - adjusting $x$, computing $f(x)$, finding the slope, and then increasing or decreasing $x$ appropriately - is known as **gradient descent**. Read more about gradient descent [here](https://en.wikipedia.org/wiki/Gradient_descent).
+This iterative process - adjusting $x$, computing $f\(x\)$, finding the slope, and then increasing or decreasing $x$ appropriately - is known as **gradient descent**. Read more about gradient descent [here](https://en.wikipedia.org/wiki/Gradient_descent).
 
-After several rounds of gradient descent, the minimizer finds the minima at $(1.5, 0.5)$ and ceases its search.
+After several rounds of gradient descent, the minimizer finds the minima at $\(1.5, 0.5\)$ and ceases its search.
 
 ## Minimizer in Python
 
-Let's optimize the function $f(x) = (x - 1.5)^2 + 0.5$ using Python. For this task, we will need to import a new module, `scipy.optimize`:
+Let's optimize the function $f\(x\) = \(x - 1.5\)^2 + 0.5$ using Python. For this task, we will need to import a new module, `scipy.optimize`:
 
 ```python
 import scipy.optimize as spo
 ```
 
-We can define $f(x)$ in Python with the following code. Note that we add a print line so we can trace the iterations of the minimizer.
+We can define $f\(x\)$ in Python with the following code. Note that we add a print line so we can trace the iterations of the minimizer.
 
 ```python
 def f(x):
@@ -85,7 +85,7 @@ Note that we also supply the `disp` option set to `True` which adds some additio
 
 Perhaps surprisingly, the value of `minimized` is not a number, but an object. We can access the value of `x` and the corresponding, minimized value of `f(x)` like so:
 
-```python 
+```python
 minimized.x # x
 minimized.fun # f(x)
 ```
@@ -102,7 +102,7 @@ To visually verify that the minimizer found the correct value, we can plot `f` a
 
 ### Documentation
 
-- [scipy.optimize.minimize](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html)
+* [scipy.optimize.minimize](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html)
 
 ## How to Defeat a Minimizer Quiz
 
@@ -118,7 +118,7 @@ The first graph is hard because of the "flat" areas on either side of the parabo
 
 The second graph is hard because it has several local minima that aren't necessarily the global minimum. A minimizer might "get stuck" in a local minimum, even though a more significant, global minimum exists.
 
-The fourth graph is challenging  both because of the "flat" area and the discontinuity between the two halves.
+The fourth graph is challenging both because of the "flat" area and the discontinuity between the two halves.
 
 ## Convex Problems
 
@@ -132,7 +132,7 @@ Let's look at three examples.
 
 ![](https://assets.omscs.io/notes/2020-01-20-00-54-52.png)
 
-We can see that the first function is convex between the two points we have selected (actually, it's convex everywhere).
+We can see that the first function is convex between the two points we have selected \(actually, it's convex everywhere\).
 
 We can see that the second and third functions are not convex between the two points as a portion of the graph in each lies above the line between the points.
 
@@ -156,7 +156,7 @@ $$
 
 This function, which is also the equation for a line, has one argument, $x$, and two parameters: $m$ and $b$.
 
-> Note: For convenience, in our code we refer to $m$ and $b$ and $C_0$ and $C_1$, respectively.
+> Note: For convenience, in our code we refer to $m$ and $b$ and $C\_0$ and $C\_1$, respectively.
 
 Now let's look at some data points. Let's say we are budding meteorologists and want to understand the relationship between humidity and rainfall. We collect daily humidity measurements and observe how much it rains, and we create the following plot.
 
@@ -166,9 +166,9 @@ We can see a relationship between humidity and rainfall, and our intuition is th
 
 ![](https://assets.omscs.io/notes/2020-01-20-12-34-14.png)
 
-Our task is to find the parameters $C_0$ and $C_1$ that describe the line that best fits our data. Since we are working with minimizers, we need to reframe this problem as a minimization problem.
+Our task is to find the parameters $C\_0$ and $C\_1$ that describe the line that best fits our data. Since we are working with minimizers, we need to reframe this problem as a minimization problem.
 
- What is it we are trying to minimize? Let's look at a simpler example.
+What is it we are trying to minimize? Let's look at a simpler example.
 
 ![](https://assets.omscs.io/notes/2020-01-20-12-35-54.png)
 
@@ -182,7 +182,7 @@ It is these vertical distances, or **errors**, that we want to minimize.
 
 ## What is a Good Error Metric Quiz
 
-Let's assume that a point $p_i$ has an error $e_i$, which is the vertical distance between $p_i$ and the best-fit line currently under consideration. Given a number of such errors $e_0, e_1, ..., e_n$, which of the following expressions describes the metric we want to minimize?
+Let's assume that a point $p\_i$ has an error $e\_i$, which is the vertical distance between $p\_i$ and the best-fit line currently under consideration. Given a number of such errors $e\_0, e\_1, ..., e\_n$, which of the following expressions describes the metric we want to minimize?
 
 ![](https://assets.omscs.io/notes/2020-01-20-14-11-22.png)
 
@@ -198,13 +198,13 @@ Let's look at the following data.
 
 ![](https://assets.omscs.io/notes/2020-01-20-14-20-37.png)
 
-We want to use a minimizer to find the line that best fits this data, so we first have to define a function to minimize. We are going to use the *sum of squared error* function we saw above, namely:
+We want to use a minimizer to find the line that best fits this data, so we first have to define a function to minimize. We are going to use the _sum of squared error_ function we saw above, namely:
 
 $$
 E = \sum_i{e_i^2}
 $$
 
-Additionally, we have to give the minimizer our initial guess for $C_0$ and $C_1$, and we might choose the values one and zero, respectively. We would give $E$, $C_0$, and $C_1$ to the minimizer and let it run from there. The minimizer iteratively adjusts $C_0$ and $C_1$, observing how $E$ changes with each adjustment, until eventually settling on values of $C_0$ and $C_1$ that minimize $E$.
+Additionally, we have to give the minimizer our initial guess for $C\_0$ and $C\_1$, and we might choose the values one and zero, respectively. We would give $E$, $C\_0$, and $C\_1$ to the minimizer and let it run from there. The minimizer iteratively adjusts $C\_0$ and $C\_1$, observing how $E$ changes with each adjustment, until eventually settling on values of $C\_0$ and $C\_1$ that minimize $E$.
 
 ## Fit a Line to Given Data Points
 
@@ -212,7 +212,7 @@ Let's walk through some example code that generates a best-fit line for a set of
 
 Remember that we are using an optimizer to accomplish this task, so the first thing that we have to do is define the function we want the optimizer to minimize.
 
-This function, which we call `error`, takes in two arguments: `line` and `data`. The `line` argument is a tuple containing the parameters - $C_0$ and $C_1$ - of the current line under consideration. The `data` argument is a two-dimensional array containing x- and y-values from our data set.
+This function, which we call `error`, takes in two arguments: `line` and `data`. The `line` argument is a tuple containing the parameters - $C\_0$ and $C\_1$ - of the current line under consideration. The `data` argument is a two-dimensional array containing x- and y-values from our data set.
 
 We can implement `error` in Python like so:
 
@@ -284,8 +284,8 @@ Our original line is the blue line, and the green dots are the noisy data we gen
 
 ### Documentation
 
-- [numpy.linspace](https://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html)
-- [scipy.optimize.minimize](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html)
+* [numpy.linspace](https://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html)
+* [scipy.optimize.minimize](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html)
 
 ## And it Works for Polynomials Too
 
@@ -325,5 +325,6 @@ Notably, our initial guess is no longer an array containing two parameters, but 
 
 ### Documentation
 
-- [numpy.polyval](https://docs.scipy.org/doc/numpy/reference/generated/numpy.polyval.html)
-- [numpy.poly1d](https://docs.scipy.org/doc/numpy/reference/generated/numpy.poly1d.html)
+* [numpy.polyval](https://docs.scipy.org/doc/numpy/reference/generated/numpy.polyval.html)
+* [numpy.poly1d](https://docs.scipy.org/doc/numpy/reference/generated/numpy.poly1d.html)
+

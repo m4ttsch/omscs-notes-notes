@@ -1,6 +1,6 @@
 ---
 id: machine-learning-trading-ensemble-learners-bagging-boosting
-title: Ensemble Learners, Bagging, and Boosting
+title: 'Ensemble Learners, Bagging, and Boosting'
 course: machine-learning-trading
 lecture: ensemble-learners-bagging-boosting
 ---
@@ -35,11 +35,11 @@ How might we go about building an ensemble of learners?
 
 ![](https://assets.omscs.io/notes/2020-02-02-18-18-42.png)
 
-We can create an ensemble by training several parameterized polynomials of differing degrees (A) or by training several KNN models using different subsets of data (B).
+We can create an ensemble by training several parameterized polynomials of differing degrees \(A\) or by training several KNN models using different subsets of data \(B\).
 
-It doesn't make sense to train KNN models using randomized $Y$-values, because we want to train any model we plan to use on the actual data in our training set. As a result, neither (C) nor (E) is correct.
+It doesn't make sense to train KNN models using randomized $Y$-values, because we want to train any model we plan to use on the actual data in our training set. As a result, neither \(C\) nor \(E\) is correct.
 
-Instead of using just polynomial learners or KNN learners, we can combine the two into a super ensemble (D) for even better results.
+Instead of using just polynomial learners or KNN learners, we can combine the two into a super ensemble \(D\) for even better results.
 
 ## Bootstrap Aggregating: Bagging
 
@@ -95,7 +95,7 @@ If we plot the ensemble created from these five learners, we see an even smoothe
 
 ## Boosting
 
-**Boosting** is a relatively simple variation on bagging that strives to iteratively improve the ensemble by focusing on areas in which it is currently performing poorly. One of the most well-known boosting algorithms is **Adaptive Boosting** (AdaBoost).
+**Boosting** is a relatively simple variation on bagging that strives to iteratively improve the ensemble by focusing on areas in which it is currently performing poorly. One of the most well-known boosting algorithms is **Adaptive Boosting** \(AdaBoost\).
 
 Using AdaBoost, we build our first bag of data in the usual way: random selection, with replacement, from our training data. We then train a model on this bag.
 
@@ -118,3 +118,4 @@ As we increase the number of models $m$ in our ensemble, which of the following 
 ![](https://assets.omscs.io/notes/2020-02-02-22-55-46.png)
 
 AdaBoost focuses primarily on improving the system for specific data points; in other words, it strives to fit. As a result, it is more susceptible to overfitting than is simple bagging.
+

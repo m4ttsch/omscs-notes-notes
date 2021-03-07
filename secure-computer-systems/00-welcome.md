@@ -12,3 +12,4 @@ lecture: 00-welcome
 There is a link to the GitHub repo on the top navigation bar. Support/contributions are encouraged.
 
 You can contact me at mcaseres3@gatech.edu
+

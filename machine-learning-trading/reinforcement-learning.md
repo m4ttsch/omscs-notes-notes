@@ -78,19 +78,20 @@ We have transitioned from a state of not holding to holding long through executi
 Suppose the price increases, and we decide to execute a sell. The money that we made, or lost, is the reward that corresponds to the actions we took. We can use this reward and its relationship to the actions and the state to refine our policy, thus adjusting how we act in the environment.
 
 ## Markov Decision Problems
+
 Let's formalize some of the components that we have been discussing.
 
 We have a set of states, $S$, which corresponds to all of the different states that our robot can receive as input. Additionally, we have a set of actions, $A$, which enumerates all of the potential actions we can execute within the environment.
 
-Additionally, we have a transition function, $T$. This function takes in three arguments: a current state, $S_c$, an action, $A_i$, and a future state $S_f$. Given these three values, the transition function returns the probability that $A_i$ applied to $S_c$ brings about $S_f$.
+Additionally, we have a transition function, $T$. This function takes in three arguments: a current state, $S\_c$, an action, $A\_i$, and a future state $S\_f$. Given these three values, the transition function returns the probability that $A\_i$ applied to $S\_c$ brings about $S\_f$.
 
-For a particular $S_c$ and $A_i$, we are going to end up in *some* new state. As a result, the sum of the probabilities of state transitions from $S_c$ to some $S_f$ in $S$ for $A_i$ must equal 1.
+For a particular $S\_c$ and $A\_i$, we are going to end up in _some_ new state. As a result, the sum of the probabilities of state transitions from $S\_c$ to some $S\_f$ in $S$ for $A\_i$ must equal 1.
 
-Finally, we have the reward function $R$, which receives an action, $A_i$, and a state, $S_i$, as input and returns the reward for executing that action in that state.
+Finally, we have the reward function $R$, which receives an action, $A\_i$, and a state, $S\_i$, as input and returns the reward for executing that action in that state.
 
 A problem parameterized by these four components is known as a **Markov decision process**.
 
-The problem for a reinforcement learning algorithm is to find a policy $\pi$ that maximizes reward over time. We refer to the theoretically optimal policy, which the learning algorithm may or may not find, as $\pi^*$.
+The problem for a reinforcement learning algorithm is to find a policy $\pi$ that maximizes reward over time. We refer to the theoretically optimal policy, which the learning algorithm may or may not find, as $\pi^\*$.
 
 There are several algorithms that we can deploy to find $\pi$ - assuming we know $T$ or $R$ - such as policy iteration and value iteration. In this class, however, we don't know $T$ or $R$ ahead of time, so we can't use either of these algorithms directly.
 
@@ -98,15 +99,15 @@ There are several algorithms that we can deploy to find $\pi$ - assuming we know
 
 Most of the time, we don't know the transition function, $T$, or the reward function, $R$, a priori. As a result, the reinforcement learning agent has to interact with the world, observe what happens, and work with the experience it gains to build an effective policy.
 
-Let's say our agent observed state $s_1$, took action $a_1$, which resulted in state $s^{'}_1$ and reward $r_1$. We refer to the object $(s_1, a_1, s^{'}_1, r_1)$ as an **experience tuple**. 
+Let's say our agent observed state $s\_1$, took action $a\_1$, which resulted in state $s^{'}\_1$ and reward $r\_1$. We refer to the object $\(s\_1, a\_1, s^{'}\_1, r\_1\)$ as an **experience tuple**.
 
 The agent iterates through this sense-think-act cycle over and over again, gathering experience tuples along the way. Once we have collected a significant number of these tuples, we can use two main types of approaches to find the appropriate policy, $\pi$.
 
-The first set of approaches is model-based reinforcement learning. In **model-based reinforcement learning**, we look at the experience tuples over time and build a model of $T$ and $R$ by examining the transitions statistically. For example, for each state, action pair $s_i, a_i$, we can look at the distributions of the observed next state and reward, $s^{'}_i$ and $r_i$, respectively. Once we have these models, we can use value iteration or policy iteration to find the policy.
+The first set of approaches is model-based reinforcement learning. In **model-based reinforcement learning**, we look at the experience tuples over time and build a model of $T$ and $R$ by examining the transitions statistically. For example, for each state, action pair $s\_i, a\_i$, we can look at the distributions of the observed next state and reward, $s^{'}\_i$ and $r\_i$, respectively. Once we have these models, we can use value iteration or policy iteration to find the policy.
 
 The second set of approaches is model-free reinforcement learning. **Model-free reinforcement learning** methods derive a policy directly from the data. We are going to focus on Q-learning in this class, which is a specific type of model-free learning.
 
-## What to Optimize 
+## What to Optimize
 
 We haven't gone into much detail about what exactly we are trying to optimize; currently, we have a vague idea that we are trying to maximize the sum of our rewards. To make our discussion of optimization more concrete, consider our robot navigating the following maze.
 
@@ -138,9 +139,9 @@ $$
 
 **Note**: this expression is almost identical to the expression we used to calculate the present value of all future corporate dividend payments.
 
-We can look at the first few terms of this expression to understand what is happening. The value of an immediate reward, $r_1$, is equal to $\gamma^0 * r_1 = r_1$. The value of the next most immediate reward, $r_2$, is equal to $\gamma * r_2$. The value of the third most immediate reward, $r_3$, is equal to $\gamma^2 * r_3$. These first few steps demonstrate how we use $\gamma$ to devalue rewards that are further out in the future.
+We can look at the first few terms of this expression to understand what is happening. The value of an immediate reward, $r\_1$, is equal to $\gamma^0  _r\_1 = r\_1$. The value of the next most immediate reward, $r\_2$, is equal to $\gamma_  r\_2$. The value of the third most immediate reward, $r\_3$, is equal to $\gamma^2 \* r\_3$. These first few steps demonstrate how we use $\gamma$ to devalue rewards that are further out in the future.
 
-The value of $\gamma$ is greater than zero and less than or equal to one. The closer it is to one, the more we value rewards in the future (the less we discount them). The closer it is to zero, the less we value rewards in the future (the more we discount them).
+The value of $\gamma$ is greater than zero and less than or equal to one. The closer it is to one, the more we value rewards in the future \(the less we discount them\). The closer it is to zero, the less we value rewards in the future \(the more we discount them\).
 
 ## Which Approach Gets $1M Quiz
 
@@ -157,3 +158,4 @@ With an infinite horizon, the robot may exclusively grab the $1 ad infinitum, or
 With a finite horizon of length four, the robot does not reach the $1 million. A journey towards the $1 million results in four penalties, whereas heading towards the $1 results in a positive reward. However, if we increase the horizon to ten, the robot does reach the $1 million.
 
 In the discounted scenario, each reward in the future is successively devalued by 5%. Even so, the $1 million reward is so large that seeking this reward is still the optimal strategy.
+

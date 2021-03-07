@@ -35,11 +35,11 @@ Once we learn $m$ and $b$, we can query our model for any $x$ and get a correspo
 
 This model is decent, but it doesn't accurately track the behavior of the data. As we can see, the data "curves" up and then back down, and a linear model can't capture this type of movement.
 
-So, we can generate a more complex model. Instead of fitting a line, we can fit a polynomial: $y = m_2x^2 + mx + b$. With this model, we have to learn three parameters, whereas we only had to learn two with the simpler linear model.
+So, we can generate a more complex model. Instead of fitting a line, we can fit a polynomial: $y = m\_2x^2 + mx + b$. With this model, we have to learn three parameters, whereas we only had to learn two with the simpler linear model.
 
 ![](https://assets.omscs.io/notes/2020-01-31-11-06-50.png)
 
-Notice that this polynomial model fits the data much better than the linear model for $x > 0$. However, the model fits the data for $x < 0$ pretty poorly. As you might imagine, we could add an $x^3$ term to our model to help better fit that portion of the data.
+Notice that this polynomial model fits the data much better than the linear model for $x &gt; 0$. However, the model fits the data for $x &lt; 0$ pretty poorly. As you might imagine, we could add an $x^3$ term to our model to help better fit that portion of the data.
 
 After we learn the parameters for a model, we can throw away the training data and retain only the parameters that describe the model. For a polynomial of order $d$, we only need to store $d + 1$ values, which makes these regression models very space-efficient.
 
@@ -125,7 +125,7 @@ One thing to keep in mind is that financial data is often oriented in time-speci
 
 ## Learning APIs
 
-It's helpful to standardize the [application programming interface](https://en.wikipedia.org/wiki/Application_programming_interface) (API) when thinking about implementing machine learning algorithms.
+It's helpful to standardize the [application programming interface](https://en.wikipedia.org/wiki/Application_programming_interface) \(API\) when thinking about implementing machine learning algorithms.
 
 We have three fundamental concepts that we need to cover in our API. First, we need to be able to create the learner and pass in any necessary parameters. Second, we need to be able to instruct our learner to build a model from training data. Finally, we need a way to tell our learner to query its model using testing data.
 
@@ -154,7 +154,7 @@ We define our `LinRegLearner` class, and the associated constructor using the `_
 ```python
 class LinRegLearner:
  def __init__():
-  pass 
+  pass
 ```
 
 Next, we need to implement the `train` method. Given a training data set consisting of `X` and `Y`, `train` finds the `m` and `b` of the line that best fits the data.
@@ -185,3 +185,4 @@ class KNNLearner:
 ```
 
 Enforcing that all learners implement the same API is advantageous because, once we know how to use one learner, we know how to use them all.
+

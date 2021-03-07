@@ -17,7 +17,7 @@ In the process interaction method, we consider generic customers and the sequenc
 
 At any given time, the system may contain many of these generic entities interacting with one another. For example, two entities might be trying to interact with the same process, which might be a single server. In this case, one entity receives service while the other waits in line. Arena oversees all the entities and observes how they move through the system and compete with each other for access to processes.
 
-The entities flow through a network of **modules** (blocks) that describe their behavior, and we can represent this network using a process flowchart. 
+The entities flow through a network of **modules** \(blocks\) that describe their behavior, and we can represent this network using a process flowchart.
 
 For example, let's suppose that people show up at the barbershop, they get served, potentially after waiting in line, and then they leave. In Arena, we generate the arrival using the Create module. We interact with the barber using the Process module. We remove the entity from the system with the Dispose module.
 
@@ -43,21 +43,21 @@ We have the main work area, where we will drag, drop, and connect items from the
 
 The main menu toolbar has several features.
 
-The *File* menu provides the usual new, open, close, and save functionality, but it also lets us import different template panels and background pictures. As it turns out, there are many Arena template panels that enhance the package's basic capabilities, and we can import those from this menu.
+The _File_ menu provides the usual new, open, close, and save functionality, but it also lets us import different template panels and background pictures. As it turns out, there are many Arena template panels that enhance the package's basic capabilities, and we can import those from this menu.
 
-The *Edit* menu allows us to edit various things as well as insert objects. The *View* menu lets us see different toolbars and customize our named views, which are essentially saved screens we can load on demand.
+The _Edit_ menu allows us to edit various things as well as insert objects. The _View_ menu lets us see different toolbars and customize our named views, which are essentially saved screens we can load on demand.
 
-The *Tools* menu exposes some cool features. We can use the Input Analyzer to fit distributions, OptQuest to run certain optimizations, and AVI capture to record simulation runs for sharing. 
+The _Tools_ menu exposes some cool features. We can use the Input Analyzer to fit distributions, OptQuest to run certain optimizations, and AVI capture to record simulation runs for sharing.
 
-The *Arrange*, *Object*, and *Window* menus provide some visualization tools and aids that we can use to present things more nicely from a visual perspective.
+The _Arrange_, _Object_, and _Window_ menus provide some visualization tools and aids that we can use to present things more nicely from a visual perspective.
 
-We use the *Run* menu to set up a simulation and execute it however we want. We can speed up simulations, slow them down, advance them frame by frame, pause them, stop them, and more.
+We use the _Run_ menu to set up a simulation and execute it however we want. We can speed up simulations, slow them down, advance them frame by frame, pause them, stop them, and more.
 
 Let's look at the basic process template panel again.
 
 ![](https://assets.omscs.io/notes/2020-09-21-20-16-04.png)
 
-This panel contains the basic building blocks that we can use to set up some simple simulations. We have already briefly talked about some of these modules, such as create, process,  and dispose. We drag these modules over to the main work area to make our models.
+This panel contains the basic building blocks that we can use to set up some simple simulations. We have already briefly talked about some of these modules, such as create, process, and dispose. We drag these modules over to the main work area to make our models.
 
 There is a second set of icons below these blocks that are related to spreadsheets. For example, "Entity" keeps track of customers, and "Attributes" keeps track of different properties of the customers.
 
@@ -95,13 +95,13 @@ As we saw, we use the Create module to generate arrivals, and we use the Dispose
 
 We drag these modules over to the workspace area, build the flowchart, fill in some numbers, hit the go button, and run our simulation.
 
-Suppose we are interested in more advanced modules than those that come in the basic template panel. In this case, we can go to *File > Template Panel > Attach* and browse for more interesting templates.
+Suppose we are interested in more advanced modules than those that come in the basic template panel. In this case, we can go to _File &gt; Template Panel &gt; Attach_ and browse for more interesting templates.
 
 ### Spreadsheets
 
 The bottom half of the process panel contains spreadsheets that give us both information and the capability to change certain system parameters - the number of servers or the service rate, perhaps.
 
-For example, the Variable spreadsheet defines global quantities. We might maintain a WIP (work in process) variable that gets updated as the simulation progresses. As a customer shows up, we increment WIP. As a customer leaves, we decrement WIP. We could track the value of WIP in this spreadsheet.
+For example, the Variable spreadsheet defines global quantities. We might maintain a WIP \(work in process\) variable that gets updated as the simulation progresses. As a customer shows up, we increment WIP. As a customer leaves, we decrement WIP. We could track the value of WIP in this spreadsheet.
 
 The Resource spreadsheet keeps track of the names and capacities of the different servers. We can change the capacities in this spreadsheet, or we can look at the Schedule spreadsheet to schedule capacity changes over time.
 
@@ -137,14 +137,13 @@ Now we can run the simulation and watch customers queue up while they wait for t
 
 ![](https://assets.omscs.io/notes/2020-09-21-23-46-07.png)
 
-Let's look at how we might load more advanced templates. We first go to *File > Template Panel > Attach*. From here, we can browse to `C://Program Files/Rockwell Software/Arena/Template` or a similar location. Once there, we can select any of the templates to import.
+Let's look at how we might load more advanced templates. We first go to _File &gt; Template Panel &gt; Attach_. From here, we can browse to `C://Program Files/Rockwell Software/Arena/Template` or a similar location. Once there, we can select any of the templates to import.
 
 ![](https://assets.omscs.io/notes/2020-09-21-23-49-55.png)
 
 After importing a new template, we can see that we have access to many new modules we didn't see before, such as Delay and Seize.
 
 ![](https://assets.omscs.io/notes/2020-09-21-23-50-29.png)
-
 
 ## Create, Process, Dispose Modules
 
@@ -168,13 +167,13 @@ We can edit the name of the module, which is displayed in the main work area whe
 
 We edit the type of entity. In this case, the entity defaults to "Entity 1", but we might want to name it something like "Barber Customers" in light of our recent demos.
 
-We can also specify the interarrival distribution. In this case, the "Random (Expo)" signifies that we are generating interarrival times from an exponential distribution. Correspondingly, we have fields for the mean of the distribution (one) and the units for the values sampled from the distribution (hours).
+We can also specify the interarrival distribution. In this case, the "Random \(Expo\)" signifies that we are generating interarrival times from an exponential distribution. Correspondingly, we have fields for the mean of the distribution \(one\) and the units for the values sampled from the distribution \(hours\).
 
 Below the interarrival configuration, we can specify the number of customers per arrival. Here we have a value of one, but we might change this if we are simulating a restaurant or some other system where people arrive in groups.
 
 Additionally, we can specify the maximum number of allowed arrivals. Sometimes, we want to end the simulation after a particular number of people arrive, but here, we are allowing infinite arrivals.
 
-Finally, we can specify the first creation time. In this simulation, a customer is waiting at the door and arrives right at time zero, but we can set the first arrival to some later time if we want. 
+Finally, we can specify the first creation time. In this simulation, a customer is waiting at the door and arrives right at time zero, but we can set the first arrival to some later time if we want.
 
 ### Process and Dispose Modules
 
@@ -204,15 +203,15 @@ Let's see how we might configure the Create module. For example, instead of gene
 
 Here we have specified that we want one customer to arrive every hour. We could change the units so that customers arrive once every minute or second.
 
-Alternatively, we could have customers arrive according to a custom expression. For example, we could specify that we want interarrival times generated from a Uniform(2,4) distribution.
+Alternatively, we could have customers arrive according to a custom expression. For example, we could specify that we want interarrival times generated from a Uniform\(2,4\) distribution.
 
 ![](https://assets.omscs.io/notes/2020-09-22-20-24-04.png)
 
-We could get even fancier. Perhaps we want to generate arrivals according to the product of a Uniform(2,4) random variable and a Normal(3,0.5) random variable. We can specify that using the `UNIF(2,4) * NORM(3, 0.5)` expression.
+We could get even fancier. Perhaps we want to generate arrivals according to the product of a Uniform\(2,4\) random variable and a Normal\(3,0.5\) random variable. We can specify that using the `UNIF(2,4) * NORM(3, 0.5)` expression.
 
 Similarly, we can customize the number of entities per arrival. We can either enter a whole number or a distribution. For example, if we want arrival sizes to be generated from a Poisson distribution, we can use the following expression: `POIS(3)`.
 
-If we want even more complicated logic, we can right-click and select *Build Expression*. Here, we have a whole host of building blocks for creating mathematical expressions of arbitrary complexity.
+If we want even more complicated logic, we can right-click and select _Build Expression_. Here, we have a whole host of building blocks for creating mathematical expressions of arbitrary complexity.
 
 ![](https://assets.omscs.io/notes/2020-09-22-20-30-42.png)
 
@@ -246,7 +245,7 @@ Here are some of the different actions we can select in the Process module.
 
 We can take a simple "Delay" action, where we delay ourselves while we self-serve. This type of action doesn't require any resources.
 
-We can also take a "Seize-Delay-Release" action. In this action, we grab a resource (server), spend time getting served, and then free the server for the next entity to use. If we try to seize a resource that isn't available, we may have to wait in a queue.
+We can also take a "Seize-Delay-Release" action. In this action, we grab a resource \(server\), spend time getting served, and then free the server for the next entity to use. If we try to seize a resource that isn't available, we may have to wait in a queue.
 
 We can also take a "Seize-Delay" action. Here, we grab at least one resource and spend time receiving service. If we take this action, we have to remember to manually release the resource at a later time, or else a giant line will form.
 
@@ -256,7 +255,7 @@ Similarly, we might take a "Delay-Release" action. In this action, we use a prev
 
 ### Resource Dialog Box
 
-If we are performing an action that involves a Seize or Release, we will see a dialog box pop up asking us how many resources we want to add (Seize) or delete (Release).
+If we are performing an action that involves a Seize or Release, we will see a dialog box pop up asking us how many resources we want to add \(Seize\) or delete \(Release\).
 
 Here we can see that we have chosen the "Seize Delay Release" action, and we see the corresponding popup asking us which resource we want to add and how many we need to seize. In this case, we see that we want one of "Resource 1".
 
@@ -344,7 +343,7 @@ We can also change the fixed capacity to a schedule, which means that the resour
 
 ### Schedule Spreadsheet
 
-We set schedules for servers using the Schedule spreadsheet. We can go to the Resource spreadsheet and change the *Type* field from "Fixed Capacity" to "Based on Schedule".
+We set schedules for servers using the Schedule spreadsheet. We can go to the Resource spreadsheet and change the _Type_ field from "Fixed Capacity" to "Based on Schedule".
 
 ![](https://assets.omscs.io/notes/2020-09-24-22-59-02.png)
 
@@ -354,7 +353,7 @@ In this example, we've associated a schedule called "Barber Sched" with the barb
 
 This schedule is a capacity schedule, which means that it varies the capacity of a resource over time. We can describe the schedule by adding entries in the "Durations" column. This column lets us declare how many servers are on duty at different points throughout the scheduling period.
 
-We also set schedules for arrivals. Arrivals change throughout the day; not everyone shows up to the Waffle House at the same rate hour over hour. We can go to the Create module and change the *Type* to "Schedule".
+We also set schedules for arrivals. Arrivals change throughout the day; not everyone shows up to the Waffle House at the same rate hour over hour. We can go to the Create module and change the _Type_ to "Schedule".
 
 ![](https://assets.omscs.io/notes/2020-09-24-23-03-25.png)
 
@@ -380,7 +379,7 @@ If we change the capacity to two, we see that the queue never grows to more than
 
 ![](https://assets.omscs.io/notes/Sep-24-2020-23-46-57.gif)
 
-As we mentioned, we can schedule the capacity of resources instead of using a fixed capacity. Let's change the *Type* column to "Based on Schedule" and enter "Barber Sched" into the *Schedule Name* column.
+As we mentioned, we can schedule the capacity of resources instead of using a fixed capacity. Let's change the _Type_ column to "Based on Schedule" and enter "Barber Sched" into the _Schedule Name_ column.
 
 ![](https://assets.omscs.io/notes/2020-09-24-23-49-21.png)
 
@@ -398,7 +397,7 @@ Let's schedule one server for the first hour of the simulation, two servers for 
 
 As we might expect, the line will grow throughout the first hour. During hour two, the two servers will hopefully be able to consume the queue. In hour three, the queue will grow unbounded, but, hopefully, in hour four, the four servers can bring it back down to a manageable size.
 
-We can visualize time more easily if we create a clock by clicking on the *clock* icon in the toolbar.
+We can visualize time more easily if we create a clock by clicking on the _clock_ icon in the toolbar.
 
 ![](https://assets.omscs.io/notes/2020-09-26-13-37-44.png)
 
@@ -420,7 +419,7 @@ Finally, after hour four, our four servers have brought the queue back down to 4
 
 What happens next is that the schedule repeats itself, so we see the same resource capacities over the next four hours that we saw over the previous four.
 
-Notice that we have a green square above Process one, indicating that the server is busy. We can create this animation by clicking on the *resource* icon from the toolbar.
+Notice that we have a green square above Process one, indicating that the server is busy. We can create this animation by clicking on the _resource_ icon from the toolbar.
 
 ![](https://assets.omscs.io/notes/2020-09-26-13-44-41.png)
 
@@ -432,7 +431,7 @@ We can edit a queue by double-clicking on it, which brings up a dialog box.
 
 ![](https://assets.omscs.io/notes/2020-09-26-13-47-27.png)
 
-If we change the *Type* from "Line" to "Point", we can create a queue that looks like the following.
+If we change the _Type_ from "Line" to "Point", we can create a queue that looks like the following.
 
 ![](https://assets.omscs.io/notes/2020-09-26-13-49-10.png)
 
@@ -444,11 +443,11 @@ Let's edit the semantics of the queue now. If we click on the Queue spreadsheet,
 
 ![](https://assets.omscs.io/notes/2020-09-26-13-53-06.png)
 
-This queue has a *Type* of "First In First Out". We can click the *Type* dropdown and change this queue to "Last In First Out". Notice now how the first customer in the system stays at the end of the queue as other customers arrive.
+This queue has a _Type_ of "First In First Out". We can click the _Type_ dropdown and change this queue to "Last In First Out". Notice now how the first customer in the system stays at the end of the queue as other customers arrive.
 
 ![](https://assets.omscs.io/notes/Sep-26-2020-13-55-29.gif)
 
-We can change what the customers look like by visiting the Entity spreadsheet. We can set the *Initial Picture* of the entity to "Picture.Person" to represent this entity as a person.
+We can change what the customers look like by visiting the Entity spreadsheet. We can set the _Initial Picture_ of the entity to "Picture.Person" to represent this entity as a person.
 
 ![](https://assets.omscs.io/notes/2020-09-26-13-58-39.png)
 
@@ -464,19 +463,19 @@ We can make a "2-way by Chance" decision, whereby we randomly send an entity to 
 
 Furthermore, there is a "2-way by Condition" choice, where we send an entity to one of two locations depending on whether a certain condition is satisfied. For example, we might send an entity to one store if it is raining and another if it is sunny. Symmetrically, the "N-way by Condition" choice sends the entity to any of N locations depending on a certain condition.
 
-As an example, let's suppose we want to send an entity to Process 2 with a 75% probability and Process 3 with a 25% probability. We can specify this in the Decide dialog by selecting "2-way by Choice" from the *Type* dropdown and specifying 75 in the *Percent True* field.
+As an example, let's suppose we want to send an entity to Process 2 with a 75% probability and Process 3 with a 25% probability. We can specify this in the Decide dialog by selecting "2-way by Choice" from the _Type_ dropdown and specifying 75 in the _Percent True_ field.
 
 ![](https://assets.omscs.io/notes/2020-09-25-16-08-50.png)
 
 ### DEMO
 
-In this demo, we will look at a couple of examples involving the Decide module. 
+In this demo, we will look at a couple of examples involving the Decide module.
 
 Let's look at the first example. Here we have a Create module, followed by an N-way by Condition Decide module, followed by three Dispose modules. Next to each Dispose module, we keep a tally of the proportion of customers that pass through that module.
 
 ![](https://assets.omscs.io/notes/2020-09-26-14-35-25.png)
 
-Let's look at the configuration for this Decide module. We see that this block has a *Type* of "N-way by Chance". We specified the percentages 30 and 50, and Arena is smart enough to know that there must be a third percentage of 20 so that the percentages sum to 100. So, the customer goes to the first Dispose block 30% of the time, the second Dispose block 50% percent of the time, and the final Dispose block 20% of the time.
+Let's look at the configuration for this Decide module. We see that this block has a _Type_ of "N-way by Chance". We specified the percentages 30 and 50, and Arena is smart enough to know that there must be a third percentage of 20 so that the percentages sum to 100. So, the customer goes to the first Dispose block 30% of the time, the second Dispose block 50% percent of the time, and the final Dispose block 20% of the time.
 
 ![](https://assets.omscs.io/notes/2020-09-26-14-39-22.png)
 
@@ -492,13 +491,13 @@ Notice that we are also using the Assign module. We use this module to assign va
 
 ![](https://assets.omscs.io/notes/2020-09-26-14-54-27.png)
 
-As we can see, we are assigning an attribute called "Cust Type" to the customer, where the value of the attribute is drawn from the "DISC(0.3, 1, 0.8, 2, 1.0, 3)" distribution. This distribution is discrete, whereby the value "1" appears 30% of the time, the value "2" appears 50% of the time, and the value "3" appears 20% of the time.
+As we can see, we are assigning an attribute called "Cust Type" to the customer, where the value of the attribute is drawn from the "DISC\(0.3, 1, 0.8, 2, 1.0, 3\)" distribution. This distribution is discrete, whereby the value "1" appears 30% of the time, the value "2" appears 50% of the time, and the value "3" appears 20% of the time.
 
-Now let's look at the Decide block configuration. Notice that the *Type* is "N-way by Condition", and the conditions are based on the customer type. The first condition is "Cust Type == 1", and the second condition is "Cust Type == 2". Again, Arena is smart enough to handle the final case for us.
+Now let's look at the Decide block configuration. Notice that the _Type_ is "N-way by Condition", and the conditions are based on the customer type. The first condition is "Cust Type == 1", and the second condition is "Cust Type == 2". Again, Arena is smart enough to handle the final case for us.
 
 ![](https://assets.omscs.io/notes/2020-09-26-14-57-29.png)
 
-We can edit the condition by clicking the *Edit* button, which brings up the following dialog. We can see that we express the condition as an equality between the attribute "Cust Type" and the value "1".
+We can edit the condition by clicking the _Edit_ button, which brings up the following dialog. We can see that we express the condition as an equality between the attribute "Cust Type" and the value "1".
 
 ![](https://assets.omscs.io/notes/2020-09-26-15-00-04.png)
 
@@ -514,7 +513,7 @@ Let's look at the Decide block. Here we have a decision of type "2-way by Condit
 
 ![](https://assets.omscs.io/notes/2020-09-26-15-06-50.png)
 
-We can specify the entity type in the Create block. For the Create block for the men, we see the *Entity Type* field is "men".
+We can specify the entity type in the Create block. For the Create block for the men, we see the _Entity Type_ field is "men".
 
 ![](https://assets.omscs.io/notes/2020-09-26-15-07-46.png)
 
@@ -536,7 +535,7 @@ Attributes need to be numerical, so we may have to encode certain categorical at
 
 ### Variables
 
-Unlike attributes, whose values are specific to each customer, variables are global. If we change a variable anywhere in Arena, it gets changed everywhere. For example, we might maintain and global Work in Process (WIP) variable, which we increment any time an entity is created and decrement any time an entity is disposed.
+Unlike attributes, whose values are specific to each customer, variables are global. If we change a variable anywhere in Arena, it gets changed everywhere. For example, we might maintain and global Work in Process \(WIP\) variable, which we increment any time an entity is created and decrement any time an entity is disposed.
 
 ### Assign Module
 
@@ -570,7 +569,7 @@ Let's change the distribution of service times to an expression named "service t
 
 ![](https://assets.omscs.io/notes/2020-09-26-18-10-59.png)
 
-We can define "service time" in the Assign block. Specifically, we associate an attribute called "service time" with each entity we generate, which will subsequently be read by the Process block. Let's specify the service time as "tria(5,15,25)", a triangular distribution parameterized by a min, mode, and max of 5, 15, and 25.
+We can define "service time" in the Assign block. Specifically, we associate an attribute called "service time" with each entity we generate, which will subsequently be read by the Process block. Let's specify the service time as "tria\(5,15,25\)", a triangular distribution parameterized by a min, mode, and max of 5, 15, and 25.
 
 ![](https://assets.omscs.io/notes/2020-09-26-18-13-06.png)
 
@@ -582,13 +581,13 @@ Let's look at how we did that. We simply assigned the picture to a new value, Pi
 
 ![](https://assets.omscs.io/notes/2020-09-26-18-17-49.png)
 
-Let's look at another example. This time we will order the queue by the eventual tip that the customer will give. 
+Let's look at another example. This time we will order the queue by the eventual tip that the customer will give.
 
-Let's look at the Assign block. We have the Entity.Picture attribute set to Picture.Person, which randomly selects between a man and a woman. More interestingly, we have the "eventual_tip" attribute, which is drawn from a "NORM(10, 5)" distribution.
+Let's look at the Assign block. We have the Entity.Picture attribute set to Picture.Person, which randomly selects between a man and a woman. More interestingly, we have the "eventual\_tip" attribute, which is drawn from a "NORM\(10, 5\)" distribution.
 
 ![](https://assets.omscs.io/notes/2020-09-26-18-21-27.png)
 
-How can we specify the order for the queue? Let's go to the Queue spreadsheet and look at the Barber Station.Queue. Here we see the *Type* field set to "Highest Attribute Value" and the *Attribute Name* field set to "eventual_tip". This configuration means that we order the queue by the "eventual_tip" attribute on the entities.
+How can we specify the order for the queue? Let's go to the Queue spreadsheet and look at the Barber Station.Queue. Here we see the _Type_ field set to "Highest Attribute Value" and the _Attribute Name_ field set to "eventual\_tip". This configuration means that we order the queue by the "eventual\_tip" attribute on the entities.
 
 ![](https://assets.omscs.io/notes/2020-09-26-18-24-41.png)
 
@@ -638,7 +637,7 @@ Let's step through the first few steps of this simulation. We generate three arr
 
 ![](https://assets.omscs.io/notes/2020-09-26-22-28-58.png)
 
-If we look at the configuration for the Process block, we see that the delay type is based on the expression "Expo(mean(Cust Type))".
+If we look at the configuration for the Process block, we see that the delay type is based on the expression "Expo\(mean\(Cust Type\)\)".
 
 ![](https://assets.omscs.io/notes/2020-09-26-22-30-14.png)
 
@@ -662,7 +661,7 @@ In this lesson, we will focus on Arena's internal variables, which automatically
 
 ### Internal Variables
 
-Like we said, Arena keeps track of and continuously updates numerous pieces of state as the simulation runs. 
+Like we said, Arena keeps track of and continuously updates numerous pieces of state as the simulation runs.
 
 The variable `TNOW` keeps track of the current simulated time. Every time something happens in the simulation, Arena updates `TNOW`.
 
@@ -702,15 +701,15 @@ As always, we have our Create-Process-Dispose setup, and we perform a Seize Dela
 
 ![](https://assets.omscs.io/notes/2020-09-28-10-09-15.png)
 
-If we look at the *Replication Parameters* tab in the *Run Setup* dialog, which we access from the *Run > Setup* menu, we see that we will run this simulation for 2000 minutes.
+If we look at the _Replication Parameters_ tab in the _Run Setup_ dialog, which we access from the _Run &gt; Setup_ menu, we see that we will run this simulation for 2000 minutes.
 
 ![](https://assets.omscs.io/notes/2020-09-28-10-12-48.png)
 
-We will also add a digital clock to the workspace area so we can watch the time pass. Remember that we can add this feature by clicking on the *Clock* icon in the toolbar.
+We will also add a digital clock to the workspace area so we can watch the time pass. Remember that we can add this feature by clicking on the _Clock_ icon in the toolbar.
 
 ![](https://assets.omscs.io/notes/2020-09-28-10-14-24.png)
 
-Furthermore, we will add a calendar. To do so, we click on the *Calendar* icon, right next to the *Clock* icon.
+Furthermore, we will add a calendar. To do so, we click on the _Calendar_ icon, right next to the _Clock_ icon.
 
 ![](https://assets.omscs.io/notes/2020-09-28-10-15-37.png)
 
@@ -760,23 +759,23 @@ In this lesson, we will discuss the Batch Separate and Record modules.
 
 ### Batch Module
 
-The Batch module combines ("batches") multiple customers into one super-customer. 
+The Batch module combines \("batches"\) multiple customers into one super-customer.
 
-Let's look at how we can configure the Batch module. We can set the batch size by specifying a value in the "Batch Size" field. Here, we have entered "3", which means that we will accumulate three customers into one super-customer. Additionally, we have selected "Permanent" from the *Type* dropdown. We create a permanent batch when we don't need to retain information about the individual customers.
+Let's look at how we can configure the Batch module. We can set the batch size by specifying a value in the "Batch Size" field. Here, we have entered "3", which means that we will accumulate three customers into one super-customer. Additionally, we have selected "Permanent" from the _Type_ dropdown. We create a permanent batch when we don't need to retain information about the individual customers.
 
 ![](https://assets.omscs.io/notes/2020-09-27-18-44-58.png)
 
-If we want to reconstitute the original customers eventually, we can select "Temporary" from the *Type* dropdown. Note that we need to split temporary batches to dispose of the constituent customers.
+If we want to reconstitute the original customers eventually, we can select "Temporary" from the _Type_ dropdown. Note that we need to split temporary batches to dispose of the constituent customers.
 
 ### Separate Module
 
 The Separate module can do two things: first, it can duplicate a single entity, and; second, it can split multiple entities that have been combined in a Batch module.
 
-If we are dealing with a permanent batch, we usually will select "Duplicate Original" from the *Type* dropdown to get several clones of the super-customer.
+If we are dealing with a permanent batch, we usually will select "Duplicate Original" from the _Type_ dropdown to get several clones of the super-customer.
 
 ![](https://assets.omscs.io/notes/2020-09-27-18-53-30.png)
 
-If we are dealing with a temporary batch, we can select "Split Existing Batch" from the *Type* dropdown to reproduce the original customers and their attributes.
+If we are dealing with a temporary batch, we can select "Split Existing Batch" from the _Type_ dropdown to reproduce the original customers and their attributes.
 
 ![](https://assets.omscs.io/notes/2020-09-27-18-54-12.png)
 
@@ -794,21 +793,21 @@ Let's look at our first setup.
 
 Here, we generate arrivals of women from a Create block. These arrivals pass through an Assign block and then a Decide block, where every other woman is sent to the bottom path and transformed into a man. Next, we hit the Batch module, where we accumulate two customers - a man and a woman - into one woman super-customer. Finally, in the Separate block, we duplicate the super-customer and dispose of them both.
 
-Let's look at the configuration for the Batch block. Notice that we specify a batch size of two and a type of "Permanent". Why do we combine a man and a woman into a woman? We specify "Last" in the *Save Criterion* dropdown, and, since the woman arrives last, the batch looks like a woman.
+Let's look at the configuration for the Batch block. Notice that we specify a batch size of two and a type of "Permanent". Why do we combine a man and a woman into a woman? We specify "Last" in the _Save Criterion_ dropdown, and, since the woman arrives last, the batch looks like a woman.
 
 ![](https://assets.omscs.io/notes/2020-09-27-21-33-56.png)
 
-Let's look at the Separate module now. Here we have selected "Duplicate Original" from the *Type* dropdown. We have also specified "1" in the *# of Duplicates* field, so we create one duplicate of the woman super-customer, sending two in total to the Dispose block.
+Let's look at the Separate module now. Here we have selected "Duplicate Original" from the _Type_ dropdown. We have also specified "1" in the _\# of Duplicates_ field, so we create one duplicate of the woman super-customer, sending two in total to the Dispose block.
 
 ![](https://assets.omscs.io/notes/2020-09-27-21-35-33.png)
 
-Let's consider a second example. This time, everything is basically the same as the first example except that a man and a woman emerge from the Separate block. 
+Let's consider a second example. This time, everything is basically the same as the first example except that a man and a woman emerge from the Separate block.
 
-Let's look at the Batch configuration. Here we have selected "Temporary" from the *Type* dropdown.
+Let's look at the Batch configuration. Here we have selected "Temporary" from the _Type_ dropdown.
 
 ![](https://assets.omscs.io/notes/2020-09-27-21-39-21.png)
 
-Let's look at the Separate block. We have selected "Split Existing Batch" from the *Type* dropdown, so we will break up our super-customer into its constituent entities.
+Let's look at the Separate block. We have selected "Split Existing Batch" from the _Type_ dropdown, so we will break up our super-customer into its constituent entities.
 
 ![](https://assets.omscs.io/notes/2020-09-27-21-40-12.png)
 
@@ -818,23 +817,23 @@ In this lesson, we will look at several simple features that will ensure that ou
 
 ### Run Setup
 
-The *Run > Setup* menu gives us a lot of functionality. Often, we will look specifically at the *Replication Parameter* tab.
+The _Run &gt; Setup_ menu gives us a lot of functionality. Often, we will look specifically at the _Replication Parameter_ tab.
 
 ![](https://assets.omscs.io/notes/2020-09-27-21-47-33.png)
 
-We can specify the number of times we run the simulation in the *Number of Replications* field. By default, the simulation runs once, but we often need to rerun simulations many times to generate useful statistics.
+We can specify the number of times we run the simulation in the _Number of Replications_ field. By default, the simulation runs once, but we often need to rerun simulations many times to generate useful statistics.
 
-We can control whether we start fresh with system state and statistics collection between simulation runs using the *Initialize Between Replications* checkboxes.
+We can control whether we start fresh with system state and statistics collection between simulation runs using the _Initialize Between Replications_ checkboxes.
 
-Additionally, we can specify how long we want to run the simulation before keeping data and collecting statistics in the *Warm-up Period* field. If we are interested in a steady-state simulation, for example, it doesn't make sense to start collecting data right at the start.
+Additionally, we can specify how long we want to run the simulation before keeping data and collecting statistics in the _Warm-up Period_ field. If we are interested in a steady-state simulation, for example, it doesn't make sense to start collecting data right at the start.
 
-We can control how long each run takes using the *Replication Length* field. We usually measure simulation length in units of time, so we might say that we want to run the simulation for 24 hours.
+We can control how long each run takes using the _Replication Length_ field. We usually measure simulation length in units of time, so we might say that we want to run the simulation for 24 hours.
 
-If we don't want to run the simulation for a certain amount of time, but, instead, until a particular event/state occurs, we can specify this data in the *Terminating Condition* field. For example, we could state that we want to end the simulation once the queue size hits 100 customers.
+If we don't want to run the simulation for a certain amount of time, but, instead, until a particular event/state occurs, we can specify this data in the _Terminating Condition_ field. For example, we could state that we want to end the simulation once the queue size hits 100 customers.
 
-We can also adjust the speed of the simulation run with the *Run Speed* tab. Note that this tab offers much more control than the icons on the main screen.
+We can also adjust the speed of the simulation run with the _Run Speed_ tab. Note that this tab offers much more control than the icons on the main screen.
 
-We can look at the *Reports* tab to see and edit the collection of reports that Arena provides upon completing a simulation run. These reports contain information on customer wait times, queue lengths, server utilizations, user-defined variables, and more.
+We can look at the _Reports_ tab to see and edit the collection of reports that Arena provides upon completing a simulation run. These reports contain information on customer wait times, queue lengths, server utilizations, user-defined variables, and more.
 
 Furthermore, we can generate a "Category Overview" report that summarizes the individual replications. Alternatively, we can generate a "Category by Replication" report that provides tedious information about each replication. Finally, a "SIMAN" report provides a concise text file.
 
@@ -842,7 +841,7 @@ Furthermore, we can generate a "Category Overview" report that summarizes the in
 
 ### Run Control
 
-From the *Run > Setup* dialog, we can click on the *Run Control* tab to see a variety of ways that we can run the simulation. For example, we can run the simulation in Batch mode, which turns off all graphics and results in extremely fast runs.
+From the _Run &gt; Setup_ dialog, we can click on the _Run Control_ tab to see a variety of ways that we can run the simulation. For example, we can run the simulation in Batch mode, which turns off all graphics and results in extremely fast runs.
 
 ### DEMO
 
@@ -850,15 +849,15 @@ In this demo, we will revisit our barber simulation. We have a Create-Process-Di
 
 ![](https://assets.omscs.io/notes/2020-09-28-11-28-43.png)
 
-Before we start, let's see how we can straighten these connections between modules. From the *View* menu, we can select *Grid* to create a grid in the main workspace area. Next, we select *View > Snap to Grid* to force all objects to align with the grid. From there, we can easily align our modules.
+Before we start, let's see how we can straighten these connections between modules. From the _View_ menu, we can select _Grid_ to create a grid in the main workspace area. Next, we select _View &gt; Snap to Grid_ to force all objects to align with the grid. From there, we can easily align our modules.
 
 ![](https://assets.omscs.io/notes/2020-09-28-11-33-19.png)
 
-Let's look at some other parameters we can change about the simulation. We can head over to *Run > Setup* to get started. In the *Run Speed* tab, we can edit the *Animation Speed Factor* field to slow down or speed up the animation. Smaller numbers result in slower animations.
+Let's look at some other parameters we can change about the simulation. We can head over to _Run &gt; Setup_ to get started. In the _Run Speed_ tab, we can edit the _Animation Speed Factor_ field to slow down or speed up the animation. Smaller numbers result in slower animations.
 
 ![](https://assets.omscs.io/notes/2020-09-28-11-42-08.png)
 
-Now, let's check out the *Replication Parameters* tab. We can edit the *Replication Length* field to run the simulation for 100 hours instead of an infinite amount of time.
+Now, let's check out the _Replication Parameters_ tab. We can edit the _Replication Length_ field to run the simulation for 100 hours instead of an infinite amount of time.
 
 ![](https://assets.omscs.io/notes/2020-09-28-11-44-09.png)
 
@@ -872,7 +871,7 @@ Let's look at the output, conveniently presented to us in SIMAN form as a .txt f
 
 Here we can see that, for example, "Barber.Utilization" is 1.00, which means that the server was constantly working throughout the simulation. Additionally, we see "Entity 1.NumberIn" is 116 and "Entity 1.NumberOut" is 97. This observation indicates that 116 customers entered the simulation and 97 exited, which means that 19 customers were in the queue or service when the simulation ended.
 
-How do we generate this output? Back over in the *Run > Setup* dialog, we can select the *Reports* tab. Here we have selected the "SIMAN Summary Report" from the *Default Report* dropdown.
+How do we generate this output? Back over in the _Run &gt; Setup_ dialog, we can select the _Reports_ tab. Here we have selected the "SIMAN Summary Report" from the _Default Report_ dropdown.
 
 ![](https://assets.omscs.io/notes/2020-09-28-11-51-29.png)
 
@@ -880,8 +879,7 @@ Let's change the default report to "Category Overview" and rerun the simulation.
 
 ![](https://assets.omscs.io/notes/2020-09-28-11-52-32.png)
 
-
-On page two, we can see that the work in process (WIP) variable was approximately eight, on average. This means that about eight customers were in line or service at any time during the simulation.
+On page two, we can see that the work in process \(WIP\) variable was approximately eight, on average. This means that about eight customers were in line or service at any time during the simulation.
 
 ![](https://assets.omscs.io/notes/2020-09-28-11-53-22.png)
 
@@ -889,10 +887,11 @@ On page three, we can see information about the queue. For example, the average 
 
 ![](https://assets.omscs.io/notes/2020-09-28-11-55-22.png)
 
-Let's suppose that we hate the fact that we have a large queue. We can set a terminating condition in the *Terminating Condition* field in the* Replication Parameters* tab. If we want our simulation to terminate when the process queue has four customers, we can specify the terminating condition as `NQ(Process 1.Queue) == 4`.
+Let's suppose that we hate the fact that we have a large queue. We can set a terminating condition in the _Terminating Condition_ field in the _Replication Parameters_ tab. If we want our simulation to terminate when the process queue has four customers, we can specify the terminating condition as `NQ(Process 1.Queue) == 4`.
 
 ![](https://assets.omscs.io/notes/2020-09-28-11-59-46.png)
 
 If we rerun the simulation, we can see that the simulation ends once four people are in the queue.
 
 ![](https://assets.omscs.io/notes/2020-09-28-12-01-15.png)
+

@@ -35,7 +35,7 @@ Additionally, we have to understand how much data we need and whether we can rec
 
 At this point, it's time to start **coding**. There are many simulation languages to choose from and even more general-purpose programming languages - C++, Python, etc. - that may be sufficient.
 
-Regardless of language choice, we have to consider the modeling paradigm, which describes, at a high level, how we reason about the simulation. Two examples of such paradigms are *event-scheduling* and *process-interaction*.
+Regardless of language choice, we have to consider the modeling paradigm, which describes, at a high level, how we reason about the simulation. Two examples of such paradigms are _event-scheduling_ and _process-interaction_.
 
 ### Verification
 
@@ -69,15 +69,15 @@ In this lesson, we will learn some easy definitions that are relevant to all gen
 
 ### System/Entities
 
-A **system** is a collection of **entities** - people, machines, *things* - that interact together to accomplish a goal.
+A **system** is a collection of **entities** - people, machines, _things_ - that interact together to accomplish a goal.
 
 ### Model
 
 A **model** is an abstract representation of a system. Usually, the model contains certain mathematical or logical relationships that describe the system in terms of:
 
-- the entities involved in the system
-- the various states and state transitions of the system
-- the events that can occur in the system
+* the entities involved in the system
+* the various states and state transitions of the system
+* the events that can occur in the system
 
 As a basic example, we might model a single-server queueing system using an MM1 queueing model.
 
@@ -85,7 +85,7 @@ As a basic example, we might model a single-server queueing system using an MM1 
 
 The **system state** is a collection of variables that contains enough information to describe the system at any point in time. We can think of the state as a complete snapshot of the system, containing all the information we need.
 
-Let's look at a single-server queue. At a minimum, we need to keep track of two variables. First, we need to know the number of people in the queue at time $t$, $L_Q(t)$. We also have to keep track of whether the server is busy or idle at time $t$, $B(t)$. If $B(t) = 0$ then the server is idle, and if $B(t) = 1$ then the server is busy. For a simplistic simulation, knowing these two variables may be sufficient.
+Let's look at a single-server queue. At a minimum, we need to keep track of two variables. First, we need to know the number of people in the queue at time $t$, $L\_Q\(t\)$. We also have to keep track of whether the server is busy or idle at time $t$, $B\(t\)$. If $B\(t\) = 0$ then the server is idle, and if $B\(t\) = 1$ then the server is busy. For a simplistic simulation, knowing these two variables may be sufficient.
 
 ### Attributes
 
@@ -95,11 +95,11 @@ Entities can have different properties or **attributes**. For example, different
 
 ### List/Queue
 
-A **list** (or **queue**) is an ordered list of associated entities. For example, the line that forms in front of a server is a queue and is often ordered by arrival time.
+A **list** \(or **queue**\) is an ordered list of associated entities. For example, the line that forms in front of a server is a queue and is often ordered by arrival time.
 
 ### Event
 
-An **event** is *a point in time* at which something interesting happens - that is, the system state changes - that typically can't be predicted with certainty beforehand.
+An **event** is _a point in time_ at which something interesting happens - that is, the system state changes - that typically can't be predicted with certainty beforehand.
 
 For example, in queueing systems, the time at which a customer arrives is an event. We don't know with certainty when a customer will arrive, but we do know that an arrival changes the state of the system. Similarly, the time at which a customer departs is an event.
 
@@ -107,11 +107,11 @@ Some people regard an event not only as the time that something happens but also
 
 ### Activity
 
-An **activity**, also known as an **unconditional wait**, is a duration of time of *specified* length. For example, we might say that the times between customer arrivals are exponential or that service times are constant. These events are specified because we have explicitly defined the parameters for generating them.
+An **activity**, also known as an **unconditional wait**, is a duration of time of _specified_ length. For example, we might say that the times between customer arrivals are exponential or that service times are constant. These events are specified because we have explicitly defined the parameters for generating them.
 
 ### Conditional Wait
 
-A **conditional wait** is a duration of time of *unspecified* length. For example, in a queueing system, we don't know customer wait times directly; in fact, that's often why we are running a simulation. All we can specify when we are programming our simulation are the arrival times and service times. From those specifications, either we or the simulation language has to reverse engineer the waiting times.
+A **conditional wait** is a duration of time of _unspecified_ length. For example, in a queueing system, we don't know customer wait times directly; in fact, that's often why we are running a simulation. All we can specify when we are programming our simulation are the arrival times and service times. From those specifications, either we or the simulation language has to reverse engineer the waiting times.
 
 Folks will occasionally run simulations and observe the waiting times and forget about the arrival times and service times. As it turns out, it's a lot harder to reverse engineer these variables from the waiting times. As a result, the best strategy is to collect the arrival times and service times.
 
@@ -121,7 +121,7 @@ In this lesson, we will discuss the simulation clock and how this clock moves th
 
 ### Definitions
 
-The **simulation clock** is a variable whose value represents simulated time (*not* real time). **Time-advance mechanisms** describe how the simulation clock moves from time to time. The clock always moves forward, never backward, and can advance using two mechanisms: fixed-increment time advance and next-event time advance.
+The **simulation clock** is a variable whose value represents simulated time \(_not_ real time\). **Time-advance mechanisms** describe how the simulation clock moves from time to time. The clock always moves forward, never backward, and can advance using two mechanisms: fixed-increment time advance and next-event time advance.
 
 ### Clock Movement
 
@@ -129,13 +129,13 @@ In the **fixed-increment time advance approach**, we update the system state at 
 
 This approach makes sense for continuous-time models, which often contain differential equations and stochastic differential equations, such as models of aircraft movement through space or weather patterns. Additionally, we use this approach in models where data is only available at fixed time units, such as at the end of every month.
 
-This methodology is *not* emphasized in this course. Suppose we are looking at a queueing model where customers show up every so often and get served every so often. If we are advancing the clock every second, nothing is happening most of the time, and we are just wasting computation cycles.
+This methodology is _not_ emphasized in this course. Suppose we are looking at a queueing model where customers show up every so often and get served every so often. If we are advancing the clock every second, nothing is happening most of the time, and we are just wasting computation cycles.
 
-In the **next-event time advance** approach, we determine all future events at the beginning of the simulation - time $t=0$ - and we place them in a **future events list** (FEL), ordered by time. Moving forward, the clock doesn't advance by a fixed increment; instead, it jumps to the most **imminent event** at the head of the FEL.
+In the **next-event time advance** approach, we determine all future events at the beginning of the simulation - time $t=0$ - and we place them in a **future events list** \(FEL\), ordered by time. Moving forward, the clock doesn't advance by a fixed increment; instead, it jumps to the most **imminent event** at the head of the FEL.
 
 For example, at time $t=0$, we might determine that one arrival occurs at time $t=23$ and the next arrival occurs at $t=29$. After determining these events, our FEL is a two-element list where the first arrival is the first element and the second arrival is the second.
 
-In this case, the clock advances from time $t=0$ to time $t=23$ and then from $t=23$ to $t=29$. At each event, both the system state and potentially the FEL are updated. 
+In this case, the clock advances from time $t=0$ to time $t=23$ and then from $t=23$ to $t=29$. At each event, both the system state and potentially the FEL are updated.
 
 Note that this approach has the benefit of jumping directly to times where interesting things are happening; in other words, the simulation doesn't have to waste cycles processing time-steps that aren't marked by events.
 
@@ -157,10 +157,10 @@ In any case, we might have to update the FEL. For example, when we process an ar
 
 Any time the simulation processes an event, it might have to update the FEL. Here are several different operations the simulation might perform on the FEL:
 
-- appending/inserting new events
-- deleting events
-- rearranging events
-- doing nothing
+* appending/inserting new events
+* deleting events
+* rearranging events
+* doing nothing
 
 Suppose a customer arrives in the system: an arrival event occurs. As we said, the first step we usually take in processing an arrival is to spawn the next arrival time and place it in the appropriate position in the FEL.
 
@@ -215,25 +215,25 @@ t & L_Q(t) & B(t) & \text{(cust, arr time)} & \text{(event time, event type)} & 
 \end{array}
 $$
 
-In the first column, we see the simulation clock, which we represent with the variable $t$. In the second column, we see the system state, which contains two pieces of data: the number of people in the queue, $L_Q(t)$, and whether or not the server is busy, $B(t)$.
+In the first column, we see the simulation clock, which we represent with the variable $t$. In the second column, we see the system state, which contains two pieces of data: the number of people in the queue, $L\_Q\(t\)$, and whether or not the server is busy, $B\(t\)$.
 
-In the third column, we see the queue, a dynamic list ordered by customer arrival times. Each element in the queue is a tuple, where the first element references the customer number, and the second element references their arrival time. 
+In the third column, we see the queue, a dynamic list ordered by customer arrival times. Each element in the queue is a tuple, where the first element references the customer number, and the second element references their arrival time.
 
 The fourth column holds the FEL. The FEL also contains two pieces of information per entry: the event time and the event type.
 
 Finally, we keep track of some cumulative statistics in the final column. Specifically, we keep track of the total busy time of the server and the total customer time in the system.
 
-At time $t=0$, we start the simulation. Since no one is in the queue, and the server is idle, $L_Q(t) = B(t) = 0$. Additionally, the queue is empty. We know that customer one arrives at time $t=1$, so the FEL has one element, $(1, 1\text{A})$, indicating that customer one (A)rrives at time $t=1$. Since no one is in the system, our two cumulative statistics are both zero.
+At time $t=0$, we start the simulation. Since no one is in the queue, and the server is idle, $L\_Q\(t\) = B\(t\) = 0$. Additionally, the queue is empty. We know that customer one arrives at time $t=1$, so the FEL has one element, $\(1, 1\text{A}\)$, indicating that customer one \(A\)rrives at time $t=1$. Since no one is in the system, our two cumulative statistics are both zero.
 
-Since the most imminent event in our FEL occurs at time $t=1$, we advance the clock to that time. Since the queue is empty, the customer that arrives immediately receives service, so the queue remains empty, $L_Q(t) = 0$, and the server turns itself on: $B(t) = 1$.
+Since the most imminent event in our FEL occurs at time $t=1$, we advance the clock to that time. Since the queue is empty, the customer that arrives immediately receives service, so the queue remains empty, $L\_Q\(t\) = 0$, and the server turns itself on: $B\(t\) = 1$.
 
-Let's look at the FEL. This arrival event spawns two new events. First, we generate the arrival of customer two at time $t=3$: $(3, 2\text{A})$. Additionally, we know that customer one receives service in five minutes, from the table above, so we can create their (D)eparture event: $(6, 1\text{D})$.
+Let's look at the FEL. This arrival event spawns two new events. First, we generate the arrival of customer two at time $t=3$: $\(3, 2\text{A}\)$. Additionally, we know that customer one receives service in five minutes, from the table above, so we can create their \(D\)eparture event: $\(6, 1\text{D}\)$.
 
 Additionally, at this time, customer one has just entered the system, so the total busy time and total customer time in the system are still zero.
 
-Since the most imminent event in our FEL now occurs at time $t=3$, we advance the clock to that time. Since customer one is still receiving service, customer two has to wait in the queue. Thus, $L_Q(t) = 1$, $B(t) = 1$, and the queue is $(2,3)$.
+Since the most imminent event in our FEL now occurs at time $t=3$, we advance the clock to that time. Since customer one is still receiving service, customer two has to wait in the queue. Thus, $L\_Q\(t\) = 1$, $B\(t\) = 1$, and the queue is $\(2,3\)$.
 
-Let's look at the FEL. Customer two's arrival spawns one new event, customer three's arrival. We know that customer three arrives at time $t=4$, so the FEL looks like this: $(3, 4\text{A}), (6, 1\text{D})$. Note that we cannot generate the departure event for customer two just yet because they haven't started service.
+Let's look at the FEL. Customer two's arrival spawns one new event, customer three's arrival. We know that customer three arrives at time $t=4$, so the FEL looks like this: $\(3, 4\text{A}\), \(6, 1\text{D}\)$. Note that we cannot generate the departure event for customer two just yet because they haven't started service.
 
 At this point, customer one has been in the system for two minutes, and the server has been serving him for two minutes. As a result, both the cumulative busy time and the total customer time in the system are two.
 
@@ -249,7 +249,7 @@ In **event scheduling**, our focus is on the events and how they affect the syst
 
 > Note: this chart can be found in [Law's](https://amzn.to/3au4zN5) book.
 
-First, we need a main program that supervises everything else. Most importantly, this program invokes three routines: the initialization routine, the timing routine, and the event routine. 
+First, we need a main program that supervises everything else. Most importantly, this program invokes three routines: the initialization routine, the timing routine, and the event routine.
 
 We invoke the initialization routine first. Here, we set the clock to zero and initialize the system state, statistical counters, and the FEL. Usually, the FEL initially contains the first arrival event and the event marking the end of the simulation.
 
@@ -263,7 +263,7 @@ Third, we invoke the event routine itself. First, we update the system state alo
 
 ### Arrival Event
 
-Let's talk about processing arrivals. As we alluded to previously, the first thing we do is schedule the next arrival. Next, we examine the server and see if they are busy. 
+Let's talk about processing arrivals. As we alluded to previously, the first thing we do is schedule the next arrival. Next, we examine the server and see if they are busy.
 
 If the server is not busy, we set the waiting time for the arrived customer to zero, and we update the appropriate statistics - for example, the average customer waiting time. We increment the number of customers who have gone through the line, and we make the server busy. Finally, we return to the main program.
 
@@ -285,11 +285,11 @@ If the queue isn't empty, we grab the first guy from the front of the queue and 
 
 As we've seen, the event scheduling approach requires a lot of manual bookkeeping. Now we will look at the process interaction paradigm, which is one of the greatest achievements of modern simulation because it lets us model and program much more seamlessly. We will use this method in class.
 
-In the **process-interaction** approach, we concentrate on a generic customer or entity and the sequences of events and activities it undergoes as it progresses through the system. The simulation language keeps track of how one generic entity interacts with all the other generic entities. At any time during the simulation, there may be many customers competing with each other for resources. 
+In the **process-interaction** approach, we concentrate on a generic customer or entity and the sequences of events and activities it undergoes as it progresses through the system. The simulation language keeps track of how one generic entity interacts with all the other generic entities. At any time during the simulation, there may be many customers competing with each other for resources.
 
 We have the task of modeling the generic customer, but we don't have to deal with the event bookkeeping, which the simulation package handles deep inside its core. The dirty little secret is that the simulation language is doing event scheduling in its implementation but exposes an API that allows us to model using process interaction.
 
-In queueing simulations, a customer is generated, eventually gets served, and then leaves. How do we perform these actions in a language like Arena? Arena exposes functionality for *creating*, *processing* and *disposing* of entities.
+In queueing simulations, a customer is generated, eventually gets served, and then leaves. How do we perform these actions in a language like Arena? Arena exposes functionality for _creating_, _processing_ and _disposing_ of entities.
 
 With Arena, we generate customers every once in a while. We process/serve the customers after they wait in line for zero or more time units. Finally, we dispose of the customers after we finish processing them.
 
@@ -301,13 +301,13 @@ In this lesson, we will discuss simulation languages themselves in a very generi
 
 There are more than 100 commercial simulation languages out in the ether. The lower-level languages - FORTRAN, SIMSCRIPT, and GPSS/H - require more programmer work. In contrast, the higher-level languages like Extend, Arena, Simio, Automod, and AnyLogic require a lot less programming effort to get up and running.
 
-There are 5-10 major simulation players in university settings. In industry, the price for simulation packages can range from under $1,000 to more than $100,000. Thankfully, freeware is also available: simulation packages exist in Java and Python (SimPyl). Though they might contain a learning curve, these packages can be powerful and enjoyable to work with.
+There are 5-10 major simulation players in university settings. In industry, the price for simulation packages can range from under $1,000 to more than $100,000. Thankfully, freeware is also available: simulation packages exist in Java and Python \(SimPyl\). Though they might contain a learning curve, these packages can be powerful and enjoyable to work with.
 
 ### Selecting a Simulation Language
 
-What factors should we take into account when selecting a language? 
+What factors should we take into account when selecting a language?
 
-We can examine the various costs. For example, we can look at the cost of purchasing the licenses, the cost of specialized programmers, as well as certain run-time costs. 
+We can examine the various costs. For example, we can look at the cost of purchasing the licenses, the cost of specialized programmers, as well as certain run-time costs.
 
 Additionally, we can look at the ease of learning. Different packages may have different learning curves, and each may vary with respect to documentation, syntax, and flexibility.
 
@@ -317,7 +317,8 @@ Finally, we have to think about which features we need. Different packages have 
 
 Where can you learn about simulation languages?
 
-- A simulation class (like this!)
-- Textbooks, especially in conjunction with a course
-- Conferences such as Winter Simulation Conference
-- Courses offered by vendors (although these often come at a steep price)
+* A simulation class \(like this!\)
+* Textbooks, especially in conjunction with a course
+* Conferences such as Winter Simulation Conference
+* Courses offered by vendors \(although these often come at a steep price\)
+

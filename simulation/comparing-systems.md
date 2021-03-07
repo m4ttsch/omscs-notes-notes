@@ -19,12 +19,12 @@ However, if we want to analyze more than two systems, we need to use more sophis
 
 We can take confidence intervals for:
 
-- means
-- variances
-- quantiles
-- one-sample, two-sample, > two samples
-- classical statistics environment (iid normal observations)
-- simulation environment (non-iid normal observations)
+* means
+* variances
+* quantiles
+* one-sample, two-sample, &gt; two samples
+* classical statistics environment \(iid normal observations\)
+* simulation environment \(non-iid normal observations\)
 
 ## Confidence Interval for the Mean
 
@@ -32,33 +32,33 @@ In this lesson, we will review and derive the confidence interval for the mean o
 
 ### Confidence Intervals
 
-In the one-sample case, we are interested in obtaining a two-sided $100(1-\alpha)\%$ confidence interval for the unknown mean, $\mu$, of a normal distribution.
+In the one-sample case, we are interested in obtaining a two-sided $100\(1-\alpha\)\%$ confidence interval for the unknown mean, $\mu$, of a normal distribution.
 
-Suppose we have iid normal data $X_1, X_2,...,X_n$. Further, assume we have an unknown variance, $\sigma^2$. Given this information, we will use the well-known $t$-distribution based confidence interval.
+Suppose we have iid normal data $X\_1, X\_2,...,X\_n$. Further, assume we have an unknown variance, $\sigma^2$. Given this information, we will use the well-known $t$-distribution based confidence interval.
 
-Let's recall the expression for the sample mean, $\bar X_n$:
+Let's recall the expression for the sample mean, $\bar X\_n$:
 
 $$
 \bar X_n \equiv \frac{1}{n}\sum_{i=1}^n X_i
 $$
 
-We might remember that the sample mean is itself a normal random variable: $\bar X_n \sim \text{Nor}(\mu, \sigma^2 / n)$.
+We might remember that the sample mean is itself a normal random variable: $\bar X\_n \sim \text{Nor}\(\mu, \sigma^2 / n\)$.
 
-Recall the expression for the sample variance, $S_X^2$:
+Recall the expression for the sample variance, $S\_X^2$:
 
 $$
 S_X^2 \equiv \frac{1}{n-1} \sum_{i=1}^n (X_i - \bar X_n)^2
 $$
 
-We might remember that the sample variance is a $\chi^2$ random variable: $S^2_X \sim \sigma^2 \chi^2(n-1) / (n-1)$.
+We might remember that the sample variance is a $\chi^2$ random variable: $S^2\_X \sim \sigma^2 \chi^2\(n-1\) / \(n-1\)$.
 
-As it turns out, $\bar X_n$ and $S^2_X$ are independent. Remember that if $X \sim \text{Nor}(\mu, \sigma^2)$, we can standardize $X$ with the following transformation:
+As it turns out, $\bar X\_n$ and $S^2\_X$ are independent. Remember that if $X \sim \text{Nor}\(\mu, \sigma^2\)$, we can standardize $X$ with the following transformation:
 
 $$
 \frac{X - \mu}{\sigma} \sim \text{Nor}(0,1)
 $$
 
-Let's apply this rule to $\bar X_n$. Note that we don't know the true variance, $\sigma^2 / n$, so we have to use $S^2_X / n$. Consider:
+Let's apply this rule to $\bar X\_n$. Note that we don't know the true variance, $\sigma^2 / n$, so we have to use $S^2\_X / n$. Consider:
 
 $$
 T = \frac{\bar X_n - \mu}{\sqrt{S^2_X / n}}
@@ -73,7 +73,7 @@ T &= \frac{\frac{\bar X_n - \mu}{\sqrt{\sigma^2 / n}}}{\frac{\sqrt{S^2_X / n}}{\
 \end{alignedat}
 $$
 
-We can see that the expression in the numerator is the standardization of $\bar X_n$. Let's also substitute in the $\chi^2$ expression for $S^2_X$ in the denominator:
+We can see that the expression in the numerator is the standardization of $\bar X\_n$. Let's also substitute in the $\chi^2$ expression for $S^2\_X$ in the denominator:
 
 $$
 T = \frac{\text{Nor}(0,1)}{\sqrt{\chi^2(n-1) / (n-1)}}
@@ -85,7 +85,7 @@ $$
 T = \frac{\text{Nor}(0,1)}{\sqrt{\chi^2(n-1) / (n-1)}} \sim t(n-1)
 $$
 
-This result immediately lets us compute the confidence interval. Let the notation $t_{\gamma, \nu}$ denote the $1-\gamma$ quantile of a $t$-distribution with $\nu$ degrees of freedom. By definition:
+This result immediately lets us compute the confidence interval. Let the notation $t\_{\gamma, \nu}$ denote the $1-\gamma$ quantile of a $t$-distribution with $\nu$ degrees of freedom. By definition:
 
 $$
 1 - \alpha = P(-t_{\alpha/2, n-1} \leq T \leq t_{\alpha/2, n-1})
@@ -103,7 +103,7 @@ $$
 1 - \alpha = P(\bar X_n - t_{\alpha/2, n-1}S_X / \sqrt{n}\leq \mu \leq \bar X_n + t_{\alpha/2, n-1}S_X / \sqrt{n})
 $$
 
-Therefore, we have the following $100(1-\alpha)\%$ confidence interval for $\mu$:
+Therefore, we have the following $100\(1-\alpha\)\%$ confidence interval for $\mu$:
 
 $$
 \mu \in \bar X_n \pm t_{\alpha/2, n-1}S_X / \sqrt{n}
@@ -115,9 +115,9 @@ In this lesson, we will compare two systems via two-sample confidence intervals 
 
 ### Two-Sample Case
 
-Let's suppose that we have two series of observations. The observations $X_1,X_2,...,X_n$ are iid normal with mean $\mu_X$ and variance $\sigma^2_X$, and the observations $Y_1, Y_2,..., Y_m$ are iid normal with mean $\mu_Y$ and variance $\sigma^2_Y$.
+Let's suppose that we have two series of observations. The observations $X\_1,X\_2,...,X\_n$ are iid normal with mean $\mu\_X$ and variance $\sigma^2\_X$, and the observations $Y\_1, Y\_2,..., Y\_m$ are iid normal with mean $\mu\_Y$ and variance $\sigma^2\_Y$.
 
-We have a few techniques at our disposal for producing a confidence interval for the difference between $\mu_X$ and $\mu_Y$. We can use the *pooled* confidence interval method when we assume $\sigma^2_X$ and $\sigma^2_Y$ are equal but unknown. If both variances are unequal and unknown, we can use the *approximate* confidence interval method. Finally, we can use a *paired* confidence interval when we suspect that the $X_i$'s and $Y_i$'s are correlated.
+We have a few techniques at our disposal for producing a confidence interval for the difference between $\mu\_X$ and $\mu\_Y$. We can use the _pooled_ confidence interval method when we assume $\sigma^2\_X$ and $\sigma^2\_Y$ are equal but unknown. If both variances are unequal and unknown, we can use the _approximate_ confidence interval method. Finally, we can use a _paired_ confidence interval when we suspect that the $X\_i$'s and $Y\_i$'s are correlated.
 
 ### Pooled Confidence Interval
 
@@ -127,7 +127,7 @@ $$
 \mu_x - \mu_y \in \bar X_n - \bar Y_m \pm t_{\alpha/2, n + m - 2} S_P \sqrt{\frac{1}{n} + \frac{1}{m}}
 $$
 
-Here, $S_P^2$ refers to the pooled variance estimator for $\sigma^2$, which is a linear combination of the individual sample variances:
+Here, $S\_P^2$ refers to the pooled variance estimator for $\sigma^2$, which is a linear combination of the individual sample variances:
 
 $$
 S^2_P \equiv \frac{(n-1)S^2_X + (m-1)S^2_Y}{n+m+2}
@@ -177,7 +177,7 @@ $$
 \nu = \frac{6(62.5 + 142.5)^2}{(62.5)^2 + (142.5)^2} - 2 = 8.4
 $$
 
-We always round down non-integer degrees of freedom since most tables only include integer values, so $\nu = 8$. 
+We always round down non-integer degrees of freedom since most tables only include integer values, so $\nu = 8$.
 
 We can plug and chug these values into our expression for the confidence interval. If we want a $90\%$ confidence interval:
 
@@ -185,7 +185,7 @@ $$
 \mu_x - \mu_y \in 15 - 24 \pm v_{0.05, 8}\sqrt{\frac{62.5}{5}  + \frac{142.5}{5}} = -9 \pm 11.91
 $$
 
-Note that this confidence interval includes zero. Informally speaking, the confidence interval is *inconclusive* regarding which of $\mu_x$ and $\mu_y$ is bigger.
+Note that this confidence interval includes zero. Informally speaking, the confidence interval is _inconclusive_ regarding which of $\mu\_x$ and $\mu\_y$ is bigger.
 
 ## Paired Confidence Interval for the Difference in Two Means
 
@@ -193,11 +193,11 @@ In this lesson, we will look at computing confidence intervals for the differenc
 
 ### Paired Confidence Interval
 
-Let's consider two competing normal populations with unknown means, $\mu_X$ and $\mu_Y$. Suppose we collect observations from the two populations in pairs. While the different pairs may be independent, it might be the case that the observations in each pair are correlated with one another.
+Let's consider two competing normal populations with unknown means, $\mu\_X$ and $\mu\_Y$. Suppose we collect observations from the two populations in pairs. While the different pairs may be independent, it might be the case that the observations in each pair are correlated with one another.
 
 ### Paired-$t$ Setup
 
-For example, let's think of sets of twins in a drug trial. One twin takes a new drug, and the other takes a placebo. We expect that, since the twins are so similar, the difference in their reactions arises solely from the drug's influence. 
+For example, let's think of sets of twins in a drug trial. One twin takes a new drug, and the other takes a placebo. We expect that, since the twins are so similar, the difference in their reactions arises solely from the drug's influence.
 
 In other words, we hope to capture the difference between two normal populations more precisely than if we had chosen pairs of random people since this setup eliminates extraneous noise from nature.
 
@@ -210,9 +210,9 @@ X_1, X_2, ... , X_n \overset{\text{iid}}{\sim} \text{Nor}(\mu_X, \sigma^2_X) \ne
 Y_1, Y_2, ... , Y_n \overset{\text{iid}}{\sim} \text{Nor}(\mu_Y, \sigma^2_Y)
 $$
 
-> Note that we need to assume that all the $X_i$'s and $Y_i$'s are jointly normal.
+> Note that we need to assume that all the $X\_i$'s and $Y\_i$'s are jointly normal.
 
-We assume that the variances $\sigma^2_X$ and $\sigma^2_Y$ are unknown and possibly unequal. Furthermore, we assume that pair $i$ is independent of pair $j$, but we *cannot* assume that, within a pair, $X_i$ is independent of $Y_i$.
+We assume that the variances $\sigma^2\_X$ and $\sigma^2\_Y$ are unknown and possibly unequal. Furthermore, we assume that pair $i$ is independent of pair $j$, but we _cannot_ assume that, within a pair, $X\_i$ is independent of $Y\_i$.
 
 We can define the **pair-wise** differences as the difference between the observations in a pair:
 
@@ -220,14 +220,14 @@ $$
 D_i \equiv X_i - Y_i, i = 1,2,...n
 $$
 
-It turns out that the pairwise differences are themselves iid normal with mean $\mu_D$ and variance $\sigma^2_D$, where:
+It turns out that the pairwise differences are themselves iid normal with mean $\mu\_D$ and variance $\sigma^2\_D$, where:
 
 $$
 \mu_D \equiv \mu_X - \mu_Y \newline
 \sigma_D^2 \equiv \sigma_X^2 + \sigma^2_Y - 2 \text{Cov}(X_i, Y_i)
 $$
 
-Ideally, we want the covariance between $X_i$ and $Y_i$ to be very positive, as this will result in a lower value of $\sigma^2_D$. Having a low variance is always good.
+Ideally, we want the covariance between $X\_i$ and $Y\_i$ to be very positive, as this will result in a lower value of $\sigma^2\_D$. Having a low variance is always good.
 
 Now the problem reduces to the old single-sample case of iid normal observations with unknown mean, $\mu$, and variance, $\sigma^2$. Let's calculate the sample mean and sample variance as before:
 
@@ -236,7 +236,7 @@ $$
 S^2_D \equiv \frac{1}{n-1} \sum_{i=1}^n (D_i - \bar D)^2 \sim \frac{\sigma^2_D \chi^2(n-1)}{n-1}
 $$
 
-Just like before, we get the single-sample confidence interval for the difference of the means $\mu_X$ and $\mu_Y$:
+Just like before, we get the single-sample confidence interval for the difference of the means $\mu\_X$ and $\mu\_Y$:
 
 $$
 \mu_D \in \bar D \pm t_{\alpha/2,n-1}\sqrt{S^2_D / n}
@@ -270,7 +270,7 @@ $$
 \end{alignedat}
 $$
 
-The interval is entirely to the left of zero, indicating that $\mu_D < 0$: the Cadillac takes longer to park, on average.
+The interval is entirely to the left of zero, indicating that $\mu\_D &lt; 0$: the Cadillac takes longer to park, on average.
 
 This confidence interval is quite a bit shorter - more informative, in other words - than the previous "approximate" two-sample confidence interval, which was $-9 \pm 11.91$. The reason for this difference is that the paired-$t$ interval takes advantage of the correlation within observation pairs.
 
@@ -290,30 +290,29 @@ Simulation is uniquely equipped to help with these types of situations, and many
 
 ### Confidence Intervals for Mean Differences
 
-Let's continue with the airline example we just described. Let $Z_{i,j}$ represent the cost of the $j$th simulation replication of strategy $i$. Since we are only comparing two strategies, $i = 1,2$. If we run $b_i$ simulation runs in total then $j = 1,2,...,b_i$.
+Let's continue with the airline example we just described. Let $Z\_{i,j}$ represent the cost of the $j$th simulation replication of strategy $i$. Since we are only comparing two strategies, $i = 1,2$. If we run $b\_i$ simulation runs in total then $j = 1,2,...,b\_i$.
 
-We can assume that, within a particular strategy, the replicate means $Z_{i,1}, Z_{i,2}, ... , Z_{i,b_i}$ are iid normal with unknown mean $\mu_i$ and unknown variance, where $i=1,2$.
+We can assume that, within a particular strategy, the replicate means $Z_{i,1}, Z_{i,2}, ... , Z\_{i,b\_i}$ are iid normal with unknown mean $\mu\_i$ and unknown variance, where $i=1,2$.
 
-What's the justification for the iid normal assumption? First, we get independent data by controlling the random numbers between replications. We get identically distributed costs between replications by performing them under identical conditions. Finally, we get approximately normal data by adding up (averaging) many sub-costs to get the overall costs for both strategies.
+What's the justification for the iid normal assumption? First, we get independent data by controlling the random numbers between replications. We get identically distributed costs between replications by performing them under identical conditions. Finally, we get approximately normal data by adding up \(averaging\) many sub-costs to get the overall costs for both strategies.
 
-Our goal now is to obtain a $100(1-\alpha)\%$ confidence interval for the difference in means, $\mu_1 - \mu_2$.
+Our goal now is to obtain a $100\(1-\alpha\)\%$ confidence interval for the difference in means, $\mu\_1 - \mu\_2$.
 
 We will suppose that all the $Z_{1,j}$'s are independent of the $Z_{2,j}$'s. In other words, scenario one runs are all independent of scenario two runs.
 
-We can define the sample mean, $\bar Z_{i,b_i}$:
+We can define the sample mean, $\bar Z\_{i,b\_i}$:
 
 $$
 \bar Z_{i,b_i} \equiv \frac{1}{b_i} \sum_{j=1}^{b_i} Z_{i,j}, \quad i = 1,2
 $$
 
-
-We can define the sample variance, $S_i^2$:
+We can define the sample variance, $S\_i^2$:
 
 $$
 S^2_i \equiv \frac{1}{b_i - 1} \sum_{j=1}^{b_i} (Z_{i,j} - \bar Z_{i, b_i})^2, \quad i = 1,2
 $$
 
-An approximate $100(1-\alpha)\%$ confidence interval for the difference of the means is:
+An approximate $100\(1-\alpha\)\%$ confidence interval for the difference of the means is:
 
 $$
 \mu_1 - \mu_2 \in \bar Z_{1,b_1} - \bar Z_{2,b_2} \pm t_{\alpha/2, \nu}\sqrt{\frac{S^2_1}{b_1} + \frac{S^2_2}{b_2}}
@@ -331,7 +330,7 @@ Suppose that in our airline example, a smaller cost is better - as is usually th
 
 As an alternative strategy, we can use a confidence interval analogous to the paired-$t$ test, especially if we can pair up the two scenarios during each replication.
 
-Specifically, we can take $b$ replications from *both* strategies, and then set difference $D_j \equiv Z_{1,j} - Z_{2,j}, j = 1,2,...,b$.
+Specifically, we can take $b$ replications from _both_ strategies, and then set difference $D_j \equiv Z_{1,j} - Z\_{2,j}, j = 1,2,...,b$.
 
 We can take the sample mean and sample variance of the differences:
 
@@ -339,7 +338,7 @@ $$
 \bar D_b \equiv \frac{1}{b} \sum_{j=1}^b D_j, \quad S^2_D \equiv \frac{1}{b-1} \sum_{j=1}^b (D_j - \bar D_b)^2
 $$
 
-The $100(1-\alpha)\%$ paired-$t$ confidence interval is very efficient if the correlation between $Z_{1,j}$ and $Z_{2,j}$ is greater than zero:
+The $100\(1-\alpha\)\%$ paired-$t$ confidence interval is very efficient if the correlation between $Z_{1,j}$ and $Z_{2,j}$ is greater than zero:
 
 $$
 \mu_1 - \mu_2 \in \bar D_b \pm t_{\alpha/2,b-1}\sqrt{S^2_D / b}
@@ -357,15 +356,15 @@ For example, we might use the same service times or the same interarrival times 
 
 By subjecting the alternative systems to identical experimental conditions, we hope to make it easy to distinguish which system is best even though the respective estimators have sampling error.
 
-Let's consider the case in which we compare two queueing systems, $A$ and $B$, based on their expected customer transit times, $\theta_A$ and $\theta_B$. In this case, the smaller $\theta$-value corresponds to the better system.
+Let's consider the case in which we compare two queueing systems, $A$ and $B$, based on their expected customer transit times, $\theta\_A$ and $\theta\_B$. In this case, the smaller $\theta$-value corresponds to the better system.
 
-Suppose we have estimators, $\widehat \theta_A$ and $\widehat \theta_B$, for $\theta_A$ and $\theta_B$, respectively. We'll declare that $A$ is the better system if $\widehat \theta_A < \widehat \theta_B$. If the two estimators are simulated independently, then the variance of their difference is:
+Suppose we have estimators, $\widehat \theta\_A$ and $\widehat \theta\_B$, for $\theta\_A$ and $\theta\_B$, respectively. We'll declare that $A$ is the better system if $\widehat \theta\_A &lt; \widehat \theta\_B$. If the two estimators are simulated independently, then the variance of their difference is:
 
 $$
 \text{Var}(\widehat \theta_A - \widehat \theta_B) = \text{Var}(\widehat \theta_A) + \text{Var}(\widehat \theta_B)
 $$
 
-This sum could be very large, and, if it is, our declaration about which system is better might lack conviction. If we could reduce $\text{Var}(\widehat \theta_A - \widehat \theta_B)$, then we could be much more confident about our declaration. The technique of common random numbers sometimes induces a high positive correlation between the point estimators $\widehat \theta_A$ and $\widehat \theta_B$.
+This sum could be very large, and, if it is, our declaration about which system is better might lack conviction. If we could reduce $\text{Var}\(\widehat \theta\_A - \widehat \theta\_B\)$, then we could be much more confident about our declaration. The technique of common random numbers sometimes induces a high positive correlation between the point estimators $\widehat \theta\_A$ and $\widehat \theta\_B$.
 
 Since the two estimators are no longer simulated independently, their covariance is greater than zero. Therefore:
 
@@ -411,7 +410,7 @@ Now let's look at the same example, but with a slightly different setup.
 
 ![](https://assets.omscs.io/notes/2020-11-16-22-09-19.png)
 
-Here, we generate the arrival times and service times from the *same* stream of random numbers. Then we duplicate the customers and send each copy to each strategy. We are now simulating the system using common random numbers.
+Here, we generate the arrival times and service times from the _same_ stream of random numbers. Then we duplicate the customers and send each copy to each strategy. We are now simulating the system using common random numbers.
 
 Let's run the simulation to completion and look at some confidence intervals for the mean cycle time.
 
@@ -431,27 +430,27 @@ In this lesson, we will look at the antithetic random numbers method, which inte
 
 ### Antithetic Random Numbers
 
-Let's suppose that $\widehat \theta_1$ and $\widehat \theta_2$ are iid unbiased estimators for some parameter $\theta$. If we can induce a *negative* correlation between the two estimators, then their average is also unbiased and may have very low variance.
+Let's suppose that $\widehat \theta\_1$ and $\widehat \theta\_2$ are iid unbiased estimators for some parameter $\theta$. If we can induce a _negative_ correlation between the two estimators, then their average is also unbiased and may have very low variance.
 
 We can express the variance of the average of the two estimators with the following equation:
 
 $$
-\text{Var}\left(\frac{\widehat \theta_1 + \widehat \theta_2}{2}\right) = \frac{1}{4} \left[\text{Var}(\widehat \theta_1) + \text{Var}(\widehat \theta_2) + 2\text{Cov}(\widehat \theta_1, \widehat \theta_2)\right] 
+\text{Var}\left(\frac{\widehat \theta_1 + \widehat \theta_2}{2}\right) = \frac{1}{4} \left[\text{Var}(\widehat \theta_1) + \text{Var}(\widehat \theta_2) + 2\text{Cov}(\widehat \theta_1, \widehat \theta_2)\right]
 $$
 
-Since the estimators are identically distributed, $\text{Var}(\widehat \theta_1) = \text{Var}(\widehat \theta_2)$, so:
+Since the estimators are identically distributed, $\text{Var}\(\widehat \theta\_1\) = \text{Var}\(\widehat \theta\_2\)$, so:
 
 $$
-\text{Var}\left(\frac{\widehat \theta_1 + \widehat \theta_2}{2}\right) = \frac{1}{2} \left[\text{Var}(\widehat \theta_1) + 2\text{Cov}(\widehat \theta_1, \widehat \theta_2)\right] 
+\text{Var}\left(\frac{\widehat \theta_1 + \widehat \theta_2}{2}\right) = \frac{1}{2} \left[\text{Var}(\widehat \theta_1) + 2\text{Cov}(\widehat \theta_1, \widehat \theta_2)\right]
 $$
 
-Because we have induced negative correlation, $2\text{Cov}(\widehat \theta_1, \widehat \theta_2) < 0$, which means:
+Because we have induced negative correlation, $2\text{Cov}\(\widehat \theta\_1, \widehat \theta\_2\) &lt; 0$, which means:
 
 $$
 \text{Var}\left(\frac{\widehat \theta_1 + \widehat \theta_2}{2}\right) < \frac{\text{Var}(\widehat \theta_1)}{2}
 $$
 
-Remember that $\text{Var}(\widehat \theta_1) / 2$ is the usual variance for two iid replications. As we can see, introducing negative correlation results in a variance reduction.
+Remember that $\text{Var}\(\widehat \theta\_1\) / 2$ is the usual variance for two iid replications. As we can see, introducing negative correlation results in a variance reduction.
 
 ### Example
 
@@ -461,7 +460,7 @@ $$
 I = \int_1^2 (1/x)dx
 $$
 
-Of course, we know that the true answer of this integral is $\ln(2) \approx 0.693$. Let's use the following $n = 5$ Unif(0,1) random numbers, to come up with our usual estimator, $\bar I_n$, for $I$:
+Of course, we know that the true answer of this integral is $\ln\(2\) \approx 0.693$. Let's use the following $n = 5$ Unif\(0,1\) random numbers, to come up with our usual estimator, $\bar I\_n$, for $I$:
 
 $$
 0.85 \quad 0.53 \quad 0.98 \quad 0.12 \quad 0.45
@@ -473,13 +472,13 @@ $$
 \widehat \theta_1 = \bar I_n = \frac{b-a}{n} \sum_{i=1}^n g(a + (b-a) U_i)
 $$
 
-Given $a = 1$, $b = 2$, and $g(x) = 1/x$, we have:
+Given $a = 1$, $b = 2$, and $g\(x\) = 1/x$, we have:
 
 $$
 \widehat \theta_1 = \frac{1}{5}\sum_{i=1}^5\frac{1}{1+U_i} = 0.6563
 $$
 
-Now, we'll use the following *antithetic* random numbers, where each $U_j$ here is equal to one minus the corresponding $U_i$ from above:
+Now, we'll use the following _antithetic_ random numbers, where each $U\_j$ here is equal to one minus the corresponding $U\_i$ from above:
 
 $$
 0.15 (= 1-0.85) \quad 0.47 \quad 0.02 \quad 0.88 \quad 0.55
@@ -491,7 +490,7 @@ $$
 \widehat \theta_2 = \bar I_n = \frac{b-a}{n} \sum_{i=1}^n g(a + (b-a) U_j)
 $$
 
-Again, $a = 1$, $b = 2$, and $g(x) = 1/1-x$. If we substitute $1 - U_i = U_j$, we have:
+Again, $a = 1$, $b = 2$, and $g\(x\) = 1/1-x$. If we substitute $1 - U\_i = U\_j$, we have:
 
 $$
 \widehat \theta_1 = \frac{1}{5}\sum_{i=1}^5\frac{1}{1+(1 - U_i)} = 0.7475
@@ -511,7 +510,7 @@ In this lesson, we will look at a final variance reduction technique: control va
 
 ### Control Variates
 
-Suppose our goal is to estimate the mean, $\mu$, of some simulation output process, $X_1, X_2,...,X_n$. Suppose we somehow know the expected value of some other random variable, $Y$. Furthermore, suppose we also know that the covariance between the sample mean, $\bar X$, and $Y$ is greater than zero.
+Suppose our goal is to estimate the mean, $\mu$, of some simulation output process, $X\_1, X\_2,...,X\_n$. Suppose we somehow know the expected value of some other random variable, $Y$. Furthermore, suppose we also know that the covariance between the sample mean, $\bar X$, and $Y$ is greater than zero.
 
 Obviously, $\bar X$ is the usual estimator for $\mu$, but another estimator for $\mu$ is the so-called **control-variate** estimator, $C$:
 
@@ -525,21 +524,21 @@ $$
 E[C] = E[\bar X] - \beta(E[Y] - E[Y]) = E[\bar X] = \mu
 $$
 
-Since $E[C] = \mu$, we can see that $C$ is unbiased for $\mu$. Now let's take a look at the variance of $C$:
+Since $E\[C\] = \mu$, we can see that $C$ is unbiased for $\mu$. Now let's take a look at the variance of $C$:
 
 $$
 \text{Var}(C) = \text{Var}(\bar X) + \beta^2 \text{Var}(Y) - 2 \beta \text{Cov}(\bar X, Y)
 $$
 
-We are hoping that $\beta^2 \text{Var}(Y) - 2 \beta \text{Cov}(\bar X, Y) < 0$ so $\text{Var}(C) < \text{Var}(\bar X)$. Otherwise, we might as well just use $\text{Var}(\bar X)$ by itself.
+We are hoping that $\beta^2 \text{Var}\(Y\) - 2 \beta \text{Cov}\(\bar X, Y\) &lt; 0$ so $\text{Var}\(C\) &lt; \text{Var}\(\bar X\)$. Otherwise, we might as well just use $\text{Var}\(\bar X\)$ by itself.
 
-Now we'd like to minimize $\text{Var}(C)$ with respect to $\beta$. After some algebra, we see that:
+Now we'd like to minimize $\text{Var}\(C\)$ with respect to $\beta$. After some algebra, we see that:
 
 $$
 \beta = \frac{\text{Cov}(\bar X, Y)}{\text{Var}(Y)}
 $$
 
-Let's plug in this expression for $\beta$ into our equation for $\text{Var}(C)$:
+Let's plug in this expression for $\beta$ into our equation for $\text{Var}\(C\)$:
 
 $$
 \begin{alignedat}{1}
@@ -549,11 +548,11 @@ $$
 \end{alignedat}
 $$
 
-Since the second term above is greater than zero, we can see that $\text{Var}(C) < \text{Var}(\bar X)$, which is the result we wanted.
+Since the second term above is greater than zero, we can see that $\text{Var}\(C\) &lt; \text{Var}\(\bar X\)$, which is the result we wanted.
 
 ### Examples
 
-We might try to estimate a population's mean weight $\mu$ using observed weights $X_1,X_2,...$ with corresponding heights $Y_1, Y_2,...$. If we can assume the expected height, $E[Y]$, is known, then we can use the control-variate estimator because heights and weights are correlated.
+We might try to estimate a population's mean weight $\mu$ using observed weights $X\_1,X\_2,...$ with corresponding heights $Y\_1, Y\_2,...$. If we can assume the expected height, $E\[Y\]$, is known, then we can use the control-variate estimator because heights and weights are correlated.
 
 We can also estimate the price of an American stock option, which is tough to estimate, using the corresponding European option price, which is much easier to estimate, as a control.
 
@@ -565,7 +564,7 @@ In this lesson, we will talk about ranking and selection methods. This lesson ai
 
 ### Intro to Ranking and Selection
 
-Ranking, selection, and multiple comparison methods form another class of statistical techniques used to compare alternative systems. Here, the experimenter wants to select the best option from a number ($\geq 2$) of competing processes.
+Ranking, selection, and multiple comparison methods form another class of statistical techniques used to compare alternative systems. Here, the experimenter wants to select the best option from a number \($\geq 2$\) of competing processes.
 
 As the experimenter, we specify the desired probability of correctly selecting the best process. We want to get it right, especially if the best process is significantly better than its competitors. These methods are simple to use, somewhat general, and intuitively appealing.
 
@@ -579,7 +578,7 @@ Ranking and selection methods select the best system, or a subset of systems tha
 
 Ranking and selection methods are relevant in simulation:
 
-- Normally distributed data by batching
-- Independence by controlling random numbers
-- Multiple-stage sampling by retaining the seeds
- 
+* Normally distributed data by batching
+* Independence by controlling random numbers
+* Multiple-stage sampling by retaining the seeds
+

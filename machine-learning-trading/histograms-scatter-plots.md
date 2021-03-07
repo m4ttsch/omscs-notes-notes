@@ -87,7 +87,7 @@ Notice that the width of each bar has decreased, and the number of bars has incr
 
 ### Documentation
 
-- [pandas.DataFrame.hist](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.hist.html)
+* [pandas.DataFrame.hist](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.hist.html)
 
 ## Computing Histogram Statistics
 
@@ -126,10 +126,11 @@ plt.axvline(-std, color='r', linestyle='dashed', linewidth=2)
 These method calls instruct matplotlib to draw a red, dashed line of width two at the x-value of `+std` and `-std`.
 
 > Aside: I think what she meant to do was plot the standard deviation on either side of the mean:
+>
 > ```python
 > plt.axvline(mean + std, color='r', linestyle='dashed', linewidth=2)
 > plt.axvline(mean - std, color='r', linestyle='dashed', linewidth=2)
->```
+> ```
 
 If we plot these lines, we see the following figure.
 
@@ -145,10 +146,10 @@ If we print the kurtosis, we get a positive value, which confirms that we have t
 
 ### Documentation
 
-- [pandas.Series.mean](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.mean.html)
-- [pandas.Series.std](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.std.html)
-- [matplotlib.axes.Axes.axvline](https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.axvline.html)
-- [pandas.Series.kurtosis](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.kurtosis.html)
+* [pandas.Series.mean](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.mean.html)
+* [pandas.Series.std](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.std.html)
+* [matplotlib.axes.Axes.axvline](https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.axvline.html)
+* [pandas.Series.kurtosis](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.kurtosis.html)
 
 ## Compare Two Histograms Quiz
 
@@ -174,7 +175,7 @@ In summary, XYZ has both lower returns and higher volatility than SPY.
 
 ## Plot Two Histograms Together
 
-Now we want to plot two histograms: one for SPY daily returns and one for XOM (Exxon) daily returns.
+Now we want to plot two histograms: one for SPY daily returns and one for XOM \(Exxon\) daily returns.
 
 Given a `daily_returns` DataFrame that contains daily returns for SPY and XOM, we can create the two histograms we need like so:
 
@@ -204,8 +205,8 @@ Now that the histograms are on the same axes, we can compare their peaks and tai
 
 ### Documentation
 
-- [pandas.DataFrame.hist](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.hist.html)
-- [matplotlib.pyplot.legend](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.legend.html)
+* [pandas.DataFrame.hist](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.hist.html)
+* [matplotlib.pyplot.legend](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.legend.html)
 
 ## Scatterplots
 
@@ -219,15 +220,15 @@ We can use a scatterplot to visualize the relationship between SPY and XYZ bette
 
 In our case, we plot the daily returns of SPY against the daily returns of XYZ. Each day in our original data becomes a point in our scatterplot: the value of the x-coordinate is the SPY return, and the value of the y-coordinate is the XYZ return.
 
-![](https://assets.omscs.io/notes/2020-01-15-20-44-10.png) 
+![](https://assets.omscs.io/notes/2020-01-15-20-44-10.png)
 
-Let's consider the daily returns circled above. On this day, the return of SPY was about 1%, while the return of XYZ was slightly higher. These returns map to a point of (1, ~1.05) on our scatterplot.
+Let's consider the daily returns circled above. On this day, the return of SPY was about 1%, while the return of XYZ was slightly higher. These returns map to a point of \(1, ~1.05\) on our scatterplot.
 
 Let's consider another example.
 
 ![](https://assets.omscs.io/notes/2020-01-15-21-06-50.png)
 
-On the second day circled above, SPY and XYZ were moving in different directions. SPY was in positive territory, while XYZ was in negative territory. These returns map to a point near (1, -1) on our scatterplot.
+On the second day circled above, SPY and XYZ were moving in different directions. SPY was in positive territory, while XYZ was in negative territory. These returns map to a point near \(1, -1\) on our scatterplot.
 
 We can continue this process to fill out our scatterplot.
 
@@ -241,17 +242,17 @@ It's relatively common practice to take this scatterplot of daily return data an
 
 ![](https://assets.omscs.io/notes/2020-01-15-21-52-05.png)
 
-We can look at some properties of this best-fit line. One property we might be interested in is the *slope*. Let's assume for this example that the slope is 1.
+We can look at some properties of this best-fit line. One property we might be interested in is the _slope_. Let's assume for this example that the slope is 1.
 
 ![](https://assets.omscs.io/notes/2020-01-15-21-52-31.png)
 
 In financial terminology, the slope is usually referred to as beta. **Beta** indicates how reactive a stock is to the market.
 
-In our example, we have a beta of one. This value of beta indicates that, on average, when the market goes up one percent, this particular stock also goes up percent. 
+In our example, we have a beta of one. This value of beta indicates that, on average, when the market goes up one percent, this particular stock also goes up percent.
 
 If we had a higher beta, like 2, we would expect our stock to move by two percent every time the market moved by one percent.
 
-We can also consider another property of the best-fit line: the *y-intercept*. This value, called **alpha**, indicates how well the stock performs, on average, relative to the market.
+We can also consider another property of the best-fit line: the _y-intercept_. This value, called **alpha**, indicates how well the stock performs, on average, relative to the market.
 
 If alpha is positive, as is the case here, it means that the stock is outperforming the market, on average. On the other hand, if alpha is negative, it means that the stock is performing worse than the market.
 
@@ -267,7 +268,7 @@ Correlation values run from zero to one, where zero means no correlation and one
 
 ## Correlation vs. Slope Quiz
 
-Given what we just learned about correlation and slope (beta), let's look at two scatterplots with their best-fit lines, and choose the most accurate statement.
+Given what we just learned about correlation and slope \(beta\), let's look at two scatterplots with their best-fit lines, and choose the most accurate statement.
 
 ![](https://assets.omscs.io/notes/2020-01-15-22-13-09.png)
 
@@ -315,7 +316,7 @@ m, b = np.polyfit(x, y, 1)
 
 Note that we pass 1 to specify that we want a first-degree polynomial: a straight line.
 
-Back to our context, we can calculate the beta (slope) `beta_XOM` and alpha (y-intercept) `alpha_XOM` values of the best-fit line for SPY and XOM like this:
+Back to our context, we can calculate the beta \(slope\) `beta_XOM` and alpha \(y-intercept\) `alpha_XOM` values of the best-fit line for SPY and XOM like this:
 
 ```python
 beta_XOM, alpha_XOM = np.polyfit(daily_returns['SPY'], daily_returns['XOM'], 1)
@@ -380,3 +381,4 @@ In the early 2000s, investment banks built bonds based on mortgages. They assume
 They made two mistakes, however. First, they assumed that the return of each of these mortgages was independent and, second, that this return would be normally distributed.
 
 Both of these assumptions proved to be wrong as massive numbers of homeowners defaulted on their mortgages. It was these defaults that precipitated the [Great Recession of 2008](https://en.wikipedia.org/wiki/Great_Recession).
+

@@ -17,13 +17,13 @@ If we specify our random variables improperly, we can end up with a GIGO simulat
 
 ### GIGO Example
 
-Let's consider a single-server queueing system with *constant* service times of ten minutes. Let's incorrectly assume that we have *constant* interarrival times of twelve minutes. We should expect to never have a line under this assumption because the service times are always shorter than the interarrival times.
+Let's consider a single-server queueing system with _constant_ service times of ten minutes. Let's incorrectly assume that we have _constant_ interarrival times of twelve minutes. We should expect to never have a line under this assumption because the service times are always shorter than the interarrival times.
 
-However, suppose that, in reality, we have Exp(12) interarrival times. In this case, the simulation never sees the line that actually occurs. In fact, the line might get quite long, and the simulation has no way of surfacing that fact.
+However, suppose that, in reality, we have Exp\(12\) interarrival times. In this case, the simulation never sees the line that actually occurs. In fact, the line might get quite long, and the simulation has no way of surfacing that fact.
 
 ### So What To Do?
 
-Here's the high-level game plan for performing input analysis. First, we'll collect some data for analysis for any random variable of interest. Next, we'll determine, or at least estimate, the underlying distribution along with associated parameters: for example, Nor(30,8). We will then conduct a formal statistical test to see if the distribution we chose is "approximately" correct. If we fail the test, then our guess is wrong, and we have to go back to the drawing board.
+Here's the high-level game plan for performing input analysis. First, we'll collect some data for analysis for any random variable of interest. Next, we'll determine, or at least estimate, the underlying distribution along with associated parameters: for example, Nor\(30,8\). We will then conduct a formal statistical test to see if the distribution we chose is "approximately" correct. If we fail the test, then our guess is wrong, and we have to go back to the drawing board.
 
 ## Identifying Distributions
 
@@ -67,11 +67,11 @@ Finally, what happens when we don't have much or any data? What if the system we
 
 Let's suppose we know that we have a discrete distribution. For example, we might realize that we only see a finite number of observations during our data collection process. How do we determine which discrete distribution to use?
 
-If we want to model success and failures, we might use a Bernoulli random variable and estimate $p$. If we want to look at the number of successes in $n$ trials, we need to consider using a binomial random variable. 
+If we want to model success and failures, we might use a Bernoulli random variable and estimate $p$. If we want to look at the number of successes in $n$ trials, we need to consider using a binomial random variable.
 
 Perhaps we want to understand how many trials we need until we get our first success. In that case, we need to look at a geometric random variable. Alternatively, if we want to know how many trials we need until the $n$th success, we need a negative binomial random variable.
 
-We can use the Poisson($\lambda$) distribution to count the number of arrivals over time, assuming that the arrival process satisfies certain elementary assumptions.
+We can use the Poisson\($\lambda$\) distribution to count the number of arrivals over time, assuming that the arrival process satisfies certain elementary assumptions.
 
 If we honestly don't have a good model for the discrete data, perhaps we can use an empirical or sample distribution.
 
@@ -81,11 +81,11 @@ What if the distribution is continuous?
 
 We might consider the uniform distribution if all we know about the data is the minimum and maximum possible values. If we know the most likely value as well, we might use the triangular distribution.
 
-If we are looking at interarrival times from a Poisson process, then we know we should be looking at the Exp($\lambda$) distribution. If the process is nonhomogeneous, we might have to do more work, but the exponential distribution is a good starting point.
+If we are looking at interarrival times from a Poisson process, then we know we should be looking at the Exp\($\lambda$\) distribution. If the process is nonhomogeneous, we might have to do more work, but the exponential distribution is a good starting point.
 
-We might consider the normal distribution if we are looking at heights, weights, or IQs. Furthermore, if we are looking at sample means or sums, the normal distribution is a good choice because of the central limit theorem. 
+We might consider the normal distribution if we are looking at heights, weights, or IQs. Furthermore, if we are looking at sample means or sums, the normal distribution is a good choice because of the central limit theorem.
 
-We can use the Beta distribution, which generalizes the uniform distribution, to specify bounded data. We might use the gamma, Weibull, Gumbel, or lognormal distribution if we are dealing with reliability data. 
+We can use the Beta distribution, which generalizes the uniform distribution, to specify bounded data. We might use the gamma, Weibull, Gumbel, or lognormal distribution if we are dealing with reliability data.
 
 When in doubt, we can use the empirical distribution, which is based solely on the sample.
 
@@ -101,7 +101,7 @@ It's not enough to decide that some sequence of observations is normal; we still
 
 ### Statistic Definition
 
-  A **statistic** is a function of the observations $X_1,...,X_n$ that is not explicitly dependent on any unknown parameters. For example, the sample mean, $\bar{X}$, and the sample variance, $S^2$, are two statistics:
+A **statistic** is a function of the observations $X\_1,...,X\_n$ that is not explicitly dependent on any unknown parameters. For example, the sample mean, $\bar{X}$, and the sample variance, $S^2$, are two statistics:
 
 $$
 \begin{alignedat}{1}
@@ -112,22 +112,22 @@ $$
 
 Statistics are random variables. In other words, if we take two different samples, we should expect to see two different values for a given statistic.
 
-We usually use statistics to estimate some unknown **parameter** from the underlying probability distribution of the $X_i$'s. For instance, we use the sample mean, $\bar{X}$, to estimate the true mean, $\mu$, of the underlying distribution, which we won't normally know. If $\mu$ is the true mean, then we can take a bunch of samples and use $\bar{X}$ to estimate $\mu$. We know, via the law of large numbers that, as $n \to \infty$, $\bar{X} \to \mu$.
+We usually use statistics to estimate some unknown **parameter** from the underlying probability distribution of the $X\_i$'s. For instance, we use the sample mean, $\bar{X}$, to estimate the true mean, $\mu$, of the underlying distribution, which we won't normally know. If $\mu$ is the true mean, then we can take a bunch of samples and use $\bar{X}$ to estimate $\mu$. We know, via the law of large numbers that, as $n \to \infty$, $\bar{X} \to \mu$.
 
 ### Point Estimator
 
-Let's suppose that we have a collection of iid random variables, $X_1,...,X_n$. Let $T(\bold{X}) \equiv T(X_1,...,X_n)$  be a function that we can compute based only on the observations. Therefore, $T(\bold{X})$ is a statistic. If we use $T(\bold{X})$ to estimate some unknown parameter $\theta$, then $T(\bold{X})$ is known as a **point estimator** for $\theta$.
+Let's suppose that we have a collection of iid random variables, $X\_1,...,X\_n$. Let $T\(\bold{X}\) \equiv T\(X\_1,...,X\_n\)$ be a function that we can compute based only on the observations. Therefore, $T\(\bold{X}\)$ is a statistic. If we use $T\(\bold{X}\)$ to estimate some unknown parameter $\theta$, then $T\(\bold{X}\)$ is known as a **point estimator** for $\theta$.
 
-For example, $\bar{X}$ is usually a point estimator for the true mean, $\mu = E[X_i]$, and $S^2$  is often a point estimator for the true variance, $\sigma^2 = \text{Var}(X)$.
+For example, $\bar{X}$ is usually a point estimator for the true mean, $\mu = E\[X\_i\]$, and $S^2$ is often a point estimator for the true variance, $\sigma^2 = \text{Var}\(X\)$.
 
-$T(\bold{X})$ should have specific properties:
+$T\(\bold{X}\)$ should have specific properties:
 
-- Its expected value should equal the parameter it's trying to estimate. This property is known as *unbiasedness*.
-- It should have a low variance. It doesn't do us any good if $T(\bold{X})$ is bouncing around depending on the sample we take.
+* Its expected value should equal the parameter it's trying to estimate. This property is known as _unbiasedness_.
+* It should have a low variance. It doesn't do us any good if $T\(\bold{X}\)$ is bouncing around depending on the sample we take.
 
 ### Unbiasedness
 
-We say that $T(\bold{X})$ is **unbiased** for $\theta$ if $E[T(\bold{X})] = \theta$. For example, suppose that random variables, $X_1,...,X_n$ are iid *anything* with mean $\mu$. Then:
+We say that $T\(\bold{X}\)$ is **unbiased** for $\theta$ if $E\[T\(\bold{X}\)\] = \theta$. For example, suppose that random variables, $X\_1,...,X\_n$ are iid _anything_ with mean $\mu$. Then:
 
 $$
 \begin{alignedat}{1}
@@ -138,21 +138,21 @@ E[\bar{X}] & = E\left[\frac{1}{n}\sum_{i=1}^nX_i\right] \\[3ex]
 \end{alignedat}
 $$
 
-Since $E[\bar{X}] = \mu$, $\bar{X}$ is always unbiased for $\mu$. That's why we call it the *sample mean*.
+Since $E\[\bar{X}\] = \mu$, $\bar{X}$ is always unbiased for $\mu$. That's why we call it the _sample mean_.
 
-Similarly, suppose we have random variables, $X_1,...,X_n$ which are iid $\text{Exp}(\lambda)$. Then, $\bar{X}$ is unbiased for $\mu = E[X_i] = 1 / \lambda$. Even though $\lambda$ is unknown, we know that $\bar{X}$ is a good estimator for $1/ \lambda$.
+Similarly, suppose we have random variables, $X\_1,...,X\_n$ which are iid $\text{Exp}\(\lambda\)$. Then, $\bar{X}$ is unbiased for $\mu = E\[X\_i\] = 1 / \lambda$. Even though $\lambda$ is unknown, we know that $\bar{X}$ is a good estimator for $1/ \lambda$.
 
-Be careful, though. Just because $\bar{X}$ is unbiased for $1 / \lambda$ does **not** mean that $1 / \bar{X}$ is unbiased for $\lambda$: $E[1/\bar{X}] \neq 1 /E[\bar{X}] = \lambda$. In fact, $1/\bar{X}$ is biased for $\lambda$ in this exponential case.
+Be careful, though. Just because $\bar{X}$ is unbiased for $1 / \lambda$ does **not** mean that $1 / \bar{X}$ is unbiased for $\lambda$: $E\[1/\bar{X}\] \neq 1 /E\[\bar{X}\] = \lambda$. In fact, $1/\bar{X}$ is biased for $\lambda$ in this exponential case.
 
-Here's another example. Suppose that random variables, $X_1,...,X_n$ are iid *anything* with mean $\mu$ and variance $\sigma^2$. Then:
+Here's another example. Suppose that random variables, $X\_1,...,X\_n$ are iid _anything_ with mean $\mu$ and variance $\sigma^2$. Then:
 
 $$
 E[S^2] = E\left[\frac{\sum_{i=1}^n(X_i - \bar{X})^2}{n - 1}\right] = \text{Var}(X_i) = \sigma^2
 $$
 
-Since $E[S^2] = \sigma^2$, $S^2$ is always unbiased for $\sigma^2$. That's why we called it the *sample variance*.
+Since $E\[S^2\] = \sigma^2$, $S^2$ is always unbiased for $\sigma^2$. That's why we called it the _sample variance_.
 
-For example, suppose random variables $X_1,...,X_n$ are iid $\text{Exp}(\lambda)$. Then $S^2$ is unbiased for $\text{Var}(X_i) = 1 / \lambda^2$.
+For example, suppose random variables $X\_1,...,X\_n$ are iid $\text{Exp}\(\lambda\)$. Then $S^2$ is unbiased for $\text{Var}\(X\_i\) = 1 / \lambda^2$.
 
 Let's give a proof for the unbiasedness of $S^2$ as an estimate for $\sigma^2$. First, let's convert $S^2$ into a better form:
 
@@ -168,10 +168,10 @@ $$
 Let's rearrange the middle sum:
 
 $$
- \sum_{i=1}^n 2X_i\bar{X} =  2\bar{X}\sum_{i=1}^n X_i
+\sum_{i=1}^n 2X_i\bar{X} =  2\bar{X}\sum_{i=1}^n X_i
 $$
 
-Remember that $\bar{X}$ represents the average of all the $X_i$'s: $\sum X_i / n$. Thus, if we just sum the $X_i$'s and don't divide by $n$, we have a quantity equal to $n\bar{X}$:
+Remember that $\bar{X}$ represents the average of all the $X\_i$'s: $\sum X\_i / n$. Thus, if we just sum the $X\_i$'s and don't divide by $n$, we have a quantity equal to $n\bar{X}$:
 
 $$
 2\bar{X}\sum_{i=1}^n X_i = 2\bar{X}n\bar{X} = 2n\bar{X}^2
@@ -196,7 +196,7 @@ E[S^2] & = \frac{\sum_{i=1}^n E[X_i^2] - nE[\bar{X}^2]}{n-1}
 \end{alignedat}
 $$
 
-Note that $E[X_i^2]$ is the same for all $X_i$, so the sum is just $nE[X_1^2]$:
+Note that $E\[X\_i^2\]$ is the same for all $X\_i$, so the sum is just $nE\[X\_1^2\]$:
 
 $$
 \begin{alignedat}{1}
@@ -205,7 +205,7 @@ E[S^2] & = \frac{n E[X_1^2] - nE[\bar{X}^2]}{n-1} \\[2ex]
 \end{alignedat}
 $$
 
-We know that $\text{Var}(X) = E[X^2] - (E[X])^2$, so $E[X^2] = \text{Var}(X) + (E[X])^2$. Therefore:
+We know that $\text{Var}\(X\) = E\[X^2\] - \(E\[X\]\)^2$, so $E\[X^2\] = \text{Var}\(X\) + \(E\[X\]\)^2$. Therefore:
 
 $$
 \begin{alignedat}{1}
@@ -213,7 +213,7 @@ E[S^2] & = \frac{n}{n-1} \left(\text{Var}(X_1) + (E[X_1]^2) - \text{Var}(\bar{X}
 \end{alignedat}
 $$
 
-Remember that $E[X_1] = E[\bar{X}]$, so: 
+Remember that $E\[X\_1\] = E\[\bar{X}\]$, so:
 
 $$
 \begin{alignedat}{1}
@@ -221,7 +221,7 @@ E[S^2] & = \frac{n}{n-1} \left(\text{Var}(X_1) - \text{Var}(\bar{X}) \right) \\[
 \end{alignedat}
 $$
 
-Furthermore, remember that $\text{Var}(\bar{X}) = \text{Var}(X_1) /n = \sigma_2 / n$. Therefore:
+Furthermore, remember that $\text{Var}\(\bar{X}\) = \text{Var}\(X\_1\) /n = \sigma\_2 / n$. Therefore:
 
 $$
 \begin{alignedat}{1}
@@ -231,7 +231,7 @@ $$
 \end{alignedat}
 $$
 
-Unfortunately, while $S^2$ is unbiased for the variance $\sigma^2$, $S$ is *biased* for the standard deviation $\sigma$.
+Unfortunately, while $S^2$ is unbiased for the variance $\sigma^2$, $S$ is _biased_ for the standard deviation $\sigma$.
 
 ## Mean Squared Error
 
@@ -241,14 +241,14 @@ In this lesson, we'll look at mean squared error, a performance measure that eva
 
 We want to choose an estimator with the following properties:
 
-- Low bias (defined as the difference between the estimator's expected value and the true parameter value)
-- Low variance
+* Low bias \(defined as the difference between the estimator's expected value and the true parameter value\)
+* Low variance
 
 Furthermore, we want the estimator to have both of these properties simultaneously. If the estimator has low bias but high variance, then its estimates are meaninglessly noisy. Its average estimate is correct, but any individual estimate may be way off the mark. On the other hand, an estimator with low variance but high bias is very confident about the wrong answer.
 
 ### Example
 
-Suppose that we have $n$ random variables, $X_1,...,X_n \overset{\text{iid}}{\sim} \text{Unif}(0,\theta)$.  We know that our observations have a lower bound of $0$, but we don't know the value of the upper bound, $\theta$. As is often the case, we sample many observations from the distribution and use that sample to estimate the unknown parameter.
+Suppose that we have $n$ random variables, $X\_1,...,X\_n \overset{\text{iid}}{\sim} \text{Unif}\(0,\theta\)$. We know that our observations have a lower bound of $0$, but we don't know the value of the upper bound, $\theta$. As is often the case, we sample many observations from the distribution and use that sample to estimate the unknown parameter.
 
 Consider two estimators for $\theta$:
 
@@ -259,7 +259,7 @@ Y_2 &\equiv \frac{n+1}{n} \max_{1 \leq i \leq X_i}X_i
 \end{alignedat}
 $$
 
-Let's look at the first estimator. We know that $E[Y_1] = 2E[\bar{X}]$, by definition. Similarly, we know that $2E[\bar{X}] = 2E[X_i]$, since $\bar{X}$ is always unbiased for the mean. Recall how we compute the expected value for a uniform random variable:
+Let's look at the first estimator. We know that $E\[Y\_1\] = 2E\[\bar{X}\]$, by definition. Similarly, we know that $2E\[\bar{X}\] = 2E\[X\_i\]$, since $\bar{X}$ is always unbiased for the mean. Recall how we compute the expected value for a uniform random variable:
 
 $$
 E[A] = (b - a) / 2, \quad A \sim \text{Unif}(a,b)
@@ -271,27 +271,27 @@ $$
 2E[X_i]  = 2\left(\frac{\theta - 0}{2}\right) = \theta = E[Y_1]
 $$
 
-As we can see, $Y_1$ is unbiased for $\theta$.
+As we can see, $Y\_1$ is unbiased for $\theta$.
 
-It's also the case that $Y_2$ is unbiased, but it takes more work to demonstrate. As a first step, take the cdf of the maximum of the $X_i$'s, $M \equiv \max_iX_i$. Here's what $P(M \leq y)$ looks like:
+It's also the case that $Y\_2$ is unbiased, but it takes more work to demonstrate. As a first step, take the cdf of the maximum of the $X\_i$'s, $M \equiv \max\_iX\_i$. Here's what $P\(M \leq y\)$ looks like:
 
 $$
 P(M \leq y) = P(X_1 \leq y \text{ and } X_2 \leq y \text{ and } \dots \text{ and } X_n \leq y)
 $$
 
-If $M \leq y$, and $M$ is the maximum, then $P(M \leq y)$ is the probability that all the $X_i$'s are less than $y$. Since the $X_i$'s are independent, we can take the product of the individual probabilities:
+If $M \leq y$, and $M$ is the maximum, then $P\(M \leq y\)$ is the probability that all the $X\_i$'s are less than $y$. Since the $X\_i$'s are independent, we can take the product of the individual probabilities:
 
 $$
 P(M \leq y) = \prod_{i = i}^n P(X_i \leq y) = [P(X_1 \leq y)]^n
 $$
 
-Now, we know, by definition, that the cdf is the integral of the pdf. Remember that the pdf for a uniform distribution, $\text{Unif}(a,b)$, is:
+Now, we know, by definition, that the cdf is the integral of the pdf. Remember that the pdf for a uniform distribution, $\text{Unif}\(a,b\)$, is:
 
 $$
 f(x) = \frac{1}{b-a}, a < x < b
 $$
 
-Let's rewrite $P(M \leq y)$:
+Let's rewrite $P\(M \leq y\)$:
 
 $$
 \begin{alignedat}{1}
@@ -323,7 +323,7 @@ E[M] & = \int_0^\theta yf_M(y)dy \\[2ex]
 \end{alignedat}
 $$
 
-Note that $E[M] \neq \theta$, so $M$ is not an unbiased estimator for $\theta$. However, remember how we defined $Y_2$:
+Note that $E\[M\] \neq \theta$, so $M$ is not an unbiased estimator for $\theta$. However, remember how we defined $Y\_2$:
 
 $$
 Y_2 \equiv \frac{n+1}{n} \max_{1 \leq i \leq X_i}X_i
@@ -339,7 +339,7 @@ E[Y_2] & = \frac{n+1}{n}E[M] \\[2ex]
 \end{alignedat}
 $$
 
-Therefore, $Y_2$ is unbiased for $\theta$.
+Therefore, $Y\_2$ is unbiased for $\theta$.
 
 Both indicators are unbiased, so which is better? Let's compare variances now. After similar algebra, we see:
 
@@ -347,13 +347,13 @@ $$
 \text{Var}(Y_1) = \frac{\theta^2}{3n}, \quad \text{Var}(Y_2) = \frac{\theta^2}{n(n+2)}
 $$
 
-Since the variance of $Y_2$ involves dividing by $n^2$, while the variance of $Y_1$ only divides by $n$, $Y_2$ has a much lower variance than $Y_1$ and is, therefore, the better indicator.
+Since the variance of $Y\_2$ involves dividing by $n^2$, while the variance of $Y\_1$ only divides by $n$, $Y\_2$ has a much lower variance than $Y\_1$ and is, therefore, the better indicator.
 
 ### Bias and Mean Squared Error
 
-The **bias** of an estimator, $T[\bold{X}]$, is the difference between the estimator's expected value and the value of the parameter its trying to estimate: $\text{Bias}(T) \equiv E[T] - \theta$. When $E[T] = \theta$, then the bias is $0$ and the estimator is unbiased.
+The **bias** of an estimator, $T\[\bold{X}\]$, is the difference between the estimator's expected value and the value of the parameter its trying to estimate: $\text{Bias}\(T\) \equiv E\[T\] - \theta$. When $E\[T\] = \theta$, then the bias is $0$ and the estimator is unbiased.
 
-The **mean squared error** of an estimator, $T[\bold{X}]$, the expected value of the squared deviation of the estimator from the parameter: $\text{MSE}(T) \equiv E[(T-\theta)^2]$.
+The **mean squared error** of an estimator, $T\[\bold{X}\]$, the expected value of the squared deviation of the estimator from the parameter: $\text{MSE}\(T\) \equiv E\[\(T-\theta\)^2\]$.
 
 Remember the equation for variance:
 
@@ -361,7 +361,7 @@ $$
 \text{Var}(X) = E[X^2] - (E[X])^2
 $$
 
-Using this equation, we can rewrite $\text{MSE}(T)$:
+Using this equation, we can rewrite $\text{MSE}\(T\)$:
 
 $$
 \begin{alignedat}{1}
@@ -375,16 +375,16 @@ Usually, we use mean squared error to evaluate estimators. As a result, when sel
 
 ### Relative Efficiency
 
-The **relative efficiency** of one estimator, $T_1$, to another, $T_2$, is the ratio of the mean squared errors: $\text{MSE}(T_1) / \text{MSE}(T_2)$. If the relative efficiency is less than one, we want $T_1$; otherwise, we want $T_2$.
+The **relative efficiency** of one estimator, $T\_1$, to another, $T\_2$, is the ratio of the mean squared errors: $\text{MSE}\(T\_1\) / \text{MSE}\(T\_2\)$. If the relative efficiency is less than one, we want $T\_1$; otherwise, we want $T\_2$.
 
-Let's compute the relative efficiency of the two estimators we used in the previous example: 
+Let's compute the relative efficiency of the two estimators we used in the previous example:
 
 $$
 \begin{alignedat}{1}
 Y_1 &\equiv 2\bar{X} \\[2ex]
 Y_2 &\equiv \frac{n+1}{n} \max_{1 \leq i \leq X_i}X_i
 \end{alignedat}
-$$ 
+$$
 
 Remember that both estimators are unbiased, so the bias is zero by definition. As a result, the mean squared errors of the two estimators is determined solely by the variance:
 
@@ -403,7 +403,7 @@ e(Y_1, Y_2) & = \frac{\frac{\theta^2}{3n}}{\frac{\theta^2}{n(n+2)}} \\[3ex]
 \end{alignedat}
 $$
 
-The relative efficiency is greater than one for all $n > 1$, so $Y_2$ is the better estimator just about all the time.
+The relative efficiency is greater than one for all $n &gt; 1$, so $Y\_2$ is the better estimator just about all the time.
 
 ## Maximum Likelihood Estimation
 
@@ -411,23 +411,23 @@ In this lesson, we are going to talk about maximum likelihood estimation, which 
 
 ### Likelihood Function and Maximum Likelihood Estimator
 
-Consider an iid random sample, $X_1,...,X_n$, where each $X_i$ has pdf/pmf $f(x)$. Additionally, suppose that $\theta$ is some unknown parameter from $X_i$ that we would like to estimate. We can define a **likelihood function**, $L(\theta)$ as:
+Consider an iid random sample, $X\_1,...,X\_n$, where each $X\_i$ has pdf/pmf $f\(x\)$. Additionally, suppose that $\theta$ is some unknown parameter from $X\_i$ that we would like to estimate. We can define a **likelihood function**, $L\(\theta\)$ as:
 
 $$
 L(\theta) \equiv \prod_{i=1}^n f(x_i)
 $$
 
-The **maximum likelihood estimator** (MLE) of $\theta$ is the value of $\theta$ that maximizes $L(\theta)$. The MLE is a function of the $X_i$'s and is itself a random variable.
+The **maximum likelihood estimator** \(MLE\) of $\theta$ is the value of $\theta$ that maximizes $L\(\theta\)$. The MLE is a function of the $X\_i$'s and is itself a random variable.
 
 ### Exponential Example
 
-Consider a random sample, $X_1,...,X_n \overset{\text{iid}}{\sim} \text{Exp}(\lambda)$. Find the MLE for $\lambda$. Note that, in this case, $\lambda$, is taking the place of the abstract parameter, $\theta$. Now:
+Consider a random sample, $X\_1,...,X\_n \overset{\text{iid}}{\sim} \text{Exp}\(\lambda\)$. Find the MLE for $\lambda$. Note that, in this case, $\lambda$, is taking the place of the abstract parameter, $\theta$. Now:
 
 $$
 L(\lambda) \equiv \prod_{i=1}^n f(x_i)
 $$
 
-We know that exponential random variables have the following pdf: 
+We know that exponential random variables have the following pdf:
 
 $$
 f(x, \lambda) = \lambda e^{-\lambda x}
@@ -451,19 +451,19 @@ $$
 L(\lambda) = \lambda^n * (e^{-\lambda x_1}) * (e^{-\lambda x_2}) * \dots * (e^{-\lambda x_n})
 $$
 
-Remember what happens to exponents when we multiply bases: 
+Remember what happens to exponents when we multiply bases:
 
 $$
 a^x * a^y = a^{x+y}
 $$
 
-Let's apply this to our product (and we can swap in $\exp$ notation to make things easier to read):
+Let's apply this to our product \(and we can swap in $\exp$ notation to make things easier to read\):
 
 $$
 L(\lambda) = \lambda^n \exp\left[-\lambda \sum_{i=1}^nx_i\right]
 $$
 
-Now, we need to maximize $L(\lambda)$ with respect to $\lambda$. We could take the derivative of $L(\lambda)$, but we can use a trick! Since the natural log function is one-to-one, the $\lambda$ that maximizes $L(\lambda)$ also maximizes $\ln(L(\lambda))$. Let's take the natural log of $L(\lambda)$:
+Now, we need to maximize $L\(\lambda\)$ with respect to $\lambda$. We could take the derivative of $L\(\lambda\)$, but we can use a trick! Since the natural log function is one-to-one, the $\lambda$ that maximizes $L\(\lambda\)$ also maximizes $\ln\(L\(\lambda\)\)$. Let's take the natural log of $L\(\lambda\)$:
 
 $$
 \ln(L(\lambda)) = \ln\left(\lambda^n \exp\left[-\lambda \sum_{i=1}^nx_i\right]\right)
@@ -509,15 +509,15 @@ Thus, the maximum likelihood estimator for $\lambda$ is $1 / \bar{X}$, which mak
 
 Conventionally, we put a "hat" over the $\lambda$ that maximizes the likelihood function to indicate that it is the MLE. Such notation looks like this: $\widehat{\lambda}$.
 
-Note that we went from "little x's", $x_i$, to "big x", $\bar{X}$, in the equation. We do this to indicate that $\widehat{\lambda}$ is a random variable.
+Note that we went from "little x's", $x\_i$, to "big x", $\bar{X}$, in the equation. We do this to indicate that $\widehat{\lambda}$ is a random variable.
 
-Just to be careful, we probably should have performed a second-derivative test on the function, $\ln(L(\lambda))$, to ensure that we found a maximum likelihood estimator and not a minimum likelihood estimator.
+Just to be careful, we probably should have performed a second-derivative test on the function, $\ln\(L\(\lambda\)\)$, to ensure that we found a maximum likelihood estimator and not a minimum likelihood estimator.
 
 ### Bernoulli Example
 
-Let's look at a discrete example. Suppose we have $X_1,...,X_n \overset{\text{iid}}{\sim} \text{Bern}(p)$. Let's find the MLE for $p$. We might remember that the expected value of Bern($p$) random variable is $p$, so we shouldn't be surprised if $\bar X$ is our MLE.
+Let's look at a discrete example. Suppose we have $X\_1,...,X\_n \overset{\text{iid}}{\sim} \text{Bern}\(p\)$. Let's find the MLE for $p$. We might remember that the expected value of Bern\($p$\) random variable is $p$, so we shouldn't be surprised if $\bar X$ is our MLE.
 
-Let's remember the values that $X_i$ can take:
+Let's remember the values that $X\_i$ can take:
 
 $$
 X_i = \begin{cases}
@@ -526,31 +526,31 @@ X_i = \begin{cases}
 \end{cases}
 $$
 
-Therefore, we can write the pmf for a Bern($p$) random variable as follows:
+Therefore, we can write the pmf for a Bern\($p$\) random variable as follows:
 
 $$
 f(x) = p^x(1-p)^{1-x}, \quad x = 0, 1
 $$
 
-Now, let's calculate $L(p)$. First:
+Now, let's calculate $L\(p\)$. First:
 
 $$
 L(p) = \prod_{i=1}^n f(x_i) = \prod p^{x_i}(1-p)^{1-x_i}
 $$
 
-Remember that $a^x * a^y = a^{x+y}$. So:
+Remember that $a^x \* a^y = a^{x+y}$. So:
 
 $$
 \prod p^{x_i}(1-p)^{1-x_i} = p^{\sum_{i=1}^n x_i}(1-p)^{n-\sum_{i=1}^n x_i}
 $$
 
-Let's take the natural log of both sides, remembering that $\ln(ab) = \ln(a) + \ln(b)$:
+Let's take the natural log of both sides, remembering that $\ln\(ab\) = \ln\(a\) + \ln\(b\)$:
 
 $$
 \ln(L(p)) = \sum_{i=1}^n x_i\ln(p) + (n-\sum_{i=1}^n x_i)\ln(1-p)
 $$
 
-Let's take the derivative, remembering that the derivative of $\ln(1-p)$ equals $-1/(1-p)$:
+Let's take the derivative, remembering that the derivative of $\ln\(1-p\)$ equals $-1/\(1-p\)$:
 
 $$
 \frac{d}{dp}\ln(L(p)) = \frac{\sum_{i=1}^n x_i}{p} - \frac{n-\sum_{i=1}^n x_i}{1-p}
@@ -574,7 +574,7 @@ In this lesson, we'll look at some additional MLE examples. MLEs will become ver
 
 ### Normal Example
 
-Suppose we have $X_1,...,X_n \overset{\text{iid}}{\sim} \text{Nor}(\mu, \sigma^2)$. Let's find the simultaneous MLE's for $\mu$ and $\sigma^2$:
+Suppose we have $X\_1,...,X\_n \overset{\text{iid}}{\sim} \text{Nor}\(\mu, \sigma^2\)$. Let's find the simultaneous MLE's for $\mu$ and $\sigma^2$:
 
 $$
 \begin{alignedat}{1}
@@ -596,7 +596,7 @@ $$
 \frac{\partial}{\partial\mu} \ln(L(\mu, \sigma^2)) = \frac{\partial}{\partial\mu} \frac{-1}{2\sigma^2}\sum_{i=1}^n(x_i - \mu)^2
 $$
 
-What's the derivative of $(x_i - \mu)^2$ with respect to $\mu$? Naturally, it's $-2(x_i - \mu)$. Therefore:
+What's the derivative of $\(x\_i - \mu\)^2$ with respect to $\mu$? Naturally, it's $-2\(x\_i - \mu\)$. Therefore:
 
 $$
 \frac{\partial}{\partial\mu} \ln(L(\mu, \sigma^2)) = \frac{1}{\sigma^2}\sum_{i=1}^n(x_i - \mu)
@@ -610,7 +610,7 @@ $$
 
 If we solve for $\widehat\mu$, we see that $\widehat\mu = \bar X$, which we expect. In other words, the MLE for the true mean, $\mu$, is the sample mean, $\bar X$.
 
-Now, let's take the derivative of $\ln(L(\mu,\sigma^2))$ with respect to $\sigma^2$. Consider:
+Now, let's take the derivative of $\ln\(L\(\mu,\sigma^2\)\)$ with respect to $\sigma^2$. Consider:
 
 $$
 \frac{\partial}{\partial\sigma^2} \ln(L(\mu, \sigma^2)) = -\frac{n}{2\sigma^2} + \frac{1}{2\sigma^4}\sum_{i=1}^n (x_i - \widehat\mu)^2
@@ -637,13 +637,13 @@ Because $S^2$ is unbiased, we have to expect that $\widehat{\sigma^2}$ is slight
 
 ### Gamma Example
 
-Let's look at the Gamma distribution, parameterized by $r$ and $\theta$. The pdf for this distribution is shown below. Recall that $\Gamma(r)$ is the [gamma function](https://en.wikipedia.org/wiki/Gamma_function).
+Let's look at the Gamma distribution, parameterized by $r$ and $\theta$. The pdf for this distribution is shown below. Recall that $\Gamma\(r\)$ is the [gamma function](https://en.wikipedia.org/wiki/Gamma_function).
 
 $$
 f(x) = \frac{\lambda^r}{\Gamma(r)}x^{r-1}e^{-\lambda x}, \quad x > 0
 $$
 
-Suppose we have $X_1,...,X_n \overset{\text{iid}}{\sim} \text{Gam}(r, \lambda)$. Let's find the MLE's for $r$ and $\lambda$:
+Suppose we have $X\_1,...,X\_n \overset{\text{iid}}{\sim} \text{Gam}\(r, \lambda\)$. Let's find the MLE's for $r$ and $\lambda$:
 
 $$
 \begin{alignedat}{1}
@@ -652,7 +652,7 @@ L(r, \lambda) &= \prod_{i=1}^n f(x_i) \\[3ex]
 \end{alignedat}
 $$
 
-Let's take the natural logarithm of both sides, remembering that $\ln(a/b) = \ln(a) - \ln(b)$:
+Let's take the natural logarithm of both sides, remembering that $\ln\(a/b\) = \ln\(a\) - \ln\(b\)$:
 
 $$
 \ln(L) = rn\ln(\lambda) - n\ln(\Gamma(r)) + (r-1)\ln\left(\prod_ix_i\right) - \lambda\sum_ix_i
@@ -682,7 +682,7 @@ $$
 \frac{\partial}{\partial r}\ln(L) = n\ln(\lambda) - \frac{n}{\Gamma(r)}\frac{d}{dr}\Gamma(r) + \ln\left(\prod_ix_i\right)
 $$
 
-We can define the digamma function, $\Psi(r)$, to help us with the term involving the gamma function and it's derivative:
+We can define the digamma function, $\Psi\(r\)$, to help us with the term involving the gamma function and it's derivative:
 
 $$
 \Psi(r) \equiv \Gamma'(r) / \Gamma(r)
@@ -702,9 +702,9 @@ $$
 
 ### Uniform Example
 
-Suppose we have $X_1,...,X_n \overset{\text{iid}}{\sim} \text{Unif}(0, \theta)$. Let's find the MLE for $\theta$.
+Suppose we have $X\_1,...,X\_n \overset{\text{iid}}{\sim} \text{Unif}\(0, \theta\)$. Let's find the MLE for $\theta$.
 
-Remember that the pdf $f(x) = 1/\theta, 0 < x < \theta$. We can take the likelihood function as the product of the $f(x_i)$'s:
+Remember that the pdf $f\(x\) = 1/\theta, 0 &lt; x &lt; \theta$. We can take the likelihood function as the product of the $f\(x\_i\)$'s:
 
 $$
 L(\theta) = \prod_{i=1}^n f(x_i) = \begin{cases}
@@ -713,47 +713,47 @@ L(\theta) = \prod_{i=1}^n f(x_i) = \begin{cases}
 \end{cases}
 $$
 
-In order to have $L(\theta) > 0$, we must have $0 \leq x_i \leq \theta, \forall i$. In other words, $\theta$ must be at least as large as the largest observation we've seen yet: $\theta \geq \max_i x_i$.
+In order to have $L\(\theta\) &gt; 0$, we must have $0 \leq x\_i \leq \theta, \forall i$. In other words, $\theta$ must be at least as large as the largest observation we've seen yet: $\theta \geq \max\_i x\_i$.
 
-Subject to this constraint, $L(\theta) = 1 / \theta^n$ is **not** maximized at $\theta = 0$. Instead $L(\theta) = 1 / \theta^n$ is maximized at the smallest possible $\theta$ value, namely $\widehat\theta = \max_i X_i$.
+Subject to this constraint, $L\(\theta\) = 1 / \theta^n$ is **not** maximized at $\theta = 0$. Instead $L\(\theta\) = 1 / \theta^n$ is maximized at the smallest possible $\theta$ value, namely $\widehat\theta = \max\_i X\_i$.
 
-This result makes sense in light of the similar (unbiased) estimator $Y_2 = (n+1)\max_i X_i/n$ that we saw previously.
+This result makes sense in light of the similar \(unbiased\) estimator $Y\_2 = \(n+1\)\max\_i X\_i/n$ that we saw previously.
 
 ## Invariance Properties of MLEs
 
 In this lesson, we will expand the vocabulary of maximum likelihood estimators by looking at the invariance property of MLEs. In a nutshell, if we have the MLE for some parameter, then we can use the invariance property to determine the MLE for any reasonable function of that parameter.
 
 ### Invariance Property of MLE's
-If $\widehat{\theta}$ is the MLE of some parameter, $\theta$, and $h(\cdot)$ is a 1:1 function, then $h(\widehat{\theta})$ is the MLE of $h(\theta)$.
 
-Remember that this invariance property does *not* hold for unbiasedness. For instance, we said previously that the sample variance is an unbiased estimator for the true variance because $E[S^2] = \sigma^2$. However, $E[\sqrt{S^2}] \neq \sigma$, so we cannot use the sample standard deviation as an unbiased estimator for the true standard deviation.
+If $\widehat{\theta}$ is the MLE of some parameter, $\theta$, and $h\(\cdot\)$ is a 1:1 function, then $h\(\widehat{\theta}\)$ is the MLE of $h\(\theta\)$.
+
+Remember that this invariance property does _not_ hold for unbiasedness. For instance, we said previously that the sample variance is an unbiased estimator for the true variance because $E\[S^2\] = \sigma^2$. However, $E\[\sqrt{S^2}\] \neq \sigma$, so we cannot use the sample standard deviation as an unbiased estimator for the true standard deviation.
 
 ### Examples
 
-Suppose we have a random sample, $X_1,...,X_n \overset{\text{iid}}{\sim} \text{Bern}(p)$. We might remember that the MLE of $p$ is $\widehat p = \bar X$. If we consider the 1:1 function $h(\theta) = \theta^2, \theta > 0$, then the invariance property says that the MLE of $p^2$ is $\bar X^2$.
+Suppose we have a random sample, $X\_1,...,X\_n \overset{\text{iid}}{\sim} \text{Bern}\(p\)$. We might remember that the MLE of $p$ is $\widehat p = \bar X$. If we consider the 1:1 function $h\(\theta\) = \theta^2, \theta &gt; 0$, then the invariance property says that the MLE of $p^2$ is $\bar X^2$.
 
-Suppose we have a random sample, $X_1,...,X_n \overset{\text{iid}}{\sim} \text{Nor}(\mu, \sigma^2)$. We saw previously that the MLE for $\sigma^2$ is:
+Suppose we have a random sample, $X\_1,...,X\_n \overset{\text{iid}}{\sim} \text{Nor}\(\mu, \sigma^2\)$. We saw previously that the MLE for $\sigma^2$ is:
 
 $$
 \widehat{\sigma^2} = \frac{1}{n} \sum_{i=1}^n (X_i - \bar X)^2
 $$
 
-We just said that we couldn't take the square root of $S^2$ to estimate $
-\sigma$ in an unbiased way. However, we can use the square root of $\widehat{\sigma^2}$ to get the MLE for $\sigma$.
+We just said that we couldn't take the square root of $S^2$ to estimate $ \sigma$ in an unbiased way. However, we can use the square root of $\widehat{\sigma^2}$ to get the MLE for $\sigma$.
 
-If we consider the 1:1 function $h(\theta) = +\sqrt\theta$, then the invariance property says that the MLE of $\sigma$ is:
+If we consider the 1:1 function $h\(\theta\) = +\sqrt\theta$, then the invariance property says that the MLE of $\sigma$ is:
 
 $$
 \widehat\sigma = \sqrt{\widehat{\sigma^2}} = \sqrt\frac{\sum_{i=1}^n (X_i - \bar X)^2}{n}
 $$
 
-Suppose we have a random sample, $X_1,...,X_n \overset{\text{iid}}{\sim} \text{Exp}(\lambda)$. The **survival function**, $\bar{F}(x)$, is:
+Suppose we have a random sample, $X\_1,...,X\_n \overset{\text{iid}}{\sim} \text{Exp}\(\lambda\)$. The **survival function**, $\bar{F}\(x\)$, is:
 
 $$
 \bar{F}(x) = P(X > x) = 1 - F(x) = 1 - (1 - e^{-\lambda x}) = e^{-\lambda x}
 $$
 
-We saw previously the the MLE for $\lambda$ is $\widehat\lambda = 1/\bar X$.Therefore, using the invariance property, we can see that the MLE for $\bar{F}(x)$ is $\bar{F}(\widehat{\lambda})$:
+We saw previously the the MLE for $\lambda$ is $\widehat\lambda = 1/\bar X$.Therefore, using the invariance property, we can see that the MLE for $\bar{F}\(x\)$ is $\bar{F}\(\widehat{\lambda}\)$:
 
 $$
 \widehat{\bar{F}(x)} = e^{-\widehat{\lambda}x} = e^{-x / \bar{X}}
@@ -761,7 +761,7 @@ $$
 
 The MLE for the survival function is used all the time in actuarial sciences to determine - somewhat gruesomely, perhaps - the probability that people will live past a certain age.
 
-## The Method of Moments (Optional)
+## The Method of Moments \(Optional\)
 
 In this lesson, we'll finish off our discussion on estimators by talking about the Method of Moments.
 
@@ -776,13 +776,13 @@ E[X^k] = \begin{cases}
 \end{cases}
 $$
 
-Suppose we have a sequence of random variables, $X_1,...,X_n$, which are iid from pmf/pdf $f(x)$. The **method of moments** (MOM) estimator for $E[X^k]$, $m_k$, is:
+Suppose we have a sequence of random variables, $X\_1,...,X\_n$, which are iid from pmf/pdf $f\(x\)$. The **method of moments** \(MOM\) estimator for $E\[X^k\]$, $m\_k$, is:
 
 $$
 m_k = \frac{1}{n} \sum_{i=1}^n X_i^k
 $$
 
-Note that $m_k$ is equal to the sample average of the $X_i^k$'s. Indeed, the MOM estimator for $\mu = E[X_i]$, is the sample mean, $\bar X$:
+Note that $m\_k$ is equal to the sample average of the $X\_i^k$'s. Indeed, the MOM estimator for $\mu = E\[X\_i\]$, is the sample mean, $\bar X$:
 
 $$
 m_1 = \frac{1}{n} \sum_{i=1}^n X_i = \bar X = E[X_i]
@@ -794,8 +794,7 @@ $$
 m_2 = \frac{1}{n}\sum_{i=1}^n X_i^2 = E[X_i^2]
 $$
 
-
-We can combine the MOM estimators for $k=1,2$ to produce an expression for the variance of $X_i$:
+We can combine the MOM estimators for $k=1,2$ to produce an expression for the variance of $X\_i$:
 
 $$
 \begin{alignedat}{1}
@@ -812,7 +811,7 @@ Of course, it's perfectly okay to use $S^2$ to estimate the variance, and the tw
 
 ### Poisson Example
 
-Suppose that $X_1,...,X_n \overset{\text{iid}}{\sim} \text{Pois}(\lambda)$. We know that, for the Poisson distribution, $E[X_i] = \lambda$, so a MOM estimator for $\lambda$ is $\bar X$.
+Suppose that $X\_1,...,X\_n \overset{\text{iid}}{\sim} \text{Pois}\(\lambda\)$. We know that, for the Poisson distribution, $E\[X\_i\] = \lambda$, so a MOM estimator for $\lambda$ is $\bar X$.
 
 We might remember that the variance of the Poisson distribution is also $\lambda$, so another MOM estimator for $\lambda$ is:
 
@@ -824,13 +823,13 @@ As we can see, we have two different estimators for $\lambda$, both of which are
 
 ### Normal Example
 
-Suppose that $X_1,...,X_n \overset{\text{iid}}{\sim} \text{Nor}(\mu, \sigma^2)$. We know that the MOM estimators for $\mu$ and $\sigma^2$ are $\bar X$ and $(n-1)S^2 / n$, respectively. For this example, these estimators happen to be the same as the MLEs.
+Suppose that $X\_1,...,X\_n \overset{\text{iid}}{\sim} \text{Nor}\(\mu, \sigma^2\)$. We know that the MOM estimators for $\mu$ and $\sigma^2$ are $\bar X$ and $\(n-1\)S^2 / n$, respectively. For this example, these estimators happen to be the same as the MLEs.
 
 ### Beta Example
 
 Now let's look at a less trivial example. Here we might really rely on MOM estimators because we cannot find the MLEs so easily.
 
-Suppose that $X_1,...,X_n \overset{\text{iid}}{\sim} \text{Beta}(a, b)$. The beta distribution has the following pdf:
+Suppose that $X\_1,...,X\_n \overset{\text{iid}}{\sim} \text{Beta}\(a, b\)$. The beta distribution has the following pdf:
 
 $$
 f(x) = \frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}x^{a-1}(1-x)^{b-1}, \quad 0 < x < 1
@@ -858,18 +857,17 @@ bE[X] &= a(1 - E[X]) \\
 \end{alignedat}
 $$
 
-Since we know that $\bar X$ is the MOM estimator for $E[X]$, we have a reasonable approximation for $a$:
+Since we know that $\bar X$ is the MOM estimator for $E\[X\]$, we have a reasonable approximation for $a$:
 
 $$
 a \approx \frac{b\bar X}{1-\bar X}
 $$
 
-We can solve for $b$ by making the following substitutions into the variance equation above: $\bar X$ for $E[X]$, $S^2$ for $\text{Var}(X)$, and the approximation of $a$, in terms of $\bar X$ and $b$, for $a$. After a bunch of algebra, we have the MOM estimator for $b$:
+We can solve for $b$ by making the following substitutions into the variance equation above: $\bar X$ for $E\[X\]$, $S^2$ for $\text{Var}\(X\)$, and the approximation of $a$, in terms of $\bar X$ and $b$, for $a$. After a bunch of algebra, we have the MOM estimator for $b$:
 
 $$
 b \approx \frac{(1 - \bar X)^2\bar X}{S^2} - 1 + \bar X
 $$
-
 
 Let's plug $b$ back into our approximation for $a$ to get $a$ in terms of $S^2$ and $\bar X$:
 
@@ -899,7 +897,7 @@ In this lesson, we'll start our discussion on goodness-of-fit tests. We use thes
 
 Until now, we've guessed at reasonable distributions and estimated the relevant parameters based on the data. We've used different estimators, such as MLEs and MOM estimators. Now we will conduct a formal test to validate the work we've done. If our guesses and estimations are close, our tests should reflect that.
 
-In particular, we will conduct a formal hypothesis test to determine whether a series of observations, $X_1,...,X_n$, come from a particular distribution with pmf/pdf, $f(x)$. Here's our null hypothesis:
+In particular, we will conduct a formal hypothesis test to determine whether a series of observations, $X\_1,...,X\_n$, come from a particular distribution with pmf/pdf, $f\(x\)$. Here's our null hypothesis:
 
 $$
 H_0: X_1,...,X_n \overset{\text{iid}}{\sim} \text{ p.m.f, / p.d.f. } f(x)
@@ -911,57 +909,57 @@ $$
 \alpha \equiv P(\text{Reject } H_0 | H_0 \text{ true}) = P(\text{Type I error})
 $$
 
-As usual, we assume that $H_0$ is true, only rejecting it if we get ample evidence to the contrary. The distribution is innocent until proven guilty. Usually, we choose $\alpha$ to be $0.05$ or $0.01$.
+As usual, we assume that $H\_0$ is true, only rejecting it if we get ample evidence to the contrary. The distribution is innocent until proven guilty. Usually, we choose $\alpha$ to be $0.05$ or $0.01$.
 
 ### High-Level View of Goodness-Of-Fit Test Procedure
 
-Let's first divide the domain of $f(x)$ into $k$ sets, $A_1, A_2,...,A_k$. If $X$ is discrete, then each set will consist of distinct points. If $X$ is continuous, then each set will contain an interval.
+Let's first divide the domain of $f\(x\)$ into $k$ sets, $A\_1, A\_2,...,A\_k$. If $X$ is discrete, then each set will consist of distinct points. If $X$ is continuous, then each set will contain an interval.
 
-Second, we will tally the number of observations that fall into each set. We refer to this tally as $O_i, i = 1, 2, ..., k$. For example, $O_1$ refers to the number of observations we see in $A_1$. Remember that $\sum_i O_i = n$, where $n$ is the total number of observations we collect.
+Second, we will tally the number of observations that fall into each set. We refer to this tally as $O\_i, i = 1, 2, ..., k$. For example, $O\_1$ refers to the number of observations we see in $A\_1$. Remember that $\sum\_i O\_i = n$, where $n$ is the total number of observations we collect.
 
-If $p_i \equiv P(X \in A_i)$, then $O_i \sim \text{Bin}(n, p_i)$. In other words $O_i$ counts the number of sucesses - landing in set $A_i$ - given $n$ trials, where the probability of success is $p_i$. Because $O_i$ is binomial, the expected number of observations that fall in each set, assuming $H_0$ is $E_i = E[O_i] = np_i, i = 1,2,...,k$.
+If $p\_i \equiv P\(X \in A\_i\)$, then $O\_i \sim \text{Bin}\(n, p\_i\)$. In other words $O\_i$ counts the number of sucesses - landing in set $A\_i$ - given $n$ trials, where the probability of success is $p\_i$. Because $O\_i$ is binomial, the expected number of observations that fall in each set, assuming $H\_0$ is $E\_i = E\[O\_i\] = np\_i, i = 1,2,...,k$.
 
-Next, we calculate a test statistic based on the differences between the $E_i$'s and $O_i$'s. The **chi-squared g-o-f** test statistic is:
+Next, we calculate a test statistic based on the differences between the $E\_i$'s and $O\_i$'s. The **chi-squared g-o-f** test statistic is:
 
 $$
 \chi^2_0 \equiv \sum_{i=1}^k \frac{(O_i - E_i)^2}{E_i}
 $$
 
-If the distribution we've guessed fits the data well, then the $E_i$'s and $O_i$'s will be very close, and $\chi^2_0$ will be small. On the other hand, if we've made a bad guess, $\chi^2_0$ will be large.
+If the distribution we've guessed fits the data well, then the $E\_i$'s and $O\_i$'s will be very close, and $\chi^2\_0$ will be small. On the other hand, if we've made a bad guess, $\chi^2\_0$ will be large.
 
-As we said, a large value of $\chi^2_0$ indicates a bad fit. In particular, we *reject* $H_0$ if:
+As we said, a large value of $\chi^2\_0$ indicates a bad fit. In particular, we _reject_ $H\_0$ if:
 
 $$
 X^2_0 > X^2_{\alpha, k-1-s}
 $$
 
-Remember that $k$ refers to the number of sets we have generated from the domain of $f(x)$, and $\alpha$ refers to the level of significance at which we wish to conduct our test.
+Remember that $k$ refers to the number of sets we have generated from the domain of $f\(x\)$, and $\alpha$ refers to the level of significance at which we wish to conduct our test.
 
-Here, $s$ refers to the number of unknown parameters from $f(x)$ that have to be estimated. For example, if $X \sim \text{Exp}(\lambda)$, then $s= 1$. If $X \sim \text{Nor}(\mu, \sigma^2)$, then $s = 2$.
+Here, $s$ refers to the number of unknown parameters from $f\(x\)$ that have to be estimated. For example, if $X \sim \text{Exp}\(\lambda\)$, then $s= 1$. If $X \sim \text{Nor}\(\mu, \sigma^2\)$, then $s = 2$.
 
-Additionally, $\chi^2_{\alpha, v}$ refers to the $(1 - \alpha)$ quantile of the $\chi^2_v$ distribution. Specifically:
+Additionally, $\chi^2\_{\alpha, v}$ refers to the $\(1 - \alpha\)$ quantile of the $\chi^2\_v$ distribution. Specifically:
 
 $$
 P(X^2_v < \chi^2_{\alpha, v}) = 1 - \alpha
 $$
 
-If $\chi^2_0 \leq X^2_{\alpha, k-1-s}$, we *fail to reject* $H_0$.
+If $\chi^2_0 \leq X^2_{\alpha, k-1-s}$, we _fail to reject_ $H\_0$.
 
 ### Remarks
 
-In order to ensure that the test gives good results, we want to select $k$ such that $E_i \geq 5$ and pick $n \geq 30$. 
+In order to ensure that the test gives good results, we want to select $k$ such that $E\_i \geq 5$ and pick $n \geq 30$.
 
 If the degrees of freedom, $v = k - 1 - s$, is large, than we can approximate $\chi^2_{a,v}$ using the corresponding standard normal quantile, $z_\alpha$:
 
 $$
 \chi^2_{\alpha, v} \approx v\left[1 - \frac{2}{9v} + z_\alpha \sqrt\frac{2}{9v}\right]^3
-$$ 
+$$
 
 If we don't want to use the $\chi^2$ goodness-of-fit test, we can use a different test, such as Kolmogorov-Smirnov, Anderson-Darling, or Shapiro-Wilk, among others.
 
 ### Uniform Example
 
-Let's test our null hypothesis that a series of observations, $X_1,...X_n$, are iid Unif(0,1). Suppose we collect $n=1000$ observations, where $0 \leq X_i \leq 1$, and we divide the unit interval into $k=5$ sets. Consider the following $O_i$'s and $E_i$'s below:
+Let's test our null hypothesis that a series of observations, $X\_1,...X\_n$, are iid Unif\(0,1\). Suppose we collect $n=1000$ observations, where $0 \leq X\_i \leq 1$, and we divide the unit interval into $k=5$ sets. Consider the following $O\_i$'s and $E\_i$'s below:
 
 $$
 \begin{array}{c|ccccc}
@@ -971,7 +969,7 @@ O_i & 179 & 208 & 222 & 199 & 192 \\
 \end{array}
 $$
 
-The $O_i$'s refer to the actual number of observations that landed in each interval. Remember that, since $O_i \sim \text{Bin}(n, p_i)$, $E[O_i] = np_i = 1000 * 0.2 = 200$. 
+The $O\_i$'s refer to the actual number of observations that landed in each interval. Remember that, since $O\_i \sim \text{Bin}\(n, p\_i\)$, $E\[O\_i\] = np\_i = 1000 \* 0.2 = 200$.
 
 Let's calculate our goodness-of-fit statistic:
 
@@ -986,14 +984,14 @@ $$
 Let's set our significance level to $\alpha = 0.05$. Since there are no unknown parameters, $s = 0$, so $k - 1 - s = 4$. Therefore:
 
 $$
-\chi^2_{\alpha, k - 1 - s} = \chi^2_{0.05, 4} = 9.49 \text{ (tabled) } 
-$$ 
+\chi^2_{\alpha, k - 1 - s} = \chi^2_{0.05, 4} = 9.49 \text{ (tabled) }
+$$
 
-Since $\chi^2_0 \leq \chi^2_{0.05, 4}$, we fail to reject the null hypothesis and begrudgingly accept that the $X_i$'s are iid Unif(0,1).
+Since $\chi^2_0 \leq \chi^2_{0.05, 4}$, we fail to reject the null hypothesis and begrudgingly accept that the $X\_i$'s are iid Unif\(0,1\).
 
 ### Discrete Example
 
-Let's hypothesize that the number of defects in a printed circuit board follows a Geometric($p$) distribution. Let's look at a random sample of $n = 70$ boards and observe the number of defects. Consider the following table:
+Let's hypothesize that the number of defects in a printed circuit board follows a Geometric\($p$\) distribution. Let's look at a random sample of $n = 70$ boards and observe the number of defects. Consider the following table:
 
 $$
 \begin{array}{cc}
@@ -1007,7 +1005,7 @@ $$
 \end{array}
 $$
 
-Now let's test the null hypothesis that $X_1,...,X_{70} \sim \text{Geom}(p)$. We can start by estimating $p$ via the MLE. The likelihood function is:
+Now let's test the null hypothesis that $X_1,...,X_{70} \sim \text{Geom}\(p\)$. We can start by estimating $p$ via the MLE. The likelihood function is:
 
 $$
 \begin{alignedat}{1}
@@ -1044,15 +1042,15 @@ $$
 \end{alignedat}
 $$
 
-We know that, for $X \sim \text{Geom}(p)$, $E[X] = 1 / p$. Therefore, it makes sense that our estimator, $\widehat p$, is equal to $1 / \bar X$. Anyway, let's compute $\widehat p$:
+We know that, for $X \sim \text{Geom}\(p\)$, $E\[X\] = 1 / p$. Therefore, it makes sense that our estimator, $\widehat p$, is equal to $1 / \bar X$. Anyway, let's compute $\widehat p$:
 
 $$
 \widehat p = \frac{1}{\bar X} = \frac{70}{1(34) + 2(18) + 3(2) + 4(9) + 5(7)} = 0.476
 $$
 
-Given $\widehat p = 0.476$, let's turn to the goodness-of-fit test statistic. We have our $O_i$'s, and now we can compute our $E_i$'s. By the invariance property of MLEs, the MLE for the expected number of boards, $\widehat E_x$, having a particular number of defects, $x$, is equal to $nP(X=x) = n(1-\widehat p)^{x-1}\widehat p$.
+Given $\widehat p = 0.476$, let's turn to the goodness-of-fit test statistic. We have our $O\_i$'s, and now we can compute our $E\_i$'s. By the invariance property of MLEs, the MLE for the expected number of boards, $\widehat E\_x$, having a particular number of defects, $x$, is equal to $nP\(X=x\) = n\(1-\widehat p\)^{x-1}\widehat p$.
 
-Consider the following table. Of course, $X$ can take values from $1$ to $\infty$, so we'll condense $P(X \in [5, \infty))$ into the last row of the table.
+Consider the following table. Of course, $X$ can take values from $1$ to $\infty$, so we'll condense $P\(X \in \[5, \infty\)\)$ into the last row of the table.
 
 $$
 \begin{array}{cccc}
@@ -1066,7 +1064,7 @@ x & P(X = x) & \widehat E_x & O_x \\ \hline
 \end{array}
 $$
 
-Remember that we said we'd like to ensure that $E_i \geq 5$ in order for the goodness-of-fit test to work correctly. Unfortunately, in this case, $E_4 < 5$. No problem. Let's just roll $X = 4$ into $X \geq 5$:
+Remember that we said we'd like to ensure that $E\_i \geq 5$ in order for the goodness-of-fit test to work correctly. Unfortunately, in this case, $E\_4 &lt; 5$. No problem. Let's just roll $X = 4$ into $X \geq 5$:
 
 $$
 \begin{array}{cccc}
@@ -1091,7 +1089,7 @@ $$
 \chi^2_{\alpha, k-1-s} = \chi^2_{0.05, 2} = 5.99
 $$
 
-Since $\chi^2_0 = 9.12 > \chi^2_{0.05, 2} = 5.99$, we reject $H_0$ and conclude that the number of defects in circuit boards probably isn't geometric.
+Since $\chi^2_0 = 9.12 &gt; \chi^2_{0.05, 2} = 5.99$, we reject $H\_0$ and conclude that the number of defects in circuit boards probably isn't geometric.
 
 ## Exponential Example
 
@@ -1099,7 +1097,7 @@ In this lesson, we'll apply a goodness-of-fit test for the exponential distribut
 
 ### Continuous Distributions
 
-For continuous distributions, let's denote the intervals $A_i \equiv (a_{i-1}, a_i], i = 1,2,...,k$. For convenience, we want to choose the $a_i$'s such that $X$ has an equal probability of landing in any interval, $A_i$. In other words:
+For continuous distributions, let's denote the intervals $A_i \equiv \(a_{i-1}, a\_i\], i = 1,2,...,k$. For convenience, we want to choose the $a\_i$'s such that $X$ has an equal probability of landing in any interval, $A\_i$. In other words:
 
 $$
 p_i = P(X \in A_i) = P(a_{i-1} < X \leq a_i) = 1/k, \quad \text{for all } i
@@ -1113,15 +1111,15 @@ $$
 H_0 : X_1, X_2,...,X_n \overset{\text{iid}}{\sim} \text{Exp}(\lambda)
 $$
 
-We want to perform a $\chi^2$ goodness-of-fit test with *equal-probability intervals*, which means we must choose $a_i$'s such that:
+We want to perform a $\chi^2$ goodness-of-fit test with _equal-probability intervals_, which means we must choose $a\_i$'s such that:
 
 $$
 F(a_i) = P(X \leq a_i) = 1 - e^{-\lambda a_i} = \frac{i}{k}, \quad i = 1,2,...,k
 $$
 
-If the intervals are equal probability, then the probability that an observation falls in any of the $k$ intervals must equal $1 / k$. Correspondingly, $F(x)$ must increase by $1/k$ as it sweeps through each interval, until $F(a_n) = 1$.
+If the intervals are equal probability, then the probability that an observation falls in any of the $k$ intervals must equal $1 / k$. Correspondingly, $F\(x\)$ must increase by $1/k$ as it sweeps through each interval, until $F\(a\_n\) = 1$.
 
-In any event, let's solve for $a_i$:
+In any event, let's solve for $a\_i$:
 
 $$
 \begin{alignedat}{1}
@@ -1132,7 +1130,7 @@ a_i &= \frac{-1}{\lambda}\ln\left(1 - \frac{i}{k}\right) \\
 \end{alignedat}
 $$
 
-Unfortunately, $\lambda$ is unknown, so we cannot calculate the $a_i$'s. We have to estimate $\lambda$. Thankfully, we might remember that the MLE is $\widehat\lambda = 1 / \bar X$. Thus, by the invariance property, the MLEs of the $a_i$'s are:
+Unfortunately, $\lambda$ is unknown, so we cannot calculate the $a\_i$'s. We have to estimate $\lambda$. Thankfully, we might remember that the MLE is $\widehat\lambda = 1 / \bar X$. Thus, by the invariance property, the MLEs of the $a\_i$'s are:
 
 $$
 \begin{alignedat}{1}
@@ -1163,7 +1161,7 @@ $$
 E_i = np_i = \frac{n}{k}
 $$
 
-Now let's tally up how many observations fall in each interval, and record our $O_i$'s. Consider the following table:
+Now let's tally up how many observations fall in each interval, and record our $O\_i$'s. Consider the following table:
 
 $$
 \begin{array}{c|cc}
@@ -1177,7 +1175,7 @@ $$
 \end{array}
 $$
 
-Given these observations and expectations, we can compute our $\chi^2_0$ goodness-of-fit statistic:
+Given these observations and expectations, we can compute our $\chi^2\_0$ goodness-of-fit statistic:
 
 $$
 \chi^2_0 = \sum_{i=1}^k \frac{(O_i - E_i)^2}{E_i} = 9.80
@@ -1189,7 +1187,7 @@ $$
 \chi^2_{\alpha, k-1-s} = \chi^2_{0.05,3} = 7.81
 $$
 
-Since our test statistic is greater than our quantile, we must reject $H_0$ and conclude that the observations are not exponential.
+Since our test statistic is greater than our quantile, we must reject $H\_0$ and conclude that the observations are not exponential.
 
 ## Weibull Example
 
@@ -1197,27 +1195,27 @@ In this lesson, we'll carry out a goodness-of-fit test for observations supposed
 
 ### Weibull Example
 
-Let's suppose that we have a series of observations, $X_1, X_2,...,X_n$, and we hypothesize that they are coming from a Weibull($r$, $\lambda$) distribution. The Weibull distribution has the following cdf:
+Let's suppose that we have a series of observations, $X\_1, X\_2,...,X\_n$, and we hypothesize that they are coming from a Weibull\($r$, $\lambda$\) distribution. The Weibull distribution has the following cdf:
 
 $$
 F(x) = 1 - e^{-(\lambda x)^r}, \quad x \geq 0
 $$
 
-We say that the Weibull generalizes the exponential because, for $r=1$, $F(x)$ is the cdf of the exponential distribution:
+We say that the Weibull generalizes the exponential because, for $r=1$, $F\(x\)$ is the cdf of the exponential distribution:
 
 $$
 F(x) = 1 - e^{-\lambda x}, \quad x \geq 0
 $$
 
-Like we did with the exponential, we'd like to conduct a $\chi^2$ goodness-of-fit test with *equal-probability intervals*. In other words, we will choose interval boundaries, $a_i$'s, such that:
+Like we did with the exponential, we'd like to conduct a $\chi^2$ goodness-of-fit test with _equal-probability intervals_. In other words, we will choose interval boundaries, $a\_i$'s, such that:
 
 $$
 F(a_i) = 1 - e^{-(\lambda a_i)^r} = \frac{i}{k}
 $$
 
-If the intervals are equal probability, then the probability that an observation falls in any of the $k$ intervals must equal $1 / k$. Correspondingly, $F(x)$ must increase by $1/k$ as it sweeps through each interval, until $F(a_n) = 1$.
+If the intervals are equal probability, then the probability that an observation falls in any of the $k$ intervals must equal $1 / k$. Correspondingly, $F\(x\)$ must increase by $1/k$ as it sweeps through each interval, until $F\(a\_n\) = 1$.
 
-Let's now solve for $a_i$:
+Let's now solve for $a\_i$:
 
 $$
 \begin{alignedat}{1}
@@ -1231,7 +1229,7 @@ $$
 
 Since $\lambda$ and $r$ are unknown, we'll have two MLEs, so $s=2$. Remember that $s$ is a parameter whose value we subtract from the degrees of freedom of the $\chi^2$ distribution whose quantile we take during our test.
 
-Let's differentiate the cdf, $F(x)$, to get the pdf, $f(x)$:
+Let's differentiate the cdf, $F\(x\)$, to get the pdf, $f\(x\)$:
 
 $$
 f(x) = \lambda r (\lambda x)^{r-1}e^{-(\lambda x)^r}, \quad x \geq 0
@@ -1255,25 +1253,25 @@ $$
 \lambda = \left(\sum_{i=1}^n x_i^r\right)^{-1/r}
 $$
 
-Correspondingly, we get the following function for $r$, such that $f(\widehat r) = 0$:
+Correspondingly, we get the following function for $r$, such that $f\(\widehat r\) = 0$:
 
 $$
 g(r) = \frac{n}{r} + \sum_{i=1}^n \ln(x_i) - \frac{n \sum_i x_i^r \ln(x_i)}{\sum_i x_i^r}
 $$
 
-How do we find the zero? Let's try Newton's method. Of course, to use this method, we need to know the derivative of $g(r)$:
+How do we find the zero? Let's try Newton's method. Of course, to use this method, we need to know the derivative of $g\(r\)$:
 
 $$
 g'(r) = -\frac{n}{r^2} - \frac{n\sum_ix^r_i[\ln(x_i)]^2}{\sum_ix_i^r} + \frac{n\left[\sum_i x^r_i \ln(x_i)\right]^2}{\left[\sum_i x^r_i\right]^2}
 $$
 
-Here's a reasonable implementation of Newton's method. Let's initialize $\widehat r_0 = \bar X / S$, where $\bar X$ is the sample mean, and $S^2$ is the sample variance. Then, we iteratively improve our guess for $\widehat r$, using Newton's method:
+Here's a reasonable implementation of Newton's method. Let's initialize $\widehat r\_0 = \bar X / S$, where $\bar X$ is the sample mean, and $S^2$ is the sample variance. Then, we iteratively improve our guess for $\widehat r$, using Newton's method:
 
 $$
 \widehat r_j \leftarrow \widehat r_{j-1} - \frac{g(\widehat r_{j-1})}{g'(\widehat r_{j-1})}
 $$
 
-If $|g(\widehat r_{j-1})| < 0.001$, then we stop and set the MLE $\widehat r = \widehat r_j$. Otherwise, we continue refining $\widehat r_j$. Once we have $\widehat r$, to which Newton's method converges after only three or four iterations, we can immediately get $\widehat \lambda$:
+If $\|g\(\widehat r\_{j-1}\)\| &lt; 0.001$, then we stop and set the MLE $\widehat r = \widehat r\_j$. Otherwise, we continue refining $\widehat r\_j$. Once we have $\widehat r$, to which Newton's method converges after only three or four iterations, we can immediately get $\widehat \lambda$:
 
 $$
 \widehat \lambda = \left(\sum_{i=1}^n x_i^{\widehat r}\right)^{-1/\widehat r}
@@ -1291,7 +1289,7 @@ $$
 \widehat a_i = 6.23 \left[-\ln\left(1 - \frac{i}{8}\right) \right]^{1.905}, i = 1,2,...,k
 $$
 
-Further suppose that we get the following $O_i$'s:
+Further suppose that we get the following $O\_i$'s:
 
 $$
 \begin{array}{c|cc}
@@ -1305,7 +1303,7 @@ $$
 \end{array}
 $$
 
-Let's compute our $\chi^2$ goodness-of-fit statistic: 
+Let's compute our $\chi^2$ goodness-of-fit statistic:
 
 $$
 \chi^2_0 = \sum_{i=1}^k = \frac{(O_i - E_i)^2}{E_i} = 1.20
@@ -1325,7 +1323,7 @@ In this lesson, we'll look at other types of goodness-of-fit tests. In particula
 
 ### Kolmogorov-Smirnov Goodness-of-Fit Test
 
-There are plenty of goodness-of-fit tests that we can use instead of the $\chi^2$ test. The advantage of the **Kolmogorov-Smirnov test** (K-S) is that it works well in low-data situations, although we can use it perfectly well when we have ample data, too.
+There are plenty of goodness-of-fit tests that we can use instead of the $\chi^2$ test. The advantage of the **Kolmogorov-Smirnov test** \(K-S\) is that it works well in low-data situations, although we can use it perfectly well when we have ample data, too.
 
 As usual, we'll test the following null hypothesis:
 
@@ -1333,31 +1331,31 @@ $$
 H_0: X_1, X_2,...,X_n \overset{\text{iid}}{\sim} \text{some distribution with cdf } F(x)
 $$
 
-Recall that the *empirical cdf*, or *sample cdf*, of a series of observations, $X_1,...,X_n$, is defined as:
+Recall that the _empirical cdf_, or _sample cdf_, of a series of observations, $X\_1,...,X\_n$, is defined as:
 
 $$
 \hat{F}_n(x) \equiv \frac{\text{number of } X_i'\text{s} \leq x}{n}
-$$ 
+$$
 
-In other words, the cdf of the sample, evaluated at $x$, is equal to the ratio of observations less than or equal to $x$ to the total number of observations. Remember that $\hat F_n(x)$ is a step function that jumps by $1 / n$ at each $X_i$.
+In other words, the cdf of the sample, evaluated at $x$, is equal to the ratio of observations less than or equal to $x$ to the total number of observations. Remember that $\hat F\_n\(x\)$ is a step function that jumps by $1 / n$ at each $X\_i$.
 
-For example, consider the empirical cdf of ten Exp(1) observations - in blue below - on which we've superimposed the Exp(1) cdf, in red:
+For example, consider the empirical cdf of ten Exp\(1\) observations - in blue below - on which we've superimposed the Exp\(1\) cdf, in red:
 
 ![](https://assets.omscs.io/notes/2020-11-02-19-22-59.png)
 
-Notice that every time the empirical cdf encounters an observation, it jumps up by $1/10$, or $10\%$. If we look at the superimposed red line, we can see that the empirical cdf (generated from just ten observations) and the actual cdf fit each other quite well.
+Notice that every time the empirical cdf encounters an observation, it jumps up by $1/10$, or $10\%$. If we look at the superimposed red line, we can see that the empirical cdf \(generated from just ten observations\) and the actual cdf fit each other quite well.
 
-Indeed, the **Glivenko-Cantelli Lemma** says that the empirical cdf converges to the true cdf as the sample size increases: $\hat F_n(x) \to F(x)$ as $n \to \infty$. If $H_0$ is true, then the empirical cdf, $\hat F_n(x)$, should be a good approximation to the true cdf, $F(x)$, for large $n$.
+Indeed, the **Glivenko-Cantelli Lemma** says that the empirical cdf converges to the true cdf as the sample size increases: $\hat F\_n\(x\) \to F\(x\)$ as $n \to \infty$. If $H\_0$ is true, then the empirical cdf, $\hat F\_n\(x\)$, should be a good approximation to the true cdf, $F\(x\)$, for large $n$.
 
-We want to answer the main question: Does the empirical distribution actually support the assumption that $H_0$ is true? If the empirical distribution doesn't closely resemble the distribution that $H_0$ is supposing, we should reject $H_0$.
+We want to answer the main question: Does the empirical distribution actually support the assumption that $H\_0$ is true? If the empirical distribution doesn't closely resemble the distribution that $H\_0$ is supposing, we should reject $H\_0$.
 
-In particular, the K-S test rejects $H_0$ if the following inequality holds:
+In particular, the K-S test rejects $H\_0$ if the following inequality holds:
 
 $$
 D \equiv \max_{x \in \mathbb R} |F(x) - \hat F_n(x)| > D_{\alpha, n}
 $$
 
-In other words, we define our test statistic, $D$, as the maximum deviation between the hypothesized cdf, $F(x)$, and the empirical cdf, $\hat F_n(x)$. Note here that $\alpha$ is our level of significance, and $D_{\alpha, n}$ is a tabled K-S quantile. Interestingly, the value of $D_{\alpha, n}$ depends on the particular distribution we are hypothesizing, in addition to $\alpha$ and $n$.
+In other words, we define our test statistic, $D$, as the maximum deviation between the hypothesized cdf, $F\(x\)$, and the empirical cdf, $\hat F_n\(x\)$. Note here that $\alpha$ is our level of significance, and $D_{\alpha, n}$ is a tabled K-S quantile. Interestingly, the value of $D\_{\alpha, n}$ depends on the particular distribution we are hypothesizing, in addition to $\alpha$ and $n$.
 
 If the empirical cdf diverges significantly from the supposed true cdf, then $D$ will be large. In that case, we will likely reject the null hypothesis and conclude that the observations are probably not coming from the hypothesized cdf.
 
@@ -1371,7 +1369,7 @@ $$
 
 Of course, we've used the $\chi^2$ goodness-of-fit test previously to test uniformity. Also, we probably wouldn't test the uniformity of numbers coming from an RNG using K-S because, in that case, we'd likely have millions of observations, and a $\chi^2$ test would be just fine.
 
-However, let's pretend that these $X_i$'s are expensive to obtain, and therefore we only have a few of them; perhaps they are service times that we observed over the course of a day.
+However, let's pretend that these $X\_i$'s are expensive to obtain, and therefore we only have a few of them; perhaps they are service times that we observed over the course of a day.
 
 Remember the K-S statistic:
 
@@ -1405,9 +1403,9 @@ $$
 D = \max_{0 \leq x \leq 1} | x - \hat F_n(x)|
 $$
 
-The maximum can only occur when $x$ equals one of the observations, $X_1, X_2, ...,X_n$. At any $X_i$, $\hat F_n(x)$ jumps suddenly from $(i-1) / n$ to $i / n$. Since $x$ doesn't experience a jump itself at this point, the distance between $x$ and $\hat F(x)$ is maximized when $x$ equals some  $X_i$.
+The maximum can only occur when $x$ equals one of the observations, $X\_1, X\_2, ...,X\_n$. At any $X\_i$, $\hat F\_n\(x\)$ jumps suddenly from $\(i-1\) / n$ to $i / n$. Since $x$ doesn't experience a jump itself at this point, the distance between $x$ and $\hat F\(x\)$ is maximized when $x$ equals some $X\_i$.
 
-Let's first define the ordered points, $X_{(1)} \leq X_{(2)} \leq \cdots \leq X_{(n)}$. For example, if $X_1 = 4$, $X_2 = 1$, and $X_3 = 6$, then $X_{(1)} = 1$, $X_{(2)} = 4$ and $X_{(3)} = 6$.
+Let's first define the ordered points, $X_{\(1\)} \leq X_{\(2\)} \leq \cdots \leq X_{\(n\)}$. For example, if $X\_1 = 4$, $X\_2 = 1$, and $X\_3 = 6$, then $X_{\(1\)} = 1$, $X_{\(2\)} = 4$ and $X_{\(3\)} = 6$.
 
 Instead of computing the maximum over all the $x$-values between zero and one, we only have to compute the maximum taken at the jump points. We can calculate the two potential maximum values:
 
@@ -1415,7 +1413,7 @@ $$
 D^+ \equiv \max_{1 \leq i \leq n}\left\{\frac{i}{n} - X_{(i)}\right\}, \quad D^- \equiv \max_{1 \leq i \leq n}\left\{X_{(i)} - \frac{i-1}{n}\right\}
 $$
 
-Given those two values, it turns out that $D = \max(D^+, D^-)$. 
+Given those two values, it turns out that $D = \max\(D^+, D^-\)$.
 
 Let's look at a numerical example. Consider:
 
@@ -1439,17 +1437,17 @@ X_{(i)} - \frac{i-1}{n}  & 0.016 & - & - & \textbf{0.106} & - \\
 \end{array}
 $$
 
-As we can see from the bolded cells, $D^+ = 0.402$, and $D^- = 0.106$, so $D = 0.402$. Now, we can go to a K-S table for the uniform distribution. We set $n=5$ and chose $\alpha = 0.05$, and $D_{0.05, 5} = 0.565$. Because the statistic is less than the quantile, we fail to reject uniformity.
+As we can see from the bolded cells, $D^+ = 0.402$, and $D^- = 0.106$, so $D = 0.402$. Now, we can go to a K-S table for the uniform distribution. We set $n=5$ and chose $\alpha = 0.05$, and $D\_{0.05, 5} = 0.565$. Because the statistic is less than the quantile, we fail to reject uniformity.
 
-That being said, we encountered several small numbers in our sample, leading us to perhaps intuitively feel as though these $X_i$'s are not uniform. One of the properties of the K-S test is that it is quite conservative: it needs a lot of evidence to reject $H_0$.
+That being said, we encountered several small numbers in our sample, leading us to perhaps intuitively feel as though these $X\_i$'s are not uniform. One of the properties of the K-S test is that it is quite conservative: it needs a lot of evidence to reject $H\_0$.
 
 ### Other Tests
 
 There are many other goodness-of-fit tests, such as:
 
-- Anderson-Darling
-- Cramér-von Mises
-- Shapiro-Wilk (especially appropriate for testing normality)
+* Anderson-Darling
+* Cramér-von Mises
+* Shapiro-Wilk \(especially appropriate for testing normality\)
 
 We can also use graphical techniques, such as [Q-Q plots](https://en.wikipedia.org/wiki/Q%E2%80%93Q_plot), to evaluate normality. If observations don't fall on a $y= x$ line on a Q-Q plot, we have to question normality.
 
@@ -1467,7 +1465,7 @@ Believe it or not, this issue turns up all the time. For example, at the beginni
 
 What do we do in these situations? We can interview so-called "domain experts" and try to get at least the minimum, maximum, and "most likely" values from them so that we can guess at uniform or triangular distributions. If the experts can provide us with quantiles - what value we should expect 95% of the observations to fall below, for example - that's even better. At the very least, we can discuss the nature of the observations with the expert and try to extract some information that will allow us to make a good guess at the distribution.
 
-If we have some idea about the nature of the random variables, perhaps we can start to make good guesses at the distribution. For example, if we know that the data is continuous, we know that a geometric distribution doesn't make sense. If we know that the observations have to do with arrival times, then we will treat them differently than if they are success/failure binaries. 
+If we have some idea about the nature of the random variables, perhaps we can start to make good guesses at the distribution. For example, if we know that the data is continuous, we know that a geometric distribution doesn't make sense. If we know that the observations have to do with arrival times, then we will treat them differently than if they are success/failure binaries.
 
 Do the observations adhere to Poisson assumptions? If so, then we are looking at the Poisson distribution, if we are counting arrivals, or the exponential distribution, if we are working with interarrival times. Are the observations averages or sums? We might be able to use the central limit theorem and consider the normal distribution. If the observations are bounded, we might consider the beta distribution, which generalizes the uniform and triangular. We might consider the gamma, Weibull, or lognormal distributions if we are working with reliability data or job time data.
 
@@ -1491,11 +1489,11 @@ One strategy we might use is to model the arrivals as a nonhomogeneous Poisson p
 
 Of course, data don't have to be iid! Data is often multivariate. For example, a person's height and weight are correlated. When modeling people, we have to ensure that we generate the correlated height and weight simultaneously, lest we generate a seven-foot-tall person who weighs ninety pounds.
 
-Data can also be serially correlated. For example, monthly unemployment rates are correlated: the unemployment rate next month is correlated with the rate this month (and likely the past several months). As another example, arrivals to a social media site might be correlated if something interesting gets posted, and the public hears about it. As a third example, a badly damaged part may require more service than usual at a series of stations, so the consecutive service times are likely correlated. Finally, if a server gets tired, his service times may be longer than usual.
+Data can also be serially correlated. For example, monthly unemployment rates are correlated: the unemployment rate next month is correlated with the rate this month \(and likely the past several months\). As another example, arrivals to a social media site might be correlated if something interesting gets posted, and the public hears about it. As a third example, a badly damaged part may require more service than usual at a series of stations, so the consecutive service times are likely correlated. Finally, if a server gets tired, his service times may be longer than usual.
 
-What can we do? First, we need to identify situations in which data is multivariate or serially correlated, and we can conduct various statistical tests to surface these relationships. From there, we can propose appropriate models. For example, we can use the multivariate normal distribution if we are looking at heights and weights. We can also use time series models for serially correlated observations, such as the ARMA(p,q), EAR(1), and ARP processes we discussed previously.
+What can we do? First, we need to identify situations in which data is multivariate or serially correlated, and we can conduct various statistical tests to surface these relationships. From there, we can propose appropriate models. For example, we can use the multivariate normal distribution if we are looking at heights and weights. We can also use time series models for serially correlated observations, such as the ARMA\(p,q\), EAR\(1\), and ARP processes we discussed previously.
 
-Even if we guess at the model successfully, we still need to estimate the relevant parameters. For example, in the multivariate normal distribution, we have to estimate the marginal means and variances, as well as the covariances. Some parameters are easier to estimate than others. For a simple time series, like AR(1), we only have to estimate the coefficient, $\phi$. For more complicated models, like ARMA(p,q) processes where p and q are greater than one, we have to use software, such as [Box-Jenkins](https://en.wikipedia.org/wiki/Box%E2%80%93Jenkins_method) technology.
+Even if we guess at the model successfully, we still need to estimate the relevant parameters. For example, in the multivariate normal distribution, we have to estimate the marginal means and variances, as well as the covariances. Some parameters are easier to estimate than others. For a simple time series, like AR\(1\), we only have to estimate the coefficient, $\phi$. For more complicated models, like ARMA\(p,q\) processes where p and q are greater than one, we have to use software, such as [Box-Jenkins](https://en.wikipedia.org/wiki/Box%E2%80%93Jenkins_method) technology.
 
 After we've guessed at the distribution and estimated that relevant parameters, we have to finally validate our estimated model to see if it is any good. If we run a simulation and see something that looks drastically different from the original process, we have to reevaluate.
 
@@ -1506,94 +1504,96 @@ Alternatively, we can bootstrap samples from an empirical distribution if we are
 In this lesson, we will demonstrate how we carry out an elementary input analysis using Arena.
 
 ### Software Interlude
-Arena has functionality that automatically fits simple distributions to our data, which we can access from *Tools > Input Analyzer*. This input analyzer purportedly gives us the best distribution from its library, along with relevant sample and goodness-of-fit statistics.
 
-[ExpertFit](https://www.flexsim.com/expertfit/) is a specialty product that performs distribution fitting against a much larger library of distributions. Both Minitab and R have some distribution fitting functionality, but they are not as convenient as Arena and ExpertFit. 
+Arena has functionality that automatically fits simple distributions to our data, which we can access from _Tools &gt; Input Analyzer_. This input analyzer purportedly gives us the best distribution from its library, along with relevant sample and goodness-of-fit statistics.
 
-The only drawback to some of these programs is that they have issues dealing with the problem children we discussed previously. 
+[ExpertFit](https://www.flexsim.com/expertfit/) is a specialty product that performs distribution fitting against a much larger library of distributions. Both Minitab and R have some distribution fitting functionality, but they are not as convenient as Arena and ExpertFit.
+
+The only drawback to some of these programs is that they have issues dealing with the problem children we discussed previously.
 
 ### Demo Time
 
-Let's hop over to Arena. First, we click *Tools > Input Analyzer*. Next, we select *File > New* and then *File > Data File > Use Existing...* to get started. From there, we can select the relevant .dst file. Let's click on normal.dst and take a look at the data.
+Let's hop over to Arena. First, we click _Tools &gt; Input Analyzer_. Next, we select _File &gt; New_ and then _File &gt; Data File &gt; Use Existing..._ to get started. From there, we can select the relevant .dst file. Let's click on normal.dst and take a look at the data.
 
 ![](https://assets.omscs.io/notes/2020-11-05-11-13-00.png)
 
 We can see that Arena gives us several pieces of information about our data, such as:
 
-- number of observations (5000)
-- minimum value (0.284)
-- maximum value (7.29)
-- sample mean (3.99)
-- sample standard deviation (1)
+* number of observations \(5000\)
+* minimum value \(0.284\)
+* maximum value \(7.29\)
+* sample mean \(3.99\)
+* sample standard deviation \(1\)
 
-We can try to fit various distributions by selecting from the *Fit* menu. Let's select *Fit > Triangular* and see what we get.
+We can try to fit various distributions by selecting from the _Fit_ menu. Let's select _Fit &gt; Triangular_ and see what we get.
 
 ![](https://assets.omscs.io/notes/2020-11-05-11-37-34.png)
 
-This distribution tries to fit the minimum, maximum, and modal values of the data, and, as we can see, it's a terrible fit. Arena believes that the best fit is a TRIA(0,3.99,7.99) distribution. The $\chi^2$ test statistic for this fit is 1680, and the corresponding p-value is less than 0.005. The K-S statistic is 0.134 and has a corresponding p-value of less than 0.01. In plain English, the data is not triangular.
+This distribution tries to fit the minimum, maximum, and modal values of the data, and, as we can see, it's a terrible fit. Arena believes that the best fit is a TRIA\(0,3.99,7.99\) distribution. The $\chi^2$ test statistic for this fit is 1680, and the corresponding p-value is less than 0.005. The K-S statistic is 0.134 and has a corresponding p-value of less than 0.01. In plain English, the data is not triangular.
 
-Let's try again. We can select *Fit > Weibull* and see what we get.
+Let's try again. We can select _Fit &gt; Weibull_ and see what we get.
 
 ![](https://assets.omscs.io/notes/2020-11-05-11-43-58.png)
 
-Arena believes that the best fit is a WEIB(4.33, 4.3) distribution. The $\chi^2$ test statistic for this fit is 66.2, and the corresponding p-value is less than 0.005. The K-S statistic is 0.0294 and has a corresponding p-value of less than 0.01. Again, even though the fit "looks" decent, we would still reject this data as being Weibull per the numbers.
+Arena believes that the best fit is a WEIB\(4.33, 4.3\) distribution. The $\chi^2$ test statistic for this fit is 66.2, and the corresponding p-value is less than 0.005. The K-S statistic is 0.0294 and has a corresponding p-value of less than 0.01. Again, even though the fit "looks" decent, we would still reject this data as being Weibull per the numbers.
 
-Let's try again. We can select *Fit > Erlang* and see what we get.
+Let's try again. We can select _Fit &gt; Erlang_ and see what we get.
 
 ![](https://assets.omscs.io/notes/2020-11-05-11-48-44.png)
 
-Arena believes that the best fit is an ERLA(0.285, 14) distribution. The $\chi^2$ test statistic for this fit is 248, and the corresponding p-value is less than 0.005. The K-S statistic is 0.0414 and has a corresponding p-value of less than 0.01. The Erlang distribution does not fit this data.
+Arena believes that the best fit is an ERLA\(0.285, 14\) distribution. The $\chi^2$ test statistic for this fit is 248, and the corresponding p-value is less than 0.005. The K-S statistic is 0.0414 and has a corresponding p-value of less than 0.01. The Erlang distribution does not fit this data.
 
-Let's try again. We can select *Fit > Normal* and see what we get.
+Let's try again. We can select _Fit &gt; Normal_ and see what we get.
 
 ![](https://assets.omscs.io/notes/2020-11-05-11-49-58.png)
 
-Arena believes that the best fit is a NORM(3.99, 1) distribution. The $\chi^2$ test statistic for this fit is 22.1, and the corresponding p-value is 0.732. The K-S statistic is 0.00789 and has a corresponding p-value greater than 0.15. We would fail to reject the null hypothesis in this case and conclude that this data is normal.
+Arena believes that the best fit is a NORM\(3.99, 1\) distribution. The $\chi^2$ test statistic for this fit is 22.1, and the corresponding p-value is 0.732. The K-S statistic is 0.00789 and has a corresponding p-value greater than 0.15. We would fail to reject the null hypothesis in this case and conclude that this data is normal.
 
-As a shortcut, we can select *Fit > Fit All*, and Arena will choose the best distribution from its entire library. If we select this option, Arena chooses the exact same normal distribution.
+As a shortcut, we can select _Fit &gt; Fit All_, and Arena will choose the best distribution from its entire library. If we select this option, Arena chooses the exact same normal distribution.
 
-Let's look at some new data. We can click *File > Data File > Use Existing...* and then select the lognormal.dst file. Let's select *Fit > Beta* and see what we get.
+Let's look at some new data. We can click _File &gt; Data File &gt; Use Existing..._ and then select the lognormal.dst file. Let's select _Fit &gt; Beta_ and see what we get.
 
 ![](https://assets.omscs.io/notes/2020-11-05-12-13-51.png)
 
-Arena believes that the best fit is a shifted, widened BETA(3.34, 8.82) distribution. The $\chi^2$ test statistic for this fit is 126, and the corresponding p-value is less than 0.005. The K-S statistic is 0.0239 and has a corresponding p-value of less than 0.01. The beta distribution is not a good fit.
+Arena believes that the best fit is a shifted, widened BETA\(3.34, 8.82\) distribution. The $\chi^2$ test statistic for this fit is 126, and the corresponding p-value is less than 0.005. The K-S statistic is 0.0239 and has a corresponding p-value of less than 0.01. The beta distribution is not a good fit.
 
-Let's try again. We can select *Fit > Exponential* and see what we get - what a joke.
+Let's try again. We can select _Fit &gt; Exponential_ and see what we get - what a joke.
 
 ![](https://assets.omscs.io/notes/2020-11-05-12-35-19.png)
 
-Let's try again. We can select *Fit > Weibull* and see what we get.
+Let's try again. We can select _Fit &gt; Weibull_ and see what we get.
 
 ![](https://assets.omscs.io/notes/2020-11-05-12-35-58.png)
 
-Arena believes that the best fit is a shifted WEIB(2.49, 2.25) distribution. The $\chi^2$ test statistic for this fit is 237, and the corresponding p-value is less than 0.005. The K-S statistic is 0.0393 and has a corresponding p-value of less than 0.01. Clearly, Weibull is out.
+Arena believes that the best fit is a shifted WEIB\(2.49, 2.25\) distribution. The $\chi^2$ test statistic for this fit is 237, and the corresponding p-value is less than 0.005. The K-S statistic is 0.0393 and has a corresponding p-value of less than 0.01. Clearly, Weibull is out.
 
-Let's try again. We can select *Fit > Lognormal* and see what we get.
+Let's try again. We can select _Fit &gt; Lognormal_ and see what we get.
 
 ![](https://assets.omscs.io/notes/2020-11-05-12-37-17.png)
 
-Arena believes that the best fit is a shifted LOGN(2.22, 1.14) distribution. The $\chi^2$ test statistic for this fit is 257, and the corresponding p-value is less than 0.005. The K-S statistic is 0.0458 and has a corresponding p-value of less than 0.01. Surprisingly, we would reject these observations as being lognormal, even though we know we sampled them from that distribution.
+Arena believes that the best fit is a shifted LOGN\(2.22, 1.14\) distribution. The $\chi^2$ test statistic for this fit is 257, and the corresponding p-value is less than 0.005. The K-S statistic is 0.0458 and has a corresponding p-value of less than 0.01. Surprisingly, we would reject these observations as being lognormal, even though we know we sampled them from that distribution.
 
-Let's select *Fit > Fit All* to see what Arena thinks is the best fit.
+Let's select _Fit &gt; Fit All_ to see what Arena thinks is the best fit.
 
 ![](https://assets.omscs.io/notes/2020-11-05-12-39-09.png)
 
-Arena believes that the best overall fit is a shifted ERLA(0.44, 5) distribution. The $\chi^2$ test statistic for this fit is 42.3, and the corresponding p-value is 0.0182. The K-S statistic is 0.0122 and has a corresponding p-value greater than 0.15. Depending on our significance level, we may reject or fail to reject this data as coming from the Erlang distribution.
+Arena believes that the best overall fit is a shifted ERLA\(0.44, 5\) distribution. The $\chi^2$ test statistic for this fit is 42.3, and the corresponding p-value is 0.0182. The K-S statistic is 0.0122 and has a corresponding p-value greater than 0.15. Depending on our significance level, we may reject or fail to reject this data as coming from the Erlang distribution.
 
-Let's look at a final example. We can click *File > Data File > Use Existing...* and then select partbprp.dst file. Note that we don't know what distribution this data is coming from ahead of time.
+Let's look at a final example. We can click _File &gt; Data File &gt; Use Existing..._ and then select partbprp.dst file. Note that we don't know what distribution this data is coming from ahead of time.
 
-Let's select *Fit > Fit All* to see what Arena thinks is the best fit.
+Let's select _Fit &gt; Fit All_ to see what Arena thinks is the best fit.
 
 ![](https://assets.omscs.io/notes/2020-11-05-12-46-48.png)
 
-Arena believes that the best overall fit is a shifted GAMM(0.775, 4.29) distribution. The $\chi^2$ test statistic for this fit is 4.68, and the corresponding p-value is 0.337. The K-S statistic is 0.0727 and has a corresponding p-value greater than 0.15. We would fail to reject that this data is coming from the Gamma distribution.
+Arena believes that the best overall fit is a shifted GAMM\(0.775, 4.29\) distribution. The $\chi^2$ test statistic for this fit is 4.68, and the corresponding p-value is 0.337. The K-S statistic is 0.0727 and has a corresponding p-value greater than 0.15. We would fail to reject that this data is coming from the Gamma distribution.
 
-If we click on *Data File > Generate New...*, we can generate a file of observations according to some distribution. Let's write 5000 TRIA(2,5,10) observations to a file called triang2.dst.
+If we click on _Data File &gt; Generate New..._, we can generate a file of observations according to some distribution. Let's write 5000 TRIA\(2,5,10\) observations to a file called triang2.dst.
 
 ![](https://assets.omscs.io/notes/2020-11-05-12-53-32.png)
 
-Let's load these observations and then select *Fit > Fit All*.
+Let's load these observations and then select _Fit &gt; Fit All_.
 
 ![](https://assets.omscs.io/notes/2020-11-05-12-54-19.png)
 
-Arena believes that the best overall fit is a TRIA(2,5,10) distribution. The $\chi^2$ test statistic for this fit is 33.6, and the corresponding p-value is 0.565. The K-S statistic is 0.00932 and has a corresponding p-value greater than 0.15. Perfect.
+Arena believes that the best overall fit is a TRIA\(2,5,10\) distribution. The $\chi^2$ test statistic for this fit is 33.6, and the corresponding p-value is 0.565. The K-S statistic is 0.00932 and has a corresponding p-value greater than 0.15. Perfect.
+

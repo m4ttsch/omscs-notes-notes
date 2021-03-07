@@ -23,7 +23,7 @@ Machine learning models are different. The machine learning process involves run
 
 ## What's X and Y Quiz
 
-Let's think about building a model to use in trading. Which of the following factors might be input values ($X$) to the model, and which might be output values ($Y$)?
+Let's think about building a model to use in trading. Which of the following factors might be input values \($X$\) to the model, and which might be output values \($Y$\)?
 
 ![](https://assets.omscs.io/notes/2020-01-22-17-57-46.png)
 
@@ -37,17 +37,17 @@ Since we often use models to predict values in the future, both future price and
 
 The particular flavor of machine learning that we are going to focus on right now is called **supervised regression learning**. Let's break down each of these terms.
 
-When we talk about *regression*, we are talking about making a numerical approximation or prediction. For example, predicting stock prices is a regression problem. Regression learning sits in contrast to **classification learning**, which involves classifying an object into one of several types.
+When we talk about _regression_, we are talking about making a numerical approximation or prediction. For example, predicting stock prices is a regression problem. Regression learning sits in contrast to **classification learning**, which involves classifying an object into one of several types.
 
-In *supervised* learning, we present the algorithm with the correct answers during the training period. In other words, we show the machine an $X$ value and its corresponding $Y$ value. After seeing a sufficient number of input/output pairs, the algorithm is ready to predict $Y$ values for new, previously unseen $X$ values.
+In _supervised_ learning, we present the algorithm with the correct answers during the training period. In other words, we show the machine an $X$ value and its corresponding $Y$ value. After seeing a sufficient number of input/output pairs, the algorithm is ready to predict $Y$ values for new, previously unseen $X$ values.
 
-Finally, when we talk about *learning*, we are talking about training with data. In this class, for example, we are often taking historical stock data and training the system to predict the future price of the stock. We "teach" the algorithm to make new predictions by showing it relevant data from the past.
+Finally, when we talk about _learning_, we are talking about training with data. In this class, for example, we are often taking historical stock data and training the system to predict the future price of the stock. We "teach" the algorithm to make new predictions by showing it relevant data from the past.
 
 Many different algorithms use supervised regression learning techniques, and we can discuss four briefly here: linear regression, K-nearest neighbor, decision trees, and decision forests.
 
 **Linear regression** involves finding the coefficients of a line that best fits the data. The coefficients are the parameters of the model, and linear regression is known as a type of **parametric learning**.
 
-**K-nearest neighbors** (KNN) is another popular approach that evaluates an incoming $X$ by examining the K-nearest $(X, Y)$ pairs. Since this algorithm compares incoming data to instances of already-seen data points, this approach is known as **instance-based learning**.
+**K-nearest neighbors** \(KNN\) is another popular approach that evaluates an incoming $X$ by examining the K-nearest $\(X, Y\)$ pairs. Since this algorithm compares incoming data to instances of already-seen data points, this approach is known as **instance-based learning**.
 
 **Decision trees** redirect incoming $X$ values down individual branches based on evaluations of factors of $X$ that occur at each node. The regression values are stored in the leaves of the tree, and the output of a decision tree for a given $X$ is the leaf in which the $X$ ends up.
 
@@ -140,3 +140,4 @@ For the rest of this class, we are going to look at data from a specific period,
 For example, we can use data from 2009 to train our models. Then, throughout 2010 and 2011, we can use our models to generate orders based on forecasts. As time passes, we can watch the performance of our portfolio change as the forecasts do or do not come true.
 
 ![](https://assets.omscs.io/notes/2020-01-25-19-19-35.png)
+

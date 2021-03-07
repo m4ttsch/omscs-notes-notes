@@ -8,31 +8,32 @@ lecture: distributed-file-systems
 # Distributed File Systems
 
 ## Distributed File Systems
-Modern operating systems export a high-level filesystem interface to abstract all of the (potentially) different types of storage devices present on a machine and unify them under a common API.
+
+Modern operating systems export a high-level filesystem interface to abstract all of the \(potentially\) different types of storage devices present on a machine and unify them under a common API.
 
 The OS can hide the fact that there isn't even local physical storage on a machine; rather, the files are maintained on a remote filesystem that is being accessed over the network.
 
-Environments that involve multiple machines for the delivery of the filesystem service are called **distributed filesystems** (DFS).
+Environments that involve multiple machines for the delivery of the filesystem service are called **distributed filesystems** \(DFS\).
 
 ## DFS Models
+
 A simple DFS model involves clients being served files from a server running on a different machine.
 
 Often, the server is not running on a single machine, but rather is distributed across multiple machines. Files may be **replicated** across every machine or **partitioned** amongst machines.
 
 In replicated systems, all the files are replicated and available on every server machine. If one machine fails, other machines can continue to service requests. Replicated systems are **fault tolerant**. In addition, requests entering a replicated system can be serviced by any of the replicas. Replicated systems are **highly available**.
 
-In partitioned systems, each server holds only some subset of the total files.
-If you need to support more files, you can just partition across more machines. In the replicated model, you will need to upgrade your hardware. This makes partitioned systems more **scalable**.
+In partitioned systems, each server holds only some subset of the total files. If you need to support more files, you can just partition across more machines. In the replicated model, you will need to upgrade your hardware. This makes partitioned systems more **scalable**.
 
 It's common to see a DFS that utilizes both partitioning and replication; for example, partitioning all the files, and replicating each partition.
 
 Finally, files can be stored on and served from all machines. This blurs the line between servers and clients, because all the nodes in the system are **peers**. Every node is responsible for maintaining the files and providing the filesystem service. Each peer will take some portion of the load by servicing some of the requests, often those that for files local to that peer.
 
 ## Remote File Service: Extremes
+
 At one extreme, we have the upload/download model. When a client wants to access a file, it downloads the entire file, performs the modifications and then uploads the entire file back to the server.
 
 ![](https://assets.omscs.io/notes/B02657E2-D79B-43AB-87F4-7B75275CA3CB.png)
-
 
 The benefit of this model is that all of the modifications can be done locally, which means they can be done quickly, without incurring any network cost.
 
@@ -47,6 +48,7 @@ The benefit of this extreme is that the server now has full control and knowledg
 The downside of this model is that every file operations pays a network cost. In addition, this model is limited in its scalability. Since every file operation goes to the server, the server will get overloaded more quickly, and will not be able to service as many clients.
 
 ## Remote File Service: A Compromise
+
 We should allow clients to benefit from using their local memory/disk and to store at least some part of the file they are accessing. This may include downloading blocks of the file they are accessing, as well as prefetching blocks that they may soon be accessing.
 
 When files can be served from a local cache, lower latencies on file operations can be achieved since no additional network cost in incurred. In addition, server scalability is increased as local service decreases server load.
@@ -58,13 +60,14 @@ This approach is beneficial because the server continues to have insight into wh
 The downside with this compromise is that the server becomes more complex. The server needs to perform additional tasks and maintain additional state to make sure it can provide consistency guarantees. This also means that the client has to understand file sharing semantics that are different from what they are used to in a normal filesystem.
 
 ## Stateless vs Stateful File Server
+
 A **stateless** server keeps no state.
 
 It has no notion of:
 
-- which files/blocks are being accessed
-- which operations are being performed
-- how many clients are accessing how many files
+* which files/blocks are being accessed
+* which operations are being performed
+* how many clients are accessing how many files
 
 As a result, every request has to be completely self-contained. This type of server is suitable for the extreme models, but it cannot be used for any model that relies on caching. Without state, we cannot achieve consistency management. In addition, since every request has to be self-contained, more bits need to be transferred on the wire for each request.
 
@@ -72,17 +75,18 @@ One positive of this approach is that since there is no state on the server, the
 
 A **stateful** server maintains information about:
 
-- the clients in the system
-- which files are being accessed
-- which types of accesses are being performed
-- which clients have a file cached
-- which clients have read/written the file
+* the clients in the system
+* which files are being accessed
+* which types of accesses are being performed
+* which clients have a file cached
+* which clients have read/written the file
 
-Because of the state, the server can allow data to be cached and can guarantee consistency. In addition, state management allows for other functionality like locking. Since accesses are known, clients can request relative blocks ("next kB of data") instead of having to specify absolute offsets.
+Because of the state, the server can allow data to be cached and can guarantee consistency. In addition, state management allows for other functionality like locking. Since accesses are known, clients can request relative blocks \("next kB of data"\) instead of having to specify absolute offsets.
 
 On failure, however, all that state needs to be recovered so that the filesystem remains consistent. This requires that the state must be incrementally check-pointed to prevent too much loss. In addition, there are runtime overheads incurred by the server to maintain state and enforce consistency protocols and by the client to perform caching.
 
 ## Caching State in a DFS
+
 Caching state in a DFS involves allowing clients to locally maintain a portion of the state - a file block, for example - and also allows them to perform operations on this cached state: `open`/`read`/`write`,etc.
 
 Keeping the cached portions of the file consistent with the server's representation of the file requires cache coherence mechanisms.
@@ -92,12 +96,15 @@ For example, two clients may cache the same portion of file. If one client modif
 For client/server systems, these coherence mechanisms may be trigged in different ways. For example, the mechanism may be triggered on demand any time a client tries to access a file, or it may be triggered periodically, or it may triggered when a client tries to open a file. In addition, the coherence mechanisms may be driven by the client or the server.
 
 ## File Sharing Semantics in DFS
+
 ### Single Node, UNIX
+
 Whenever a file is modified by any process, that change is immediately visible to any other process in the system. This will be the case even if the change isn't pushed out to disk because both processes have access to the same buffer cache.
 
 ![](https://assets.omscs.io/notes/78F61AEB-F700-4CEE-8D92-14B7D8E0FC26.png)
 
 ### DFS
+
 Even if a write gets pushed to the file server immediately, it will take some time before that update is actually delivered to the file server. It is possible that another client will not see that update for a while, and every time it performs a read operation it will continue seeing "stale" data. Given that message latencies may vary, we have no way of determining how long to delay any possible read operation in order to make sure that any write from anywhere in the system arrives at the file servers so that we can guarantee no staleness.
 
 ![](https://assets.omscs.io/notes/4559FB2E-50BC-44BB-8A2C-39C2159B9945.png)
@@ -105,6 +112,7 @@ Even if a write gets pushed to the file server immediately, it will take some ti
 In order to maintain acceptable performance, a DFS will typically sacrifice some of the consistency, and will accept more relaxed file sharing semantics.
 
 ### Session Semantics
+
 In **session semantics**, the client writes back whatever data was modified on `close`. Whenever a client needs to `open` a file, the cache is skipped, and the client checks to see if a more recent version is present on the file server.
 
 With session semantics, it is very possible for a client to be reading a stale version of a file. However, we know that when we close a file or open a file that we are consistent with the rest of the filesystem at that moment.
@@ -112,19 +120,23 @@ With session semantics, it is very possible for a client to be reading a stale v
 Session semantics are easy to reason about, but they are not great for situations where clients want to concurrently share a file. For example, for two clients to be able to write to a file and see each other's updates, they will constantly need to `close` and re-`open` the file. Also, files that stay open for longer periods of time may become severely inconsistent.
 
 ### Periodic Updates
+
 In order to avoid long periods of inconsistency, the client may write back changes periodically to the server. In addition, the server can send invalidation notifications periodically, which can enforce time bounds on inconsistency. Once the server notification is received, a client has to sync with the most recent version of the file.
 
 The filesystem can provide explicit operations to let the client `flush` its updates to the server, or `sync` its state with the remote server.
 
 ### Other strategies
+
 With immutable files, you never modify an old file, but rather create a new file instead.
 
 With transactions, the filesystem exports some API to allow clients to group file updates into a single batch to be applied atomically.
 
 ## File Vs Directory Service
+
 Filesystems have two different types of files: regular files and directories. These two types of files often have very different access patterns. As a result, it is not uncommon to adopt one type of semantics for files, and another for directories. For example, we have may session semantics for files, and UNIX semantics for directories.
 
 ## Replication and Partitioning
+
 Fileserver distribution can be accomplished via replication and/or partitioning.
 
 With replication, the filesystem can be replicated onto multiple machines, such that each machine holds all the files.
@@ -147,8 +159,9 @@ In addition, balancing the system is more difficult, because we have to take int
 
 Finally, we can have a solution where the filesystem is partitioned across some axis, and then each partition is replicated some number of times.
 
-## Networking File System (NFS) Design
-In a **Networking File System** (NFS), clients access files across the network, hence the name.
+## Networking File System \(NFS\) Design
+
+In a **Networking File System** \(NFS\), clients access files across the network, hence the name.
 
 ![](https://assets.omscs.io/notes/8EB8E1FB-C4FF-427C-A887-CD2B754A4DE0.png)
 
@@ -159,6 +172,7 @@ The NFS client interacts with the NFS server via RPC. The NFS server receives th
 When an `open` request comes to an NFS server, it will create a file handle. This file handle will contain information about the server machine as well as information about the file. This handle will be returned back to the client machine. Whenever the client wants to access files via NFS, it can pass this handle. If the file is deleted or the server machine dies, this handle becomes stale.
 
 ## NFS Versions
+
 NFSv3 is stateless, whereas NFSv4 is stateful. Since NFSv4 is stateful, it can support operations like file caching and file locking. Even though NFSv3 is stateless, the implementation typically includes modules that provide certain stateful functionality.
 
 For files that are not accessed concurrently, NFS behaves with session semantics. On `close`, all of the changes made to a file are flushed to the server, and on `open` a check is performed and, if necessary the cached portions of the files are updated.
@@ -174,9 +188,11 @@ With server-side state, NFS can support locking. NFS uses a lease-based mechanis
 NFSv4 also supports a reader/writer lock called "share reservation". It also support mechanisms for upgrading from being a reader to a writer, and vice versa.
 
 ## Sprite Distributed File System
+
 ![](https://assets.omscs.io/notes/BF2F3D15-E0CE-4DFE-B0DF-EFF69297E33E.png)
 
 ## Sprite DFS Access Pattern Analysis
+
 In the paper on caching in the sprite system, the authors performed a study to see how files are accessed in the production filesystem used by their department.
 
 They found that 33% of all file accesses are writes. Caching can be an important mechanism to improve performance: 66% of all operations can be improved. In order to leverage the cache for writes as well, a write-through policy is not sufficient.
@@ -188,6 +204,7 @@ They also observed that 20-30% of new data was deleted within 30 seconds, with 5
 Of course, the authors needed to support concurrent access even though they didn't need to optimize for it.
 
 ## Sprint DFS from Analysis to Design
+
 The authors decided that Sprite should support caching, and use a write-back policy to send changes to the server.
 
 Every 30 seconds, a client will write back all of the blocks that have not been modified within the last 30 seconds. Note that a file may be opened and closed multiple times by the client before any data is sent to the server.
@@ -200,9 +217,10 @@ When a client comes along and wants to open a file that is being written by anot
 
 Every open operation has to go to the server. This means that directories cannot be cached on the client.
 
-Finally, caching is completely disabled on concurrent writes. In this case, all of the writes will be serialized on the server-side. Because concurrent writes  do not happen frequently, this cost will not be significant.
+Finally, caching is completely disabled on concurrent writes. In this case, all of the writes will be serialized on the server-side. Because concurrent writes do not happen frequently, this cost will not be significant.
 
 ## File Access Operations in Sprite
+
 Assume that we have multiple clients that are accessing a file for reading, and one writer client.
 
 All `open` operations will go through the server.
@@ -213,16 +231,16 @@ When the writer `close`s the file, the contents will be stored in the writers' c
 
 On a per file basis, the client keeps track of:
 
-- cache (overall yes/no)
-- cached blocks
-- timer for each dirty block
-- version number
+* cache \(overall yes/no\)
+* cached blocks
+* timer for each dirty block
+* version number
 
 On a per file basis, the server keeps track of:
 
-- readers
-- writer
-- version
+* readers
+* writer
+* version
 
 Let's assume that a new writer comes along after the first writer has closed the file. This is referred to as a **sequential writer**.
 
@@ -239,3 +257,4 @@ To enable/disable caching, it makes sense for the server to maintain a cacheable
 Both writers will continue to have access to the file, but all operations will have to go through the server.
 
 When a writer closes a file, the server will see it - as every operation goes through the server - and will make the file cacheable again.
+

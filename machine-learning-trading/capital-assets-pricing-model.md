@@ -5,17 +5,17 @@ course: machine-learning-trading
 lecture: capital-assets-pricing-model
 ---
 
-# The Capital Assets Pricing Model (CAPM)
+# The Capital Assets Pricing Model \(CAPM\)
 
 ## Definition of a Portfolio
 
 A **portfolio** is a weighted set of assets.
 
-Let's suppose we have a portfolio of three different assets: Apple (AAPL), Google (GOOG), and Oracle (ORCL). Let's also assume that we have allocated 60% of the portfolio to APPL, and 20% each to GOOG and ORCL.
+Let's suppose we have a portfolio of three different assets: Apple \(AAPL\), Google \(GOOG\), and Oracle \(ORCL\). Let's also assume that we have allocated 60% of the portfolio to APPL, and 20% each to GOOG and ORCL.
 
 If we consider these allocations as a set of weights instead of percentages, we would say that our AAPL position has a weight of 0.6, while our GOOG and ORCL positions each have a weight of 0.2.
 
-We can stipulate that the sum of the weights of each investment equals one; in other words, our portfolio allocations must add to 100%. Formally, given $n$ investments, where $w_i$ represents the weight of the investment in asset $i$,
+We can stipulate that the sum of the weights of each investment equals one; in other words, our portfolio allocations must add to 100%. Formally, given $n$ investments, where $w\_i$ represents the weight of the investment in asset $i$,
 
 $$
 \sum_i^n{w_i} = 1.0
@@ -27,7 +27,7 @@ $$
 \sum_i^n{|w_i|} = 1.0
 $$
 
-For a given day, $t$, we can calculate the daily return of the portfolio, $r_p(t)$, as the weighted sum of the daily returns of each of the assets on day $t$.
+For a given day, $t$, we can calculate the daily return of the portfolio, $r\_p\(t\)$, as the weighted sum of the daily returns of each of the assets on day $t$.
 
 $$
 r_p(t) = \sum_i^n{w_i r_i(t)}
@@ -85,13 +85,13 @@ Some stocks have surprisingly large weightings. For example, Apple and Exxon eac
 
 ## The CAPM Equation
 
-The core of the **capital assets pricing model** (CAPM) is captured in the following equation.
+The core of the **capital assets pricing model** \(CAPM\) is captured in the following equation.
 
 $$
 r_i(t) = \beta_ir_m(t) + \alpha_i(t)
 $$
 
-The return, $r_i$, for an individual stock, $i$, on a particular day, $t$, is equal to some stock-specific factor, $\beta_i$, times the return on the market, $r_m(t)$, plus another stock-specific factor, $\alpha_i(t)$.
+The return, $r\_i$, for an individual stock, $i$, on a particular day, $t$, is equal to some stock-specific factor, $\beta\_i$, times the return on the market, $r\_m\(t\)$, plus another stock-specific factor, $\alpha\_i\(t\)$.
 
 Remember that when we are talking about the market, we are explicitly talking about a stock market index, such as the S&P 500, of which stock $i$ is a member.
 
@@ -161,33 +161,33 @@ If you believe CAPM, then you should be a passive investor.
 
 ## CAPM for Portfolios
 
-Suppose now that instead of looking at just one stock, we want to consider an entire portfolio. Recall that for a particular stock, $i$, it's return, $r_i(t)$, on an particular day, $t$, is equal to
+Suppose now that instead of looking at just one stock, we want to consider an entire portfolio. Recall that for a particular stock, $i$, it's return, $r\_i\(t\)$, on an particular day, $t$, is equal to
 
 $$
 r_i(t) = \beta_ir_m(t) + \alpha_i(t)
 $$
 
-To compute the return for the entire portfolio, $r_p(t)$, we compute the return for each stock, $i$, multiplied by the weight, $w_i$, of that stock in the portfolio, and sum over all the stocks in the portfolio.
+To compute the return for the entire portfolio, $r\_p\(t\)$, we compute the return for each stock, $i$, multiplied by the weight, $w\_i$, of that stock in the portfolio, and sum over all the stocks in the portfolio.
 
 $$
 r_p(t) = \sum_i{w_i(\beta_ir_m(t) + \alpha_i(t))}
 $$
 
-We can calculate the $\beta$ for the overall portfolio, $\beta_p$, as the weighted sum of the individual $\beta$ values for each stock.
+We can calculate the $\beta$ for the overall portfolio, $\beta\_p$, as the weighted sum of the individual $\beta$ values for each stock.
 
 $$
 \beta_p = \sum_i{w_i\beta_i}
 $$
 
-We can simplify the equation for $r_p(t)$ by plugging in $\beta_p$.
+We can simplify the equation for $r\_p\(t\)$ by plugging in $\beta\_p$.
 
 $$
 r_p(t) = \beta_pr_m(t) + \alpha_p(t)
 $$
 
-Notice that we also have an $\alpha_p(t)$ term, which is ostensibly derived as a weighted sum of the individual $\alpha_i(t)$ terms. However, since CAPM tells us that the expected value of $\alpha$ is zero, we don't need to compute $\alpha_p$ directly; instead, we can estimate it.
+Notice that we also have an $\alpha\_p\(t\)$ term, which is ostensibly derived as a weighted sum of the individual $\alpha\_i\(t\)$ terms. However, since CAPM tells us that the expected value of $\alpha$ is zero, we don't need to compute $\alpha\_p$ directly; instead, we can estimate it.
 
-An active portfolio manager doesn't believe that $\alpha$ is a random variable centered at zero. As a result, they incorporate the weighted sum of individual stock $\alpha$ values into the $r_p(t)$ calculation.
+An active portfolio manager doesn't believe that $\alpha$ is a random variable centered at zero. As a result, they incorporate the weighted sum of individual stock $\alpha$ values into the $r\_p\(t\)$ calculation.
 
 $$
 r_p(t) = \beta_pr_m(t) + \sum_i{w_i\alpha_i(t)}
@@ -195,7 +195,7 @@ $$
 
 ## Implications of CAPM Quiz
 
-If we are in an upward market, do we want a portfolio with a larger $\beta_p$ or a smaller $\beta_p$? How about if we are in a downward market?
+If we are in an upward market, do we want a portfolio with a larger $\beta\_p$ or a smaller $\beta\_p$? How about if we are in a downward market?
 
 ![](https://assets.omscs.io/notes/2020-02-19-20-48-30.png)
 
@@ -203,13 +203,13 @@ If we are in an upward market, do we want a portfolio with a larger $\beta_p$ or
 
 ![](https://assets.omscs.io/notes/2020-02-19-20-50-34.png)
 
-In upward markets, we want a portfolio with a larger $\beta_p$. For example, a portfolio with a $\beta_p$ greater than one rises even higher than the market, while a portfolio with a $\beta_p$ smaller than one won't be able to take full advantage of market performance.
+In upward markets, we want a portfolio with a larger $\beta\_p$. For example, a portfolio with a $\beta\_p$ greater than one rises even higher than the market, while a portfolio with a $\beta\_p$ smaller than one won't be able to take full advantage of market performance.
 
-In downward markets, we want the opposite: a smaller $\beta$. Indeed, a portfolio with a smaller $\beta_p$ falls less sharply in a downward market, while a portfolio with a larger $\beta_p$ crashes hard.
+In downward markets, we want the opposite: a smaller $\beta$. Indeed, a portfolio with a smaller $\beta\_p$ falls less sharply in a downward market, while a portfolio with a larger $\beta\_p$ crashes hard.
 
 ## Implications of CAPM
 
-Remember that CAPM dictates that the return of a portfolio, $r_p(t)$ depends on three things: the $\beta_p$ and $\alpha_p(t)$ of the portfolio, and the market return, $r_m(t)$.
+Remember that CAPM dictates that the return of a portfolio, $r\_p\(t\)$ depends on three things: the $\beta\_p$ and $\alpha\_p\(t\)$ of the portfolio, and the market return, $r\_m\(t\)$.
 
 $$
 r_p(t) = \beta_pr_m(t) + \alpha_p(t)
@@ -225,10 +225,11 @@ If we believe CAPM, then we must concede that we cannot beat the market. Profess
 
 ## Arbitrage Pricing Theory
 
-The classical value of $\beta$ relates the performance of a stock to the performance of the entire stock market. However, researchers realized that, since a particular stock might have exposure to multiple sectors of the market, perhaps it ought to have a $\beta$ value relating its performance to that of each sector. This is known as **arbitrage pricing theory** (APT).
+The classical value of $\beta$ relates the performance of a stock to the performance of the entire stock market. However, researchers realized that, since a particular stock might have exposure to multiple sectors of the market, perhaps it ought to have a $\beta$ value relating its performance to that of each sector. This is known as **arbitrage pricing theory** \(APT\).
 
-For example, a particular stock, $i$, might have exposure to the financial sector, $F$, so we could compute the component of return for $i$ due to $F$ as the product of $\beta_{iF}$ and the return $r_F$ for $F$ for that day.
+For example, a particular stock, $i$, might have exposure to the financial sector, $F$, so we could compute the component of return for $i$ due to $F$ as the product of $\beta\_{iF}$ and the return $r\_F$ for $F$ for that day.
 
 We can continue this process, computing an individual $\beta$ for each sector that impacts the stock. By breaking out the overall $\beta$ into these sector components, we can get a more accurate forecast of returns.
 
 ![](https://assets.omscs.io/notes/2020-02-20-08-52-26.png)
+

@@ -43,7 +43,7 @@ If we add some randomness into the weather system, even the numerical methods mi
 
 ### What is Simulation?
 
-**Simulation** is the imitation of some real-world - or imaginary - process or system over time. Simulation involves first generating a history of the system being represented. We use that history to get data about the system and then draw inferences concerning how it operates. 
+**Simulation** is the imitation of some real-world - or imaginary - process or system over time. Simulation involves first generating a history of the system being represented. We use that history to get data about the system and then draw inferences concerning how it operates.
 
 ### Simulation is...
 
@@ -52,14 +52,14 @@ Simulation is one of the top three industrial engineering/operations research/ma
 Simulation is an indispensable problem-solving methodology used successfully by academics and practitioners on a wide array of theoretical and applied problems.
 
 ### What Is It Good For?
- 
+
 Simulation is an excellent tool for describing and analyzing the behavior of real and/or conceptual systems.
 
 Simulation also allows us to explore and question system behavior. With simulation, we can ask "what if" questions, like what happens to queue waiting times if I add another server?
 
 Simulation aids us in system design and optimization. For example, some aircraft companies will use simulation before they even consider building a new aircraft.
 
-More broadly, we can simulate almost anything. For instance, we can simulate customer-based systems, like manufacturing systems, supply chains, and health systems.  Additionally, we can simulate systems that don't have customers, such as stock and options pricing systems.
+More broadly, we can simulate almost anything. For instance, we can simulate customer-based systems, like manufacturing systems, supply chains, and health systems. Additionally, we can simulate systems that don't have customers, such as stock and options pricing systems.
 
 ### Reason to Simulate
 
@@ -79,7 +79,7 @@ For instance, an analytical model might be able to report the exact expected wai
 
 We can also use simulations as the basis for experimental studies of systems. We can simulate an experiment to understand how many trials we should run with the real data. On the flip side, we can use simulation to verify experimental results obtained through other methods.
 
-Simulation ahead of implementation can help eliminate costly and embarrassing design blunders. 
+Simulation ahead of implementation can help eliminate costly and embarrassing design blunders.
 
 ### Disadvantages
 
@@ -97,7 +97,7 @@ Simulation has been around a very long time - we will see an example shortly fro
 
 One of the first examples of simulation takes place in 1777 with Comte de Buffon. Buffon drew two parallel lines on the ground and then dropped many needles on the ground. He counted the number of times that a needle intersected one of the lines. From this simulation, known as [Buffon's needle problem](https://en.wikipedia.org/wiki/Buffon%27s_needle_problem), Buffon was able to estimate $\pi$.
 
-Let's fast forward to the early 1900s. [William Gosset](https://en.wikipedia.org/wiki/William_Sealy_Gosset) was a statistician at the Guinness brewery in Ireland. In one simulation experiment, Gosset placed a bunch of samples of data - British prisoners' finger lengths, of all things - into a hat and withdrew them at random. 
+Let's fast forward to the early 1900s. [William Gosset](https://en.wikipedia.org/wiki/William_Sealy_Gosset) was a statistician at the Guinness brewery in Ireland. In one simulation experiment, Gosset placed a bunch of samples of data - British prisoners' finger lengths, of all things - into a hat and withdrew them at random.
 
 Guinness did not want to reveal that they hand a statistician on employ, so Gosset had to announce the results of this experiment using a pseudonym: Student. His simulation work gave rise to the [Student's t-distribution](https://en.wikipedia.org/wiki/Student%27s_t-distribution).
 
@@ -179,7 +179,7 @@ For example, we might say that "on average," getting from point A to point B in 
 
 However, averages aren't always the best metric for describing a system, because they don't take variability into account. Indeed, the [flaw of averages](https://hbr.org/2002/11/the-flaw-of-averages) explains how relying too heavily on averages can be problematic.
 
-This ability to account for variation makes simulation such a valuable tool, and, today, supply-chain software often comes with simulation capabilities. 
+This ability to account for variation makes simulation such a valuable tool, and, today, supply-chain software often comes with simulation capabilities.
 
 For example, we can use simulation to determine how much value a particular forecasting application provides in the supply chain. Additionally, we can use simulation to analyze randomness in the supply chain and model errors. These analyses help us understand if we have the best solution and, if not, what steps we might take to find it.
 
@@ -187,12 +187,12 @@ For example, we can use simulation to determine how much value a particular fore
 
 Here are some of the domains in which we can use simulation:
 
-- inventory and supply chain analysis
-- financial analysis
-  - portfolio analysis
-  - options pricing
-- service sector
-- health systems
+* inventory and supply chain analysis
+* financial analysis
+  * portfolio analysis
+  * options pricing
+* service sector
+* health systems
 
 We can use simulation to understand traffic flow and improve traffic engineering. For example, folks have uncovered, using simulation, scenarios in which adding a new lane increases traffic, somewhat counterintuitively.
 
@@ -204,7 +204,7 @@ There are many different opportunities for simulation in health systems. One cla
 
 Optimizing doctor and nurse scheduling is a similar problem. A hospital can never know precisely how many people might show up in the emergency room on Friday night. If they haven't done proper scheduling, they could find themselves woefully understaffed in the face of a large influx of patients.
 
-We can use simulation to understand how many rooms we might allocate for different purposes in the hospital. We might also use simulation to guide appropriate and sufficient procurement of supplies and inventory. 
+We can use simulation to understand how many rooms we might allocate for different purposes in the hospital. We might also use simulation to guide appropriate and sufficient procurement of supplies and inventory.
 
 We might look at an individual patient and use simulation to understand if a particular disease is in the process of occurring. Relatedly, we might look at a population of individuals and simulate how a disease may spread amongst them. The characteristics of spread can change for diseases with different levels of virulence.
 
@@ -232,13 +232,13 @@ He never confessed to his crimes, and he hung himself in prison.
 
 ### Simulation Can Help!
 
-Sequential statistical hypothesis tests drive surveillance applications. These tests center around a **null hypothesis**, typically designated $H_0$. We assume that $H_0$ is true - Dr. Shipman did not kill his patients - and then we gather evidence and see if we can disprove $H_0$.
+Sequential statistical hypothesis tests drive surveillance applications. These tests center around a **null hypothesis**, typically designated $H\_0$. We assume that $H\_0$ is true - Dr. Shipman did not kill his patients - and then we gather evidence and see if we can disprove $H\_0$.
 
 As an example of such hypothesis testing in society, we say that people are innocent until proven guilty. We start with a hypothesis that a person is innocent, and we assume that this hypothesis is true until enough evidence is present to refute it.
 
 For complicated problems, the test statistics one might use to determine whether or not to reject the null hypothesis can have very complicated statistical distributions. These distributions are not likely to be normal or exponential or any other distribution that one learns about in an introductory statistics class.
 
-We can use simulation to approximate the probability distributions of such test statistics. Then, when we take our sample data and compare it to the approximated distribution, we can reject $H_0$ if the sample casts doubt on the distribution.
+We can use simulation to approximate the probability distributions of such test statistics. Then, when we take our sample data and compare it to the approximated distribution, we can reject $H\_0$ if the sample casts doubt on the distribution.
 
 This type of simulation work helped to reject the hypothesis that Dr. Shipman was not killing his patients. There was just too much evidence to the contrary.
 
@@ -254,16 +254,16 @@ Assume that there are 365 days in a year - sorry, leap year babies - and that ev
 
 How many people do you need to have in a room to have at least a 50% chance that at least two people have the same birthday? Here are the choices:
 
-- 9
-- 23
-- 42
-- 183
+* 9
+* 23
+* 42
+* 183
 
 Upon first hearing this problem, one might think that 183 is a reasonable choice. There are 365 possible birthdays, and 183 is roughly half that. As it turns out, with 183 people in the room, there is a greater than 99% chance that at least two of them share a birthday.
 
 The reason for this counterintuitively high probability is that there are so many ways that 183 people can pair off. Remember, we are not just considering the probability that we share a birthday with any of the other 182 people, but also the probability that any of them shares a birthday with anyone else.
 
-If we have 42 people in the room, our chances only drop to around 90%. As it turns out, we only need 23 people in the room to have just over a 50% chance that two of them share a birthday.  
+If we have 42 people in the room, our chances only drop to around 90%. As it turns out, we only need 23 people in the room to have just over a 50% chance that two of them share a birthday.
 
 Simulating this problem is straightforward. We can begin sampling birthdays, each with probability $\frac{1}{365}$, and count how many birthdays we have to sample before we get a match.
 
@@ -279,11 +279,11 @@ Notice in the demonstration above that we **seed** the simulation with the numbe
 
 Now we are going to use simulation to estimate $\pi$.
 
-Let's take a square and inscribe a circle inside it. If the circle has a radius, $r$, then the circle has an area of $\pi r^2$, and the square has an area of $4 r^2$ (remember the side-length of the square is $2r$).
+Let's take a square and inscribe a circle inside it. If the circle has a radius, $r$, then the circle has an area of $\pi r^2$, and the square has an area of $4 r^2$ \(remember the side-length of the square is $2r$\).
 
 We are going to start tossing darts at the square, and we can assume that we are equally likely to hit any point within the bounds of the square. As a result, the probability that a dart lands inside the inscribed circle is equal to the ratio of the circle's area to the square's: $\frac{\pi r^2}{4r^2} = \frac{\pi}{4}$.
 
-If we throw a massive number of darts, the proportion of the darts that land in the circle should approach $\frac{\pi}{4}$, via the [law of large numbers](https://en.wikipedia.org/wiki/Law_of_large_numbers). If we multiply that proportion by four, we can get an estimate for $\pi$: $\frac{\pi}{4} * 4 = \pi$.
+If we throw a massive number of darts, the proportion of the darts that land in the circle should approach $\frac{\pi}{4}$, via the [law of large numbers](https://en.wikipedia.org/wiki/Law_of_large_numbers). If we multiply that proportion by four, we can get an estimate for $\pi$: $\frac{\pi}{4} \* 4 = \pi$.
 
 > Bonus Quiz: What is the volume of a pizza with radius, $z$, and height, $a$? Of course, it is $\pi z^2 a$, or pizza.
 
@@ -307,7 +307,7 @@ Note that this estimation is slightly worse than the estimation from our simulat
 
 ### Fun With Calculus
 
-In this example, we are going to use simulation to integrate the function $f(x) = \sin(\pi x)$ from 0 to 1. Of course, we could compute this integral directly:
+In this example, we are going to use simulation to integrate the function $f\(x\) = \sin\(\pi x\)$ from 0 to 1. Of course, we could compute this integral directly:
 
 $$
 \int \sin(\pi x) = \frac{-\cos(\pi x)}{\pi}
@@ -321,11 +321,11 @@ $$
 \int_0^1 \sin(\pi x) = \frac{1}{\pi} + \frac{1}{\pi} = \frac{2}{\pi} \approx 0.6366
 $$
 
-However, we are going to use simulation to approximate the integral using a pre-calculus methodology: rectangles. With this technique, we draw $n$ rectangles of width $\frac{1}{n}$, where each rectangle is centered about a point, $x$, along the x-axis and has a height of $f(x)$.
+However, we are going to use simulation to approximate the integral using a pre-calculus methodology: rectangles. With this technique, we draw $n$ rectangles of width $\frac{1}{n}$, where each rectangle is centered about a point, $x$, along the x-axis and has a height of $f\(x\)$.
 
-The idea here is that, as $n$ approaches $\infty$, the sum of the triangles' areas approaches the integral of $f(x)$.
+The idea here is that, as $n$ approaches $\infty$, the sum of the triangles' areas approaches the integral of $f\(x\)$.
 
-To approximate the integral via simulation, we are going to follow this same strategy. We sample $n$ points randomly from $[0, 1]$, and, for each point, $x$, we construct a rectangle, centered about $x$, with width $\frac{1}{n}$ and height $f(x)$.
+To approximate the integral via simulation, we are going to follow this same strategy. We sample $n$ points randomly from $\[0, 1\]$, and, for each point, $x$, we construct a rectangle, centered about $x$, with width $\frac{1}{n}$ and height $f\(x\)$.
 
 Let's see if the sum of the rectangles' areas approaches the actual value of the integral as we increase $n$.
 
@@ -349,9 +349,9 @@ Let's look at some more baby examples.
 
 ### Evil Random Numbers
 
-Let's look at what happens when we use a "bad" random number generator (RNG). So far, we have talked about how RNGs are not truly random, but only appear to produce a sequence of random numbers. However, some RNGs do not even come close to generating random numbers. Unfortunately, such RNGs have been used in applications.
+Let's look at what happens when we use a "bad" random number generator \(RNG\). So far, we have talked about how RNGs are not truly random, but only appear to produce a sequence of random numbers. However, some RNGs do not even come close to generating random numbers. Unfortunately, such RNGs have been used in applications.
 
-In this example, we are going to sample people's heights and weights from two normal distributions. We will assume that heights and weights are not correlated (a bad assumption, but not relevant to the demonstration).
+In this example, we are going to sample people's heights and weights from two normal distributions. We will assume that heights and weights are not correlated \(a bad assumption, but not relevant to the demonstration\).
 
 Let's look at a plot of one such sampling process, where the origin represents the mean of both distributions, and each blue dot is a height/weight observation.
 
@@ -385,9 +385,9 @@ Suppose we go to McWendy's, a popular burger joint, and we encounter a single-se
 
 What happens as the arrival rate approaches the service rate?
 
-- Nothing much
-- The line gets pretty long
-- Hamburgers start to taste better
+* Nothing much
+* The line gets pretty long
+* Hamburgers start to taste better
 
 We can use simulation to analyze the queuing model and answer this question.
 
@@ -455,7 +455,7 @@ How do we make sense of such round-to-round variability? We can simulate our por
 
 Let's imagine that we are drunk. Every second we are going to take some steps to the left or the right. We can assume that the amount of space we move left or right is normally distributed. Where are we after $n$ seconds?
 
-As $n$ increases, this "random walk" converges to something called [Brownian motion](https://en.wikipedia.org/wiki/Brownian_motion). Albert Einstein, as well as Myron Scholes (of [Black-Scholes model](https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model) fame), won Nobel Prizes for their research on Brownian motion.
+As $n$ increases, this "random walk" converges to something called [Brownian motion](https://en.wikipedia.org/wiki/Brownian_motion). Albert Einstein, as well as Myron Scholes \(of [Black-Scholes model](https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model) fame\), won Nobel Prizes for their research on Brownian motion.
 
 Look at the following image of Brownian motion.
 
@@ -469,33 +469,33 @@ In this lesson, we are going to look at how we generate randomness. A spoiler al
 
 ### Randomness
 
-Why do we care about randomness? Well, we need **random variables** (RVs) to run a simulation. For example, in our queueing simulation, we need interarrival times and service times.
+Why do we care about randomness? Well, we need **random variables** \(RVs\) to run a simulation. For example, in our queueing simulation, we need interarrival times and service times.
 
-The primary method we use to create randomness is to generate **pseudo-random numbers** (PRNs) from the uniform distribution, $U(0, 1)$, using deterministic algorithms.
+The primary method we use to create randomness is to generate **pseudo-random numbers** \(PRNs\) from the uniform distribution, $U\(0, 1\)$, using deterministic algorithms.
 
 From there, we can apply transformations to these uniform random variables to produce new variables that come from different distributions: exponential distributions for interarrival times, normal distributions for heights, and so on.
 
-### Unif(0,1) PRNs
+### Unif\(0,1\) PRNs
 
-As we said, we use deterministic algorithms to generate these $U(0, 1)$ PRNs. One class of such algorithms is the **linear congruential generators**. Here is how they work.
+As we said, we use deterministic algorithms to generate these $U\(0, 1\)$ PRNs. One class of such algorithms is the **linear congruential generators**. Here is how they work.
 
-We start with an integer seed value, $X_0$, and we generate the next value in the sequence according to the following formula:
+We start with an integer seed value, $X\_0$, and we generate the next value in the sequence according to the following formula:
 
 $$
-X_i = aX_{i - 1} \bmod{m} 
+X_i = aX_{i - 1} \bmod{m}
 $$
 
 Remember that "mod" refers to the modulus function, which, for positive integers, is essentially the remainder function. For example, $7 \bmod 4 = 3$, as seven divided by four equals one with three remaining.
 
 In creating these generators, we have to choose $a$ and $m$ carefully. Often, $m$ is a massive, prime number, and $a$ is a large number as well.
 
-Notice that these generators produce integer values. To normalize these values - that is, compress them into the range $[0,1)$ - we divide them by $m$. In other words:
+Notice that these generators produce integer values. To normalize these values - that is, compress them into the range $\[0,1\)$ - we divide them by $m$. In other words:
 
 $$
 U_i = \frac{X_i}{m}
 $$
 
-Let's look at an example. Suppose that $X_0 = 4$ and our generator function is:
+Let's look at an example. Suppose that $X\_0 = 4$ and our generator function is:
 
 $$
 X_i = 5X_{i - 1} \bmod(7)
@@ -545,7 +545,7 @@ $$
 U_5 = \frac{X_1}{m} = \frac{1}{7}
 $$
 
-This generator is bad. The values that we get are clearly not uniformly distributed; indeed, it is impossible to produce a value outside of the set $\{ \frac{1}{7}, \frac{2}{7}, \frac{3}{7}, \frac{4}{7}, \frac{5}{7}, \frac{6}{7} \}$. 
+This generator is bad. The values that we get are clearly not uniformly distributed; indeed, it is impossible to produce a value outside of the set ${ \frac{1}{7}, \frac{2}{7}, \frac{3}{7}, \frac{4}{7}, \frac{5}{7}, \frac{6}{7} }$.
 
 Here is a better generator:
 
@@ -557,9 +557,9 @@ This generator has specific properties that make it robust, including long "cycl
 
 ### Generating Other RVs
 
-The PRNs that we generate are random variables drawn from the uniform distribution bounded by zero to one: $R \sim {U(0, 1)}$.
+The PRNs that we generate are random variables drawn from the uniform distribution bounded by zero to one: $R \sim {U\(0, 1\)}$.
 
-Often, we'd like to generate random variables that come from other, more exciting distributions. We can apply the appropriate transformation to change the underlying distribution from which $R$ is sampled. 
+Often, we'd like to generate random variables that come from other, more exciting distributions. We can apply the appropriate transformation to change the underlying distribution from which $R$ is sampled.
 
 For example, we can apply the following transform to convert $R$ from a uniform random variable to an exponential random variable, using the [inverse transform method](https://en.wikipedia.org/wiki/Inverse_transform_sampling]):
 
@@ -569,7 +569,7 @@ $$
 
 There are more sophisticated methods available, such as the [Box-Muller method](https://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform) for generating normally distributed random variables, and we will explore other such techniques as the course proceeds.
 
-## Simulation Output Analysis (OPTIONAL)
+## Simulation Output Analysis \(OPTIONAL\)
 
 In this lesson, we are going to talk about simulation output. Random input means random output, and random output requires careful analysis. Simulation output is never independent or normal, so we need new methods for interpreting this output.
 
@@ -587,13 +587,13 @@ In summary, waiting times are not [i.i.d.](https://en.wikipedia.org/wiki/Indepen
 
 Generally, there are two types of simulations that we are going to cover, and each requires a different approach regarding output analysis.
 
-A **terminating simulation** gives us information about short-term behavior. We might use this type of simulation to understand waiting times in a bank over the course of a day or to simulate the average number of people infected during a (short-lived) pandemic. To analyze such simulations, we will use the **method of independent replications**.
+A **terminating simulation** gives us information about short-term behavior. We might use this type of simulation to understand waiting times in a bank over the course of a day or to simulate the average number of people infected during a \(short-lived\) pandemic. To analyze such simulations, we will use the **method of independent replications**.
 
 A **steady-state simulation** gives us information about behavior over a much longer horizon. We might use this type of simulation to understand how a 24/7 assembly line operates over the course of a year. For analyzing these types of simulations, we can use the **method of batch means**, among other techniques.
 
 ### Terminating Simulations
 
-The method of independent replications involves running a simulation many times, each under identical conditions, and then applying classical statistics on the resulting collection of data points. 
+The method of independent replications involves running a simulation many times, each under identical conditions, and then applying classical statistics on the resulting collection of data points.
 
 For example, we might simulate a queueing model one million times and then look at the mean and standard deviation of the collection of average wait times.
 
@@ -609,9 +609,10 @@ Usually, people "warm up" the simulation before collecting data. In our example,
 
 There are many different methods for dealing with steady-state data, which we will learn more about in due time:
 
-- batch means
-- overlapping batch means / spectral analysis
-- standardized time series
-- regeneration
+* batch means
+* overlapping batch means / spectral analysis
+* standardized time series
+* regeneration
 
 The method of batch means involves slicing a long-running simulation - excluding the initial observations from the "warm up" - into contiguous, adjacent batches. We calculate the sample mean from each batch, again assuming that these values are approximately i.i.d. With this assumption in hand, we can again analyze the means using classical statistical techniques.
+

@@ -41,7 +41,7 @@ Let's consider the case where $K = 1$. In this case, the model passes through ev
 
 Now consider the case where $K = N$. In this case, every point considers all of the neighbors. Thus, the generated model is a straight line passing through the mean of the $y$ values of all the points.
 
-Of course, when $1 < K < N$, the graph lies between these two extremes. For $K = 3$, the graph roughly follows the points without passing through them directly.
+Of course, when $1 &lt; K &lt; N$, the graph lies between these two extremes. For $K = 3$, the graph roughly follows the points without passing through them directly.
 
 As a result, we see that increases in $K$ decrease the probability of overfitting.
 
@@ -57,11 +57,11 @@ Our first task is to match the value of $d$ with the corresponding plot. Our sec
 
 ![](https://assets.omscs.io/notes/2020-01-27-17-23-47.png)
 
-A polynomial of degree one matches the equation $y = m_1x + b$, which is the equation of a line and corresponds to the third plot.
+A polynomial of degree one matches the equation $y = m\_1x + b$, which is the equation of a line and corresponds to the third plot.
 
-A polynomial of degree two matches the equation $y = m_1x + m_2x^2 + b$, which is the equation of a parabola and corresponds to the first plot.
+A polynomial of degree two matches the equation $y = m\_1x + m\_2x^2 + b$, which is the equation of a parabola and corresponds to the first plot.
 
-A third-order polynomial matches the equation $y = m_1x + m_2x^2 + m_3x^3 + b$, which corresponds to the second plot.
+A third-order polynomial matches the equation $y = m\_1x + m\_2x^2 + m\_3x^3 + b$, which corresponds to the second plot.
 
 We see that as we increase $d$, our model begins to follow the points more closely. Indeed, it can be shown that for $N$ points, a parabola of degree $N$ exists that passes through each point.
 
@@ -87,9 +87,9 @@ Accordingly, we have an error for every single data point in our data set.
 
 ![](https://assets.omscs.io/notes/2020-01-28-22-48-34.png)
 
-A common type of error is the **root-mean-square error** (RMSE), which we compute by taking the square root of the mean of the squared errors for each point.
+A common type of error is the **root-mean-square error** \(RMSE\), which we compute by taking the square root of the mean of the squared errors for each point.
 
-Formally, given a model fit to $N$ data points, each with an error $e_i$, we can calculate RMSE as:
+Formally, given a model fit to $N$ data points, each with an error $e\_i$, we can calculate RMSE as:
 
 $$
 \sqrt{\frac{\sum_i{e_i^2}}{N}}
@@ -101,7 +101,7 @@ The RMSE formulation gives us an approximation of the average error, although it
 
 Remember from our KNN discussion that it's possible to build models that can perfectly fit an arbitrary data set. In other words, we can create a model that has virtually zero error against our training set.
 
-As a result, it doesn't make sense to evaluate our model against the data on which it trained. Instead, we train our model on one set of data and test it on another, previously unseen set of data: the *test set*.
+As a result, it doesn't make sense to evaluate our model against the data on which it trained. Instead, we train our model on one set of data and test it on another, previously unseen set of data: the _test set_.
 
 We minimize the **in-sample** error between the training set and the model during training. We then compute the **out-of-sample** error between the test set and the model to evaluate how well the model generalizes to new data.
 
@@ -135,7 +135,7 @@ Cross-validation is a great tool, but typically doesn't fit financial data appli
 
 In financial applications, we are typically working with temporal data, and arbitrary selection of training and testing sets can create a situation where our testing data predates our training data.
 
-In other words, we might find ourselves training on data from the relative future and testing on data from the relative past. Any *future bias* like this can lead to unrealistically optimistic results, so we need to avoid it.
+In other words, we might find ourselves training on data from the relative future and testing on data from the relative past. Any _future bias_ like this can lead to unrealistically optimistic results, so we need to avoid it.
 
 We can avoid this bias with roll forward cross-validation. In **roll forward cross-validation**, we constrain the selection of training and testing sets such that training data always comes before test data. Even with these constraints, we can still subset our data to create multiple train/test trials.
 
@@ -159,7 +159,7 @@ np.corrcoef(n1, n2)
 
 ### Documentation
 
-- [numpy.corrcoef](https://docs.scipy.org/doc/numpy/reference/generated/numpy.corrcoef.html)
+* [numpy.corrcoef](https://docs.scipy.org/doc/numpy/reference/generated/numpy.corrcoef.html)
 
 ## Correlation and RMS Error Quiz
 
@@ -222,3 +222,4 @@ KNN models require less compute time to train than linear regression models. In 
 Linear regression models process queries more quickly than KNN models. The query time for a linear regression model is constant. The query time for KNN models grows with the number of queries, as previously queried data points are added to the data set and must be examined in subsequent queries.
 
 Adding new data is quicker in KNN than in linear regression. Incorporating new data into a model requires retraining the model, but, as we just saw, the training time for a KNN model is zero.
+

@@ -96,7 +96,7 @@ The Sharpe ratio is a bit more complicated, so we will spend some more time talk
 
 ## Which Portfolio is Better Quiz
 
-The Sharpe ratio allows us to consider our returns in the context of *risk*: the standard deviation, or volatility, of the returns. When we look at portfolio performance, we don't typically look at raw returns; instead, we adjust the returns received for the risk borne.
+The Sharpe ratio allows us to consider our returns in the context of _risk_: the standard deviation, or volatility, of the returns. When we look at portfolio performance, we don't typically look at raw returns; instead, we adjust the returns received for the risk borne.
 
 With this in mind, let's look at three comparisons of two stocks, ABC and XYZ, and decide which is better.
 
@@ -144,7 +144,7 @@ Only the third choice meets the two criteria we described earlier; all else bein
 
 ## Computing Sharpe Ratio
 
-Given a daily portfolio return $R_p$ and a daily risk-free rate of return $R_f$, we can formulate the Sharpe ratio $S$ as:
+Given a daily portfolio return $R\_p$ and a daily risk-free rate of return $R\_f$, we can formulate the Sharpe ratio $S$ as:
 
 $$
 S = \frac{\mathbb{E}[R_p - R_f]}{\sigma(R_p - R_f)}
@@ -152,15 +152,15 @@ $$
 
 That is, the Sharpe ratio is the expected value of the difference of the portfolio return and the risk-free rate of return divided by the standard deviation of that same difference.
 
-When we talk about expected value, we are talking about expectations of events that occur in the future. This forward-looking formulation of the Sharpe ratio is called the ** ex-ante** formulation.
+When we talk about expected value, we are talking about expectations of events that occur in the future. This forward-looking formulation of the Sharpe ratio is called the  **ex-ante** formulation.
 
-Of course, to calculate the expected value going forward, we have to look back at the historical values. We can use the historical mean of the differences between $R_p$ and $R_f$ as the expected value going forward.
+Of course, to calculate the expected value going forward, we have to look back at the historical values. We can use the historical mean of the differences between $R\_p$ and $R\_f$ as the expected value going forward.
 
 $$
 S = \frac{mean({R_p - R_f})}{\sigma(R_p - R_f)}
 $$
 
-What is the risk-free rate? One value often used is the [London Inter-bank Offered Rate](https://en.wikipedia.org/wiki/Libor). Another value used is the interest rate on a three-month treasury bill (T-bill). More recently, however, people have been using zero for the risk-free rate.
+What is the risk-free rate? One value often used is the [London Inter-bank Offered Rate](https://en.wikipedia.org/wiki/Libor). Another value used is the interest rate on a three-month treasury bill \(T-bill\). More recently, however, people have been using zero for the risk-free rate.
 
 Does this mean that we need to retrieve the corresponding risk-free rate for each daily return we have? While LIBOR and the three-month T-bill interest rate do change slightly day-to-day, we don't actually need to record their daily values.
 
@@ -186,7 +186,7 @@ $$
 x \approx 1.00038
 $$
 
-Of course, $x$ is the multiple. The daily risk-free rate is $(x-1) * 100$, or 0.038%.
+Of course, $x$ is the multiple. The daily risk-free rate is $\(x-1\) \* 100$, or 0.038%.
 
 Note that this value is constant throughout the time period, and remember that the standard deviation of a set of numbers is unaffected if each number is shifted by the same amount. As a result, we can simplify our formula for the Sharpe ratio:
 
@@ -220,7 +220,7 @@ As an example, there are 252 trading days in a year, so if we are using daily da
 
 Note that $K$ is equal to the rate of sampling, not the number of samples we take. For instance, assume we are trading for 85 days. Because we are sampling at a daily rate, we set $K = \sqrt{252}$, not $K = \sqrt{85}$.
 
-Bringing it all together, given a daily portfolio return $R_p$ and a daily risk-free rate of return $R_f$, we can formulate the Sharpe ratio $S$ as:
+Bringing it all together, given a daily portfolio return $R\_p$ and a daily risk-free rate of return $R\_f$, we can formulate the Sharpe ratio $S$ as:
 
 $$
 S = \sqrt{252} * \frac{\bar{R}_p}{\sigma{R_p}}
@@ -246,7 +246,7 @@ $$
 S = K * \frac{mean(R_p - R_f)}{\sigma_{R_p}}
 $$
 
-Given that $R_p = 0.001$ on average, $R_f = 0.0002$ on average, and $\sigma{R_p} = 0.001$, with a daily sample rate:
+Given that $R\_p = 0.001$ on average, $R\_f = 0.0002$ on average, and $\sigma{R\_p} = 0.001$, with a daily sample rate:
 
 $$
 S = \sqrt{252} * \frac{0.001 - 0.0002}{0.001}
@@ -263,3 +263,4 @@ $$
 $$
 S \approx 12.7
 $$
+
