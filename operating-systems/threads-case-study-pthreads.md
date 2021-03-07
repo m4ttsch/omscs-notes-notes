@@ -216,7 +216,7 @@ Finally, we define our two procedures: `producer` and `consumer`, which will be 
 
 ![](https://assets.omscs.io/notes/BAB41E1C-B65F-4409-948C-8AFBD2203D1C.png)
 
-The first thread will be created to execute the `producer` function, and the second thread will execute the `consumer` function.
+The first thread that we create will execute the `producer` function, and the second thread will execute the `consumer` function.
 
 We use the default behavior for these threads (i.e. they are not detachable), so we must make sure to `pthread_join` them before `main` returns.
 
