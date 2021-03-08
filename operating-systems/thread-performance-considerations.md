@@ -73,7 +73,7 @@ If I own the data center, throughput may not be the metric that I am exclusively
 
 If I really just care about money, I can look at **performance per dollar**. If I want to know if I should buy the next greatest hardware platform, I should examine whether that cost that I incur in doing so will be offset by a boost in performance per dollar.
 
-Many instead I am more concerned about energy requirements. I might look at **performance per watt** when making decisions about new pieces of hardware. If my energy costs are high, maybe the right purchase is a machine that is more energy efficient.
+Many times, I am more concerned about energy requirements. I might look at **performance per watt** when making decisions about new pieces of hardware. If my energy costs are high, maybe the right purchase is a machine that is more energy efficient.
 
 When looking to incorporate enterprise software into the system, another useful metric may be the **percentage of SLA violations**. It may not make sense to create a contract with a software company if the SLA violations on their products are very high.
 
@@ -92,7 +92,7 @@ There isn't really a straightforward answer to this question or the more general
 
 For example, some graph traversal algorithms work best on sparse graphs, while others work best on dense graphs. Some filesystems are optimized for read access, while others might be optimized for a write-heavy system.
 
-The answer is: It depends! While, this answer is almost always correct, it is rarely accepted. What is more important perhaps is modify the question, extending it to include the context you wish to examine and  the metrics you wish to obtain.
+The answer is: It depends! While, this answer is almost always correct, it is rarely accepted. What is more important perhaps, is to modify the question, extending it to include the context you wish to examine and the metrics you wish to obtain.
 
 ## Multi Process Vs. Multi Threaded
 An application can be implemented in a multithreaded way, which we have talked about at length. An application can also be implemented in a multiprocess way. Both strategies can be used to provide concurrency.
@@ -116,18 +116,18 @@ One easy way to achieve concurrency is to have multiple instances of the same pr
 
 The benefits of this approach is that it is simple. Once we have correctly developed the application, we can just spawn multiple processes and run it in each process.
 
-The downside of running multiple processes in a platform is that there is a higher memory footprint, which can hurt performance. In addition, we have to pay the high cost of a contest switch whenever we want to run a different process. As well, it can be hard/costly to maintain shared state across processes due to IPC constraints. Finally, it may be difficult to have multiple processes listening on a specific port.
+The downside of running multiple processes in a platform is that there is a higher memory footprint, which can hurt performance. In addition, we have to pay the high cost of a context switch whenever we want to run a different process. As well as, it can be hard/costly to maintain shared state across processes due to IPC constraints. Finally, it may be difficult to have multiple processes listening on a specific port.
 
 ## Multi Threaded Web Server
 Instead of taking a multiprocess approach, we can opt for a multithreaded approach, achieving concurrency within a single address space.
 
 ![](https://assets.omscs.io/notes/E9D12EF3-81CA-44E9-A248-4852A709C45D.png)
 
-In this diagram, every thread is performing all of the steps. Of course, we could have a boss/workers setup where the boss runs the first step and the workers execute the remaining steps. As well, we could have pipeline setup, in which multiple threads execute one step and one step only.
+In this diagram, every thread is performing all of the steps. Of course, we could have a boss/workers setup where the boss runs the first step and the workers execute the remaining steps. We could also have a pipeline setup, in which multiple threads execute one step and one step only.
 
-The benefits of this approach are that we have a shared address space, shared state, and a cheap user level context switch. Memory requirements are lighter, since we have a lot of shared information across all threads in he process.
+The benefits of this approach are that we have a shared address space, shared state, and a cheap user level context switch. Memory requirements are lighter, since we have a lot of shared information across all threads in the process.
 
-The downside of this approach is that it is not a simple implementation. Multithreaded requires explicit application level synchronization code, which can add to the overall complexity of the application. In addition, a multithreaded approach depends on underlying operating system level support for threads, although this is less of an issue now that it was in the past.
+The downside of this approach is that it is not a simple implementation. Multithreaded programs require explicit application level synchronization code, which can add to the overall complexity of the application. In addition, a multithreaded approach depends on underlying operating system level support for threads, although this is less of an issue now than it was in the past.
 
 ## Event-Driven Model
 An event driven application is implemented in a single address space, with a single thread of control. The main part of the process is an **event dispatcher** which in a loop looks for incoming events and then based on those events invokes one or more of the registered handlers.
@@ -140,7 +140,7 @@ Events (in the case of a web server application)  can correspond to:
 - completion of send
 - completion a disk read
 
-The event dispatcher has the ability to accept any of these types of notifications and based on the notification type invoke the right handler. Since we are taking about a single threaded process invoking a handler is just calling a function, so we just jump our execution to that instruction within the process's address space.
+The event dispatcher has the ability to accept any of these types of notifications and based on the notification type invoke the right handler. Since we are talking about a single threaded process, invoking a handler is just calling a function, so we just jump our execution to that instruction within the process's address space.
 
 The handlers run to completion. If the handler needs to block (by making an I/O request for instance), the handler will initiate the blocking operation and immediately pass control back to the dispatch loop.
 
@@ -149,7 +149,7 @@ In the multiprocess and multithreaded implementation, one request is handled at 
 
 In the event driven model, the processing of multiple requests are interleaved within a single execution context.
 
-Let's say we have one client that makes a request to our server. The client connection is accepted, and the request is parsed by the server. At some point the server may block on trying to send some information back to the client. In the meantime, two more requests come in. The first of these requests is blocking on the receipt of the HTTP message from the client. The second of these requests is blocking on accepting the connection from the client. At some point later point, the processing for each of these requests will have advanced.
+Let's say we have one client that makes a request to our server. The client connection is accepted, and the request is parsed by the server. At some point the server may block on trying to send some information back to the client. In the meantime, two more requests come in. The first of these requests is blocking on the receipt of the HTTP message from the client. The second of these requests is blocking on accepting the connection from the client. At some point later on, the processing for each of these requests will have advanced.
 
 Even though we are within one thread of execution, we are still able to simultaneously parse multiple requests.
 
@@ -162,7 +162,7 @@ If there really isn't any idle time, context switching just wastes cycles that c
 
 In the event driven model, a request will be processed exactly until a wait is necessary, at which point the execution context will switch to servicing another request.
 
-If we have multiple CPUs, the event driven model still makes sense, especially when we have to service more concurrent requests than we have CPUs. Each CPU could host a single event-driven process, and all multiple requests to be processed concurrently within that process. This can be done with less overhead than if each CPU had to context switch among multiple processes or multiple threads.
+If we have multiple CPUs, the event driven model still makes sense, especially when we have to service more concurrent requests than we have CPUs. Each CPU could host a single event-driven process, and multiple requests could be worked on concurrently within that process. This can be done with less overhead than if each CPU had to context switch among multiple processes or multiple threads.
 
 Gotcha: It is important to have mechanisms that will steer the right set of events to the right CPU.
 
@@ -173,7 +173,7 @@ Both sockets and files are represented by **file descriptors**. An event in the 
 
 To determine which file descriptor has input, we can use the `select` system call. This call takes a range of file descriptors and returns the first descriptor that has some input on it. Another alternative is the `poll` system call.  
 
-Both of these system calls have to scan through a potentially very large list of file descriptors and it is very likely that there are only very few within that list which are allocated to our web server.
+Both of these system calls have to scan through a potentially large list of file descriptors, and it is likely that there are only few within that list, which are allocated to our web server.
 
 A more recent system call is `epoll`. This eliminates some of the problems that `select` and `poll` have, namely with scanning large lists of mostly useless file descriptors.
 
@@ -206,7 +206,7 @@ If the kernel is not multithreaded - it wasn't back in the day - the helpers nee
 
 The key benefits of this model are that  it resolves some of the portability issues of the basic event-driven model. That is, it fakes asynchronous I/O operations instead of relying on native support for them.
 
-In addition, this model allows us to have a smaller footprint than a pure multiprocess or multithreaded model. Since a thread or a process in the pure multiprocess/threaded model needs to perform all of the steps for processing the request, the memory footprint will be higher than that of a help that just needs to do a very isolated task.
+In addition, this model allows us to have a smaller footprint than a pure multiprocess or multithreaded model. Since a thread or a process in the pure multiprocess/threaded model needs to perform all of the steps for processing the request, the memory footprint will be higher than that of a helper that just needs to do a very isolated task.
 
 One downside is that this model is only applicable to certain classes of applications. Another downside is that there are some complexities surrounding event routing on multi CPU systems.
 
@@ -215,22 +215,22 @@ Flash is an event-driven web server that follows the AMPED model, which means it
 
 The blocking I/O operations that are happening in this scenario are basically just disk reads.
 
-The communication from the helpers to the event dispatcher is performed via pipes. The helper reads the file in memory via `mmap` and then the dispatcher checks via `mincore` to see if the pages are in memory, and uses this information to determine if it should call a local handler or a helper. As long as the file is memory, reading it will not result in the blocking I/O operation, which means that the local handler can be used.
+The communication from the helpers to the event dispatcher is performed via pipes. The helper reads the file in memory via `mmap` and then the dispatcher checks via `mincore` to see if the pages are in memory, and uses this information to determine if it should call a local handler or a helper. As long as the file is in memory, reading it will not result in the blocking I/O operation, which means that the local handler can be used.
 
 Flash performs application level caching at multiple levels.
 
 ![](https://assets.omscs.io/notes/F11D499F-689F-4FC6-9357-06AA8772587E.png)
 
-It does this on both data and computation. It common to cache files: this is data caching. Computation can also be cached. For instance, every request has an associated pathname, and we need to look up the file given the pathname. That lookup will compute some result, which we can cache so we do not have to perform the same computation again.
+It does this on both data and computation. It is common to cache files: this is data caching. Computation can also be cached. For instance, every request has an associated pathname, and we need to look up the file given the pathname. That lookup will compute some result, which we can cache so we do not have to perform the same computation again.
 
 Similarly, the fields in the HTTP header are often file dependent. So long as the file doesn't change, the headers don't need to change. Thus we can cache the response header so long as we can tell that the file hasn't changed. Again, we don't need to perform an unnecessary computation.
 
 Flash also makes some optimizations that take advantage of the available network hardware.
 
 ## Apache Web Server
-The core component of the apache web server provides the core server functionality. This includes accepting requests, issuing responses, and managing concurrency. The various modules are mounted in a pipeline and extend the functionality of the basic server behavior. A specific apache deployment may contain one more modules.
+The core component of the apache web server provides the core server functionality. This includes accepting requests, issuing responses, and managing concurrency. The various modules are mounted in a pipeline and extend the functionality of the basic server behavior. A specific apache deployment may contain one or more modules.
 
-The flow of control is similar to the event driven model in that each request passes through all the modules similar to how the request passed through all the handlers.
+The flow of control is similar to the event driven model in that each request passes through all the modules, similar to how the request passed through all the handlers.
 
 Apache is a combination of a multiprocess and multithreaded model. In apache, each instance is a process, which implements a multithreaded boss/workers configuration with a dynamic thread pool. The total number of processes can also be dynamically adjusted depending on - among other factors - the number of outstanding requests/pending connections.
 
@@ -243,7 +243,7 @@ To achieve a good experimental design you need to answer a few questions.
 
 What systems are you comparing? Are you comparing two software implementations? If so, keep the hardware the same. Are you comparing two hardware platforms? Make sure the software is consistent.
 
-What workloads with you use? What are the inputs on the system? Will you be able to use data that may be expected/gathered from the real world, or will dummy data be used?
+What workloads will you use? What are the inputs on the system? Will you be able to use data that may be expected/gathered from the real world, or will dummy data be used?
 
 Finally, how will you measure performance? Will you look at execution time, throughput or something else? Who are you designing the system for?
 
@@ -271,7 +271,7 @@ A common metric to measure web servers - that was used in this paper - is **band
 
 Second, because the authors were concerned with Flash's ability to perform concurrent processing, they wanted to see the impact of **connection rate** as a metric. This is defined as the total number of client connections serviced divided by the total amount of time that passed.
 
-Both of these metrics were evaluated as function of file size. The intuition is that with a larger file size, the connection cost can be ammortized, resulting in higher bandwidth. On the other hand, with a larger file size, there is more work to do per connection, so its expected that there will be a lower connection rate.
+Both of these metrics were evaluated as a function of file size. The intuition is that with a larger file size, the connection cost can be ammortized, resulting in higher bandwidth. On the other hand, with a larger file size, there is more work to do per connection, so it's expected that there will be a lower connection rate.
 
 ## Experimental Results
 Let's look at the experimental results.
@@ -279,25 +279,25 @@ Let's look at the experimental results.
 ### Best Case Numbers
 For the best case, the authors used the synthetic load. They varied the number of requests that were made, but made sure each request asked for the exact same file. The is the best case because once the file is requested once, it can be cached which means that subsequent requests for the file will be answered much more quickly.
 
-For the best case experiment, they vary the file size from 0 to 200kb, and they measure the bandwidth is the number of requests times the file size divided by the total time. By varying the file size, they vary the amount of work that the server has to do on a given request.  
+For the best case experiment, they vary the file size from 0 to 200kb, and they measure the bandwidth which is the number of requests times the file size divided by the total time. By varying the file size, they vary the amount of work that the server has to do on a given request.  
 
 ![](https://assets.omscs.io/notes/EBC45431-74FC-4D6D-A91E-5E4D368BCB22.png)
 
 All of the implementations had similar results, with bandwidth increasing sharply with file size initially before plateauing.
 
-SPED has the best performance. Flash is similar in performance, but it performs the extra check for memory presence. Zeus has an anomaly, where it drops in performance after a threshold of around 125Kb. The performance of the multithreaded/multiprocess implementation are lower because of the extra synchronization requirements and the cost of context switching. Apache has the lowest performance because it has no optimizations.
+SPED has the best performance. Flash is similar in performance, but it performs the extra check for memory presence. Zeus has an anomaly, where it drops in performance after a threshold of around 125Kb. The performance of the multithreaded/multiprocess implementations are lower because of the extra synchronization requirements and the cost of context switching. Apache has the lowest performance because it has no optimizations.
 
 ### Owlnet Trace
 
 ![](https://assets.omscs.io/notes/9FA2F6D6-44DC-4BA7-9EF6-FB4D43849B0A.png)
 
- For the Owlnet trace, the results are mostly similar to the best case. We can see that Flash and SPED are the best, followed by MT/MP and then Apache. The reason for this trend is because the owl trace is very small, so most of the requests can be serviced from the cache. However, not everything can be serviced from cache, so sometime blocking I/O is required. In this case, SPED will block, but Flash will not because it has helpers. This helps explain why Flash's performance is slightly higher than the SPED implementation.
+ For the Owlnet trace, the results are mostly similar to the best case. We can see that Flash and SPED are the best, followed by MT/MP and then Apache. The reason for this trend is because the owl trace is very small, so most of the requests can be serviced from the cache. However, not everything can be serviced from cache, so sometimes blocking I/O is required. In this case, SPED will block, but Flash will not because it has helpers. This helps explain why Flash's performance is slightly higher than the SPED implementation.
 
 ### CS Trace
 
 ![](https://assets.omscs.io/notes/7FAD964F-52B7-4742-BA6D-07615FBCFE00.png)
 
-The CS trace is a much larger trace, which means that most requests are not serviced from the cache. Since the SPED implementation does not support asynchronous I/O the performance drops significantly. The multithreaded implementation does better than the multiprocess implementation because the multithreaded implementation has a smaller memory footprint   (more memory available to cache files) and is able to synchronize more quickly/cheaper.
+The CS trace is a much larger trace, which means that most requests are not serviced from the cache. Since the SPED implementation does not support asynchronous I/O the performance drops significantly. The multithreaded implementation does better than the multiprocess implementation because it has a smaller memory footprint (more memory available to cache files) and is able to synchronize more quickly/cheaply.
 
 Flash performs the best. It has the smallest memory footprint, which means it has the most memory available for caching files. As a result, fewer requests will require blocking I/O requests, which further speeds everything up. In addition, since everything occurs in the same address space, there is no need for explicit synchronization.
 
@@ -305,7 +305,7 @@ Flash performs the best. It has the smallest memory footprint, which means it ha
 
 ![](https://assets.omscs.io/notes/2A9A866D-FC1C-49C3-B91B-54E20004E4AA.png)
 
- We can see that in all cases, connection rate decreases with file size. That being said, connection rate increases as the number of optimization increases, with the fully optimized flash having the highest connection rate at a given file size. Optimizations are important!
+ We can see that in all cases, connection rate decreases with file size. That being said, connection rate increases as the number of optimizations increase, with the fully optimized flash having the highest connection rate at a given file size. Optimizations are important!
 
 ## Summary of Performance Results
 When the data is in cache, SPED smokes AMPED Flash, since AMPED Flash makes an "unnecessary" test for memory presence on each request. Both SPED and AMPED Flash perform better than MT/MP models, because neither occurs any synchronization or context switching overhead.
@@ -315,7 +315,7 @@ When the workload is disk-bound, AMPED Flash performs much better than SPED, whi
 ## Advice on Designing Experiments
 The clients using the web server care about the response time: how quickly they get a response. The operators of the web server care about throughput: how much information can they send as quickly as possible.
 
-The efficacy of a solution will depend on whose problem you are trying to solve. You will likely need to justify your solution within the context of the problems that you stakeholders are experiencing.
+The efficacy of a solution will depend on whose problem you are trying to solve. You will likely need to justify your solution within the context of the problems that your stakeholders are experiencing.
 
 For example, a solution may improve response time and throughput, or it may improve response time while keeping throughput constant, or it may improve response time while degrading throughput. Any of these solutions may be viable, depending on the context.
 
