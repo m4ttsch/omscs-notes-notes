@@ -677,7 +677,7 @@ Question: Access Control Lists may have default entry that should always follow 
 Source: book p.111
 </details>
 
-
+Question: Each element of the Access Control List contains the following:
 
 - A.) Permitted Access Rights
 - B.) Users
