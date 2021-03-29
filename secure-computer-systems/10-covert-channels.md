@@ -27,7 +27,7 @@ There are two types of covert channels
   * Example: A top secret user can make a top secret file. When a user that only has secret clearance tries to read the file they will either get "file does not exist" (this can communicate a 0) or "access denied"(communicate a 1).
   * Our previous example about reading files is also a storage covert channel.
 * **Timing covert channels:** When bits are communicated by looking at timing.
-  * Example: Two processes are sharing a CPU. This sharing is done through some sort of round-robin CPU scheduling. A higher permission process can share to a lower permission process by spending more/less time when given the CPU. Immediately passing the CPU to the lower permission process can be read as a 0, and taking a full quantum can be read as a 1. This assumes that there are only two processes sharing the CPU, otherwise there is noise.
+  * Example: Two processes are sharing a CPU. This sharing is done through round-robin CPU scheduling. A higher permission process can share to a lower permission process by spending more or less time when given the CPU. Immediately passing the CPU to the lower permission process can be read as a 0, and taking a full time quantum can be read as a 1. This assumes that there are only two processes sharing the CPU, otherwise there is noise.
 
 **Any shared resource can potentially lead to a covert channel**
 
@@ -47,7 +47,7 @@ Maybe the lower level process is listening for acoustic or electromagnetic emana
 
 ## What to do about Covert Channels
 
-* **Detection:** We need to determine if covert communication is possible
+* **Detection:** We need to determine if covert communication is possible.
 * **Estimate Bandwidth:** We should figure out how much data should be communicated per unit of time. Communication can be noisy (recall our timing covert channel example), which decreases the bandwidth.
 * **Mitigation:** We can try to decrease bandwidth. Often, not much can be done and covert communication is an unavoidable side effect of resource sharing.
 
