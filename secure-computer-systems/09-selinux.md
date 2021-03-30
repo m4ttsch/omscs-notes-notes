@@ -9,8 +9,7 @@ Janek Desai helped put together content for this module, and teaches it in the o
 
 ## Background
 
-
-SELinux is Security-Enhanced Linux. Additional access control models are implemented:
+SELinux is Security-Enhanced Linux. It implements additional access control models - 
 
 * Domain/Type Enforcement (D/TE)
 * Multilevel Security (MLS)
@@ -20,7 +19,7 @@ SELinux was developed by the NSA and then donated to the Linux open source commu
 
 ### Design Goals
 
-* Regular Linux is discretionary (DAC). SELinux was going to be a thing you could add on to Linux.
+* Regular Linux is discretionary (DAC). SELinux is a thing you can add on to Linux.
 * Decouple policy from enforcement
 * Flexible / Configurable / Loadable
 
@@ -33,11 +32,13 @@ Because Android is built on top of the Linux kernel we can add Linux to Android 
 
 ## Linux Security Module
 
-In Linux you can add the Linux Security Module (LSM) to implement something beyond what Linux does. You can load in something new, we focus on SELinux but there are other security modules like LIDS, SMAC, AppArmor.
+In Linux you can add the Linux Security Module (LSM) to implement something beyond what Linux does. LSM lets you extend Linux to use additional access control with modules like SELinux, LIDS, SMAC, AppArmor. We focus on SELinux.
 
 This module includes a bunch of functions that hook in and get called when they need to do something.
 
-In this diagram the dotted box represents a security module, xyz LSM. It implements its own security operations. In this case we are checking for inode permissions. 
+### DAC before LSM
+
+In the diagram below the dotted box represents a security module, xyz LSM. It implements its own security operations. In this case we are checking for inode permissions. 
 
 The first thing that happens is we check the DAC, remember that the LSM is layered on top of Linux's existing DAC.
 
@@ -45,47 +46,53 @@ If xyz is not loaded then we just return the result of the DAC check.
 
 ![](https://assets.omscs.io/secure-computer-systems/images/module9/lsm1.png)
 
-The dotted box enforces security policies. There is a text policy (upper right, just some configuration file) which compiles to a binary representation that then gets saved to a Policy DB. Security server actually does the enforcement. We cache the results for improved performance.
+### Implementation Details
 
-The black circle (#1) represents the policy we are feeding into the system. The red circle (#2) actually enforces the policy. 
+In the diagram below the dotted box enforces security policies.
+
+The black circle represents the policy we are feeding into the system. The red circle actually enforces the policy. 
 
 The LSM policy is checked after the DAC (DAC is just normal Linux permissions).
+
+There is a text policy (a configuration file shown upper right) which compiles to a binary representation that then gets saved to a Policy DB. The security server does the enforcement. We cache the results for improved performance.
 
 ![](https://assets.omscs.io/secure-computer-systems/images/module9/lsm2.png)
 
 
 ## SELinux Security Context
 
-**Security context** is associated with the thing making the request and the target of the request. Think of context as a collection of attributes. Some attributes come from Linux itself, like user ID, labeled `attrs` in the diagram below.
+### Attributes
 
-There are attributes specific to SELinux, labeled `selinux attrs` in the diagram below. 
+Context is a collection of attributes. Some attributes like user ID come from Linux itself (`attrs` in the diagram below). There are also attributes specific to SELinux (`selinux attrs`). 
 
-These attributes make up the security context. They are used to decide 
+These attributes are used to decide - 
 * **Access:** Can access be granted or not?
 * **Inheritance:** If a process creates a child process, what security context can be inherited? For objects, what attributes get inherited from a directory to its subdirectories.
 * **Transition:** This is like `setuid`, go from one type to another type within attributes.
-* **Override:** Override policy rules. Discussed in multi-level security for BLP.
+* **Override:** Override policy rules.
 
 ![](https://assets.omscs.io/secure-computer-systems/images/module9/context1.png)
 
-* There is a user ID (`staff_u`) in SELinux, which is separate from the Linux user ID. The user can have a role `staff_r`, the role can have a type `staff_t`.
+### Attribute Strings
+
+There is a user ID (`staff_u`) in SELinux, which is separate from the Linux user ID. The user can have a role `staff_r`, the role can have a type `staff_t`.
 
 To implement multi-level security like BLP we have the range. The range is split up into sensitivity level and compartment.
 
 ![](https://assets.omscs.io/secure-computer-systems/images/module9/context2.png)
 
-This is associated with processes, files, directories, sockets, ports, nodes, etc... It is associated with every subject and object in the system.
+Processes, files, directories, sockets, ports, nodes, etc., all have a string like this associated with them. It is associated with every subject and object in the system.
 
 ## Type Enforcement
 
-The SELinux type (called domain for processes) is used in making decisions. Should the user with type `staff_t` get access to an object of type `etc_t`? This is defined in the policy rules.
+The SELinux type is used in making decisions. Should the user with type `staff_t` get access to an object of type `etc_t`? This is defined in the policy rules.
 
 ![](https://assets.omscs.io/secure-computer-systems/images/module9/type1.png)
 
-For an source of type `staff_t` and an object of type `etc_t` lets go through an example.
+Lets go through an example for a source of type `staff_t` and an object of type `etc_t`.
 
 * Access
-  * Access can be given like so `allow staff_t etc_t:file {read write }` and this would mean that sources of type `staff_t` can read/write files of type `etc_t`.
+  * Access can be given via `allow staff_t etc_t:file {read write }` and this would mean that sources of type `staff_t` can read/write files of type `etc_t`.
 * Inheritance
   * Child processes inherit parent's type and subdirectories inherit from parent directory.
 * Transition
@@ -97,10 +104,10 @@ For an source of type `staff_t` and an object of type `etc_t` lets go through an
 
 ## Multilevel Security (MLS) in SELinux
 
-With MLS we have a hierarchy within the attributes. In Govt. it might be Top Secret > Secret > Confidential > Unclassified. With MLS we make rules about information flow to address confidentiality (BLP) or integrity (Biba). Here are some operations and the direction of information flow - 
+With MLS we have a hierarchy within the attributes. In the Dept. of Defense it might be Top Secret > Secret > Confidential > Unclassified. With MLS we make rules about information flow to address confidentiality (BLP) or integrity (Biba). Here are some operations and the direction of information flow - 
 
 * **Read:** Flows from object to user.
-* **Execute:*** Flows from object to user.
+* **Execute:** Flows from object to user.
 * **Write:** Flows from user to object.
 * **Create:** Flows from user to object.
 * **Connect:** Bidirectional. Flows from user to object and from object to user.
@@ -111,7 +118,7 @@ The portion of the security context that is used in MLS is in bold -
 
 staff_u:staff_r:staff_t:**s0-s15:c0.c1023**
 
-The sensitivity levels can be s0 through s15 and are totally ordered, meaning that all sensitivity levels are either less than, greater than, or equal to. s15 > s0. The compartments are separated by periods or commas and represent a subset. Subsets are partially ordered, meaning that some subsets are not less than, greater than, or equal to each other.
+The sensitivity levels can be s0 through s15 and are totally ordered, meaning that all sensitivity levels are either less than, greater than, or equal to, s15 > s0. The compartments are separated by periods or commas and represent a subset. Subsets are partially ordered, meaning that some subsets are not less than, greater than, or equal to each other.
 
 ### Order of Security Enforcement
 
@@ -127,9 +134,9 @@ As discussed earlier, sensitivity levels are totally ordered.
 
 s15 > s14 > ... > s0.
 
-Categories are a subset of \{c0, c1, ..., c1023\}. They are given as a string and separated by commas or periods. When they are separated by commas this means that they are included as an individual. Dots represent ranges. So the subset below is {c0, c2, c5, c6, c7, ..., c1023}
+Categories are a subset of \{c0, c1, ..., c1023\}. They are given as a string and separated by commas or periods. When they are separated by commas this means that they are included as an individual. Dots represent ranges.
 
-c0,c2,c5.c1023
+c0,c2,c5.c1023 = {c0, c2, c5, c6, c7, ..., c1023}
 
 There might be two sensitivity levels to indicate an **effective security level** and a **clearance level**. The lower level will be the effective level, and the higher will be the clearance level.
 
@@ -171,7 +178,7 @@ We can have a policy that allows us to **transition** types, this is like `setui
 
 `type_transition user_t passwd_exec_t:process passwd_t`
 
-This is saying we a user of type `user_t` can execute a file of type `passwd_exec_t` to have a process that runs with type `passwd_t`. In Linux we have a setuid() bit on the executable that lets users change their passwords. This lets the program run as root, but then root can change the password. This is more granular. Even root cannot change password if the type is not `passwd_t`.
+This says a user of type `user_t` can execute a file of type `passwd_exec_t` to have a process that runs with type `passwd_t`. In Linux we have a setuid() bit on the executable that lets users change their passwords. This lets the program run as root, but then root can change the password. Using a type transition instead of setuid() lets us be more granular. Even root cannot change password if the type is not `passwd_t`.
 
 Objects can also change types. In the policy below `t3` is the type of the process that is either upgrading or downgrading a file.
 
@@ -179,28 +186,32 @@ Objects can also change types. In the policy below `t3` is the type of the proce
 
 ## Evaluating SELinux Policies
 
-We do some exercises to check test your understanding of SELinux policies. Will the following commands complete?
+### Exercise 1
 
-Firstly, the DAC allows read write for everything in the mode column. Since there are no problems with DAC we check types. 
-
-* 1. The process of type `staff_t` has permissions to read from type mount_t. Process dominates file4 so there are no MLS problems. Command 1 is allowed.
-* 2. No write rules are given anywhere. Not allowed.
-* 3. Not allowed. The transition is not defined for staff_t. The type transition is from *sysadmin_t* to type mount_t by running an executable of sysadm_t_mount_exec. 
+Will the following commands complete?
 
 ![](https://assets.omscs.io/secure-computer-systems/images/module9/eval1.png)
 
-Again, DAC is fine.
+Firstly, the DAC allows read write for everything in the mode column. Since there are no problems with DAC we check types. 
 
-First command for process #1:
+1. The process of type `staff_t` has permissions to read from type mount_t. Process dominates file4 so there are no MLS problems. Command 1 is allowed.
+2. No write rules are given anywhere. Not allowed.
+3. Not allowed. The transition is not defined for staff_t. The type transition is from *sysadmin_t* to type mount_t by running an executable of sysadm_t_mount_exec. 
 
-* staff_t does have read access to home_t.
-* The effective sensitivity level of s0 is lower than s5, we fail MLS check.
-
-First command for process #2:
-
-* The types in red like mlsfileread give us permission to do this. I am not sure how this works, will ask on Piazza.
+### Exercise 2
 
 ![](https://assets.omscs.io/secure-computer-systems/images/module9/eval2.png)
 
+Again, DAC is fine.
 
+**Commands for process #1**:
 
+1. No access. `staff_t` does have read access to `home_t`. The effective sensitivity level of s0 is lower than s5, we fail MLS check. No access.
+2. No access. Effective level is still s0 < s5.
+3. No access. staff_t can execute the file of type `aide_exec_t` but staff_t has no transition to type aide_t, it will remain at the same type and have no permissions. If staff_t could transition to type aide_t then it would get the mlsfilereadtoclr and mlsfilewritetoclr attributes, allowing us to use the clearance level s15 instead of the effective level s0, this would allow access.
+
+**Commands for process #2**:
+
+1. Allowed. Our **clearance** level is s15, which allows us to read something with sensitivity level s5. Notice that sysadm_t has both `mlsfilewritetoclr` and `mlsfilereadtoclr`. This means when reading and writing we can use the clearance level instead of the effective level.
+2. Allowed. Again, clearance of s15 > s5.
+3. Allowed. sysadm_t can execute the file of type `aide_exec_t` and transition to type `aide_t` which has `mlsfilewritetoclr` and `mlsfilereadtoclr`. Our clearance of s15 > s0.
