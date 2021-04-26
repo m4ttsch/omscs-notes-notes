@@ -19,32 +19,30 @@ The BLP model can be applied to databases for multi-level security.
 
 ### Access Class Granularity
 
-How fine are the access controls applied? Here are some different levels of granularity:
+Here are some different levels of granularity:
 
 * Database
   * This is all of the data, multiple related tables
-* Table
-  * This is a single table in the database, columns and rows.
+* Table/relation
+  * This is a single table in the database, columns and rows. The lectures use **relation** a lot, remember that this is a table!
 * Tuple
   * A row in the database
 * Element/attribute
   * A cell in the database.
 
-The answer is that we start at the finest level, attribute/element. Some attributes are sensitive and others are not.
-
-We can compute the access class of a tuple/table/database using the access classes of the attributes within.
+We can compute the access class of a tuple/table/database using the access classes of the elements/attributes within.
 
 ## BLP in Sea View
 
-Access classes are at the attribute/cell level. The tuple access class is the LUB (least upper bound, discussed in BLP section previously) of the attributes in the tuple.
+Access classes are at the attribute/cell level. The tuple access class is the LUB/max (least upper bound, discussed in BLP section previously) of the attributes in the tuple.
 
-Table access class is the GLB (greatest lower bound) of the elements within. The reason it is the greatest lower bound is because if a user can access some cell in the table we should allow them access to the table so they can at least view that cell.
+Table access class is the GLB/min (greatest lower bound) of the elements within. The reason it is the greatest lower bound is because if a user can access some cell in the table we should allow them access to the table so they can at least view that cell.
 
 The Database access is the GLB of the tables.
 
 ### Example
 
-Each element has its access class directly to its right. So Charlie's salary is TS (Top Secret). The last column is the tuple access class, and it is the LUB (the max in this case).
+In the diagram below, each element has its access class directly to its right. So Charlie's salary is TS (Top Secret). The last column is the tuple access class, and it is the LUB (the max in this case).
 
 The table access class is the GLB/min of all elements, which is U.
 
@@ -66,19 +64,20 @@ The relation R has instances for each access class level **c**. For a database i
 
 If an element is not dominated by c then the element is replaced by the null value and has an access class equal to the key for the tuple.
 
-The relation has an access class which is the GLB of the elements. If the relation is not dominated by or equal to c then we cannot view the relationship at all. Here is the statement from the Sea View Model paper by Denning and Lint.
+The relation has an access class which is the GLB/min of the elements. If the relation is not dominated by or equal to c then we cannot view the relationship at all. Here is the statement from the Sea View Model paper by Denning and Lint.
 
 ![](https://assets.omscs.io/secure-computer-systems/images/module14/visrel.png)
 
 ## Inter-Instance Integrity
 
-If a tuple **r** (lowercase r is used for tuples) has an access class **c** then it belongs to all instances where the access class $\geq$ **c**. If the access class is \<, it will be null. Recall that the access class of the tuple is equal to the access class of the key.
+Recall that the access class of the tuple is equal to the max of the access classes of its elements.
+If a tuple **r** (lowercase r is used for tuples) has an access class **c** then all of its elements are visible when the access class $\geq$ **c**. If the access class is \< c, there will be some null values. We can go down to the access class of the key, which is the lower bound of access classes in the tuple, any lower and we will not be able to access the tuple since we can't access the key. 
 
 Below statement 1 can be paraphrased as
 
 > If a value is not null when viewed by a user in class c then a user in a dominating class c' will be able to view the value as it is and see the same class as the user in class c.
 
->If the value **is** null for a user in class c, then maybe the user in dominating class c' will get to see the actual value. If they do get to see the actual value they will also see the actual class associated with the element, since the null values get class set to the value of the key of the row. The actual class of the value will be greater than the key's class, since it was previously censored.
+>If the value **is** null for a user in class c, then maybe the user in dominating class c' will get to see the actual value. If they do get to see the actual value they will also see the actual class associated with the element. The actual class of the value will be greater than the key's class, since it was previously censored.
 
 Statement 2 is saying that a tuple is in the relation having the class of the tuple.
 
@@ -90,16 +89,14 @@ Here is a diagram of the same instance across different instance classes. See ho
 
 ## Poly-instantiation
 
-A user who only has S (secret) clearance can overwrite a null value caused by a top secret access class for an element. Only the null value is overwritten, the top secret value remains visible to the top secret user. The top secret user can overwrite their own top secret value but not the secret value written by the secret user.
-
 How this works is that we can "**poly-instantiate**" a tuple, meaning there are multiple tuples with the same key but at different access classes.
 
-Usually we can't have multiple rows with the same key, but this is a special situation.
+Usually we can't have multiple rows with the same key, but this there is a special situation called poly-instantiation.
 
 There are two types of poly-instantiation - 
 
-* **Visible**: A lower access class value is visible to higher access class users but is not overwritten.
-* **Invisible**: A higher access class value is not visible to a lower access class user and is not overwritten.
+* **Visible**: A lower access class value is visible to higher access class users, we write to this same value and it now is at a higher access class, but we keep the old less sensitive value in the database (not overwritten). A new tuple is created.
+* **Invisible**: A higher access class value is not visible to a lower access class user (i.e. NULL) but we write over the null value. This doesn't change the actual value for the higher access class, but it creates a new tuple.
 
 ### Examples
 
@@ -111,7 +108,7 @@ We can also do invisible poly-instantiation with an update. In this case the per
 
 ![](https://assets.omscs.io/secure-computer-systems/images/module14/invisible-poly2.png)
 
-In our previous example we created 2 rows for Alice. We now double that to 4 rows. A TS user changes Alice's dept. to math for the two existing rows. The access class is TS for these rows and dept. values.
+In our previous example we created 2 rows for Alice. We now double that to 4 rows. Notice that the UPDATE is applied to all rows with NAME = 'Alice'. A TS user changes Alice's dept. to math for the two existing rows.
 
 ![](https://assets.omscs.io/secure-computer-systems/images/module14/visible-poly.png)
 
@@ -125,20 +122,20 @@ More formally, if (class1, prof1, book1) and (class1, prof2, book2) are in the r
 
 ### Integrity
 
-This says that if two rows have the same key then values in the same columns of these rows having the same access classes will be the same.
+This says that if two rows have the same key then values in the same columns of these rows having the same access classes will be the same. Look back at our example with 4 rows for Alice and see that values in the same column with the same access class and key are the same.
 
 ![](https://assets.omscs.io/secure-computer-systems/images/module14/prop9.png)
 
-This is just the multi-value dependency thing from before. Not entirely clear myself on the formalism, PRs welcome from passionate learners.
+This is the multi-value dependency thing from before. Not entirely clear myself on the formalism, PRs welcome from passionate learners.
 
 ![](https://assets.omscs.io/secure-computer-systems/images/module14/mvd2.png)
 
 
 ### Jajodia and Sandhu (JS model)
 
-In Sea View we can get $Z^n$ tuples where Z = number of access classes and n = number of non-key elements. Look over the previous examples and convince yourself that this is the case.
+In Sea View we can get $Z^n$ tuples where Z = number of access classes and n = number of non-key elements. This is because for each access class you can multiply the number of existing rows by Z. So we start with 1 row, make updates for every access class to a single column and now we have Z rows. Do it again and we have Z\*Z rows. Then we get up to $Z^n$ tuples.
 
-The authors felt that some of the tuples generated in the Sea View model were not needed.
+Jajodia and Sandhu made the JS model in a paper. The authors felt that some of the tuples generated in the Sea View model were not needed.
 
 * Entity integrity
   * No Tuples can have null as part of the primary key (PK might have multiple elements)

@@ -17,7 +17,7 @@ We need to set up a secure communication channel between nodes.
 
 ## A Single Node
 
-A node is the machine hardware, denoted $M$. $M$ is running an operating system (i.e. Linux). The machine and the operating system together constitute a node.
+The machine hardware is denoted $M$. $M$ is running an operating system (i.e. Linux). The machine and the operating system together constitute a node.
 
 A principal N might be in a role. For example, *N as manager* means that N is taking on the role of a manager, the **as** operator is for roles. The role can limit authority because it only lets you do a subset of the things you could otherwise do. 
 
@@ -33,26 +33,25 @@ When we run a program P with digest D that makes a request s:
 
 $$s \equiv N \text{ as } D \equiv M \text{ as } OS \text{ as } D$$
 
-If the process running a secure program P is $P_r$ then the credential of $P_r$ is $M \text{ as } OS \text{ as } P$. The credential is just a claim that we can believe about who the process can speak for.
+If the process running a secure program P with digest D is $P_r$ then the credential of $P_r$ is $M \text{ as } OS \text{ as } D$. The credential is just a claim that we can believe about who the process can speak for.
 
 ### Attestation
 
-One way of ensuring secure loading is to make the assumption that the file system is secure. This sort of transfers the problem to ensuring that the file system is actually secure.
+One way of ensuring secure loading is to make the assumption that the file system is secure. Since we get the program from the file system the program is trusted. This transfers the problem to ensuring that the file system is actually secure.
 
-If we have an untrusted file system then we compute can use a known digest of the program to verify that the program is what it should be. We have seen this before and it is called attestation.
+If we have an untrusted file system then we can use a known digest of the program to verify that the program is what it should be. We have seen this before and it is called attestation.
 
-If P is the OS then secure loading is also known as secure booting. Since we have securely booted then we have a credential, $M$ as OS.
+If P is the OS then secure loading is also known as **secure booting**. Since we have securely booted then we have a credential, $M$ as OS.
 
 This OS can load one or more programs, which it may also securely load.
-
 
 ## Secure Boot Details
 
 Machine M is the base case for authentication, if we can't trust M then we can't trust anything else in the machine.
 
-We assume that M comes with keys $K_M^{-1}, K_M$ and a certificate $K_{CA}$ says $K_m \implies M$. We need to make sure that M is a globally unique identifier like a manufacturer serial number.
+We assume that M comes with keys $K_m^{-1}, K_m$ and a certificate $K_{CA}$ says $K_m \implies M$. The certificate is signed by the private key of the trusted certificate authority. We need to make sure that M is a globally unique identifier like a manufacturer serial number.
 
-Is it practical to assume this? The Trust Policy Module (TPM was supposed to have such a certificate) and we revisit SGX later, but the assumptions we are making here aren't entirely realistic for most machines.
+Is it practical to assume this? The Trust Policy Module (TPM) was supposed to have such a certificate. Generally the assumptions we are making here aren't entirely realistic for most machines.
 
 M really is the initial code that gets executed when a machine is first powered on, like BIOS.
 
@@ -60,16 +59,15 @@ M really is the initial code that gets executed when a machine is first powered 
 
 We want it so that M only loads a trusted OS, the TPM or boot ROM can store the OS digest and perform attestation.
 
-As part of the boot process we create a new certificate for the node. We make keys $(K_n, K_n^{-1})$ and have a certificate saying that $K_n \implies M \text{ as } OS$. M is going to protect $K_m^{-1}$ even from the operating system.
+As part of the boot process we create a new certificate for the node. We make keys $(K_n, K_n^{-1})$ and have a certificate saying that $K_n \implies M \text{ as } OS$. We trust this certificate because it is signed by the machine which is trusted because it has a certificate from the CA. M is going to protect $K_m^{-1}$ even from the operating system which is why we use $K_n$.
 
 Once the OS is secured then we can perform user authentication and these users will launch processes that run on their behalf, and we can use attestation to make sure the processes running are the correct ones.
 
 ## Delegation
 
-When a user U logs into a node, M as OS, the node itself (M as OS) does not become the user U. What we want is that the node can launch programs that can act on behalf of the user U, not that the node can become the user.
+When a user U logs into a node, the node itself (M as OS) does not become the user U. What we want is that the node can launch programs that can act on behalf of the user U, not that the node can become the user.
 
 This is delegation. U delegates authority for M as OS to assert that a process P runs on behalf of U. 
-
 
 This is different than "speaks for". If $N$ speaks for $U$ then $N$ can speak unconditionally on $U$'s behalf. If we do not want $N$ to become as powerful as $U$ then we use delegation. Delegation transfers limited authority.
 
@@ -247,11 +245,12 @@ We have seen that the service provider is a principal that holds sensitive data 
 
 The ISV has a certificate given by a trusted CA. The ISV certificate, CA says $K_\text{ISV} \implies$ ISV.
 
-The **Intel Attestation Service (IAS)** receives the certificate from ISV and issues a service provider ID (SPID).
+The **Intel Attestation Service (IAS)** receives the certificate from ISV and issues a service provider ID (SPID). The software in the enclave can now communicate with the service provider.
 
-**Root seal key**: When Intel ships a machine they create a root seal key which is made during manufacturing and is not retained by Intel, think of this like $K_M$ that we discussed in the verification of hardware. 
+The attestation service has a certificate for communication with the service provider. The attestation service will use the root seal key to sign its root provisioning key.
 
-**Root provisioning key**: The provisioning key signs the certificate that says the root seal key is the key for the processor. The enclave has a certificate of its own.
+* **Root seal key**: When Intel ships a machine they create a root seal key which is made during manufacturing and is not retained by Intel, think of this like $K_M$ that we discussed in the verification of hardware. 
+* **Root provisioning key**: The provisioning key signs the certificate that says the root seal key is the key for the processor. The enclave has a certificate of its own.
 
 **Enclave certificate** comes from the ISV, we must trust the key for the ISV.
 
@@ -259,7 +258,7 @@ The **Intel Attestation Service (IAS)** receives the certificate from ISV and is
 
 Diffie-Hellman key exchange is used to exchange keys from the client and server. Both the enclave and the service provider have public keys and certificates so the communication can be secure.
 
-The client hardware can make a digest of the enclave for attestation. This digest is sent to the service provider, who sends it to the Intel Attestation Service (IAS). The Intel has worked with the software vendors to get the knowledge it needs to verify the digest using the IAS. After verification we feel confident in sending sensitive data to the enclave.
+The client hardware can make a digest of the enclave for attestation. This digest is sent to the service provider, who sends it to the Intel Attestation Service (IAS).  Intel has worked with the software vendors to get the knowledge it needs to verify the digest using the IAS. After verification we feel confident in sending sensitive data to the enclave.
 
 
 
