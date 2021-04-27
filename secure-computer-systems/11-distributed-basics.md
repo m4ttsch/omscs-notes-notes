@@ -28,7 +28,7 @@ A user does not directly request a resource R from the TCB on the server machine
 
 The access control policy says who has access to a resource. In the distributed setting the person making the request doesn't have to be the person named in the policy. As long **as the principal making the request can be trusted at least as much as some principal having access to R, they will get access granted.**
 
-Communication channels are the principals that directly deliver requests to the server. These channels are like network connections, system calls, and decryption of encrypted messages. With encrypted communications, keys can be principals.
+Communication channels are the principals that directly deliver requests to the server. These channels are things like network connections, system calls, and decryption of encrypted messages. With encrypted communications, keys can be principals.
 
 We look at both the theory and practice of authentication and authorization in distributed systems.
 * Theory gives us a language for making precise statements about security actions
@@ -106,7 +106,7 @@ If $''s$ and $''s \supset s'$ then $''s'$. This is saying if a thing is true and
 * If a statement is true it doesn't matter who says it, it is true that the person says it.
   * $''s$ then $''A$ says $s$ for every principle $A$.
 * (A says s and (A says s $\supset$ s')) $\supset$ s' 
-  * The above statement is true, via our previous statement.
+  * The above statement is true because it is like "if A and (A implies B) then B". Modus ponens.
 
 ![](https://assets.omscs.io/secure-computer-systems/images/module11/valid.png)
 
@@ -128,10 +128,23 @@ Remember that $\text{K}_\text{abadi} \implies \text{Abadi}$ means "$\text{K}_\te
 
 ![](https://assets.omscs.io/secure-computer-systems/images/module11/AB1.png)
 
-
-Lots of logic can be done.
+This next picture is confusing, I'll try to explain after you look at it.
 
 ![](https://assets.omscs.io/secure-computer-systems/images/module11/AB2.png)
+
+We have keys that say stuff but we need to have SRC and Manager saying it.
+
+$K_{\text{Abadi}} \implies \text{Abadi} \implies \text{SRC} \\ K_{\text{Burrows}} \implies \text{Burrows} \implies \text{Manager}$
+
+The "speaks for" operator is transitive so this can be simplified to 
+
+$K_{\text{Abadi}} \implies \text{SRC} \\ K_{\text{Burrows}} \implies \text{Manager}$
+
+In the paper and in the lecture they make this next step by saying it follows from monotonicity. Not very rigorous, but maybe the proof is obvious (not to me).
+
+$\text{If }(K_{\text{Abadi}} \implies \text{SRC}) \wedge (K_{\text{Burrows}} \implies \text{Manager}) \text{ then } \\ (K_{\text{Abadi}} \wedge K_{\text{Burrows}}) \implies (\text{SRC} \wedge \text{Manager})$
+
+That is how we get step 10. Step 11 is more self-explanatory. And the whole point is that $A \implies B$ is true, so what it implies is true, which is another implication, which ends up implying that SRC $\wedge$ Manager says to read the file.
 
 ## Securing Communication Channels
 
@@ -173,9 +186,9 @@ We encrypt a statement S with K. This results in **K says S**. We decrypt with $
 
 ## Sharing Keys
 
-### Constructing Practical Secure Cahnnels
+### Constructing Practical Secure Channels
 
-* We have a key $K$ and key identifier $K^r$. r is an identifier for the key K, this tells you which key to use to decrypt K.
+* We have a key $K$ and key identifier $K^r$. r is an identifier for the key K that tells you which key to use to decrypt K.
 * $K^{ab}=(K^a, K^b)$ are identifiers for K which is shared by principals A and B.
 * How do we generate $K$? How do we generate $K^r$?
 * How do we share $K$ and $K^r$?
@@ -197,7 +210,7 @@ We must generate a key K and share it with A and B. Messages are sent from A to 
 
 I don't recognize this as Diffie-Hellman, in Diffie-Hellman we would combine $K_a^{-1}$ with $K_b$ to get our shared key? If you can clarify please submit a PR.
 
-### Secure Messages form A to B
+### Secure Messages from A to B
 
 We want the statement **A says s**, but we have to say this securely. This is why we did the key exchange so that the following is true - 
 
@@ -222,10 +235,10 @@ CAs are mostly offline. The CA's private key signs all the statements about what
 
 Certificates can be revokes for a number of reasons, like if a user's private key gets leaked or if there is an expiration date.
 
-We can keep the CA offline and **have an online agent that tracks which certificates are revoked**. There are formal statements and proofs about how this works in the paper.
+We can keep the CA offline and **have an online agent that tracks which certificates are revoked**. When we get a statement signed by a CA we can check if the certificate has been revoked.
 
 ## Distributed Trust
 
-A single CA for the entire internet is problematic. We can have hierarchical CAs. So $\text{CA}_B$ is the root CA of B. A trusts $\text{CA}_B$ but not $\text{CA}_n$. So $\text{CA}_B$ is used in a chain of trust that goes down to B and will end up signing the statement that is sent to A.
+A single CA for the entire internet is problematic. We can have hierarchical CAs. So $\text{CA}_B$ is the root CA of B. A trusts $\text{CA}_B$ but not $\text{CA}_n$ which signs the certificate of B. So $\text{CA}_B$ is used in a chain of trust that goes down to B and will end up signing the statement that is sent to A. The details are discussed in the paper but this is the depth discussed in the lecture.
 
 ![](https://assets.omscs.io/secure-computer-systems/images/module11/trust-chain.png)

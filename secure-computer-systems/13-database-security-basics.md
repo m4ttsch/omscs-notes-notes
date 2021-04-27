@@ -38,11 +38,11 @@ GRANT SELECT on TABLE to Manager [with Grant option]
 REVOKE SELECT on TABLE from Manager
 ```
 
-These statements do things like allow/remove the creation of tables and allow/remove the ability to run `SELECT` queries.
+These statements do things like allow/remove the ability to create tables and allow/remove the ability to run `SELECT` queries.
 
 When we revoke it cascades, so if you revoke from someone who propogated the role, the people who got the role from the person you just revoked will also lose permissions. The last statement made will cascade in the above example.
 
-### admin vs. Grant option
+### admin vs. grant option
 
 The admin option is like giving ownership access rights. They can revoke rights to someone who is granted rights. In this case rights that are granted will not cascade on revocation.
 
@@ -61,19 +61,22 @@ Users can have permissions of either definer or invoker.
 
 ### Virtual Databases or Views
 
-Views can be derived from tables within a database. You can access the view when you have permissions to view all tables within the database. You can grant access to the view when you have grant permissions to all the underlying tables.
+Views can be derived from tables within a database.
+
+*  You can access the view when you have permissions to access all the underlying tables of the view within the database. 
+* You can grant access to the view when you have grant permissions to all the underlying tables.
 
 ## Inference attacks
 
-Suppose we have public base salary and public total compensation in a database, but we want to keep the bonus private. This isn't possible since base salary + bonus = total comnpensation.
+Suppose we have public base salary and public total compensation in a database, but we want to keep the bonus private. This isn't possible since base salary + bonus = total compensation. This is an example of vulnerability to inference attack.
 
 ### Functional Dependency Attack
 
 This is when the value in column `A` determines the value in column `B`. So maybe `rank` determines `salary`. 
 
-Suppose we don't want to expose name and salary. 
+Suppose we don't want to expose `name` and `salary`. 
 
-You could query for name and rank, then query for rank and salary, then you know name and salary.
+You could query for `name` and rank, then query for `rank` and salary, then you know `name` and `salary`.
 
 ### Statistical Queries and Aggregate Results
 
@@ -94,9 +97,9 @@ Suppose the attacker has the average GPA for male students, female students, and
 
 $$\text{overall avg.} = \frac{\text{female }+\text{ male} \cdot (n-1)}{n}$$
 
-And then we solve.
+And then we solve for female, but since there is only one female student we know exactly who this is.
 
-## Defending Inference Attacks
+## Defending Against Inference Attacks
 
 ### Small/Large Query Attack and Mitigation
 
@@ -122,11 +125,13 @@ $$C = C_1 - T$$
 
 ### The Sad Truth
 
-There is a theory that says given an unlimited number of statistical queries that return correct answers, all statistical databases can be compromised.
+There is a theorem that says given an unlimited number of statistical queries that return correct answers, all statistical databases can be compromised.
 
 ## Public Database
 
-Here is a model of the situation where we try to set up a public database. The transformation step should preserve privacy while preserving usefulness of statistical queries.
+Maybe if we just remove personally identifiable information then we can publish all the data.
+
+Here is a model of the situation where we set up a public database. The transformation step should preserve privacy while preserving usefulness of statistical queries.
 
 ![](https://assets.omscs.io/secure-computer-systems/images/module13/public-DB.png)
 
@@ -145,7 +150,7 @@ All identifying information from the users needs to be removed. This is things l
 * No pictures of the person
 
 Two challenges are
-* Can people link the de-identified information be linked to a person (**linking attack**)?
+* Can the de-identified information be linked to a person (**linking attack**)?
 * Is the dataset still useful?
 
 Here is an example where we removed the name. We don't want people being associated with medical conditions.
@@ -174,7 +179,7 @@ Although we have increased the privacy we have decreased the utility, since rese
 
 ### l-diversity
 
-Even if there are 3 people in the group it wouldn't matter if they all had ulcers. So if I can link a person to the QID I know exactly what condition they have.
+Even if there are 3 people for a certain QID it wouldn't help anonymity for the QID if they all had ulcers. If I can link a person to the QID I know exactly what condition they have.
 
 l-diversity says that all rows of the same QID must have at least l distinct values in the sensitive data column.
 
@@ -188,6 +193,14 @@ A user (potentially malicious) sends a query which submits the query, adds some 
 
 Some notation is introduced P[K(D) in S] which means that someone can determine a health condition for a person Alice. D is a database with Alice's data and D' is a database without Alice's data. The basic idea is that we shouldn't be able to distinguish between D and D' in terms of how useful they are to an attacker.
 
+Some notation is introduced:
+
+P[K(D) in S] is the probability of an attacker being able to figure out some information of interest about Alice with database D under a differential privacy scheme K. P[K(D') in S] is the probability of the attacker being able to figure out this thing if Alice's data is not in the database. With good differential privacy these numbers should be similar.
+
+Our measure of privacy is $\epsilon$, which is bounding the inequality - 
+
+$$\frac{P[K(D)\text{ in }S]}{P[K(D')\text{ in }S]} \leq e^{\epsilon} \approx 1 + \epsilon$$
+
 ### Implementing Differential Privacy
 
 We are trying to conduct a survey on how many people run red lights. We want people to be comfortable giving honest answers, so we need to provide them some privacy guarantees.
@@ -196,9 +209,11 @@ We set up a protocol where upon receiving a response R from the database we retu
 
 ### Analysis 
 
-* N is the total nu(mber of queries
+* N is the total number of queries
 * n is the number of queries returning yes
 * p is the fraction of people who really break the law
+
+The following formula basically says the people that run red lights (proportion p) are going to say yes 3/4 of the time, and the rest of the people say yes 1/4 of the time.
 
 n = N\*p\*(3/4) + (1-p)\*N\*(1/4)
 
@@ -210,7 +225,7 @@ With enough queries we can estimate p.
 
 We get plausible deniability for anybody that returns a positive response. 
 
-There is a sample calculation but it is not clear to me how this calculation relates to the previously described equation, if you are able to speak confidently on this please submit a PR.
+There is a sample calculation but I am not sure I understand where they are going with it. If you are able to speak confidently on this please submit a PR.
 
 ### More Details
 

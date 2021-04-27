@@ -5,6 +5,8 @@ course: secure-computer-systems
 lecture: 09-MAC-selinux
 ---
 
+# SELinux
+
 Janek Desai helped put together content for this module, and teaches it in the on-campus course.
 
 ## Background
@@ -19,7 +21,7 @@ SELinux was developed by the NSA and then donated to the Linux open source commu
 
 ### Design Goals
 
-* Regular Linux is discretionary (DAC). SELinux is a thing you can add on to Linux.
+* Regular Linux implements discretionary (DAC). SELinux adds features on top of Linux's DAC.
 * Decouple policy from enforcement
 * Flexible / Configurable / Loadable
 
@@ -27,20 +29,19 @@ SELinux was developed by the NSA and then donated to the Linux open source commu
 
 Redhat Enterprise Linux was an early adopter and champion of SELinux. Supported by other distros such as Fedora, SuSE, Ubuntu, Debian.
 
-Because Android is built on top of the Linux kernel we can add Linux to Android as well. This is called SEAndroid. There are enhanced security offerings like Samsung Knox and Tresys Mobile Fortess built on top of SEAndroid.
+Because Android is built on top of the Linux kernel we can add Linux to Android as well. This is called SEAndroid. There are enhanced security offerings like Samsung Knox and Tresys Mobile Fortess built on SEAndroid.
 
+## Linux Security Module (LSM)
 
-## Linux Security Module
-
-In Linux you can add the Linux Security Module (LSM) to implement something beyond what Linux does. LSM lets you extend Linux to use additional access control with modules like SELinux, LIDS, SMAC, AppArmor. We focus on SELinux.
+The Linux Security Module (LSM) lets you extend Linux to use additional access control with modules like SELinux, LIDS, SMAC, AppArmor. We focus on SELinux.
 
 This module includes a bunch of functions that hook in and get called when they need to do something.
 
 ### DAC before LSM
 
-In the diagram below the dotted box represents a security module, xyz LSM. It implements its own security operations. In this case we are checking for inode permissions. 
+In the diagram below, the dotted box represents the xyz LSM. It implements its own security operations. In this case we are checking for inode permissions (an inode stores file metadata in Linux).
 
-The first thing that happens is we check the DAC, remember that the LSM is layered on top of Linux's existing DAC.
+The LSM is layered on top of Linux's existing DAC, so we check the DAC before checking the xyz LSM.
 
 If xyz is not loaded then we just return the result of the DAC check.
 
@@ -48,9 +49,7 @@ If xyz is not loaded then we just return the result of the DAC check.
 
 ### Implementation Details
 
-In the diagram below the dotted box enforces security policies.
-
-The black circle represents the policy we are feeding into the system. The red circle actually enforces the policy. 
+In the diagram below, the dotted box enforces security policies. The black circle in the top right represents the policy we are feeding into the system. The red circle actually enforces the policy. 
 
 The LSM policy is checked after the DAC (DAC is just normal Linux permissions).
 
@@ -85,7 +84,7 @@ Processes, files, directories, sockets, ports, nodes, etc., all have a string li
 
 ## Type Enforcement
 
-The SELinux type is used in making decisions. Should the user with type `staff_t` get access to an object of type `etc_t`? This is defined in the policy rules.
+The SELinux type is used in making decisions. There is something called the policy rules which decide if the user with type `staff_t` gets access to an object of type `etc_t`.
 
 ![](https://assets.omscs.io/secure-computer-systems/images/module9/type1.png)
 
@@ -96,7 +95,7 @@ Lets go through an example for a source of type `staff_t` and an object of type 
 * Inheritance
   * Child processes inherit parent's type and subdirectories inherit from parent directory.
 * Transition
-  * Transistion is similar to `setuid`, you transfer between types when executing a file. For example, `staff_t` can transition to `mount_t` by executing a binary with type `mount_exec_t`.
+  * Transistion is similar to `setuid`, you can transfer between types when executing a file. For example, `staff_t` can transition to `mount_t` by executing a binary with type `mount_exec_t`.
 * Override
   * No specific override rules. Each access must be explicitly granted.
 
@@ -142,15 +141,15 @@ There might be two sensitivity levels to indicate an **effective security level*
 
 ## BLP and SELinux
 
-In the diagram below the leftmost arrow represents L1 reading from L2, this is allowed as L1 dominates L2. The second to left arrow represents L2 writing to L1 (arrow directions confusing) which would normally be allowed in BLP. But SELinux is not BLP, it is **BLP+** which is read-down, write at your own level. The rest of the diagram follows BLP.
+In the diagram below the leftmost arrow represents L1 reading from L2, this is allowed as L1 dominates L2. The second to left arrow represents L2 writing to L1 which would normally be allowed in BLP (write up) but is not allowed here. SELinux is not BLP, it is **BLP+** which is read-down, write at your own level. The rest of the diagram follows BLP.
 
 ![](https://assets.omscs.io/secure-computer-systems/images/module9/BLP.png)
 
 ## MLS Policy Language
 
-There is some notation for MLS policies. The user or process has context labels `l1`, and `h1`. `l1` is the **l**ow permission level (remember, you can have an effective sensitivity level which is lower than the clearance level). We also denote the type of the user by `t1`. Similarly the object has labels `l2`, `h2`, `t2`, 1 is for user, 2 is for object.
+There is some notation for MLS policies. The user or process has context labels `l1`, and `h1`. `l1` is the low permission level (remember, you can have an effective sensitivity level which is lower than the clearance level). We also denote the type of the user by `t1`. Similarly the object has labels `l2`, `h2`, `t2`, 1 is for user, 2 is for object.
 
-Here is an example of an MLS constraint policy. The policy is defines for directories, files, lnk_files, etc... and the operations are read, getattr, execute.
+Here is an example of an MLS constraint policy. The policy is defined for directories, files, lnk_files, etc... and the operations are read, getattr, execute.
 
 ```
 mlsconstrain { dir file lnk_file chr_file blk_file sock_file fifo_file } { read getattr execute }
@@ -168,13 +167,13 @@ This is like the BLP rules but there are overrides.
 
 ## Policy Examples
 
-Earlier we discuss what an MLS constraint might look like for reading. We include that example along with en example for write rules. The `filewritetoclr` type lets us write in the range between our effective level and our clearance level (shown in blue in the image). The `mlsfilewriteinrange` lets us write if our range of levels is contained by the objects range of levels (also shown in blue).
+Let's revisit our example for read rules along with a new example for write rules. The `filewritetoclr` type lets us write in the range between our effective level and our clearance level (shown in blue in the image). The `mlsfilewriteinrange` lets us write if our range of levels is contained by the objects range of levels (also shown in blue).
 
 ![](https://assets.omscs.io/secure-computer-systems/images/module9/BLP2.png)
 
 ### Transitions
 
-We can have a policy that allows us to **transition** types, this is like `setuid()` but for types. Maybe the policy looks like:
+We can have a policy that allows us to transition between  types, this is like `setuid()` but for types. Maybe the policy looks like:
 
 `type_transition user_t passwd_exec_t:process passwd_t`
 

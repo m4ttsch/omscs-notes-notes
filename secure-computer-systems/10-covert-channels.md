@@ -5,6 +5,8 @@ course: secure-computer-systems
 lecture: 10-covert-channels
 ---
 
+# Covert Channels
+
 ## Confinement Problem
 
 The confinement problem is that Alice wants to share data with Bob but wants to prevent Bob from sharing this with Charlie. MAC partially addresses this, Bob cannot write below his security level and therefore cannot share something too sensitive for Charlie.
@@ -27,7 +29,7 @@ There are two types of covert channels
   * Example: A top secret user can make a top secret file. When a user that only has secret clearance tries to read the file they will either get "file does not exist" (this can communicate a 0) or "access denied"(communicate a 1).
   * Our previous example about reading files is also a storage covert channel.
 * **Timing covert channels:** When bits are communicated by looking at timing.
-  * Example: Two processes are sharing a CPU. This sharing is done through round-robin CPU scheduling. A higher permission process can share to a lower permission process by spending more or less time when given the CPU. Immediately passing the CPU to the lower permission process can be read as a 0, and taking a full time quantum can be read as a 1. This assumes that there are only two processes sharing the CPU, otherwise there is noise.
+  * Example: Two processes are sharing a CPU. This sharing is done through round-robin CPU scheduling. A higher permission process can share information to a lower permission process by spending more or less time when given the CPU. Immediately passing the CPU to the lower permission process can be read as a 0, and taking a full time quantum can be read as a 1. This assumes that there are only two processes sharing the CPU, otherwise there is noise.
 
 **Any shared resource can potentially lead to a covert channel**
 
