@@ -1883,13 +1883,13 @@ It used 3DES to encrypt messages. (T/F?)
 Its structure is similar to ECB mode, which makes it vulnerable to repeated messages. (T/F?)
 It uses the same key for authentication and encryption. (T/F?)
 
-A. True, True, True, True
-B. True, False, True, False
-C. False, False, False, False
-D. True, False, False, True
-E. False, False, False, True
-F. True, True, False, False
-G. None of these are choices are correct.
+- A. True, True, True, True
+- B. True, False, True, False
+- C. False, False, False, False
+- D. True, False, False, True
+- E. False, False, False, True
+- F. True, True, False, False
+- G. None of these are choices are correct.
 
 <details>
 <summary>Answer</summary>
