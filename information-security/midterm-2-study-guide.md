@@ -2140,11 +2140,11 @@ Text pg 650
 
 Name all simple countermeasures for a timing attack:
 
-I. Ensure all exponentiations take the same amount of time before returning results
-II. Ensure true random numbers, and not pseudo random numbers, are used.
-III. Add a random delay to the exponentiation algorithm.
-IV. Ensure that all operations are optimized.
-V. Multiply the ciphertext by a random number before performing exponentiation.
+- I. Ensure all exponentiations take the same amount of time before returning results
+- II. Ensure true random numbers, and not pseudo random numbers, are used.
+- III. Add a random delay to the exponentiation algorithm.
+- IV. Ensure that all operations are optimized.
+- V. Multiply the ciphertext by a random number before performing exponentiation.
 
 - A. All choices: I, II, III, IV, and V.
 - B. I, III, and V.
@@ -2180,11 +2180,11 @@ Text pg 652
 
 All hash functions operate using these two principles: (select two)
 
-I. The size of the input is greater than the size of the output
-II. The input is viewed as a sequence of n-bit blocks.
-III. The input value is "randomized" to overcome regularities.
-IV. Ciphertext does not change when blocks are permuted.
-V. Input is processed one block at a time in an iterative fashion.
+- I. The size of the input is greater than the size of the output
+- II. The input is viewed as a sequence of n-bit blocks.
+- III. The input value is "randomized" to overcome regularities.
+- IV. Ciphertext does not change when blocks are permuted.
+- V. Input is processed one block at a time in an iterative fashion.
 
 - A. I and II
 - B. I and III
