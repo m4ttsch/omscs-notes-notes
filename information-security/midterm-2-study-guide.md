@@ -2654,19 +2654,19 @@ Text pg 664
 Match the Internet mail acronym to the function. (Put the letters in order that match the acronym):
 
 Acronyms:
-1. MUA
-2. MSA
-3. MTA
-4. MDA
-5. MS
+- 1. MUA
+- 2. MSA
+- 3. MTA
+- 4. MDA
+- 5. MS
 
 Definitions:
 
-AA. Transfers the message from the message handling agent to the message store.
-BB. Typically referred to as a client email program or a local network email server.
-CC. A long term repository, possibly on a remote server that is accessed by POP or IMAP.
-DD. Relays mail between others of its kind, adding trace information to the message header, until the message reaches the next step.
-EE. Accepts the message and enforces policies of the hosting domain and Internet standards.
+- AA. Transfers the message from the message handling agent to the message store.
+- BB. Typically referred to as a client email program or a local network email server.
+- CC. A long term repository, possibly on a remote server that is accessed by POP or IMAP.
+- DD. Relays mail between others of its kind, adding trace information to the message header, until the message reaches the next step.
+- EE. Accepts the message and enforces policies of the hosting domain and Internet standards.
 
 Choices:
 
