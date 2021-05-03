@@ -976,9 +976,9 @@ Object Code Backdoors- This backdoor is hard to detect because it modifies machi
 **Multiple Choice**
 
 Match the appropriate Intrusion Detection classification to its correct value
-I. Monitors characteristics of a single host and the events occurring within the host
-II.Monitors Network Traffic for particular network segments or devices
-III. Combines information from multiple sensors often both host and network based and dumps the information into a central analyzer
+- I. Monitors characteristics of a single host and the events occurring within the host
+- II.Monitors Network Traffic for particular network segments or devices
+- III. Combines information from multiple sensors often both host and network based and dumps the information into a central analyzer
 
 - A. Distributed or Hybrid IDS is III,  Network-based IDS is I and Host based IDS is II
 - B. Network-based IDS is II, Host-Based IDS is I and Distributed IDS is III
@@ -1498,11 +1498,11 @@ Text pg 41
 
 What are some uses of hash functions?
 
-I. Message encryption
-II. Message authentication
-III. Creating Digital Signatures
-IV. Password encapsulation
-V. Intrusion detection
+- I. Message encryption
+- II. Message authentication
+- III. Creating Digital Signatures
+- IV. Password encapsulation
+- V. Intrusion detection
 
 - A. I, II, and III
 - B. All of the choices
@@ -2261,9 +2261,9 @@ Text pg 635
 
 What are the principal elements of a Kerberos system?
 
-I. AS
-II. TGT
-III. TGS
+- I. AS
+- II. TGT
+- III. TGS
 
 - A. I, II, and III
 - B. I and II only
@@ -2528,9 +2528,9 @@ P2_L9 Security Protocols, pg 13
 
 What are some reasons a user would revoke a certificate before it expires?
 
-I. A key has been compromised.
-II. Upgrades require a new key.
-III. The key has been duplicated.
+- I. A key has been compromised.
+- II. Upgrades require a new key.
+- III. The key has been duplicated.
 
 - A. I, II, and III
 - B. I and II only
@@ -2568,10 +2568,10 @@ Text pg 692
 
 Which of the following features does MIME add to the original RFC 822 Internet Mail Format?
 
-I. New header fields to define information about the body of the message.
-II. Cryptographic message syntax to sign, authenticate, digest, or encrypt message content.
-III. Context formats to standardize representations for support of multimedia email, such as images, audio and video.
-IV. The ability to sign and encrypt email messages.
+- I. New header fields to define information about the body of the message.
+- II. Cryptographic message syntax to sign, authenticate, digest, or encrypt message content.
+- III. Context formats to standardize representations for support of multimedia email, such as images, audio and video.
+- IV. The ability to sign and encrypt email messages.
 
 - A. I, II, III, and IV.
 - B. I, II, and IV.
@@ -3020,11 +3020,11 @@ Text pg 708
 
 What are the main threats to wireless transmission?
 
-I. Eavesdropping
-II. Disrupted transmissions
-III. Message integrity attacks
-IV. Signal attenuation attacks
-V. Masquerade channel attacks
+- I. Eavesdropping
+- II. Disrupted transmissions
+- III. Message integrity attacks
+- IV. Signal attenuation attacks
+- V. Masquerade channel attacks
 
 - A. I and II
 - B. I, III, and V
@@ -3128,11 +3128,11 @@ Text pg 714
 
 What services does the 802.11i security specification define?
 
-I. End to end encryption
-II. Authentication
-III. Key exchange facilitation
-IV. Message integrity
-V. VPN
+- I. End to end encryption
+- II. Authentication
+- III. Key exchange facilitation
+- IV. Message integrity
+- V. VPN
 
 - A. All of the services listed
 - B. I, II, III, and IV
@@ -3621,11 +3621,11 @@ Text pg 585
 
 Under the Digital Millennium Copyright ACT, individuals may be allowed to do which of the following?
 
-I. Distribute portions of the work for review.
-II. Reverse engineer in order to achieve interoperability
-III. Attempt to decrypt technology in order to advance the development of the technology.
-IV. Testing a vulnerability in a computer or network.
-V. Bypassing technological measures to protect PII.
+- I. Distribute portions of the work for review.
+- II. Reverse engineer in order to achieve interoperability
+- III. Attempt to decrypt technology in order to advance the development of the technology.
+- IV. Testing a vulnerability in a computer or network.
+- V. Bypassing technological measures to protect PII.
 
 - A. I, II, III, IV, V
 - B. I, IV, V
