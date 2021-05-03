@@ -1963,14 +1963,14 @@ https://www.youtube.com/watch?v=JAgaWJivKwg (about 3:55)
 
 HMAC treats the SHA function as a black box. What benefits does this have?
 
-I. The hash algorithm used in HMAC is hidden from hackers.
-II. It is easy to replace the given hash function.
-III. HMAC code can be prepackaged and ready to use without modification.
+- I. The hash algorithm used in HMAC is hidden from hackers.
+- II. It is easy to replace the given hash function.
+- III. HMAC code can be prepackaged and ready to use without modification.
 
-A. I and II
-B. I and III
-C. II and III
-D. I, II, and III
+- A. I and II
+- B. I and III
+- C. II and III
+- D. I, II, and III
 
 <details>
 <summary>Answer</summary>
