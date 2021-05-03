@@ -512,16 +512,16 @@ True
 **Source**
 
 Packet Filtering Firewall
+
+IP or TCP header information that a firewall can use to filter a packet:
+- Source IP address (where the packets are coming from)
+- Destinations IP address (this is the IP for the destination)
+- Source and destination transport-level address (This defines the port number and applications such as smtp, http)
+- IP Protocol field (this defines TCP , UDP or ICMP)
+- Interface (this is with three or more ports with which interface the packet came or where it is going to.)
 </details>
 
 **Multiple Choice**
-
-IP or TCP header information that a firewall can use to filter a packet
-•	Source IP address where the packets from
-•	Destinations IP address this is the IP for the destination
-•	Source and destination transport-level address- This defines the port number and applications such as smtp, http
-•	IP Protocol field this  defines TCP , UDP or ICMP
-•	Interface this is with three or more ports with which interface the packet came or where it is going to.
 
 What policies for packet filtering firewalls are used?
 
