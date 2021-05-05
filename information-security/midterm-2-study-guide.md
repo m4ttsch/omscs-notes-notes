@@ -512,16 +512,16 @@ True
 **Source**
 
 Packet Filtering Firewall
+
+IP or TCP header information that a firewall can use to filter a packet:
+- Source IP address (where the packets are coming from)
+- Destinations IP address (this is the IP for the destination)
+- Source and destination transport-level address (This defines the port number and applications such as smtp, http)
+- IP Protocol field (this defines TCP , UDP or ICMP)
+- Interface (this is with three or more ports with which interface the packet came or where it is going to.)
 </details>
 
 **Multiple Choice**
-
-IP or TCP header information that a firewall can use to filter a packet
-•	Source IP address where the packets from
-•	Destinations IP address this is the IP for the destination
-•	Source and destination transport-level address- This defines the port number and applications such as smtp, http
-•	IP Protocol field this  defines TCP , UDP or ICMP
-•	Interface this is with three or more ports with which interface the packet came or where it is going to.
 
 What policies for packet filtering firewalls are used?
 
@@ -976,9 +976,9 @@ Object Code Backdoors- This backdoor is hard to detect because it modifies machi
 **Multiple Choice**
 
 Match the appropriate Intrusion Detection classification to its correct value
-I. Monitors characteristics of a single host and the events occurring within the host
-II.Monitors Network Traffic for particular network segments or devices
-III. Combines information from multiple sensors often both host and network based and dumps the information into a central analyzer
+- I. Monitors characteristics of a single host and the events occurring within the host
+- II.Monitors Network Traffic for particular network segments or devices
+- III. Combines information from multiple sensors often both host and network based and dumps the information into a central analyzer
 
 - A. Distributed or Hybrid IDS is III,  Network-based IDS is I and Host based IDS is II
 - B. Network-based IDS is II, Host-Based IDS is I and Distributed IDS is III
@@ -1498,11 +1498,11 @@ Text pg 41
 
 What are some uses of hash functions?
 
-I. Message encryption
-II. Message authentication
-III. Creating Digital Signatures
-IV. Password encapsulation
-V. Intrusion detection
+- I. Message encryption
+- II. Message authentication
+- III. Creating Digital Signatures
+- IV. Password encapsulation
+- V. Intrusion detection
 
 - A. I, II, and III
 - B. All of the choices
@@ -1883,13 +1883,13 @@ It used 3DES to encrypt messages. (T/F?)
 Its structure is similar to ECB mode, which makes it vulnerable to repeated messages. (T/F?)
 It uses the same key for authentication and encryption. (T/F?)
 
-A. True, True, True, True
-B. True, False, True, False
-C. False, False, False, False
-D. True, False, False, True
-E. False, False, False, True
-F. True, True, False, False
-G. None of these are choices are correct.
+- A. True, True, True, True
+- B. True, False, True, False
+- C. False, False, False, False
+- D. True, False, False, True
+- E. False, False, False, True
+- F. True, True, False, False
+- G. None of these are choices are correct.
 
 <details>
 <summary>Answer</summary>
@@ -1963,14 +1963,14 @@ https://www.youtube.com/watch?v=JAgaWJivKwg (about 3:55)
 
 HMAC treats the SHA function as a black box. What benefits does this have?
 
-I. The hash algorithm used in HMAC is hidden from hackers.
-II. It is easy to replace the given hash function.
-III. HMAC code can be prepackaged and ready to use without modification.
+- I. The hash algorithm used in HMAC is hidden from hackers.
+- II. It is easy to replace the given hash function.
+- III. HMAC code can be prepackaged and ready to use without modification.
 
-A. I and II
-B. I and III
-C. II and III
-D. I, II, and III
+- A. I and II
+- B. I and III
+- C. II and III
+- D. I, II, and III
 
 <details>
 <summary>Answer</summary>
@@ -2140,11 +2140,11 @@ Text pg 650
 
 Name all simple countermeasures for a timing attack:
 
-I. Ensure all exponentiations take the same amount of time before returning results
-II. Ensure true random numbers, and not pseudo random numbers, are used.
-III. Add a random delay to the exponentiation algorithm.
-IV. Ensure that all operations are optimized.
-V. Multiply the ciphertext by a random number before performing exponentiation.
+- I. Ensure all exponentiations take the same amount of time before returning results
+- II. Ensure true random numbers, and not pseudo random numbers, are used.
+- III. Add a random delay to the exponentiation algorithm.
+- IV. Ensure that all operations are optimized.
+- V. Multiply the ciphertext by a random number before performing exponentiation.
 
 - A. All choices: I, II, III, IV, and V.
 - B. I, III, and V.
@@ -2180,11 +2180,11 @@ Text pg 652
 
 All hash functions operate using these two principles: (select two)
 
-I. The size of the input is greater than the size of the output
-II. The input is viewed as a sequence of n-bit blocks.
-III. The input value is "randomized" to overcome regularities.
-IV. Ciphertext does not change when blocks are permuted.
-V. Input is processed one block at a time in an iterative fashion.
+- I. The size of the input is greater than the size of the output
+- II. The input is viewed as a sequence of n-bit blocks.
+- III. The input value is "randomized" to overcome regularities.
+- IV. Ciphertext does not change when blocks are permuted.
+- V. Input is processed one block at a time in an iterative fashion.
 
 - A. I and II
 - B. I and III
@@ -2261,9 +2261,9 @@ Text pg 635
 
 What are the principal elements of a Kerberos system?
 
-I. AS
-II. TGT
-III. TGS
+- I. AS
+- II. TGT
+- III. TGS
 
 - A. I, II, and III
 - B. I and II only
@@ -2528,9 +2528,9 @@ P2_L9 Security Protocols, pg 13
 
 What are some reasons a user would revoke a certificate before it expires?
 
-I. A key has been compromised.
-II. Upgrades require a new key.
-III. The key has been duplicated.
+- I. A key has been compromised.
+- II. Upgrades require a new key.
+- III. The key has been duplicated.
 
 - A. I, II, and III
 - B. I and II only
@@ -2568,10 +2568,10 @@ Text pg 692
 
 Which of the following features does MIME add to the original RFC 822 Internet Mail Format?
 
-I. New header fields to define information about the body of the message.
-II. Cryptographic message syntax to sign, authenticate, digest, or encrypt message content.
-III. Context formats to standardize representations for support of multimedia email, such as images, audio and video.
-IV. The ability to sign and encrypt email messages.
+- I. New header fields to define information about the body of the message.
+- II. Cryptographic message syntax to sign, authenticate, digest, or encrypt message content.
+- III. Context formats to standardize representations for support of multimedia email, such as images, audio and video.
+- IV. The ability to sign and encrypt email messages.
 
 - A. I, II, III, and IV.
 - B. I, II, and IV.
@@ -2654,19 +2654,19 @@ Text pg 664
 Match the Internet mail acronym to the function. (Put the letters in order that match the acronym):
 
 Acronyms:
-1. MUA
-2. MSA
-3. MTA
-4. MDA
-5. MS
+- 1. MUA
+- 2. MSA
+- 3. MTA
+- 4. MDA
+- 5. MS
 
 Definitions:
 
-AA. Transfers the message from the message handling agent to the message store.
-BB. Typically referred to as a client email program or a local network email server.
-CC. A long term repository, possibly on a remote server that is accessed by POP or IMAP.
-DD. Relays mail between others of its kind, adding trace information to the message header, until the message reaches the next step.
-EE. Accepts the message and enforces policies of the hosting domain and Internet standards.
+- AA. Transfers the message from the message handling agent to the message store.
+- BB. Typically referred to as a client email program or a local network email server.
+- CC. A long term repository, possibly on a remote server that is accessed by POP or IMAP.
+- DD. Relays mail between others of its kind, adding trace information to the message header, until the message reaches the next step.
+- EE. Accepts the message and enforces policies of the hosting domain and Internet standards.
 
 Choices:
 
@@ -3020,11 +3020,11 @@ Text pg 708
 
 What are the main threats to wireless transmission?
 
-I. Eavesdropping
-II. Disrupted transmissions
-III. Message integrity attacks
-IV. Signal attenuation attacks
-V. Masquerade channel attacks
+- I. Eavesdropping
+- II. Disrupted transmissions
+- III. Message integrity attacks
+- IV. Signal attenuation attacks
+- V. Masquerade channel attacks
 
 - A. I and II
 - B. I, III, and V
@@ -3128,11 +3128,11 @@ Text pg 714
 
 What services does the 802.11i security specification define?
 
-I. End to end encryption
-II. Authentication
-III. Key exchange facilitation
-IV. Message integrity
-V. VPN
+- I. End to end encryption
+- II. Authentication
+- III. Key exchange facilitation
+- IV. Message integrity
+- V. VPN
 
 - A. All of the services listed
 - B. I, II, III, and IV
@@ -3621,11 +3621,11 @@ Text pg 585
 
 Under the Digital Millennium Copyright ACT, individuals may be allowed to do which of the following?
 
-I. Distribute portions of the work for review.
-II. Reverse engineer in order to achieve interoperability
-III. Attempt to decrypt technology in order to advance the development of the technology.
-IV. Testing a vulnerability in a computer or network.
-V. Bypassing technological measures to protect PII.
+- I. Distribute portions of the work for review.
+- II. Reverse engineer in order to achieve interoperability
+- III. Attempt to decrypt technology in order to advance the development of the technology.
+- IV. Testing a vulnerability in a computer or network.
+- V. Bypassing technological measures to protect PII.
 
 - A. I, II, III, IV, V
 - B. I, IV, V
