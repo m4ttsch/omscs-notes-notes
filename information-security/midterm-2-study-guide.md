@@ -1019,7 +1019,7 @@ Page 257
 
 **True or False?**
 
-The base-rate fallacy of IDS states that if the numbers of intrusions are low compared to the number of legitimate users of a system then the false alarm rate will be high unless the test is extremely discriminating
+The base-rate fallacy of IDS states that if the numbers of intrusions are low compared to the number of legitimate uses of a system then the false alarm rate will be high unless the test is extremely discriminating
 
 <details>
 <summary>Answer</summary>
