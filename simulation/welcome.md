@@ -9,7 +9,7 @@ lecture: welcome
 
 ## Howdy Friends
 
-Here are my notes for Simulation, which I am taking in Fall 2020.
+Here are my notes for Simulation, which I took in Fall 2020.
 
 Each document in "Lecture Notes" corresponds to a module in Canvas. Within each document, the headings correspond to the videos within that module. Usually, I omit any introductory, summary, or administrative content.
 
