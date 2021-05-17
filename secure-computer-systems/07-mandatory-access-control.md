@@ -19,7 +19,7 @@ The **information flow control problem** is if we share sensitive data with a pe
 
 ### How can the TCB Support MAC
 
-We need metadata\labels on our objects to support MAC. This metadata describes the nature of the data and how we can share it.
+We need metadata/labels on our objects to support MAC. This metadata describes the nature of the data and how we can share it.
 
 Types of information stored in metadata -
 
@@ -41,7 +41,7 @@ We might have label L1 = \(l1, c1\) where l1 is the level \(how sensitive\) and 
 Labels have a partial ordering, not a total ordering. In a total ordering things are either less than, greater than, or equal. The real numbers have a total order. Some labels cannot be compared in this way, but these relationships do exist between other labels.
 
 * L1 &gt; L2 \(L1 dominates L2\) if \(L1.level $\geq$ L2.level\) $\cap$ \(L1.compartment $\supset$ L2.compartment\)
-* L1 &lt; L2 \(L1 is dominated by L2\) if \(L1.level $\leq$ L2.level\) $\cap$ \(L1.compartment $\sub$ L2.compartment\)
+* L1 &lt; L2 \(L1 is dominated by L2\) if \(L1.level $\leq$ L2.level\) $\cap$ \(L1.compartment $\subset$ L2.compartment\)
 * L1 = L2 if \(L1.level = L2.level\) $\cap$ \(L1.compartment = L2.compartment\)
 
 It is possible that L2 has something in its compartment not in L1, but has a lower level. In this case we cannot compare them, they are not comparable.
