@@ -8,6 +8,7 @@ If you prefer, you can also view the notes on [OMSCS Notes](https://www.omscs-no
 
 ### Current Courses
 
+- SAD
 
 ### Completed Courses
 
