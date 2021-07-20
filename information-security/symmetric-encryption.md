@@ -21,7 +21,7 @@ Confusion alone is not sufficient. Even when a letter can be mapped to any other
 
 The second principle that we need is diffusion. **Diffusion** spreads the influence of one plaintext bit over many ciphertext bits to hide the statistical properties of the plaintext. We can achieve diffusion with *permutation*.
 
-For example, instead of mapping an English letter to another English letter, we can map a letter to parts of many 8-bit letters. This approach renders the frequency distribution of English letters less useful.
+For example, instead of mapping an English letter to another English letter, we can map a letter to parts of many 8-bit letters. This approach renders the frequency distribution of English letters less useless.
 
 We need this combination - confusion and diffusion - to affect every bit in the ciphertext, so a block cipher typically runs for multiple rounds. The initial round affects some parts of the ciphertext, and subsequent rounds further propagate these effects into other parts of the ciphertext. Eventually, all bits of ciphertext are affected.
 
