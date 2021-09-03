@@ -1,13 +1,14 @@
 ---
 id: computer-networks-switching
 title: Switching
-course: computer-networks
+course: computer-networks-old
 lecture: switching
 ---
 
 # Switching
 
 ## Switching and Bridging
+
 In this lesson, we will learn about how hosts find each other on a subnet and how subnets are interconnected.
 
 We will also learn about the difference between switches and hubs, and switches and routers.
@@ -15,6 +16,7 @@ We will also learn about the difference between switches and hubs, and switches 
 We will also talk about the scaling problems with ethernet and mechanisms we can use to allow it scale better.
 
 ## Bootstrapping: Networking Two Hosts
+
 A host that wants to send a datagram to another host can simply send that datagram via its ethernet adapter with a destination MAC address of the host that it wants to receive the frame.
 
 Frames can also be sent to a broadcast destination MAC address which would mean that the datagram would be sent to every host it was connected to on the local area network.
@@ -24,6 +26,7 @@ Typically, a host knows a DNS name or IP address of another host, but it may not
 We need to provide a way for a host to learn the MAC address of another host. We can do this via the **Address Resolution Protocol** (ARP).
 
 ## ARP: Address Resolution Protocol
+
 In ARP, a host queries with an IP address, broadcasting that query to every other node on the network. The host that has the IP address on the LAN will respond with the appropriate MAC address.
 
 The ARP query is a broadcast that goes to every host on the LAN, and the response is a unicast with the MAC address to the host that issued the query.
@@ -35,19 +38,21 @@ In the future, the host will consult the ARP table to get the MAC address for a 
 When the host wants to send a packet to a destination with a particular IP address, it takes the IP packet and encapsulates it in an ethernet frame with the corresponding destination MAC address.
 
 ## Interconnecting LANs with Hubs
+
 The simplest way that a LAN can be connected is with a **hub**. A hub essentially creates a broadcast medium among all of the connected hosts, where all packets on the network are seen everywhere.
 
 If a particular host sends a frame that is destined for another host on the LAN, the hub will broadcast that frame out every outgoing port, so all packets will be seen everywhere.
 
 ![](https://assets.omscs.io/notes/83EA168C-1751-44B4-8B1B-3EA6D3BCE3F0.png)
 
-There is a *lot* of flooding and there are many chances for [collision](https://searchnetworking.techtarget.com/definition/collision). The chance of collision introduces additional latency in the network, because collision requires other hosts to back off and not send as soon as they see other senders trying to send at the same time.
+There is a _lot_ of flooding and there are many chances for [collision](https://searchnetworking.techtarget.com/definition/collision). The chance of collision introduces additional latency in the network, because collision requires other hosts to back off and not send as soon as they see other senders trying to send at the same time.
 
 LANs that are connected with hubs are also vulnerable to failures or misconfigurations. Even one misconfigured device can cause problems for every other device on the LAN.
 
 We need to improve on this broadcast medium by imposing some amount of isolation.
 
 ## Switches: Traffic Isolation
+
 In contrast, **switches** provide some amount of traffic isolation so that the entire LAN doesn't become one broadcast medium.
 
 A switch will partition the LAN into separate broadcast/collision domains, or segments. A frame that is bound for a host in the same LAN segment will only be broadcast within that segment. The switch will not broadcast it to other segments.
@@ -57,6 +62,7 @@ A switch will partition the LAN into separate broadcast/collision domains, or se
 Enforcing this type of isolation requires constructing a switch table at the switch which maps destination MAC addresses to switch output ports.
 
 ## Learning Switches
+
 A **learning switch** maintains a table that maps destination addresses to output ports on the switch.
 
 When a learning switch receives a frame destined for a particular address, it knows what output port to forward the frame.
@@ -74,11 +80,12 @@ When two switches are connected in a loop, and one sends a broadcast frame, the 
 We need a solution to ensure that the switches don't always flood all packets on all outgoing ports. We need a protocol to create a logical forwarding tree on top of the underlying physical topology.
 
 ## Spanning Tree
+
 A **spanning** tree is a loop-free topology that covers every node in a graph.
 
 ![](https://assets.omscs.io/notes/F21BE28D-1369-43A8-BB40-638D34B5AD78.png)
 
-Instead of flooding a frame, a switch in this topology would simply forward packets along the spanning tree, *not* across all output links.
+Instead of flooding a frame, a switch in this topology would simply forward packets along the spanning tree, _not_ across all output links.
 
 ![](https://assets.omscs.io/notes/987B9734-03E0-4BF7-BF6D-56ADEF99B873.png)
 
@@ -95,6 +102,7 @@ Initially, every node thinks that it is the root, and the switches run an electi
 Whenever a switch updates its view of the root, it also determines how far it is from the root so that when other neighboring nodes receive updates they can determine their distance to new root simply by adding one to any message that they receive.
 
 ## Spanning Tree Example
+
 Assume that nodes message each other using the format `(Y, d, X)` where `X` is the originating node, `d` is the distance from `X` to the current claimed root, and `Y` is the current claimed root.
 
 Initially, every node thinks that it is the root, so every node will broadcast `(X, 0, X)` .
@@ -108,6 +116,7 @@ Initially, node 4 sends out `(4, 0, 4)` to node 7 and node 2. Node 4 will also r
 Node 4 will then realize that the path through node 7 is a longer path than the path directly to node 2, and it will drop the link to node 7 from its spanning tree.
 
 ## Switches Vs Routers
+
 Switches typically operate at layer two (the link layer). A common layer two protocol is Ethernet.
 
 Switches are typically auto-configuring, and forwarding tends to be quite fast, since packets processing in layer two consists only of flat lookups.
@@ -119,6 +128,7 @@ Layer two switching is a lot more convenient, but a major limitation is broadcas
 Is it possible to get the benefits of layer two switching - auto-configuration and fast forwarding - without the broadcast limitations?
 
 ## Buffer Sizing
+
 While it is well known that switches and routers do need packet buffers to accommodate for statistical multiplexing, it is less clear how much buffering is actually necessary.
 
 Let's suppose that we have a path between a source and a destination that includes one router.
@@ -134,7 +144,8 @@ This rule of thumb was mandated in many backbone and edge routers for many years
 In addition, the bigger the buffers, the bigger the queuing delay. This means that interactive traffic may experience larger delays, and hosts may experience larger delays with regard to feedback about congestion in the network.
 
 ## Buffer Sizing for a TCP Sender
-Suppose that we have a TCP sender that is sending packets, where the sending rate is controlled by  the [congestion window](https://blog.stackpath.com/glossary/cwnd-and-rwnd/) `cwnd`, and the sender is receiving ACKs.
+
+Suppose that we have a TCP sender that is sending packets, where the sending rate is controlled by the [congestion window](https://blog.stackpath.com/glossary/cwnd-and-rwnd/) `cwnd`, and the sender is receiving ACKs.
 
 With a window `cwnd`, only `cwnd` unacknowledged packets may be in flight at any time. The source's sending rate `R` , then, is simply the window `cwnd`, divided by the round-trip time, `RTT`.
 
@@ -167,6 +178,7 @@ The rule of thumb makes sense for a single flow, but a router in a typical backb
 It turns out that this rule of thumb only really holds if all of those 20,000 flows are perfectly synchronized. If the flows are desynchronized, it turns out that the router can get away with a lot less buffering.
 
 ## If TCP Flows are Synchronized
+
 If the TCP flows are synchronized, then the dynamics of aggregate window will have the same characteristics as any individual flow.
 
 If there are only a small number of flows in the network, these flows may tend to stay synchronized, and the aggregate dynamics may mimic the dynamics of any single flow.
@@ -179,8 +191,8 @@ Individual flows may see peaks at different times. Instead of seeing a large saw
 
 We can represent the buffer occupancy as a random variable which will, at any given time, take on a range of values, which can be analyzed by the central limit theorem.
 
-The central limit theorem tells us that the more variables (unique congestion windows of TCP flows) we have, the narrower the Gaussian will be.  In this case, the Gaussian is the fluctuation of the sum of all of the congestion windows.
+The central limit theorem tells us that the more variables (unique congestion windows of TCP flows) we have, the narrower the Gaussian will be. In this case, the Gaussian is the fluctuation of the sum of all of the congestion windows.
 
 The width of the Gaussian decreases as `1/sqrt(n)` where `n` is the number of unique congestion windows.
 
-As a result, the required buffering for a router handling a large number of flows drops  from `2T * C` to `(2T * C) / sqrt(n)`.
+As a result, the required buffering for a router handling a large number of flows drops from `2T * C` to `(2T * C) / sqrt(n)`.

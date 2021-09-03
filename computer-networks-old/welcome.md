@@ -1,7 +1,7 @@
 ---
 id: computer-networks-welcome
 title: Welcome to CN
-course: computer-networks
+course: computer-networks-old
 lecture: welcome
 ---
 
@@ -31,6 +31,6 @@ studying experience. The following PDFs are available for download.
 
 If you have any questions, comments, concerns, or improvements, don't hesitate to reach out to me. You can find me at:
 
-* [matt@omscs-notes.com](mailto:matt@omscs-notes.com)
-* [Matt Schlenker \| Linkedin](https://www.linkedin.com/in/matt-schlenker-3457b047/)
-* @mschlenker \(Slack\)
+- [matt@omscs-notes.com](mailto:matt@omscs-notes.com)
+- [Matt Schlenker \| Linkedin](https://www.linkedin.com/in/matt-schlenker-3457b047/)
+- @mschlenker \(Slack\)

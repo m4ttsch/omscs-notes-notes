@@ -1,13 +1,14 @@
 ---
 id: computer-networks-router-design-basics
 title: Router Design Basics
-course: computer-networks
+course: computer-networks-old
 lecture: router-design-basics
 ---
 
 # Router Design Basics
 
 ## Router Design
+
 Here are two modern router chassis.
 
 ![](https://assets.omscs.io/notes/D2CB1400-70FD-42E7-89D4-EE5AD042B9EB.png)
@@ -25,6 +26,7 @@ There is a significant need for big, fast routers:
 - Networks are getting larger, in terms of hosts, routers and users
 
 ## Basic Router Architecture
+
 The basic I/O component of a router architecture is a **line card**, which is the interface by which the router sends and receives data.
 
 When a packet arrives, the line card looks at the header to determine the destination, and then looks in the forwarding table to determine the output interface. It then updates the packet header - decrementing the packet's TTL, for example - and sends the packet to the appropriate output interface.
@@ -34,6 +36,7 @@ When a packet is sent to the output interface, it must traverse the router's **i
 ![](https://assets.omscs.io/notes/4637A139-27A9-496A-BA0D-18EC3DF0CE11.png)
 
 ## Each Line Card Has Its Own Forward Table Copy
+
 One important decision in the design of modern routers was to place a copy of the forwarding table on each line card in the router.
 
 While this introduces some complications in making copies of the forwarding table, doing so prevents a central table from becoming a bottleneck at high speeds.
@@ -47,6 +50,7 @@ The shared bus introduces contention amongst all of the line cards that may be a
 The solution was to remove the shared bus and instead place forwarding tables on each line card.
 
 ## Decision: Crossbar Switching
+
 A second important decision was the design of the interconnect; that is, how the line cards should be connected to one another.
 
 One possibility is to use a shared bus. However, the disadvantage of a bus is that it can only be used by one input/output combination in any single time slot.
@@ -58,6 +62,7 @@ We would like to enable non-competing input/output pairs to send traffic from in
 This solution is called crossbar switching.
 
 ## Crossbar Switching
+
 In **crossbar** switching, every input port has a connection to every output port. During each time slot, each input is connected to zero or one outputs.
 
 The advantage of this design is that it exploits parallelism: it allows multiple packets to be forwarded across the interconnect in the same time slot.
@@ -65,6 +70,7 @@ The advantage of this design is that it exploits parallelism: it allows multiple
 For this solution to work, though, we need proper scheduling algorithms to ensure fair use of the crossbar switch.
 
 ## Switching Algorithm: Maximal Matching
+
 In a particular time slot, we may have a certain set of traffic demands; that is, we have traffic at certain input ports destined for certain output ports.
 
 Given these demands, our goal is to produce a mapping that is maximal and fair. By maximal, we mean that the largest number of inputs are connected to the largest number of outputs.
@@ -78,6 +84,7 @@ If the line cards are running at 10Gbps, for example, running the interconnect t
 It is common practice to run the interconnect at higher speeds than the input/output ports.
 
 ## Head of Line Blocking
+
 Just speeding up the interconnect does not solve all problems.
 
 For example, if our input port is currently matched to output port `A`, and the head of the queue contains a packet destined for output port `B`, the entire queue will not be able to move until the packet for `B` is cleared.
@@ -87,15 +94,17 @@ This is referred to as **head of line blocking**.
 A solution is to create virtual output queues. Instead of creating one queue at the input, we maintain one queue per output port. This prevents packets at the front of the queue, destined for one output port, from blocking packets that could otherwise be matched to other output queues in earlier time slots.
 
 ## Scheduling and Fairness
+
 The decision about which ports should be matched in any particular time slot is called **scheduling**.
 
-One goal of scheduling is *efficiency*. If there is traffic at input ports destined for output ports, the crossbar switch should schedule inputs and outputs so traffic isn't sitting idly at the input ports if some traffic could be sent to the available output ports.
+One goal of scheduling is _efficiency_. If there is traffic at input ports destined for output ports, the crossbar switch should schedule inputs and outputs so traffic isn't sitting idly at the input ports if some traffic could be sent to the available output ports.
 
-Another scheduling consideration is *fairness*. Given demands at the inputs, each queue at the input should be scheduled fairly, for some definition of fairness.
+Another scheduling consideration is _fairness_. Given demands at the inputs, each queue at the input should be scheduled fairly, for some definition of fairness.
 
 Defining fairness is tricky, and there are multiple possible definitions of fairness.
 
 ## Max-Min Fairness
+
 One type of fairness is **max-min fairness**.
 
 To define max-min fairness, let's first assume that we have some allocation of rates `{x1, x2 … xn }` across flows. We say that this allocation is "max-min fair" if increasing any rate `xi` implies that some other rate `xj`, where `xj < xi`, must be decreased to accommodate for the increase in `xi`.
@@ -120,13 +129,14 @@ This is not a good solution: the first flow will have an excess of 0.5.
 
 What we can do is take this excess of 0.5, and divide it among the remaining three flows, whose demands (all greater than 2.5) have not yet been met.
 
-Since 0.5 / 3 is 0.167, our new distribution will be `{2, 2.67, 2.67, 2.67}`.  
+Since 0.5 / 3 is 0.167, our new distribution will be `{2, 2.67, 2.67, 2.67}`.
 
 Now our second flow has an excess of 0.07. We can redistribute this excess across the remaining two flows, at 0.035 / flow.
 
 Our final distribution will be `{2, 2.6, 2.7, 2.7}`.
 
 ## How to Achieve Max-Min Fairness
+
 One approach to achieve max-min fairness is via **round robin scheduling** where, given a set of queues, the router simply services them in order.
 
 The problem with round robin scheduling is that packets may have different sizes.

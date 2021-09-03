@@ -1,16 +1,18 @@
 ---
 id: computer-networks-congestion-control-streaming
 title: Congestion Control & Streaming
-course: computer-networks
+course: computer-networks-old
 lecture: congestion-control-streaming
 ---
 
 # Congestion Control & Streaming
 
 ## Congestion Control
+
 What is congestion control and why do we need it? Simply put, the goal of congestion control is to fill the internet's "pipes" without "overflowing" them.
 
 ## Congestion
+
 Suppose that we have the following network.
 
 ![](https://assets.omscs.io/notes/5CB6F6BB-9640-44EF-81F0-05CAC17D71D1.png)
@@ -24,6 +26,7 @@ The hosts are unaware of each other, and also of the current state of the resour
 Hosts that are unaware of network congestion will continue to send packets into the network, and this can result in lost packets and long delays.
 
 ## Congestion Collapse
+
 Normally, the amount of useful work done increases with the traffic load. When the network becomes saturated, the amount of useful work done plateaus: an increase in load no longer results in an increase of useful work done. After a certain point, an increase in traffic load suddenly results in a decrease in useful work done.
 
 This decrease is known as **congestion collapse**.
@@ -37,6 +40,7 @@ Another cause of congestion collapse is undelivered packets, where packets consu
 Congestion control is the solution to both of these issues.
 
 ## Goals of Congestion Control
+
 Congestion control has two main goals.
 
 The first goal is to use network resources efficiently. The second goal is to ensure that all of the senders get their fair share of the resources.
@@ -44,6 +48,7 @@ The first goal is to use network resources efficiently. The second goal is to en
 In addition, congestion control seeks to avoid congestion collapse.
 
 ## Two Approaches to Congestion Control
+
 There are two basic approaches to congestion control: **end-to-end** congestion control and **network-assisted** congestion control.
 
 In end-to-end congestion control, the network provides no explicit feedback to the senders about when they should slow down their rates. Instead, congestion is inferred by packet loss/delay.
@@ -55,6 +60,7 @@ In network-assisted congestion control, routers provide explicit feedback about 
 A router might set a single bit indicating congestion, as is the case in TCP's Explicit Congestion Notification ([ECN](https://en.wikipedia.org/wiki/Explicit_Congestion_Notification)) extensions. Alternatively, a router may just explicitly specify the rate that a sender should be sending at.
 
 ## TCP Congestion Control
+
 In TCP congestion control, senders continue to increase their sending rate until they see packet drops in the network.
 
 Packet drops occur because senders are sending at a rate that is faster than the rate at which a particular router in the network may be able to drain its buffer.
@@ -70,7 +76,9 @@ In the increase algorithm, the sender must test the network to determine whether
 In the decrease algorithm, the senders react to congestion to achieve optimal loss rates, delays and sending rates.
 
 ## Two Approaches to Adjusting Rate
+
 ### Window Based
+
 One approach is a **window-based** algorithm. In this approach, a sender can only have a certain number of packets outstanding, or "in flight".
 
 The sender uses acknowledgements from the receiver to clock the retransmission of new data.
@@ -96,9 +104,11 @@ If a packet is not acknowledged, the window size is cut in half. This is called 
 TCP's congestion control is called **additive increase, multiplicative decrease** (AIMD).
 
 ### Rate Based
+
 Another approach is a **rate-based** algorithm. In this case, the sender monitors the loss rate, and uses a timer to modulate the transmission rate.
 
 ## Fairness and Efficiency in Congestion Control
+
 The two goals of congestion control are fairness and efficiency.
 
 Fairness means that everyone gets their fair share of the network resources.
@@ -144,6 +154,7 @@ Eventually, the senders will reach the optimal operating point.
 Every time that additive increase is applied, the senders move toward efficiency. Every time that multiplicative decrease is applied, the senders move toward fairness.
 
 ## AIMD
+
 The additive increase, multiplicative decrease algorithm is distributed, fair and efficient.
 
 To visualize the sender's sending rate over time, we can look at a **TCP sawtooth**, which plots the congestion window over time.
@@ -156,13 +167,13 @@ TCP periodically probes for available bandwidth by increasing its congestion win
 
 When the sender reaches a saturation point by filling up a buffer in a router somewhere along the path, it will see a packet drop. At this point, the sender will decrease its congestion window by half.
 
-The average congestion window, given the maximum window size of `W` - right before the drop - and the minimum of `W/2`  - right after the drop - is `3W/4`, the halfway point.
+The average congestion window, given the maximum window size of `W` - right before the drop - and the minimum of `W/2` - right after the drop - is `3W/4`, the halfway point.
 
-In order to increase the window size by 1, we must wait for 1 packet acknowledgement to come back. Thus, each additive increase in the congestion window takes 1 RTT.  The increase from the window size `W/2` to `W` takes `W/2` (`W` - `W/2` ) RTTs.
+In order to increase the window size by 1, we must wait for 1 packet acknowledgement to come back. Thus, each additive increase in the congestion window takes 1 RTT. The increase from the window size `W/2` to `W` takes `W/2` (`W` - `W/2` ) RTTs.
 
 The number of packets transmitted between instances of packet loss can be calculated by taking the area under the sawtooth, outlined in dotted lines in the figure above.
 
-In this case, we have `(W/2)^2 + ((W/2)^2) / 2`. The video ignores the first term, so we can send  `(W/2)^2  / 2`, or `W^2 / 8` packets for every packet that we drop. Our actual loss rate is 1 over this quantity, or `8 / W^2`.
+In this case, we have `(W/2)^2 + ((W/2)^2) / 2`. The video ignores the first term, so we can send `(W/2)^2 / 2`, or `W^2 / 8` packets for every packet that we drop. Our actual loss rate is 1 over this quantity, or `8 / W^2`.
 
 We can calculate the throughput of the sender by taking the average window size and dividing by the round trip time. Thus, the throughput of the sender is `3W / 4RTT`.
 
@@ -171,6 +182,7 @@ If we want to relate the throughput to the loss rate
 ![](https://assets.omscs.io/notes/C92ED629-7024-4C3A-B89B-974AB27C657A.png)
 
 ## Data Centers and TCP Incast
+
 A typical data center consists a set of server racks - each holding a large number of servers - the switches connecting those racks, and the connecting links that connect those switches to other parts of the topology.
 
 ![](https://assets.omscs.io/notes/89AAC436-7785-4304-B61B-0E99974CEA1E.png)
@@ -190,6 +202,7 @@ The filling up of the buffers at the switches result in bursty retransmissions t
 Roundtrip times in a datacenter are often just hundreds of microseconds, but TCP timeouts can last hundreds of milliseconds. Because RTT is so much less than timeouts, senders will have to wait for TCP timeout before they retransmit, which can reduce application throughput by as much as 90%.
 
 ## Barrier Synchronization and Idle Time
+
 A common request pattern in datacenters today is **barrier synchronization**, whereby a client may have requests issued from many parallel threads and no forward progress can be made until all the responses for those threads are satisfied.
 
 For example, a client might send a synchronized read with four parallel requests. Suppose that the fourth request is dropped.
@@ -206,8 +219,8 @@ Another way to reduce the network load is to have the client acknowledge every o
 
 ![](https://assets.omscs.io/notes/326BEC5D-C939-47D7-80EA-6B81500A48F0.png)
 
-
 ## Multimedia and Streaming
+
 In this section we will talk about
 
 - digital audio and video data
@@ -222,6 +235,7 @@ Some multimedia applications that we use today include
 - google hangouts
 
 ## Challenges
+
 One challenge is that there is a large volume of data. Each sample is a sound or an image and there are many samples per second.
 
 Sometimes, because of the way the data is compressed, the volume of data that is being sent may vary over time. The data may not be sent at a constant rate, yet in streaming we want smooth layout.
@@ -231,6 +245,7 @@ Users typically have a very low tolerance for delay variation. It's very annoyin
 Users might have a low tolerance for delay, period. Consider your tolerance for delay when playing an online game or using a VoIP application.
 
 ## Digitizing Audio and Video
+
 Suppose we have an analog audio signal that we would like to **digitize** - convert to a stream of bits.
 
 We can sample the audio signal at fixed intervals and represent the amplitude of each sample with a fixed number of bits.
@@ -240,9 +255,10 @@ For example, if our dynamic range was from 0 to 15, we could **quantize** the am
 ![](https://assets.omscs.io/notes/919309B3-9B08-4715-A673-FD8BDF164C35.png)
 
 ## Video Compression
+
 A video is a sequence of images.
 
-*Spatial redundancy* allows us to compress a single image. *Temporal redundancy* allows us to perform compression across images.
+_Spatial redundancy_ allows us to compress a single image. _Temporal redundancy_ allows us to perform compression across images.
 
 For example, if a person is walking towards a tree, two consecutive images might be almost the same except for the person, who will be in a slightly different position.
 
@@ -257,6 +273,7 @@ If we take the I frame and divide it into blocks, we can then see that the P fra
 A common video compression format used on the internet is MPEG.
 
 ## Streaming Video
+
 In a streaming video system, the streaming server stores the audio and video files, and the client requests the files and plays them as they download.
 
 It's important to play the data at the right time.
@@ -272,6 +289,7 @@ Data might arrive more slowly or more quickly from the server, but as long as th
 A client may typically wait a few seconds before playing a stream to allow data to be built up in the buffer. This helps to account for times when the server is not sending data at a rate that is sufficient to satisfy the client's playout rate.
 
 ## Playout Delay
+
 The rate at which packets are generated does not necessarily equal the rate at which packets are received.
 
 Network traffic may introduce variable delay in packet transmission from the server to the client.
@@ -289,6 +307,7 @@ Clients cannot tolerate high variation in packet arrival if the buffer starves.
 In addition, a small amount of loss/missing data does not disrupt the playback, but retransmitting a lost packet might take too long, resulting in unacceptable delays.
 
 ## TCP is Not a Good Fit
+
 TCP is not a good fit for congestion control for streaming audio/video.
 
 TCP retransmits lost packets but retransmissions in the context of streaming media may not always be useful.
@@ -304,14 +323,17 @@ Because UDP does not retransmit lost packets or adjust its sending rate, many th
 There are a variety of audio/video streaming transport layer protocols that are built on top of UDP that allow senders to figure out how and when to retransmit packet and how to adjust their sending rates.
 
 ## More Streaming
+
 ### YouTube
+
 With YouTube, all uploaded videos are converted to flash. Since most modern browsers contain a flash plugin, the browser can easily play these videos.
 
 Communication between the browser and YouTube occurs over HTTP/TCP. Even though TCP is suboptimal for streaming applications, the designers of YouTube decided to keep things simple, potentially at the expense of video quality.
 
-When a client makes an HTTP request to youtube.com, the request is redirected to a *Content Distribution Network* (CDN) server. When the client sends the request to the CDN server, the server responds with the video stream.
+When a client makes an HTTP request to youtube.com, the request is redirected to a _Content Distribution Network_ (CDN) server. When the client sends the request to the CDN server, the server responds with the video stream.
 
 ### Skype/VoIP
+
 With Skype and VoIP, the analog voice signal is digitized through an A/D conversion, and this resulting bit stream is sent over the internet.
 
 In the case of Skype, the A/D conversion happens by way of the application.
@@ -323,6 +345,7 @@ The adapter sends and receives data packets and then communicates with the phone
 Skype is based on peer-to-peer (P2P) technology, where individual users route voice traffic through one another.
 
 ## Skype
+
 Skype has a central login server but then uses P2P to exchange the actual voice streams.
 
 Skype compresses the audio to achieve a fairly low bitrate. At 67 bytes per packet and 140 packets per second, Skype uses about 40 kilobits per second in each direction.
@@ -336,6 +359,7 @@ To ensure that some streams achieve acceptable performance levels, we sometimes 
 One way to perform QoS is by marking certain packet streams as higher priority than others.
 
 ## Marking and Policing
+
 Applications compete for bandwidth.
 
 Consider a VoIP application and an FTP application that are sharing the same link.
@@ -352,7 +376,7 @@ An alternative to priority queueing is to allocate fixed bandwidth per applicati
 
 In addition to marking and policing, the router must apply scheduling.
 
-One strategy for scheduling is *weighted fair queueing*, where the queue containing the VoIP packets is served more frequently than the queue containing the FTP packets.
+One strategy for scheduling is _weighted fair queueing_, where the queue containing the VoIP packets is served more frequently than the queue containing the FTP packets.
 
 Another alternative is to use **admission control**, whereby an application declares its needs in advance and the network may block the application's traffic if the network can't satisfy the application's needs.
 
