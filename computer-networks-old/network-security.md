@@ -1,16 +1,18 @@
 ---
 id: computer-networks-network-security
 title: Network Security
-course: computer-networks
+course: computer-networks-old
 lecture: network-security
 ---
 
 # Network Security
 
 ## Need for Network Security
+
 The internet is subject to a wide variety of attacks against various parts of the infrastructure.
 
 ### Attacks on Routing
+
 One of part of the infrastructure that can be attacked is routing. BGP is notorious to being susceptible to various kinds of attacks.
 
 BGP essentially allows any AS to advertise an IP prefix to a neighboring AS and that AS will typically just believe that advertisement and advertise it to the rest of the internet.
@@ -26,6 +28,7 @@ On January 22, 2006, ConEdison accidentally hijacked a lot of transit networks -
 On April 25, 1995, AS 7007 advertised all of the IP prefixes on the entire internet as originating in its own AS, resulting in disruption of connectivity for huge fractions of the internet.
 
 ### Attacks on Naming
+
 Another part of the infrastructure that is vulnerable is naming system, or DNS.
 
 One very popular and effective means of mounting an attack on the naming system is through **reflection**. DNS reflection is a way of generating very large amounts of traffic targeted at a victim, and is often used in **distributed denial of service** (DDoS) attacks.
@@ -33,6 +36,7 @@ One very popular and effective means of mounting an attack on the naming system 
 In a **phishing** attack, an attacker exploits DNS in order to trick a user into revealing personal information - such as passwords - on a rogue website.
 
 ## Internet is Insecure
+
 The internet's design is fundamentally insecure. Many explicit design choices have caused the internet to be vulnerable to different types of attacks.
 
 The internet was designed for simplicity. Security was not a primary consideration when the internet was designed.
@@ -48,6 +52,7 @@ In many cases, an attack might just look like normal traffic. For example, in th
 Finally, the internet's federated design obstructs cooperation, diagnosis, and mitigation. Because the internet is run by tens of thousands of independent networks, it can be very difficult to coordinate a defense against an attack because each network is run by different operators, sometimes in completely different countries.
 
 ## Resource Exhaustion Attacks
+
 One of the internet's fundamental design tenets is packet switching.
 
 In a packet-switched network, resources are not reserved, and packets are self-contained: each packet has a destination IP address and travels independently to the destination host.
@@ -61,23 +66,26 @@ This type of attacks is referred to as a **resource exhaustion attack**.
 Circuit-switched networks - such as the phone network - do not have this problem. Since every connection effectively has allocated dedicated resources, there is no way to overload the network.
 
 ### Components of Security
-Resource exhaustion attacks a basic component of security known as *availability*, or the ability to use a resource.
 
-In addition to availability, we would like the network to provide *confidentiality*. If you are performing a sensitive transaction, like a bank transfer, you'd like the internet to conceal the details of that transaction.
+Resource exhaustion attacks a basic component of security known as _availability_, or the ability to use a resource.
 
-Another component of security is *authenticity*. Authenticity assures the identity of the origin of a piece of information. For example, if you are reading a news article, you'd like to be assured that it really came from the source it claims.
+In addition to availability, we would like the network to provide _confidentiality_. If you are performing a sensitive transaction, like a bank transfer, you'd like the internet to conceal the details of that transaction.
 
-A third component of security is *integrity*. Integrity prevents unauthorized changes to information flowing through the network.
+Another component of security is _authenticity_. Authenticity assures the identity of the origin of a piece of information. For example, if you are reading a news article, you'd like to be assured that it really came from the source it claims.
+
+A third component of security is _integrity_. Integrity prevents unauthorized changes to information flowing through the network.
 
 ### Threat vs. Attack
-A security *threat* is anything that might cause a violation of one of these security properties, while an *attack* is an action that results in the violation of one of these security properties.
+
+A security _threat_ is anything that might cause a violation of one of these security properties, while an _attack_ is an action that results in the violation of one of these security properties.
 
 ## Confidentiality and Authenticity Attacks
+
 One attack on confidentiality is **eavesdropping**, whereby an attacker might gain unauthorized access to information being sent between two parties.
 
 For example, if Alice and Bob are sending email between one another, there is a potential - a threat - that Eve might be able to hear that communication.
 
-There are various packet sniffing tools, such as [Wireshark](https://www.wireshark.org/) and [tcpdump](https://www.tcpdump.org/manpages/tcpdump.1.html), that set a machine's network interface card into *promiscuous mode*.
+There are various packet sniffing tools, such as [Wireshark](https://www.wireshark.org/) and [tcpdump](https://www.tcpdump.org/manpages/tcpdump.1.html), that set a machine's network interface card into _promiscuous mode_.
 
 If Eve has her network card in promiscuous mode, she might be able to hear some of the packets that are flooded on the local area network and, if she is on the same LAN as Alice and Bob, some of those packets may be for their communication.
 
@@ -90,6 +98,7 @@ Given the ability to see a packet, Eve might not only listen to that packet, but
 This is referred to as a [Man in the Middle](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) attack.
 
 ## Negative Impact of Attacks
+
 These attacks can have serious negative effects, including
 
 - theft of confidential information
@@ -98,6 +107,7 @@ These attacks can have serious negative effects, including
 - disruption of legitimate services
 
 ## Routing Security
+
 Our focus on routing security will primarily look at inter-domain routing, and the security of BGP.
 
 We will further focus on control plane security, which typically involves authentication of the messages being advertised by the routing protocol.
@@ -107,6 +117,7 @@ The goal of control plane security is to determine the veracity of route adverti
 Session authentication protects the point to point communication between routers. Path authentication protects the AS path. Origin authentication protects the origin AS in the AS path, effectively guaranteeing that the origin AS advertising a prefix is actually the owner of that prefix.
 
 ## Route Attacks
+
 Route attacks can arise in various different ways.
 
 For example, the router can simply be misconfigured. In this case, the false route advertisement is no intended. The AS7007 attack was actually the result of a configuration error.
@@ -120,6 +131,7 @@ To launch a route attack, an attacker might reconfigure the router or tamper wit
 The most common attack is a route hijack attack, which is an attack on origin authentication.
 
 ## Route Hijacking
+
 Suppose that you would like to visit a particular website.
 
 To do so, you'd first need to issue a DNS query which traverses the hierarchy of DNS servers to find the authoritative nameserver for the website's domain name and thus the IP address associated with that domain name.
@@ -135,6 +147,7 @@ What we'd like to have happen instead is for traffic to first go to the rogue lo
 In order to do this, the attacker needs to somehow disrupt the routes to the rest of the internet while leaving the routes between the spoofed and authentic location intact.
 
 ### Example
+
 Suppose the AS 200 originates a prefix and the paths that result from the original BGP routing below.
 
 ![](https://assets.omscs.io/notes/C21DD724-5D50-49A9-97B9-E210F2B095CE.png)
@@ -164,6 +177,7 @@ If the routers in the attacker's network never decrement the TTL, no time-exceed
 As a result, `traceroute` would never show AS 100 on the path at all.
 
 ## Autonomous System Session Authentication
+
 Session authentication attempts to ensure that BGP routing messages sent between routers on adjacent ASes are authentic.
 
 Since the session between ASes is a TCP session, the authentication can be done using TCP's MD5 authentication option.
@@ -179,26 +193,28 @@ Another way to guarantee session authentication is to have AS 1 transmit packets
 Because most eBGP sessions are only a single hop and attackers are typically remote, it is not possible for the recipient AS to accept a packet from the attacker because the attacker's packet will have a TTL less than 254.
 
 ## Origin and Path Authentication
+
 There is a proposal to modify the existing border gateway protocol to add signatures to various parts of the route advertisement, which can help provide origin and path authentication .
 
 This proposal is sometimes called **Secure BGP** (BGPSEC), and has two parts.
 
-First, there is an **origin attestation**, which is a certificate the binds the IP prefix to the organization that owns that prefix, including the origin AS. This is sometimes called an *address attestation*.
+First, there is an **origin attestation**, which is a certificate the binds the IP prefix to the organization that owns that prefix, including the origin AS. This is sometimes called an _address attestation_.
 
 The certificate must be signed by a trusted party, such as a routing registry or the organization that allocated that prefix to the AS in the first place.
 
 The second part of BGPSEC is a **path attestation**. These are a set of signatures that accompany the AS path as it is advertised from one AS to the next.
 
 ## Autonomous System Path Attestation
+
 Let's assume that we have a path with three ASes, and AS 1 wants to advertise prefix `P`.
 
 ![](https://assets.omscs.io/notes/31E8B038-43AF-44E6-B183-B8C34150120D.png)
 
 Each AS also has a private/public key-pair. An AS can sign a route with its own private key, and any other AS can check that signature with the signing AS's public key.
 
-The BGP announcement from AS 1 to AS 2 will contain the prefix  `P` as well as the AS path, which so far is just `1`.
+The BGP announcement from AS 1 to AS 2 will contain the prefix `P` as well as the AS path, which so far is just `1`.
 
-This announcement will also contain the path attestation - the  path `2 1` - which is signed with the private key of AS 1.
+This announcement will also contain the path attestation - the path `2 1` - which is signed with the private key of AS 1.
 
 When AS 2 re-advertises the route announcement to AS 3, it advertises the new AS path `2 1`.
 
@@ -235,6 +251,7 @@ Path attestation can also not defend agains certain types of replay attacks, suc
 Finally, there is no way to guarantee that the data traffic actually travels along the advertised AS path, which is a significant weakness of BGP that has yet to be solved by any routing protocol.
 
 ## DNS Security
+
 To understand the threats and vulnerabilities of DNS, we first need to look at the DNS architecture.
 
 ![](https://assets.omscs.io/notes/573F5127-7ABD-4EB6-A9BF-A4D1FE4C4432.png)
@@ -250,6 +267,7 @@ In addition, master and replica name servers can be spoofed. [Zone files](https:
 ![](https://assets.omscs.io/notes/3036162D-2F1F-4126-8CD8-BF31E0A387A8.png)
 
 ## Why is DNS Vulnerable?
+
 The fundamental reason for the vulnerability of DNS is that basic DNS protocols have no means of authenticating responses received by resolvers.
 
 Resolvers trust the responses they receive, which means that if an attacker is able to send a reply to a query faster than a legitimate DNS server, the resolver is likely to believe the attacker.
@@ -257,6 +275,7 @@ Resolvers trust the responses they receive, which means that if an attacker is a
 A secondary reason that these types of spoofed replies are possible is that DNS queries are typically connectionless, using UDP instead of TCP at the transport layer. As a result, a resolver does not have a reliable way of mapping the query it sends to the response it receives.
 
 ## DNS Cache Poisoning
+
 Consider a network where a stub resolver issues a query to a recursive resolver and the recursive resolver sends the query to the start of authority (SOA) for that domain.
 
 ![](https://assets.omscs.io/notes/0079F057-B712-4800-BD49-34B118C899C5.png)
@@ -298,6 +317,7 @@ The trick here is that instead of responding with just A records in the bogus re
 This particular flavor of cache poisoning attack is referred to as a Kaminsky attack, after security researcher [Dan Kaminsky](https://en.wikipedia.org/wiki/Dan_Kaminsky).
 
 ## DNS Cache Poisoning Defense
+
 In addition to having a (potentially randomized) query ID, the resolver can randomize the source port on which it sends the query, thereby introducing an additional 16 bits of entropy to the ID associated with the query.
 
 Unfortunately, picking a random source port can be resource intensive and using a NAT could de-randomize the port selection.
@@ -311,6 +331,7 @@ If the resolver and the authoritative server can agree on a shared key by which 
 As a result, it becomes even more difficult for the attacker to inject a bogus reply, because now the attacker has to guess the capitalization sequence for any particular domain name in addition to the query id.
 
 ## DNS Amplification Attacks
+
 DNS amplification attacks exploit the asymmetry in size between DNS queries and responses.
 
 An attacker might send a DNS query for a particular domain, which might be only 60 bytes. In sending the query, the attacker might indicate that the source address for this query is some victim IP address. The resolver will then send the reply - nearly two orders of magnitude larger at ~3000 bytes - to the victim.
@@ -322,6 +343,7 @@ If we start adding other attackers, we can likely create a denial of service att
 Possible defenses against this type of attack include preventing IP address spoofing by using appropriate filtering rules and disabling the ability of a DNS resolver to resolve queries from arbitrary locations on the internet.
 
 ## DNSSEC DNS Security
+
 One of the major reasons for DNS's vulnerabilities is the lack of authentication.
 
 The **DNSSEC protocol** adds authentication to DNS responses by adding signatures to the responses that are returned for each DNS reply.

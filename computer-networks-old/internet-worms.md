@@ -1,18 +1,20 @@
 ---
 id: computer-networks-internet-worms
 title: Internet Worms
-course: computer-networks
+course: computer-networks-old
 lecture: internet-worms
 ---
 
 # Internet Worms
 
 ## Types of Viruses and Worm Overview
+
 A **virus** is an "infection" of an existing program that results in the modification of the original program's behavior.
 
 A **worm** is code that propagates and replicates itself across the network.
 
 ### Types of viruses
+
 A **parasitic virus** typically infects an existing executable file.
 
 A **memory-resident virus** infects running programs.
@@ -22,6 +24,7 @@ A **boot-sector virus** spreads whenever the system is booted.
 A **polymorphic virus** encrypts part of the virus program using a randomly generated key.
 
 ### Viruses vs. Worms
+
 One of the key differences between viruses and worms is in how they propagate.
 
 Viruses typically spread with manual user intervention; for example, by opening an email attachment or plugging in a USB drive.
@@ -29,9 +32,11 @@ Viruses typically spread with manual user intervention; for example, by opening 
 Worms typically spread automatically by scanning for vulnerabilities and infecting vulnerable hosts when those vulnerabilities are discovered.
 
 ## Internet Worm Lifecycle
+
 Once a worm infects a host, that host will first scan other machines on the internet to discover vulnerable hosts, and will then infect those hosts via remote exploit.
 
 ## First Worm: "Morris" Worm
+
 The first worm - the [Morris Worm](https://en.wikipedia.org/wiki/Morris_worm) - was designed by [Robert Morris](https://en.wikipedia.org/wiki/Robert_Tappan_Morris) in 1988.
 
 The worm itself had no malicious payload, but it ended up bogging down the machines it infected by spawning new processes uncontrollably and exhausting resources.
@@ -53,9 +58,11 @@ The Morris Worm highlights the general approach to worm infection and propagatio
 First, the worm has to scan other machines on the network to find more potential vulnerable hosts. Next, the worm has to spread by infecting other vulnerable hosts. Finally, the worm should remain undiscoverable so that it can continue to operate and spread without being removed from systems.
 
 ## Worm Outbreak in Detail
-The summer of 2001 saw three major worm outbreaks: Code Red 1 v2,  Code Red 2, and Nimda.
+
+The summer of 2001 saw three major worm outbreaks: Code Red 1 v2, Code Red 2, and Nimda.
 
 ### Code Red 1
+
 [Code Red 1](https://malware.wikia.org/wiki/CodeRed) - the first "modern" worm - was released on July 13, 2001. This worm exploited a buffer overflow in Microsoft's IIS server.
 
 From the 1st through the 20th of each month, the worm would spawn 99 threads which generated IP addresses at random, and would then look for vulnerable instances of IIS on the hosts at those IP addresses. If the vulnerability was found, the worm would spread to that host.
@@ -69,6 +76,7 @@ The payload of this worm was to mount a denial of service attack on whitehouse.g
 Fortunately in this case, the denial of service attack launched at whitehouse.gov was actually launched at a particular IP address instead of the domain name. The operators of the website needed only to move the web server to a different IP address to defend against the DoS attack.
 
 ### Code Red 2
+
 [Code Red 2](https://en.wikipedia.org/wiki/Code_Red_II) - released on August 4, 2001 - exploited the same vulnerability, but had a completely different payload.
 
 The worm only spread on Windows 2000, crashing on Window NT.
@@ -82,6 +90,7 @@ This notion of preferential scanning can speed up infections in some cases by in
 The payload of this worm was an IIS backdoor and was completely dead by design by October 1, 2001.
 
 ### Nimda
+
 [Nimda](https://en.wikipedia.org/wiki/Nimda) - released on September 18, 2001 - spread through multiple propagation vectors, in addition to using the same IIS vulnerability as Code Red 1 and 2.
 
 Nimda could spread via bulk email as an attachment. It copied itself across network shares. It installed an exploit code on webpages served by the web server running on the machine so that any browser that visited that webpage would become infected. It also scanned for the Code Red 2 backdoors.
@@ -95,6 +104,7 @@ This was the first instance of a worm that exploited a **zero-day attack**, whic
 Zero-day attacks are particular virulent because the worm can spread extremely quickly before any type of signature-based antivirus has a change to catch up and begin preventing the infections.
 
 ## Modeling Fast-Spreading Worms
+
 Here is a plot showing the infection rate of the Code Red 1 v2 worm, which ultimately infected 350k vulnerable hosts.
 
 ![](https://assets.omscs.io/notes/F1B2CB50-9BCA-466B-8C81-D59B9D58FCE7.png)
@@ -108,7 +118,7 @@ Let's assume that `K` is the initial compromise rate, `N` is the number of vulne
 
 We can use these parameters to express the number of hosts infected in a particular timeslice.
 
-For a given timeslice `dt`, the number of hosts infected `da * N` is equal to the current number of hosts infected `N * a`, times the new fraction of infected hosts in that timeslice:  `K * (1-a) * dt`.
+For a given timeslice `dt`, the number of hosts infected `da * N` is equal to the current number of hosts infected `N * a`, times the new fraction of infected hosts in that timeslice: `K * (1-a) * dt`.
 
 Thus: `Nda = Na * K(1-a)dt`
 
@@ -117,6 +127,7 @@ Solving for `a` yields an exponential expression that depends only on `K`, the i
 This tells us that if we want to design a very fast spreading worm, then we should design it such that the initial compromise rate is as high as possible.
 
 ## Increasing Compromise Rate
+
 One possible way to increase the initial compromise rate is to create a **hit list**, or list of vulnerable hosts ahead of time.
 
 ![](https://assets.omscs.io/notes/F1B2CB50-9BCA-466B-8C81-D59B9D58FCE7.png)

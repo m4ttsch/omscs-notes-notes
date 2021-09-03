@@ -1,13 +1,14 @@
 ---
 id: computer-networks-spam
 title: Spam
-course: computer-networks
+course: computer-networks-old
 lecture: spam
 ---
 
 # Spam
 
 ## Spam
+
 While we don't really interact with spam these days outside of our spam folder, it remains a scourge for network operators.
 
 For example, removing spam primarily relies on filters that separate good traffic from bad traffic, and someone has to design and update those filters.
@@ -25,6 +26,7 @@ Spam messages often contain payloads that can be harmful, such as malware. Alter
 How can we separate the spam from the "ham"?
 
 ### Content-based filtering
+
 Content-based filtering looks at what is being said in the email. For example, a content-based filter might reject mail containing particular words, like "viagra" or "Rolex".
 
 Unfortunately, there are [many different spellings of viagra](http://cockeyed.com/lessons/viagra/viagra.html). In addition, message content can be carried not only in text, but in images, excel spreadsheets, audio and movies.
@@ -34,6 +36,7 @@ Those maintaining the filters suffer a relatively high cost because the filters 
 In short, content-based filters are easy to evade and expensive to maintain.
 
 ### Blacklisting
+
 Alternatively, a filter might make a decision about whether an email address is spam based on the IP address of the sender. This method is often called **blacklisting**.
 
 When a sender sends an email to the receiver, the receiver sends a query for that IP address to a DNS-based blacklist, such as [spamhaus](https://www.spamhaus.org/).
@@ -47,6 +50,7 @@ A spammer could hijack an IP prefix for a very short period of time, send the sp
 This allows the attackers to use ephemeral IP addresses, essentially rendering IP blacklists ineffective.
 
 ### Behavioral Features
+
 We can also construct filters based on behavioral features, or how the mail is sent.
 
 Behavioral features include the geographic locations of sender and receiver, the set of target recipients, the sender's upstream ISP, or our inference as to whether the sender is a member of a botnet.
