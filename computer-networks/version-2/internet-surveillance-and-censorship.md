@@ -9,32 +9,32 @@ lecture: internet-surveillance-and-censorship
 
 ## DNS Censorship: What is it?
 
-We will explore different censorship types and techniques. In this topic we will start with DNS based censorship. 
+We will explore different censorship types and techniques. In this topic we will start with DNS based censorship.
 
 **What is DNS censorship?**
 
-DNS censorship is a large scale network traffic filtering strategy opted by a network to enforce control and censorship over Internet infrastructure to suppress material which they deem as objectionable. An example of large scale DNS censorship is that implemented by networks located in China, which use a Firewall, popularly known as the Great Firewall of China (GFW). This Firewall looks like is an opaque system  that uses various techniques to censor China’s internet traffic and block access to various foreign websites.
+DNS censorship is a large scale network traffic filtering strategy opted by a network to enforce control and censorship over Internet infrastructure to suppress material which they deem as objectionable. An example of large scale DNS censorship is that implemented by networks located in China, which use a Firewall, popularly known as the Great Firewall of China (GFW). This Firewall looks like is an opaque system that uses various techniques to censor China’s internet traffic and block access to various foreign websites.
 
-![](assets/0220.png)
+![](https://assets.omscs.io/notes/0220.png)
 
 The GFW (shown in the figure above) works on injecting fake DNS record responses so that access to a domain name is blocked. Since the GFW is an opaque system, several different studies have been performed to deduce the actual nature of the system and its functionality.
 
-Researchers have tried to reverse engineer the GFW and to understand how it works. Based on  research (Towards a Comprehensive Picture of the Great Firewall’s DNS Censorship https://www.usenix.org/system/files/conference/foci14/foci14-anonymous.pdf (Links to an external site.)), researchers have started to identify some of the properties: 
+Researchers have tried to reverse engineer the GFW and to understand how it works. Based on research (Towards a Comprehensive Picture of the Great Firewall’s DNS Censorship https://www.usenix.org/system/files/conference/foci14/foci14-anonymous.pdf (Links to an external site.)), researchers have started to identify some of the properties:
 
 1. **Locality of GFW nodes**: There are two differing notions on whether the GFW nodes are present only at the edge ISPs or whether they are also present in non-bordering Chinese ASes. The majority view is that censorship nodes are present at the edge.
 2. **Centralized management**: Since the blocklists obtained from two distinct GFW locations are the same, there is a high possibility of a central management (GFW Manager) entity that orchestrates blocklists.
 3. **Load balancing**: GFW load balances between processes based on source and destination IP address. The processes are clustered together to collectively send injected DNS responses.
- 
+
 **Organizations that track the GFW**
 
-There are multiple organizations that monitor Chinese censorship for censored domains on a continuous basis, some of which are listed below: 
+There are multiple organizations that monitor Chinese censorship for censored domains on a continuous basis, some of which are listed below:
 
 - greatfire.org (since 2011)
 - hikinggfw.org (since 2012)
 
 ## Example DNS Censorship Techniques
 
-In the previous topic we started talking about DNS censorship and we saw one example based on the Great Firewall of China (GFW). Researchers have identified (using active probing techniques and measurements) that one of the main first censorship techniques implemented by GFW was based on DNS injection. Let's see how that works. 
+In the previous topic we started talking about DNS censorship and we saw one example based on the Great Firewall of China (GFW). Researchers have identified (using active probing techniques and measurements) that one of the main first censorship techniques implemented by GFW was based on DNS injection. Let's see how that works.
 
 **How does DNS injection work?**
 
@@ -63,7 +63,7 @@ As the name suggests, in packet dropping, all network traffic going to a set of 
 
 - Maintenance of blocklist - It is challenging to stay up to date with the list of IP addresses to block
 - Overblocking - If two websites share the same IP address and the intention is to only block one of them, there’s a risk of blocking both
- 
+
 ### Technique 2: DNS Poisoning
 
 When a DNS receives a query for resolving hostname to IP address- if there is no answer returned or an incorrect answer is sent to redirect or mislead the user request, this scenario is called DNS Poisoning.
@@ -87,7 +87,7 @@ When a DNS receives a query for resolving hostname to IP address- if there is no
 
 3B. **Intrusion detection system (IDS) based content inspection**: An alternative approach is to use parts of an IDS to inspect network traffic. An IDS is easier and more cost effective to implement than a proxy based system as it is more responsive than reactive in nature, in that it informs the firewall rules for future censorship.
 
-### Technique 4: Blocking with Resets 
+### Technique 4: Blocking with Resets
 
 The GFW employs this technique where it sends a TCP reset (RST) to block individual connections that contain requests with objectionable content. We can see this by packet capturing of requests that are normal and requests that contain potentially flaggable keywords. Let’s look at one such example of packet capture.
 
@@ -96,15 +96,15 @@ The GFW employs this technique where it sends a TCP reset (RST) to block individ
 Here, we see a packet trace of a web page which is benign:
 
 ```
-cam(53382) → china(http) [SYN] 
-china(http) → cam(53382) [SYN, ACK] 
-cam(53382) → china(http) [ACK] 
-cam(53382) → china(http) GET / HTTP/1.0 
-china(http) → cam(53382) HTTP/1.1 200 OK (text/html) etc. . . china(http) → cam(53382) . . . more of the web page 
+cam(53382) → china(http) [SYN]
+china(http) → cam(53382) [SYN, ACK]
+cam(53382) → china(http) [ACK]
+cam(53382) → china(http) GET / HTTP/1.0
+china(http) → cam(53382) HTTP/1.1 200 OK (text/html) etc. . . china(http) → cam(53382) . . . more of the web page
 cam(53382) → china(http) [ACK]
 ```
 
- . . . and so on until the page request is complete
+. . . and so on until the page request is complete
 
 Here, the request is from a client in Cambridge (cam53382) to a website based in China (china(http)) which is served successfully
 
@@ -113,14 +113,14 @@ Here, the request is from a client in Cambridge (cam53382) to a website based in
 Here, we have a packet trace which contains flagged text:
 
 ```
-cam(54190) → china(http) [SYN] 
-china(http) → cam(54190) [SYN, ACK] TTL=39 
-cam(54190) → china(http) [ACK] 
-cam(54190) → china(http) GET /?falun HTTP/1.0 
+cam(54190) → china(http) [SYN]
+china(http) → cam(54190) [SYN, ACK] TTL=39
+cam(54190) → china(http) [ACK]
+cam(54190) → china(http) GET /?falun HTTP/1.0
 china(http) → cam(54190) [RST] TTL=47, seq=1, ack=1
-china(http) → cam(54190) [RST] TTL=47, seq=1461, ack=1 
-china(http) → cam(54190) [RST] TTL=47, seq=4381, ack=1 
-china(http) → cam(54190) HTTP/1.1 200 OK (text/html) etc. . . cam(54190) → china(http) [RST] TTL=64, seq=25, ack zeroed china(http) → cam(54190) . . . more of the web page 
+china(http) → cam(54190) [RST] TTL=47, seq=1461, ack=1
+china(http) → cam(54190) [RST] TTL=47, seq=4381, ack=1
+china(http) → cam(54190) HTTP/1.1 200 OK (text/html) etc. . . cam(54190) → china(http) [RST] TTL=64, seq=25, ack zeroed china(http) → cam(54190) . . . more of the web page
 cam(54190) → china(http) [RST] TTL=64, seq=25, ack zeroed china(http) → cam(54190) [RST] TTL=47, seq=2921, ack=25
 ```
 
@@ -128,7 +128,7 @@ After the client (cam54190) sends the request containing flaggable keywords, it 
 
 ### Technique 5: Immediate Reset of Connections
 
-Censorship systems like GFW have blocking rules in addition to inspecting content, to suspend traffic coming from a source immediately, for a  short period of time.
+Censorship systems like GFW have blocking rules in addition to inspecting content, to suspend traffic coming from a source immediately, for a short period of time.
 
 After sending a request with flaggable keywords (above), we see a series of packet trace, like this:
 
@@ -143,37 +143,37 @@ The reset packet received by the client is from the firewall. It does not matter
 
 ## Why is DNS Manipulation Difficult to Measure?
 
-Anecdotal evidence suggests that more than 60 countries are currently impacted by control of access to information through the Internet’s Domain Name System (DNS) manipulation. However, our understanding of censorship around the world is relatively limited. 
+Anecdotal evidence suggests that more than 60 countries are currently impacted by control of access to information through the Internet’s Domain Name System (DNS) manipulation. However, our understanding of censorship around the world is relatively limited.
 
-![](assets/0221.png)
+![](https://assets.omscs.io/notes/0221.png)
 
-**What are the challenges?** 
+**What are the challenges?**
 
 ### Diverse Measurements
 
-![](assets/0222.png)
+![](https://assets.omscs.io/notes/0222.png)
 
-Such understanding would need a diverse set of measurements spanning different geographic regions, ISPs, countries, and regions within a single country. Since political dynamics can vary so different ISPs can use various filtering techniques and different organizations may implement censorship at multiple layers of the Internet protocol stack and using different techniques. For example, an ISP may be blocking traffic based on IP address, but another ISP may be blocking individual web requests based on keywords. 
+Such understanding would need a diverse set of measurements spanning different geographic regions, ISPs, countries, and regions within a single country. Since political dynamics can vary so different ISPs can use various filtering techniques and different organizations may implement censorship at multiple layers of the Internet protocol stack and using different techniques. For example, an ISP may be blocking traffic based on IP address, but another ISP may be blocking individual web requests based on keywords.
 
-Therefore, we need widespread longitudinal measurements to understand global Internet manipulation and the heterogeneity of DNS manipulation, across countries, resolvers, and domains. 
+Therefore, we need widespread longitudinal measurements to understand global Internet manipulation and the heterogeneity of DNS manipulation, across countries, resolvers, and domains.
 
 ### Need for Scale
 
-![](assets/0223.png)
+![](https://assets.omscs.io/notes/0223.png)
 
-At first, the methods to measure Internet censorship were relying on volunteers who were running measurement software on their own devices. Since this requires them to actually install software and do measurements, we can see that this method is unlikely to reach the scale required. There is a need for methods and tools that are independent of human intervention and participation. 
+At first, the methods to measure Internet censorship were relying on volunteers who were running measurement software on their own devices. Since this requires them to actually install software and do measurements, we can see that this method is unlikely to reach the scale required. There is a need for methods and tools that are independent of human intervention and participation.
 
 ### Identifying the intent to restrict content access
 
-![](assets/0224.png)
+![](https://assets.omscs.io/notes/0224.png)
 
-While identifying inconsistent or anomalous DNS responses can help to detect a variety of underlying causes such as for example misconfigurations, identifying DNS manipulation is different and it requires that we detect the intent to block access to content. It poses its own challenges. 
+While identifying inconsistent or anomalous DNS responses can help to detect a variety of underlying causes such as for example misconfigurations, identifying DNS manipulation is different and it requires that we detect the intent to block access to content. It poses its own challenges.
 
 So we need to rely on identifying multiple indications to infer DNS manipulation.
 
 ### Ethics and Minimizing Risks
 
-![](assets/0225.png)
+![](https://assets.omscs.io/notes/0225.png)
 
 Obviously, there are risks associated with involving citizens in censorship measurement studies, based on how different countries maybe penalizing access to censored material. Therefore it is safer to stay away from using DNS resolvers or DNS forwarders in the home networks of individual users. Instead, it is safer to rely on open DNS resolvers that are hosted in Internet infrastructure, for example within Internet service providers or cloud hosting providers).
 
@@ -181,7 +181,7 @@ Obviously, there are risks associated with involving citizens in censorship meas
 
 **Main censorship detection systems and their limitations**
 
-Global censorship measurement tools were created by efforts to measure censorship by running experiments from diverse vantage points. For example, CensMon used PlanetLab nodes in different countries. However, many such methods are no longer in use. One the most common systems/approaches is the OpenNet Initiative where volunteers perform measurements on their home networks at different times since the past decade. Relying on volunteer efforts make continuous and diverse measurements very difficult. 
+Global censorship measurement tools were created by efforts to measure censorship by running experiments from diverse vantage points. For example, CensMon used PlanetLab nodes in different countries. However, many such methods are no longer in use. One the most common systems/approaches is the OpenNet Initiative where volunteers perform measurements on their home networks at different times since the past decade. Relying on volunteer efforts make continuous and diverse measurements very difficult.
 
 In addition, Augur (about which we will talk about next)) is a new system created to perform longitudinal global measurements using TCP/IP side channels. However, this system focuses on identifying IP-based disruptions as opposed to DNS-based manipulations.
 
@@ -189,7 +189,7 @@ In addition, Augur (about which we will talk about next)) is a new system create
 
 In this section, we explore a method to identify DNS manipulation via machine learning with a system called Iris. The figure below shows an overview of the identification process.
 
-![](assets/0226.png)
+![](https://assets.omscs.io/notes/0226.png)
 
 In previous sections, we discussed how the lack of diversity is an issue while studying DNS manipulation. In order to counter that, Iris uses open DNS resolvers located all over the globe. In order to avoid using home routers (which are usually open due to configuration issues), this dataset is then restricted to a few thousand that are part of the Internet infrastructure. There are two main steps associated with this process:
 
@@ -206,21 +206,21 @@ After annotating the dataset, techniques are performed to clean the dataset, and
 
 1. **Consistency Metrics** – Domain access should have some consistency, in terms of network properties, infrastructure or content, even when accessed from different global vantage points. Using one of the domains Iris controls gives a set of high-confidence consistency baselines. Some consistency metrics used are IP address, Autonomous System, HTTP Content, HTTPS Certificate, PTRs for CDN.
 
-2. **Independent Verifiability Metrics** – In addition to the consistency metrics, they also use metrics that could be externally verified using external data sources. Some of the independent verifiability metrics used are: HTTPS certificate (whether the IP address presents a valid, browser trusted certificate for the correct domain name when queried without SNI) and HTTPS Certificate with SNI.  
+2. **Independent Verifiability Metrics** – In addition to the consistency metrics, they also use metrics that could be externally verified using external data sources. Some of the independent verifiability metrics used are: HTTPS certificate (whether the IP address presents a valid, browser trusted certificate for the correct domain name when queried without SNI) and HTTPS Certificate with SNI.
 
 If neither metrics are satisfied, the response is said to be manipulated.
 
 ## Censorship Through Connectivity Disruptions
 
-In this topic we are talking about a different class of approach to censorship, that is based on connectivity disruptions. 
+In this topic we are talking about a different class of approach to censorship, that is based on connectivity disruptions.
 
-The highest level of Internet censorship is to completely block access to the Internet. Intuitively, this can be done by manually disconnecting the hardware that are critical to connect to the Internet. Although this seems simple, it may not be feasible as the infrastructure could be distributed over a wide area. 
+The highest level of Internet censorship is to completely block access to the Internet. Intuitively, this can be done by manually disconnecting the hardware that are critical to connect to the Internet. Although this seems simple, it may not be feasible as the infrastructure could be distributed over a wide area.
 
-A more subtle approach is to use software to interrupt the routing or packet forwarding mechanisms. Let’s look at how these mechanisms would work: 
+A more subtle approach is to use software to interrupt the routing or packet forwarding mechanisms. Let’s look at how these mechanisms would work:
 
-1. **Routing disruption**:  A routing mechanism decides which part of the network can be reachable. Routers use BGP to communicate updates to other routers in the network. The routers share which destinations it can reach and continuously update its forwarding tables to select the best path for an incoming packet. If this communication is disrupted or disabled on critical routers, it could result in unreachability of the large parts of a network. Using this approach can be easily detectable, as it involves withdrawing previously advertised prefixes must be withdrawn or re-advertising them with different properties and therefore modifying the global routing state of the network, which is the control plane. 
+1. **Routing disruption**: A routing mechanism decides which part of the network can be reachable. Routers use BGP to communicate updates to other routers in the network. The routers share which destinations it can reach and continuously update its forwarding tables to select the best path for an incoming packet. If this communication is disrupted or disabled on critical routers, it could result in unreachability of the large parts of a network. Using this approach can be easily detectable, as it involves withdrawing previously advertised prefixes must be withdrawn or re-advertising them with different properties and therefore modifying the global routing state of the network, which is the control plane.
 
-2. **Packet filtering**: Typically, packet filtering is used as a security mechanism in firewalls and switches. But to disrupt a network’s connectivity, packet filtering can be used to block packets matching a certain criteria disrupting the normal forwarding action. This approach can be harder to detect and might require active probing of the forwarding path or monitoring traffic of the impacted network.     
+2. **Packet filtering**: Typically, packet filtering is used as a security mechanism in firewalls and switches. But to disrupt a network’s connectivity, packet filtering can be used to block packets matching a certain criteria disrupting the normal forwarding action. This approach can be harder to detect and might require active probing of the forwarding path or monitoring traffic of the impacted network.
 
 Connectivity disruption can include multiple layers apart from the two methods described above. It can include DNS-based blocking, deep packet inspection by an ISP or the client software blocking the traffic, to list a few.
 
@@ -230,95 +230,96 @@ In early 2011, Internet connectivity was disabled in many North African countrie
 
 The following figure shows the timeline of the events in the two countries.
 
-![](assets/0227.png)
+![](https://assets.omscs.io/notes/0227.png)
 
-In Egypt, there was a series of political developments.  On 25th January, access to Twitter was blocked and as the political developments intensified, there was a complete shutdown of the Internet on 27th January.
+In Egypt, there was a series of political developments. On 25th January, access to Twitter was blocked and as the political developments intensified, there was a complete shutdown of the Internet on 27th January.
 
-In Libya, similar political developments unfolded about four days after the above incident. On February 17, Youtube was blocked to the users followed by an Internet curfew on February 18, blocking Internet connectivity till 8am in the morning. Later on March 3rd, Internet access was disabled completely for around 4 days. 
+In Libya, similar political developments unfolded about four days after the above incident. On February 17, Youtube was blocked to the users followed by an Internet curfew on February 18, blocking Internet connectivity till 8am in the morning. Later on March 3rd, Internet access was disabled completely for around 4 days.
 
 To analyze these two events, the researchers gathered the following data from various sources:
 
 1. The Internet numbering resources in or related to the countries were identified using the geolocation data:
-    - IP Addresses - The list of IP addresses geolocated to Egypt and Libya were determined from two sources: the Regional Internet Registries (RIRs) published list and the MaxMind GeoLite Country IP geolocation database. 
-    - AS Numbers and BGP-announced prefixes - The above IP addresses were mapped to BGP-announced prefixes and origin ASes, using publicly available BGP data during the disruption period.
- 
-2. BGP Control Plane Data: The BGP updates were obtained from two major sources - Route Views Project [59] and RIPE NCC’s Routing Information Service (RIS). Along with BGP updates, a periodic dump of snapshot of the control plane table was also used to track the reachability of a prefix during the period of disruption. The start and end time of the outage was also determined by observing BGP updates for the withdrawal of prefixes and when it became available again. 
-3. Darknet Traffic: Internet background radiation (IBR) refers to unsolicited one-way traffic to unused IP addresses in the Internet. These usually indicate malicious activity on the Internet, including worms, Denial of Service attacks, etc. IBR traffic is observed using network telescopes, called darknets. The three main causes of IBR traffic are due to DoS attacks, scans and bugs and misconfiguration. 
-4. Active forward path probing: The active macroscopic traceroute measurements and structured global IPv4 address probing  during the outage were also considered in the two countries. 
- 
+
+   - IP Addresses - The list of IP addresses geolocated to Egypt and Libya were determined from two sources: the Regional Internet Registries (RIRs) published list and the MaxMind GeoLite Country IP geolocation database.
+   - AS Numbers and BGP-announced prefixes - The above IP addresses were mapped to BGP-announced prefixes and origin ASes, using publicly available BGP data during the disruption period.
+
+2. BGP Control Plane Data: The BGP updates were obtained from two major sources - Route Views Project [59] and RIPE NCC’s Routing Information Service (RIS). Along with BGP updates, a periodic dump of snapshot of the control plane table was also used to track the reachability of a prefix during the period of disruption. The start and end time of the outage was also determined by observing BGP updates for the withdrawal of prefixes and when it became available again.
+3. Darknet Traffic: Internet background radiation (IBR) refers to unsolicited one-way traffic to unused IP addresses in the Internet. These usually indicate malicious activity on the Internet, including worms, Denial of Service attacks, etc. IBR traffic is observed using network telescopes, called darknets. The three main causes of IBR traffic are due to DoS attacks, scans and bugs and misconfiguration.
+4. Active forward path probing: The active macroscopic traceroute measurements and structured global IPv4 address probing during the outage were also considered in the two countries.
+
 ### Analysis - Egypt
 
-During the outage in Egypt, it was observed that all the routes to Egyptian networks were withdrawn from the Internet’s global routing table. The primarily state owned Internet infrastructure of Egypt, with a small number of parties providing international connectivity and a state telecommunications provider controlling the physical connectivity, enables such manipulation of the system. 
+During the outage in Egypt, it was observed that all the routes to Egyptian networks were withdrawn from the Internet’s global routing table. The primarily state owned Internet infrastructure of Egypt, with a small number of parties providing international connectivity and a state telecommunications provider controlling the physical connectivity, enables such manipulation of the system.
 
-The chronological sequence of the outage determined using BGP was found to be synchronized with the reported events. A number of withdrawal routing events were observed between  27th January 22:12:00 GMT and 22:34:00 GMT, signaling the start of the outage. As shown in the graph, the number of visible IP address dropped down from 2500 to less than 500.
+The chronological sequence of the outage determined using BGP was found to be synchronized with the reported events. A number of withdrawal routing events were observed between 27th January 22:12:00 GMT and 22:34:00 GMT, signaling the start of the outage. As shown in the graph, the number of visible IP address dropped down from 2500 to less than 500.
 
-![](assets/0228.png)
+![](https://assets.omscs.io/notes/0228.png)
 
 As expected, the restoration of Internet connectivity increased the number of re-announced IPv4 prefixes. As seen in the below graph, the number of visible prefixes went up from less than 500 to around 3000.
 
-![](assets/0229.png)
+![](https://assets.omscs.io/notes/0229.png)
 
-There was also a decrease in the rate of unsolicited traffic observed by darknet around 22:32:00 GMT when the outage began and an increase to the normal rate at the end of the outage. The analysis of the darknet traffic also identified DoS attacks to the Egyptian government sites.   
+There was also a decrease in the rate of unsolicited traffic observed by darknet around 22:32:00 GMT when the outage began and an increase to the normal rate at the end of the outage. The analysis of the darknet traffic also identified DoS attacks to the Egyptian government sites.
 
 ### Analysis - Libya
 
-A single AS which is owned by the state dominates Libya’s Internet infrastructure, with only two submarine cables providing international connectivity, making it easier to manipulate. Libya encountered three outages as shown in the timeline. 
+A single AS which is owned by the state dominates Libya’s Internet infrastructure, with only two submarine cables providing international connectivity, making it easier to manipulate. Libya encountered three outages as shown in the timeline.
 
-During the first two outages, it was observed that 12 out of the 13 delegated prefixes to Libya were withdrawn by its local telecom operator with a reasonable exception of a prefix that was controlled by an outside company. However, it was also observed that the darkest received some small traffic during the second outage suggesting that other censorship techniques might have been used. 
+During the first two outages, it was observed that 12 out of the 13 delegated prefixes to Libya were withdrawn by its local telecom operator with a reasonable exception of a prefix that was controlled by an outside company. However, it was also observed that the darkest received some small traffic during the second outage suggesting that other censorship techniques might have been used.
 
 During the third outage, it was observed that none of the BGP routes were withdrawn. Unlike the first two outages where the primary technique was BGP disruption, the third outage was caused by packet filtering. This can be concluded by the small amount of traffic observed (shown in the below graph) by darknet that is consistent with the behavior of packet filtering.
 
-![](assets/0230.png)
+![](https://assets.omscs.io/notes/0230.png)
 
 ## Connectivity disruptions: Detection
 
-As we saw in a previous section, obtaining a view of global censorship can be challenging due to a variety of reasons. In this section, we focus on a system, Augur, which uses a measurement machine to detect filtering between hosts. 
+As we saw in a previous section, obtaining a view of global censorship can be challenging due to a variety of reasons. In this section, we focus on a system, Augur, which uses a measurement machine to detect filtering between hosts.
 
-The system aims to detect if filtering exists between two hosts, a reflector and a site. A reflector is a host which maintains a global IP ID. A site is a host that may be potentially blocked. To identify if filtering exists, it makes use of a third machine called the measurement machine. 
+The system aims to detect if filtering exists between two hosts, a reflector and a site. A reflector is a host which maintains a global IP ID. A site is a host that may be potentially blocked. To identify if filtering exists, it makes use of a third machine called the measurement machine.
 
 ### IP ID
 
-The strategy used by Augur takes advantage of the fact that any packet that is sent by a host is assigned a unique 16-bit IP identifier (“IP ID”), which the destination host can use to reassemble a fragmented packet. This IP ID should be different for the packets that are generated by the same host. Although there are multiple methods available to determine the IP ID of a packet (randomly, per-connection counter, etc.), maintaining a single global counter is the most commonly used approach. The global counter is incremented for each packet that is generated and helps in keeping track of the total number of packets generated by that host. Using this counter, we can determine if and how many packets are generated by a host. 
+The strategy used by Augur takes advantage of the fact that any packet that is sent by a host is assigned a unique 16-bit IP identifier (“IP ID”), which the destination host can use to reassemble a fragmented packet. This IP ID should be different for the packets that are generated by the same host. Although there are multiple methods available to determine the IP ID of a packet (randomly, per-connection counter, etc.), maintaining a single global counter is the most commonly used approach. The global counter is incremented for each packet that is generated and helps in keeping track of the total number of packets generated by that host. Using this counter, we can determine if and how many packets are generated by a host.
 
-In addition to the IP ID counter, the approach also leverages the fact that when an unexpected TCP packet is sent to a host, it sends back a RST (TCP Reset) packet. It also assumes there is no complex factors involved such as cross-traffic or packet loss.  Let’s look at two important mechanisms used by the approach: 
+In addition to the IP ID counter, the approach also leverages the fact that when an unexpected TCP packet is sent to a host, it sends back a RST (TCP Reset) packet. It also assumes there is no complex factors involved such as cross-traffic or packet loss. Let’s look at two important mechanisms used by the approach:
 
 ### Probing
 
-Probing is a mechanism to monitor the IP ID of a host over time. We use the measurement machine to observe the IP ID generated by the reflector. To do so, the measurement machine sends a TCP SYN-ACK to the reflector and receives a TCP RST packet as the response. The RST packet received would contain the latest IP ID that was generated by the reflector. Thus, the measurement machine can track the IP ID counter of the reflector at any given point. 
+Probing is a mechanism to monitor the IP ID of a host over time. We use the measurement machine to observe the IP ID generated by the reflector. To do so, the measurement machine sends a TCP SYN-ACK to the reflector and receives a TCP RST packet as the response. The RST packet received would contain the latest IP ID that was generated by the reflector. Thus, the measurement machine can track the IP ID counter of the reflector at any given point.
 
 ### Perturbation
 
-This is a mechanism which forces a host to increment its IP ID counter by sending traffic from different sources such that the host generates a response packet. The flow here is as follows: 
+This is a mechanism which forces a host to increment its IP ID counter by sending traffic from different sources such that the host generates a response packet. The flow here is as follows:
 
-1. The measurement machine sends a spoofed TCP SYN packet to the site with source address set to the reflector’s IP address. 
-2. The site responds to the reflector with a TCP SYN-ACK packet. 
-3. The reflector returns a TCP RST packet to the site while also incrementing its global IP ID counter by 1. 
+1. The measurement machine sends a spoofed TCP SYN packet to the site with source address set to the reflector’s IP address.
+2. The site responds to the reflector with a TCP SYN-ACK packet.
+3. The reflector returns a TCP RST packet to the site while also incrementing its global IP ID counter by 1.
 
 Now that we know how to probe and perturb the IP ID values at a host, let’s analyze the different possible scenarios. Let the initial IP ID counter of the reflector be 5.
 
-### No filtering 
+### No filtering
 
 Assume a scenario where there’s no filtering as shown in the below figure.
 
-![](assets/0231.png)
+![](https://assets.omscs.io/notes/0231.png)
 
 The sequence of events is as follows:
 
-1. The measurement machine probes the IP ID of the reflector by sending a TCP SYN-ACK packet. It receives a RST response packet with IP ID set to 6 (IPID (t1)). 
-2. Now, the measurement machine performs perturbation by sending a spoofed TCP SYN to the site. 
-3. The site sends a TCP SYN-ACK packet to the reflector and receives a RST packet as a response. The IP ID of the reflector is now incremented to 7. 
-4. The measurement machine again probes the IP ID of the reflector and receives a response with the IP ID value set to 8 (IPID (t4)). 
+1. The measurement machine probes the IP ID of the reflector by sending a TCP SYN-ACK packet. It receives a RST response packet with IP ID set to 6 (IPID (t1)).
+2. Now, the measurement machine performs perturbation by sending a spoofed TCP SYN to the site.
+3. The site sends a TCP SYN-ACK packet to the reflector and receives a RST packet as a response. The IP ID of the reflector is now incremented to 7.
+4. The measurement machine again probes the IP ID of the reflector and receives a response with the IP ID value set to 8 (IPID (t4)).
 
 The measurement machine thus observes that the difference in IP IDs between steps 1 and 4 is 2 and infers that communication has occurred between the two hosts.
 
-### Inbound blocking 
+### Inbound blocking
 
 The scenario where filtering occurs on the path from the site to the reflector is termed as inbound blocking. In this case, the SYN-ACK packet sent from the site in step 3 does not reach the reflector. Hence, there is no response generated and the IP ID of the reflector does not increase. The returned IP ID in step 4 will be 7 (IPID(t4)) as shown in the figure. Since the measurement machine observes the increment in IP ID value as 1, it detects filtering on the path from the site to the reflector.
 
-![](assets/0232.png)
+![](https://assets.omscs.io/notes/0232.png)
 
-### Outbound blocking 
+### Outbound blocking
 
 Outbound blocking is the filtering imposed on the outgoing path from the reflector. Here, the reflector receives the SYN-ACK packet and generates a RST packet. As per our example, in step 3, the IP ID increments to 7. However, the RST packet does not reach the site. When the site doesn’t receive a RST packet, it continues to resend the SYN-ACK packets at regular intervals depending on the site’s OS and its configuration. This is shown in step 5 of the figure. It results in further increment of the IP ID value of the reflector. In step 6, the probe by the measurement machine reveals the IP ID has again increased by 2, which shows that retransmission of packets has occurred. In this way, outbound blocking can be detected.
 
-![](assets/0233.png)
+![](https://assets.omscs.io/notes/0233.png)
