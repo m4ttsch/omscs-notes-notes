@@ -1,5 +1,5 @@
 ---
-id: computer-networks-traffic-engineering
+id: computer-networks-old-traffic-engineering
 title: Traffic Engineering
 course: computer-networks-old
 lecture: traffic-engineering

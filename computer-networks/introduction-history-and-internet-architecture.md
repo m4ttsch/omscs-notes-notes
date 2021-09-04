@@ -31,7 +31,7 @@ The scale of the Internet was increasing rapidly, and as a result it was no long
 
 ## Internet Architecture Introduction
 
-After looking at the major milestones in the history of the Internet, let’s take a closer look into the current architectural design of the Internet.
+After looking at the major milestones in the history of the Internet, let's take a closer look into the current architectural design of the Internet.
 
 **Connecting hosts running the same applications but located in different types of networks.** A computer network is a complex system that is built on top of multiple components. These components can vary in technologies making up different types of networks that offer different types of applications. For example in the figure below, we have two BitTorrent clients that communicate even though they are using very different networks/technologies (Wifi vs Ethernet). So, how do these technologies and components interconnect and come together to meet the needs of each application? The designers of the network protocols provide structure to the network architecture by organizing the protocols into layers.
 
@@ -39,7 +39,7 @@ After looking at the major milestones in the history of the Internet, let’s ta
 
 **Architecture, layers and functionalities.** So, the functionalities in the network architecture are implemented by dividing the architectural model into layers. Each layer offers different services.
 
-**An analogy.** An analogy we can use to explain a layered architecture is the airline system. Let’s look first at the actions that a passenger needs to take to move from the origin to the destination place. The passenger purchases the ticket, checks the bags, goes through the gates and after the plane takes off, the passenger travels on the plane to their final destination. At the final destination, the passenger leaves the aircraft, goes through the gate and claims their baggage.
+**An analogy.** An analogy we can use to explain a layered architecture is the airline system. Let's look first at the actions that a passenger needs to take to move from the origin to the destination place. The passenger purchases the ticket, checks the bags, goes through the gates and after the plane takes off, the passenger travels on the plane to their final destination. At the final destination, the passenger leaves the aircraft, goes through the gate and claims their baggage.
 
 ![](https://assets.omscs.io/notes/0002.png)
 
@@ -93,7 +93,7 @@ The session layer is responsible for the mechanism that manages the different tr
 
 ### The Transport Layer
 
-The transport layer is responsible for the end-to-end communication between end hosts. In this layer, there are two transport protocols, namely TCP and UDP. The services that TCP offers include: a connection-oriented service to the applications that are running on the layer above, guaranteed delivery of the application-layer messages, flow control which in a nutshell matches the sender’s and receiver’s speed, and a congestion-control mechanism, so that the sender slows its transmission rate when it perceives the network to be congested. On the other hand, the UDP protocol provides a connectionless best-effort service to the applications that are running in the layer above, without reliability, flow or congestion control. At the transport layer, we refer to the packet of information as a segment.
+The transport layer is responsible for the end-to-end communication between end hosts. In this layer, there are two transport protocols, namely TCP and UDP. The services that TCP offers include: a connection-oriented service to the applications that are running on the layer above, guaranteed delivery of the application-layer messages, flow control which in a nutshell matches the sender's and receiver's speed, and a congestion-control mechanism, so that the sender slows its transmission rate when it perceives the network to be congested. On the other hand, the UDP protocol provides a connectionless best-effort service to the applications that are running in the layer above, without reliability, flow or congestion control. At the transport layer, we refer to the packet of information as a segment.
 
 ![](https://assets.omscs.io/notes/0007.png)
 
@@ -124,17 +124,17 @@ The physical layer facilitates the interaction with the actual hardware and is r
 ## Layers Encapsulation
 
 **How do the layers and the protocols that run on each layer communicate with each other?**
-To understand the concepts of encapsulation and de-encapsulation, let’s take a look at the following diagram which shows the physical path that data take from the sending host to the receiving host.
+To understand the concepts of encapsulation and de-encapsulation, let's take a look at the following diagram which shows the physical path that data take from the sending host to the receiving host.
 
 ![](https://assets.omscs.io/notes/0011.png)
 
 **Encapsulation and De-encapsulation.** The sending host sends an application layer message M to the transport layer. The transport layer receives the message, and it appends the transport layer header information (Ht). The application message along with the transport layer header is called segment (or transport-layer segment). The segment thus encapsulates the application layer message. This added information can help the receiving host to a) inform the receiver-side transport layer about which application to deliver the message up to, and b) perform error detection and determine whether bits in the message have been changed along the route.
 
-The segment is then forwarded to network layer which in turn, adds it’s own network header information (Hn). The entire combination of the segment and the network header is called datagram. We say that the datagram encapsulates the segment. The header information that the network layer appends includes the source and destination addresses of the end hosts. The same process continues for the link layer which in turn it appends its own header information(Hl). The message at the link layer is called frame, which is transmitted across the physical medium. At each layer the message is a combination of two parts: a) the payload which is the message from the layer above, and b) the new appended header information. At the receiving end, the process is reversed, with headers being stripped off at each layer. This reverse process is known as de-encapsulation.
+The segment is then forwarded to network layer which in turn, adds it's own network header information (Hn). The entire combination of the segment and the network header is called datagram. We say that the datagram encapsulates the segment. The header information that the network layer appends includes the source and destination addresses of the end hosts. The same process continues for the link layer which in turn it appends its own header information(Hl). The message at the link layer is called frame, which is transmitted across the physical medium. At each layer the message is a combination of two parts: a) the payload which is the message from the layer above, and b) the new appended header information. At the receiving end, the process is reversed, with headers being stripped off at each layer. This reverse process is known as de-encapsulation.
 
 Intermediate devices and encapsulation. The path that connects the sending and the receiving hosts may include intermediate layer-3 devices, such as routers, and layer-2 devices such as switches. We will see later how switches and routers work, but for now we note that both routers and layer-2 switches implement protocol stacks similarly to end-hosts. The difference is that routers and layer-2 switches do not implement all the layers in the protocol stack; routers implement layers 1 to 3, and layer-2 switches implement layers 1 to 2. So, going back to our diagram, when the data leave the sending host and they are received by the layer-2 switch, the switch implements the same process of de-encapsulation to process the data and encapsulation to send the data forward to the next device.
 
-A design choice. We note again that end-hosts implement all five layers while the intermediate devices don’t. This design choice ensures that the Internet architecture puts much of its complexity and intelligence at the edges of the network while keeping the core simple. Next, we will look deeper into the so-called end-to-end principle.
+A design choice. We note again that end-hosts implement all five layers while the intermediate devices don't. This design choice ensures that the Internet architecture puts much of its complexity and intelligence at the edges of the network while keeping the core simple. Next, we will look deeper into the so-called end-to-end principle.
 
 ## The End to End Principle
 
@@ -150,7 +150,7 @@ The same paper reasoned that many functions can only be completely implemented a
 
 Many people argue that the e2e principle allowed the internet to grow rapidly, because evolving innovation took place at the network edge, in the form of numerous applications and a plethora of services, rather than in the middle of the network, which could be hard to later modify.
 
-**What were the designers’ original goals that led to the e2e principle?** Moving functions and services closer to the applications that use them, increases the flexibility and the autonomy of the application designer to offer these services to the needs of the specific application. Thus, the higher-level protocol layers, are more specific to an application. Whereas the lower-level protocol layers are free to organize the lower-level network resources to achieve application design goals more efficiently and independently of the specific application.
+**What were the designers' original goals that led to the e2e principle?** Moving functions and services closer to the applications that use them, increases the flexibility and the autonomy of the application designer to offer these services to the needs of the specific application. Thus, the higher-level protocol layers, are more specific to an application. Whereas the lower-level protocol layers are free to organize the lower-level network resources to achieve application design goals more efficiently and independently of the specific application.
 
 ![](https://assets.omscs.io/notes/0013.png)
 
@@ -170,7 +170,7 @@ Examples include firewalls and traffic filters. The firewalls usually operated a
 
 ![](https://assets.omscs.io/notes/0014.png)
 
-Another example of an e2e violation is the Network Address Translation (NAT) boxes. NAT boxes help us as a bandaid measure to deal with the shortage of Internet addresses. Let’s see in more detail how a NAT-enabled home router operates. Let’s assume we have a home network, where we have multiple devices we want to connect to the Internet. An internet service provider typically assigns a single public IP address (120.70.39.4) to the home router and specifically to the interface that is facing the public global Internet, as shown in the figure below.
+Another example of an e2e violation is the Network Address Translation (NAT) boxes. NAT boxes help us as a bandaid measure to deal with the shortage of Internet addresses. Let's see in more detail how a NAT-enabled home router operates. Let's assume we have a home network, where we have multiple devices we want to connect to the Internet. An internet service provider typically assigns a single public IP address (120.70.39.4) to the home router and specifically to the interface that is facing the public global Internet, as shown in the figure below.
 
 ![](https://assets.omscs.io/notes/0015.png)
 
@@ -180,7 +180,7 @@ All traffic that leaves the home router and it is destined to hosts in the publi
 
 ![](https://assets.omscs.io/notes/0016.png)
 
-The translation table provides a mapping between the public facing IP address/ports, and the IP addresses/ports that belong to hosts inside the private network. For example, let’s assume that a host 10.0.0.1 inside the private network, uses port 3345 to send traffic to a host in the public Internet with IP address 128.119.40.186 and port 80. Then the NAT table says that packets with the source IP address of 10.0.0.1 and source port 3345, they should be rewritten to a source address 138.76.29.7 and a source port of 5001 (or any source port number that is not currently used in the NAT translation table). Similarly, packets with a destination IP address of 138.76.29.7 and destination port of 5001, they will be rewritten to destination IP address 10.0.0.1 and destination port 3345.
+The translation table provides a mapping between the public facing IP address/ports, and the IP addresses/ports that belong to hosts inside the private network. For example, let's assume that a host 10.0.0.1 inside the private network, uses port 3345 to send traffic to a host in the public Internet with IP address 128.119.40.186 and port 80. Then the NAT table says that packets with the source IP address of 10.0.0.1 and source port 3345, they should be rewritten to a source address 138.76.29.7 and a source port of 5001 (or any source port number that is not currently used in the NAT translation table). Similarly, packets with a destination IP address of 138.76.29.7 and destination port of 5001, they will be rewritten to destination IP address 10.0.0.1 and destination port 3345.
 
 ### Why the NAT boxes violate the e2e principle?
 
@@ -190,7 +190,7 @@ There are some workarounds to allow hosts to initiate connections to hosts that 
 
 ## The Hourglass Shape of Internet Architecture
 
-The Internet protocol stack has a layered architecture that resembles an hourglass shape. **Was the Internet architecture always shaped like an hourglass, and there has always been a single protocol at the network layer?** If we look back in the early nineties, we will see that there were several other network-layer protocols that were competing with IPv4. For example, Novell’s IPX and the X.25 network protocol used in Frame Relay. So the network layer did not include only one protocol, but there were multiple protocols that were competing with each other at that time.
+The Internet protocol stack has a layered architecture that resembles an hourglass shape. **Was the Internet architecture always shaped like an hourglass, and there has always been a single protocol at the network layer?** If we look back in the early nineties, we will see that there were several other network-layer protocols that were competing with IPv4. For example, Novell's IPX and the X.25 network protocol used in Frame Relay. So the network layer did not include only one protocol, but there were multiple protocols that were competing with each other at that time.
 
 ![](https://assets.omscs.io/notes/0017.png)
 
@@ -206,7 +206,7 @@ In the next topic, we will talk about the details of the model and how it can he
 
 ![](https://assets.omscs.io/notes/0019.png)
 
-In this section, we will talk about a model that attempts to answer our previous questions. Researchers have suggested a model - the **Evolutionary Architecture model** or **EvoArch** - that can help to study layered architectures, and their evolution in a quantitative manner. The EvoArch model considers an abstract model of the Internet’s protocol stack that has the following components:
+In this section, we will talk about a model that attempts to answer our previous questions. Researchers have suggested a model - the **Evolutionary Architecture model** or **EvoArch** - that can help to study layered architectures, and their evolution in a quantitative manner. The EvoArch model considers an abstract model of the Internet's protocol stack that has the following components:
 
 - **Layers:** A protocol stack is modeled as a directed and acyclic network with `L` layers.
 
@@ -214,7 +214,7 @@ In this section, we will talk about a model that attempts to answer our previous
 
 - **Edges:** Dependencies between protocols are represented as directed edges.
 
-- **Node incoming edges:** If a protocol `u` at layer `l` uses the service provided by a protocol `w` at the lower layer `l−1`, then this is represented by an “upwards” edge from `w` to `u`.
+- **Node incoming edges:** If a protocol `u` at layer `l` uses the service provided by a protocol `w` at the lower layer `l-1`, then this is represented by an “upwards” edge from `w` to `u`.
 
 - **Node substrates:** We refer to substrates of a node `u`, `S(u)`, as the set of nodes that `u` is using their services. Every node has at least one substrate, except the nodes at the bottom layer.
 
@@ -222,9 +222,9 @@ In this section, we will talk about a model that attempts to answer our previous
 
 - **Layer generality:** Each layer is associated with a probability `s(l)`, which we refer to as layer generality. A node `u` at layer `l+1` selects independently each node of layer `l` as the substrate with probability `s(l)`. The layer generality decreases as we move to higher layers, and thus protocols at lower layers are more general in terms of their functions or provided services than protocols at higher layers. For example, in the case of the Internet protocol stack, layer 1 is very general and the protocols at this layer offer a very general bit transfer service between two connected points, which most higher layer protocols would use.
 
-- **Node evolutionary value:** The value of a protocol node, `v(u)`, is computed recursively based on the products of `u`. By introducing the evolutionary value of each node, the model captures the fact that the value of a protocol `u` is driven by the values of the protocols that depend on it. For example, let’s consider again the Internet protocol stack. TCP has a high evolutionary value because it is used by many higher layer protocols and some of them being valuable themselves. Let’s assume that we introduce a brand new protocol, at the same layer as TCP, that may have better performance or other great new features. The new protocol’s evolutionary value will be low if it is not used by important or popular higher layer protocols, regardless of the great new features it may have. So the evolutionary value determines if the protocol will survive the competition with other protocols, at the same layer, that offer similar services.
+- **Node evolutionary value:** The value of a protocol node, `v(u)`, is computed recursively based on the products of `u`. By introducing the evolutionary value of each node, the model captures the fact that the value of a protocol `u` is driven by the values of the protocols that depend on it. For example, let's consider again the Internet protocol stack. TCP has a high evolutionary value because it is used by many higher layer protocols and some of them being valuable themselves. Let's assume that we introduce a brand new protocol, at the same layer as TCP, that may have better performance or other great new features. The new protocol's evolutionary value will be low if it is not used by important or popular higher layer protocols, regardless of the great new features it may have. So the evolutionary value determines if the protocol will survive the competition with other protocols, at the same layer, that offer similar services.
 
-- **Node competitors and competition threshold:** We refer to the competitors of a node `u`, `C(u)`, as the nodes at layer `l` that share at least a fraction `c` of node `u`’s products. We refer to the fraction `c`, as the competition threshold. So, a node `w` competes with a node `u`, if `w` shares at least a fraction `c` of `u`’s products.
+- **Node competitors and competition threshold:** We refer to the competitors of a node `u`, `C(u)`, as the nodes at layer `l` that share at least a fraction `c` of node `u`'s products. We refer to the fraction `c`, as the competition threshold. So, a node `w` competes with a node `u`, if `w` shares at least a fraction `c` of `u`'s products.
 
 - **Node death rate:** The model has a death and birth process in place, to account for the protocols that cease or get introduced respectively. The competition among nodes becomes more intense, and it is more likely that a protocol `u` dies if at least one of its competitors has a higher value than itself. When a node `u` dies, then its products also die, if their only substrate is `u`.
 
@@ -232,7 +232,7 @@ In this section, we will talk about a model that attempts to answer our previous
 
 ### Toy Example
 
-To illustrate the above model and the parameters, let’s consider a toy network example with L equal to 4 layers. The evolutionary value of each node is shown inside each circle. The generality probability for each layer is shown at the left of each layer, and it is denoted as s(l). As we noted earlier, the generality of the layers decreases as we move to higher layers, so on average, the number of products per node decreases as well. Let’s further assume that we have a competition threshold c = ⅗. Nodes u, q and w compete in layer 2. U and q compete, but this is unlikely to cause q to die because u and q have comparable evolutionary values. In contrast, it is likely that w will die because its value is much less than that of its maximum-value competitor, u.
+To illustrate the above model and the parameters, let's consider a toy network example with L equal to 4 layers. The evolutionary value of each node is shown inside each circle. The generality probability for each layer is shown at the left of each layer, and it is denoted as s(l). As we noted earlier, the generality of the layers decreases as we move to higher layers, so on average, the number of products per node decreases as well. Let's further assume that we have a competition threshold c = ⅗. Nodes u, q and w compete in layer 2. U and q compete, but this is unlikely to cause q to die because u and q have comparable evolutionary values. In contrast, it is likely that w will die because its value is much less than that of its maximum-value competitor, u.
 
 ![](https://assets.omscs.io/notes/0020.png)
 
@@ -256,7 +256,7 @@ Finally, in terms of future and entirely new Internet architectures, the EvoArch
 
 **_What are some of the ramifications of the “hourglass shape of the internet”?_**
 
-- Many technologies that were not originally designed for the internet have been modified so that they have versions that can communicate over the internet (such as Radio over IP).Modifying a technology so that it is compatible with the rest of the internet (i.e., by making it compatible with IP) greatly enhances market penetration (from the vendor’s perspective), and/or decreases the amount of extra development that would need to happen.
+- Many technologies that were not originally designed for the internet have been modified so that they have versions that can communicate over the internet (such as Radio over IP).Modifying a technology so that it is compatible with the rest of the internet (i.e., by making it compatible with IP) greatly enhances market penetration (from the vendor's perspective), and/or decreases the amount of extra development that would need to happen.
 
 - It has been a difficult and slow process to transition to IPv6, despite the shortage of public IPv4 addresses. A big part of the Internet infrastructure uses IPV4 while the cost of transitioning is high. This reflects as a consequence of the narrow waist.
 
@@ -268,11 +268,11 @@ Some of the major design principles of the current Internet architecture are lay
 
 ### The clean-slate design as a process
 
-An important aspect about designing new Internet architectures through a clean-slate approach, is the ability to deploy and thoroughly test them, which can take place at an appropriate experimental facility. Such a facility has to fulfill some requirements such as offer a large scale infrastructure, include different technologies, attract real users and their traffic, enable parallel experiments with distinct networking architectures such as different naming schemes, different layering approaches, and different forwarding techniques, while at the same time, new services should be able to explore the new capabilities and should be made available to users who opt-in. In this context, a clean-slate should be viewed as a design process, rather than as a result in itself. Through this process, we may identify innovative services and applications, which may become mature enough to be commercially deployed on the existing Internet. Another possibility may be that we may create an entirely new network architecture, which eventually replaces today’s architecture. Or perhaps, the most “conservative” outcome may even be that we learn that the current Internet architecture is the “best” possible solution. On the other hand, the most “radical” outcome can be that such an experimental facility, which allows multiple sub-system architectures and network services to co-exist, becomes the blueprint for the future Internet.
+An important aspect about designing new Internet architectures through a clean-slate approach, is the ability to deploy and thoroughly test them, which can take place at an appropriate experimental facility. Such a facility has to fulfill some requirements such as offer a large scale infrastructure, include different technologies, attract real users and their traffic, enable parallel experiments with distinct networking architectures such as different naming schemes, different layering approaches, and different forwarding techniques, while at the same time, new services should be able to explore the new capabilities and should be made available to users who opt-in. In this context, a clean-slate should be viewed as a design process, rather than as a result in itself. Through this process, we may identify innovative services and applications, which may become mature enough to be commercially deployed on the existing Internet. Another possibility may be that we may create an entirely new network architecture, which eventually replaces today's architecture. Or perhaps, the most “conservative” outcome may even be that we learn that the current Internet architecture is the “best” possible solution. On the other hand, the most “radical” outcome can be that such an experimental facility, which allows multiple sub-system architectures and network services to co-exist, becomes the blueprint for the future Internet.
 
 ### Redesigning the Internet architecture to optimize for control and management
 
-One research group (“4D”) for example, started from a small set of clean slate design principles different from those of the Internet today: network-level objectives, network-wide views, and direct control, with functionality in four components: the data, discovery, dissemination, and decision planes. In their work, the decision plane has a network-wide view of the topology and traffic, and exerts direct control over the operation of the data plane – radically different from today’s Internet - no decision logic is hardwired in protocols distributed among the network elements. The output of the decision logic is communicated to routers/switches by the dissemination plane. Their work investigates an extreme design point where the decision logic is completely separated from distributed protocols. The 4D group argues that technology trends toward ever-more powerful, reliable, and inexpensive computing platforms make their design point attractive in practice. [Greenberg 2005]
+One research group (“4D”) for example, started from a small set of clean slate design principles different from those of the Internet today: network-level objectives, network-wide views, and direct control, with functionality in four components: the data, discovery, dissemination, and decision planes. In their work, the decision plane has a network-wide view of the topology and traffic, and exerts direct control over the operation of the data plane – radically different from today's Internet - no decision logic is hardwired in protocols distributed among the network elements. The output of the decision logic is communicated to routers/switches by the dissemination plane. Their work investigates an extreme design point where the decision logic is completely separated from distributed protocols. The 4D group argues that technology trends toward ever-more powerful, reliable, and inexpensive computing platforms make their design point attractive in practice. [Greenberg 2005]
 
 ### Redesigning the Internet architecture to offer better accountability
 
@@ -294,11 +294,11 @@ We have different types of devices that help to provide connectivity between hos
 
 ## Learning Bridges
 
-A bridge is a device with multiple inputs/outputs. A bridge transfers frames from an input to one (or multiple) outputs. Though it doesn’t need to forward all the frames it receives. In this topic we will talk about how a bridge learns how to perform that task.
+A bridge is a device with multiple inputs/outputs. A bridge transfers frames from an input to one (or multiple) outputs. Though it doesn't need to forward all the frames it receives. In this topic we will talk about how a bridge learns how to perform that task.
 
 A learnings bridge learns, populates and maintains, a forwarding table. The bridge consults that table so that it only forwards frames on specific ports, rather than over all ports.
 
-For example, let’s consider the topology on the following figure. When the bridge receives a frame on port 1, with source Host A and destination Host B, the bridge does not have to forward it to port 2.
+For example, let's consider the topology on the following figure. When the bridge receives a frame on port 1, with source Host A and destination Host B, the bridge does not have to forward it to port 2.
 
 ![](https://assets.omscs.io/notes/0021.png)
 
@@ -308,17 +308,17 @@ For example, let’s consider the topology on the following figure. When the bri
 
 ## Looping Problem in Bridges and the Spanning Tree Algorithm
 
-Unfortunately using bridges to connect LAN’s fails, if the network topology results in loops (cycles). In that case, the bridges loop through packets forever!
+Unfortunately using bridges to connect LAN's fails, if the network topology results in loops (cycles). In that case, the bridges loop through packets forever!
 
-The answer to this problem is excluding links that lead to loops by running the spanning tree algorithm. Let’s represent the topology of the network as a graph. The bridges are represented as nodes and the links between the bridges are represented as edges. The goal of the spanning tree algorithm is to have the bridges select which links (ports) to use for forwarding eliminating loops.
+The answer to this problem is excluding links that lead to loops by running the spanning tree algorithm. Let's represent the topology of the network as a graph. The bridges are represented as nodes and the links between the bridges are represented as edges. The goal of the spanning tree algorithm is to have the bridges select which links (ports) to use for forwarding eliminating loops.
 
 ![](https://assets.omscs.io/notes/0023.png)
 
-Let’s take a look at how bridges run this distributed algorithm.
+Let's take a look at how bridges run this distributed algorithm.
 
-Every node (bridge) in the graph has an ID. The bridges eventually select one bridge as the root of the topology. Let’s see how this selection happens.
+Every node (bridge) in the graph has an ID. The bridges eventually select one bridge as the root of the topology. Let's see how this selection happens.
 
-The algorithm runs in “rounds” and at every round each node sends to each neighbor node a configuration message with three fields: a) the sending node’s ID, b) the ID of the roots as perceived by the sending node, and c) the number of hops between that (perceived) root and the sending node.
+The algorithm runs in “rounds” and at every round each node sends to each neighbor node a configuration message with three fields: a) the sending node's ID, b) the ID of the roots as perceived by the sending node, and c) the number of hops between that (perceived) root and the sending node.
 
 At every round, each node keeps track of the best configuration message that it has received so far, and it compares that against the configuration messages it receives from neighboring nodes at that round.
 
@@ -330,7 +330,7 @@ So how does a node compare two configuration messages? Between two configuration
 
 ![](https://assets.omscs.io/notes/0025.png)
 
-As an example, let’s consider the topology below. By running the above steps on this topology, we note that in the first round B3 receives (B2,B2,0) and (B5,B5,0), so it accepts B2 as the root. So in the second round it sends (B3,B2,1) to its neighbors.
+As an example, let's consider the topology below. By running the above steps on this topology, we note that in the first round B3 receives (B2,B2,0) and (B5,B5,0), so it accepts B2 as the root. So in the second round it sends (B3,B2,1) to its neighbors.
 
 Similarly for B2; In the first round, B2 receives (B3,B3,0) and (B1,B1,0), it accepts B1 as the root. So in the second round B2 sends (B2,B1,1).
 

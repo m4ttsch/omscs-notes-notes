@@ -1,5 +1,5 @@
 ---
-id: computer-networks-router-design-basics
+id: computer-networks-old-router-design-basics
 title: Router Design Basics
 course: computer-networks-old
 lecture: router-design-basics

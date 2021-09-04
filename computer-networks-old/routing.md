@@ -1,5 +1,5 @@
 ---
-id: computer-networks-routing
+id: computer-networks-old-routing
 title: Routing
 course: computer-networks-old
 lecture: routing

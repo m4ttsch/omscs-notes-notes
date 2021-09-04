@@ -98,7 +98,7 @@ On the other hand, the backtracking approach has a high cost in terms of time. B
 
 With the grid of tries approach, we can reduce the wasted time in the backtracking search by using precomputation. When there is a failure point in a source trie, we precompute a switch pointer. Switch pointers take us directly to the next possible source trie that can contain a matching rule.
 
-Let’s look at an example. Consider that we search for the packet with destination address 001 and source address 001. We start the search with the destination trie which gives us D = 00 as the best match. The search at that point for the source trie, fails. Instead of backtracking, the grid of tries has a switch pointer (labeled 0) that points to x. At which point it fails again. We follow another switch pointer to node y. At that point the algorithm terminates.
+Let's look at an example. Consider that we search for the packet with destination address 001 and source address 001. We start the search with the destination trie which gives us D = 00 as the best match. The search at that point for the source trie, fails. Instead of backtracking, the grid of tries has a switch pointer (labeled 0) that points to x. At which point it fails again. We follow another switch pointer to node y. At that point the algorithm terminates.
 
 So the precomputed switch pointers allow us to take shortcuts. Using these pointers we do not do backtracking to find an ancestor node and then to traverse the source trie. We still proceed to match the source, and we keep track of our current best source match. But we are skipping source tries with source fields that are shorter than our current source match.
 
@@ -112,7 +112,7 @@ In this topic, we start discussing about the problem of scheduling.
 
 ### Scheduling
 
-Let’s assume that we have an NxN crossbar switch, with N input lines, N output lines, and N2 crosspoints. Each crosspoint needs to be controlled (on/off), and we need to make sure that each input link is connected with at most one output link. Also, for better performance we want to maximize the number of input/output links pairs that communicate in parallel.
+Let's assume that we have an NxN crossbar switch, with N input lines, N output lines, and N2 crosspoints. Each crosspoint needs to be controlled (on/off), and we need to make sure that each input link is connected with at most one output link. Also, for better performance we want to maximize the number of input/output links pairs that communicate in parallel.
 
 ### Take the ticket algorithm
 
@@ -120,7 +120,7 @@ A simple scheduling algorithm is the “take the ticket algorithm”. Each outpu
 
 ![](https://assets.omscs.io/notes/0131.png)
 
-As an example, let’s consider the figure below that shows three input lines which want to connect to four output lines. Next to each input line, we see the queue of the output lines it wants to connect with. For example, input lines A and B want to connect with output lines 1,2,3.
+As an example, let's consider the figure below that shows three input lines which want to connect to four output lines. Next to each input line, we see the queue of the output lines it wants to connect with. For example, input lines A and B want to connect with output lines 1,2,3.
 
 ![](https://assets.omscs.io/notes/0132.png)
 
@@ -207,7 +207,7 @@ The reasons to make scheduling decisions more complex than FIFO with tail drop a
   Congestion in the internet is increasingly possible as the usage has increased faster than the link speeds. While most traffic is based on TCP (which has its own ways to handle congestion), additional router support can improve the throughput of sources by helping handle congestion.
 
 - **Fair sharing of links among competing flows.**
-  During periods of backup, these packets tend to flood the buffers at an output link. If we use FIFO with tail drop, this blocks other flows, resulting in important connections on the clients’ end freezing. This provides a sub-optimal experience to the user, indicating a change is necessary!
+  During periods of backup, these packets tend to flood the buffers at an output link. If we use FIFO with tail drop, this blocks other flows, resulting in important connections on the clients' end freezing. This provides a sub-optimal experience to the user, indicating a change is necessary!
 
 - **Providing QoS guarantees to flows.**
   One way to enable fair sharing is to guarantee certain amounts of bandwidths to a flow. Another way is to guarantee the delay through a router for a flow. This is noticeably important for video flows – without a bound on delays, live video streaming will not work well.
@@ -222,7 +222,7 @@ We saw that FIFO queue with tail drop could result in important flows being drop
 
 ### Bit-by-bit Round Robin
 
-Imagine a system where in a single round, one bit from each active flow is transmitted in a round robin manner. This would ensure fairness in bandwidth allocation. However, since it’s not possible in the real world to split up the packets, we consider an imaginary bit-by-bit system to calculate the packet-finishing time and send a packet as a whole.
+Imagine a system where in a single round, one bit from each active flow is transmitted in a round robin manner. This would ensure fairness in bandwidth allocation. However, since it's not possible in the real world to split up the packets, we consider an imaginary bit-by-bit system to calculate the packet-finishing time and send a packet as a whole.
 
 Let `R(t)` to be the current round number at time `t`. If the router can send `µ` bits per second and the number of active flows is `N`, the rate of increase in round number is given by
 
@@ -230,11 +230,11 @@ Let `R(t)` to be the current round number at time `t`. If the router can send `�
 
 The rate of increase in round number is indirectly proportional to the number of active flows. An important takeaway is that the number of rounds required to transmit a packet does not depend on the number of backlogged queues.
 
-Consider a flow `α`. Let a packet of size `p` bits arrive as the `i`-th packet in the flow. If it arrives at an empty queue, it reaches the head of the queue at the current round `R(t)`. If not, it reaches the head after the packet in front of it finishes it. Combining both the scenarios, the round number at which the packet reaches the head is given by
+Consider a flow $\alpha$. Let a packet of size `p` bits arrive as the `i`-th packet in the flow. If it arrives at an empty queue, it reaches the head of the queue at the current round `R(t)`. If not, it reaches the head after the packet in front of it finishes it. Combining both the scenarios, the round number at which the packet reaches the head is given by
 
-`S(i) = max(R(t), F(i−1))`
+`S(i) = max(R(t), F(i-1))`
 
-where `R(t)` is the current round number and `F(i−1)` is the round at which the packet ahead of it finishes. The round number at which a packet finishes, which depends only on the size of the packet, is given by
+where `R(t)` is the current round number and `F(i-1)` is the round at which the packet ahead of it finishes. The round number at which a packet finishes, which depends only on the size of the packet, is given by
 
 `F(i) = S(i) + p(i)`
 
@@ -244,7 +244,7 @@ Using the above two equations, the finish round of every packet in a queue can b
 
 ### Packet-level Fair Queuing
 
-This strategy emulates the bit-by-bit fair queueing by sending the packet which has the smallest finishing round number. At any round, the packet chosen to be sent out is garnered from the previous round of the algorithm. The packet which had been starved the most while sending out the previous packet from any queue, is chosen. Let’s consider the following example:
+This strategy emulates the bit-by-bit fair queueing by sending the packet which has the smallest finishing round number. At any round, the packet chosen to be sent out is garnered from the previous round of the algorithm. The packet which had been starved the most while sending out the previous packet from any queue, is chosen. Let's consider the following example:
 
 ![](https://assets.omscs.io/notes/0143.png)
 
@@ -292,7 +292,7 @@ The bucket shaping technique assumes a bucket per flow, that fills with tokens w
 
 ![](https://assets.omscs.io/notes/0152.png)
 
-In practice, the bucket shaping idea is implemented using a counter (can’t go more than max value B, and gets decremented when a bit arrives) and a timer (to increment the counter at a rate R).
+In practice, the bucket shaping idea is implemented using a counter (can't go more than max value B, and gets decremented when a bit arrives) and a timer (to increment the counter at a rate R).
 
 The problem with this technique is that we have one queue per flow. This is because a flow may have a full token bucket, whereas other flows may have an empty token bucket and therefore will need to wait.
 

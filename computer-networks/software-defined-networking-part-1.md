@@ -24,7 +24,7 @@ Equipment like routers and switches tend to run software which is closed and pro
 
 These characteristics of computer networks made them highly complex, slow to innovate, and drove up the costs of running a network.
 
-SDN offers new ways to redesign networks to make them more manageable! It employs a simple idea - separation of tasks. We’ve seen that our code becomes more modular and easy to manage when we divide them into smaller functions with focused tasks. Similarly, SDN divides the network into two planes - control plane and data plane. It uses this separation to simplify management and speed up innovation!
+SDN offers new ways to redesign networks to make them more manageable! It employs a simple idea - separation of tasks. We've seen that our code becomes more modular and easy to manage when we divide them into smaller functions with focused tasks. Similarly, SDN divides the network into two planes - control plane and data plane. It uses this separation to simplify management and speed up innovation!
 
 ## A Brief History of SDN: The Milestones
 
@@ -45,7 +45,7 @@ This phase took place from the mid-1990s to the early 2000s. During this time, t
 
 This tediousness led to the growth of active networks, which aimed at opening up network control. Active networking envisioned a programming interface (a network API) that exposed resources/network nodes and supported customization of functionalities for subsets of packets passing through the network nodes. This was the opposite of the popular belief in the internet community - the simplicity of the network core was important to the internet success!
 
-In the early 1990s, the networking approach was primarily via IP or ATM (Asynchronous Transfer Mode). Active networking became one of the first ‘clean slate’ approaches to network architecture.
+In the early 1990s, the networking approach was primarily via IP or ATM (Asynchronous Transfer Mode). Active networking became one of the first ‘clean slate' approaches to network architecture.
 
 There were two types of programming models in active networking. These models differ based on where the code to execute at the nodes was carried.
 
@@ -174,7 +174,7 @@ The reasons we separate the two are:
 
 2. Control from high-level software program
 
-   In SDN, we use software to compute the forwarding tables. Thus, we can easily use higher-order programs to control the routers’ behavior. The decoupling of functions makes debugging and checking the behavior of the network easier.
+   In SDN, we use software to compute the forwarding tables. Thus, we can easily use higher-order programs to control the routers' behavior. The decoupling of functions makes debugging and checking the behavior of the network easier.
 
 Separation of the control and data planes supports the independent evolution and development of both. Thus, the software aspect of the network can evolve independent of the hardware aspect. Since both control and forwarding behavior are separate, this enables us to use higher-level software programs for control. This makes it easier to debug and check the network's behavior.
 
@@ -252,7 +252,7 @@ Let us now take a look at the four defining features in an SDN architecture:
 
 ![](https://assets.omscs.io/notes/0164.png)
 
-4. **A programmable network:** The network-control applications act as the “brain” of SDN control plane by managing the network. Example applications can include network management, traffic engineering, security, automation, analytics, etc. For example, we can have an application that determines the end-to-end path between sources and destinations in the network using Dijkstra’s algorithm.
+4. **A programmable network:** The network-control applications act as the “brain” of SDN control plane by managing the network. Example applications can include network management, traffic engineering, security, automation, analytics, etc. For example, we can have an application that determines the end-to-end path between sources and destinations in the network using Dijkstra's algorithm.
 
 ![](https://assets.omscs.io/notes/0165.png)
 
@@ -270,7 +270,7 @@ An SDN controller can be broadly split into three layers:
 - **Network-wide state-management layer:** stores information of network-state
 - **Interface to the network-control application layer:** communicating between controller and applications
 
-Let’s look at each layer in detail starting from the bottom:
+Let's look at each layer in detail starting from the bottom:
 
 ### Communication Layer
 
@@ -284,7 +284,7 @@ This layer is about the network-state that is maintained by the controller. The 
 
 ### Interface to the network-control application layer
 
-This layer is also known as the controller’s “northbound” interface using which the SDN controller interacts with network-control applications. Network-control applications can read/write network state and flow tables in controller’s state-management layer. The SDN controller can notify applications of changes in the network state, based on the event notifications sent by the SDN-controlled devices. The applications can then take appropriate actions based on the event. A REST interface is an example of a northbound API.
+This layer is also known as the controller's “northbound” interface using which the SDN controller interacts with network-control applications. Network-control applications can read/write network state and flow tables in controller's state-management layer. The SDN controller can notify applications of changes in the network state, based on the event notifications sent by the SDN-controlled devices. The applications can then take appropriate actions based on the event. A REST interface is an example of a northbound API.
 
 ![](https://assets.omscs.io/notes/0169.png)
 
@@ -300,7 +300,7 @@ In this topic, we will first take a look at the OpenDaylight controller architec
 
 1. **Southbound interface:** This is used by the controller to communicate with network devices. The interface also allows support for various third-party vendor specific protocols like openflow, netflow, netconf etc. We can also write our own plugin in the Southbound interface.
 
-2. **Northbound interface:** As the name suggests, it’s an “upward” bound interface so that SDN applications can talk to the controller platform underneath (see figure below). For eg an application to check connectivity of the network, the ping packets are sent to the Northbound interface to the controller, the controller parses information and will pass on the packets to the device interface via the Southbound API.
+2. **Northbound interface:** As the name suggests, it's an “upward” bound interface so that SDN applications can talk to the controller platform underneath (see figure below). For eg an application to check connectivity of the network, the ping packets are sent to the Northbound interface to the controller, the controller parses information and will pass on the packets to the device interface via the Southbound API.
 
 3. **Model Driven Service Abstraction Layer (or MD-SAL):** It is the abstraction layer provided by OpenStack for developers to add new features to the controller. Using karaf they can write services or protocol drivers to integrate them together. MDSAL has 2 components:
 

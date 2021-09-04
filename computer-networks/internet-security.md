@@ -47,13 +47,13 @@ This method is used by large websites to distribute the load of incoming request
 
 ### DNS-based content delivery
 
-Content Distribution Networks (CDNs) also use DNS-based techniques to distribute content but using more complex strategies. For example CDNs distribute the load amongst multiple servers at a single location, but also distribute these servers across the world. When accessing the name of the service using DNS, the CDN computes the ‘nearest edge server’ and returns its IP address to the DNS client. It uses sophisticated techniques based on network topology and current link characteristics to determine the nearest server. This results in the content being moved ‘closer’ to the DNS client which increases responsiveness and availability. CDNs can react quickly to changes in link characteristics as their TTL is lower than that in RRDNS.
+Content Distribution Networks (CDNs) also use DNS-based techniques to distribute content but using more complex strategies. For example CDNs distribute the load amongst multiple servers at a single location, but also distribute these servers across the world. When accessing the name of the service using DNS, the CDN computes the ‘nearest edge server' and returns its IP address to the DNS client. It uses sophisticated techniques based on network topology and current link characteristics to determine the nearest server. This results in the content being moved ‘closer' to the DNS client which increases responsiveness and availability. CDNs can react quickly to changes in link characteristics as their TTL is lower than that in RRDNS.
 
 ### Fast-Flux Service Networks
 
 The previous two strategies provide reliability, scalability and resilience, which is great for larger websites. However, this also benefits spammers. Since using these techniques, a DNS request receives multiple A records (each containing a different IP address), this makes it harder to shut down online scams, as if even one IP address is functional, the scam is still working. Similarly, spreading across several servers makes the shutdown of these scams more complex!
 
-Fast-Flux Service Networks (FFSN) is an extension of the ideas behind RRDNS and CDN. As its name suggests, it is based on a ‘rapid’ change in DNS answers, with a TTL lower than that of RRDNS and CDN. One key difference between FFSN and the other methods is that after the TTL expires, it returns a different set of A records from a larger set of compromised machines. These compromised machines act as proxies between the incoming request and control node/mothership, forming a resilient, robust, one-hop overlay network.
+Fast-Flux Service Networks (FFSN) is an extension of the ideas behind RRDNS and CDN. As its name suggests, it is based on a ‘rapid' change in DNS answers, with a TTL lower than that of RRDNS and CDN. One key difference between FFSN and the other methods is that after the TTL expires, it returns a different set of A records from a larger set of compromised machines. These compromised machines act as proxies between the incoming request and control node/mothership, forming a resilient, robust, one-hop overlay network.
 
 ![](https://assets.omscs.io/notes/0190.png)
 
@@ -61,7 +61,7 @@ The figure above shows the content retrieval process of a benign HTTP server. Th
 
 ![](https://assets.omscs.io/notes/0191.png)
 
-The figure above shows the content-retrieval process for content hosted in a FFSN. The domain ‘www.thearmynext.info’ was found in a spam email. Here, the mothership is the control node where the actual content of the scam is being hosted. The DNS lookup from the client returns several different IP addresses, all belonging to compromised machines in the network (flux agents). Each time the TTL expires, the lookup returns completely different IP addresses. The flux-agent then relays the request it receives (HTTP GET) to the control node, which sends content to the flux-agent. Lastly, the content is delivered to the client. It is interesting to note that these flux agents, although seemingly close to each other, are usually located in different countries and belong to different Autonomous Systems (AS).
+The figure above shows the content-retrieval process for content hosted in a FFSN. The domain ‘www.thearmynext.info' was found in a spam email. Here, the mothership is the control node where the actual content of the scam is being hosted. The DNS lookup from the client returns several different IP addresses, all belonging to compromised machines in the network (flux agents). Each time the TTL expires, the lookup returns completely different IP addresses. The flux-agent then relays the request it receives (HTTP GET) to the control node, which sends content to the flux-agent. Lastly, the content is delivered to the client. It is interesting to note that these flux agents, although seemingly close to each other, are usually located in different countries and belong to different Autonomous Systems (AS).
 
 An important aspect of Internet abuse is the infrastructure that attackers use to support the abuse. For example, the attackers need Internet infrastructure to support illegal content hosting, C&C infrastructure hosting, etc.
 
@@ -131,7 +131,7 @@ In this section, we look at a system to predict the likelihood of a security bre
 
 There are 3 classes of features used for this model:
 
-1. **Mismanagement symptoms** – If there are misconfigurations in an organization’s network, it indicates that there may not be policies in place to prevent such attacks or may not have the technological capability to detect these failures. This increases the likelihood of a breach. The features used are:
+1. **Mismanagement symptoms** – If there are misconfigurations in an organization's network, it indicates that there may not be policies in place to prevent such attacks or may not have the technological capability to detect these failures. This increases the likelihood of a breach. The features used are:
 
    - Open Recursive Resolvers – misconfigured open DNS resolvers
    - DNS Source Port Randomization – many servers still do not implement this
@@ -139,7 +139,7 @@ There are 3 classes of features used for this model:
    - Untrusted HTTPS Certificates – can detect the validity of a certificate by TLS handshake
    - Open SMTP Mail Relays – servers should filter messages so that only those in the same domain can send mails/messages.
 
-2. **Malicious Activities** – Another factor to consider is the level of malicious activities that are seen to originate from the organization’s network and infrastructure. We can determine this using spam traps, darknet monitors, DNS monitors, etc. We create a reputation blacklist of the IP addresses that are involved in some malicious activities. There are 3 such types of malicious activities:
+2. **Malicious Activities** – Another factor to consider is the level of malicious activities that are seen to originate from the organization's network and infrastructure. We can determine this using spam traps, darknet monitors, DNS monitors, etc. We create a reputation blacklist of the IP addresses that are involved in some malicious activities. There are 3 such types of malicious activities:
 
    - Capturing spam activity – for example, CBL, SBL, SpamCop
    - Capturing phishing and malware activities – for example, PhishTank, SURBL
@@ -167,7 +167,7 @@ This system uses a Random Forest (RF) classifier and compares it to a baseline p
 
    - **Squatting**: In this type of attack, the hijacking AS announces a prefix that has not yet been announced by the owner AS.
 
-2. **Classification by AS-Path announcement**: In this class of attacks, an illegitimate AS announces the AS-path for a prefix for which it doesn’t have ownership rights. There are different ways this can be achieved:
+2. **Classification by AS-Path announcement**: In this class of attacks, an illegitimate AS announces the AS-path for a prefix for which it doesn't have ownership rights. There are different ways this can be achieved:
 
    - **Type-0 hijacking**: This is simply an AS announcing a prefix not owned by itself.
 
@@ -190,8 +190,8 @@ This system uses a Random Forest (RF) classifier and compares it to a baseline p
 In the previous section, we looked at the types of BGP hijacking attacks, and how to characterize them individually. In this section, we are interested in understanding the **causes or motivations behind these attacks**. Broadly viewed, the attacks can be classified as caused by:
 
 1. **Human Error**: This is an accidental routing misconfiguration due to manual errors. This can lead to large scale exact-prefix hijacking. e.g: China Telecom accidentally leaked a full BGP table that led to large-scale Type-0 hijacking
-2. **Targeted Attack**: In this type of attack, the hijacking AS usually intercepts network traffic (MM attack) while operating in stealth mode to remain under the radar on the control plane (Type-N and Type-U attacks). e.g: Visa and Mastercard’s traffic were hijacked by Russian networks using this method in 2017
-3. **High Impact Attack**: Here, the attacker is obvious in their intent to cause widespread disruption of services. e.g: Pakistan Telecom in a Type-0 sub-prefix hijacking, essentially blackholing all of YouTube’s services worldwide for nearly 2 hours.
+2. **Targeted Attack**: In this type of attack, the hijacking AS usually intercepts network traffic (MM attack) while operating in stealth mode to remain under the radar on the control plane (Type-N and Type-U attacks). e.g: Visa and Mastercard's traffic were hijacked by Russian networks using this method in 2017
+3. **High Impact Attack**: Here, the attacker is obvious in their intent to cause widespread disruption of services. e.g: Pakistan Telecom in a Type-0 sub-prefix hijacking, essentially blackholing all of YouTube's services worldwide for nearly 2 hours.
 
 To summarize, we can say that the motivation behind every hijacking attempt is different, so there is no one answer when it comes to choosing the best attack. Given the constraining scenario and intents of the hijacking attempt, the hijacker may employ one or a combination of methods to carry out the attack.
 
@@ -229,7 +229,7 @@ In this scenario, the attacker manipulates received updates before propagating t
 1. AS1 advertises the prefix 10.10.0.0/16.
 2. AS2 and AS3 receive and propagate legitimately the path for the prefix.
 3. At AS4, the attacker compromises the update for the path by changing it to 4,1 and propagates it to the neighbors AS3, AS2, and AS5. Therefore it claims that it has direct link to AS1 so that others believe the new false path.
-4. AS5 receives the false path (4,1) “believes” the new false path and it adopts it. But the rest of the ASes don’t adopt the new path because they either have an shorter path already or an equally long path to AS1 for the same prefix.  
+4. AS5 receives the false path (4,1) “believes” the new false path and it adopts it. But the rest of the ASes don't adopt the new path because they either have an shorter path already or an equally long path to AS1 for the same prefix.  
    The key observation here is that the attacker does not need not to announce a new prefix, but rather it manipulates an advertisement before propagating it.
 
 ![](https://assets.omscs.io/notes/0201.png)
@@ -253,7 +253,7 @@ A point of consideration in BGP hijacking detection is the performance of False 
 
 For a system that protects against BGP hijacking attacks with less manual intervention, we need automated ways of mitigation from BGP hijacking attacks. The ARTEMIS system uses two automated techniques in mitigating these attacks:
 
-1. **Prefix deaggregation**: In a BGP attack scenario, the affected network can either contact other networks or it can simply deaggregate the prefixes that were targeted by announcing more specific prefixes of a certain prefix. Remember our prior discussion of YouTube’s services being attacked by Pakistan Telecom. The targeted prefix was 208.65.153.0/24. Within 90 minutes, YouTube started announcing 208.65.153.128/25 and 208.65.153.0/25, thereby counteracting the attack. Although the event required a long term solution, an immediate mitigation was required for services to come back online.
+1. **Prefix deaggregation**: In a BGP attack scenario, the affected network can either contact other networks or it can simply deaggregate the prefixes that were targeted by announcing more specific prefixes of a certain prefix. Remember our prior discussion of YouTube's services being attacked by Pakistan Telecom. The targeted prefix was 208.65.153.0/24. Within 90 minutes, YouTube started announcing 208.65.153.128/25 and 208.65.153.0/25, thereby counteracting the attack. Although the event required a long term solution, an immediate mitigation was required for services to come back online.
 
 2. **Mitigation with Multiple Origin AS (MOAS)**: Here, the idea is to have third party organizations and service providers do BGP announcements for a given network. It is akin to the current model that exists for legitimizing network traffic by third parties that mitigate DDoS attacks. When a BGP hijacking event occurs, the following steps occur:
 
@@ -272,11 +272,11 @@ https://github.com/FORTH-ICS-INSPIRE/artemis
 
 ## A Hijacking Case Study - Background
 
-To get a better understanding of AS hijacking and its implications, let’s look at a real case study, known as the “Linktel Incident”.
+To get a better understanding of AS hijacking and its implications, let's look at a real case study, known as the “Linktel Incident”.
 
-1. Linktel, a Russian ISP under attack (AS31733, figure below) sent a distress mail (SOS) to North American Network Operators’ Group (NANOG) about a prefix hijacking in August 2011.
+1. Linktel, a Russian ISP under attack (AS31733, figure below) sent a distress mail (SOS) to North American Network Operators' Group (NANOG) about a prefix hijacking in August 2011.
 2. The Russian ISP had gone through financial struggles, and thus had not renewed its DNS domain, which allowed administrative take-over of its Internet resources.
-3. The attacker took over the Internet resources and forged a letter of authorization to announce prefixes of AS31733 from a customer’s AS (AS12182, figure below).
+3. The attacker took over the Internet resources and forged a letter of authorization to announce prefixes of AS31733 from a customer's AS (AS12182, figure below).
 4. The attacker uses a second attack to hijack AS42461 (Relians Ltd., figure below) to announce an unallocated prefix.
 
 ![](https://assets.omscs.io/notes/0203.png)
@@ -287,21 +287,21 @@ To exploit an unallocated address space of Linktel, the attacker brings in anoth
 
 ## A Hijacking Case Study - Attack Progression
 
-The Linktel incident ran its course for about 6 months, starting from the attack phase to the productive phase to the recovery phase. Let’s look at these phases
+The Linktel incident ran its course for about 6 months, starting from the attack phase to the productive phase to the recovery phase. Let's look at these phases
 
 ### Hijacking Phase
 
 - As mentioned in the previous section, the hijacking attempt was made possible by a vulnerability that could be exploited: in this case Linktel had let its DNS domain (link-telecom) expire, which consequently could be taken over by anyone and be used maliciously.
-- The attacker re-registered the domain within 6 hours of its expiration, and possibly evaluated attack scenarios and carried out a prefix announcement (188.164.0.0/16) a month later using another ISP Internap. A couple of weeks later, other prefixes that belonged to Linktel’s networks were slowly announced.
+- The attacker re-registered the domain within 6 hours of its expiration, and possibly evaluated attack scenarios and carried out a prefix announcement (188.164.0.0/16) a month later using another ISP Internap. A couple of weeks later, other prefixes that belonged to Linktel's networks were slowly announced.
 - The attacker further explored announcing another address space (89.145.168.0/21) using another hijacked AS that belonged to Relians Ltd (AS42461)
-- Finally, a forged letter of authorization was issued to Internap, although at this point Internap had been announcing the attacker’s routes for two months without authorization
+- Finally, a forged letter of authorization was issued to Internap, although at this point Internap had been announcing the attacker's routes for two months without authorization
 
 ![](https://assets.omscs.io/notes/0204.png)
 
 ### Productive Phase
 
 - In this phase, the attacker stopped announcing the unallocated prefix 89.145.168.0/21 which was used via the AS belonging to Relians Ltd.
-- Since the attacker’s motivation was to send spam, it was eventually caught by Spamhaus, and the prefixes were blacklisted although it took a considerable amount of time to detect spam operations
+- Since the attacker's motivation was to send spam, it was eventually caught by Spamhaus, and the prefixes were blacklisted although it took a considerable amount of time to detect spam operations
 
 ![](https://assets.omscs.io/notes/0205.png)
 
@@ -319,9 +319,9 @@ Seen another way, in the figure below, we can plot a graph (Frequency of observe
 
 Notably:
 
-1. The attacker’s first announcement was received on April 15, and the first related flow is observed on April 18, which is indicated by the first spike in the graph
+1. The attacker's first announcement was received on April 15, and the first related flow is observed on April 18, which is indicated by the first spike in the graph
 2. A large amount of BGP withdraw messages are received on July 11 for the unallocated space
-3. While Spamhaus blacklists the prefixes on July 28, it's possible that it is due to two reasons: a) Spamhaus takes a long time to detect anomalies, and b) The attacker might’ve performed other activities apart from spamming
+3. While Spamhaus blacklists the prefixes on July 28, it's possible that it is due to two reasons: a) Spamhaus takes a long time to detect anomalies, and b) The attacker might've performed other activities apart from spamming
 
 ![](https://assets.omscs.io/notes/0207.png)
 
@@ -337,11 +337,11 @@ Later, when initiating an attack, the attacker instructs these flooding servers 
 
 ![](https://assets.omscs.io/notes/0208.png)
 
-In the above figure, the master host, controlled by the attacker, sends control messages to the three compromised slaves directing them to send a huge amount of traffic to the victim. The packets sent from the slave contain the source address as a random IP address and the destination as the victim’s IP address. This master slave configuration amplifies the intensity of the attack while also making it difficult to protect against it. The attack traffic sent by the slaves contain spoofed source addresses making it difficult for the victim to track the slaves. Also, since the traffic is sent from multiple sources, it’s harder for the victim to isolate and block the attack traffic.
+In the above figure, the master host, controlled by the attacker, sends control messages to the three compromised slaves directing them to send a huge amount of traffic to the victim. The packets sent from the slave contain the source address as a random IP address and the destination as the victim's IP address. This master slave configuration amplifies the intensity of the attack while also making it difficult to protect against it. The attack traffic sent by the slaves contain spoofed source addresses making it difficult for the victim to track the slaves. Also, since the traffic is sent from multiple sources, it's harder for the victim to isolate and block the attack traffic.
 
 ### Spoofing
 
-IP spoofing is the act of setting a false IP address in the source field of a packet with the purpose of impersonating a legitimate server. In DDoS attacks, this can happen in two forms. In the first form, the source IP address is spoofed, resulting in the response of the server sent to some other client instead of the attacker’s machine. This results in wastage of network resources and the client resources while also causing denial of service to legitimate users.
+IP spoofing is the act of setting a false IP address in the source field of a packet with the purpose of impersonating a legitimate server. In DDoS attacks, this can happen in two forms. In the first form, the source IP address is spoofed, resulting in the response of the server sent to some other client instead of the attacker's machine. This results in wastage of network resources and the client resources while also causing denial of service to legitimate users.
 
 In the second type of attack, the attacker sets the same IP address in both the source and destination IP fields. This results in the server sending the replies to itself, causing it to crash.
 
@@ -353,7 +353,7 @@ In this topic we are continuing our discussion on DDoS and we explore two more t
 
 In a reflection attack, the attackers use a set of reflectors to initiate an attack on the victim. A reflector is any server that sends a response to a request. For example, any web server or a DNS server would return a SYN ACK in response to a SYN packet as part of TCP handshake. Other examples include query responses sent by a server or Host Unreachable responses to a particular IP.
 
-Here, the master directs the slaves to send spoofed requests to a very large number of reflectors, usually in the range of 1 million. The slaves set the source address of the packets to the victim’s IP address, thereby redirecting the response of the reflectors to the victim. Thus, the victim receives responses from millions of reflectors resulting in exhaustion of its bandwidth. In addition, the resources of the victim is wasted in processing these responses, making it unable to respond to legitimate requests. This forms the basis of a reflection attack. Let’s consider the below figure.
+Here, the master directs the slaves to send spoofed requests to a very large number of reflectors, usually in the range of 1 million. The slaves set the source address of the packets to the victim's IP address, thereby redirecting the response of the reflectors to the victim. Thus, the victim receives responses from millions of reflectors resulting in exhaustion of its bandwidth. In addition, the resources of the victim is wasted in processing these responses, making it unable to respond to legitimate requests. This forms the basis of a reflection attack. Let's consider the below figure.
 
 ![](https://assets.omscs.io/notes/0209.png)
 
@@ -367,7 +367,7 @@ In this topic we are providing an overview of the tools that we have to help wit
 
 ### Traffic Scrubbing Services
 
-A scrubbing service diverts the incoming traffic to a specialized server, where the traffic is “scrubbed” into either clean or unwanted traffic. The clean traffic is then sent to its original destination. Although this method offers fine-grained filtering of the packets, there are monetary costs required for an in-time subscription, setup and other recurring costs. The other limitations include reduced effectiveness due to per packet processing and challenges in handling Tbps level attacks. There’s also a possibility of decreased performance as the traffic may be rerouted and becoming susceptible to evasion attacks.
+A scrubbing service diverts the incoming traffic to a specialized server, where the traffic is “scrubbed” into either clean or unwanted traffic. The clean traffic is then sent to its original destination. Although this method offers fine-grained filtering of the packets, there are monetary costs required for an in-time subscription, setup and other recurring costs. The other limitations include reduced effectiveness due to per packet processing and challenges in handling Tbps level attacks. There's also a possibility of decreased performance as the traffic may be rerouted and becoming susceptible to evasion attacks.
 
 ### ACL Filters
 
@@ -418,7 +418,7 @@ Let's look at the scenario, where blackholing is implemented with the help of an
 
 A network that offers blackholing service is known as a blackholing provider. It is also responsible for providing the blackholing community that should be used. Network or customer providers act as blackholing providers at the network edge. Internet Service Providers (ISPs) or Internet Exchange Points (IXPs) act as blackholing providers at the Internet core.
 
-If the blackholing provider is a peer or an upstream provider, the AS must announce its associated blackhole community along with the blackhole prefix. Let’s consider the below figure. Assume the IP 130.149.1.1 in AS2 is under attack.
+If the blackholing provider is a peer or an upstream provider, the AS must announce its associated blackhole community along with the blackhole prefix. Let's consider the below figure. Assume the IP 130.149.1.1 in AS2 is under attack.
 
 ![](https://assets.omscs.io/notes/0213.png)
 
@@ -444,11 +444,11 @@ Consider the DDoS attack scenario in the given figure (a), where there is no mit
 
 ![](https://assets.omscs.io/notes/0217.png)
 
-Now, consider the scenario where AS1 uses BGP blackholing to send an update to the IXP’s route server. The message contains the prefix 100.10.10.10/32 along with the IXP’s blackhole community (IXP_ASN: 666). The route server propagates this update to the other ASes, AS2 and AS3, shown in the top section of figure (b).
+Now, consider the scenario where AS1 uses BGP blackholing to send an update to the IXP's route server. The message contains the prefix 100.10.10.10/32 along with the IXP's blackhole community (IXP_ASN: 666). The route server propagates this update to the other ASes, AS2 and AS3, shown in the top section of figure (b).
 
 Let's assume the case where AS2 accepts the announcement and that AS3 rejects it. The possible reasons for an AS rejecting the announcement could include voluntarily choosing not to participate in blackholing, rejecting updates that require additional config changes or it could simply be that the AS made a misconfiguration mistake.
 
-Since AS2 accepts the announcement, the next hop IP for AS2 to reach the prefix under attack is changed to the IXP’s blackholing IP and traffic towards IP 100.10.10.10/32 via AS2 is dropped. However, this causes collateral damage since all the traffic including legitimate traffic via AS2 is dropped.
+Since AS2 accepts the announcement, the next hop IP for AS2 to reach the prefix under attack is changed to the IXP's blackholing IP and traffic towards IP 100.10.10.10/32 via AS2 is dropped. However, this causes collateral damage since all the traffic including legitimate traffic via AS2 is dropped.
 
 ![](https://assets.omscs.io/notes/0218.png)
 
@@ -456,7 +456,7 @@ Also, since AS3 does not honor the announcement, it allows all the traffic inclu
 
 As a result, and if the majority of the attack traffic is coming through AS3, then the mitigation is ineffective. The same is true if a large number of peers do not accept the blackholing announcements.
 
-Let’s look at the traffic distribution during an attack at a large IXP, and gather some insights to understand the extent of the collateral damage caused by blackholing.
+Let's look at the traffic distribution during an attack at a large IXP, and gather some insights to understand the extent of the collateral damage caused by blackholing.
 
 ![](https://assets.omscs.io/notes/0219.png)
 

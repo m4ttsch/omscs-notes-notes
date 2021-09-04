@@ -1,5 +1,5 @@
 ---
-id: computer-networks-naming-addressing-forwarding
+id: computer-networks-old-naming-addressing-forwarding
 title: Naming, Addressing & Forwarding
 course: computer-networks-old
 lecture: naming-addressing-forwarding

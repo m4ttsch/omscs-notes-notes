@@ -1,5 +1,5 @@
 ---
-id: computer-networks-dns
+id: computer-networks-old-dns
 title: DNS
 course: computer-networks-old
 lecture: dns

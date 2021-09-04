@@ -13,23 +13,23 @@ So why are we choosing to talk about multimedia applications?
 
 Most undergraduate networking courses discuss some of the more traditional network applications, such as email or web browsing. In this course, we wanted to expose you to some of the more interesting and rapidly evolving network applications. In this lesson, we will be discussing multimedia applications, which are defined in Kurose and Ross as “any network application that employs audio or video.” These applications deal with different challenges, with interesting techniques for addressing those challenges.
 
-For example, when users are streaming video, they expect the video to play back with the same timing that it was originally recorded - which means users expect that it won’t randomly speed up or freeze while they are watching - and this can be addressed with buffering techniques. Or for another example, users in a VoIP conference call expect to hear each other’s voices relatively quickly - a one second delay can be very frustrating and make people accidentally talk over each other.
+For example, when users are streaming video, they expect the video to play back with the same timing that it was originally recorded - which means users expect that it won't randomly speed up or freeze while they are watching - and this can be addressed with buffering techniques. Or for another example, users in a VoIP conference call expect to hear each other's voices relatively quickly - a one second delay can be very frustrating and make people accidentally talk over each other.
 
 Each type of multimedia application has different requirements, and thus, different challenges and techniques for addressing those challenges.
 
 ## Background: Video and Audio Characteristics
 
-Before we talk about different kinds of multimedia applications, such as streaming video, let’s take a moment to discuss some basic video and audio properties. This will give us some context for some of our later discussions, such as how bitrate adaption algorithms work.
+Before we talk about different kinds of multimedia applications, such as streaming video, let's take a moment to discuss some basic video and audio properties. This will give us some context for some of our later discussions, such as how bitrate adaption algorithms work.
 
 ![](https://assets.omscs.io/notes/0234.png)
 
-First, let’s talk about video. The first defining property for video is **high bit rate**, generally somewhere between 100 kbps to over 3Mbps, depending on the quality of the video. For perspective on just how much higher video bitrates are than browsing through an online photo gallery or listening to streaming music, here is a somewhat typical example. If the Facebook user is flipping through a photo gallery at about one photo every 5 seconds, typical rates would look something like this:
+First, let's talk about video. The first defining property for video is **high bit rate**, generally somewhere between 100 kbps to over 3Mbps, depending on the quality of the video. For perspective on just how much higher video bitrates are than browsing through an online photo gallery or listening to streaming music, here is a somewhat typical example. If the Facebook user is flipping through a photo gallery at about one photo every 5 seconds, typical rates would look something like this:
 
 ![](https://assets.omscs.io/notes/0235.png)
 
 However, there are techniques for **compressing** video, with varying levels of compression and video quality. We will be discussing some of these techniques later in the lesson.
 
-Now, let’s take a moment to also talk about audio. Audio has a lower bit rate than video, as we already mentioned, but glitches in audio are generally more noticeable than glitches in video. For example, in a video conference, it’s generally ok if the video cuts out or freezes for a few seconds here and there, but if the audio also cuts out or gets garbled, you’d probably end up having to cancel or reschedule the conference.
+Now, let's take a moment to also talk about audio. Audio has a lower bit rate than video, as we already mentioned, but glitches in audio are generally more noticeable than glitches in video. For example, in a video conference, it's generally ok if the video cuts out or freezes for a few seconds here and there, but if the audio also cuts out or gets garbled, you'd probably end up having to cancel or reschedule the conference.
 
 ![](https://assets.omscs.io/notes/0236.png)
 
@@ -37,37 +37,37 @@ Also, like video, audio can be compressed at varying quality levels.
 
 ## Types of Multimedia Applications and Characteristics
 
-The different kinds of multimedia applications can be organized into three major categories. There’s (a) streaming **stored** audio and video, such video clips on Udacity for our OMSCS courses, (b) **conversational** voice and video over IP, such as Skype, and (c) streaming **live** audio and video, such as the graduation ceremony for GATech on graduation day. Let’s discuss some of the characteristics for each of these three categories.
+The different kinds of multimedia applications can be organized into three major categories. There's (a) streaming **stored** audio and video, such video clips on Udacity for our OMSCS courses, (b) **conversational** voice and video over IP, such as Skype, and (c) streaming **live** audio and video, such as the graduation ceremony for GATech on graduation day. Let's discuss some of the characteristics for each of these three categories.
 
-First, streaming stored video is...streamed! That means that the video starts playing within a few seconds of receiving data, instead of waiting for the entire file to download first. It’s also interactive, which means that the user can pause, fast forward, skip ahead or move back in the video, and then see the response within a few seconds. Streaming stored video should also have continuous playout, which means that it should play out the same way it was recorded without freezing up in the middle. Generally, streaming stored video files are stored on a CDN rather than just one data center. This type of multimedia application can also be implemented with the peer-to-peer model instead of the client-server model.
+First, streaming stored video is...streamed! That means that the video starts playing within a few seconds of receiving data, instead of waiting for the entire file to download first. It's also interactive, which means that the user can pause, fast forward, skip ahead or move back in the video, and then see the response within a few seconds. Streaming stored video should also have continuous playout, which means that it should play out the same way it was recorded without freezing up in the middle. Generally, streaming stored video files are stored on a CDN rather than just one data center. This type of multimedia application can also be implemented with the peer-to-peer model instead of the client-server model.
 
-Streaming live audio and video is very similar to streaming stored video or audio, and use similar techniques, with some important differences. Since these applications are live and broadcast-like, there are generally many simultaneous users, sometimes in very different geographic locations. They are also delay-sensitive, but not as much as conversational voice and video applications are - generally, a ten second delay is ok. We’ll also be discussing these applications in more detail later in the lesson.
+Streaming live audio and video is very similar to streaming stored video or audio, and use similar techniques, with some important differences. Since these applications are live and broadcast-like, there are generally many simultaneous users, sometimes in very different geographic locations. They are also delay-sensitive, but not as much as conversational voice and video applications are - generally, a ten second delay is ok. We'll also be discussing these applications in more detail later in the lesson.
 
-Second, let’s talk about conversational voice and video over IP. Notice that VoIP stands for “Voice over IP”, which is like phone service that goes over the Internet instead of through traditional circuit-switched telephony network. These kinds of calls or video conferences often involve three or more participants. Since these calls and conferences are real-time and involve human users interacting, these applications are highly delay-sensitive. A short delay of less than 150 milliseconds isn’t really noticeable, but a longer delay, such as over 400 milliseconds, can be frustrating as people end up accidentally talking over each other. On the other hand, these applications are loss-tolerant. There are techniques that can conceal occasional glitches, and even if a word in the conversation gets garbled, human listeners are generally able to ask the other side to just repeat themselves.
+Second, let's talk about conversational voice and video over IP. Notice that VoIP stands for “Voice over IP”, which is like phone service that goes over the Internet instead of through traditional circuit-switched telephony network. These kinds of calls or video conferences often involve three or more participants. Since these calls and conferences are real-time and involve human users interacting, these applications are highly delay-sensitive. A short delay of less than 150 milliseconds isn't really noticeable, but a longer delay, such as over 400 milliseconds, can be frustrating as people end up accidentally talking over each other. On the other hand, these applications are loss-tolerant. There are techniques that can conceal occasional glitches, and even if a word in the conversation gets garbled, human listeners are generally able to ask the other side to just repeat themselves.
 
 ## How Does VoIP Work?
 
-Let’s take a closer look at VoIP, which falls in the category of “conversational voice over IP.” We will focus on conversational audio, although video that works in similar ways.
+Let's take a closer look at VoIP, which falls in the category of “conversational voice over IP.” We will focus on conversational audio, although video that works in similar ways.
 
 ![](https://assets.omscs.io/notes/0237.png)
 
-VoIP has the challenge that it is transmitted over the Internet. Since the Internet is “best effort” and makes no promises that a datagram will actually make it to its final destination, or even “on time,” this is no small challenge for VoIP! In this topic, we’ll discuss three major topics in VoIP, which are also applicable to other multimedia applications to varying degrees: encoding, signaling, and QoS (Quality of Service) metrics.
+VoIP has the challenge that it is transmitted over the Internet. Since the Internet is “best effort” and makes no promises that a datagram will actually make it to its final destination, or even “on time,” this is no small challenge for VoIP! In this topic, we'll discuss three major topics in VoIP, which are also applicable to other multimedia applications to varying degrees: encoding, signaling, and QoS (Quality of Service) metrics.
 
 ![](https://assets.omscs.io/notes/0238.png)
 
-First, let’s talk about how the analog audio gets encoded into a digital format, and how that impacts VoIP. Analog audio by nature is represented as a continuous wave, but digital data by nature is discrete. Therefore, all digital representations of analog audio are only approximations. Generally speaking, audio is encoded by taking many (as in, thousands) of samples per second, and then rounding each sample’s value to a discrete number within a particular range. (This “rounding” to a discrete number is called quantization.)
+First, let's talk about how the analog audio gets encoded into a digital format, and how that impacts VoIP. Analog audio by nature is represented as a continuous wave, but digital data by nature is discrete. Therefore, all digital representations of analog audio are only approximations. Generally speaking, audio is encoded by taking many (as in, thousands) of samples per second, and then rounding each sample's value to a discrete number within a particular range. (This “rounding” to a discrete number is called quantization.)
 
 ![](https://assets.omscs.io/notes/0239.png)
 
-Example technique: For example, PCM (Pulse Code Modulation) is one technique used with speech, taking 8000 samples per second, and with each sample’s value being 8 bits long. On the other hand, PCM with an audio CD takes 44,100 samples per second, with each sample value being 16 bits long. You can see how with more samples per second, or a larger range of quantization values, the digital approximation gets closer to the actual analog signal, which means a higher quality when playing it back. But the tradeoff is that it takes more bits per second to play back the audio.
+Example technique: For example, PCM (Pulse Code Modulation) is one technique used with speech, taking 8000 samples per second, and with each sample's value being 8 bits long. On the other hand, PCM with an audio CD takes 44,100 samples per second, with each sample value being 16 bits long. You can see how with more samples per second, or a larger range of quantization values, the digital approximation gets closer to the actual analog signal, which means a higher quality when playing it back. But the tradeoff is that it takes more bits per second to play back the audio.
 
 Encoding schemes: The three major categories of encoding schemes are narrowband, broadband, and multimode (which can operate on either), and they come with different characteristics and tradeoffs. For VoIP, the important thing is that we want to still be able to understand the speech and the words that are being said, while at the same time still using as little bandwidth as possible.
 
 ![](https://assets.omscs.io/notes/0240.png)
 
-As a final note on this topic, audio can also be compressed, but there are some tradeoffs there too. We’ll be discussing video compression techniques later in this lesson when we talk about streaming video, and many of those concepts (such as how packet loss can greatly interfere with some compression techniques) also apply to audio compression.
+As a final note on this topic, audio can also be compressed, but there are some tradeoffs there too. We'll be discussing video compression techniques later in this lesson when we talk about streaming video, and many of those concepts (such as how packet loss can greatly interfere with some compression techniques) also apply to audio compression.
 
-Second, let’s talk about signaling. In traditional telephony, a signaling protocol takes care of how calls are set up and torn down. Signaling protocols are responsible for four major functions. 1) User location - the caller locating where the callee is. 2) Session establishment - handling the callee accepting, rejecting, or redirecting a call. 3) Session negotiation - the endpoints synchronizing with each other on a set of properties for the session. 4) Call participation management - handling endpoints joining or leaving an existing session.
+Second, let's talk about signaling. In traditional telephony, a signaling protocol takes care of how calls are set up and torn down. Signaling protocols are responsible for four major functions. 1) User location - the caller locating where the callee is. 2) Session establishment - handling the callee accepting, rejecting, or redirecting a call. 3) Session negotiation - the endpoints synchronizing with each other on a set of properties for the session. 4) Call participation management - handling endpoints joining or leaving an existing session.
 
 ![](https://assets.omscs.io/notes/0241.png)
 
@@ -77,13 +77,13 @@ VoIP also uses signaling protocols, just like telephony, to perform the same fun
 
 ## QoS for VoIP: Metrics
 
-Now let’s talk about the QoS metrics - that is, how we measure the quality of service. There are three major QoS metrics for VoIP:
+Now let's talk about the QoS metrics - that is, how we measure the quality of service. There are three major QoS metrics for VoIP:
 
 - end-to-end delay
 - jitter
 - packet loss
 
-Let’s talk about these in more detail, and why they’re so important to VoIP applications.
+Let's talk about these in more detail, and why they're so important to VoIP applications.
 
 ## QoS for VoIP: End-to-End Delay
 
@@ -92,10 +92,10 @@ Our first QoS metric is “end-to-end delay”, which is basically the total del
 - the time it takes to encode the audio (which we discussed earlier),
 - the time it takes to put it in packets,
 - all the normal sources of network delay that network traffic encounters such as queueing delays,
-- “playback delay,” which comes from the receiver’s playback buffer (which is a mitigation technique for delay jitter, which we’ll be discussing next),
+- “playback delay,” which comes from the receiver's playback buffer (which is a mitigation technique for delay jitter, which we'll be discussing next),
 - and decoding delay, which is the time it takes to reconstruct the signal.
 
-End-to-end delay is the accumulation of all of these sources of delay, and VoIP applications are sensitive to these delays. In general, an end-to-end delay of below 150ms is not noticeable by human listeners. A delay between 150ms and 400ms is noticeable, but perhaps acceptable, depending on the purpose of the VoIP call and the human users’ expectations (we might be more accepting of delays if we are calling a more remote region, for instance). However, an end-to-end delay greater than 400ms starts becoming unacceptable, as people start accidentally talking over each other.
+End-to-end delay is the accumulation of all of these sources of delay, and VoIP applications are sensitive to these delays. In general, an end-to-end delay of below 150ms is not noticeable by human listeners. A delay between 150ms and 400ms is noticeable, but perhaps acceptable, depending on the purpose of the VoIP call and the human users' expectations (we might be more accepting of delays if we are calling a more remote region, for instance). However, an end-to-end delay greater than 400ms starts becoming unacceptable, as people start accidentally talking over each other.
 
 Since delays are so impactful for VoIP, VoIP applications frequently have delay thresholds, such as at 400ms, and discard any received packets with a delay greater than that threshold. That means that packets that are delayed by more than the threshold are effectively lost.
 
@@ -103,17 +103,17 @@ Since delays are so impactful for VoIP, VoIP applications frequently have delay 
 
 ## QoS for VoIP: Delay Jitter
 
-As you’ve learned in previous lessons for this class, between all the different buffer sizes and queueing delays and network congestion levels that a packet might experience, different voice packets can end up with different amounts of delay. One voice packet may be delayed by 100ms, and another by 300ms. We call this phenomenon “jitter,” “packet jitter,” or “delay jitter.”
+As you've learned in previous lessons for this class, between all the different buffer sizes and queueing delays and network congestion levels that a packet might experience, different voice packets can end up with different amounts of delay. One voice packet may be delayed by 100ms, and another by 300ms. We call this phenomenon “jitter,” “packet jitter,” or “delay jitter.”
 
 It turns out that jitter is problematic for VoIP, because it interferes with reconstructing the analog voice stream. With large jitter, we end up with more delayed packets that end up getting discarded, and that can lead to a gap in the audio. Too many dropped sequential packets can make the audio unintelligible. Because the human ear is pretty intolerant of audio gaps, audio gaps should ideally be kept below 30ms, but depending on the type of voice codec used and other factors, audio gaps between 30 to 75ms can be acceptable.
 
-The main VoIP application mechanism for mitigating jitter is maintaining a buffer, called the “jitter buffer” or the “play-out buffer.” This mechanism helps to smooth out and hide the variation in delay between different received packets, by buffering them and playing them out for decoding at a steady rate. There’s a tradeoff here, though. A longer jitter buffer reduces the number of packets that are discarded because they were received too late, but that adds to the end-to-end delay. A shorter jitter buffer will not add to the end-to-end delay as much, but that can lead to more dropped packets, which reduces the speech quality.
+The main VoIP application mechanism for mitigating jitter is maintaining a buffer, called the “jitter buffer” or the “play-out buffer.” This mechanism helps to smooth out and hide the variation in delay between different received packets, by buffering them and playing them out for decoding at a steady rate. There's a tradeoff here, though. A longer jitter buffer reduces the number of packets that are discarded because they were received too late, but that adds to the end-to-end delay. A shorter jitter buffer will not add to the end-to-end delay as much, but that can lead to more dropped packets, which reduces the speech quality.
 
 ## QoS for VoIP: Packet Loss
 
 Our last QoS metric to discuss is the ratio of packet loss.
 
-Packet loss is pretty much inevitable - after all, VoIP operates on the Internet, and the Internet is a “best-effort” service. VoIP protocols could use TCP, since TCP eliminates packet loss by retransmission, but the problem is that TCP does that by retransmitting lost packets, and as we discussed earlier, those retransmitted packets are no good if they are received too late. Plus, TCP congestion control algorithms drop the sender’s transmission rate every time there’s a dropped packet, and we can end up with the sender dropping the transmission rate lower than the receiver’s drain rate from playing out the audio. So most of the time, VoIP protocols use UDP.
+Packet loss is pretty much inevitable - after all, VoIP operates on the Internet, and the Internet is a “best-effort” service. VoIP protocols could use TCP, since TCP eliminates packet loss by retransmission, but the problem is that TCP does that by retransmitting lost packets, and as we discussed earlier, those retransmitted packets are no good if they are received too late. Plus, TCP congestion control algorithms drop the sender's transmission rate every time there's a dropped packet, and we can end up with the sender dropping the transmission rate lower than the receiver's drain rate from playing out the audio. So most of the time, VoIP protocols use UDP.
 
 ![](https://assets.omscs.io/notes/0244.png)
 
@@ -125,19 +125,19 @@ VoIP protocols have three major methods of dealing with packet loss: FEC (Forwar
 
 ![](https://assets.omscs.io/notes/0246.png)
 
-**FEC (Forward Error Concealment)** comes in a few different flavors, but in general, FEC works by transmitting redundant data alongside the main transmission, which allows the receiver to replace lost data with the redundant data. This redundant data could be a copy of the original data, by breaking the audio into chunks and cleverly using exclusive OR (XOR) with n previous chunks. This redundant data could also be a lower-quality audio stream transmitted alongside the original stream - similar to how a spare tire in a car may be of lower quality than the normal tires, but enough to get by in the case of a flat tire. Regardless of which method is used, there’s a tradeoff.
+**FEC (Forward Error Concealment)** comes in a few different flavors, but in general, FEC works by transmitting redundant data alongside the main transmission, which allows the receiver to replace lost data with the redundant data. This redundant data could be a copy of the original data, by breaking the audio into chunks and cleverly using exclusive OR (XOR) with n previous chunks. This redundant data could also be a lower-quality audio stream transmitted alongside the original stream - similar to how a spare tire in a car may be of lower quality than the normal tires, but enough to get by in the case of a flat tire. Regardless of which method is used, there's a tradeoff.
 
 The more redundant data transmitted, the more bandwidth is consumed. Also, some of these FEC techniques require the receiving end to receive more chunks before playing out the audio, and that increases playout delay.
 
 ![](https://assets.omscs.io/notes/0247.png)
 
-**Interleaving**, on the other hand, interleaving does not transmit ANY redundant data, and so it doesn’t add extra bandwidth requirements or bandwidth overhead. Interleaving works by mixing chunks of audio together so that if one set of chunks is lost, the lost chunks aren’t consecutive. The idea is that many smaller audio gaps are preferable to one large audio gap. (We note that the human ear is pretty intolerant of audio gaps, and ideally audio gaps should be under 30ms.)
+**Interleaving**, on the other hand, interleaving does not transmit ANY redundant data, and so it doesn't add extra bandwidth requirements or bandwidth overhead. Interleaving works by mixing chunks of audio together so that if one set of chunks is lost, the lost chunks aren't consecutive. The idea is that many smaller audio gaps are preferable to one large audio gap. (We note that the human ear is pretty intolerant of audio gaps, and ideally audio gaps should be under 30ms.)
 
 The tradeoff for interleaving is that the receiving side has to wait longer to receive consecutive chunks of audio, and that increases latency. Unfortunately, that means this technique is limited in usefulness for VoIP, although it can have good performance for streaming stored audio.
 
 ![](https://assets.omscs.io/notes/0248.png)
 
-The last technique for dealing with packet loss, **error concealment**, is basically “guessing” what the lost audio packet might be. This is possible because generally, with really small audio snippets (like between 4ms and 40 ms), there’s some similarity between one audio snippet and the next audio snippet. This is the same principle that makes audio compression possible.
+The last technique for dealing with packet loss, **error concealment**, is basically “guessing” what the lost audio packet might be. This is possible because generally, with really small audio snippets (like between 4ms and 40 ms), there's some similarity between one audio snippet and the next audio snippet. This is the same principle that makes audio compression possible.
 
 ![](https://assets.omscs.io/notes/0249.png)
 
@@ -147,15 +147,15 @@ One really simple version of error concealment is to simply repeat a packet - re
 
 So far we looked at how real-time interactive streaming worked. We will now study the mechanisms behind streaming media content over the Internet, which accounts for nearly 60-70% of the Internet traffic. Various enabling technologies and trends have led to this development of consuming median content over the Internet. One, the bandwidth for both the core network and last-mile access links have increased tremendously over the years. Two, the video compression technologies have become more efficient. This enables to stream high-quality video without using a lot of bandwidth. Finally, the development of Digital Rights Management culture has encouraged content providers to put their content on the Internet.
 
-The types of content that is streamed over the Internet can be divided into two categories: i) Live -- this means the video content is created and delivered to the clients simultaneously. Examples can be streaming of sports events, music concerts etc, and ii) On-demand -- this includes streaming stored video based on users’ convenience. Examples can be watching videos on Netflix, non-live videos on YouTube etc. As you can imagine, the constraints for streaming live and on-demand content differ slightly. One of the main constraints being that there is not a lot of room for pre-fetching content in the case of live streaming. In this lesson, we will focus mainly on understanding streaming of the on-demand video. It turns out that most of the basic principles behind streaming live at large-scale and on-demand content are similar apart from the few details such as video encoding.
+The types of content that is streamed over the Internet can be divided into two categories: i) Live -- this means the video content is created and delivered to the clients simultaneously. Examples can be streaming of sports events, music concerts etc, and ii) On-demand -- this includes streaming stored video based on users' convenience. Examples can be watching videos on Netflix, non-live videos on YouTube etc. As you can imagine, the constraints for streaming live and on-demand content differ slightly. One of the main constraints being that there is not a lot of room for pre-fetching content in the case of live streaming. In this lesson, we will focus mainly on understanding streaming of the on-demand video. It turns out that most of the basic principles behind streaming live at large-scale and on-demand content are similar apart from the few details such as video encoding.
 
 ## Video Streaming Bigger Picture
 
-Let’s begin with a high-level overview of how streaming works. Here is a figure showing the different steps involved in video streaming.
+Let's begin with a high-level overview of how streaming works. Here is a figure showing the different steps involved in video streaming.
 
 ![](https://assets.omscs.io/notes/0250.png)
 
-The video content is first created -- say in a professional studio like this lesson or using a smartphone by a user. The raw recorded content is typically at a high quality. It is then compressed using an encoding algorithm. This encoded content is then secured using DRM and hosted over a server. Typically content providers have their own data centers such as Google or use third-party Content delivery networks to replicate the content over multiple geographically distributed servers. This makes sure that the content can be delivered in a scalable manner. The end-users download the video content over the Internet. The downloaded video is decoded and rendered on the user’s screen.
+The video content is first created -- say in a professional studio like this lesson or using a smartphone by a user. The raw recorded content is typically at a high quality. It is then compressed using an encoding algorithm. This encoded content is then secured using DRM and hosted over a server. Typically content providers have their own data centers such as Google or use third-party Content delivery networks to replicate the content over multiple geographically distributed servers. This makes sure that the content can be delivered in a scalable manner. The end-users download the video content over the Internet. The downloaded video is decoded and rendered on the user's screen.
 
 In the remaining lesson, we will delve deeper into these steps. We will answer questions like how does the video compression work? What application and transport-layer protocols are used for video delivery? How do we ensure that the same content can be watched under a diversity of network conditions and using different user devices?
 
@@ -290,7 +290,7 @@ To account for these variations, client pre-fetches some video ahead and stores 
 
 ## How to Handle Network and User Device Diversity?
 
-It is important to note that a client’s streaming context can be quite diverse. For example, the device over which you watch your favorite Netflix show varies, from a small screen smartphone to a large-screen TV. A low bitrate looks that looks good on a smartphone may not look that great over the TV.
+It is important to note that a client's streaming context can be quite diverse. For example, the device over which you watch your favorite Netflix show varies, from a small screen smartphone to a large-screen TV. A low bitrate looks that looks good on a smartphone may not look that great over the TV.
 
 Similarly, the network environments over which video streaming happens can be quite diverse. For instance, some of you might be watching this lesson over a fixed connection or over a WiFi access point where the Internet speed is high while others might be watching it over a cellular connection or a spotty Internet connection. A high bitrate video can be streamed seamless over a high-speed connection but not so without stalls over a spotty Internet connection.
 
@@ -326,7 +326,7 @@ As you can imagine there can be different functions for bitrate adaptation that 
 
 ## What are the Goals of Bitrate Adaptation?
 
-Let us first look at what is the goal of the bitrate adaptation algorithm. A bitrate adaptation algorithm essentially tries to optimize the user’s viewing quality of experience. A good quality of experience (QoE) is usually characterized by the following:
+Let us first look at what is the goal of the bitrate adaptation algorithm. A bitrate adaptation algorithm essentially tries to optimize the user's viewing quality of experience. A good quality of experience (QoE) is usually characterized by the following:
 
 1. Low or zero re-buffering: users typically tend to close the video session if the video stalls a lot
 2. High video quality: Better the video quality, better the user QoE. A higher video quality is usually characterized by high bitrate video chunk.
@@ -381,7 +381,7 @@ Now, why do we add a factor? This is due of the following reasons:
 2. If the chunks are VBR-encoded, their bitrate can exceed the nominal bitrate
 3. Finally, there are additional application and transport-layer overheads associated with downloading the chunk and we want to take them into account
 
-Once the chunk-bitrate is decided, player sends the HTTP GET request for the next chunk. Note that a new chunk is not downloaded if the video buffer is already full. Instead, the player waits for the buffer to deplete before sending the next request. Once the new chunk is downloaded, its download throughput is also taken into account in estimating the next chunk’s bitrate and the same process is repeated for downloading the next chunk.
+Once the chunk-bitrate is decided, player sends the HTTP GET request for the next chunk. Note that a new chunk is not downloaded if the video buffer is already full. Instead, the player waits for the buffer to deplete before sending the next request. Once the new chunk is downloaded, its download throughput is also taken into account in estimating the next chunk's bitrate and the same process is repeated for downloading the next chunk.
 
 ## Issues with Bitrate Adaptation
 

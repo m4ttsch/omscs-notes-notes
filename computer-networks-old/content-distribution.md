@@ -1,5 +1,5 @@
 ---
-id: computer-networks-content-distribution
+id: computer-networks-old-content-distribution
 title: Content Distribution
 course: computer-networks-old
 lecture: content-distribution

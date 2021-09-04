@@ -1,6 +1,6 @@
 ---
-id: computer-networks-welcome
-title: Welcome to CN
+id: computer-networks-old-welcome
+title: Welcome to CN (OLD)
 course: computer-networks-old
 lecture: welcome
 ---
@@ -8,6 +8,8 @@ lecture: welcome
 # Welcome
 
 ## Howdy Friends
+
+**NB**: You almost certainly want to look at the [new](../computer-networks/welcome) CN notes instead of these.
 
 Here are my notes from when I took CN in OMSCS during Spring 2019.
 
@@ -25,7 +27,7 @@ The following textbooks helped me get an **A** in this course:
 Some students have asked for PDF versions of the notes for a simpler, more portable
 studying experience. The following PDFs are available for download.
 
-- [Computer Networks - Complete](https://payhip.com/b/9UGM "The complete set of CN lecture notes, covering content from all sixteen lectures.")
+- [Computer Networks - Complete (OLD)](https://payhip.com/b/9UGM 'The complete set of CN lecture notes, covering content from all sixteen lectures.')
 
 ## Contact
 

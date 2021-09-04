@@ -9,11 +9,11 @@ lecture: autonomous-system-relationships-and-interdomain-routing
 
 ## Autonomous Systems and Internet Interconnection
 
-**The Internet is a complex ecosystem.** Today’s Internet is a complex ecosystem that is built of a network of networks. The basis of this ecosystem includes Internet Service Providers (ISPs), Internet Exchange Points (IXPs), and Content Delivery Networks (CDNs).
+**The Internet is a complex ecosystem.** Today's Internet is a complex ecosystem that is built of a network of networks. The basis of this ecosystem includes Internet Service Providers (ISPs), Internet Exchange Points (IXPs), and Content Delivery Networks (CDNs).
 
 ![](https://assets.omscs.io/notes/0075.png)
 
-Let’s talk more about each type of these networks:
+Let's talk more about each type of these networks:
 
 First, ISPs can be categorized into three tiers or types: access ISPs (or Tier-3), regional ISPs (or Tier-2) and large global scale ISPs (or Tier-1). There is a dozen of large scale Tier-1 ISPs that operate at a global scale, and essentially they form the “backbone” network over which smaller networks can connect. Some example Tier-1 ISPs include AT&T, NTT, Level-3, and Sprint. In turn regional ISPs connect to Tier-1 ISPs, and smaller access ISPs connect to regional ISPs.
 
@@ -29,7 +29,7 @@ Third, CDNs are networks that are created by content providers with the goal of 
 
 ![](https://assets.omscs.io/notes/0078.png)
 
-**More interconnection options in the Internet ecosystem.** To complete the picture of today’s Internet interconnection ecosystem we note that ISPs may also connect through Points of Presence (PoPs), multihoming and peering. PoPs are one (or more) routers in a provider’s network, which can be used by a customer network to connect to that provider. Also, an ISP may choose to multi-home by connecting to one or more provider networks. Finally, two ISPs may choose to connect through a settlement-free agreement where neither network pays the other to send traffic to one another directly.
+**More interconnection options in the Internet ecosystem.** To complete the picture of today's Internet interconnection ecosystem we note that ISPs may also connect through Points of Presence (PoPs), multihoming and peering. PoPs are one (or more) routers in a provider's network, which can be used by a customer network to connect to that provider. Also, an ISP may choose to multi-home by connecting to one or more provider networks. Finally, two ISPs may choose to connect through a settlement-free agreement where neither network pays the other to send traffic to one another directly.
 
 **The Internet topology: hierarchical vs flat.** As we said, this ecosystem we just described, forms a hierarchical structure, especially in the earlier days of the Internet. But, its important to note that as the Internet has been evolving and especially with the dominant presence of IXPs, and CDNs, the structure has been morphing from hierarchical to flat.
 
@@ -45,25 +45,25 @@ Third, CDNs are networks that are created by content providers with the goal of 
 
 In this topic, we will talk about the prevalent forms of business relationships between autonomous systems:
 
-1. **Provider-Customer relationship (or transit).** This relationship is based on a financial settlement which determines how much the customer will pay the provider, so the provider forwards the customer’s traffic to destinations found in the provider’s routing table (including the opposite direction of the traffic as well).
+1. **Provider-Customer relationship (or transit).** This relationship is based on a financial settlement which determines how much the customer will pay the provider, so the provider forwards the customer's traffic to destinations found in the provider's routing table (including the opposite direction of the traffic as well).
 
-2. **Peering relationship.** In a peering relationship, two ASes share access to a subset of each other’s routing tables. The routes that are shared between two peers are often restricted to the respective customers of each one. The agreement holds provided that the traffic exchanged between the two peers is not highly asymmetric. Peering relationships are formed between Tier-1 ISPs but also between smaller ISPs. In the case of Tier-1 ISPs, the two peers need to be of similar size and handle similar amounts of traffic. Otherwise, the larger ISP would lack the incentive to enter a peering relationship with a smaller size ISP. In the case of peering between two smaller size ISPs, the incentive they both have is to save the money they would pay their providers by directly forwarding to each other their traffic, provided that there is a significant amount of traffic that is destined for each other (or each other’s customers).
+2. **Peering relationship.** In a peering relationship, two ASes share access to a subset of each other's routing tables. The routes that are shared between two peers are often restricted to the respective customers of each one. The agreement holds provided that the traffic exchanged between the two peers is not highly asymmetric. Peering relationships are formed between Tier-1 ISPs but also between smaller ISPs. In the case of Tier-1 ISPs, the two peers need to be of similar size and handle similar amounts of traffic. Otherwise, the larger ISP would lack the incentive to enter a peering relationship with a smaller size ISP. In the case of peering between two smaller size ISPs, the incentive they both have is to save the money they would pay their providers by directly forwarding to each other their traffic, provided that there is a significant amount of traffic that is destined for each other (or each other's customers).
 
 ![](https://assets.omscs.io/notes/0081.png)
 
 **How do providers charge customers?**
 
-While peering allows networks to get their traffic forwarded without cost, provider ASes have a financial incentive to forward as much of their customers’ traffic as possible. One major factor that determines a provider’s revenue is the data rate of an interconnection. A provider usually charges in one of two ways:
+While peering allows networks to get their traffic forwarded without cost, provider ASes have a financial incentive to forward as much of their customers' traffic as possible. One major factor that determines a provider's revenue is the data rate of an interconnection. A provider usually charges in one of two ways:
 
 1. Based on a fixed price given that the bandwidth used is within a predefined range.
 
 2. Based on the bandwidth used. The bandwidth usage is calculated based on periodic measurements, e.g., on five min intervals. The provider then charges by taking the 95th percentile of the distribution of the measurements.
 
-Sometimes in practice, we observe complex routing policies. In some cases, the driving force behind these policies is to increase the amount of traffic from a customer to its provider, and therefore increase the providers’ revenue.
+Sometimes in practice, we observe complex routing policies. In some cases, the driving force behind these policies is to increase the amount of traffic from a customer to its provider, and therefore increase the providers' revenue.
 
 ## BGP Routing Policies: Importing and Exporting Routes
 
-In the previous topic, we talked about AS business relationships. AS business relationships drive an AS’ routing policies and influence which routes an AS needs to import or export. In this topic, we will talk about why it matters which routes an AS imports/exports.
+In the previous topic, we talked about AS business relationships. AS business relationships drive an AS' routing policies and influence which routes an AS needs to import or export. In this topic, we will talk about why it matters which routes an AS imports/exports.
 
 ![](https://assets.omscs.io/notes/0082.png)
 
@@ -71,13 +71,13 @@ In the previous topic, we talked about AS business relationships. AS business re
 
 Deciding which routes to export is an important decision with business and financial implications. This is the case because, advertising a route for a destination to a neighboring AS, means that this route may be selected by that AS and traffic will start to flow through. Deciding which routes to advertise is a policy decision and it is implemented through route filters; route filters are essentially rules that determine which routes an AS will allow to advertise to other neighboring ASes.
 
-Let’s look at the different types of routes that an AS (let’s call it X) decides whether to export:
+Let's look at the different types of routes that an AS (let's call it X) decides whether to export:
 
 - **Routes learned from customers.** These are the routes that X receives as advertisements from its customers. Since provider X is getting paid to provide reachability to a customer AS, it makes sense that X wants to advertise these customer routes to as many other neighboring ASes as possible. This will likely cause more traffic towards the customer (through X) and hence more revenue to X.
 
-- **Routes learned from providers.** These are the routes that X receives as advertisements from its providers. Advertising these routes doesn’t make sense, since X does not have the financial incentive to carry traffic for its provider’s routes. These routes are withheld from X’s peers and other X’s providers, but they are advertised to X’s customers.
+- **Routes learned from providers.** These are the routes that X receives as advertisements from its providers. Advertising these routes doesn't make sense, since X does not have the financial incentive to carry traffic for its provider's routes. These routes are withheld from X's peers and other X's providers, but they are advertised to X's customers.
 
-- **Routes learned from peers.** These are routes that X receives as advertisements from its peers. As we saw earlier, it doesn’t make sense for X to advertise to a provider A the routes that it receives from another provider B. Because in that case, these providers A and B are going to use X to reach the advertised destinations without X making revenue. The same is true for the routes that X learns from peers.
+- **Routes learned from peers.** These are routes that X receives as advertisements from its peers. As we saw earlier, it doesn't make sense for X to advertise to a provider A the routes that it receives from another provider B. Because in that case, these providers A and B are going to use X to reach the advertised destinations without X making revenue. The same is true for the routes that X learns from peers.
 
 ![](https://assets.omscs.io/notes/0083.png)
 
@@ -99,7 +99,7 @@ When an AS receives multiple route advertisements towards the same destination, 
 
 In the previous topics, we talked about importing and exporting routes. In the following topics, we will learn how the default routing protocol - Border Routing Protocol or BGP - is used to implement routing policies.
 
-Let’s first start with the design goals of the BGP protocol:
+Let's first start with the design goals of the BGP protocol:
 
 **Scalability:** As the size of the Internet grows, the same is true for the number of ASes, the number of prefixes in the routing tables, the network churn, and the BGP traffic exchanged between routers. One of the design goals of BGP is to manage the complications of this growth, while achieving convergence in reasonable timescales and providing loop-free paths.
 
@@ -136,7 +136,7 @@ In the following diagram, we can see 3 different ASes along with iBGP (e.g., bet
 
 - These messages are exchanged to keep a current session going.
 
-**BGP prefix reachability.** In the BGP protocol, destinations are represented by IP Prefixes. Each prefix represents a subnet or a collection of subnets that an AS can reach. Gateway routers running eBGP advertise the IP Prefixes they can reach according to the AS’s specific export policy to routers in neighboring ASes. Then, using separate iBGP sessions, the gateway routers disseminate these routes for external destinations, to other internal routers according to the AS’s import policy. Internal routers run iBGP to propagate the external routes to other internal iBGP speaking routers.
+**BGP prefix reachability.** In the BGP protocol, destinations are represented by IP Prefixes. Each prefix represents a subnet or a collection of subnets that an AS can reach. Gateway routers running eBGP advertise the IP Prefixes they can reach according to the AS's specific export policy to routers in neighboring ASes. Then, using separate iBGP sessions, the gateway routers disseminate these routes for external destinations, to other internal routers according to the AS's import policy. Internal routers run iBGP to propagate the external routes to other internal iBGP speaking routers.
 
 **Path Attributes and BGP Routes.** In addition to the reachable IP prefix field, advertised **BGP routes** consist of a number of **BGP attributes**. Two notable attributes are AS-PATH and NEXT-HOP.
 
@@ -144,7 +144,7 @@ In the following diagram, we can see 3 different ASes along with iBGP (e.g., bet
 
 **AS-PATH**
 
-- Each AS, as identified by the AS’s autonomous system number (ASN), that the route passes through is included in the AS-PATH. This attribute is used to prevent loops and to choose between multiple routes to the same destination, the route with the shortest path.
+- Each AS, as identified by the AS's autonomous system number (ASN), that the route passes through is included in the AS-PATH. This attribute is used to prevent loops and to choose between multiple routes to the same destination, the route with the shortest path.
 
 **NEXT-HOP**
 
@@ -182,13 +182,13 @@ Then the router implements the decision process to select the best routes that r
 
 ### The router's decision process
 
-Let’s take a look at the router’s decision process. Now, let’s suppose that a router receives multiple route advertisements to the same destination. How does the router choose which route to import? In a nutshell, the decision process is how the router compares routes, by going through the list of attributes in the route advertisements. In the simplest scenario, where there is no policy in place (meaning it doesn’t matter which route will be imported), the router uses the attribute of the pathlength to select the route with the fewest number of hops. But in practice, this simple scenario is rarely the case.
+Let's take a look at the router's decision process. Now, let's suppose that a router receives multiple route advertisements to the same destination. How does the router choose which route to import? In a nutshell, the decision process is how the router compares routes, by going through the list of attributes in the route advertisements. In the simplest scenario, where there is no policy in place (meaning it doesn't matter which route will be imported), the router uses the attribute of the pathlength to select the route with the fewest number of hops. But in practice, this simple scenario is rarely the case.
 
 A router compares a pair of routes, by going through the list of attributes - as shown in the figure below. For each attribute, it selects the route with the attribute value that will help apply the policy. If for a specific attribute, the values are the same, then it goes to the next attribute.
 
 ![](https://assets.omscs.io/notes/0093.png)
 
-Let’s focus on two attributes, LocalPref and MED (Multi-Exit Discriminator) , and let’s see how we can use them to influence the decision process.
+Let's focus on two attributes, LocalPref and MED (Multi-Exit Discriminator) , and let's see how we can use them to influence the decision process.
 
 **Influencing the route decision using the LocalPref.** The LocalPref attribute is used to prefer routes learned through a specific AS over other ASes. For example, suppose AS B learns of a route to the same destination x via A and C. If B prefers to route its traffic through A, due to peering or business, it can assign a higher LocalPref value to routes it learns from A. And therefore, by using LocalPref, AS B can control where the traffic exits the AS. In other words, it will influence which routers will be selected as exit points for the traffic that leaves the AS (outbound traffic).
 
@@ -218,7 +218,7 @@ Also, an AS can limit the number of routing changes, specifically limiting the p
 
 ## Peering at IXPs
 
-In the previous topics we talked about ASes’ business relationships. ASes can either peer with one another directly or they can peer at Internet Exchange Points (IXPs) which are infrastructures that facilitate peering but also provide more services.
+In the previous topics we talked about ASes' business relationships. ASes can either peer with one another directly or they can peer at Internet Exchange Points (IXPs) which are infrastructures that facilitate peering but also provide more services.
 
 ### What are IXPs?
 
@@ -240,15 +240,15 @@ Some of the most important reasons include:
 
 2. **Important role in mitigating DDoS attacks:** As IXPs have become increasingly popular interconnection hubs, they are able to observe the traffic to/from an increasing number of participant ASes. In this role, IXPs can play the role of a “shield” to mitigate DDoS attacks and stop the DDoS traffic before it hits a participant AS. There are a plethora of DDoS events that have been mitigated by IXPs. For example, back in March 2013, a huge DDoS attack took place that involved Spamhaus, Stophaus, and CloudFare. At the lecture on Security, we will look into specific techniques that IXPs have to mitigate DDoS based on BGP blackholing.
 
-3. **“Real-world” infrastructures with a plethora of research opportunities:** IXPs play an important role in today’s Internet infrastructure. Studying this peering ecosystem, the end-to-end flow of network traffic, and the traffic that traverses these facilities can help us understand how the Internet landscape is changing. IXPs also provide an excellent “research playground” for multiple applications. Such as security applications. For example BGP blackholing for DDoS mitigation, or applications for Software Defined Networking.
+3. **“Real-world” infrastructures with a plethora of research opportunities:** IXPs play an important role in today's Internet infrastructure. Studying this peering ecosystem, the end-to-end flow of network traffic, and the traffic that traverses these facilities can help us understand how the Internet landscape is changing. IXPs also provide an excellent “research playground” for multiple applications. Such as security applications. For example BGP blackholing for DDoS mitigation, or applications for Software Defined Networking.
 
 4. **IXPs are active marketplaces and technology innovation hubs:** IXPs are active marketplaces, especially in North America and Europe. They provide an expanding plethora of services that go beyond interconnection, for example DDoS mitigation, or SDN-based services. IXPs have been evolving from interconnection hubs to technology innovation hubs.
 
 ### What are the steps for an AS to peer at an IXP?
 
-Each participating network must have a public Autonomous System Number (ASN). Each participant brings a router to the IXP facility (or one of its locations in case the IXP has an infrastructure distributed across multiple data centers) and connects one of its ports to the IXP switch. The router of each participant must be able to run BGP since the exchange of routes across the IXP is via BGP only. Each participant has to agree to the IXP’s General Terms and Conditions (GTC).
+Each participating network must have a public Autonomous System Number (ASN). Each participant brings a router to the IXP facility (or one of its locations in case the IXP has an infrastructure distributed across multiple data centers) and connects one of its ports to the IXP switch. The router of each participant must be able to run BGP since the exchange of routes across the IXP is via BGP only. Each participant has to agree to the IXP's General Terms and Conditions (GTC).
 
-Thus, for two networks to publicly peer at an IXP (i.e., use the IXP’s network infrastructure to establish a connection for exchanging traffic according to their own requirements and business relationships), they each incur a one-time cost for establishing a circuit from their premises to the IXP, a monthly charge for using a chosen IXP port (higher port speeds are more expensive), and possibly an annual fee for membership to the entity that owns and operates the IXP. In particular, exchanging traffic over an established public peering link at an IXP is in principle “settlement-free” (i.e., involves no from of payment between the two parties) as IXPs typically do not charge for exchanged traffic volume. Moreover, IXPs typically do not interfere with the bilateral relationships that exist between the IXP’s participants, unless they are in violation of the GTC. For example, the two parties of an existing IXP peering link are free to use that link in ways that involve paid peering, or some networks may even offer transit across an IXP’s switching fabric. Depending on the IXP, the time it takes to establish a public peering link can range from a few days to a couple of weeks.
+Thus, for two networks to publicly peer at an IXP (i.e., use the IXP's network infrastructure to establish a connection for exchanging traffic according to their own requirements and business relationships), they each incur a one-time cost for establishing a circuit from their premises to the IXP, a monthly charge for using a chosen IXP port (higher port speeds are more expensive), and possibly an annual fee for membership to the entity that owns and operates the IXP. In particular, exchanging traffic over an established public peering link at an IXP is in principle “settlement-free” (i.e., involves no from of payment between the two parties) as IXPs typically do not charge for exchanged traffic volume. Moreover, IXPs typically do not interfere with the bilateral relationships that exist between the IXP's participants, unless they are in violation of the GTC. For example, the two parties of an existing IXP peering link are free to use that link in ways that involve paid peering, or some networks may even offer transit across an IXP's switching fabric. Depending on the IXP, the time it takes to establish a public peering link can range from a few days to a couple of weeks.
 
 ### Why networks choose to peer at IXPs?
 
@@ -258,25 +258,25 @@ Thus, for two networks to publicly peer at an IXP (i.e., use the IXP’s network
 
 - Improved network performance due to reduced delay.
 
-- Incentives. Critical players in today’s Internet ecosystem often “incentivize” other networks to connect at IXPs. For example, a big content provider may require another network to be present at a specific IXP(s) in order to peer with them.
+- Incentives. Critical players in today's Internet ecosystem often “incentivize” other networks to connect at IXPs. For example, a big content provider may require another network to be present at a specific IXP(s) in order to peer with them.
 
 ### Services that IXPs provide
 
 ![](https://assets.omscs.io/notes/0100.png)
 
-1. **Public peering:** The most well-known use of IXPs is public peering service - in which two networks use the IXP’s network infrastructure to establish a connection to exchange traffic based on their bilateral relations and traffic requirements. The costs required to set up this connection are - one-time cost for establishing the connection, monthly charge for using the chosen IXP port (those with higher speeds are more expensive) and perhaps an annual fee of membership in the entity owning and operating the IXP. However, the IXPs do not usually charge based on the amount of exchanged volume. They also do not usually interfere with bilateral relations between the participants unless there is a violation of the GTC. Even with the set-up costs, IXPs are usually cheaper than other conventional methods of exchanging traffic (such as relying on third parties which charge based on the volume of exchanged traffic). IXP participants also often experience better network performance and QoS because of reduced delays and routing efficiencies. In addition, many companies that are major players in the Internet space (such as Google) incentivize other networks to connect at IXPs by making it a requirement to peering with them.
+1. **Public peering:** The most well-known use of IXPs is public peering service - in which two networks use the IXP's network infrastructure to establish a connection to exchange traffic based on their bilateral relations and traffic requirements. The costs required to set up this connection are - one-time cost for establishing the connection, monthly charge for using the chosen IXP port (those with higher speeds are more expensive) and perhaps an annual fee of membership in the entity owning and operating the IXP. However, the IXPs do not usually charge based on the amount of exchanged volume. They also do not usually interfere with bilateral relations between the participants unless there is a violation of the GTC. Even with the set-up costs, IXPs are usually cheaper than other conventional methods of exchanging traffic (such as relying on third parties which charge based on the volume of exchanged traffic). IXP participants also often experience better network performance and QoS because of reduced delays and routing efficiencies. In addition, many companies that are major players in the Internet space (such as Google) incentivize other networks to connect at IXPs by making it a requirement to peering with them.
 
-2. **Private peering:** Most operational IXPs also provide a private peering service (Private Interconnects - PIs) that allow direct traffic exchange between two parties of a PI and don’t use the IXP’s public peering infrastructure. This is commonly used when the participants want a well-provisioned dedicated link capable of handling high-volume, bidirectional and relatively stable traffic.
+2. **Private peering:** Most operational IXPs also provide a private peering service (Private Interconnects - PIs) that allow direct traffic exchange between two parties of a PI and don't use the IXP's public peering infrastructure. This is commonly used when the participants want a well-provisioned dedicated link capable of handling high-volume, bidirectional and relatively stable traffic.
 
-3. **Route servers and Service level agreements:** Many IXPs also include service level agreements (SLAs) and free use of the IXP’s route servers for participants. This allows participants to arrange instant peering with a large number of co-located participant networks using essentially a single agreement/BGP session.
+3. **Route servers and Service level agreements:** Many IXPs also include service level agreements (SLAs) and free use of the IXP's route servers for participants. This allows participants to arrange instant peering with a large number of co-located participant networks using essentially a single agreement/BGP session.
 
-4. **Remote peering through resellers:** Another popular service is IXP reseller/partner programs. This allows third parties to resell IXP ports wherever they have infrastructure connected to the IXP. These third parties are allowed to offer the IXP’s service remotely, which allows networks that have little traffic to also use the IXP. This also enables remote peering - networks in distant geographic areas can use the IXP.
+4. **Remote peering through resellers:** Another popular service is IXP reseller/partner programs. This allows third parties to resell IXP ports wherever they have infrastructure connected to the IXP. These third parties are allowed to offer the IXP's service remotely, which allows networks that have little traffic to also use the IXP. This also enables remote peering - networks in distant geographic areas can use the IXP.
 
 5. **Mobile peering:** Some IXPs also provide support for mobile peering - a scalable solution for interconnection of mobile GPRS/3G networks.
 
 6. **DDoS blackholing:** A few IXPs provide support for customer-triggered blackholing, which allows users to alleviate the effects of DDoS attacks against their network.
 
-7. **Free value-added services:** In the interest of ‘good of the Internet’, a few IXPs such as Scandinavian IXP Netnod offer free value-added services like Internet Routing Registry (IRR), consumer broadband speed tests9, DNS root name servers, country-code top-level domain (ccTLD) nameservers, as well as distribution of the official local time through NTP.
+7. **Free value-added services:** In the interest of ‘good of the Internet', a few IXPs such as Scandinavian IXP Netnod offer free value-added services like Internet Routing Registry (IRR), consumer broadband speed tests9, DNS root name servers, country-code top-level domain (ccTLD) nameservers, as well as distribution of the official local time through NTP.
 
 ## Peering at IXPs: How Does a Route Server Work?
 
@@ -284,7 +284,7 @@ Generally, the manner in which two ASes exchange traffic through the switching f
 
 - Collects and shares routing information from its peers or participants that connects with (i.e. IXP members that connect to the RS).
 
-- Executes it’s own BGP decision process and also re-advertise the resulting information (I.e. best route selection) to all RS’s peer routers.
+- Executes it's own BGP decision process and also re-advertise the resulting information (I.e. best route selection) to all RS's peer routers.
 
 The figure below shows a **multi-lateral BGP peering session**, which is essentially an RS that facilitates and manages how multiple ASes can “talk” on the control plane simultaneously.
 
@@ -292,7 +292,7 @@ The figure below shows a **multi-lateral BGP peering session**, which is essenti
 
 ## How does a route server (RS) maintain multi-lateral peering sessions?
 
-Let’s look at a modern RS architecture in the figure below to understand how RSes work. A typical routing daemon maintains a Routing Information Base (RIB) which contains all BGP paths that it receives from its peers - the Master RIB. The router server also maintains AS-specific RIBs to keep track of the individual BGP sessions they maintain with each participant AS.
+Let's look at a modern RS architecture in the figure below to understand how RSes work. A typical routing daemon maintains a Routing Information Base (RIB) which contains all BGP paths that it receives from its peers - the Master RIB. The router server also maintains AS-specific RIBs to keep track of the individual BGP sessions they maintain with each participant AS.
 
 RSes maintain two types of route filters:
 
@@ -302,7 +302,7 @@ RSes maintain two types of route filters:
 
 Steps:
 
-1. In the first step, AS X advertises a prefix p1 to the RS which is added to the route server’s AS X specific RIB.
+1. In the first step, AS X advertises a prefix p1 to the RS which is added to the route server's AS X specific RIB.
 
 2. The route server uses the peer-specific import filter, to check whether AS X is allowed to advertise p1. If it passes the filter, the prefix p1 is added to the Master RIB.
 
@@ -335,7 +335,7 @@ The primary method of identifying remote peering is to measure the round-trip ti
 
 ## BGP Configuration Verification
 
-**Control of BGP configuration is complex** and easily misconfigured both at the eBGP configuration level and within an AS, at the iBGP level, where route propagation happens in a full mesh or via “route reflectors”. Configuration languages vary among routing manufacturers and may not be well-designed. Adding to the complexity, is the distributed nature of BGP’s implementation.
+**Control of BGP configuration is complex** and easily misconfigured both at the eBGP configuration level and within an AS, at the iBGP level, where route propagation happens in a full mesh or via “route reflectors”. Configuration languages vary among routing manufacturers and may not be well-designed. Adding to the complexity, is the distributed nature of BGP's implementation.
 
 BGP correctness is defined by two main aspects of persistent routing. They are **path visibility and route validity**.
 

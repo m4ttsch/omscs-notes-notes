@@ -14,7 +14,7 @@ In this topic, we are talking about the motivation that led to SDN.
 As IP networks grew in adoption worldwide, there were a few challenges that became more and more pronounced, such as:
 
 1. **Handling the ever growing complexity and dynamic nature of networks:** The implementation of network policies required changes right down to each individual network device, which were often carried out by vendor-specific commands and required manual configurations. This was a heavy upkeep for operators. Traditional IP networks are quite far away from achieving automatic response mechanisms to dynamic network environment changes.
-2. **Tightly coupled architecture:** The traditional IP networks consist of a control plane (handles network traffic) and a data plane (forwards traffic based on the control plane’s decisions) that are bundled together. They are contained inside networking devices, and are thus not flexible to work on. This is evidenced by the fact that any new protocol update takes as long as 10 years, because of the way these changes need to percolate down to every networking device that is a part of the IP network.
+2. **Tightly coupled architecture:** The traditional IP networks consist of a control plane (handles network traffic) and a data plane (forwards traffic based on the control plane's decisions) that are bundled together. They are contained inside networking devices, and are thus not flexible to work on. This is evidenced by the fact that any new protocol update takes as long as 10 years, because of the way these changes need to percolate down to every networking device that is a part of the IP network.
 
 **Software Defined Networking.** This networking paradigm is an attempt to overcome limitations of the legacy IP networking paradigm. It starts by separating out the control logic (in the control plane) from the data plane. With this separation, the network switches simply perform the task of forwarding, and the control logic is purely implemented in a logically centralized controller (or a network OS), thereby making it possible for innovation to occur in areas of network reconfiguration and policy enforcement. Despite the centralized nature of control logic, in practice, production-level SDNs need a physically distributed control plane to achieve performance, reliability and scalability.
 
@@ -71,7 +71,7 @@ Next, for each layer, we are providing an overview of the technologies that have
 
 3. **Network virtualization:** For a complete virtualization of the network, the network infrastructure needs to provide support for arbitrary network topologies and addressing schemes, similar to the computing layer. Existing virtualization constructs such as VLAN, NAT and MLPS are able to provide full network virtualization, however these technologies are connected by a box-by-box basis configuration and there is no unifying abstraction that can be leveraged to configure these in a global manner, thereby making current network provisioning tasks as long as months and years. New advancements in SDN network virtualization such as VxLAN, NVGRE, FlowVisor, FlowN, NVP are promising.
 
-4. **Network operating systems:** The promise of SDN is to ease network management and solve networking problems by using a logically centralized controller by way of a network operating system (NOS). The value of a NOS is in providing abstractions, essential services and common APIs to developers. For example, while programming a network policy, if a developer doesn’t need to worry about low-level details about data distribution among routing elements, that is an abstraction. Such systems propel more innovation by reducing inherent complexity of creating new network protocols and network applications. Some popular NOSs are OpenDayLight, OpenContrail, Onix, Beacon and HP VAN SDN.
+4. **Network operating systems:** The promise of SDN is to ease network management and solve networking problems by using a logically centralized controller by way of a network operating system (NOS). The value of a NOS is in providing abstractions, essential services and common APIs to developers. For example, while programming a network policy, if a developer doesn't need to worry about low-level details about data distribution among routing elements, that is an abstraction. Such systems propel more innovation by reducing inherent complexity of creating new network protocols and network applications. Some popular NOSs are OpenDayLight, OpenContrail, Onix, Beacon and HP VAN SDN.
 
    - For more details and tutorials for OpenDayLight, please follow this link: https://www.opendaylight.org/technical-community/getting-started-for-developers/tutorials (Links to an external site.)
 
@@ -125,11 +125,11 @@ Despite OpenFlow being the most popular southbound interface for SDN, there are 
 
 ## SDN Controllers: Centralized vs Distributed
 
-As we’ve seen earlier, the biggest drawback of traditional networks is that they are configured using low-level, device-specific instruction sets and run mostly proprietary network operating systems. This challenges the notion of device-agnostic developments and abstraction, which are key ideas to solve networking problems. SDN offers these by means of a logically centralized control. A controller is a critical element in an SDN architecture as it is the key supporting piece for control logic (applications) to generate network configuration based on the policies defined by the network operator. There is a broad range of architectural choices when it comes to controllers and control platforms.
+As we've seen earlier, the biggest drawback of traditional networks is that they are configured using low-level, device-specific instruction sets and run mostly proprietary network operating systems. This challenges the notion of device-agnostic developments and abstraction, which are key ideas to solve networking problems. SDN offers these by means of a logically centralized control. A controller is a critical element in an SDN architecture as it is the key supporting piece for control logic (applications) to generate network configuration based on the policies defined by the network operator. There is a broad range of architectural choices when it comes to controllers and control platforms.
 
 ### Core controller functions
 
-Some base network service functions are what we consider the essential functionality all controllers should provide. Functions such as topology, statistics, notifications, device management, along with shortest path forwarding and security mechanisms are essentials network control functionalities that network applications may use in building its logic. For example, security mechanisms are critical components to provide basic isolation and security enforcements between services and applications. For instance, high priority services’ rules should always take precedence over rules created by applications with low priority.
+Some base network service functions are what we consider the essential functionality all controllers should provide. Functions such as topology, statistics, notifications, device management, along with shortest path forwarding and security mechanisms are essentials network control functionalities that network applications may use in building its logic. For example, security mechanisms are critical components to provide basic isolation and security enforcements between services and applications. For instance, high priority services' rules should always take precedence over rules created by applications with low priority.
 
 SDN Controllers can be categorized based on many aspects. In this topic we will categorize them based on centralized or distributed architecture.
 
@@ -168,7 +168,7 @@ Zoopkeeper is used to maintain the mastership between the switch and the control
 
 In this topic, we are talking about the need to offer programmability on the data plane and we are introducing P4 which is a language that was developed for this purpose.
 
-P4 (Programming Protocol-independent Packet Processors) is a high-level programming language to configure switches which works in conjunction with SDN control protocols. The popular vendor-agnostic OpenFlow interface, which enables the control plane to manage devices from different vendors, started with a simple rule table to match packets based on a dozen header fields. However, this specification has grown over the years to include multiple stages of the rule tables with increasing number of header fields to allow better exposure of a switch’s functionalities to the controller.
+P4 (Programming Protocol-independent Packet Processors) is a high-level programming language to configure switches which works in conjunction with SDN control protocols. The popular vendor-agnostic OpenFlow interface, which enables the control plane to manage devices from different vendors, started with a simple rule table to match packets based on a dozen header fields. However, this specification has grown over the years to include multiple stages of the rule tables with increasing number of header fields to allow better exposure of a switch's functionalities to the controller.
 
 Thus, to manage the demand for increasing number of header fields, a need arises for an extensible, flexible approach to parse packets and match header fields while also exposing an open interface to the controllers to leverage these capabilities.
 
@@ -234,7 +234,7 @@ The first class of applications in this domain aims to add features to other net
 
 The applications in this area focus majorly on improving the security of networks. One approach of using SDN to enhance security is to impose security policies on the entry point to the network. Another approach is to use programmable devices to enforce security policies on a wider network. DDoS detection, an SDN application identifies and mitigates DDoS flooding attacks by leveraging the timely information collected from the network. Furthermore, SDN has also been used to detect any anomalies in the traffic, to randomly mutate the IP addresses of hosts to fake dynamic IPs to the attackers (OF-RHM) , and monitoring the cloud infrastructures (CloudWatcher).
 
-With regards to improving the security of SDN itself, there have been simple approaches like rule prioritizations for applications. However, there’s still significant room for research and improvement in this area.
+With regards to improving the security of SDN itself, there have been simple approaches like rule prioritizations for applications. However, there's still significant room for research and improvement in this area.
 
 ### Data Center Networking
 
@@ -250,7 +250,7 @@ The routing of packets across the Internet is currently handled through the popu
 
 ![](https://assets.omscs.io/notes/0180.png)
 
-1. Routing only on destination IP prefix - The routing is decided based on the destination prefix IP of the incoming packet. There’s no flexibility to customize rules for example based on the traffic application or the source/destination network.
+1. Routing only on destination IP prefix - The routing is decided based on the destination prefix IP of the incoming packet. There's no flexibility to customize rules for example based on the traffic application or the source/destination network.
 
 2. Networks have little control over end-to-end paths - Networks can only select paths advertised by direct neighbors. Networks cannot directly control preferred paths but instead have to rely on indirect mechanisms such as “AS Path prepending”.
 
@@ -279,15 +279,15 @@ In the SDX architecture, each AS the illusion of its own virtual SDN switch that
 
 ![](https://assets.omscs.io/notes/0183.png)
 
-Each AS can define forwarding policies as if it is the only participant at the SDX, without influencing how other participants forward packets on their own virtual switches. Each AS can have its own SDN applications for dropping, modifying, or forwarding their traffic. The policies can also be different based on the direction of the traffic (inbound or outbound). An inbound policy is applied on the traffic coming from other SDX participant on a virtual switch. An outbound policy is applied to traffic from the participant’s virtual switch port towards other participants. The SDX is responsible to combine the policies from multiple participants into a single policy for the physical switch.
+Each AS can define forwarding policies as if it is the only participant at the SDX, without influencing how other participants forward packets on their own virtual switches. Each AS can have its own SDN applications for dropping, modifying, or forwarding their traffic. The policies can also be different based on the direction of the traffic (inbound or outbound). An inbound policy is applied on the traffic coming from other SDX participant on a virtual switch. An outbound policy is applied to traffic from the participant's virtual switch port towards other participants. The SDX is responsible to combine the policies from multiple participants into a single policy for the physical switch.
 
 To write policies SDX uses the Pyretic language to match header fields of the packets and to express actions on the packets.
 
-Let’s consider the example of application-specific peering, and let's see how a participant network expresses example policies:
+Let's consider the example of application-specific peering, and let's see how a participant network expresses example policies:
 
 ![](https://assets.omscs.io/notes/0184.png)
 
-According to AS A’s outbound policy, the HTTP traffic with destination port 80 is forwarded to AS B and HTTPS traffic with destination port 443 is forwarded to AS C.
+According to AS A's outbound policy, the HTTP traffic with destination port 80 is forwarded to AS B and HTTPS traffic with destination port 443 is forwarded to AS C.
 
 This is expressed using the match statement:
 
@@ -300,19 +300,19 @@ This is expressed using the match statement:
 
 ## SDN Applications: Wide Area Traffic Delivery
 
-In this section, we’ll look at a few applications of SDN, specifically SDX, in the domain of wide area traffic delivery.
+In this section, we'll look at a few applications of SDN, specifically SDX, in the domain of wide area traffic delivery.
 
 ### Application specific peering
 
-ISPs prefer dedicated ASes to handle the high volume of traffic flowing from high bandwidth applications such as YouTube, Netflix. This can be achieved by identifying a particular application’s traffic using packet classifiers and directing the traffic in a different path. However this involves configuring additional and appropriate rules in the edge routers of the ISP. This overhead can be eliminated by configuring custom rules for flows matching a certain criteria at the SDX.
+ISPs prefer dedicated ASes to handle the high volume of traffic flowing from high bandwidth applications such as YouTube, Netflix. This can be achieved by identifying a particular application's traffic using packet classifiers and directing the traffic in a different path. However this involves configuring additional and appropriate rules in the edge routers of the ISP. This overhead can be eliminated by configuring custom rules for flows matching a certain criteria at the SDX.
 
 ### Inbound traffic engineering
 
-An SDN enabled switch can be installed with forwarding rules based on the source IP address and source port of the packets, thereby enabling an AS to control how the traffic enters its network. This is in contrast with BGP which performs routing based solely on the destination address of a packet. Although there are workarounds such as using AS path prepending and selective advertisements to control the inbound traffic using BGP, they come with certain limitations. An AS’s local preference takes a higher priority for the outgoing traffic and the selective advertisements can lead to pollution of the global routing tables.
+An SDN enabled switch can be installed with forwarding rules based on the source IP address and source port of the packets, thereby enabling an AS to control how the traffic enters its network. This is in contrast with BGP which performs routing based solely on the destination address of a packet. Although there are workarounds such as using AS path prepending and selective advertisements to control the inbound traffic using BGP, they come with certain limitations. An AS's local preference takes a higher priority for the outgoing traffic and the selective advertisements can lead to pollution of the global routing tables.
 
 ### Wide-area server load balancing
 
-The existing approach of load balancing across multiple servers of a service involves a client’s local DNS server issuing a request to the service’s DNS server. As a response, the service DNS returns the IP address of a server such that it balances the load in its system. This involves DNS caching which can lead to slower responses in case of a failure. A more efficient approach to load balancing can be achieved with the help of SDX, as it supports modification of the packet headers. A single anycast IP can be assigned to a service, and the destination IP addresses of packets can be modified at the exchange point to the desired backend server based on the request load.
+The existing approach of load balancing across multiple servers of a service involves a client's local DNS server issuing a request to the service's DNS server. As a response, the service DNS returns the IP address of a server such that it balances the load in its system. This involves DNS caching which can lead to slower responses in case of a failure. A more efficient approach to load balancing can be achieved with the help of SDX, as it supports modification of the packet headers. A single anycast IP can be assigned to a service, and the destination IP addresses of packets can be modified at the exchange point to the desired backend server based on the request load.
 
 ### Redirection through middle boxes
 

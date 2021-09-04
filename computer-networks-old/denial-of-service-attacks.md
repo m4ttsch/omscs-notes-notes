@@ -1,5 +1,5 @@
 ---
-id: computer-networks-denial-of-service-attacks
+id: computer-networks-old-denial-of-service-attacks
 title: Denial of Service Attacks
 course: computer-networks-old
 lecture: denial-of-service-attacks

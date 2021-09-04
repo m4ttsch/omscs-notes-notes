@@ -1,11 +1,11 @@
 ---
-id: computer-networks-transport-and-applications-layers
-title: Transport and Applications Layers
+id: computer-networks-transport-and-application-layers
+title: Transport and Application Layers
 course: computer-networks
-lecture: transport-and-applications-layers
+lecture: transport-and-application-layers
 ---
 
-# Transport and Applications Layers
+# Transport and Application Layers
 
 ## Introduction to Transport Layer and the Relationship between Transport and Network Layer
 
@@ -35,15 +35,15 @@ In this topic, we will talk about multiplexing and demultiplexing.
 
 ![](https://assets.omscs.io/notes/0028.png)
 
-Let’s consider the scenario shown in the figure above which includes three hosts running an application. A receiving host that receives an incoming transport-layer segment will forward it to the appropriate socket. The receiving host identifies the appropriate socket by examining a set of fields in the segment.
+Let's consider the scenario shown in the figure above which includes three hosts running an application. A receiving host that receives an incoming transport-layer segment will forward it to the appropriate socket. The receiving host identifies the appropriate socket by examining a set of fields in the segment.
 
 The job of delivering the data that are included in a transport-layer segment to the appropriate socket, as defined in the segment fields, is called **demultiplexing**.
 
 Similarly, the sending host will need to gather data from different sockets, and encapsulate each data chunk with header information (that will later be used in demultiplexing) to create segments, and then forward the segments to the network layer. We refer to this job as **multiplexing**.
 
-As an example, let’s take a closer look at the host in the middle. The transport layer in the middle host, will need to demultiplex the data arriving from the network layer to the correct socket (P1 or P2). Also, the transport layer in the middle host, will need to perform multiplexing, by collecting the data from sockets P1 or P2, then by generating transport-layer segments, and then finally by forwarding these segments to the network layer below.
+As an example, let's take a closer look at the host in the middle. The transport layer in the middle host, will need to demultiplex the data arriving from the network layer to the correct socket (P1 or P2). Also, the transport layer in the middle host, will need to perform multiplexing, by collecting the data from sockets P1 or P2, then by generating transport-layer segments, and then finally by forwarding these segments to the network layer below.
 
-**Now, let’s focus at the socket identifiers:** The sockets are identified based on special fields (shown below) in the segment such as the **source port number field** and the **destination port number field**.
+**Now, let's focus at the socket identifiers:** The sockets are identified based on special fields (shown below) in the segment such as the **source port number field** and the **destination port number field**.
 
 ![](https://assets.omscs.io/notes/0029.png)
 
@@ -51,13 +51,13 @@ As an example, let’s take a closer look at the host in the middle. The transpo
 
 ![](https://assets.omscs.io/notes/0030.png)
 
-**First, we will talk about the connectionless multiplexing and demultiplexing.** The identifier of a UDP socket is a two-tuple that is consisted of a destination IP address and a destination port number. Consider two hosts, A and B, which are running two processes at UDP ports a and b respectively. Let’s suppose that host A sends data to host B. The transport layer in host A creates transport layer segment by the application data, the source port and the destination port, and forwards the segment to the network layer. In turn the network layer encapsulates the segment into a network-layer datagram and sends it to host B with best effort delivery. Let’s suppose that the datagram is successfully received by host B. Then the transport layer at host B, identifies the correct socket by looking at the field of the destination port. In case that host B runs multiple processes, each process will have its own own UDP socket and therefore a distinct associated port number. Host B will use this information to demultiplex receiving data to the correct socket. If Host B receives UDP segments with destination port number, it will forward the segments to the same destination process via the same destination socket, even if the segments are coming from different source hosts and/or different source port numbers.
+**First, we will talk about the connectionless multiplexing and demultiplexing.** The identifier of a UDP socket is a two-tuple that is consisted of a destination IP address and a destination port number. Consider two hosts, A and B, which are running two processes at UDP ports a and b respectively. Let's suppose that host A sends data to host B. The transport layer in host A creates transport layer segment by the application data, the source port and the destination port, and forwards the segment to the network layer. In turn the network layer encapsulates the segment into a network-layer datagram and sends it to host B with best effort delivery. Let's suppose that the datagram is successfully received by host B. Then the transport layer at host B, identifies the correct socket by looking at the field of the destination port. In case that host B runs multiple processes, each process will have its own own UDP socket and therefore a distinct associated port number. Host B will use this information to demultiplex receiving data to the correct socket. If Host B receives UDP segments with destination port number, it will forward the segments to the same destination process via the same destination socket, even if the segments are coming from different source hosts and/or different source port numbers.
 
-Now let’s consider **the connection oriented multiplexing and demultiplexing.**
+Now let's consider **the connection oriented multiplexing and demultiplexing.**
 
 ![](https://assets.omscs.io/notes/0031.png)
 
-The identifier for a TCP socket is a four tuple that is consisted by the source IP, source port, destination IP and destination port. Let’s consider the example of a TCP client server as shown in the figure 2.29. The TCP server has a listening socket that waits for connections requests coming from TCP clients. A TCP client creates a socket and sends a connection request, which is a TCP segment that has a source port number chosen by the client, a destination port number 12000 and a special connection-establishment bit set in the TCP header. Finally, the TCP server receives the connection request, and the server creates a socket that is identified by the four-tuple source IP, source port, destination IP and destination port. The server uses this socket identifier to demultiplex incoming data and forward them to this socket. Now, the TCP connection is established and the client and server can send and receive data between one another.
+The identifier for a TCP socket is a four tuple that is consisted by the source IP, source port, destination IP and destination port. Let's consider the example of a TCP client server as shown in the figure 2.29. The TCP server has a listening socket that waits for connections requests coming from TCP clients. A TCP client creates a socket and sends a connection request, which is a TCP segment that has a source port number chosen by the client, a destination port number 12000 and a special connection-establishment bit set in the TCP header. Finally, the TCP server receives the connection request, and the server creates a socket that is identified by the four-tuple source IP, source port, destination IP and destination port. The server uses this socket identifier to demultiplex incoming data and forward them to this socket. Now, the TCP connection is established and the client and server can send and receive data between one another.
 
 **Example:** Let's look at an example connection establishment.
 
@@ -65,19 +65,19 @@ The identifier for a TCP socket is a four tuple that is consisted by the source 
 
 In this example, we have three hosts A, B and C. Host C and A initiate two and one HTTP sessions to server B, respectively. Hosts C and A assign port numbers to their connections independently of one another. Host C assigns port numbers 26145 and 7532. In case Host A assigns the same port number as C, host B will still be able to demultiplex incoming data from the two connections because the connections are associated with different source IP addresses.
 
-**Let’s add a final note about web servers and persistent HTTP.** Let's assume, we have a webserver listening for connection requests at port 80. Clients send their initial connection requests and their subsequent data with destination port 80. The webserver is able to demultiplex incoming data based on their unique source IP addresses and source port numbers. The client and the server maybe persistent HTTP, in which case, they exchange HTTP messages via the same server socket. The client and the server maybe using non-persistent HTTP, where for every request and response, a new TCP connection and a new socket are created and closed for every response/request. In the second case, a busy webserver may experience severe performance impact.
+**Let's add a final note about web servers and persistent HTTP.** Let's assume, we have a webserver listening for connection requests at port 80. Clients send their initial connection requests and their subsequent data with destination port 80. The webserver is able to demultiplex incoming data based on their unique source IP addresses and source port numbers. The client and the server maybe persistent HTTP, in which case, they exchange HTTP messages via the same server socket. The client and the server maybe using non-persistent HTTP, where for every request and response, a new TCP connection and a new socket are created and closed for every response/request. In the second case, a busy webserver may experience severe performance impact.
 
-**_As we have seen, UDP and TCP use port numbers to identify the sending application and destination application. Why don’t UDP and TCP just use process IDs rather than define port numbers?_**
+**_As we have seen, UDP and TCP use port numbers to identify the sending application and destination application. Why don't UDP and TCP just use process IDs rather than define port numbers?_**
 
-Process IDs are specific to operating systems and therefore using process IDs rather than a specially defined port would make the protocol operating system dependent. Also, a single process can set up multiple channels of communications and so using the process ID as the destination identifier wouldn’t be able to properly demultiplex, Finally, having processes listen on well-known ports (like 80 for http) is an important convention.
+Process IDs are specific to operating systems and therefore using process IDs rather than a specially defined port would make the protocol operating system dependent. Also, a single process can set up multiple channels of communications and so using the process ID as the destination identifier wouldn't be able to properly demultiplex, Finally, having processes listen on well-known ports (like 80 for http) is an important convention.
 
 ## A word about the UDP protocol
 
-This lecture is primarily focused on TCP. Before exploring more topics on the TCP protocol let’s briefly talk about UDP.
+This lecture is primarily focused on TCP. Before exploring more topics on the TCP protocol let's briefly talk about UDP.
 
 UDP is: a) an unreliable protocol as it lacks the mechanisms that TCP has in place and b) a connectionless protocol that does not require the establishment of a connection (e.g. threeway handshake) before sending packets.
 
-The above description doesn’t sound so promising... so why do we have UDP at the first place? Well, it turns out that it is exactly the lack of those mechanisms that make UDP more desirable in some cases.
+The above description doesn't sound so promising... so why do we have UDP at the first place? Well, it turns out that it is exactly the lack of those mechanisms that make UDP more desirable in some cases.
 
 Specifically UDP offers less delays and better control over sending data because with UDP we have:
 
@@ -95,7 +95,7 @@ Specifically UDP offers less delays and better control over sending data because
 
 ![](https://assets.omscs.io/notes/0034.png)
 
-**_UDP and TCP use 1’s complement for their checksums. But why is it that UDP takes the 1’s complement of the sum – why not just use the sum? Exploring this further, using 1’s complement, how does the receiver compute and detect errors? Using 1’s complement, is it possible that a 1-bit error will go undetected? What about a 2-bit error?_**
+**_UDP and TCP use 1's complement for their checksums. But why is it that UDP takes the 1's complement of the sum – why not just use the sum? Exploring this further, using 1's complement, how does the receiver compute and detect errors? Using 1's complement, is it possible that a 1-bit error will go undetected? What about a 2-bit error?_**
 
 To detect errors, the receiver adds the four words (the three original words and the checksum). If the sum contains a zero, the receiver knows there has been an error. While all one-bit errors will be detected, but two-bit errors can be undetected (e.g., if the last digit of the first word is converted to a 0 and the last digit of the second word is converted to a 1).
 
@@ -105,7 +105,7 @@ To detect errors, the receiver adds the four words (the three original words and
 
 Step 1: The TCP client sends a special segment, (containing no data) and with SYN bit set to 1. The Client also generates an initial sequence number (client_isn) and includes it in this special TCP SYN segment.
 
-Step 2: The Server upon receiving this packet, allocates the required resources for the connection and sends back the special ‘connection-granted’ segment which we call SYNACK. This packet has SYN bit set to 1, ack field containing (client_isn+1) value and a randomly chosen initial sequence number in the sequence number field.
+Step 2: The Server upon receiving this packet, allocates the required resources for the connection and sends back the special ‘connection-granted' segment which we call SYNACK. This packet has SYN bit set to 1, ack field containing (client_isn+1) value and a randomly chosen initial sequence number in the sequence number field.
 
 Step 3: When the client receives the SYNACK segment, it also allocates buffer and resources for the connection and sends an acknowledgment with SYN bit set to 0.
 
@@ -142,7 +142,7 @@ Clearly, this kind of alternate sending and waiting for acknowledgement has a ve
 - The receiver needs to be able to identify and notify the sender of a missing packet. Thus, each packet is tagged with a unique byte sequence number which is increased for subsequent packets in the flow based on the size of the packet.
 - Also, now both sender and receiver would need to buffer more than one packet. For instance, the sender would need to buffer packets that have been transmitted but not acknowledged. Similarly, the receiver may need to buffer the packets because the rate of consuming these packets (say writing to a disk) is slower than the rate at which packets arrive.
 
-Now let’s look at how does the receiver notify the sender of a missing segment.
+Now let's look at how does the receiver notify the sender of a missing segment.
 
 One way is for the receiver to send an ACK for the most recently received in-order packet. The sender would then send all packets from the most recently received in-order packet, even if some of them had been sent before. The receiver can simply discard any out-of-order received packets. This is called Go-back-N. For instance, in the figure below if packet 7 was lost in the network, the receiver will discard any subsequent packets. The sender will send all the packets starting from 7 again.
 
@@ -166,11 +166,11 @@ In this topic we will learn about the mechanisms provided in the transport-layer
 
 ## Flow Control
 
-**Flow control: Controlling the transmission rate to protect the receiver’s buffer**
+**Flow control: Controlling the transmission rate to protect the receiver's buffer**
 
 The first case where we need transmission control is to protect the buffer of the receiver from overflowing. Recall that TCP uses a buffer at the receiver end to buffer packets that have not been transmitted to the application. It could happen that the receiver is involved with multiple processes and does not read the data instantly. This can cause accumulation of huge amount of data and overflow the receive buffer.
 
-TCP provides a rate control mechanism also known as flow control that helps match the sender’s rate against the receiver’s rate of reading the data. Sender maintains a variable ‘receive window’. It provides sender an idea of how much data the receiver can handle at the moment.
+TCP provides a rate control mechanism also known as flow control that helps match the sender's rate against the receiver's rate of reading the data. Sender maintains a variable ‘receive window'. It provides sender an idea of how much data the receiver can handle at the moment.
 
 We will illustrate its working using an example. Consider two hosts, A and B, that are communicating with each other over a TCP connection. Host A wants to send a file to Host B. For this, Host B allocates a receive buffer of size `RcvBuffer` to this connection. The receiving host maintains two variables, `LastByteRead` (number of byte that was last read from the buffer ) and `LastByteRcvd` (last byte number that has arrived from sender and placed in the buffer). Thus, in order to not overflow the buffer, TCP needs to make sure that
 
@@ -188,11 +188,11 @@ The sender also keeps track of two variables, `LastByteSent` and `LastByteAcked`
 
 `UnAcked Data Sent = LastByteSent - LastByteAcked`
 
-To not overflow the receiver’s buffer, the sender needs to make sure that the maximum number of unacknowledged bytes it sends are no more than the rwnd.
+To not overflow the receiver's buffer, the sender needs to make sure that the maximum number of unacknowledged bytes it sends are no more than the rwnd.
 
 Thus we need:
 
-`LastByteSent – LastByteAcked <= rwnd`
+`LastByteSent - LastByteAcked <= rwnd`
 
 **Caveat:** However, there is one scenario where this scheme has a problem. Consider a scenario, if the receiver had informed the sender that `rwnd = 0`, and thus the sender stops sending data. Also, assume that B has nothing to send to A. Now, as the application processes the data at the receiver, the receiver buffer is cleared but the sender may never know that new buffer space is now available and will be blocked from sending data even when receiver buffer is empty.
 
@@ -218,7 +218,7 @@ Let us consider some of the desirable properties of a good congestion control al
 
 - **Low delay:** In theory, it is possible to design protocols that have consistently high throughput assuming infinite buffer. Essentially, we could just keep sending the packets to the network and they will get stored in the buffer and will eventually get delivered. However, it will lead to long queues in the network leading to delays. Thus, applications that are sensitive to network delays such as video conferencing will suffer. Thus, we want the network delays to be small.
 
-- **Fast convergence:** The idea here is that a flow should be able to converge to its fair allocation fast. This is important as a typical network’s workload is composed a lot of short flows and few long flows. If the convergence to fair share is not fast enough, the network will still be unfair for these short flows.
+- **Fast convergence:** The idea here is that a flow should be able to converge to its fair allocation fast. This is important as a typical network's workload is composed a lot of short flows and few long flows. If the convergence to fair share is not fast enough, the network will still be unfair for these short flows.
 
 ## Congestion control flavors: E2E vs Network-assisted
 
@@ -244,7 +244,7 @@ The earliest implementation of TCP ended up using loss as a signal for congestio
 
 ## How does a TCP sender limit the sending rate?
 
-The idea of TCP congestion control was introduced so that each source can determine the network’s available capacity and know how many packets it can send without adding to the network’s level of congestion. Each source uses ACKs as a pacing mechanism. Each source uses the ACK to determine if the packet released earlier to the network was received by the receiving host and it is now safe to release more packets into the network.
+The idea of TCP congestion control was introduced so that each source can determine the network's available capacity and know how many packets it can send without adding to the network's level of congestion. Each source uses ACKs as a pacing mechanism. Each source uses the ACK to determine if the packet released earlier to the network was received by the receiving host and it is now safe to release more packets into the network.
 
 TCP uses a congestion window which is similar to the receive window used for flow control. It represents the maximum number of unacknowledged data that a sending host can have in transit (sent but not yet acknowledged).
 
@@ -252,7 +252,7 @@ TCP uses a probe-and-adapt approach in adapting the congestion window. Under reg
 
 In the end, the number of unacknowledged data that a sender can have is the minimum of the congestion window and the receive window.
 
-`LastByteSent – LastByteAcked <= min{cwnd, rwnd}`
+`LastByteSent - LastByteAcked <= min{cwnd, rwnd}`
 
 In a nutshell, a TCP sender cannot send faster than the slowest component, which is either the network or the receiving host.
 
@@ -266,7 +266,7 @@ The connection starts with a constant initial window, typically 2 and increases 
 
 ![](https://assets.omscs.io/notes/0040.png)
 
-Also, in practice, this increase in AIMD happens incrementally. TCP doesn’t wait for ACKs of all the packets from the previous RTT. Instead, it increases the congestion window size as soon as each ACK arrives. In bytes, this increment is a portion of the MSS (Maximum Segment Size).
+Also, in practice, this increase in AIMD happens incrementally. TCP doesn't wait for ACKs of all the packets from the previous RTT. Instead, it increases the congestion window size as soon as each ACK arrives. In bytes, this increment is a portion of the MSS (Maximum Segment Size).
 
 `Increment = MSS × (MSS / CongestionWindow)`
 
@@ -336,7 +336,7 @@ Thus, using AIMD leads to fairness in bandwidth sharing.
 
 **_TCP utilizes the Additive Increase Multiplicative Decrease (AIMD) policy for fairness. Consider other possible policies for fairness in congestion control would be Additive Increase Additive Decrease (AIAD), Multiplicative Increase Additive Decrease (MIAD), and Multiplicative Increase Multiplicative Decrease (MIMD)._**
 
-In AIAD and MIMD, the hosts communicating over the network will oscillate along the efficiency line, but will not converge as was shown for AIMD. MIAD will converge just like AIMD. But none of the alternative policies are as stable. The decrease policy in AIAD and MIAD is not as aggressive by comparison to AIMD and won’t address congestion control as effectively. The increase policy in MIAD and MIMD is too aggressive.
+In AIAD and MIMD, the hosts communicating over the network will oscillate along the efficiency line, but will not converge as was shown for AIMD. MIAD will converge just like AIMD. But none of the alternative policies are as stable. The decrease policy in AIAD and MIAD is not as aggressive by comparison to AIMD and won't address congestion control as effectively. The increase policy in MIAD and MIMD is too aggressive.
 
 ## Caution about fairness
 

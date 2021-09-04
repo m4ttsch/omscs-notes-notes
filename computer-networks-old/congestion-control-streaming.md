@@ -1,5 +1,5 @@
 ---
-id: computer-networks-congestion-control-streaming
+id: computer-networks-old-congestion-control-streaming
 title: Congestion Control & Streaming
 course: computer-networks-old
 lecture: congestion-control-streaming

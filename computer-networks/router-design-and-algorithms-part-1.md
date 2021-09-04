@@ -15,9 +15,9 @@ The main job of a router is to implement the forwarding plane functions and the 
 
 **Forwarding (or switching) function:**
 
-This is the router’s action to transfer a packet from an input link interface to the appropriate output link interface. Forwarding takes place at very short timescales (typically a few nanoseconds), and is typically implemented in hardware.
+This is the router's action to transfer a packet from an input link interface to the appropriate output link interface. Forwarding takes place at very short timescales (typically a few nanoseconds), and is typically implemented in hardware.
 
-The router’s architecture is shown in the figure below. The main components of a router are the input/output ports, the switching fabric and the routing processor.
+The router's architecture is shown in the figure below. The main components of a router are the input/output ports, the switching fabric and the routing processor.
 
 ![](https://assets.omscs.io/notes/0104.png)
 
@@ -41,7 +41,7 @@ An important function of the output ports is to receive and queue the packets wh
 
 ![](https://assets.omscs.io/notes/0106.png)
 
-**Router’s control plane functions:**
+**Router's control plane functions:**
 
 By control plane functions we refer to implementing the routing protocols, maintaining the routing tables, computing the forwarding table. All these functions are implemented in software in the routing processor, or as we will see in the SDN chapter, these functions could be implemented by a remote controller.
 
@@ -49,13 +49,13 @@ By control plane functions we refer to implementing the routing protocols, maint
 
 ## Router Architecture
 
-In this topic, we will take a closer look at the router’s architecture.
+In this topic, we will take a closer look at the router's architecture.
 
 ![](https://assets.omscs.io/notes/0108.png)
 
 A router has input links and output links and its main task is to switch a packet from an input link to the appropriate output link based on the destination address. We note that in this figure, the input/output links are shown separately but often they are put together.
 
-Now let’s look at what happens when a packet arrives at an input link. First, let’s take a look at the most time-sensitive tasks: lookup, switching, and scheduling.
+Now let's look at what happens when a packet arrives at an input link. First, let's take a look at the most time-sensitive tasks: lookup, switching, and scheduling.
 
 **Lookup:** When a packet arrives at the input link, the router looks at the destination IP address and determines the output link by looking at the forwarding table (or Forwarding Information Base or FIB). The FIB provides a mapping between destination prefixes and output links.
 
@@ -65,7 +65,7 @@ To resolve any disambiguities, the routers use the longest prefix matching algor
 
 **Queuing:** After the packet has been switched to a specific output, it will need to be queue (if the link is congested). The queue maybe as simple as First-In-First-Out (FIFO) or it may be more complex (eg weighted fair queuing) to provide delay guarantees or fair bandwidth allocation.
 
-Now, let’s look at some less time-sensitive tasks that take place in the router.
+Now, let's look at some less time-sensitive tasks that take place in the router.
 
 **Header validation and checksum:** The router checks the packet's version number, it decrements the time-to-live (TTL) field, and also it recalculates the header checksum.
 
@@ -75,17 +75,17 @@ Now, let’s look at some less time-sensitive tasks that take place in the route
 
 ## Different Types of Switching
 
-Let’s take a closer look into the switching fabric.
+Let's take a closer look into the switching fabric.
 
 ![](https://assets.omscs.io/notes/0109.png)
 
 The switching fabric is the brains of the router, as it actually performs the main task to switch (or forward) the packets from an input port to an outport port.
 
-Let’s look at the ways that this can be accomplished:
+Let's look at the ways that this can be accomplished:
 
 ![](https://assets.omscs.io/notes/0110.png)
 
-**Switching via memory.** Input/Output ports operate as I/O devices in an operating system, and they are controlled by the routing processor. When an input port receives a packet, it sends an interrupt to the routing processor and the packet is copied to the processor’s memory. Then the processor extracts the destination address and looks into the forward table to find the output port, and finally the packet is copied into that output’s port buffer.
+**Switching via memory.** Input/Output ports operate as I/O devices in an operating system, and they are controlled by the routing processor. When an input port receives a packet, it sends an interrupt to the routing processor and the packet is copied to the processor's memory. Then the processor extracts the destination address and looks into the forward table to find the output port, and finally the packet is copied into that output's port buffer.
 
 ![](https://assets.omscs.io/notes/0111.png)
 
@@ -107,11 +107,11 @@ The fundamental problems that a router faces revolve around:
 
 ![](https://assets.omscs.io/notes/0114.png)
 
-To understand why, let’s look at the bottlenecks that routers face in more detail:
+To understand why, let's look at the bottlenecks that routers face in more detail:
 
 ![](https://assets.omscs.io/notes/0115.png)
 
-**Longest prefix matching.** As we have seen in previous topics, routers need to look up a packet’s destination address to forward it. The increasing number of the Internet hosts and networks, has made it impossible for routers to have explicit entries for all possible destinations. Instead routers group destinations into prefixes. But then, routers run into the problem of more complex algorithms for efficient longest prefix matching.
+**Longest prefix matching.** As we have seen in previous topics, routers need to look up a packet's destination address to forward it. The increasing number of the Internet hosts and networks, has made it impossible for routers to have explicit entries for all possible destinations. Instead routers group destinations into prefixes. But then, routers run into the problem of more complex algorithms for efficient longest prefix matching.
 
 **Service differentiation.** Routers are also able to offer service differentiation which means different quality of service (or security guarantees) to different packets. In turn, this requires the routers to classify packets based on more complex criteria that go beyond destination and they can include source or applications/services that the packet is associated with.
 
@@ -191,7 +191,7 @@ One of the simplest techniques for prefix lookup is the unibit trie. For the exa
 
 Every node has a 0 or 1 pointer. Starting with the root, pointer 0 points to a subtrie for all prefixes that start with 0, and similarly pointer 1 points to a subtrie for all prefixes that start with 1. Moving forward in a similar manner, we construct more subtries by allocating the remaining bits of the prefix.
 
-When we are doing prefix matching we follow the path from the root node down to the trie. Let’s take an example from the above table and see how we can do prefix matching in the unibit trie.
+When we are doing prefix matching we follow the path from the root node down to the trie. Let's take an example from the above table and see how we can do prefix matching in the unibit trie.
 
 For example:
 
@@ -211,7 +211,7 @@ Two final notes on the unibit trie:
 
 1. If a prefix is a substring of another prefix, the smaller string is stored in the path to the longer (more specific prefix). For example, P4 = 1* is a substring of P2 = 111*, and thus P4 is stored inside a node towards the path to P2.
 
-2. One-way branches. There may be nodes that only contain one pointer. For example let’s consider the prefix P3 = 11001. After we match 110 we will be expecting to match 01. But in our prefix database, we don’t have any prefixes that share more than the first 3 bits with P3. So if we had such nodes represented in our trie, we would have nodes with only one pointer. The nodes with only one pointer each are called a one-way branch. For efficiency, we compress these one-way branches to a single text string with 2 bits (shown as node P9).
+2. One-way branches. There may be nodes that only contain one pointer. For example let's consider the prefix P3 = 11001. After we match 110 we will be expecting to match 01. But in our prefix database, we don't have any prefixes that share more than the first 3 bits with P3. So if we had such nodes represented in our trie, we would have nodes with only one pointer. The nodes with only one pointer each are called a one-way branch. For efficiency, we compress these one-way branches to a single text string with 2 bits (shown as node P9).
 
 ## Multibit Tries
 

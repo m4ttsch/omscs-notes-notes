@@ -1,5 +1,5 @@
 ---
-id: computer-networks-network-security
+id: computer-networks-old-network-security
 title: Network Security
 course: computer-networks-old
 lecture: network-security

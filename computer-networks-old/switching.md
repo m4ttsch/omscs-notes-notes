@@ -1,5 +1,5 @@
 ---
-id: computer-networks-switching
+id: computer-networks-old-switching
 title: Switching
 course: computer-networks-old
 lecture: switching

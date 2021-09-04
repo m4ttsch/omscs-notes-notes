@@ -9,7 +9,7 @@ lecture: intradomain-routing
 
 ## Routing Algorithms
 
-Let’s assume that we have two hosts that have established a connection between them using TCP or UDP as we saw in the previous lecture.
+Let's assume that we have two hosts that have established a connection between them using TCP or UDP as we saw in the previous lecture.
 
 Each of the two hosts know the default router (or first-hop router as we say). When a host sends a packet, the packet is first transferred to that default router. But what happens after that? In this lecture we will see the algorithms that we need so that when a packet leaves the default router of the sending host will travel over a path towards the default router of the destination host.
 
@@ -35,29 +35,29 @@ The two major classes of algorithms that we have are: A) link-state and B) dista
 
 ## Linkstate Routing Algorithm
 
-In this topic, we will talk about the link state routing protocols, and more specifically about the Dijkstra’s algorithm.
+In this topic, we will talk about the link state routing protocols, and more specifically about the Dijkstra's algorithm.
 
 In the linkstate routing protocol, the link costs and the network topology are known to all nodes (for example by broadcasting these values).
 
-Let’s introduce some basic terminology. By `u` we represent our source node. By `v` we present every other node in the network. By `D(v)` we represent the cost of the current least cost path from `u` to `v`. By `p(v)` we present the previous node along the current least cost path from `u` to `v`. By `N’` we represent the subset of nodes along the current least-cost path from `u` to `v`.
+Let's introduce some basic terminology. By `u` we represent our source node. By `v` we present every other node in the network. By `D(v)` we represent the cost of the current least cost path from `u` to `v`. By `p(v)` we present the previous node along the current least cost path from `u` to `v`. By `N'` we represent the subset of nodes along the current least-cost path from `u` to `v`.
 
 Initialization step. We note that the algorithm starts with an initialization step, where we initialize all the currently known least-cost paths from `u` to its directly attached neighbors. We know these costs because they are the costs of the immediate links. For nodes in the network that they are not directly attached to `u`, we initialize the cost path as infinity. We also initialize the set `N'` to include only the source node `u`.
 
 ![](https://assets.omscs.io/notes/0055.png)
 
-**Iterations.** After the initialization step, the algorithm follows with a loop that is executed for every destination node `v` in the network. At each iteration, we look at the set of nodes that are not included in `N’`, and we identify the node (say `w`) with the least cost path from the previous iteration. We add that node `w` into `N’`. For every neighbor `v` of `w`, we update `D(v)` with the new cost which is either the old cost from `u` to `v` (from the previous iteration) or the known least path cost from source node `u` to `w`, plus the cost from `w` to `v`, whichever between the two quantities is the minimum.
+**Iterations.** After the initialization step, the algorithm follows with a loop that is executed for every destination node `v` in the network. At each iteration, we look at the set of nodes that are not included in `N'`, and we identify the node (say `w`) with the least cost path from the previous iteration. We add that node `w` into `N'`. For every neighbor `v` of `w`, we update `D(v)` with the new cost which is either the old cost from `u` to `v` (from the previous iteration) or the known least path cost from source node `u` to `w`, plus the cost from `w` to `v`, whichever between the two quantities is the minimum.
 
 The algorithm exits by returning the shortest paths, and their costs, from the source node `u` to every other node `v` in the network.
 
 ## Linkstate Routing Algorithm - Example
 
-Let’s look at an example of the linkstate routing algorithm. We have the graph below and we consider our source node to be `u`. Our goal is to compute the least-cost paths from `u` to all nodes `v` in the network.
+Let's look at an example of the linkstate routing algorithm. We have the graph below and we consider our source node to be `u`. Our goal is to compute the least-cost paths from `u` to all nodes `v` in the network.
 
 ![](https://assets.omscs.io/notes/0056.png)
 
-We start with the initialization step, where we set all the currently known least-cost paths from `u` to it’s directly attached neighbors `v`, `x` and `w`. For the rest of the nodes in the network we set the cost to infinity, because they are not immediate neighbors to source node `u`. We also initialize the set `N'` to include only the source node `u`. The first row in our table represents the initialization step.
+We start with the initialization step, where we set all the currently known least-cost paths from `u` to it's directly attached neighbors `v`, `x` and `w`. For the rest of the nodes in the network we set the cost to infinity, because they are not immediate neighbors to source node `u`. We also initialize the set `N'` to include only the source node `u`. The first row in our table represents the initialization step.
 
-In the first iteration, we look among the nodes that are not yet in `N’`, and we select the node with the least cost from the previous iteration. In this case, this is node `x`. Then we update `D` for all the immediate neighbors of `x`, which in this case are nodes `v` and `w`. For example, we update `D(w)` as the minimum between: the cost we had from the previous iteration which is 5, and the cost from `u` to `x` (1) plus cost from `x` to `w` (3). The minimum between the two is 4. We update the second row in our table.
+In the first iteration, we look among the nodes that are not yet in `N'`, and we select the node with the least cost from the previous iteration. In this case, this is node `x`. Then we update `D` for all the immediate neighbors of `x`, which in this case are nodes `v` and `w`. For example, we update `D(w)` as the minimum between: the cost we had from the previous iteration which is 5, and the cost from `u` to `x` (1) plus cost from `x` to `w` (3). The minimum between the two is 4. We update the second row in our table.
 
 We continue in a similar manner for the rest of the nodes in the table. The algorithm exits in the 5th iteration.
 
@@ -75,9 +75,9 @@ Node `x` will execute the same number of iterations that node u did, as the numb
 
 Note that the algorithm continues iterating until
 
-`N’ = N – 1`
+`N' = N - 1`
 
-that is, until every node is the graph is in `N’`. As there are 6 nodes, there will always be 5 iterations after initialization.
+that is, until every node is the graph is in `N'`. As there are 6 nodes, there will always be 5 iterations after initialization.
 
 ## Distance Vector Routing
 
@@ -101,11 +101,11 @@ Formally, the DV algorithm is as follows:
 
 ## Distance Vector Routing Example
 
-Now, let’s see an example of the distance vector routing algorithm. Let’s consider the three node network shown here:
+Now, let's see an example of the distance vector routing algorithm. Let's consider the three node network shown here:
 
 ![](https://assets.omscs.io/notes/0062.png)
 
-In the first iteration, each node has its own view of the network, which is represented by an individual table. Every row in the table is the distance vector of each node. Node `x` has it’s own table, and the same is true for nodes `y` and `z`. We note that in the first iteration, node `x` does not have any information about the `y`’s and `z`’s distance vectors, thus these values are set to infinity.
+In the first iteration, each node has its own view of the network, which is represented by an individual table. Every row in the table is the distance vector of each node. Node `x` has it's own table, and the same is true for nodes `y` and `z`. We note that in the first iteration, node `x` does not have any information about the `y`'s and `z`'s distance vectors, thus these values are set to infinity.
 
 In the second iteration, the nodes exchange their distance vectors and they update their individual views of the network.
 
@@ -131,7 +131,7 @@ Finally, at this point, there are no further updates send from the nodes, thus t
 
 Now, we will see what is happening when a node identifies that a link that it is connecting it to one of its neighbors as changed.
 
-Let’s consider the following example topology below:
+Let's consider the following example topology below:
 
 ![](https://assets.omscs.io/notes/0065.png)
 
@@ -145,11 +145,11 @@ Let's assume that the link cost between `x-y` changes to 1.
 
 In this scenario, we note that the fact that there was a decrease in the link cost, it propagated quickly among the nodes, as it only took a few iterations.
 
-Unfortunately, this is not always the case. Let’s consider the following scenario where a link cost increases by a large amount.
+Unfortunately, this is not always the case. Let's consider the following scenario where a link cost increases by a large amount.
 
 ![](https://assets.omscs.io/notes/0066.png)
 
-Let’s assume that the link `y-x` has a new cost of 60.
+Let's assume that the link `y-x` has a new cost of 60.
 
 1. At `t0`, `y` detects that cost has changed, now it will update its distance vector thinking that it can still reach `x` through `z` with a total cost of 5+1=6
 
@@ -179,9 +179,9 @@ This technique will solve the problem with 2 nodes, however poisoned reverse wil
 
 The **Routing Information Protocol (RIP)** is based on the Distance Vector protocol.
 
-The first version, released as a part of the BSD version of Unix, uses hop count as a metric (i.e. assumes link cost as 1). The metric for choosing a path could be shortest distance, lowest cost or a load-balanced path. In RIP, routing updates are exchanged between neighbors periodically, using a RIP response message, as opposed to distance vectors in the DV Protocols. These messages, called RIP advertisements, contain information about sender’s distances to destination subnets.
+The first version, released as a part of the BSD version of Unix, uses hop count as a metric (i.e. assumes link cost as 1). The metric for choosing a path could be shortest distance, lowest cost or a load-balanced path. In RIP, routing updates are exchanged between neighbors periodically, using a RIP response message, as opposed to distance vectors in the DV Protocols. These messages, called RIP advertisements, contain information about sender's distances to destination subnets.
 
-Let’s look at a simple RIP example to illustrate how it works. The figure below shows a portion of the network. Here, A, B, C and D denote the routers and w, x, y and z denote the subnet masks.
+Let's look at a simple RIP example to illustrate how it works. The figure below shows a portion of the network. Here, A, B, C and D denote the routers and w, x, y and z denote the subnet masks.
 
 ![](https://assets.omscs.io/notes/0067.png)
 
@@ -215,9 +215,9 @@ Exactly one OSPF area in the AS is configured to be the backbone area. The prima
 
 For packets routing between two different areas, it is required that the packet be sent through an area border router, through the backbone and then to the area border router within the destination area, before finally reaching the destination.
 
-**Operation.** First, a graph (topological map) of the entire AS is constructed. Then, considering itself as the root node, each router computes the shortest-path tree to all subnets, by running Djikstra’s algorithm locally. The link costs have been pre-configured by a network administrator. The administrator has a variety of choices while configuring the link costs. For instance, he may choose to set them to be inversely proportional to link capacity, or set them all to one. Given set of link weights, OSFP provides the mechanisms for determining least-cost path routing.
+**Operation.** First, a graph (topological map) of the entire AS is constructed. Then, considering itself as the root node, each router computes the shortest-path tree to all subnets, by running Djikstra's algorithm locally. The link costs have been pre-configured by a network administrator. The administrator has a variety of choices while configuring the link costs. For instance, he may choose to set them to be inversely proportional to link capacity, or set them all to one. Given set of link weights, OSFP provides the mechanisms for determining least-cost path routing.
 
-Whenever there is a change in a link’s state, the router broadcasts routing information to all other routers in the AS, not just to its neighboring routers. It also broadcasts a link’s state periodically even if its state hasn’t changed.
+Whenever there is a change in a link's state, the router broadcasts routing information to all other routers in the AS, not just to its neighboring routers. It also broadcasts a link's state periodically even if its state hasn't changed.
 
 **Link State Advertisements.** Every router within a domain that operates on OSPF uses Link State Advertisements (LSAs). LSA communicates the router's local routing topology to all other local routers in the same OSPF area. In practice, LSA is used for building a database (called the link state database) containing all the link states. LSAs are typically flooded to every router in the domain. This helps form a consistent network topology view. Any change in the topology requires corresponding changes in LSAs.
 
@@ -229,9 +229,9 @@ In the previous section, we looked at OSPF fundamentals and how it operates usin
 
 ![](https://assets.omscs.io/notes/0071.png)
 
-To do this, let’s begin with a simple model of a router given in the figure above. The router consists of a route processor (which is the main processing unit) and interface cards that receive data packets which are forwarded via a switching fabric. Let us break down router processing in a few steps:
+To do this, let's begin with a simple model of a router given in the figure above. The router consists of a route processor (which is the main processing unit) and interface cards that receive data packets which are forwarded via a switching fabric. Let us break down router processing in a few steps:
 
-1. Initially, the LS update packets which contain LSAs from a neighboring router reaches the current router’s OSPF (which is the route processor). This is the first trigger for the route processor. As the LS Updates reach the router, a consistent view of the topology is being formed and this information is stored in the link-state database. Entries of LSAs correspond to the topology which is actually visible from the current router.
+1. Initially, the LS update packets which contain LSAs from a neighboring router reaches the current router's OSPF (which is the route processor). This is the first trigger for the route processor. As the LS Updates reach the router, a consistent view of the topology is being formed and this information is stored in the link-state database. Entries of LSAs correspond to the topology which is actually visible from the current router.
 
 2. Using this information from the link-state database, the current router calculates the shortest path using shortest path first (SPF) algorithm. The result of this step is fed to the Forwarding Information Base (FIB)
 
@@ -241,9 +241,9 @@ To further understand OSPF processing, let's look at the following flow chart an
 
 ![](https://assets.omscs.io/notes/0072.png)
 
-We’ve already noted that the processing tasks begin at the receipt of an LS update packet **(T1)**. For every LSA unpacked from the update packet, the OSPF protocol checks whether it is a new or a duplicate LSA. This is done by referring to the link-state database, and checking for the sequence number of the LSA to a matching LSA instance in the database. For every new LSA, the database is updated, an SPF calculation is scheduled **(T2)** and it’s determined which interface the LSA needs to be flooded out of. In modern routers, the when of LSA flooding can be based on a timer.
+We've already noted that the processing tasks begin at the receipt of an LS update packet **(T1)**. For every LSA unpacked from the update packet, the OSPF protocol checks whether it is a new or a duplicate LSA. This is done by referring to the link-state database, and checking for the sequence number of the LSA to a matching LSA instance in the database. For every new LSA, the database is updated, an SPF calculation is scheduled **(T2)** and it's determined which interface the LSA needs to be flooded out of. In modern routers, the when of LSA flooding can be based on a timer.
 
-When all the LSAs from an LS update packet have been processed **(T3)**, the LSAs are prepared and flooded out as an LS Update packet to the next router **(T4)**. After this, we move on to the actual execution of SPF calculation within the router **(T5 and T6)**. Since SPF calculation is a CPU-intensive task, SPF calculations are scheduled and carried out over a period of time (usually when LSA’s are changed) so as to offset the CPU costs. After the SPF calculation is completed, the FIB is updated **(T7)**.
+When all the LSAs from an LS update packet have been processed **(T3)**, the LSAs are prepared and flooded out as an LS Update packet to the next router **(T4)**. After this, we move on to the actual execution of SPF calculation within the router **(T5 and T6)**. Since SPF calculation is a CPU-intensive task, SPF calculations are scheduled and carried out over a period of time (usually when LSA's are changed) so as to offset the CPU costs. After the SPF calculation is completed, the FIB is updated **(T7)**.
 
 ## Hot Potato Routing
 
@@ -255,13 +255,13 @@ In this case, hot potato routing is a technique/practice of choosing a path with
 
 ![](https://assets.omscs.io/notes/0073.png)
 
-Let’s look at an example.
+Let's look at an example.
 
 In the figure above, we have a network, and specifically we are looking at the a router located in Dallas and the router needs to forward traffic towards a destination. It could do so via New York or San Francisco. We assume that both egress points offer BGP (Border Gateway Protocol) path costs, so they are equally good egress points. In this case, the router has multiple egress points. We see that the IGP path cost for SF is 9 while the path cost for NY is 10. Thus, the router uses hot potato routing to choose to send the traffic to the destination via SF.
 
 Hot potato routing simplifies computations for the routers as they are already aware of the IGP path costs. It makes sure that the path remains consistent, since the next router in the path will also choose to send the packet to the same egress point.
 
-Hot potato routing also effectively reduces the network’s resource consumption by getting the traffic out as soon as possible.
+Hot potato routing also effectively reduces the network's resource consumption by getting the traffic out as soon as possible.
 
 ## Example Traffic Engineering Framework
 

@@ -1,5 +1,5 @@
 ---
-id: computer-networks-rate-limiting-and-traffic-shaping
+id: computer-networks-old-rate-limiting-and-traffic-shaping
 title: Rate Limiting & Traffic Shaping
 course: computer-networks-old
 lecture: rate-limiting-and-traffic-shaping

@@ -1,5 +1,5 @@
 ---
-id: computer-networks-software-defined-networking
+id: computer-networks-old-software-defined-networking
 title: Software Defined Networking
 course: computer-networks-old
 lecture: software-defined-networking

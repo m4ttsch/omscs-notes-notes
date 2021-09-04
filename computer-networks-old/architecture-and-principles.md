@@ -1,5 +1,5 @@
 ---
-id: computer-networks-architecture-and-principles
+id: computer-networks-old-architecture-and-principles
 title: Architecture and Principles
 course: computer-networks-old
 lecture: architecture-and-principles

@@ -1,5 +1,5 @@
 ---
-id: computer-networks-spam
+id: computer-networks-old-spam
 title: Spam
 course: computer-networks-old
 lecture: spam

@@ -1,5 +1,5 @@
 ---
-id: computer-networks-programming-sdns
+id: computer-networks-old-programming-sdns
 title: Programming SDNs
 course: computer-networks-old
 lecture: programming-sdns
