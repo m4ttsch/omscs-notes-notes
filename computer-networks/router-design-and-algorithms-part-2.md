@@ -69,8 +69,8 @@ By S1 we denote the source prefix of rule R1, S2 of rule R2, etc. Thus for every
 
 We first match the destination IP address in a packet in the destination trie. Then we traverse the corresponding source trie to find the longest prefix match for the source IP. The algorithm keeps track of the lowest-cost matching rule. The algorithm concludes with the least-cost rule.
 
-**Challenge.** The problem that we need to solve now, is which source prefixes to store at the sources tries? For example, let's consider the destination D = 00∗. Both rules R4 and R5 have D as the destination prefix. So the source tries for D will need to include the source prefixes 1∗ and 11∗.
-But if we restrict to 1* and 11*, then this is not sufficient. Because the prefix 0∗, also matches 00\*, and it is found in rules R1, R2, R3, R7. So we will need to include all the corresponding source prefixes.
+**Challenge.** The problem that we need to solve now, is which source prefixes to store at the sources tries? For example, let's consider the destination D = 00\*. Both rules R4 and R5 have D as the destination prefix. So the source tries for D will need to include the source prefixes 1\* and 11\*.
+But if we restrict to 1\* and 11\*, then this is not sufficient. Because the prefix 0\*, also matches 00\*, and it is found in rules R1, R2, R3, R7. So we will need to include all the corresponding source prefixes.
 
 Moving forward, the problem with the set pruning tries is memory explosion. Because a source prefix can occur in multiple destination tries.
 
