@@ -26,7 +26,7 @@ The following textbooks helped me get an **A** in this course:
 Some students have asked for PDF versions of the notes for a simpler, more portable
 studying experience. The following PDFs are available for download.
 
-- [Machine Learning for Trading - Complete](https://payhip.com/b/h5Pv "The complete set of ML4T notes, including lecture notes and Udacity quizzes.")
+- [Machine Learning for Trading - Complete](https://payhip.com/b/h5Pv 'The complete set of ML4T notes, including lecture notes and Udacity quizzes.')
 
 ## Environment Setup
 
@@ -38,6 +38,6 @@ This class requires some environment setup. I have recorded the following YouTub
 
 If you have any questions, comments, concerns, or improvements, don't hesitate to reach out to me. You can find me at:
 
-* [matt@omscs-notes.com](mailto:matt@omscs-notes.com)
-* [Matt Schlenker \| Linkedin](https://www.linkedin.com/in/matt-schlenker-3457b047/)
-* @mschlenker \(Slack\)
+- [matt@omscs-notes.com](mailto:matt@omscs-notes.com)
+- [Matt Schlenker \| Linkedin](https://www.linkedin.com/in/matthew-schlenker/)
+- @mschlenker \(Slack\)
