@@ -173,7 +173,7 @@ Source: Book Chapter 27 Page 27-4
 
 
 
-A subject is said to have a security clearance of a given level and an object is said to
+Question: A subject is said to have a security clearance of a given level and an object is said to
 have a security classification of a given level.
 
 <details>
