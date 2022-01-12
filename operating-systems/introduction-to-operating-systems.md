@@ -125,7 +125,7 @@ When privileged instructions are encountered during a non-privileged execution, 
 
 The OS can decide whether to grant the access or potentially terminate the process.
 
-The OS also exposes an interface of  **system calls**, which the application can invoke, which allows privileged access of hardware resources for the application on behalf of the operating system.
+The OS also exposes an interface of  **system calls**, which the application can invoke, which allows privileged access of hardware resources for the application.
 
 For example:
 
