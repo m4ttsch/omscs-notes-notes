@@ -13,7 +13,7 @@ Virtualization allows users to work with virtual resources, which are easier to 
 
 It also helps us achieve complete mediation. The virtual resources are mapped to physical resources by the TCB, so no physical resources are accessed without passing through the TCB. In the last module we talked about how the translation from logical addresses to physical memory achieves complete mediation.
 
-With a virtual machine monitor \(**VMM** or hypervisor\) we virtualize all resources of the physical machine and make these virtual resources available to a **guest operating system**. The gues operating system does the resource management but the virtual machine monitor takes care of the resource allocation.
+With a virtual machine monitor \(**VMM** or hypervisor\) we virtualize all resources of the physical machine and make these virtual resources available to a **guest operating system**. The guest operating system does the resource management but the virtual machine monitor takes care of the resource allocation.
 
 Because the guest operating system takes care of the resource management, our system is less complex. Less complexity gives us more confidence that our system achieves correctness \(economy of mechanism\).
 
