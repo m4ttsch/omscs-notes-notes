@@ -1157,7 +1157,7 @@ What are examples of static vs dynamic biometric recognition?
 
 - A.) Dynamic biometric could be a fingerprint and Static could be a voice pattern
 - B.) Dynamic can be face recognition and static could be fingerprint
-- C.) Dyamic is when you have an electronic keycard and static is a fingerprint
+- C.) Dynamic is when you have an electronic keycard and static is a fingerprint
 - D.) Static biometric is a fingerprint and dynamic biometric is a voice pattern
 
 <details>
