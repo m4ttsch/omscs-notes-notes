@@ -30,9 +30,9 @@ When a spinlock is locked, and a thread is attempting to lock it, that thread is
 Because of their simplicity, spinlocks are a basic synchronization primitive that can be used to implement more complicated synchronization constructs.
 
 ## Semaphores
-As a synchronization construct, **semaphores** allows us to express count related synchronization requirements.  
+As a synchronization construct, **semaphores** allow us to express count related synchronization requirements.  
 
-Semaphores are initialized with an integer value. Threads arriving at a semaphore with a nonzero value with decrement the value and proceed with their execution. Threads arriving at a semaphore with a zero value will have to wait. As a result, the number of threads that will be allowed to proceed at a given time will equal the initialization value of the semaphore.
+Semaphores are initialized with an integer value. Threads arriving at a semaphore with a nonzero value will decrement the value and proceed with their execution. Threads arriving at a semaphore with a zero value will have to wait. As a result, the number of threads that will be allowed to proceed at a given time will equal the initialization value of the semaphore.
 
 When a thread leaves the critical section, it signals the semaphore, which will increment the semaphore's counter.
 
@@ -181,7 +181,7 @@ The use of write-update or write-invalidate is determined by the hardware suppor
 ## Cache Coherence and Atomics
 Let's consider a scenario in which we have two CPUs.  Each CPU needs to perform an atomic operation concerning `X`, and both CPUs have a reference to `X` present in their caches.
 
-When an atomic instruction is performed against the a cached value of `X` on one CPU, it is really challenging to know whether or not an atomic instruction will be attempted on the cached value of `X` on another CPU. We obviously cannot have incoherent cache references between CPUs: this will affect the correctness of our applications.
+When an atomic instruction is performed against the cached value of `X` on one CPU, it is really challenging to know whether or not an atomic instruction will be attempted on the cached value of `X` on another CPU. We obviously cannot have incoherent cache references between CPUs: this will affect the correctness of our applications.
 
 Atomic operations always bypass the caches and are issued directly to the memory location where the particular target variable is stored.
 
@@ -194,7 +194,7 @@ In addition, in order to guarantee atomic behavior, we have to generate the cohe
 In summary, atomic instructions on SMP systems are more expensive than on single CPU system because of bus or I/C contention. In addition, atomics in general are more expensive because they bypass the cache and always trigger coherence traffic.
 
 ## Spinlock Performance Metrics
-We want the spinlock to have *low latency*. We can define latency as the the time it takes a thread to acquire a free lock. Ideally, we want the thread to be able to acquire a free lock immediately with a single atomic instruction.
+We want the spinlock to have *low latency*. We can define latency as the time it takes a thread to acquire a free lock. Ideally, we want the thread to be able to acquire a free lock immediately with a single atomic instruction.
 
 In addition, we want the spinlock to have *low delay/waiting time*. We can define delay as the amount of time required for a thread to stop spinning and acquire a lock that has been freed. Again, we ideally would want the thread to be able to stop spinning and acquire a free lock immediately.
 
@@ -213,7 +213,7 @@ Regarding delay, this implementation could perform well. We are continuously jus
 
 From a contention perspective this lock does not perform well. As long as the threads are spinning on the `test_and_set` instruction, the processor has to continuously go to main memory on each instruction. This will delay all other CPUs that need to access memory.
 
-The real problem with this implementation is that we are continuously spinning on the atomic instruction. Regardless of cache coherence, we are forced to constantly waste time going to memory every time when execute the `test_and_set` instruction.
+The real problem with this implementation is that we are continuously spinning on the atomic instruction. Regardless of cache coherence, we are forced to constantly waste time going to memory every time we execute the `test_and_set` instruction.
 
 ## Test and Test and Set Spinlock
 The problem with the previous implementation is that all of the CPUs are spinning on the atomic operation. Let's try to separate the test part - checking the value of the lock - from the atomic.
@@ -224,7 +224,7 @@ Here is the resulting spinlock `lock` operation.
 
 ![](https://assets.omscs.io/notes/C46BDD52-2F95-4EB4-8FA3-D10C244CF546.png)
 
-First we check if the lock is busy. Importantly, this check is performed against the cached value. As long as the lock is busy, we will stay in the while loop, and we won't need to evaluate the second part of the predicate. Only when the lock becomes free - when `lock == busy` evaluates to false - do actually execute the atomic.
+First we check if the lock is busy. Importantly, this check is performed against the cached value. As long as the lock is busy, we will stay in the while loop, and we won't need to evaluate the second part of the predicate. Only when the lock becomes free - when `lock == busy` evaluates to false - do we actually execute the atomic.
 
 This spinlock is referred to as the **test-and-test-and-set spinlock**.  It is also called a spin-on-read or spin-on-cached-value spinlock.
 
@@ -289,7 +289,7 @@ If we delay after each lock reference, however, our delay grows not only as a fu
 ## Queueing Lock
 The reason for introducing a delay is to guard against the case where every thread tries to acquire a lock once it is freed.
 
-Alternatively, if we can prevent every thread from seeing that the lock has be freed *at the same time*, we can indirectly prevent the case of all threads rushing to acquire the lock simultaneously.
+Alternatively, if we can prevent every thread from seeing that the lock has been freed *at the same time*, we can indirectly prevent the case of all threads rushing to acquire the lock simultaneously.
 
 The lock that controls which thread(s) see that the lock is free at which time is the **queuing lock**.
 
@@ -318,7 +318,7 @@ From a latency perspective, this lock is not very efficient. It performs a more 
 
 From a delay perspective, this lock is good. Each lock holder directly signals the next element in the queue that the lock has been freed.
 
-From a contention perspective, this lock is much better than any locks we have discussed, since the atomic is only executed once up front and is not part of the spinning code. The atomic operation and the spinning code are involve separate variables, so cache invalidation on the atomic variable doesn't impact spinning.
+From a contention perspective, this lock is much better than any locks we have discussed, since the atomic is only executed once up front and is not part of the spinning code. The atomic operation and the spinning code involve separate variables, so cache invalidation on the atomic variable doesn't impact spinning.
 
 In order to realize these contention gains, we must have a cache coherent architecture. Otherwise, spinning must involve remote memory references. In addition, we have to make sure that every element is on a different cache line. Otherwise, when we change the value of one element in the array, we will invalidate the entire cache line, so the processors spinning on other elements will have their caches invalidated.
 
