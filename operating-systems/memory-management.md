@@ -119,7 +119,7 @@ The inner level has proper page tables that actually to point to page frames in 
 
 The internal page tables exist only for those virtual memory regions that are actually valid. Any holes in the virtual memory space will result in lack of internal page tables.
 
-If a process requests more memory to be allocated to it via `malloc` the OS will check and potentially create another page table for the process the process, adding a new entry in the page table directory. The new internal page table entry will correspond to some new virtual memory region that the process has requested.
+If a process requests more memory to be allocated to it via `malloc` the OS will check and potentially create another page table for the process, adding a new entry in the page table directory. The new internal page table entry will correspond to some new virtual memory region that the process has requested.
 
 To find the right element in the page table structure, the virtual address is split into more components.
 
@@ -184,7 +184,7 @@ Inverted page tables are often supplemented with **hashing page tables**. Basica
 ![](https://assets.omscs.io/notes/5B8687C4-AA22-40E8-920C-B5B021652EAE.png)
 
 ## Segmentation
-Virtual to physical memory mappings can also be maintain using **segments**. With segments, the address space is divided into components of arbitrary size, and the components will correspond to some logically meaningful section of the address space, like the code, heap, data or stack.
+Virtual to physical memory mappings can also be maintained using **segments**. With segments, the address space is divided into components of arbitrary size, and the components will correspond to some logically meaningful section of the address space, like the code, heap, data or stack.
 
 A virtual address in the segmented memory mode includes a **segment selector** and an offset. The selector is used in combination with a **descriptor table** to produce a physical address which is combined with the offset to describe a precise memory location.
 
