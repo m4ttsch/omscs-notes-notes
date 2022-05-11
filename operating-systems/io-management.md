@@ -39,9 +39,9 @@ Devices interface with the rest of the system via a controller that is typically
 
 In this figure, all of the the controllers are connected to the rest of the system via a **Peripheral Component Interconnect** (PCI) bus.
 
-Modern platforms typical support **PCI Express**, which is more technologically advanced than PCI-X and PCI. PCI Express has more bandwidth, is faster, has lower latency, and supports more devices than PCI-X. For compatibility reasons, though, most platforms will include PCI-X which follows the original PCI standard.
+Modern platforms typically support **PCI Express**, which is more technologically advanced than PCI-X and PCI. PCI Express has more bandwidth, is faster, has lower latency, and supports more devices than PCI-X. For compatibility reasons, though, most platforms will include PCI-X which follows the original PCI standard.
 
-The PCI bus is not the only possible interconnect that can be present in a system. In this example, we see a SCSI bus that connects SCSI disks and a expansion (peripheral) bus that connects things like keyboards.
+The PCI bus is not the only possible interconnect that can be present in a system. In this example, we see a SCSI bus that connects SCSI disks and an expansion (peripheral) bus that connects things like keyboards.
 
 The device controllers determine what type of interconnect a device can attach to. **Bridging controllers** can handle any difference between different types of interconnects.
 
@@ -76,9 +76,9 @@ On UNIX-like systems, all devices appear as files under the `/dev` directory. Th
 ## CPU/Device Interactions
 The device registers appear to the CPU as memory locations at a specific physical address. When the CPU writes to these locations, the integrated PCI controller realizes that these accesses should be routed to the appropriate device.
 
-This means that a portion of the physical memory on the system is dedicated for device interactions. We call this **memory-mapped I/O**. The portion of the memory that is reserved for these interactions is controlled by the **Base Address Registers** (BAR). This registers get configured during the boot process in accordance to the PCI protocol.
+This means that a portion of the physical memory on the system is dedicated for device interactions. We call this **memory-mapped I/O**. The portion of the memory that is reserved for these interactions is controlled by the **Base Address Registers** (BAR). These registers get configured during the boot process in accordance to the PCI protocol.
 
-In addition, the CPU can access devices via special instructions. x86 platforms specify certain in/out instructions that are used for accessing devices. Each instruction needs to specify the target device - the I/O port -as well as some value that will be passed to the device. This model is called the **I/O Port Model**.
+In addition, the CPU can access devices via special instructions. x86 platforms specify certain in/out instructions that are used for accessing devices. Each instruction needs to specify the target device - the I/O port - as well as some value that will be passed to the device. This model is called the **I/O Port Model**.
 
 The path from the device to the CPU complex can take two routes. Devices can generate interrupts to the CPU. CPUs can poll devices by reading their status registers to determine if they have some response/data for the CPU.
 
