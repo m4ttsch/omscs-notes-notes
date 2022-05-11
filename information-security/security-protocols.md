@@ -23,7 +23,7 @@ Suppose that Alice and Bob share a secret key `K_AB`, which only they know. Usin
 
 ![](https://assets.omscs.io/notes/6B53C586-BE9C-4F21-B901-48EB7D94938E.png)
 
-First, Alice sends a message to Bob, claiming that she is Alice. Bob response with a random value `r1`, referred to as a **challenge**. Alice encrypts `r1` with `K_AB` and sends the ciphertext back to Bob as a **response** to the challenge. When Bob receives the response, he decrypts it with `K_AB` and sees if it matches the plaintext `r1`.
+First, Alice sends a message to Bob, claiming that she is Alice. Bob responds with a random value `r1`, referred to as a **challenge**. Alice encrypts `r1` with `K_AB` and sends the ciphertext back to Bob as a **response** to the challenge. When Bob receives the response, he decrypts it with `K_AB` and sees if it matches the plaintext `r1`.
 
 If there is a match, Bob knows that he must be communicating with Alice, since she is the only other person with knowledge of `K_AB`. Without `K_AB`, `r1` cannot be encrypted in such a way that Bob can recover it with decryption using `K_AB`.
 

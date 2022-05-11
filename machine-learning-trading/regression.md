@@ -132,7 +132,7 @@ We have three fundamental concepts that we need to cover in our API. First, we n
 Here is an example of how we might use a linear regression learner:
 
 ```python
-leaner = LinRegLearner()        # Create the learner
+learner = LinRegLearner()        # Create the learner
 learner.train(Xtrain, Ytrain)   # Learn the model
 learner.query(Xtest)            # Compute predictions
 ```
@@ -140,7 +140,7 @@ learner.query(Xtest)            # Compute predictions
 We can imagine using a KNN learner in a very similar fashion. The only difference with the KNN API is that the constructor takes in an additional argument for specifying $K$.
 
 ```python
-leaner = KNNLearner(k=3)
+learner = KNNLearner(k=3)
 learner.train(Xtrain, Ytrain)
 learner.query(Xtest)
 ```

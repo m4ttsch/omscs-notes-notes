@@ -249,13 +249,13 @@ Every file has metadata associated with it. This metadata can contain disk block
 
 The data structure that contains this metadata is referred to as an  [inode](https://en.wikipedia.org/wiki/Inode)  on Unix systems, and the operating system maintains a table of inodes for all of the files in the system that are actively being accessed.
 
-When we attempt to open a file, the operating system will check the inode table to see if there is an entry for the given file. If not, the operating system will create an entry for that file.
+When we attempt to open a file, the operating system will check the inode table to see if there is an entry for the given process. If not, the operating system will create an entry for that file.
 
 Once the inode for the file is located, access control is performed. The system will locate the ACL and will decide whether to grant access or not based on the bits present in the ACL and the mode in which the user is requesting to open the file.
 
 If the system determines that access should not be granted, the requesting process is not given with a file descriptor.
 
-If the system determines that access should be granted, it will create an entry in another table, the per-process *file descriptor table*. This table holds pointers to the inode table and contains all of the files currently being accessed by the given file.
+If the system determines that access should be granted, it will create an entry in another table, the per-process *file descriptor table*. This table holds pointers to the inode table and contains all of the files currently being accessed by the given process.
 
 The file descriptor returned from this call is nothing more than an index into that table.
 

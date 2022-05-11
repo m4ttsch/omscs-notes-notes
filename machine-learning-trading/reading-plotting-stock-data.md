@@ -160,7 +160,7 @@ Your task is to calculate the mean volume for each of the given symbols.
 Given a DataFrame `df` containing a "Volume" column, the following code returns the mean of the values in that column.
 
 ```python
-df['Values'].mean()
+df['Volume'].mean()
 ```
 
 ### Documentation

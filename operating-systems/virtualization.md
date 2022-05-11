@@ -54,7 +54,7 @@ In **bare-metal** virtualization (also known as **hypervisor-based** or **type 1
 
 ![](https://assets.omscs.io/notes/A320790E-26BD-4370-8B87-47E08D04FA9C.png)
 
-One issue with this model concerns devices. According to the model, the hypervisor must manage all possible devices. In order words, device manufacturers now have to provide device drivers not just for different operating systems, but also for different hypervisors.
+One issue with this model concerns devices. According to the model, the hypervisor must manage all possible devices. In other words, device manufacturers now have to provide device drivers not just for different operating systems, but also for different hypervisors.
 
 To eliminate this problem, the hypervisor model typical integrates a special virtual machine, a service VM, that runs a standardized OS with full hardware access privileges, allowing it to manipulate hardware as if it were native.
 
