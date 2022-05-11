@@ -63,7 +63,7 @@ Whenever tasks enter the runqueue, the scheduler needs to be invoked so that it 
 We are still holding our assumption that we know the execution time of the task. In reality, this is not really a fair assumption, as the execution time depends on many different things that may be out of our perception. We can generate heuristics about running time based on execution times that have been recorded for similar jobs in the past. We can think about how long a task took to run the very last time or the average execution time over the past n times (a **windowed average**).
 
 ## Preemptive Scheduling: Priority
-Instead of looking at execution time when making scheduling decisions, as we do in SJF, we can look at task priority levels. It is common for different tasks to have different priorities. For example, it is common that kernel level tasks the manage critical system components will have higher priority than tasks that support user applications.
+Instead of looking at execution time when making scheduling decisions, as we do in SJF, we can look at task priority levels. It is common for different tasks to have different priorities. For example, it is common that kernel level tasks that manage critical system components will have higher priority than tasks that support user applications.
 
 When scheduling based on priority, the scheduler must run the highest priority task next. As a precondition of this policy, the scheduler must be able to preempt lower priority tasks when a high priority task enters the runqueue.
 
