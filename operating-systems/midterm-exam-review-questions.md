@@ -89,7 +89,7 @@ During a kernel trap, the hardware sends a signal to the operating system, which
 ## What is a system call? How does it happen? What are the steps that take place during a system call?
 A system call is an operation that the operating system exposes that an application can directly invoke if it needs the operating system to perform a specific service and to perform certain privileged access on its behalf.
 
-Examples of system calls include `open`, `send`, `malloc`.
+Examples of system calls include `open`, `send`, `mmap`.
 
 When a user process makes a system call, the operating system needs to context switch from that process to the kernel, making sure it holds onto the arguments passed to that system call. Before the kernel can actually carry out the system call, the trap bit on the CPU must be adjusted to let the CPU know the execution mode is kernel mode. Once this occurs, the kernel must jump to the system call and execute it. After the execution, the kernel must reset the trap bit in the CPU, and context switch back to the user process, passing back the results.
 

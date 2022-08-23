@@ -75,7 +75,7 @@ Consider stock A, which has a $\beta$ of 1.0 and an $\alpha$ of 0.01. A $\beta$ 
 
 As a result, stock A moves 10% plus 1%, for a total relative return of 11%, and a total absolute return of $5.50, 11% on a $50 investment.
 
-Let's consider stock B now, which has a $\beta$ of 2.0 and an $\alpha$ of -0.01. A $\beta$ of 2.0 tells us that for every percentage point the market moves, stock A moves two percent. An $\alpha$ of -0.01 tells us that stock A will move 1% below its movement with the market.
+Let's consider stock B now, which has a $\beta$ of 2.0 and an $\alpha$ of -0.01. A $\beta$ of 2.0 tells us that for every percentage point the market moves, stock A moves two percent. An $\alpha$ of -0.01 tells us that stock B will move 1% below its movement with the market.
 
 As a result, stock B moves 20% minus 1%, for a total relative return of 19%. However, since we shorted stock B, this return is actually -19%, and we have lost $9.50.
 
