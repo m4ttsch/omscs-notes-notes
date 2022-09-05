@@ -181,7 +181,7 @@ We can look at the in-sample error first. When $d$ is smallest, our error is hig
 
 ![](https://assets.omscs.io/notes/2020-01-30-20-36-11.png)
 
-Let's look at the out-of-sample error next. Remember that we always expect out-of-sample error to be greater than our equal to in-sample error.
+Let's look at the out-of-sample error next. Remember that we always expect out-of-sample error to be greater than or equal to in-sample error.
 
 When $d$ is small, our out-of-sample error is likely to be very close to our in-sample error. However, as $d$ increases, the out-of-sample error gets larger. In other words, a model with more factors can fit the training data better at the expense of fitting the test data. Indeed, at large values of $d$, we might see sharp increases in out-of-sample error.
 
