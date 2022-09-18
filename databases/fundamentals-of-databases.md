@@ -11,6 +11,7 @@ lecture: fundamentals-of-databases
 
 We define a **database** as a model of reality, a definition that raises two
 important questions:
+
 1. Why use models at all?
 2. When is it appropriate to use a database management system (DBMS) to create
    such a model?
@@ -19,7 +20,7 @@ important questions:
 
 Why should we use models at all? First, models help us examine and manage parts
 of the real world. Second, the costs of implementing a model are often
-considerably lower than the costs of using or experimenting with reality. 
+considerably lower than the costs of using or experimenting with reality.
 
 We can build models that correspond to many different slices of reality. For
 example, we can create a model of the US economy, which might allow us to
@@ -36,12 +37,12 @@ include in our model.
 
 Consider this map of the world.
 
-![An upside-down map of the world](https://assets.omscs.io/notes/20220823173629.png)
+![An upside-down map of the world.](https://assets.omscs.io/notes/20220823173629.png)
 
 What's wrong with it? First, we typically expect north to face "up" on a map.
 Let's fix that.
 
-![A map of the world not drawn to scale](https://assets.omscs.io/notes/20220823173723.png)
+![A map of the world not drawn to scale.](https://assets.omscs.io/notes/20220823173723.png)
 
 North is now "up," but the countries are not to scale; South America, for
 example, looks too thin. The map also portrays land with the color blue, yet we
@@ -50,7 +51,7 @@ generally expect water to be blue and land to be green or tan.
 Here is a map where everything looks right.
 
 ![A to-scale map with north facing up and land colored
-green](https://assets.omscs.io/notes/20220823173941.png)
+green.](https://assets.omscs.io/notes/20220823173941.png)
 
 From this example, we can see that using models to communicate information
 effectively requires first establishing and conforming to a set of shared
@@ -60,7 +61,7 @@ expectations.
 
 Let's look at a more detailed map, this time of Atlanta, Georgia.
 
-![A closeup view of the roads around Atlanta](https://assets.omscs.io/notes/20220823221859.png)
+![A closeup view of the roads around Atlanta.](https://assets.omscs.io/notes/20220823221859.png)
 
 This map contains a language to describe reality. In that language, different
 colors label different kinds of roads. For example, the map depicts US
@@ -210,6 +211,7 @@ using the DML directly. SQL is the DML we will cover in this course.
 
 We perform data modeling using **data models**, which contain formalisms that
 allow us to express:
+
 - data structures
 - constraints
 - operations
@@ -230,6 +232,7 @@ databases.
 We defined a database as a model of structures of reality. A data model is the
 tool that we use to create such a model. Regardless of the specific data model
 we choose, we need one that allows us to express:
+
 - data structures
 - integrity constraints
 - operations
@@ -247,7 +250,7 @@ databases today.
 We represent data using **tables** in the relational model. Consider the
 following `RegularUser` table.
 
-![A table containing user information](https://assets.omscs.io/notes/20220828155141.png)
+![A table containing user information.](https://assets.omscs.io/notes/20220828155141.png)
 
 Tables have columns and rows. The number of columns is the **degree** of the
 table, and the number of rows is the **cardinality**. The `RegularUser` table
@@ -326,7 +329,7 @@ Let's compare the `RegularUser` table, which contains `Email`, `BirthDate`,
 `Name`, and `CurrentCity` columns, and the `User` table, which has `Email` and
 `Address` columns.
 
-![The regular user table and the user table](https://assets.omscs.io/notes/20220828220402.png)
+![The regular user table and the user table.](https://assets.omscs.io/notes/20220828220402.png)
 
 Let's look at consistency. The user with the email address user1@gt.edu has a
 current recorded city of Atlanta in the `RegularUser` table but has an address
@@ -338,7 +341,7 @@ This inconsistency arises because of redundancy between values in the
 `CurrentCity` column of the `RegularUser` table and the city listed in the
 `Address` column of the `User` table. Generally, determining when
 inconsistencies appear is challenging, and, as a result, this database is not
-particularly useful in determining where a user lives. 
+particularly useful in determining where a user lives.
 
 As an example of poor integrity, Professor Mark outlines a story in which his
 daughter - Louise Mark Christensen - is inferred to be a male because of her
@@ -354,7 +357,7 @@ which represents whether a user has registered with the selective services; and
 18 and 25 must register.
 
 ![The regular user table with additional columns for selective services
-registration and sex](https://assets.omscs.io/notes/20220828222213.png)
+registration and sex.](https://assets.omscs.io/notes/20220828222213.png)
 
 In this example, the user with the email user1@gt.edu is a male who has
 registered with selective services. The user with the email user6@gt.edu is also
@@ -424,7 +427,7 @@ schema** focuses on data storage, and the **external schema** concentrates on
 the use of data. The schema we have been discussing up to this point is the
 conceptual schema.
 
-![A diagram of the ANSI/SPARC 3-level database architecture](https://assets.omscs.io/notes/20220829220512.png)
+![A diagram of the ANSI/SPARC 3-level database architecture.](https://assets.omscs.io/notes/20220829220512.png)
 
 Data access sits underneath the internal schema. The database management system
 translates queries made against the conceptual schema into a format understood
@@ -549,7 +552,7 @@ update external schemata is rare.
 Let's look at a diagram of the database components necessary to create and
 support a three-level architecture.
 
-![The ANSI/SPARC DBMS Framework](https://assets.omscs.io/notes/20220830151759.png)
+![The ANSI/SPARC DBMS Framework.](https://assets.omscs.io/notes/20220830151759.png)
 
 The American National Standards Institute (ANSI) proposed the framework above in
 1975, before any commercial implementations of relational databases existed,
@@ -614,7 +617,7 @@ return to the user.
 Let's look at a slightly different illustration.
 
 ![A metadata chart describing the ANSI/SPARC 3-level database
-architecture](https://assets.omscs.io/notes/20220830154641.png)
+architecture.](https://assets.omscs.io/notes/20220830154641.png)
 
 Database administration (DBA) staff includes the three human roles responsible
 for defining conceptual, internal, and external schemata. These individuals
@@ -643,6 +646,7 @@ transactions on the database in the proper order.
 There are two types of metadata: **system metadata** and **business metadata**.
 
 System metadata answers the following questions:
+
 - Where did data come from?
 - How has data changed?
 - How is data stored?
@@ -655,6 +659,7 @@ Systems metadata is critical for a database management system to function
 correctly.
 
 Business metadata answers the following questions:
+
 - What data is available?
 - Where is the data located?
 - What does the data mean?

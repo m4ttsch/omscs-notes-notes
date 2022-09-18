@@ -21,7 +21,7 @@ concept organization, or object type about which we want to store information.
 We represent entity types with rectangles, as shown below with the `User` entity
 type.
 
-![The user entity type](https://assets.omscs.io/notes/20220830160354.png)
+![The user entity type.](https://assets.omscs.io/notes/20220830160354.png)
 
 Within one entity relationship diagram, all entity type names must be unique. In
 this system, for example, we could not have multiple entity types called `User`.
@@ -38,7 +38,7 @@ property types using ellipses. Here we have a `User` entity type with `Email`
 and `Password` property types.
 
 ![A user entity type with email and password property
-types](https://assets.omscs.io/notes/20220830160834.png)
+types.](https://assets.omscs.io/notes/20220830160834.png)
 
 The ellipses above have only a single line, which indicates that the properties
 they enclose are **single-value properties**.
@@ -49,7 +49,7 @@ Let's look at some users in our system: the first user has the email
 "jim@gt.edu" and the password of "fido123".
 
 ![Mapping entity diagrams to database
-snapshots](https://assets.omscs.io/notes/20220830161121.png)
+snapshots.](https://assets.omscs.io/notes/20220830161121.png)
 
 Property values can take many forms. They can be lexical (using letters),
 visible - like a picture of a user - or audible, such as a recording of a name.
@@ -63,7 +63,7 @@ property type identifies instances of the  `User` entity type; consequently, no
 two users in the system can have the same email.
 
 ![The email property type identifies instances of the user entity
-type](https://assets.omscs.io/notes/20220831210109.png)
+type.](https://assets.omscs.io/notes/20220831210109.png)
 
 ## Composite Properties
 
@@ -71,10 +71,10 @@ We can combine two or more property types to create **composite property
 types**. In the following diagram, we have a `User` entity type with a `Name`
 property type composed of `FirstName` and `LastName` property types. In our
 system, for example, we may have a user instance whose name is "Jim Smith".
-Their first name is "Jim", and their last name is "Smith". 
+Their first name is "Jim", and their last name is "Smith".
 
 ![A user with a name which is composed of a first and last
-name](https://assets.omscs.io/notes/20220831210843.png)
+name.](https://assets.omscs.io/notes/20220831210843.png)
 
 ## Multi-valued Properties
 
@@ -85,7 +85,7 @@ type might have "chess", "reading", and "math" as interests, while another might
 have "chess" and "baseball" as interests.
 
 ![A user entity type with a multi-valued property type called
-interest](https://assets.omscs.io/notes/20220831211134.png)
+interest.](https://assets.omscs.io/notes/20220831211134.png)
 
 ## 1-1 Relationship Types
 
@@ -95,7 +95,7 @@ Marriage` relationship type that connects the `MaleUser` and `FemaleUser` entity
 types.
 
 ![A current marriage relationship type between a female user and a male
-user](https://assets.omscs.io/notes/20220831221045.png)
+user.](https://assets.omscs.io/notes/20220831221045.png)
 
 The numbers above the lines connecting the entity types to the relationship type
 express the **cardinality** of the relationship. Here, one `MaleUser` instance
@@ -123,7 +123,7 @@ entity type. For example, consider the following relationship between the
 `Employer` entity type and the `RegularUser` entity type.
 
 ![A one-to-many relationship type between a single employer and zero or more
-regular users](https://assets.omscs.io/notes/20220831223249.png)
+regular users.](https://assets.omscs.io/notes/20220831223249.png)
 
 Each employer may employ zero, one, or many users. The 1-many relationship is
 also a partial function because it maps some subset of `Employer` instances to
@@ -141,7 +141,7 @@ unlike before, each user must have a single employer. Since no user does not map
 to an employer, the mandatory 1-many relationship type is a total function.
 
 ![A mandatory 1-many relationship type between the employer entity type and the
-regular user entity type](https://assets.omscs.io/notes/20220831223839.png)
+regular user entity type.](https://assets.omscs.io/notes/20220831223839.png)
 
 ## N-M Relationship Types
 
@@ -154,7 +154,7 @@ entity types. Pictured below is the `SchoolsAttended` N-M relationship type
 connecting the `RegularUser` and `School` entity types.
 
 ![A many-to-many relationship between the regular user entity type and the
-school entity type](https://assets.omscs.io/notes/20220831224459.png)
+school entity type.](https://assets.omscs.io/notes/20220831224459.png)
 
 ## N-ary Relationship Types
 
@@ -167,7 +167,7 @@ relationship type, which relates the `Event`, `Team`, and `RegularUser` entity
 types.
 
 ![A ternary relationship type, Event Team
-Member](https://assets.omscs.io/notes/20220902092951.png)
+Member.](https://assets.omscs.io/notes/20220902092951.png)
 
 Assume we have just one instance of the `RegularUser` entity type and one
 instance of the `Event` entity type. We can associate `M` instances of the
@@ -202,7 +202,7 @@ of three binary relationship types: `User Team`, which relates instances of
 and; `Team Event` which relates instances of `Team` and `Event`.
 
 ![Three binary relationship types: "User Team", "User Event", and "Team
-Event"](https://assets.omscs.io/notes/20220902095128.png)
+Event".](https://assets.omscs.io/notes/20220902095128.png)
 
 Assume we have one instance each of `RegularUser`, `Team`, and `Event`. We can
 associate a user with a team, a team with an event, and a user with an event,
@@ -221,7 +221,7 @@ status updates. Consider the `Posted` relationship type below, which relates the
 property type `Email`, and `StatusUpdate` has a property type `DateAndTime`.
 
 ![A regular user and a status update with their identifying property
-types](https://assets.omscs.io/notes/20220902101041.png)
+types.](https://assets.omscs.io/notes/20220902101041.png)
 
 Since multiple users can create status updates simultaneously, `DateAndTime` is
 insufficient to identify `StatusUpdate`. We call `DateAndTime` a **partial
@@ -249,7 +249,7 @@ an `AdminUser` entity type that participates in a `Manages` relationship type
 with *another* `AdminUser` in either the `Supervisor` or `Supervisee` **role**.
 
 ![The manages relationship type relates admin users to
-themselves](https://assets.omscs.io/notes/20220902165529.png)
+themselves.](https://assets.omscs.io/notes/20220902165529.png)
 
 We represent recursive relationship types with arrowheads and roles, which add a
 logical direction to the relationship; in this example, a supervisor manages a
@@ -265,7 +265,7 @@ subtypes is also an instance of `User`; in other words, `User` is the
 **supertype** of the subtypes.
 
 ![Demonstrating supertypes and subtypes with different types of
-users](https://assets.omscs.io/notes/20220902170444.png)
+users.](https://assets.omscs.io/notes/20220902170444.png)
 
 The sets of `Female` and `Male` instances are **disjoint**; in other words,
 there are no instances of `User` that are *both* `Female` and `Male`. We
@@ -274,7 +274,7 @@ other hand, we allow instances of `AdminUser` to also be instances of
 `RegularUser`, and we represent this overlap using an "o".
 
 ![The instances of the subtypes of the user entity
-type](https://assets.omscs.io/notes/20220902170940.png)
+type.](https://assets.omscs.io/notes/20220902170940.png)
 
 ## Supertypes and Subtypes: Inheritance
 
@@ -285,7 +285,7 @@ property type. The four subtypes of `User` **inherit** these two property types
 from `User`.
 
 ![Users, regular users, admin users, and their
-properties](https://assets.omscs.io/notes/20220902171846.png)
+properties.](https://assets.omscs.io/notes/20220902171846.png)
 
 Subtypes can have local property types as well as inherited ones. For example,
 `RegularUser` has `BirthDate` and `CurrentCity` property types, and `AdminUser`
@@ -305,8 +305,7 @@ has an `AgencyID` property type, which composes the `Municipality` and
 
 ![A relationship between a regular user and an employer, who may be either a
 company or a government
-agency](https://assets.omscs.io/notes/20220902172905.png)
-
+agency.](https://assets.omscs.io/notes/20220902172905.png)
 
 In this example, `Employer` is a **union entity type**. Union entity types have
 two rules. First, they must be a subset of the mathematical union of the
@@ -330,7 +329,7 @@ any queries? Where is the query type in the extended-entity relationship model?
 Are relationships entities, or are they just the "glue" that connects entities?
 Below we see an `Employer` entity type connected to a `RegularUser` entity type
 via a `Current Job` relationship type, which has a `StartDate` property type. If
-a relationship type has a property type, is it an entity type? 
+a relationship type has a property type, is it an entity type?
 
 ![A regular user and an employer, connected by a current job with a start
 date.](https://assets.omscs.io/notes/20220905133246.png)
@@ -382,6 +381,7 @@ first glance, it might seem obvious that we have a `User` entity type and a
 `Wedding` relationship type.
 
 From a wedding planner's perspective, the following might be important:
+
 - wedding dress
 - honeymoon location
 - florist
@@ -411,7 +411,7 @@ engine transmission, and driveshaft, among other components. Unfortunately, The
 extended entity-relationship model does not support aggregation.
 
 ![A diagram of the drivetrain of a car, with the important components
-labeled](https://assets.omscs.io/notes/20220903135705.png)
+labeled.](https://assets.omscs.io/notes/20220903135705.png)
 
 ## What's the Result Type of a Query
 
@@ -426,7 +426,7 @@ print a list that includes each regular user's email, first name, last name, and
 the name of each school they attended.
 
 ![An EER diagram containing information about users, regular users, admin users,
-and schools](https://assets.omscs.io/notes/20220905143013.png)
+and schools.](https://assets.omscs.io/notes/20220905143013.png)
 
 What is the return type of this query? It's a list of properties, but that list
 doesn't have a type that we can operate on - it's not an entity type, property
@@ -492,7 +492,7 @@ name is `RegularUser`, which has five attribute names: `Email`, `BirthDate`,
 
 ![A regular user table with columns for email, birth date, current city,
 hometown, and salary, as well as several
-rows](https://assets.omscs.io/notes/20220905161712.png)
+rows.](https://assets.omscs.io/notes/20220905161712.png)
 
 The number of attributes, or columns, is called the **degree** of the relation.
 The number of tuples in the relation is the **cardinality**. This table has a
@@ -509,7 +509,7 @@ are capturing information in this database. We also have a `RegularUser` table
 with `Email`, `Birth Year`, `Sex`, `Current City`, and `Hometown` columns.
 
 ![A regular user table and a user
-table](https://assets.omscs.io/notes/20220905162732.png)
+table.](https://assets.omscs.io/notes/20220905162732.png)
 
 We have chosen emails as the unique identifier, or **primary key**, for rows in
 the `User` table (as opposed to relying on system-generated surrogates).
