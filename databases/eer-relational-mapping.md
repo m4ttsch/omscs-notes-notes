@@ -84,6 +84,8 @@ of `ET1` relates to many instances of `ET2`. Consider the two representational
 options we saw above: should the `ET1` relation reference `ET2` or should `ET2`
 reference `ET1`?
 
+![1-M Relation Mapped](https://piazza.com/redirect/s3?bucket=uploads&prefix=paste%2Fkdywpehs5ki1ro%2F24bb3d1fae381a265b19dc435b4b343ae83df5bc69648b6b0e6841b8fa1f9e70%2Fimage.png)
+
 We have a unique value for `A` for each instance of `ET1`, and we must associate
 multiple instances of `ET2` with that key. As we saw earlier, the relational
 model does not allow multi-valued attributes, so these references cannot live in
