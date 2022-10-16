@@ -12,7 +12,9 @@ lecture: relational-algebra-and-calculus
 Let's talk about closed algebra. Consider the following expression containing
 rational numbers:
 
-$$ (((7*(5+3) - 21) *3) / (10 + 5)) * 3 $$
+$$
+(((7*(5+3) - 21) *3) / (10 + 5)) * 3
+$$
 
 Even if we can't discern the result by looking at the expression, we know the
 steps required to compute the result based on the rules governing the order of
@@ -63,7 +65,9 @@ The general syntax to select all the tuples from a relation, $R$, that satisfy
 an expression is $\sigma_\text{expression}(R)$. For example, if we want to
 retrieve all tuples in the `RegularUser` relation, we would say:
 
-$$ \sigma(\text{RegularUser}) $$
+$$
+\sigma(\text{RegularUser})
+$$
 
 If `RegularUser` has $n$ tuples, the resulting relation after running this query
 will also have $n$ tuples in it because we haven't specified any condition to
@@ -75,7 +79,9 @@ Let's look at the selection operator with a simple expression. Suppose we want
 to find all regular users whose hometown is Atlanta. We can express that query
 in relational algebra as:
 
-$$ \sigma_{\text{HomeTown = 'Atlanta'}}(\text{RegularUser}) $$
+$$
+\sigma_{\text{HomeTown = 'Atlanta'}}(\text{RegularUser})
+$$
 
 We can form simple expressions in one of two ways: either we can compare two
 attributes or an attribute to a constant. The comparison operators we have at
@@ -93,8 +99,9 @@ the number of columns from the original relation in the selection result.
 Suppose we want to find all regular users with the same current city and
 hometown or with a hometown of Atlanta. We can express this query as so:
 
-$$ \sigma_{\text{CurrentCity=HomeTown OR HomeTown =
-'Atlanta'}}(\text{RegularUser}) $$
+$$
+\sigma_{\text{CurrentCity=HomeTown OR HomeTown ='Atlanta'}}(\text{RegularUser})
+$$
 
 Notice that the result of this selection, shown below, includes users who have a
 hometown in Atlanta and those whose hometown matches their current city. For
@@ -116,14 +123,17 @@ operations.
 Given a relation, $R$, and attributes, $A = \{ A_1, A_2,...,A_n \}$, where $A$
 forms a subset of the attributes on $R$, we can project $A$ from $R$ like so:
 
-$$ \pi_{A_1, A_2,...,A_n}(R) $$
+$$
+\pi_{A_1, A_2,...,A_n}(R)
+$$
 
 For example, suppose we want to retrieve just the email, birth year, and sex for
 all regular users in Atlanta. We can express this query with the following
 syntax:
 
-$$ \pi_\text{Email, BirthYear,
-Sex}(\sigma_\text{HomeTown='Atlanta'})(\text{RegularUser}) $$
+$$
+\pi_\text{Email, BirthYear, Sex}(\sigma_\text{HomeTown='Atlanta'})(\text{RegularUser})
+$$
 
 ![Retrieving the email, birth year, and sex of users from
 Atlanta.](https://assets.omscs.io/notes/20221011214022.png)
@@ -139,7 +149,9 @@ when working with a closed algebra.
 Let's say we want to find the sex of regular users in Atlanta. We could specify
 that query as:
 
-$$ \pi_\text{Sex}((\sigma_\text{HomeTown='Atlanta'}\text{RegularUser})) $$
+$$
+\pi_\text{Sex}((\sigma_\text{HomeTown='Atlanta'}\text{RegularUser}))
+$$
 
 In the `RegularUser` table, we have three users from Atlanta, so we have three
 tuples that match our selection condition. Our projection, however, only shows
@@ -156,8 +168,9 @@ consider the set of cities that are hometowns and the set that are current
 cities for regular users. We can find the elements that those sets share with
 the following query:
 
-$$ \pi_\text{CurrentCity}(\text{RegularUser}) \cap
-\pi_\text{HomeTown}(\text{RegularUser}) $$
+$$
+\pi_\text{CurrentCity}(\text{RegularUser}) \cap\pi_\text{HomeTown}(\text{RegularUser})
+$$
 
 In the `RegularUser` relation, we see Dallas and San Francisco appear in both
 the `CurrentCity` and `HomeTown` columns, so those values constitute our result.
@@ -171,8 +184,10 @@ The third set-based operator is the difference operator, $\setminus$. Suppose we
 want to find the elements of the set of current cities that are not also
 elements of the set of hometowns. Here's how we would formulate this query:
 
-$$ \pi_\text{CurrentCity}(\text{RegularUser}) \setminus
-\pi_\text{HomeTown}(\text{RegularUser}) $$
+$$
+\pi_\text{CurrentCity}(\text{RegularUser}) \setminus
+\pi_\text{HomeTown}(\text{RegularUser})
+$$
 
 Of the cities in the `CurrentCity` column, only Dallas is in the `HomeTown`
 column. Thus, we eliminate it from the result. Notice again that we drop
@@ -191,7 +206,9 @@ and `Major60sEvent`, with attributes `Year` and `Event`. We need to join the two
 relations to answer this query, and we formalize this **natural join** as
 follows:
 
-$$ \text{RegularUser} * \text{Major60sEvents} $$
+$$
+\text{RegularUser} * \text{Major60sEvents}
+$$
 
 ![Joining RegularUser and Major60sEvents on
 Year.](https://assets.omscs.io/notes/20221012214045.png)
@@ -219,7 +236,8 @@ Next, we look at the **theta join**. Suppose we want to find the email, birth
 year, sex, and event year when the birth year of the regular user occurs before
 the year of the major 60s event. We can formalize this query as follows:
 
-$$ \text{RegularUser}\Join_{\text{BirthYear < EventYear}} \text{Major60sEvents}
+$$
+\text{RegularUser}\Join_{\text{BirthYear < EventYear}} \text{Major60sEvents}
 $$
 
 In the result, we see one user born in 1967 predates four events, while another
@@ -251,7 +269,9 @@ specifically the **left outer join**, whose operator is $\Join_{\text{L}}$.
 Suppose we want to perform the natural join we saw above and retain unmatched
 tuples from `RegularUser`. The algebra expression is:
 
-$$ \text{RegularUser} \Join_{\text{L}} \text{Major60sEvents} $$
+$$
+\text{RegularUser} \Join_{\text{L}} \text{Major60sEvents}
+$$
 
 ![An outer join. Notice how all users are present, and those unmatched users
 have NULL in the event column](https://assets.omscs.io/notes/20221012221326.png)
@@ -275,7 +295,9 @@ relation with $N * M$ tuples, where $N$ is the number of tuples in $A$, and $M$
 is the number of tuples in $B$. For example, we can combine every tuple in
 `RegularUser` with every tuple in `UserInterests`:
 
-$$ \text{RegularUser} \times \text{UserInterests} $$
+$$
+\text{RegularUser} \times \text{UserInterests}
+$$
 
 ![Every user matched with every interest: a Cartesian
 product.](https://assets.omscs.io/notes/20221012222005.png)
@@ -298,9 +320,11 @@ creates a tuple for each user for each interest. Finally, we subtract from this
 result `UserInterests` to eliminate the interests we already recorded. We
 express this query as:
 
-$$ (\pi_\text{Email}(\text{RegularUser}) \times
+$$
+(\pi_\text{Email}(\text{RegularUser}) \times
 \pi_\text{Interest}(\text{UserInterests})) \setminus (\pi_\text{Email,
-Interest}(\text{UserInterests})) $$
+Interest}(\text{UserInterests}))
+$$
 
 Notice that the two operands in the set difference are compatible. The resulting
 relation from the Cartesian product operation has `Email` and `Interest`
@@ -337,7 +361,8 @@ projecting that relation onto `Interest`. The result is a single-column relation
 containing music, reading, and tennis. We can express this query in the algebra
 like so:
 
-$$ \pi_{\text{Email,
+$$
+\pi_{\text{Email,
 Interest}}\text{UserInterests}\div\pi_{\text{Interest}}(\sigma_{\text{Email='user1@gt.edu'}}(\text{UserInterests}))
 $$
 
@@ -350,9 +375,11 @@ Here is formal definition of the result where $\text{R}$ is the `RegularUser`
 relation, $\text{S}$ is the intermediate projection of user one's interests,
 $\text{E}$ is short for "Email" and $\text{I}$ is short for "Interest":
 
-$$ \text{R(E,I)} \div \text{S(I)} = \{ \text{r.E |} \text{r} \in \text{R and }
+$$
+\text{R(E,I)} \div \text{S(I)} = \{ \text{r.E |} \text{r} \in \text{R and }
 \forall(\text{s}\in\text{S})\exists(\text{t}\in\text{R})(\text{t.E=r.E and
-t.I=s.I}) \} $$
+t.I=s.I}) \}
+$$
 
 What this formalism describes is the following. Let's look at each candidate
 tuple $\text{r}$ in relation $\text{R}$. For all ($\forall$) tuples $\text{s}$
@@ -367,14 +394,18 @@ The last algebraic operator we examine is the rename operator, $\rho$. Renaming
 attributes and relations is useful when we want to perform various types of
 joins. Here is the basic syntax:
 
-$$ \rho_{\text{New Relation Name}[\text{New Name Old Name, New Name Old Name,
-...}]}(\text{Old Relation Name}) $$
+$$
+\rho_{\text{New Relation Name}[\text{New Name Old Name, New Name Old Name,
+...}]}(\text{Old Relation Name})
+$$
 
 For example, we can rename the `RegularUser` relation to `RUser`, the
 `BirthYear` attribute to `Year`, and the `Sex` attribute to `Gender`:
 
-$$ \rho_{\text{RUser}[\text{Year Birth Year, Gender Sex}]}(\text{Old Relation
-Name}) $$
+$$
+\rho_{\text{RUser}[\text{Year Birth Year, Gender Sex}]}(\text{Old Relation
+Name})
+$$
 
 ![Renaming relations and
 attributes.](https://assets.omscs.io/notes/20221012184357.png)
@@ -398,7 +429,9 @@ Let's look at expressions in **relational calculus** - specifically **relational
 tuple calculus**, so named because queries have variables that range over sets
 of tuples. Here's a query:
 
-$$ \text{\{t | P(t)\}} $$
+$$
+\text{\{t | P(t)\}}
+$$
 
 This query returns the set of tuples $\text{t}$ that satisfy the predicate
 $\text{P}$. Predicates consist of **atoms**, so let's first define the atoms in
@@ -439,7 +472,9 @@ in the relational algebra section and express them using relational tuple
 calculus. Here is the corresponding tuple calculus expression for selecting all
 regular users:
 
-$$ \text{\{r | r } \in \text{ RegularUser\}} $$
+$$
+\text{\{r | r } \in \text{ RegularUser\}}
+$$
 
 We can think of this query as: find the set $\text{r}$ where $\text{r}$ is a
 member of the relation $\text{ RegularUser\}}$. As we might expect, this
@@ -453,8 +488,10 @@ calculus](https://assets.omscs.io/notes/20221013181148.png)
 Let's find all regular users who have the same current city and hometown or have
 a hometown of Atlanta:
 
-$$ \text{\{r | r } \in \text{ RegularUser and (r.CurrentCity=r.HomeTown} \\
-\text{or r.HomeTown='Atlanta')\}} $$
+$$
+\text{\{r | r } \in \text{ RegularUser and (r.CurrentCity=r.HomeTown} \\
+\text{or r.HomeTown='Atlanta')\}}
+$$
 
 ![Using relational calculus to select regular users who have the same current
 city and hometown or whose hometown is
@@ -470,8 +507,10 @@ selection query must be true for a tuple to appear in the result.
 Suppose we want to find the email, birth year, and sex for all regular users
 whose hometown is Atlanta. Here is that query:
 
-$$ \text{\{r.Email, r.BirthYear, r.Sex | r } \in \text{ RegularUser and} \\
-\text{ (r.CurrentCity=r.HomeTown or r.HomeTown='Atlanta')\}} $$
+$$
+\text{\{r.Email, r.BirthYear, r.Sex | r } \in \text{ RegularUser and} \\
+\text{ (r.CurrentCity=r.HomeTown or r.HomeTown='Atlanta')\}}
+$$
 
 We can see below that the resulting relation consists of only the requested
 attributes for the tuples that match the selection query.
@@ -485,9 +524,11 @@ Atlanta.](https://assets.omscs.io/notes/20221013183056.png)
 Let's find all cities that are either a current city or a hometown for a regular
 user.
 
-$$ \text{\{s.City | } \exists \text{(r}\in \text{
+$$
+\text{\{s.City | } \exists \text{(r}\in \text{
 RegularUser)(s.City=r.CurrentCity) or} \\ \exists \text{(t}\in \text{
-RegularUser)(s.City=t.HomeTown)}\} $$
+RegularUser)(s.City=t.HomeTown)}\}
+$$
 
 If a tuple exists in $\text{RegularUser}$ with a current city, then that city is
 part of the result. Similarly, if a tuple exists in $\text{RegularUser}$ with a
@@ -502,9 +543,11 @@ city.](https://assets.omscs.io/notes/20221013183636.png)
 Let's find all cities that are a current city for some regular user and a
 hometown for some regular user.
 
-$$ \text{\{s.City | } \exists \text{(r}\in \text{
+$$
+\text{\{s.City | } \exists \text{(r}\in \text{
 RegularUser)(s.City=r.CurrentCity) and} \\ \exists \text{(t}\in \text{
-RegularUser)(s.City=t.HomeTown)}\} $$
+RegularUser)(s.City=t.HomeTown)}\}
+$$
 
 For a tuple $\text{s}$ to qualify, there must exist a tuple $\text{r}$ in
 $\text{Regular User}$ that has the same city as $\text{s}$, and it must also be
@@ -520,9 +563,11 @@ city.](https://assets.omscs.io/notes/20221014145645.png)
 Suppose we want to find the elements of the set of current cities that are not
 also elements of the set of hometowns. Here's how we would formulate this query:
 
-$$ \text{\{s.City | } \exists \text{(r}\in \text{
+$$
+\text{\{s.City | } \exists \text{(r}\in \text{
 RegularUser)(s.City=r.CurrentCity) and not} \\ \exists \text{(t}\in \text{
-RegularUser)(s.City=t.HomeTown)}\} $$
+RegularUser)(s.City=t.HomeTown)}\}
+$$
 
 For a tuple $\text{s}$ to qualify, there must exist a tuple $\text{r}$ in
 $\text{Regular User}$ that has the same city as $\text{s}$, and it must also be
@@ -542,10 +587,12 @@ $\text{Year}$, and $\text{Sex}$; and $\text{Major60sEvent}$, with attributes
 $\text{Year}$ and $\text{Event}$. We need to join the two relations to answer
 this query, and we formalize this natural join as follows:
 
-$$ \{\text{t.Email, t.Year, t.Sex, t.Event | } \exists (\text{r} \in
+$$
+\{\text{t.Email, t.Year, t.Sex, t.Event | } \exists (\text{r} \in
 \text{RegularUser}) \exists (\text{s} \in \text{Major60sEvents)}\\\text{(r.Year
 = s.Year and t.Email = r.Email and t.Year = r.Year and t.Sex = r.Sex} \\ \text{
-and t.Event = s.Event)}\} $$
+and t.Event = s.Event)}\}
+$$
 
 ![Using a natural join in relational calculus to join users to events that
 occurred the same year they were
@@ -565,7 +612,9 @@ Let's say we want to combine every tuple in the $\text{RegularUser}$ relation
 with every tuple in the $\text{UserInterests}$ relation. We can express that
 Cartesian product in relational calculus like so:
 
-$$ \text{\{r, s | r} \in \text{RegularUser and s}\in\text{UserInterests}\} $$
+$$
+\text{\{r, s | r} \in \text{RegularUser and s}\in\text{UserInterests}\}
+$$
 
 ![Using the Cartesian product to combine every tuple in RegularUser with every
 tuple in UserInterests.](https://assets.omscs.io/notes/20221014150954.png)
@@ -578,9 +627,11 @@ interests and has a foreign key, $\text{Email}$, that references the primary key
 in $\text{RegularUser}$. We want to find all the hobbies in which each user has
 *not* expressed interest. Here is how we express this query:
 
-$$ \text{\{r.Email, s.Interest | r} \in \text{RegularUser and
+$$
+\text{\{r.Email, s.Interest | r} \in \text{RegularUser and
 s}\in\text{UserInterests and} \\ \text{not(}\exists\text{(t}\in
-\text{UserInterests)(r.Email = t.Email and s.Interest = t.Interest))}\} $$
+\text{UserInterests)(r.Email = t.Email and s.Interest = t.Interest))}\}
+$$
 
 ![Using negation and Cartesian product to select the hobbies in which each user
 has not expressed interest.](https://assets.omscs.io/notes/20221016132718.png)
@@ -597,10 +648,12 @@ and $\text{s}$ for which this predicate is true.
 Suppose we want to find the email of all users with at least all the interests
 of user one. Here is how we express that query in relational calculus:
 
-$$ \{\text{r.Email | r } \in \text{UserInterests and } \forall
+$$
+\{\text{r.Email | r } \in \text{UserInterests and } \forall
 \text{(s}\in\text{UserInterests)}\text{((s.Email}\neq\text{'user1@gt.edu') or }
 \\ \exists\text{(t}\in \text{UserInterests)(r.Email = t.Email and t.Interest =
-s.Interest))}\} $$
+s.Interest))}\}
+$$
 
 ![Using universal quantification to select the email address of users that share
 at least all of user one's
