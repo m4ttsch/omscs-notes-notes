@@ -151,7 +151,7 @@ Unfortunately, this is not always the case. Let's consider the following scenari
 
 Let's assume that the link `y-x` has a new cost of 60.
 
-1. At `t0`, `y` detects that cost has changed, now it will update its distance vector thinking that it can still reach `x` through `z` with a total cost of 5+1=6
+1. At `t0`, `y` detects that cost has changed, now it will update its distance vector thinking that it can still reach `x` through `z` with a total cost of 5+1=6 (path cost `z` to `x` + path cost `y` to `z` since `y` thinks it can reach `x` faster this way)
 
 2. At `t1`, we have a routing loop, where `z` thinks it can reach `x` through `y` and `y` thinks it can reach `x` through `z`. This will be causing the packets to be bouncing back and forth between `y` and `z` until their tables change.
 
