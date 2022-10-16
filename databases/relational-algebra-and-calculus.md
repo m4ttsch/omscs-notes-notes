@@ -295,7 +295,7 @@ We can think of this query as: find the set $\text{r}$ where $\text{r}$ is a mem
 Let's find all regular users who have the same current city and hometown or have a hometown of Atlanta:
 
 $$
-\text{\{r | r } \in \text{ RegularUser and (r.CurrentCity=r.HomeTown or r.HomeTown='Atlanta')\}}
+\text{\{r | r } \in \text{ RegularUser and (r.CurrentCity=r.HomeTown} \\ \text{or r.HomeTown='Atlanta')\}}
 $$
 
 ![Using relational calculus to select regular users who have the same current city and hometown or whose hometown is Atlanta.](https://assets.omscs.io/notes/20221013182305.png)
@@ -328,11 +328,49 @@ If a tuple exists in $\text{RegularUser}$ with a current city, then that city is
 
 ## Calculus - Intersection
 
+Let's find all cities that are a current city for some regular user and a hometown for some regular user.
+
+$$
+\text{\{s.City | } \exists \text{(r}\in \text{ RegularUser)(s.City=r.CurrentCity) and} \\ \exists \text{(t}\in \text{ RegularUser)(s.City=t.HomeTown)}\}
+$$
+
+For a tuple $\text{s}$ to qualify, there must exist a tuple $\text{r}$ in $\text{Regular User}$ that has the same city as $\text{s}$, and it must also be the case that there is a tuple $\text{t}$ that has the same hometown as $\text{s}$. We retrieve the $\text{City}$ attribute for qualifying tuples.
+
+![An intersection expression in relational calculus that retrieves all cities that are both a hometown and a current city.](https://assets.omscs.io/notes/20221014145645.png)
+
 ## Calculus - Set Difference
+
+Suppose we want to find the elements of the set of current cities that are not also elements of the set of hometowns. Here's how we would formulate this query:
+
+$$
+\text{\{s.City | } \exists \text{(r}\in \text{ RegularUser)(s.City=r.CurrentCity) and not} \\ \exists \text{(t}\in \text{ RegularUser)(s.City=t.HomeTown)}\}
+$$
+
+For a tuple $\text{s}$ to qualify, there must exist a tuple $\text{r}$ in $\text{Regular User}$ that has the same city as $\text{s}$, and it must also be the case that there is *not* a tuple $\text{t}$ that has the same hometown as $\text{s}$. We retrieve the $\text{City}$ attribute for qualifying tuples.
+
+![An set minus expression in relational calculus that retrieves all cities that are only a current city and not a hometown.](https://assets.omscs.io/notes/20221014150523.png)
 
 ## Calculus - Natural Join
 
+Let's say we want to generate a relation that displays user and event information for every year an event occurred and a user was born. Suppose we have two relations: $\text{RegularUser}$, with attributes $\text{Email}$, $\text{Year}$, and $\text{Sex}$; and $\text{Major60sEvent}$, with attributes $\text{Year}$ and $\text{Event}$. We need to join the two relations to answer this query, and we formalize this natural join as follows:
+
+$$
+\{\text{t.Email, t.Year, t.Sex, t.Event | } \exists (\text{r} \in \text{RegularUser}) \exists (\text{s} \in \text{Major60sEvents)}\\\text{(r.Year = s.Year and t.Email = r.Email and t.Year = r.Year and t.Sex = r.Sex} \\ \text{ and t.Event = s.Event)}\}
+$$
+
+![Using a natural join in relational calculus to join users to events that occurred the same year they were born.](https://assets.omscs.io/notes/20221015105839.png)
+
+Let's decipher this query expression. We are interested in a tuple, $\text{t}$ that contains $\text{Email}$, $\text{Year}$, $\text{Sex}$, and $\text{Event}$ attributes. What must be true for us to include $\text{t}$ in the result? Well, there must exist a tuple $\text{r}$ in $\text{RegularUser}$ and a tuple $\text{s}$ in $\text{Major60sEvent}$. If $\text{r.Year}$ equals $\text{s.Year}$, then we pick $\text{r.Email}$, $\text{r.Year}$, $\text{r.Sex}$, and $\text{s.Event}$ into $\text{t}$ and include it in the result.
+
 ## Calculus - Cartesian Product
+
+Let's say we want to combine every tuple in the $\text{RegularUser}$ relation with every tuple in the $\text{UserInterests}$ relation. We can express that Cartesian product in relational calculus like so:
+
+$$
+\text{\{r, s | r} \in \text{RegularUser and s}\in\text{UserInterests}\}
+$$
+
+![Using the Cartesian product to combine every tuple in RegularUser with every tuple in UserInterests.](https://assets.omscs.io/notes/20221014150954.png)
 
 ## Calculus - Cartesian Product: Can be useful
 
