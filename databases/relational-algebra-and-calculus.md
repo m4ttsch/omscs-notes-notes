@@ -85,7 +85,7 @@ $$
 
 We can form simple expressions in one of two ways: either we can compare two
 attributes or an attribute to a constant. The comparison operators we have at
-hand are $=$, $\lt$, $\leq$, $\gt$, $\geq$, and $\neq$.
+hand are $=$, $<$, $\leq$, $>$, $\geq$, and $\neq$.
 
 In the `RegularUser` table, we now select all tuples with a value of 'Atlanta'
 for the `HomeTown` attribute. Remember, when we perform a selection, we retain
@@ -250,7 +250,7 @@ birth.](https://assets.omscs.io/notes/20221012214918.png)
 Let's compare the natural join with the theta join:
 
 - A natural join can express only equality conditions, while a theta join can
-  also express inequality conditions using the $\lt$, $\leq$, $\gt$, $\geq$, and
+  also express inequality conditions using the $<$, $\leq$, $>$, $\geq$, and
   $\neq$ operators.
 - Two relations joined by a natural join must share an attribute name, while the
   theta join does not have this restriction.
@@ -442,8 +442,8 @@ The first atom is the **range expression**. For example, $\text{t} \in
 second atom compares two tuple attributes. We reference tuple attributes as
 follows: $\text{t.A}$ denotes the value of attribute $\text{A}$ on tuple
 $\text{t}$. The third atom compares a tuple attribute to a constant, $\text{c}$.
-We use $\theta$ to denote comparison operators, which consist of $\lt$, $\leq$,
-$\gt$, $\geq$, and $\neq$.
+We use $\theta$ to denote comparison operators, which consist of $<$, $\leq$,
+$>$, $\geq$, and $\neq$.
 
 In summary, atoms are one of the following:
 
