@@ -107,7 +107,9 @@ calculus, we use the terms column, table, and row, instead of attribute,
 relation, and tuple, respectively. The SQL query shown above is equivalent to
 the following algebra expression:
 
-$$ \pi_{\text{column}_1,..., \text{column}_n}(\sigma_\text{condition}(\text{table}_1 \times \text{...} \times \text{table}_m)) $$
+$$
+\pi_{\text{column}_1,..., \text{column}_n}(\sigma_\text{condition}(\text{table}_1 \times \text{...} \times \text{table}_m))
+$$
 
 In the expression above, we take the Cartesian product of the relations of
 interest. Then we select the tuples that evaluate to true for our expression.
