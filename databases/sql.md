@@ -385,7 +385,7 @@ FROM RegularUser;
 
 As we saw with the `UNION` operator, the `INTERSECT` operator removes duplicates
 from the resulting table. If we want duplicates in our result, we would instead
-reach for the `UNION ALL` operator:
+reach for the `INTERSECT ALL` operator:
 
 ```sql
 SELECT CurrentCity
