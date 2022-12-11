@@ -8,7 +8,7 @@ If you prefer, you can also view the notes on [OMSCS Notes](https://www.omscs-no
 
 ### Current Courses
 
-- SAD
+Done for the semester!
 
 ### Completed Courses
 
@@ -18,6 +18,7 @@ If you prefer, you can also view the notes on [OMSCS Notes](https://www.omscs-no
 - ML4T
 - Simulation
 - SCS (Authored by Matthew Caseres)
+- DB
 
 If you notice any grammatical errors or flagrantly confusing sentences, please open a PR and point them out. I proofread my notes after taking them, but mistakes do slip through.
 
