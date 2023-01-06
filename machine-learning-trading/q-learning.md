@@ -27,7 +27,7 @@ $$
 
 Note the syntax of $argmax$. The solution to the equation $a = argmax_i(f(i))$ is the value of $i$ that maximizes $f(i)$.
 
-If we run Q-learning for long enough, we find that $\pi(s)$ eventually converges to the optimal policy, which we denote as $\pi^{*}(s)$. Similarly, the optimal Q-table is $Q^{*}[s,a]$.
+If we run Q-learning for long enough, we find that $\pi(s)$ eventually converges to the optimal policy, which we denote as $\pi^{\*}(s)$. Similarly, the optimal Q-table is $Q^{\*}[s,a]$.
 
 Clearly, the Q-table is essentially for developing the policy, and we have assumed here that we have the Q-table at our disposal. We need to consider next how we might build this table from the experience our agent gains by interacting with the environment.
 
