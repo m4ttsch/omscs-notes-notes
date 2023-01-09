@@ -56,7 +56,7 @@ Device drivers are responsible for all aspects of device *access*, *management* 
 
 The manufacturer of a device is responsible for making drivers available for all the operating systems where their device will be used. For example, you may often have to download printer drivers from HP when you buy a new HP printer.
 
-Operating systems standardize their interfaces to device drivers. Typically this is done by providing some device driver framework, so that device manufacturers can develop their drivers within that framework. This helps to decouple the operating system from a fixed set of specific devices, which makes the the operating system independent of the devices it supports while also allowing it to support many different devices.
+Operating systems standardize their interfaces to device drivers. Typically this is done by providing some device driver framework, so that device manufacturers can develop their drivers within that framework. This helps to decouple the operating system from a fixed set of specific devices, which makes the operating system independent of the devices it supports while also allowing it to support many different devices.
 
 ## Types of Devices
 Devices can be roughly grouped into categories.
