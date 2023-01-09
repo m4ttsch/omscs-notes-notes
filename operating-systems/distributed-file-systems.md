@@ -187,7 +187,7 @@ They also observed that 20-30% of new data was deleted within 30 seconds, with 5
 
 Of course, the authors needed to support concurrent access even though they didn't need to optimize for it.
 
-## Sprint DFS from Analysis to Design
+## Sprite DFS from Analysis to Design
 The authors decided that Sprite should support caching, and use a write-back policy to send changes to the server.
 
 Every 30 seconds, a client will write back all of the blocks that have not been modified within the last 30 seconds. Note that a file may be opened and closed multiple times by the client before any data is sent to the server.
