@@ -11,7 +11,7 @@ lecture: kalman-filters
 
 In the last lesson, we talked about localization, the process by which we could use sensor data to provide an estimation of a robot's location in the world.
 
-In this lesson, we concern ourselves with finding other moving objects in the world. We need to understand how to interpret sensor data to understand not only where these other objects are but also how fast they are moving so that we can move in a way that avoids collisions with them in the future. The technique that we are going to use to solve this problem, known as **tracking**, is the **Kalman filter**. 
+In this lesson, we concern ourselves with finding other moving objects in the world. We need to understand how to interpret sensor data to understand not only where these other objects are but also how fast they are moving so that we can move in a way that avoids collisions with them in the future. The technique that we are going to use to solve this problem, known as **tracking**, is the **Kalman filter**.
 
 This method is very similar to the Monte Carlo localization method we discussed in the previous lesson. The primary difference between the two is that Kalman filters provide estimations over a continuous state, whereas Monte Carlo localization required us to chop the world into discrete locations. As a result, the Kalman filter only produces unimodal probability distributions, while the Monte Carlo method can produce multimodal distributions.
 
@@ -29,7 +29,7 @@ Kalman filters allow us to solve precisely these types of problems: estimating f
 
 ## Gaussian Intro Quiz
 
-When we talked about localization in the last lesson, we sliced the world into a finite number of grid cells and assigned a probability to each grid cell. 
+When we talked about localization in the last lesson, we sliced the world into a finite number of grid cells and assigned a probability to each grid cell.
 
 Such a representation, one that divides a continuous space into a set of discrete locations, is called a histogram. Since the world is a continuous space, our histogram distribution is only an approximation of the underlying continuous distribution.
 
@@ -129,7 +129,7 @@ $$
 
 ## Maximize Gaussian Quiz
 
-We have the following python function, `f`, which takes as input `mu`, `sigma2` and `x`, and returns the output of the Gaussian function, parameterized by `mu` and `sigma2`, for `x`. 
+We have the following python function, `f`, which takes as input `mu`, `sigma2` and `x`, and returns the output of the Gaussian function, parameterized by `mu` and `sigma2`, for `x`.
 
 Given `mu = 10` and `sigma2 = 4`, what value of `x` can we pass into `f` to maximize the returned value?
 
@@ -189,7 +189,7 @@ We can think about "peakiness" in two different ways. First, peakiness is invers
 
 We can also think about peakiness as a visual representation of certainty since we know that we can use variance as a measure of certainty. Indeed, the prior is less certain about the vehicle location than is the measurement-based distribution and, therefore, has a smaller peak.
 
-Given this information, how high should we expect the peak of the resulting distribution to be? Below the peak of the prior, above the peak of the measurement-based distribution, or somewhere in the middle? 
+Given this information, how high should we expect the peak of the resulting distribution to be? Below the peak of the prior, above the peak of the measurement-based distribution, or somewhere in the middle?
 
 Put another way, is our posterior: more confident than the constituent distributions, less confident, or somewhere in between?
 
@@ -217,7 +217,7 @@ $$
 \sigma^{2\prime} = \frac{1}{\frac{1}{r^2} + \frac{1}{\sigma^2}}
 $$
 
-Let's put this into action using the prior distribution and measurement probability we have been examining. 
+Let's put this into action using the prior distribution and measurement probability we have been examining.
 
 Clearly, the prior distribution has a much larger uncertainty than the measurement probability. Thus, $\sigma^2 > r^2$, which means that $\nu$ is weighted more heavily than $\mu$ in the calculation of $\mu^\prime$. As a result, $\mu^\prime$ sits closer to $\nu$, than $\mu$, which is consistent with what we have seen.
 
@@ -323,7 +323,7 @@ Suppose we have the following prior distribution and measurement probability, ea
 
 ![](https://assets.omscs.io/notes/2020-05-16-17-39-07.png)
 
-Since the two variances are the same, the new mean is simply the arithmetic average of the means of the two component distributions. 
+Since the two variances are the same, the new mean is simply the arithmetic average of the means of the two component distributions.
 
 ## Separated Gaussians 2 Quiz
 
@@ -365,7 +365,7 @@ Suppose we live in a world where the following Gaussian represents our best esti
 
 ![](https://assets.omscs.io/notes/2020-05-16-22-53-00.png)
 
-Now suppose we issue a motion command to move to the right a certain distance. We can think about the motion as being represented by its own Gaussian, having an expected value, $u$, and an uncertainty, $r^2$. 
+Now suppose we issue a motion command to move to the right a certain distance. We can think about the motion as being represented by its own Gaussian, having an expected value, $u$, and an uncertainty, $r^2$.
 
 We can combine the motion with the prior to produce our prediction, parameterized by $\mu^\prime$ and $\sigma^{2\prime}$ as follows.
 
@@ -433,7 +433,7 @@ We continue this process until we measure 10 and move right one, at which point 
 
 ## Kalman Prediction Quiz
 
-Now that we understand how to implement a Kalman filter in a single dimension let's look at higher dimensions. To start, let's suppose we have a two-dimensional state space in $x$ and $y$. Suppose we observe an object in this plane at the locations below for times $t=0$, $t=1$, and $t=2$. 
+Now that we understand how to implement a Kalman filter in a single dimension let's look at higher dimensions. To start, let's suppose we have a two-dimensional state space in $x$ and $y$. Suppose we observe an object in this plane at the locations below for times $t=0$, $t=1$, and $t=2$.
 
 Where is the object going to be at time $t=3$?
 
@@ -454,7 +454,7 @@ $$
 \begin{pmatrix}
 \mu_0 \\
 \vdots \\
-\mu_D 
+\mu_D
 \end{pmatrix}
 $$
 
@@ -479,7 +479,7 @@ A two-dimensional Gaussian with a fairly small uncertainty would have much more 
 
 ![](https://assets.omscs.io/notes/2020-05-17-18-54-59.png)
 
-When the Gaussian is "tilted", as shown in the original graph, then $x$ and $y$ are **correlated**, which means that if we get information about the true value of $x$, we can make a corresponding inference about the true value of $y$. 
+When the Gaussian is "tilted", as shown in the original graph, then $x$ and $y$ are **correlated**, which means that if we get information about the true value of $x$, we can make a corresponding inference about the true value of $y$.
 
 For example, if we learn that the true value of $x_0$ is to the right of where we initially thought, we can adjust our estimate of $y_0$ a similar distance upwards.
 
@@ -531,7 +531,7 @@ If we start with a velocity, $\dot{x} = 2$ and position, $x = 1$, then one time 
 
 ## More Kalman Filters
 
-After we take our initial measurement, $x = 0$, we represent our current belief about our position and velocity with a Gaussian that is skinny along the position axis and elongated along the velocity axis. 
+After we take our initial measurement, $x = 0$, we represent our current belief about our position and velocity with a Gaussian that is skinny along the position axis and elongated along the velocity axis.
 
 The skinniness about the position axis indicates our relative certainty about our current position, while the elongation about the velocity axis indicates our total uncertainty about our current velocity.
 
@@ -573,33 +573,33 @@ Because these two variables are correlated, subsequent observations of the obser
 
 When we design a Kalman filter, we need two functions: a state transition function and a measurement function. Let's look at both of these in the context of our 1D motion example.
 
-Our state transition provides the following update rule for $x$: $x^\prime = x + \dot{x}\Delta{t}$. This function signifies that the resulting position is the sum of the current position and the product of the current velocity and the time delta. Additionally, our state transition provides the following update rule for $\dot{x}$: $\dot{x}^\prime = \dot{x}$. In other words, our velocity is constant. 
+Our state transition provides the following update rule for $x$: $x^\prime = x + \dot{x}\Delta{t}$. This function signifies that the resulting position is the sum of the current position and the product of the current velocity and the time delta. Additionally, our state transition provides the following update rule for $\dot{x}$: $\dot{x}^\prime = \dot{x}$. In other words, our velocity is constant.
 
 We can express these two update rules simultaneously using linear algebra.
 
 $$
 \begin{pmatrix}
 x^\prime \\
-\dot{x}^\prime 
+\dot{x}^\prime
 \end{pmatrix}
 
 \leftarrow
 
 \begin{pmatrix}
 1 & 1 \\
-0 & 1 
+0 & 1
 \end{pmatrix}
 
 \begin{pmatrix}
 x \\
-\dot{x} 
+\dot{x}
 \end{pmatrix}
 $$
 
 Our measurement function only observes the current position and not the velocity, and so we represent it like this.
 
 $$
-z \leftarrow 
+z \leftarrow
 
 \begin{pmatrix}
 1 & 0
@@ -662,6 +662,7 @@ $$
 Let's complete one last challenging programming assignment. We are going to implement a multidimensional Kalman filter for the 1D motion/velocity example we have been investigating.
 
 We are going to use a [matrix class](https://gatech.instructure.com/courses/116662/files/folder/Projects/Asteroids?preview=13085607) to help us manipulate matrices. This class can:
+
 - initialize matrices from python lists
 - zero out existing matrices
 - compute an identity matrix
@@ -715,7 +716,7 @@ We initialize an uncertainty matrix, `p`, which is characterized by a high uncer
 P = matrix([[1000., 0.], [0., 1000.]])
 ```
 
-We can specify an external motion `u`, but we set it to zero, so it has no effect. 
+We can specify an external motion `u`, but we set it to zero, so it has no effect.
 
 ```python
 u = matrix([[0.], [0.]])
@@ -785,7 +786,9 @@ Can you implement the method `filter`?
 We can implement, in code, the measurement update and motion update rules we learned previously.
 
 > Note: We must convert the measurement into a matrix before subtracting `H * x` from it. Why? From the implementation of the overloaded multiplication operator (look for the `__mul__` method, read more [here](https://docs.python.org/3/library/operator.html)), we see that the resulting product is an instance of the matrix class. As a result, if you try to compute `measurements[n] - H * x`, you will see the following error:
-> ```
+>
+> ```python
 > TypeError: unsupported operand type(s) for -: 'int' and 'instance'
 > ```
+>
 > Basically, you can't subtract an object from an integer. If you convert `y` into an instance of `matrix` - `matrix([[y]])` - this error should go away.

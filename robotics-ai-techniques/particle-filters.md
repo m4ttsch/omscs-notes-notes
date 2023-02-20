@@ -61,7 +61,7 @@ Histogram filters tend to be approximate because the world tends not to be discr
 
 ## Particle Filters
 
-Like Kalman filters, the state space for particle filters is usually continuous. Similar to histogram filters, particle filters can represent arbitrary multimodal distributions. Like both filters, particle filters are approximate. 
+Like Kalman filters, the state space for particle filters is usually continuous. Similar to histogram filters, particle filters can represent arbitrary multimodal distributions. Like both filters, particle filters are approximate.
 
 The computational complexity of particle filters is unknown. In some instances, they scale exponentially, which makes them a poor choice for state spaces with more than four dimensions. In other domains, such as tracking, they scale much more efficiently.
 
@@ -70,9 +70,8 @@ A key advantage of particle filters is that they are straightforward to program.
 The animation below shows a robot performing global localization using sensor measurements. This robot has range sensors, as indicated by the blue stripes, which use sonar - sound - to determine the distance of nearby obstacles. The robot uses these range sensors to build an accurate posterior distribution of its location.
 
 ![](https://assets.omscs.io/notes/particle-filters.gif)
- 
 
-The **particle filter** uses particles - shown in red above - to represent the robot's best belief about its current location. In this example, each particle is represented with an x-coordinate, a y-coordinate, and a heading direction. These three values together comprise a single location estimate. 
+The **particle filter** uses particles - shown in red above - to represent the robot's best belief about its current location. In this example, each particle is represented with an x-coordinate, a y-coordinate, and a heading direction. These three values together comprise a single location estimate.
 
 However, a single guess is not a filter. The set of several thousand such guesses - every red dot above - together comprises an approximate representation of the robot's posterior.
 
@@ -85,6 +84,7 @@ The essence of particle filters is to survive particles that are consistent with
 ## Using Robot Class
 
 Imagine that we want to control a robot that moves about a 100-meter by 100-meter world. This robot can see four different landmarks at the following coordinates:
+
 - 20, 20
 - 80, 80
 - 20, 80
@@ -350,7 +350,7 @@ Let's implement resampling now in code. Given a list of particles, `p`, and impo
 
 ![](https://assets.omscs.io/notes/2020-05-30-20-25-13.png)
 
-Implementing resampling is not an easy task. Here's how we might do it. First, we generate a list of all of the $\alpha$ values, `alpha`, from the list of weights, `w`, and then we sort `alpha`. 
+Implementing resampling is not an easy task. Here's how we might do it. First, we generate a list of all of the $\alpha$ values, `alpha`, from the list of weights, `w`, and then we sort `alpha`.
 
 Next, we iterate $N$ times. For each iteration, we draw a uniform random variable, `beta`, in the range $[0, 1]$. We select an element, `a`, from `alpha` such that all of the values up to and including `a` sum to just less than `beta`. We then add the particle whose normalized weight is `a` to the list of new particles.
 
@@ -510,7 +510,7 @@ Which of the three filters did Sebastian use in his [job talk](https://tomprof.s
 
 ## 2012
 
-Now let's fast-forward to 2012 and the development of the Google self-driving car, which uses both histogram methods and particle methods. There are two primary differences between the implementation of the self-driving car and our current study of particle filters. 
+Now let's fast-forward to 2012 and the development of the Google self-driving car, which uses both histogram methods and particle methods. There are two primary differences between the implementation of the self-driving car and our current study of particle filters.
 
 One main difference is in the robot model. The self-driving car is modeled as a system with two non-steerable wheels and two steerable wheels, often referred to as the bicycle model. This model contrasts with our (x, y, heading) representation.
 

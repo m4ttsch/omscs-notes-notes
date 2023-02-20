@@ -85,7 +85,7 @@ Let's assume that we don't know the dimensions of the world ahead of time. Given
 
 ![](https://assets.omscs.io/notes/2020-05-11-19-35-59.png)
 
-Note that if we used `1` instead of `1.` in the numerator, we would have a list of zeros because the `/` operator performs integer division in Python 2.7. In Python 3+, this casting is unnecessary as `/` performs float division. 
+Note that if we used `1` instead of `1.` in the numerator, we would have a list of zeros because the `/` operator performs integer division in Python 2.7. In Python 3+, this casting is unnecessary as `/` performs float division.
 
 Alternatively, we can use a list comprehension to create `p`:
 
@@ -272,7 +272,7 @@ In the case of exact motion, we shift the probabilities by the direction and mag
 
 ## Move Function Quiz
 
-Let's define a function, `move`, which takes as arguments a probability distribution, `p`, and a move position, `U`. `U` represents the number of places that the robot moves to the right. Our task is to implement `move`. 
+Let's define a function, `move`, which takes as arguments a probability distribution, `p`, and a move position, `U`. `U` represents the number of places that the robot moves to the right. Our task is to implement `move`.
 
 > Note that our world is cyclical; that is, if a robot moves to the right of the rightmost position, it finds itself in the leftmost position.
 
@@ -282,7 +282,7 @@ Let's define a function, `move`, which takes as arguments a probability distribu
 
 ![](https://assets.omscs.io/notes/2020-05-12-20-16-34.png)
 
-Consider a distribution, `p = [0, 0.1, 0.2, 0.3, 0.4]`. The resulting distribution, `q`, after shifting `p` one element to the right is `[0.4, 0.1, 0.2, 0.3]`. We can see that the `i`th element in `q` corresponds to the `i - 1`th element in `p`. 
+Consider a distribution, `p = [0, 0.1, 0.2, 0.3, 0.4]`. The resulting distribution, `q`, after shifting `p` one element to the right is `[0.4, 0.1, 0.2, 0.3]`. We can see that the `i`th element in `q` corresponds to the `i - 1`th element in `p`.
 
 Of course, we need the first element in `q` to reference the fourth element in `p`. We can make our `i - 1` update "wrap around" to the back of `q` by taking the remainder of this difference divided by `len(p)`. Indeed, `-1 % 5 = 4` in Python.
 
@@ -393,7 +393,7 @@ Suppose the robot runs infinitely many motion steps but never senses. What will 
 
 ![](https://assets.omscs.io/notes/2020-05-12-21-49-55.png)
 
-There is an intuitive explanation as to why our distribution converges to the uniform distribution after infinite moves. 
+There is an intuitive explanation as to why our distribution converges to the uniform distribution after infinite moves.
 
 Consider our initial distribution. We know, with certainty, that we are located in the first cell. After our motion, we can no longer say that we know where we are with certainty. There is a probability of 0.1 we are in the second or fourth cell and a probability of 0.8 we are in the second cell.
 
@@ -401,8 +401,8 @@ Continuing to move only serves to reduce our certainty further. We can imagine o
 
 We can think about this another way. We can consider the limit distribution as a final distribution, which doesn't change no matter how many more motions are executed. Every location in this distribution, then, must meet the following requirement:
 
-$$ 
-P(X_i) = 0.8P(X_{i - 2}) + 0.2P(X_{i - 1}) + 0.2P(X_{i - 3}) 
+$$
+P(X_i) = 0.8P(X_{i - 2}) + 0.2P(X_{i - 1}) + 0.2P(X_{i - 3})
 $$
 
 Notice that this is the same update rule that we apply to our prior distribution based on the parameters of our motion. The only difference here is that, since we have converged, the posterior distribution calculated as a result of this update rule is always going to equal the prior distribution.
@@ -442,15 +442,15 @@ Localization is nothing more than the iteration between `sense` and `move`. We s
 
 ![](https://assets.omscs.io/notes/2020-05-12-22-56-29.png)
 
-Every time the robot moves, it loses information about where it is because robot motion is inaccurate. Every time the robot senses, it gains information. This loss and gain of information are manifest by the fact that after a motion, the probability distribution is a little bit "flatter" and more "spread out", whereas after sensing its more "focused". 
+Every time the robot moves, it loses information about where it is because robot motion is inaccurate. Every time the robot senses, it gains information. This loss and gain of information are manifest by the fact that after a motion, the probability distribution is a little bit "flatter" and more "spread out", whereas after sensing its more "focused".
 
 There is a measure of information, known as **entropy**, which is the expected log-likelihood of the probability of each grid cell. Without going into detail, entropy is a measure of information that the distribution has. It can be shown that the entropy increases after the motion step and decreases after the measurement step.
 
 > For more on entropy, here is the blurb from the [video](https://classroom.udacity.com/courses/cs373/lessons/48739381/concepts/486928090923):
-> Let's look at our current example where the robot could be at one of five different positions. The maximum uncertainty occurs when all positions have equal probabilities $[0.2, 0.2, 0.2, 0.2, 0.2]$. 
-> 
-> Following the formula $Entropy = \Sigma (-p \times log(p))$, we get $-5 \times (.2)\times log(0.2) = 0.699$. 
-> 
+> Let's look at our current example where the robot could be at one of five different positions. The maximum uncertainty occurs when all positions have equal probabilities $[0.2, 0.2, 0.2, 0.2, 0.2]$.
+>
+> Following the formula $Entropy = \Sigma (-p \times log(p))$, we get $-5 \times (.2)\times log(0.2) = 0.699$.
+>
 > Taking a measurement will decrease uncertainty and entropy. Let's say after taking a measurement, the probabilities become $[0.05, 0.05, 0.05, 0.8, 0.05]$. Now we have a more certain guess as to where the robot is located and our entropy has decreased to 0.338.
 
 Let's assume we have a list of measurements, `measurements`, and a list of motions, `motions`. Can we use these measurements and motions, along with the `sense` and `move` functions to compute the appropriate posterior distribution?
@@ -499,7 +499,7 @@ The motion update function, `move`, was a convolution, whereby we determined the
 
 ## Formal Definition of Probability 1 Quiz
 
-We can express a probability function as $P(X)$. The output of a probability function is bounded by 0 and 1; that is $0 \leq P(X)  \leq 1$. $X$ often can take on multiple values, such as the five cells in our one-dimensional world. 
+We can express a probability function as $P(X)$. The output of a probability function is bounded by 0 and 1; that is $0 \leq P(X)  \leq 1$. $X$ often can take on multiple values, such as the five cells in our one-dimensional world.
 
 Suppose that $X$ can only take on two values, $X_1$ and $X_2$. If $P(X_1) = 0.2$, what is $P(X_2)$?
 
@@ -635,7 +635,7 @@ $$
 
 ## Coin Flip Quiz
 
-Suppose we have a fair coin, which can come up either heads or tails with probability 0.5. In other words, $P(T) = P(H) = 0.5$. We flip the coin. If it comes up tails, we stop. If it comes up heads, we flip it again and stop. 
+Suppose we have a fair coin, which can come up either heads or tails with probability 0.5. In other words, $P(T) = P(H) = 0.5$. We flip the coin. If it comes up tails, we stop. If it comes up heads, we flip it again and stop.
 
 What is the probability that the final result is heads?
 
