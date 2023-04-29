@@ -160,7 +160,7 @@ a particular [page fault](https://en.wikipedia.org/wiki/Page_fault) takes 10ms.
 We can avoid paying multiple seek and rotational costs by collecting multiple
 blocks of data in a single page fault. This strategy intuitively makes sense: if
 we need one block of data for our application, it stands to reason that we may
-need some adjacent blocks as well. Bulk transfers or **extent transfers**move a
+need some adjacent blocks as well. Bulk transfers or **extent transfers** move a
 large number of blocks - say, 250 - in one shot without paying additional seek
 time and rotational delay. Once we have found the first block in the collection,
 we only incur transfer time costs for the remaining blocks.
