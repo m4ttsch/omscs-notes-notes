@@ -283,7 +283,7 @@ in the `Hometown` column must reference a city in the United States.
 
 We use **operations** to retrieve and change data. The following operation
 inserts a new row (user) into the `RegularUser` table. This user lives in
-Atlanta, makes $12,500 a year, was bored in August of 1992, and has the email
+Atlanta, makes $12,500 a year, was born in August of 1992, and has the email
 address user11@gt.edu.
 
 ```sql
