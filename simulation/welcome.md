@@ -41,6 +41,6 @@ This class requires some environment setup. I have recorded the following YouTub
 
 If you have any questions, comments, concerns, or improvements, don't hesitate to reach out to me. You can find me at:
 
-- [matt@omscs-notes.com](mailto:matt@omscs-notes.com)
+- [matt@oms.fyi](mailto:matt@oms.fyi)
 - [Matt Schlenker \| Linkedin](https://www.linkedin.com/in/matthew-schlenker/)
 - @mschlenker \(Slack\)

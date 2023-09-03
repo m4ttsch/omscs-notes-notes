@@ -19,6 +19,7 @@ Done for the semester!
 - Simulation
 - SCS (Authored by Matthew Caseres)
 - DB
+- RAIT
 
 If you notice any grammatical errors or flagrantly confusing sentences, please open a PR and point them out. I proofread my notes after taking them, but mistakes do slip through.
 

@@ -24,6 +24,6 @@ The following textbook may be helpful:
 
 If you have any questions, comments, concerns, or improvements, don't hesitate to reach out to me. You can find me at:
 
-- [matt@omscs-notes.com](mailto:matt@omscs-notes.com)
+- [matt@oms.fyi](mailto:matt@oms.fyi)
 - [Matt Schlenker \| Linkedin](https://www.linkedin.com/in/matt-schlenker-3457b047/)
 - @mschlenker \(Slack\)
