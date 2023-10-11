@@ -39,7 +39,7 @@ For example, data may live at `0x03c5` in the virtual address space and this may
 
 The operating system creates a mapping between the virtual address and the physical address so that processes can access their data without knowing its physical location. This mapping is called a **page table**.
 
-![](https://i.imgur.com/2J14QLu.png)
+![](https://assets.omscs.io/notes/2J14QLu.png)
 
 ## Address Space and Memory Management
 We may not have enough physical memory to store all a process's state even if we do need it. To deal with this overflow, the operating system decides dynamically which portion of the process's address space will live in physical memory and which portion will be swapped temporarily to disk.
