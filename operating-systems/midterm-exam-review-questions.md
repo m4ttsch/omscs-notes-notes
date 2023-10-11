@@ -129,7 +129,7 @@ When a user process makes a system call, the operating system needs to context s
 * Expensive cost of frequent user/kernel crossing
 
 ## What are the differences between processes and threads? What happens on a process vs. thread context switch?
-A process is defined by two main components: it's virtual address mapping, and it's execution context. The virtual address mapping contains the code of the program, any data that the program is initialized with, and the heap.  The execution context contains the stack and CPU registers associated with the process's execution.
+A process is defined by two main components: its virtual address mapping, and its execution context. The virtual address mapping contains the code of the program, any data that the program is initialized with, and the heap.  The execution context contains the stack and CPU registers associated with the process's execution.
 
 Different processes will have different virtual address mappings and different execution contexts, all represented by the process control block. Different threads will exist within the same process, so they will share the virtual address mapping of the process. Only the execution context will be different. As a result, a multiprocess application will require a much larger memory footprint than a multithreaded application.
 
@@ -328,7 +328,7 @@ This test was a test of "best case": to show what performance would look like ac
 This tests workloads that can primarily be served from cache, but not completely. AMPED performs slightly better than SPED here. Since some of the work is disk-bound SPED blocks where AMPED context switches. Both of these approaches are better than MT/MP models, which have more memory allocated to them (less for cache size), and still incur the overhead of context switching.
 
 ### CS Trace
-This tests workloads that become disk-bound very quickly. In this case, AMPED, and MT/MP smoke SPED. Since SPED is single-threaded, with not helpers, SPED blocks a lot when the workload is disk-bound. AMPED only has enough helper processes to keep the disk busy, so it has a smaller memory footprint and few context switching overheads than MP/MT
+This tests workloads that become disk-bound very quickly. In this case, AMPED, and MT/MP smoke SPED. Since SPED is single-threaded, with no helpers, SPED blocks a lot when the workload is disk-bound. AMPED only has enough helper processes to keep the disk busy, so it has a smaller memory footprint and few context switching overheads than MP/MT.
 
 ### Optimizations
 Looking at connection rate as a result of file size across the various combination of optimizations - pathname lookup caching, response header caching, and mapped file caching - shows that the combination containing all optimizations can handle the highest connection rate.
