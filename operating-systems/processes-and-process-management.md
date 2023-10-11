@@ -39,7 +39,7 @@ For example, data may live at `0x03c5` in the virtual address space and this may
 
 The operating system creates a mapping between the virtual address and the physical address so that processes can access their data without knowing its physical location. This mapping is called a **page table**.
 
-![](https://assets.omscs.io/notes/D3CEA64C-2DAC-4F2B-BF4B-8F7B6D143842.png)
+![](https://assets.omscs.io/notes/2J14QLu.png)
 
 ## Address Space and Memory Management
 We may not have enough physical memory to store all a process's state even if we do need it. To deal with this overflow, the operating system decides dynamically which portion of the process's address space will live in physical memory and which portion will be swapped temporarily to disk.
@@ -159,9 +159,9 @@ Can processes interact? YES! It is common today that an application consists of 
 
 Example: Web application! Web server running in one process, database running in another.
 
-These mechanisms that allow processes to talk to one another are known as **inter process mechanisms (IPCs)**.
+These mechanisms that allow processes to talk to one another are known as **inter process communication (IPCs)**.
 
-These mechanisms help to transfer data/information between address spaces while maintaining protection and isolation. There are many different types of inter process communication, so these mechanisms needs to be flexible and performant.
+These mechanisms help to transfer data/information between address spaces while maintaining protection and isolation. There are many different types of inter process communication, so these mechanisms need to be flexible and performant.
 
 ### Message Passing IPC
 Operating system establishes a communication channel - like a shared buffer, for instance - and the processes use that to communicate. One process can write/send through the channel, while the other can read/recv from the channel.
