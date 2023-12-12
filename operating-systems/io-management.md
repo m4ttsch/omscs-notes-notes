@@ -100,7 +100,7 @@ First, the CPU needs to write to a command register on the device. This command 
 For example, we may have a 1500B packet that we wish to transmit using 8 byte data registers. The whole operation will take 1 CPU access to the command register and then 188 - 1500 / 8 rounded up - accesses to the data register. In total, 189 CPU accesses are needed to transmit the packet.
 
 ## Device Access DMA
-An alternative to using PIO is to use **Direct Memory Access** (DMA) supported devices. This method requires additional hard support in the form of a DMA controller.
+An alternative to using PIO is to use **Direct Memory Access** (DMA) supported devices. This method requires additional hardware support in the form of a DMA controller.
 
 For devices that have DMA support, the CPU still writes commands directly to the command registers on the device. However, the data movement is controlled by configuring the DMA controller to know which data needs to be moved from memory to the device, and vice versa.
 
@@ -186,7 +186,7 @@ The **file** abstraction represent the elements on which the VFS operates.
 
 The OS abstracts files via **file descriptors**. A file descriptor is an integer that is created when a file is first opened. There are many operations that can be supported on files using a file descriptor, such as `read`, `write` and `close`.
 
-For each file the VFS maintains a persistent data structure called an **inode**. The inode maintains a list of all of data blocks corresponding to the file.  In this way, the inode is the "index node" for a file. The inode also contains other information for that file, like permissions associated with the file, the size of the file, and other metadata. Inodes are important because file do not need to be stored contiguously on disk. Blocks for a file may exist all over the storage media, making it important to maintain this index.
+For each file the VFS maintains a persistent data structure called an **inode**. The inode maintains a list of all of data blocks corresponding to the file.  In this way, the inode is the "index node" for a file. The inode also contains other information for that file, like permissions associated with the file, the size of the file, and other metadata. Inodes are important because files do not need to be stored contiguously on disk. Blocks for a file may exist all over the storage media, making it important to maintain this index.
 
 To help with certain operations on directories, Linux maintains a data structure called a **dentry** (directory entry). Each dentry object corresponds to a single path component that is being traversed as we are trying to reach a particular file. For instance, if we are trying to access a file in `/users/ada`, the filesystem will create a dentry for every path component - for `/` ,  `/users` and `/users/ada`.  
 
