@@ -238,11 +238,18 @@ To illustrate the above model and the parameters, let's consider a toy network e
 
 ### EvoArch iterations
 
-EvoArch is a discrete-time model that is executed over rounds. At each round, we perform the following steps: A) We introduce new nodes, and we place them randomly at layers. B) We examine all layers, from the top to the bottom, and we perform the following tasks:
+EvoArch is a discrete-time model that is executed over rounds. At each round, we perform the following steps: 
 
-1. We connect the new nodes that we may have just introduced to that layer, by choosing substrates based on the generality probabilities of the layer below s(l−1), and by choosing products for them based on the generality probability of the current layer s(l).
-2. We update the value of each node at each layer l, given that we may have new nodes added to the same layer l.
-3. We examine all nodes, in order of decreasing value in that layer, and remove the nodes that should die. C) Finally, we stop the execution of the model when the network reaches a given number of nodes.
+1) We introduce new nodes, and we place them randomly at layers. 
+2) We examine all layers, from the top to the bottom, and we perform the following tasks:
+
+    I. We connect the new nodes that we may have just introduced to that layer, by choosing substrates based on the generality probabilities of the layer below s(l−1), and by choosing products for them based on the generality probability of the current layer s(l).
+   
+    II. We update the value of each node at each layer l, given that we may have new nodes added to the same layer l.
+   
+    III. We examine all nodes, in order of decreasing value in that layer, and remove the nodes that should die.
+
+3. Finally, we stop the execution of the model when the network reaches a given number of nodes.
 
 The figure above shows the width of each layer we execute the EvoArch model for a network of 10 layers over multiple rounds. The main takeaway message from this figure is that the layer width decreases as we move from the bottom layer to a middle layer, around layer 5, and then it increases again as we move towards the top layer.
 
