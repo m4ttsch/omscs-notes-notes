@@ -88,7 +88,7 @@ The server will compute the result of the operation, which will be passed to the
 
 Note that before the client can bind to the server, the server must do something to let the world know it can be found. The server must execute a registration step to let the world know what procedures it supports, what arguments it requires, and what location it can communicated with at.
 
-## Interface Design Language
+## Interface Definition Language
 When using RPC, the client and the server don't need to be developed together. The can be written by different developers in different programming languages.
 
 For this to work, however, there must be some type of agreement so that the server can explicitly say what procedures it supports and what arguments it requires.
