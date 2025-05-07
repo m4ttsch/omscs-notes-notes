@@ -97,7 +97,7 @@ Let's consider how a process running on the CPU transmits a network packet via a
 
 First, the CPU needs to write to a command register on the device. This command needs to instruct the device that it needs to perform a transmission of the data that the CPU will provide. The CPU then needs to copy the packet into the data registers, and will repeat as many times as necessary until the entire packet is sent.
 
-For example, we may have a 1500B packet that we wish to transmit using 8 byte data registers. The whole operation will take 1 CPU access to the command register and then 188 - 1500 / 8 rounded up - accesses to the data register. In total, 189 CPU accesses are needed to transmit the packet.
+For example, we may have a 1500B packet that we wish to transmit using 8 byte data registers. The whole operation will take 1 CPU access to the command register, followed by 188 accesses to the data register, which is the result of rounding up 1500 divided by 8. In total, 189 CPU accesses are needed to transmit the packet.
 
 ## Device Access DMA
 An alternative to using PIO is to use **Direct Memory Access** (DMA) supported devices. This method requires additional hard support in the form of a DMA controller.
