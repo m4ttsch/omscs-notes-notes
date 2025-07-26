@@ -98,7 +98,7 @@ We use many assumptions to demonstrate the security of our system. Let's list th
 * Login results in delegation from U to the node N ($M$ as OS)
   * (1) U delegates: $K_U$ says $(K_N \wedge K_L) | K_U \implies K_N \text{ for } K_U$
     * $K_L$ is a session key that is used to limit the lifetime of $K_N$. If we ignore $K_L$ then this is just the delegation protocol previously discussed. $K_L$ says $K_N \implies K_L$ and expires after a short timeout period.
-  * (2) Node N accepts delegation by saying$(K_N \wedge K_L) | K_U \implies K_N \text{ for } K_U$
+  * (2) Node N accepts delegation by saying $(K_N \wedge K_L) | K_U \implies K_N \text{ for } K_U$
 
 These statements lead to $K_N | K_U \implies K_N \text{ for } K_U$.
 
