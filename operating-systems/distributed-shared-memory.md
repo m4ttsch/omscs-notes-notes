@@ -233,7 +233,7 @@ The consistency model is a guarantee that the state changes will behave in a cer
 
 For memory to behave correctly, the way that the operations access memory will somehow be representative of how the operations were issued in the first place.
 
-In addition, for memory to behavior correctly, we will need to make some guarantees that when someone is trying to read a memory location, the value that they see will be representative of what was written to that location recently.
+In addition, we will need to make some guarantees that when someone is trying to read a memory location, the value that they see will be representative of what was written to that location recently.
 
 The consistency models states that the memory behaves correctly if and only of the software follows certain rules. This implies that the softwares needs to use certain APIs for memory access, or that the software needs to set certain expectations based on the memory guarantees or lack thereof.
 
