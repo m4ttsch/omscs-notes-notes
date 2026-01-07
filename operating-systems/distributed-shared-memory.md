@@ -97,7 +97,7 @@ The more complex case is when the application needs to support **multiple reader
 With multiple writers and readers, it's important that the reads return the most recent value at a memory location. It's also important that all of the writes that are performed are correctly ordered. This is necessary so as to present a consistent view of the distributed state to all of the nodes in the system.
 
 ## DSM Design: Migration vs Replication
-For a DSM solution to be useful, it most provide good performance to applications. Since the core service provided by DSM solutions is access, the core performance metric to analyze is **access latency**.
+For a DSM solution to be useful, it must provide good performance to applications. Since the core service provided by DSM solutions is access, the core performance metric to analyze is **access latency**.
 
 Clearly, accessing local memory is faster than remote memory, so it's important to consider how to maximize the proportion of local memory accesses.
 
