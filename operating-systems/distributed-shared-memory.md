@@ -257,7 +257,7 @@ While strict consistency is a nice theoretical model, it is not sustainable in p
 ## Sequential Consistency
 Given that strict consistency is next to impossible to achieve, the next best option with reasonable cost is sequential consistency.
 
-With sequential consistency, it's not important that we see updates immediately. Rather, it's important that the ordering the way see correspond to a possible ordering that can be achieved by the operations that were applied.
+With sequential consistency, it's not important that we see updates immediately. Rather, it's important that the ordering that we see corresponds to a possible ordering that can be achieved by the operations that were applied.
 
 ![](https://assets.omscs.io/notes/2FAC54FC-883E-45B2-88D6-94843AC1F9F1.png)
 
