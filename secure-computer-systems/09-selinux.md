@@ -205,7 +205,7 @@ Again, DAC is fine.
 
 **Commands for process #1**:
 
-1. No access. `staff_t` does have read access to `home_t`. The effective sensitivity level of s0 is lower than s5, we fail MLS check. No access.
+1. No access. `staff_t` has read access to `user_home_t` so it passes type enforcement (DTE), but the effective sensitivity level of s0 is lower than s5, so we fail MLS check. No access.
 2. No access. Effective level is still s0 < s5.
 3. No access. staff_t can execute the file of type `aide_exec_t` but staff_t has no transition to type aide_t, it will remain at the same type and have no permissions. If staff_t could transition to type aide_t then it would get the mlsfilereadtoclr and mlsfilewritetoclr attributes, allowing us to use the clearance level s15 instead of the effective level s0, this would allow access.
 
