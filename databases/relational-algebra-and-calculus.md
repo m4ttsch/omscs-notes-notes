@@ -457,7 +457,7 @@ $\text{P}_1 \text{ or } \text{P}_2$, $\text{P}_1 \text{ and } \text{P}_2$, and
 $\text{P}_1 \implies \text{P}_2$, where $\implies$ means "implies".
 
 Finally, if $\text{P(t)}$ is a predicate and ${\text{t}}$ is a free variable in
-$\text{P}$, and $\text{R}$ is a relation, then "there exists a $\text{t}$ in
+$\text{R}$, and $\text{R}$ is a relation, then "there exists a $\text{t}$ in
 $\text{R}$ that satisfies $\text{P}$" is a predicate called the **existential
 quantifier**: $\exists (t\in R)(P(t))$. Likewise, "for all $\text{t}$ in
 $\text{R}$ for which $\text{P(t)}$ is true" a predicate called the **universal
