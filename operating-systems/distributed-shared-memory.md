@@ -97,7 +97,7 @@ The more complex case is when the application needs to support **multiple reader
 With multiple writers and readers, it's important that the reads return the most recent value at a memory location. It's also important that all of the writes that are performed are correctly ordered. This is necessary so as to present a consistent view of the distributed state to all of the nodes in the system.
 
 ## DSM Design: Migration vs Replication
-For a DSM solution to be useful, it most provide good performance to applications. Since the core service provided by DSM solutions is access, the core performance metric to analyze is **access latency**.
+For a DSM solution to be useful, it must provide good performance to applications. Since the core service provided by DSM solutions is access, the core performance metric to analyze is **access latency**.
 
 Clearly, accessing local memory is faster than remote memory, so it's important to consider how to maximize the proportion of local memory accesses.
 
@@ -233,7 +233,7 @@ The consistency model is a guarantee that the state changes will behave in a cer
 
 For memory to behave correctly, the way that the operations access memory will somehow be representative of how the operations were issued in the first place.
 
-In addition, for memory to behavior correctly, we will need to make some guarantees that when someone is trying to read a memory location, the value that they see will be representative of what was written to that location recently.
+In addition, we will need to make some guarantees that when someone is trying to read a memory location, the value that they see will be representative of what was written to that location recently.
 
 The consistency models states that the memory behaves correctly if and only of the software follows certain rules. This implies that the softwares needs to use certain APIs for memory access, or that the software needs to set certain expectations based on the memory guarantees or lack thereof.
 
@@ -257,7 +257,7 @@ While strict consistency is a nice theoretical model, it is not sustainable in p
 ## Sequential Consistency
 Given that strict consistency is next to impossible to achieve, the next best option with reasonable cost is sequential consistency.
 
-With sequential consistency, it's not important that we see updates immediately. Rather, it's important that the ordering the way see correspond to a possible ordering that can be achieved by the operations that were applied.
+With sequential consistency, it's not important that we see updates immediately. Rather, it's important that the ordering that we see corresponds to a possible ordering that can be achieved by the operations that were applied.
 
 ![](https://assets.omscs.io/notes/2FAC54FC-883E-45B2-88D6-94843AC1F9F1.png)
 
