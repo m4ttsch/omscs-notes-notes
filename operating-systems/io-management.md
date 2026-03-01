@@ -97,7 +97,7 @@ Let's consider how a process running on the CPU transmits a network packet via a
 
 First, the CPU needs to write to a command register on the device. This command needs to instruct the device that it needs to perform a transmission of the data that the CPU will provide. The CPU then needs to copy the packet into the data registers, and will repeat as many times as necessary until the entire packet is sent.
 
-For example, we may have a 1500B packet that we wish to transmit using 8 byte data registers. The whole operation will take 1 CPU access to the command register and then 188 - 1500 / 8 rounded up - accesses to the data register. In total, 189 CPU accesses are needed to transmit the packet.
+For example, we may have a 1500B packet that we wish to transmit using 8 byte data registers. The whole operation will take 1 CPU access to the command register and then 188 (calculating 1500 / 8 and rounding up) accesses to the data register. In total, 189 CPU accesses are needed to transmit the packet.
 
 ## Device Access DMA
 An alternative to using PIO is to use **Direct Memory Access** (DMA) supported devices. This method requires additional hardware support in the form of a DMA controller.
@@ -160,7 +160,7 @@ Block devices, like disks, are typically used for storage, and the typical stora
 
 Below the file-based interface used by applications is the file system. The file system will receive read/write operations from a user process for a given file, and will have the information to find the file, determine if the user process can access it and which portion to access. The operating system can then actually perform the access.
 
-Operating systems allow for a filesystem to be modified or completely replaced with a different filesystem. To make this easy, operating systems standardize the filesystem interface that is exposed to a user process. The standardized API is the POSIX API, which includes the system calls for `read` and `write`. The result is that filesystems can be swapped out without breaking user applications/
+Operating systems allow for a filesystem to be modified or completely replaced with a different filesystem. To make this easy, operating systems standardize the filesystem interface that is exposed to a user process. The standardized API is the POSIX API, which includes the system calls for `read` and `write`. The result is that filesystems can be swapped out without breaking user applications.
 
 If the files are stored on block devices, the filesystem will need to interact with these devices via their device drivers. Different types of block devices can be used for the physical storage and the actual interaction with them will require certain protocol-specific APIs. Even though the devices may all be block devices, there can and often will be differences among their APIs.
 
@@ -225,7 +225,7 @@ The first block is the super block, which contains information about the overall
 The overall state of the block group is further described by the group descriptor, which contains information about:
 
 - bitmaps
-- number of free nodes
+- number of free inodes
 - number of directories
 
 Bitmaps are used to quickly find free blocks and inodes. Higher level allocators can read the bitmaps to easily determine which blocks and inodes are free and which are in use.
