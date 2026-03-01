@@ -73,7 +73,7 @@ In shared memory IPC, processes read and write into a shared memory region. The 
 
 The big benefit of this approach is that once the physical memory is mapped into both address spaces, the operating system is out of the way. System calls are used only in the setup phase.
 
-Data copies are reduced, but not necessarily avoided. For data to be available to both processes, it needs to explicitly be allocated from the virtual addresses the belong to the shared memory region. If that is not the case, the data within the same address space needs to be copied in and out of the shared memory region.
+Data copies are reduced, but not necessarily avoided. For data to be available to both processes, it needs to explicitly be allocated from the virtual addresses that belong to the shared memory region. If that is not the case, the data within the same address space needs to be copied in and out of the shared memory region.
 
 Since the shared memory area can be concurrently accessed by both processes, this means that processes must explicitly synchronize their shared memory operations. In addition, it is now the developer's responsibility to handle any protocol-related implementations, which adds to the complexity of the application.
 
@@ -93,7 +93,7 @@ Windows systems leverage this difference. If the data that needs to be transferr
 ## SysV Shared Memory
 The operating systems supports **segments** of shared memory, which don't need to correspond to contiguous physical pages. The operating system treats shared memory as a shared resource using system wide policies. That means that there is a limit on the total number of segments and the total size of the shared memory. Currently in Linux the limit is 4000 segments, although in the past it was as few as 6.
 
-When a process requests that a shared memory segment is created, the operating system allocates the required amount of physical memory and then it assigns to it a unique key. This key is used to uniquely identify the segment within the operating system. Another other process can refer to this segment using this key. If the creating process wants to communicate with other processes using this segment of shared memory, then it needs to make sure that they learn this key somehow.
+When a process requests that a shared memory segment is created, the operating system allocates the required amount of physical memory and then it assigns to it a unique key. This key is used to uniquely identify the segment within the operating system. Another process can refer to this segment using this key. If the creating process wants to communicate with other processes using this segment of shared memory, then it needs to make sure that they learn this key somehow.
 
 Using the key, the shared memory segment can be attached by a process. This means that the operating system establishes a valid mapping between the virtual addresses of that process and the physical addresses that back the segment. Multiple processes can attach to the same shared memory segment. Reads and writes to these segments will be visible across all attached processes.
 
