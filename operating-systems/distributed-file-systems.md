@@ -122,7 +122,7 @@ With immutable files, you never modify an old file, but rather create a new file
 With transactions, the filesystem exports some API to allow clients to group file updates into a single batch to be applied atomically.
 
 ## File Vs Directory Service
-Filesystems have two different types of files: regular files and directories. These two types of files often have very different access patterns. As a result, it is not uncommon to adopt one type of semantics for files, and another for directories. For example, we have may session semantics for files, and UNIX semantics for directories.
+Filesystems have two different types of files: regular files and directories. These two types of files often have very different access patterns. As a result, it is not uncommon to adopt one type of semantics for files, and another for directories. For example, we may have session semantics for files, and UNIX semantics for directories.
 
 ## Replication and Partitioning
 Fileserver distribution can be accomplished via replication and/or partitioning.
