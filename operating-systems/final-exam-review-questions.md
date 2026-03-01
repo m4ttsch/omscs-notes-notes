@@ -28,7 +28,7 @@ Workloads that are primarily CPU-bound will benefit from longer timeslices, as t
 
 ### Can you work through a scenario describing some workload mix (few threads, their compute and I/O phases) and for a given scheduling discipline compute various metrics like average time to completion, system throughput, wait time of the tasks…
 
-For system throughput, take the total amount of time to finish all of the tasks, and divide by the number of tasks. For average time to completion, take the sum of the differences between the zeroth time and the time that each task completes, and divide by the number of tasks. For wait time, take the sum of the difference between the zeroth time and the time that each task starts, and divide by the number of tasks.
+For system throughput, take the number of tasks, and divide by the total amount of time to finish all of the tasks. For average time to completion, take the sum of the differences between the zeroth time and the time that each task completes, and divide by the number of tasks. For wait time, take the sum of the difference between the zeroth time and the time that each task starts, and divide by the number of tasks.
 
 Don't forget that context switching takes time.
 
