@@ -83,7 +83,7 @@ The ACL is stored as metadata for **the object** and the C-list is stored with t
 
 * **Overhead of checking permissions**: It takes more time to check permissions for the ACL because the TCB has to check if a user is in a list for the object. This means the TCB iterates through a list. With a C-list the user simply has permissions which is more efficient from a time-complexity perspective.
 * **Revocation**: To revoke from an ACL we just find the entry in the ACL and delete/modify it. To revoke permissions from a C-list it is more complicated, you have to deal with the user. Discussed in more depth later.
-* **Accountability**: Finding all the people that have permissions for an object is east with an ACL, look at the list. With C-lists we need to go through every user to find all the users with permissions for a particular object.
+* **Accountability**: Finding all the people that have permissions for an object is easy with an ACL, look at the list. With C-lists we need to go through every user to find all the users with permissions for a particular object.
 
 ### Confused Deputy Problem
 
