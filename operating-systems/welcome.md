@@ -27,6 +27,15 @@ The following textbooks helped me get an **A** in this course:
 - [The Linux Programming Interface: A Linux and UNIX System Programming Handbook](https://amzn.to/36pvc3J)
 - [Operating Systems: Three Easy Pieces](https://amzn.to/2zYwNRV)
 
+Operating Systems: Three Easy Pieces (OSTEP) is also [free to read online](https://pages.cs.wisc.edu/~remzi/OSTEP/), chapter by chapter. Each set of lecture notes links to the OSTEP chapters covering the same material, where the book covers it. The mapping is not one to one: OSTEP treats memory management in more depth than the course does, and the course covers System V shared memory and message queues, which OSTEP does not. Two lectures, Distributed Shared Memory and Datacenter Technologies, have no OSTEP counterpart.
+
+Other references worth knowing about:
+
+- [Beej's Guide to Network Programming](https://beej.us/guide/bgnet/), an introduction to the socket programming needed for the first project. Free to read online.
+- [The Linux man-pages project](https://man7.org/linux/man-pages/), maintained by the author of The Linux Programming Interface, and the fastest way to look up a specific system call.
+- [Operating System Concepts](https://www.amazon.com/Operating-System-Concepts-Abraham-Silberschatz/dp/1118063333) - Silberschatz, Galvin and Gagne. There is also an [Essentials edition](https://www.amazon.com/Operating-Concepts-Essentials-Abraham-Silberschatz/dp/1118804929).
+- [Modern Operating Systems](https://www.amazon.com/Modern-Operating-Systems-4th-Edition/dp/013359162X) - Andrew Tanenbaum.
+
 ## Download These Notes
 
 Some students have asked for PDF versions of the notes for a simpler, more portable
